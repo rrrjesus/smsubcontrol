@@ -208,6 +208,22 @@ function redirect(string $url): void
 }
 
 /**
+ * @return string
+ */
+function navbar_active($url): ?string
+{
+    if(!empty($_GET['route'])) {
+        if(strip_tags($_GET['route']) == $url) {
+            return 'active';
+        }
+    } else {
+        if($url == '/')
+        return 'active';
+    }
+    return true;
+}
+
+/**
  * ##################
  * ###   ASSETS   ###
  * ##################

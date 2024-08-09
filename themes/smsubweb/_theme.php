@@ -25,6 +25,8 @@
     </div>
 </div>
 
+
+
 <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
   <symbol id="arrow-right" viewBox="0 0 16 16">
     <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
@@ -120,7 +122,7 @@
       <div class="bd-search" id="docsearch" data-bd-docs-version="5.3"></div>
 
       <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-label="Toggle navigation">
-        <svg class="bi" aria-hidden="true"><use xlink:href="#three-dots"></use></svg>
+        <i class="bi bi-list-nested"></i>
       </button>
     </div>
 
@@ -134,7 +136,7 @@
         <hr class="d-lg-none text-white-50">
         <ul class="navbar-nav flex-row flex-wrap bd-navbar-nav">
           <li class="nav-item col-6 col-lg-auto">
-            <a class="nav-link py-2 px-0 px-lg-2" href="#">Docs</a>
+            <a class="nav-link py-2 px-0 px-lg-2" href="#">Home</a>
           </li>
           <li class="nav-item col-6 col-lg-auto">
             <a class="nav-link py-2 px-0 px-lg-2 active" aria-current="true" href="#">Examples</a>
