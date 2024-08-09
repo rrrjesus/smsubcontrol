@@ -7,70 +7,9 @@
                 </header>
                 <div id="control"></div>
             </article>
-
-            <div class="app_main_left_fature">
-                <article class="app_widget app_widget_balance">
-                    <header class="app_widget_title">
-                        <h2 class="icon-calendar-minus-o">À receber:</h2>
-                    </header>
-                    <div class="app_widget_content">
-                        <?php if (!empty($income)): ?>
-                            <?php foreach ($income as $incomeItem): ?>
-                                <?= $this->insert("views/balance", ["invoice" => $incomeItem->data()]); ?>
-                            <?php endforeach; ?>
-                        <?php else: ?>
-                            <div class="message success al-center icon-check-square-o">
-                                No momento, não existem contas a receber.
-                            </div>
-                        <?php endif; ?>
-                        <a href="<?= url("app/receber"); ?>" title="Receitas"
-                           class="app_widget_more transition">+ Receitas</a>
-                    </div>
-                </article>
-
-                <article class="app_widget app_widget_balance">
-                    <header class="app_widget_title">
-                        <h2 class="icon-calendar-check-o">À pagar:</h2>
-                    </header>
-                    <div class="app_widget_content">
-                        <?php if (!empty($expense)): ?>
-                            <?php foreach ($expense as $expenseItem): ?>
-                                <?= $this->insert("views/balance", ["invoice" => $expenseItem->data()]); ?>
-                            <?php endforeach; ?>
-                        <?php else: ?>
-                            <div class="message error al-center icon-check-square-o">
-                                No momento, não existem contas a pagar.
-                            </div>
-                        <?php endif; ?>
-                        <a href="<?= url("app/pagar"); ?>" title="Despesas"
-                           class="app_widget_more transition">+ Despesas</a>
-                    </div>
-                </article>
-            </div>
         </section>
 
         <section class="app_main_right">
-            <ul class="app_widget_shortcuts">
-                <li class="income radius transition" data-modalopen=".app_modal_income">
-                    <p class="icon-plus-circle">Receita</p>
-                </li>
-                <li class="expense radius transition" data-modalopen=".app_modal_expense">
-                    <p class="icon-plus-circle">Despesa</p>
-                </li>
-            </ul>
-
-            <article
-                    class="app_flex app_wallet <?= ($wallet->balance == "positive" ? "gradient-green" : "gradient-red"); ?>">
-                <header class="app_flex_title">
-                    <h2 class="icon-money radius"><?= (session()->has("walletfilter") ? (new \Source\Models\CafeApp\AppWallet())->findById(session()->walletfilter)->wallet : "Saldo Geral"); ?></h2>
-                </header>
-
-                <p class="app_flex_amount">R$ <?= str_price(($wallet->wallet ?? 0)); ?></p>
-                <p class="app_flex_balance">
-                    <span class="income">Receitas: R$ <?= str_price(($wallet->income ?? 0)); ?></span>
-                    <span class="expense">Despesas: R$ <?= str_price(($wallet->expense ?? 0)); ?></span>
-                </p>
-            </article>
 
             <section class="app_widget app_widget_blog">
                 <header class="app_widget_title">

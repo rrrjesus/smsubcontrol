@@ -44,9 +44,6 @@ class App extends Controller
         (new Access())->report();
         (new Online())->report();
 
-        (new AppWallet())->start($this->user);
-        (new AppInvoice())->fixed($this->user, 3);
-
         //UNCONFIRMED EMAIL
         if ($this->user->status != "confirmed") {
             $session = new Session();
@@ -117,43 +114,12 @@ class App extends Controller
             false
         );
 
-        //CHART
-        $chartData = (new AppInvoice())->chartData($this->user);
-        //END CHART
-
-        //INCOME && EXPENSE
-        $whereWallet = "";
-        if ((new Session())->has("walletfilter")) {
-            $whereWallet = "AND wallet_id = " . (new Session())->walletfilter;
-        }
-
-        $income = (new AppInvoice())
-            ->find("user_id = :user AND type = 'income' AND status = 'unpaid' AND date(due_at) <= date(now() + INTERVAL 1 MONTH) {$whereWallet}",
-                "user={$this->user->id}")
-            ->order("due_at")
-            ->fetch(true);
-
-        $expense = (new AppInvoice())
-            ->find("user_id = :user AND type = 'expense' AND status = 'unpaid' AND date(due_at) <= date(now() + INTERVAL 1 MONTH) {$whereWallet}",
-                "user={$this->user->id}")
-            ->order("due_at")
-            ->fetch(true);
-        //END INCOME && EXPENSE
-
-        //WALLET
-        $wallet = (new AppInvoice())->balance($this->user);
-        //END WALLET
-
         //POSTS
         $posts = (new Post())->findPost()->limit(3)->order("post_at DESC")->fetch(true);
         //END POSTS
 
         echo $this->view->render("home", [
             "head" => $head,
-            "chart" => $chartData,
-            "income" => $income,
-            "expense" => $expense,
-            "wallet" => $wallet,
             "posts" => $posts
         ]);
     }

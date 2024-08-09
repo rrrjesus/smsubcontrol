@@ -7,10 +7,12 @@
 
     <?= $head; ?>
 
+    <script src="shared/scripts/color-modes.js"></script>
+
     <link rel="icon" type="image/png" href="<?= theme("/assets/images/favicon.png"); ?>"/>
     <link rel="stylesheet" href="shared/styles/bootstrap.min.css"/>
     <link rel="stylesheet" href="shared/styles/bootstrap-icons.min.css"/>
-    <link href="/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <link rel="stylesheet" href="shared/styles/docs.min.css">
     <link rel="stylesheet" href="shared/styles/boot.css"/>
     <link rel="stylesheet" href="<?=theme("/assets/css/style.css"); ?>"/>
 </head>
@@ -132,19 +134,19 @@
         <hr class="d-lg-none text-white-50">
         <ul class="navbar-nav flex-row flex-wrap bd-navbar-nav">
           <li class="nav-item col-6 col-lg-auto">
-            <a class="nav-link py-2 px-0 px-lg-2" href="/docs/5.3/getting-started/introduction/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Docs');">Docs</a>
+            <a class="nav-link py-2 px-0 px-lg-2" href="#">Docs</a>
           </li>
           <li class="nav-item col-6 col-lg-auto">
-            <a class="nav-link py-2 px-0 px-lg-2 active" aria-current="true" href="/docs/5.3/examples/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Examples');">Examples</a>
+            <a class="nav-link py-2 px-0 px-lg-2 active" aria-current="true" href="#">Examples</a>
           </li>
           <li class="nav-item col-6 col-lg-auto">
-            <a class="nav-link py-2 px-0 px-lg-2" href="https://icons.getbootstrap.com/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Icons');" target="_blank" rel="noopener">Icons</a>
+            <a class="nav-link py-2 px-0 px-lg-2" href="#" target="_blank" rel="noopener">Icons</a>
           </li>
           <li class="nav-item col-6 col-lg-auto">
-            <a class="nav-link py-2 px-0 px-lg-2" href="https://themes.getbootstrap.com/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Themes');" target="_blank" rel="noopener">Themes</a>
+            <a class="nav-link py-2 px-0 px-lg-2" href="#">Themes</a>
           </li>
           <li class="nav-item col-6 col-lg-auto">
-            <a class="nav-link py-2 px-0 px-lg-2" href="https://blog.getbootstrap.com/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');" target="_blank" rel="noopener">Blog</a>
+            <a class="nav-link py-2 px-0 px-lg-2" href="#" target="_blank" rel="noopener">Blog</a>
           </li>
         </ul>
 
@@ -341,7 +343,7 @@
 </footer>
 
 <script src="shared/scripts/bootstrap.bundle.min.js"></script>
-<script src="<?= theme("/assets/js/scripts.js"); ?>"></script>
+<script src="<?= theme("/assets/scripts.js"); ?>"></script>
 <?= $this->section("scripts"); ?>
 
 </body>
