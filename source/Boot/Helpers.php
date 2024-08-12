@@ -207,6 +207,7 @@ function redirect(string $url): void
     }
 }
 
+
 /**
  * @return string
  */
@@ -218,7 +219,7 @@ function navbar_active($url): ?string
         }
     } else {
         if($url == '/')
-        return 'active';
+            return 'active';
     }
     return true;
 }

@@ -232,19 +232,19 @@ class Web extends Controller
 
         if (!empty($data['csrf'])) {
             if (!csrf_verify($data)) {
-                $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->render();
+                $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->icon()->render();
                 echo json_encode($json);
                 return;
             }
 
             if (request_limit("weblogin", 3, 60 * 5)) {
-                $json['message'] = $this->message->error("Você já efetuou 3 tentativas, esse é o limite. Por favor, aguarde 5 minutos para tentar novamente!")->render();
+                $json['message'] = $this->message->error("Você já efetuou 3 tentativas, esse é o limite. Por favor, aguarde 5 minutos para tentar novamente!")->icon()->render();
                 echo json_encode($json);
                 return;
             }
 
             if (empty($data['email']) || empty($data['password'])) {
-                $json['message'] = $this->message->warning("Informe seu email e senha para entrar")->render();
+                $json['message'] = $this->message->warning("Informe seu email e senha para entrar")->icon()->render();
                 echo json_encode($json);
                 return;
             }
@@ -257,7 +257,7 @@ class Web extends Controller
                 $this->message->success("Seja bem-vindo(a) de volta " . Auth::user()->first_name . "!")->flash();
                 $json['redirect'] = url("/app");
             } else {
-                $json['message'] = $auth->message()->before("Ooops! ")->render();
+                $json['message'] = $auth->message()->before("Ooops! ")->icon()->render();
             }
 
             echo json_encode($json);
@@ -289,28 +289,28 @@ class Web extends Controller
 
         if (!empty($data['csrf'])) {
             if (!csrf_verify($data)) {
-                $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->render();
+                $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->icon()->render();
                 echo json_encode($json);
                 return;
             }
 
             if (empty($data["email"])) {
-                $json['message'] = $this->message->info("Informe seu e-mail para continuar")->render();
+                $json['message'] = $this->message->info("Informe seu e-mail para continuar")->icon()->render();
                 echo json_encode($json);
                 return;
             }
 
             if (request_repeat("webforget", $data["email"])) {
-                $json['message'] = $this->message->error("Ooops! Você já tentou este e-mail antes")->render();
+                $json['message'] = $this->message->error("Ooops! Você já tentou este e-mail antes")->icon()->render();
                 echo json_encode($json);
                 return;
             }
 
             $auth = new Auth();
             if ($auth->forget($data["email"])) {
-                $json["message"] = $this->message->success("Acesse seu e-mail para recuperar a senha")->render();
+                $json["message"] = $this->message->success("Acesse seu e-mail para recuperar a senha")->icon()->render();
             } else {
-                $json["message"] = $auth->message()->before("Ooops! ")->render();
+                $json["message"] = $auth->message()->before("Ooops! ")->icon()->render();
             }
 
             echo json_encode($json);
@@ -341,13 +341,13 @@ class Web extends Controller
 
         if (!empty($data['csrf'])) {
             if (!csrf_verify($data)) {
-                $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->render();
+                $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->icon()->render();
                 echo json_encode($json);
                 return;
             }
 
             if (empty($data["password"]) || empty($data["password_re"])) {
-                $json["message"] = $this->message->info("Informe e repita a senha para continuar")->render();
+                $json["message"] = $this->message->info("Informe e repita a senha para continuar")->icon()->render();
                 echo json_encode($json);
                 return;
             }
@@ -359,7 +359,7 @@ class Web extends Controller
                 $this->message->success("Senha alterada com sucesso. Vamos controlar?")->flash();
                 $json["redirect"] = url("/entrar");
             } else {
-                $json["message"] = $auth->message()->before("Ooops! ")->render();
+                $json["message"] = $auth->message()->before("Ooops! ")->icon()->render();
             }
 
             echo json_encode($json);
@@ -391,13 +391,13 @@ class Web extends Controller
 
         if (!empty($data['csrf'])) {
             if (!csrf_verify($data)) {
-                $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->render();
+                $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->icon()->render();
                 echo json_encode($json);
                 return;
             }
 
             if (in_array("", $data)) {
-                $json['message'] = $this->message->info("Informe seus dados para criar sua conta.")->render();
+                $json['message'] = $this->message->info("Informe seus dados para criar sua conta.")->icon()->render();
                 echo json_encode($json);
                 return;
             }
@@ -414,7 +414,7 @@ class Web extends Controller
             if ($auth->register($user)) {
                 $json['redirect'] = url("/confirma");
             } else {
-                $json['message'] = $auth->message()->before("Ooops! ")->render();
+                $json['message'] = $auth->message()->before("Ooops! ")->icon()->render();
             }
 
             echo json_encode($json);

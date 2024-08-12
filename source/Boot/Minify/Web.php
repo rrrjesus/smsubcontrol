@@ -4,8 +4,12 @@ if (strpos(url(), "localhost")) {
      * CSS
      */
     $minCSS = new MatthiasMullie\Minify\CSS();
+    $minCSS->add(__DIR__ . "/../../../shared/styles/bootstrap.min.css");
+    $minCSS->add(__DIR__ . "/../../../shared/styles/bootstrap-icons.min.css");
+    $minCSS->add(__DIR__ . "/../../../shared/styles/docs.min.css");
     $minCSS->add(__DIR__ . "/../../../shared/styles/styles.css");
     $minCSS->add(__DIR__ . "/../../../shared/styles/boot.css");
+
 
     //theme CSS
     $cssDir = scandir(__DIR__ . "/../../../themes/" . CONF_VIEW_THEME . "/assets/css");
