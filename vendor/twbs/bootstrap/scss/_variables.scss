@@ -37,6 +37,7 @@ $grays: (
 
 // scss-docs-start color-variables
 $blue:    #0d6efd !default;
+$smsub:   #011fcf !default;
 $indigo:  #6610f2 !default;
 $purple:  #6f42c1 !default;
 $pink:    #d63384 !default;
@@ -51,6 +52,7 @@ $cyan:    #0dcaf0 !default;
 // scss-docs-start colors-map
 $colors: (
   "blue":       $blue,
+  "smsub":      $smsub,
   "indigo":     $indigo,
   "purple":     $purple,
   "pink":       $pink,
@@ -306,6 +308,7 @@ $warning:       $yellow !default;
 $danger:        $red !default;
 $light:         $gray-100 !default;
 $dark:          $gray-900 !default;
+$smsub:         $smsub !default;
 // scss-docs-end theme-color-variables
 
 // scss-docs-start theme-colors-map
@@ -317,7 +320,8 @@ $theme-colors: (
   "warning":    $warning,
   "danger":     $danger,
   "light":      $light,
-  "dark":       $dark
+  "dark":       $dark,
+  "smsub":      $smsub
 ) !default;
 // scss-docs-end theme-colors-map
 
@@ -330,6 +334,7 @@ $warning-text-emphasis:   shade-color($warning, 60%) !default;
 $danger-text-emphasis:    shade-color($danger, 60%) !default;
 $light-text-emphasis:     $gray-700 !default;
 $dark-text-emphasis:      $gray-700 !default;
+$smsub-text-emphasis:   shade-color($smsub, 60%) !default;
 // scss-docs-end theme-text-variables
 
 // scss-docs-start theme-bg-subtle-variables
@@ -341,6 +346,7 @@ $warning-bg-subtle:       tint-color($warning, 80%) !default;
 $danger-bg-subtle:        tint-color($danger, 80%) !default;
 $light-bg-subtle:         mix($gray-100, $white) !default;
 $dark-bg-subtle:          $gray-400 !default;
+$smsub-bg-subtle:         tint-color($smsub, 80%) !default;
 // scss-docs-end theme-bg-subtle-variables
 
 // scss-docs-start theme-border-subtle-variables
@@ -352,6 +358,7 @@ $warning-border-subtle:   tint-color($warning, 60%) !default;
 $danger-border-subtle:    tint-color($danger, 60%) !default;
 $light-border-subtle:     $gray-200 !default;
 $dark-border-subtle:      $gray-500 !default;
+$smsub-border-subtle:     tint-color($smsub, 60%) !default;
 // scss-docs-end theme-border-subtle-variables
 
 // Characters which are escaped by the escape-svg function
@@ -539,7 +546,7 @@ $border-widths: (
   5: 5px
 ) !default;
 $border-style:                solid !default;
-$border-color:                $gray-300 !default;
+$border-color:                rgba($smsub, .400) !default;
 $border-color-translucent:    rgba($black, .175) !default;
 // scss-docs-end border-variables
 
@@ -775,6 +782,7 @@ $table-variants: (
   "info":       shift-color($info, $table-bg-scale),
   "warning":    shift-color($warning, $table-bg-scale),
   "danger":     shift-color($danger, $table-bg-scale),
+  "smsub":      shift-color($smsub, $table-bg-scale),
   "light":      $light,
   "dark":       $dark,
 ) !default;

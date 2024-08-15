@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-        <meta name="mit" content="2024-06-12T12:58:07-03:00+197772">
+    <meta name="mit" content="2024-06-12T12:58:07-03:00+197772">
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
     <?= $head; ?>
@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="shared/styles/bootstrap-icons.min.css"/>
     <link rel="stylesheet" href="shared/styles/docs.min.css">
     <link rel="stylesheet" href="shared/styles/boot.css"/>
+    <link rel="stylesheet" href="shared/styles/typeahead.css"/>
     <link rel="stylesheet" href="<?=theme("/assets/css/style.css"); ?>"/>
 </head>
 <body>
@@ -27,72 +28,36 @@
 
 <header class="navbar navbar-expand-lg bd-navbar sticky-top">
   <!-- Navbar-->
-  <?= $this->insert("views/navbar"); ?>
+  <?= $this->insert("views/theme/navbar"); ?>
 </header>
 
 <!--CONTENT-->
-<main class="main_content">
+<main class="container-sm" style="padding-right: 0;padding-left: 0">
     <?= $this->section("content"); ?>
 </main>
 
 <?php if ($this->section("optout")): ?>
     <?= $this->section("optout"); ?>
 <?php else: ?>
-    <article class="footer_optout">
-        <div class="footer_optout_content content">
-            <span class="icon icon-coffee icon-notext"></span>
-            <h2>Comece a controlar suas contas agora mesmo</h2>
-            <p>É rápido, simples e gratuito!</p>
-            <a href="<?= url("/cadastrar"); ?>"
-               class="footer_optout_btn gradient gradient-green gradient-hover radius icon-check-square-o">Quero
-                controlar</a>
+
+        <div class="row justify-content-center text-center mt-5 mb-5">
+            <div class="col-md-4">
+                <i class="bi bi-book-half display-1 text-smsub"></i>
+                <p class="fw-bolder fs-3">Comece a utilizar a agenda inteligente agora mesmo</p>
+                <p class="fs-5">É rápida, simples e funcional!</p>
+            </div>
         </div>
-    </article>
 <?php endif; ?>
 
 <!--FOOTER-->
-<footer class="main_footer">
-    <div class="container content">
-        <section class="main_footer_content">
-            <article class="main_footer_content_item">
-                <h2>Sobre:</h2>
-                <p>O CafeControl é um gerenciador de contas simples, poderoso e gratuito. O prazer de tomar um café e
-                    ter o controle total de suas contas.</p>
-                <a title="Termos de uso" href="<?= url("/termos"); ?>">Termos de uso</a>
-            </article>
-
-            <article class="main_footer_content_item">
-                <h2>Mais:</h2>
-                <a class="link transition radius" title="Home" href="<?= url(); ?>">Home</a>
-                <a class="link transition radius" title="Sobre" href="<?= url("/sobre"); ?>">Sobre</a>
-                <a class="link transition radius" title="Blog" href="<?= url("/blog"); ?>">Blog</a>
-                <a class="link transition radius" title="Entrar" href="<?= url("/entrar"); ?>">Entrar</a>
-            </article>
-
-            <article class="main_footer_content_item">
-                <h2>Contato:</h2>
-                <p class="icon-phone"><b>Telefone:</b><br> +55 55 5555.5555</p>
-                <p class="icon-envelope"><b>Email:</b><br> cafe@cafecontrol.com</p>
-                <p class="icon-map-marker"><b>Endereço:</b><br> Fpolis, SC/Brasil</p>
-            </article>
-
-            <article class="main_footer_content_item social">
-                <h2>Social:</h2>
-                <a target="_blank" class="icon-facebook"
-                   href="https://www.facebook.com/<?= CONF_SOCIAL_FACEBOOK_PAGE; ?>" title="CafeControl no Facebook">/CafeControl</a>
-                <a target="_blank" class="icon-instagram"
-                   href="https://www.instagram.com/<?= CONF_SOCIAL_INSTAGRAM_PAGE; ?>" title="CafeControl no Instagram">@CafeControl</a>
-                <a target="_blank" class="icon-youtube" href="https://www.youtube.com/<?= CONF_SOCIAL_YOUTUBE_PAGE; ?>"
-                   title="CafeControl no YouTube">/CafeControl</a>
-            </article>
-        </section>
-    </div>
-</footer>
+<?= $this->insert("views/theme/footer"); ?>
 
 <script src="shared/scripts/bootstrap.bundle.min.js"></script>
 <script src="<?= theme("/assets/scripts.js"); ?>"></script>
 <script src="shared/scripts/jquery.validate.min.js"></script>
+<script src="shared/scripts/typeahead.bundle.js"></script>
 <script src="<?= theme("assets/js/scripts.js")?>"></script>
+<script src="<?= theme("assets/js/card_email.js")?>"></script>
 <?= $this->section("scripts"); ?>
 
 </body>

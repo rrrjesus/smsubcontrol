@@ -74,6 +74,29 @@ class Web extends Controller
         ]);
     }
 
+        /**
+     *  SITE ASSINATURA DE EMAIL
+     */
+
+    /**
+     * @return void
+     * @param null|array $data
+     */
+    public function creatorCard(): void
+    {
+        $head = $this->seo->render(
+            CONF_SITE_NAME . " - " . CONF_SITE_TITLE,
+            CONF_SITE_DESC,
+            url(),
+            theme("/assets/images/share.jpg")
+        );
+
+        echo $this->view->render("email",
+            [
+                "head" => $head
+            ]);
+    }
+
     /**
      * SITE BLOG
      * @param array|null $data
@@ -237,11 +260,12 @@ class Web extends Controller
                 return;
             }
 
-            if (request_limit("weblogin", 3, 60 * 5)) {
-                $json['message'] = $this->message->error("Você já efetuou 3 tentativas, esse é o limite. Por favor, aguarde 5 minutos para tentar novamente!")->icon()->render();
-                echo json_encode($json);
-                return;
-            }
+            /** Limites de tentativa de login */
+            // if (request_limit("weblogin", 5, 60 * 5)) {
+            //     $json['message'] = $this->message->error("Você já efetuou 3 tentativas, esse é o limite. Por favor, aguarde 5 minutos para tentar novamente!")->icon()->render();
+            //     echo json_encode($json);
+            //     return;
+            // }
 
             if (empty($data['email']) || empty($data['password'])) {
                 $json['message'] = $this->message->warning("Informe seu email e senha para entrar")->icon()->render();
@@ -254,10 +278,10 @@ class Web extends Controller
             $login = $auth->login($data['email'], $data['password'], $save);
 
             if ($login) {
-                $this->message->success("Seja bem-vindo(a) de volta " . Auth::user()->first_name . "!")->flash();
+                $this->message->success("Seja bem-vindo(a) de volta " . Auth::user()->first_name . "!")->icon()->flash();
                 $json['redirect'] = url("/app");
             } else {
-                $json['message'] = $auth->message()->before("Ooops! ")->icon()->render();
+                $json['message'] = $auth->message()->after("Ooops! ")->icon()->render();
             }
 
             echo json_encode($json);

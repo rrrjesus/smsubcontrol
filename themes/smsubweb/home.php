@@ -1,141 +1,82 @@
-<?php $this->layout("_theme"); ?>
+<?= $this->layout("_theme", ["head" => $head]); ?>
 
-    <!--FEATURED-->
-    <article class="home_featured">
-        <div class="home_featured_content container content">
-            <header class="home_featured_header">
-                <h1>Contas a pagar e receber? Comece a controlar!</h1>
-                <p>Cadastre-se, lance suas contas e conte com automações poderosas para gerenciar tudo enquanto você
-                    toma um
-                    bom café!</p>
-                <p><span data-go=".home_optin"
-                         class="home_featured_btn gradient gradient-green gradient-hover radius transition icon-check-square-o">Criar
-                    minha conta e começar a controlar</span></p>
-                <p class="features">Rápido | Simples | Gratuito</p>
-            </header>
+<!-- CARROUSSEL -->
+    <div id="myCarousel" class="carousel slide mb-2 carousel-fade" data-bs-ride="carousel">
+       <div class="carousel-indicators">
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" class="active" aria-label="Slide 2"></button>
         </div>
 
-        <div class="home_featured_app">
-            <img src="<?= theme("/assets/images/home-app.jpg"); ?>" alt="CafeControl" title="CafeControl"/>
-        </div>
-    </article>
-
-    <!--FEATURES-->
-    <div class="home_features">
-        <section class="container content">
-            <header class="home_features_header">
-                <h2>O que você pode fazer com o CafeControl?</h2>
-                <p>São 3 paços simples para você começar a controlar suas contas. É tudo muito fácil, veja:</p>
-            </header>
-
-            <div class="home_features_content">
-                <article class="radius">
-                    <header>
-                        <img alt="Contas a receber" title="Contas a receber"
-                             src="<?= theme("/assets/images/home_receive.jpg"); ?>"/>
-                        <h3>Contas a receber</h3>
-                        <p>Cadastre seus recebíveis, use as automações para salários, contratos e recorrentes e comece a
-                            controlar tudo que entra em sua conta. É rápido!</p>
-                    </header>
-                </article>
-
-                <article class="radius">
-                    <header>
-                        <img alt="Contas a pagar" title="Contas a pagar"
-                             src="<?= theme("/assets/images/home_pay.jpg"); ?>"/>
-                        <h3>Contas a pagar</h3>
-                        <p>Cadastre suas contas a pagar, despesas, use as automações para contas fixas e parcelamentos e
-                            controle tudo que sai de sua conta. É simples!</p>
-                    </header>
-                </article>
-
-                <article class="radius">
-                    <header>
-                        <img alt="Controle e relatórios" title="Controle e relatórios"
-                             src="<?= theme("/assets/images/home_control.jpg"); ?>"/>
-                        <h3>Controle e relatórios</h3>
-                        <p>Contas e recebíveis cadastrados? Pronto, agora você tem tudo controlado enquanto toma um bom
-                            café
-                            e acompanha os relatórios. É gratuito!</p>
-                    </header>
-                </article>
-            </div>
-        </section>
-    </div>
-
-    <!--OPTIN-->
-    <article class="home_optin">
-        <div class="home_optin_content container content">
-            <header class="home_optin_content_flex">
-                <h2>Cadastre-se no CaféControl e comece a controlar suas contas hoje mesmo</h2>
-                <p>Receber e pagar é uma tarefa comum do dia a dia, o CafeControl é um gerenciador de contas simples,
-                    fácil
-                    e gratuito para ajudar você nessa tarefa.</p>
-                <p>Com ele você lança suas contas, cria recorrências e conta com atuomações e relatórios poderosos que
-                    controlam tudo enquanto você toma um bom café.</p>
-                <p>Pronto para começar a controlar?</p>
-            </header>
-
-            <div class="home_optin_content_flex">
-                <span class="icon icon-check-square-o icon-notext"></span>
-                <h4>Crie sua conta gratuitamente:</h4>
-                <form action="<?= url("/cadastrar"); ?>" method="post" enctype="multipart/form-data">
-                    <div class="ajax_response"><?= flash(); ?></div>
-                    <?= csrf_input(); ?>
-                    <input type="text" name="first_name" placeholder="Primeiro nome:"/>
-                    <input type="text" name="last_name" placeholder="Último nome:"/>
-                    <input type="email" name="email" placeholder="Melhor e-mail:"/>
-                    <input type="password" name="password" placeholder="Senha de acesso:"/>
-                    <button class="radius transition gradient gradient-green gradient-hover">Criar minha conta</button>
-                </form>
-            </div>
-        </div>
-    </article>
-
-    <!--VIDEO-->
-    <article class="home_video">
-        <div class="home_video_content container content">
-            <header>
-                <h2>Descubra o CafeControl</h2>
-                <span data-modal=".home_video_modal" class="icon-play-circle-o icon-notext transition"></span>
-            </header>
-        </div>
-
-        <div class="home_video_modal j_modal_close">
-            <div class="home_video_modal_box">
-                <div class="embed">
-                    <iframe width="560" height="315"
-                            src="https://www.youtube.com/embed/<?= $video; ?>?rel=0&amp;showinfo=0"
-                            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="10000">
+            <img src="<?=theme("/assets/images/help_desk_coti.jpg")?>" width="100%" height="100%">
+            <div class="container">
+                <div class="carousel-caption" style="text-shadow: 0.1em 0.1em 0.2em #063cee">
+                    <h1>Service Desk COTI.</h1>
+                    <p>As vantagens e agilidade que o serviço de suporte traz para seu dia dia na SMSUB.</p>
+                    <p><a class="btn btn-lg btn-smsub text-light" href="<?=url("/contatos")?>" data-bs-togglee="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="Clique para acessar os Contatos">Agenda de Contatos</a></p>
                 </div>
             </div>
         </div>
-    </article>
-
-    <!--BLOG-->
-<?php if (empty($blog)): ?>
-    <div class="content content">
-        <div class="empty_content">
-            <img class="empty_content_cover" title="Empty Content" alt="Empty Content"
-                 src="<?= theme("/assets/images/empty-content.jpg"); ?>"/>
-            <h3 class="empty_content_title">Estamos trabalhando aqui</h3>
-            <p class="empty_content_desc">Em breve você terá dicas e sacadas sobre como controlar melhor suas contas
-                :)</p>
-        </div>
-    </div>
-<?php else: ?>
-    <section class="blog">
-        <div class="blog_content container content">
-            <header class="blog_header">
-                <h2>Nossos artigos</h2>
-                <p>Confira nossas dicas para controlar melhor suas contas</p>
-            </header>
-
-            <div class="blog_articles">
-                <?php foreach ($blog as $post): ?>
-                    <?php $this->insert("blog-list", ["post" => $post]); ?>
-                <?php endforeach; ?>
+        <div class="carousel-item" data-bs-interval="20000">
+            <img src="<?=theme("/assets/images/ass_email_carrosseul.jpg")?>" width="100%" height="100%">
+            <div class="container">
+                <div class="carousel-caption" style="text-shadow: 0.05em 0.05em 0.1em #06b8ee">
+                    <h1 class="text-dark">Gerador de Assinatura de E-mail.</h1>
+                    <p class="text-dark">Mais uma ferramenta para facilitar seu dia a dia , basta preencher seus dados e gerar sua assinatura de e-mail na hora.</p>
+                    <p>
+                        <a class="btn btn-lg btn-smsub text-light me-5" href="<?=url("/contatos")?>" data-bs-togglee="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="Clique para acessar os Contatos"><i class="bi bi-book-half me-2"></i>Agenda de Contatos</a>
+                        <a class="btn btn-lg btn-smsub text-light" href="<?=url("/email")?>" data-bs-togglee="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="Clique para acessar o Gerador de Assinatura de E-mail"><i class="bi bi-card-heading me-2"></i>Assinatura de E-mail</a></p>
+                </div>
             </div>
         </div>
-    </section>
-<?php endif; ?>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Próximo</span>
+    </button>
+</div>
+
+    <!-- CARDS -->
+    <div class="container px-4 py-5" id="featured-3">
+        <h2 class="pb-2 border-bottom">Os 3 pilares do Suporte de TI na SMSUB - COTI</h2>
+        <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+            <div class="feature col">
+                <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-success bg-gradient fs-2 mb-3">
+                    <i class="bi bi-wrench-adjustable-circle mb-3"></i>
+                </div>
+                <h3 class="fs-2 text-body-emphasis">Service Desk COTI</h3>
+                <p>Para <a href="#" class="text-decoration-none fw-bold">suporte técnico</a> é necessário a abertura de chamado no
+                    <a href="#" class="text-decoration-none fw-bold">Service Desk COTI</a>.
+                    Basta clicar no icone do aplicativo que fica na área de trabalho dos computadores de <strong>SMSUB</strong> e abrir um chamado. É possivel acompanhar
+                    as tratativas do chamado no aplicativo.</p>
+                <a href="<?=url("/blog/servicedesk")?>" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-placement="bottom" 
+                    data-bs-title="Saiba Mais">Saiba Mais</a>
+            </div>
+            <div class="feature col">
+                <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-warning bg-gradient fs-2 mb-3">
+                    <i class="bi bi-envelope-at mb-3 text-light"></i>
+                </div>
+                <h3 class="fs-2 text-body-emphasis">E-mail COTI</h3>
+                <p>Existe um e-mail de contato para <strong>COTI</strong> caso necessário : <a class="text-decoration-none fw-bold" href="mailto:<?=CONF_SITE_EMAIL?>"><?=CONF_SITE_EMAIL?></a>,
+                    mas os chamados de suporte técnico ainda assim devem ser realizados através do nosso
+                    <a href="#" class="text-decoration-none fw-bold">Service Desk COTI</a> para que sejam devidamente tratados e solucionados.</p>
+                    <a href="<?=url("/blog/e-mail-coti")?>" class="btn btn-primary">Saiba Mais</a>
+            </div>
+            <div class="feature col">
+                <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-danger bg-gradient fs-2 mb-3">
+                    <i class="bi bi-telephone-forward mb-3 text-light"></i>
+                </div>
+                <h3 class="fs-2 text-body-emphasis">Ramais COTI</h3>
+                <p>Por fim e não menos importante, os ramais de atendimento <strong>COTI</strong> na
+                    <a href="<?=url("/contatos")?>" class="text-decoration-none fw-bold">agenda</a> de <strong>SMSUB</strong>. É só acessar e pesquisar na agenda por
+                    <strong>COTI</strong> e aparecerão os ramais de contato com os nomes dos servidores que atenderão os mesmos.</p>
+                <!--                <a href="--><?php //=url("/blog/ramais-coti")?><!--" class="btn btn-primary">Saiba Mais</a>-->
+            </div>
+        </div>
+    </div>

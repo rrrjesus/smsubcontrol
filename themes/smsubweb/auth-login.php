@@ -1,11 +1,10 @@
 <?= $this->layout("_theme", ["head" => $head]); ?>
 
-        <div class="form-signin w-100 m-auto">
+        <div class="form-signin w-100 m-auto content">
             <form class="needs-validation" novalidate id="login" action="<?=url("/entrar")?>" method="post" enctype="multipart/form-data">
                 <div class="ajax_response"><?=flash();?></div>
                 <?=csrf_input();?>
 
-                <img class="mb-4" width="130" height="40" src="<?=theme("/assets/images/smsub_logo/SUBPREFEITURAS_HORIZONTAL_FUNDO_ESCURO.png")?>" alt="">
                 <h1 class="h3 mb-3 fw-normal">Fazer Login</h1>
 
                 <div class="form-floating mb-3">
@@ -25,6 +24,6 @@
                         Lembrar dados?
                     </label>
                 </div>
-                <button class="btn w-100 py-2 fw-bold text-light" style="background-color: #011fcf;" type="submit">Entrar</button>
+                <button class="btn btn-outline-smsub w-100 py-2 fw-bold" type="submit">Entrar</button>
             </form>
         </div>

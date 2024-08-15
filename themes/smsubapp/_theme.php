@@ -32,19 +32,7 @@
 
                     <?php
                     $userId = user()->id;
-                    $wallets = (new \Source\Models\CafeApp\AppWallet())
-                        ->find("user_id = :user", "user={$userId}")
-                        ->order("wallet")
-                        ->fetch(true);
-
-                    foreach ($wallets as $walletIt):
-                        if (!session()->has("walletfilter") || $walletIt->id != session()->walletfilter):
-                            ?>
-                            <li class="radius icon-suitcase" data-walletfilter="<?= url("/app/dash"); ?>"
-                                data-wallet="<?= $walletIt->id; ?>"><?= $walletIt->wallet; ?></li>
-                        <?php
-                        endif;
-                    endforeach;
+               
                     ?>
                 </ul>
             </li>
