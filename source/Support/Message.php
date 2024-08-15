@@ -95,7 +95,7 @@ class Message
      */
     public function info(string $message): Message
     {
-        $this->type = "alert-info";
+        $this->type = "bd-callout-info";
         $this->text = $this->filter($message);
         return $this;
     }
@@ -106,7 +106,7 @@ class Message
      */
     public function success(string $message): Message
     {
-        $this->type = "alert-success";
+        $this->type = "bd-callout-success";
         $this->text = $this->filter($message);
         return $this;
     }
@@ -117,7 +117,7 @@ class Message
      */
     public function warning(string $message): Message
     {
-        $this->type = "alert-warning";
+        $this->type = "bd-callout-warning";
         $this->text = $this->filter($message);
         return $this;
     }
@@ -128,7 +128,7 @@ class Message
      */
     public function error(string $message): Message
     {
-        $this->type = "alert-danger";
+        $this->type = "bd-callout-danger";
         $this->text = $this->filter($message);
         return $this;
     }
@@ -138,7 +138,7 @@ class Message
      */
     public function render(): string
     {
-        return "<div role='alert' class='alert fw-semibold text-center message" . " {$this->getType()}'><i class='bi bi-{$this->getIcon()} fs-5 me-2'></i> {$this->getText()}</div>";
+        return "<div class='bd-callout fw-semibold text-center message" . " {$this->getType()}'><i class='bi bi-{$this->getIcon()} fs-5 me-2'></i> {$this->getText()}</div>";
     }
 
     /**

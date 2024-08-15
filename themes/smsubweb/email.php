@@ -42,7 +42,7 @@
                             <div class="col-4">
                                 <strong><label for="inputNome" class="col-4 col-form-label col-form-label-sm">NOME</label></strong>
                                 <input tabindex="1" autofocus data-bs-togglee="tooltip" data-bs-placement="top" maxlength="50" data-bs-custom-class="custom-tooltip"
-                                       data-bs-title="Comece a digitar seu nome, caso não apareça na lista, digite manualmente" class="form-control form-control-sm nomeinp" name="nomeinp" id="nomeinp" type="text" placeholder="DIGITE O NOME COMPLETO"/>
+                                       data-bs-title="Comece a digitar seu nome, caso não apareça na lista, digite manualmente" class="form-control form-control-sm rounded-pill border-smsub nomeinp" name="nomeinp" id="nomeinp" type="text" placeholder="DIGITE O NOME COMPLETO"/>
                             </div>
 
                             <div class="col-4">
