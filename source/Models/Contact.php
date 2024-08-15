@@ -213,10 +213,10 @@ class Contact extends Model
         return true;
     }
 
-    public function sector_id(): ?sector_id
+    public function sector(): ?Sector
     {
         if($this->sector_id) {
-            return(new sector_id())->findById($this->sector_id);
+            return(new Sector())->findById($this->sector_id);
         }
         return null;
     }

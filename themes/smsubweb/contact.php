@@ -29,9 +29,9 @@
                 <?php foreach ($contact as $lista): ?>
                 <tr>
                     <td class="text-center fw-semibold" data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip"
-                        data-bs-title="O ramal <?=$lista->ramal." é de ".$lista->collaborator.' '.(!empty($lista->sector()->sector_name) ? $lista->sector()->sector_name : "NÃO CADASTRADO")?>"><?=(!empty($lista->collaborator) ? $lista->collaborator : "")?></td>
+                        data-bs-title="O ramal <?=$lista->ramal." é de ".$lista->contact_name.' '.(!empty($lista->sector()->sector_name) ? $lista->sector()->sector_name : "NÃO CADASTRADO")?>"><?=(!empty($lista->contact_name) ? $lista->contact_name : "")?></td>
                     <td class="text-center fw-semibold">
-                    <?php if(!empty($lista->sector()->sector_name) && !empty($lista->sector()->status == "post")):
+                    <?php if(!empty($lista->sector()->sector_name) && !empty($lista->sector()->status == "actived")):
                         echo (!empty($lista->sector()->sector_name) ? $lista->sector()->sector_name : "NÃO CADASTRADO");
                     else:
                         echo "EXCLUÍDO";

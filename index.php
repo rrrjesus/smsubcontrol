@@ -21,6 +21,10 @@ $route->group(null);
 $route->get("/", "Web:home");
 $route->get("/sobre", "Web:about");
 
+//agenda
+$route->group("/contatos");
+$route->get("/", "Web:contact");
+
 //blog
 $route->group("/blog");
 $route->get("/", "Web:blog");

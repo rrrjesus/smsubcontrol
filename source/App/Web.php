@@ -4,6 +4,7 @@ namespace Source\App;
 
 use Source\Core\Controller;
 use Source\Models\Auth;
+use Source\Models\Contact;
 use Source\Models\Category;
 use Source\Models\Faq\Question;
 use Source\Models\Post;
@@ -72,6 +73,29 @@ class Web extends Controller
                 ->order("order_by")
                 ->fetch(true)
         ]);
+    }
+
+    /**
+     * SITE BLOG
+     * @param array|null $data
+     * @return void
+     */
+    public function contact(?array $data): void
+    {
+        $head = $this->seo->render(
+            "Agenda - " . CONF_SITE_NAME ,
+            "Agenda de contatos SMSUB",
+            url("/agenda"),
+            theme("/assets/images/share.jpg")
+        );
+
+        $contact = (new Contact())->find("status = :s", "s=actived")->fetch(true);
+
+        echo $this->view->render("contact",
+            [
+                "head" => $head,
+                "contact" => $contact
+            ]);
     }
 
         /**
