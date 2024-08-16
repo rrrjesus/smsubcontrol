@@ -11,6 +11,8 @@
     </symbol>
 </svg>
 
+<?php $user = (new \Source\Models\Auth())->user(); ?>
+
 <nav class="container-md bd-gutter flex-wrap flex-lg-nowrap" aria-label="Main navigation">
         <a class="navbar-brand p-0 me-0 me-lg-2 fw-bold fs-4" href="/" aria-label="Agenda">
             <img width="130" height="40" src="<?=theme("/assets/images/smsub_logo/SUBPREFEITURAS_HORIZONTAL_FUNDO_ESCURO.png")?>">
@@ -47,7 +49,7 @@
                     </li>
 
                     <li class="nav-item col-6 col-lg-auto">
-                        <a class="nav-link py-2 px-0 px-lg-2" href="http://10.23.237.79/intrasmsub/" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Blog" target="_blank" rel="noopener">Blog</a>
+                        <a class="nav-link py-2 px-0 px-lg-2" <?=navbar_active("/blog")?>" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Blog" href="<?=url("/blog")?>">Blog</a>
                     </li>
                 </ul>
 
@@ -77,59 +79,56 @@
                         <hr class="d-lg-none my-2">
                     </li>
 
-
-
                     <li class="nav-item dropdown">
-                        <?php if(!empty($user)):?>
-                        <button type="button" class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
-                            <span class="d-lg-none" aria-hidden="true"><?=$user->functional_record?> : </span>
-                            <?php if(!empty($user->photo)):
-                                echo '<img src="'.theme("/assets/images/$user->photo").'" width="30" height="30" class="img-fluid rounded-circle"/>';
-                            else:
-                                echo '<img src="'.theme("/assets/images/logo_menu.png").'" width="30" height="30" class="img-fluid rounded-circle"/>';
-                            endif;
-                            ?>
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><h6 class="dropdown-header">Dashboard</h6></li>
-                            <li>
-                                <a class="dropdown-item d-flex align-items-center justify-content-between" aria-current="true" href="<?=url("/dashboard")?>">
-                                    Gráfico
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item d-flex align-items-center justify-content-between" aria-current="true" href="<?=url("/dashboard/listar-contatos")?>">
-                                    Contatos
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item d-flex align-items-center justify-content-between" aria-current="true" href="<?=url("/dashboard/listar-setores")?>">
-                                    Setores
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item d-flex align-items-center justify-content-between" aria-current="true" href="<?=url("/dashboard/listar-usuarios")?>">
-                                    Usuários
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item d-flex align-items-center justify-content-between" aria-current="true" href="<?=url("/dashboard/sair")?>">
-                                    Sair
-                                </a>
-                            </li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><h6 class="dropdown-header">Lançamentos anteriores</h6></li>
-                            <li><a class="dropdown-item" href="http://<?=CONF_DB_HOST?>/agendav2/">v2.0</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="http://<?=CONF_DB_HOST?>/agendav1/">v1.0</a></li>
-                        </ul>
-                        <?php else:?>
-                            <li class="nav-item col-6 col-lg-auto">
-                                <a class="nav-link py-2 px-0 px-lg-2 <?=navbar_active("/entrar")?>" href="<?=url("/entrar")?>">
-                                    <i class="bi bi-person-lock"></i> Entrar
-                                </a>
-                            </li>
-                        <?php endif;?>
+                        <?php if (user()):?>
+                            <button type="button" class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
+                                <span class="d-lg-none" aria-hidden="true"><?=$user->login?> : </span>
+                                <?php if (user()->photo()): ?>
+                                    <img src="'<?= image(user()->photo, 260, 260); ?>" width="30" height="30" class="img-fluid rounded-circle"/>;
+                                <?php else: ?>
+                                    <img src="<?=theme("/assets/images/avatar.jpg")?>" width="30" height="30" class="img-fluid rounded-circle"/>
+                                <?php endif; ?>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><h6 class="dropdown-header">Dashboard</h6></li>
+                                <li>
+                                    <a class="dropdown-item d-flex align-items-center justify-content-between" aria-current="true" href="<?=url("/dashboard")?>">
+                                        Gráfico
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item d-flex align-items-center justify-content-between" aria-current="true" href="<?=url("/dashboard/listar-contatos")?>">
+                                        Contatos
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item d-flex align-items-center justify-content-between" aria-current="true" href="<?=url("/dashboard/listar-setores")?>">
+                                        Setores
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item d-flex align-items-center justify-content-between" aria-current="true" href="<?=url("/dashboard/listar-usuarios")?>">
+                                        Usuários
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item d-flex align-items-center justify-content-between" aria-current="true" href="<?=url("/dashboard/sair")?>">
+                                        Sair
+                                    </a>
+                                </li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><h6 class="dropdown-header">Lançamentos anteriores</h6></li>
+                                <li><a class="dropdown-item" href="http://<?=CONF_DB_HOST?>/agendav2/">v2.0</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="http://<?=CONF_DB_HOST?>/agendav1/">v1.0</a></li>
+                            </ul>
+                            <?php else:?>
+                                <li class="nav-item col-6 col-lg-auto">
+                                    <a class="nav-link py-2 px-0 px-lg-2 <?=navbar_active("/entrar")?>" href="<?=url("/entrar")?>">
+                                        <i class="bi bi-person-lock"></i> Entrar
+                                    </a>
+                                </li>
+                            <?php endif;?>
                     </li>
 
 

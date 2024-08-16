@@ -12,6 +12,9 @@
     <link rel="icon" type="image/png" href="<?= theme("/assets/images/favicon.png"); ?>"/>
     <link rel="stylesheet" href="shared/styles/bootstrap.min.css"/>
     <link rel="stylesheet" href="shared/styles/bootstrap-icons.min.css"/>
+    <link rel="stylesheet" href="shared/styles/datatables/dataTables.bootstrap5.css"/>
+    <link rel="stylesheet" href="shared/styles/datatables/buttons.bootstrap5.min.css"/>
+    <link rel="stylesheet" href="shared/styles/datatables/responsive.bootstrap5.min.css"/>
     <link rel="stylesheet" href="shared/styles/docs.min.css">
     <link rel="stylesheet" href="shared/styles/boot.css"/>
     <link rel="stylesheet" href="shared/styles/typeahead.css"/>
@@ -32,32 +35,63 @@
 </header>
 
 <!--CONTENT-->
-<main class="container-sm" style="padding-right: 0;padding-left: 0">
+<main class="container-sm">
+
+<div class="col-md-12 ml-auto"> <!-- https://getbootstrap.com/docs/4.0/layout/grid/#mix-and-match -->
     <?= $this->section("content"); ?>
+</div>
+
 </main>
 
 <?php if ($this->section("optout")): ?>
     <?= $this->section("optout"); ?>
 <?php else: ?>
-
-        <div class="row justify-content-center text-center mt-5 mb-5">
-            <div class="col-md-4">
-                <i class="bi bi-book-half display-1 text-smsub"></i>
-                <p class="fw-bolder fs-3">Comece a utilizar a agenda inteligente agora mesmo</p>
-                <p class="fs-5">É rápida, simples e funcional!</p>
-            </div>
+    <div class="row justify-content-center text-center mt-5 mb-5">
+        <div class="col-md-4">
+            <i class="bi bi-book-half display-1 text-smsub"></i>
+            <p class="fw-bolder fs-3">Comece a utilizar a agenda inteligente agora mesmo</p>
+            <p class="fs-5">É rápida, simples e funcional!</p>
         </div>
+    </div>
 <?php endif; ?>
 
 <!--FOOTER-->
 <?= $this->insert("views/theme/footer"); ?>
 
-<script src="shared/scripts/bootstrap.bundle.min.js"></script>
-<script src="<?= theme("/assets/scripts.js"); ?>"></script>
-<script src="shared/scripts/jquery.validate.min.js"></script>
+<script src="shared/scripts/bootstrap/bootstrap.bundle.min.js"></script>
+<script src="shared/scripts/bootstrap/color-modes.js"></script>
+
+<!-- Bibliotecas Javascript Jquery do Sistema -->
+<script src="shared/scripts/jquery/jquery.min.js"></script>
+<script src="shared/scripts/jquery/jquery.form.js"></script>
+<script src="shared/scripts/jquery/jquery-ui.min.js"></script>
+<script src="shared/scripts/jquery/jquery.mask.js"></script>
+<script src="shared/scripts/highcharts.js"></script>
+<script src="shared/scripts/jquery/jquery.validate.min.js"></script>
 <script src="shared/scripts/typeahead.bundle.js"></script>
+
+<!-- Bibliotecas Javascript Datatables -->
+<script src="shared/scripts/datatables/dataTables.js"></script>
+<script src="shared/scripts/datatables/dataTables.bootstrap5.js"></script>
+
+<!-- Bibliotecas Javascript Datatables Extensões (Botões, PDF, Fonts, Html, Print, Responsivo e Excel)-->
+<script src="shared/scripts/datatables/dataTables.buttons.js"></script>
+<script src="shared/scripts/datatables/buttons.bootstrap5.js"></script>
+<script src="shared/scripts/datatables/pdfmake.min.js"></script>
+<script src="shared/scripts/datatables/vfs_fonts.js"></script>
+<script src="shared/scripts/datatables/buttons.html5.min.js"></script>
+<script src="shared/scripts/datatables/buttons.print.min.js"></script>
+<script src="shared/scripts/datatables/buttons.colVis.min.js"></script>
+<script src="shared/scripts/datatables/dataTables.responsive.js"></script>
+<script src="shared/scripts/datatables/responsive.bootstrap5.js"></script>
+
+<!-- Javascript do Tema -->
 <script src="<?= theme("assets/js/scripts.js")?>"></script>
+<script src="<?= theme("/assets/js/email/dom-to-image.min.js"); ?>"></script>
+<script src="<?= theme("/assets/js/email/FileSaver.min.js"); ?>"></script>
 <script src="<?= theme("assets/js/card_email.js")?>"></script>
+<script src="<?= theme("/assets/js/datatables.js"); ?>"></script>
+<script src="<?= theme("/assets/js/scripts.js"); ?>"></script>
 <?= $this->section("scripts"); ?>
 
 </body>

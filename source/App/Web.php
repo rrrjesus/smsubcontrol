@@ -19,6 +19,7 @@ use Source\Support\Pager;
  */
 class Web extends Controller
 {
+    
     /**
      * Web constructor.
      */
@@ -94,7 +95,11 @@ class Web extends Controller
         echo $this->view->render("contact",
             [
                 "head" => $head,
-                "contact" => $contact
+                "contact" => $contact,
+                "urls" => "contatos",
+                "icon" => "telephone",
+                "iconpage" => "list",
+                "page" => "Lista de Contatos"
             ]);
     }
 
@@ -117,7 +122,11 @@ class Web extends Controller
 
         echo $this->view->render("email",
             [
-                "head" => $head
+                "head" => $head,
+                "urls" => "email",
+                "icon" => "envelope-at",
+                "iconpage" => "credit-card-2-front",
+                "page" => "Gerador de Assinatura de E-mail"
             ]);
     }
 

@@ -113,7 +113,6 @@ $(function () {
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl)
     })
-
     
     // scroll animate
     $("[data-go]").click(function (e) {
