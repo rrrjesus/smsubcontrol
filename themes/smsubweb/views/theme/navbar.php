@@ -84,7 +84,7 @@
                             <button type="button" class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
                                 <span class="d-lg-none" aria-hidden="true"><?=$user->login?> : </span>
                                 <?php if (user()->photo()): ?>
-                                    <img src="'<?= image(user()->photo, 260, 260); ?>" width="30" height="30" class="img-fluid rounded-circle"/>;
+                                    <img src="<?= image(user()->photo, 260, 260); ?>" width="30" height="30" class="img-fluid rounded-circle"/>
                                 <?php else: ?>
                                     <img src="<?=theme("/assets/images/avatar.jpg")?>" width="30" height="30" class="img-fluid rounded-circle"/>
                                 <?php endif; ?>

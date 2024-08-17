@@ -1,5 +1,8 @@
 <?= $this->layout("_theme", ["head" => $head]); ?>
 
+  <!-- Navbar-->
+  <?= $this->insert("views/theme/breadcrumb"); ?>
+
 <!-- https://github.com/tsayen/dom-to-image version: 2.6.0 -->
 <script src="<?=theme("/assets/js/email/dom-to-image.min.js")?>"></script>
 <!-- https://github.com/eligrey/FileSaver.js version: 2.0.5 -->

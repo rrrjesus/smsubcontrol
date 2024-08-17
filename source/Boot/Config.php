@@ -3,7 +3,7 @@
 /**
  * DATABASE
  */
- define("CONF_DB_HOST", "10.23.237.201");
+ define("CONF_DB_HOST", "192.168.15.54");
  define("CONF_DB_USER", "smsubcoti");
  define("CONF_DB_PASS", ")f9aGXVCh8YqJ8[L");
  define("CONF_DB_NAME", "smsub");
@@ -11,7 +11,7 @@
  /**
   * PROJECT URLs
   */
- define("CONF_URL_BASE", "http://10.23.237.201/smsubcontrol");
+ define("CONF_URL_BASE", "http://192.168.15.54/smsubcontrol");
  define("CONF_URL_TESTE", "http://127.0.0.1/smsubcontrol");
  define("CONF_URL_ADMIN", "/dashboard");
 
@@ -98,7 +98,7 @@ define("CONF_MAIL_PORT", "587");
 define("CONF_MAIL_USER", "apikey");
 define("CONF_MAIL_PASS", "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");
 define("CONF_MAIL_SENDER", ["name" => "SMSUB - COTI", "address" => "cidinha.romaioli@gmail.com"]);
-define("CONF_MAIL_SUPORT", "cotisuporte@smsub.prefeitura.sp.gov.br");
+define("CONF_MAIL_SUPPORT", "cotisuporte@smsub.prefeitura.sp.gov.br");
 define("CONF_MAIL_OPTION_LANG", "br");
 define("CONF_MAIL_OPTION_HTML", true);
 define("CONF_MAIL_OPTION_AUTH", true);

@@ -87,8 +87,6 @@
 
 <!-- Javascript do Tema -->
 <script src="<?= theme("assets/js/scripts.js")?>"></script>
-<script src="<?= theme("/assets/js/email/dom-to-image.min.js"); ?>"></script>
-<script src="<?= theme("/assets/js/email/FileSaver.min.js"); ?>"></script>
 <script src="<?= theme("assets/js/card_email.js")?>"></script>
 <script src="<?= theme("/assets/js/datatables.js"); ?>"></script>
 <script src="<?= theme("/assets/js/scripts.js"); ?>"></script>
