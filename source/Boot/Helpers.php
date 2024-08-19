@@ -1,5 +1,8 @@
 <?php
 
+setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+date_default_timezone_set('America/Sao_Paulo');
+
 /**
  * ####################
  * ###   VALIDATE   ###
@@ -300,6 +303,7 @@ function date_fmt(?string $date, string $format = "d/m/Y H\hi"): string
     $date = (empty($date) ? "now" : $date);
     return (new DateTime($date))->format($format);
 }
+
 
 /**
  * @param string $date

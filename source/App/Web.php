@@ -144,11 +144,17 @@ class Web extends Controller
         );
 
         $blog = (new Post())->findPost();
+        $category = (new Category())->findCategory()->limit(12)->order("title ASC")->fetch(true);
         $pager = new Pager(url("/blog/p/"));
         $pager->pager($blog->count(), 9, ($data['page'] ?? 1));
 
+        //Posts Recents
+        $recents = (new Post())->findPost()->limit(3)->order("post_at DESC")->fetch(true);
+
         echo $this->view->render("blog", [
             "head" => $head,
+            "category" => $category,
+            "recents" => $recents,
             "blog" => $blog->order("post_at DESC")->limit($pager->limit())->offset($pager->offset())->fetch(true),
             "paginator" => $pager->render()
         ]);

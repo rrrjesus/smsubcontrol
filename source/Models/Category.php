@@ -29,6 +29,20 @@ class Category extends Model
         return $find->fetch();
     }
 
+        /**
+     * @param null|string $terms
+     * @param null|string $params
+     * @param string $columns
+     * @return mixed|Model
+     */
+    public function findCategory(?string $terms = null, ?string $params = null, string $columns = "*")
+    {
+        $terms = "status = :status" . ($terms ? " AND {$terms}" : "");
+        $params = "status=actived" . ($params ? "&{$params}" : "");
+
+        return parent::find($terms, $params, $columns);
+    }
+
     /**
      * @return Post
      */

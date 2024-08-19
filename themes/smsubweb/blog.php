@@ -21,30 +21,23 @@
       <div class="col-4 pt-1">
       </div>
       <div class="col-4 text-center">
-        <a class="blog-header-logo text-body-emphasis text-decoration-none" href="#">Blog SMSUB</a>
+        <a class="blog-header-logo text-body-emphasis text-decoration-none" href="#">Blog de Notícias</a>
       </div>
       <div class="col-4 d-flex justify-content-end align-items-center">
-        <a class="link-secondary" href="#" aria-label="Search">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
-        </a>
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" name="search" action="<?= url("/blog/buscar"); ?>" method="post" enctype="multipart/form-data">
+          <input type="text" name="s" class="form-control" placeholder="Buscar..." aria-label="Buscar">
+        </form>       
       </div>
     </div>
   </header>
 
   <div class="nav-scroller py-1 mb-3 border-bottom">
-    <nav class="nav nav-underline justify-content-between">
-      <a class="nav-item nav-link link-body-emphasis active" href="#">World</a>
-      <a class="nav-item nav-link link-body-emphasis" href="#">U.S.</a>
-      <a class="nav-item nav-link link-body-emphasis" href="#">Technology</a>
-      <a class="nav-item nav-link link-body-emphasis" href="#">Design</a>
-      <a class="nav-item nav-link link-body-emphasis" href="#">Culture</a>
-      <a class="nav-item nav-link link-body-emphasis" href="#">Business</a>
-      <a class="nav-item nav-link link-body-emphasis" href="#">Politics</a>
-      <a class="nav-item nav-link link-body-emphasis" href="#">Opinion</a>
-      <a class="nav-item nav-link link-body-emphasis" href="#">Science</a>
-      <a class="nav-item nav-link link-body-emphasis" href="#">Health</a>
-      <a class="nav-item nav-link link-body-emphasis" href="#">Style</a>
-      <a class="nav-item nav-link link-body-emphasis" href="#">Travel</a>
+    <nav class="nav nav-underline justify-content-center">
+    <?php if (!empty($category)): ?>
+      <?php foreach ($category as $categories): ?>
+        <a class="nav-item nav-link link-body-emphasis" href="<?= url("/blog/em/{$categories->uri}"); ?>"><?=$categories->title?></a>
+      <?php endforeach; ?>
+    <?php endif; ?>
     </nav>
   </div>
 </div>
@@ -226,40 +219,26 @@
     <div class="col-md-4">
       <div class="position-sticky" style="top: 2rem;">
         <div class="p-4 mb-3 bg-body-tertiary rounded">
-          <h4 class="fst-italic">About</h4>
-          <p class="mb-0">Customize this section to tell your visitors a little bit about your publication, writers, content, or something else entirely. Totally up to you.</p>
+          <h4 class="fst-italic">Sobre o Blog</h4>
+          <p class="mb-0"><strong>Blog de Notícias </strong>voltado a informações do mundo da tecnologia em <strong>COTI-SMSUB</strong>. Orientações e novidades em sistemas estão entre as principais notícias.</p>
         </div>
 
         <div>
-          <h4 class="fst-italic">Recent posts</h4>
-          <ul class="list-unstyled">
-            <li>
-              <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top" href="#">
-                <svg class="bd-placeholder-img" width="100%" height="96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
-                <div class="col-lg-8">
-                  <h6 class="mb-0">Example blog post title</h6>
-                  <small class="text-body-secondary">January 15, 2024</small>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top" href="#">
-                <svg class="bd-placeholder-img" width="100%" height="96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
-                <div class="col-lg-8">
-                  <h6 class="mb-0">This is another blog post title</h6>
-                  <small class="text-body-secondary">January 14, 2024</small>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top" href="#">
-                <svg class="bd-placeholder-img" width="100%" height="96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
-                <div class="col-lg-8">
-                  <h6 class="mb-0">Longer blog post title: This one has multiple lines!</h6>
-                  <small class="text-body-secondary">January 13, 2024</small>
-                </div>
-              </a>
-            </li>
+            <h4 class="fst-italic">Recentes</h4>
+            <ul class="list-unstyled">
+            <?php if (!empty($recents)): ?>
+                <?php foreach ($recents as $recent): ?>
+                  <li>
+                    <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top" href="<?= url("/blog/{$recent->uri}"); ?>">
+                      <img class="img-fluid" width="150" height="96" alt="<?= $recent->title; ?>" title="<?= $recent->title; ?>" src="<?= image($recent->cover, 300); ?>">
+                      <div class="col-lg-8"> 
+                        <h6 class="mb-0"><?= $recent->title; ?></h6>
+                        <small class="text-body-secondary"><?=strftime('%d de %B de %Y', strtotime($recent->updated_at));?></small>
+                      </div>
+                    </a>
+                  </li>
+                <?php endforeach; ?>
+            <?php endif; ?>
           </ul>
         </div>
 
