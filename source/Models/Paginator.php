@@ -1,14 +1,15 @@
 <?php
 
-namespace CoffeeCode\Paginator;
+namespace Source\Models;
+
+use Source\Core\Model;
 
 /**
- * Class CoffeeCode Paginator
- *
- * @author Robson V. Leite <https://github.com/robsonvleite>
- * @package CoffeeCode\Paginator
+ * Class Paginator
+ * @package Source\Models
  */
-class Paginator
+
+class Paginator extends Model
 {
     /** @var int|null */
     private ?int $page;
@@ -139,13 +140,13 @@ class Paginator
         $this->class = $cssClass ?? "page";
 
         if ($this->rows > $this->limit):
-            $paginator = "<ul class='pagination'>";
+            $paginator = "<nav><ul class='pagination'>";
             $paginator .= $this->firstPage($fixedFirstAndLastPage);
             $paginator .= $this->beforePages();
-            $paginator .= "<span aria-hidden='true' class=\"{$this->class}-link {$this->class}_active\">{$this->page}</span>";
+            $paginator .= "<span class=\"{$this->class}-item {$this->class}_active\">{$this->page}</span>";
             $paginator .= $this->afterPages();
             $paginator .= $this->lastPage($fixedFirstAndLastPage);
-            $paginator .= "</ul>";
+            $paginator .= "</ul></nav>";
             return $paginator;
         endif;
 
@@ -160,7 +161,7 @@ class Paginator
         $before = null;
         for ($iPag = $this->page - $this->range; $iPag <= $this->page - 1; $iPag++):
             if ($iPag >= 1):
-                $before .= "<li class=\"{$this->class}-item\"><a class=\"{$this->class}-link\" title=\"{$this->title} {$iPag}\" href=\"{$this->link}{$iPag}{$this->hash}{$this->params}\">{$iPag}</a></li>";
+                $before .= "<a class=\"{$this->class}-item\" title=\"{$this->title} {$iPag}\" href=\"{$this->link}{$iPag}{$this->hash}{$this->params}\">{$iPag}</a>";
             endif;
         endfor;
 
@@ -175,7 +176,7 @@ class Paginator
         $after = null;
         for ($dPag = $this->page + 1; $dPag <= $this->page + $this->range; $dPag++):
             if ($dPag <= $this->pages):
-                $after .= "<li class=\"{$this->class}-item\"><a class=\"{$this->class}-link\" title=\"{$this->title} {$dPag}\" href=\"{$this->link}{$dPag}{$this->hash}{$this->params}\">{$dPag}</a></li>";
+                $after .= "<a class=\"{$this->class}-item\" title=\"{$this->title} {$dPag}\" href=\"{$this->link}{$dPag}{$this->hash}{$this->params}\">{$dPag}</a>";
             endif;
         endfor;
 
@@ -189,7 +190,7 @@ class Paginator
     public function firstPage(bool $fixedFirstAndLastPage = true): ?string
     {
         if ($fixedFirstAndLastPage || $this->page != 1) {
-            return "<li class=\"{$this->class}-item\"><a class=\"{$this->class}-link\" title=\"{$this->first[0]}\" href=\"{$this->link}1{$this->hash}{$this->params}\">{$this->first[1]}</a></li>";
+            return "<a class=\"{$this->class}-item\" title=\"{$this->first[0]}\" href=\"{$this->link}1{$this->hash}{$this->params}\">{$this->first[1]}</a>";
         }
         return null;
     }
@@ -201,7 +202,7 @@ class Paginator
     public function lastPage(bool $fixedFirstAndLastPage = true): ?string
     {
         if ($fixedFirstAndLastPage || $this->page != $this->pages) {
-            return "<li class=\"{$this->class}-item\"><a class=\"{$this->class}-link\" title=\"{$this->last[0]}\" href=\"{$this->link}{$this->pages}{$this->hash}{$this->params}\">{$this->last[1]}</a></li>";
+            return "<a class=\"{$this->class}-item\" title=\"{$this->last[0]}\" href=\"{$this->link}{$this->pages}{$this->hash}{$this->params}\">{$this->last[1]}</a>";
         }
         return null;
     }

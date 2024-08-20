@@ -10,15 +10,16 @@
     <script src="shared/scripts/color-modes.js"></script>
 
     <link rel="icon" type="image/png" href="<?= theme("/assets/images/favicon.png"); ?>"/>
+
+    <link rel="stylesheet" href="shared/styles/boot.css"/>
     <link rel="stylesheet" href="shared/styles/bootstrap.min.css"/>
-    <link rel="stylesheet" href="shared/styles/bootstrap-icons.min.css"/>
+    <link rel="stylesheet" href="shared/styles/docs.min.css">
+    <link rel="stylesheet" href="<?=theme("/assets/style.css"); ?>"/>
     <link rel="stylesheet" href="shared/styles/datatables/dataTables.bootstrap5.css"/>
     <link rel="stylesheet" href="shared/styles/datatables/buttons.bootstrap5.min.css"/>
     <link rel="stylesheet" href="shared/styles/datatables/responsive.bootstrap5.min.css"/>
-    <link rel="stylesheet" href="shared/styles/docs.min.css">
-    <link rel="stylesheet" href="shared/styles/boot.css"/>
+    <link rel="stylesheet" href="shared/styles/bootstrap-icons.min.css"/>
     <link rel="stylesheet" href="shared/styles/typeahead.css"/>
-    <link rel="stylesheet" href="<?=theme("/assets/css/style.css"); ?>"/>
 </head>
 <body>
 

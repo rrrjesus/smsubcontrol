@@ -3,7 +3,7 @@
         'name' => 'smsub/smsubcontrol',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'cfef4d8f90500641e47ee7faea6283d27ceb56da',
+        'reference' => '3bbed9ddf99d43980d41fadeed82314b7ec8a88e',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -112,7 +112,7 @@
         'smsub/smsubcontrol' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'cfef4d8f90500641e47ee7faea6283d27ceb56da',
+            'reference' => '3bbed9ddf99d43980d41fadeed82314b7ec8a88e',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
