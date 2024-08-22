@@ -21,29 +21,6 @@ class User extends Model
     }
 
     /**
-     * @param string $firstName
-     * @param string $lastName
-     * @param string $email
-     * @param string $password
-     * @param string|null $document
-     * @return User
-     */
-    public function bootstrap(
-        string $firstName,
-        string $lastName,
-        string $email,
-        string $password,
-        string $document = null
-    ): User {
-        $this->first_name = $firstName;
-        $this->last_name = $lastName;
-        $this->email = $email;
-        $this->password = $password;
-        $this->document = $document;
-        return $this;
-    }
-
-    /**
      * @param string $email
      * @param string $columns
      * @return null|User
@@ -52,6 +29,33 @@ class User extends Model
     {
         $find = $this->find("email = :email", "email={$email}", $columns);
         return $find->fetch();
+    }
+
+    public function status(): ?string
+    {
+        if ($this->status == "registered") {
+            return '<option value="registered" selected>Registrado</option><option value="confirmed">Confirmado</option><option value="disabled">Desabilitado</option>';
+        } elseif ($this->status == "confirmed") {
+            return '<option value="confirmed" selected>Confirmado</option><option value="registered">Registrado</option><option value="disabled">Desabilitado</option>';
+        } else {
+            return '<option value="disabled" selected>Desabilitado</option><option value="registered">Registrado</option><option value="confirmed">Confirmado</option>';
+        }
+        return null; 
+    }
+
+    public function churche(): ?Churche
+    {
+        if($this->churche_id) {
+            return(new Churche())->findById($this->churche_id);
+        }
+        return null;
+    }
+
+    public function level(): ?Level    {
+        if($this->level_id) {
+            return(new Level())->findById($this->level_id);
+        }
+        return null;
     }
 
     /**
@@ -75,17 +79,35 @@ class User extends Model
     }
 
     /**
+     * @return string
+     */
+    public function levelBadge(): string
+    {
+        if($this->level_id == 1):
+            return '<span class="badge text-bg-primary ms-2">User</span>';
+        elseif($this->level_id == 2):
+            return '<span class="badge text-bg-light ms-2">Edit*</span>';
+        elseif($this->level_id == 3):
+            return '<span class="badge text-bg-info ms-2">Edit</span>';
+        elseif($this->level_id == 4):
+            return '<span class="badge text-bg-success ms-2">Adm*</span>';
+        else:
+            return '<span class="badge text-bg-warning ms-2">Adm</span>';
+        endif;  
+    }
+
+    /**
      * @return bool
      */
     public function save(): bool
     {
         if (!$this->required()) {
-            $this->message->warning("Nome, sobrenome, email e senha são obrigatórios");
+            $this->message->warning("Nome, sobrenome, email e senha são obrigatórios")->icon();
             return false;
         }
 
         if (!is_email($this->email)) {
-            $this->message->warning("O e-mail informado não tem um formato válido");
+            $this->message->warning("O e-mail informado não tem um formato válido")->icon();
             return false;
         }
 

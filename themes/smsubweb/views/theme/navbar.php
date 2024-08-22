@@ -90,15 +90,15 @@
                                 <?php endif; ?>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><h6 class="dropdown-header">Dashboard</h6></li>
+                                <li><h6 class="dropdown-header">Aplicativo</h6></li>
                                 <li>
-                                    <a class="dropdown-item d-flex align-items-center justify-content-between" aria-current="true" href="<?=url("/dashboard")?>">
-                                        Gráfico
+                                    <a class="dropdown-item d-flex align-items-center justify-content-between" aria-current="true" href="<?=url("/app")?>">
+                                        Home
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item d-flex align-items-center justify-content-between" aria-current="true" href="<?=url("/dashboard/listar-contatos")?>">
-                                        Contatos
+                                    <a class="dropdown-item d-flex align-items-center justify-content-between" aria-current="true" href="<?=url("/app/perfil")?>">
+                                        Perfil
                                     </a>
                                 </li>
                                 <li>
@@ -111,15 +111,13 @@
                                         Usuários
                                     </a>
                                 </li>
+                                <li><hr class="dropdown-divider"></li>
                                 <li>
-                                    <a class="dropdown-item d-flex align-items-center justify-content-between" aria-current="true" href="<?=url("/dashboard/sair")?>">
-                                        Sair
-                                    </a>
+                                    <a class="dropdown-item d-flex align-items-center" aria-current="true" href="<?=url("/dashboard/sair")?>"><i class="bi bi-power me-2 mb-2"></i>Sair</a>
                                 </li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><h6 class="dropdown-header">Lançamentos anteriores</h6></li>
                                 <li><a class="dropdown-item" href="http://<?=CONF_DB_HOST?>/agendav2/">v2.0</a></li>
-                                <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="http://<?=CONF_DB_HOST?>/agendav1/">v1.0</a></li>
                             </ul>
                             <?php else:?>

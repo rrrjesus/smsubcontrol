@@ -36,7 +36,7 @@ define("CONF_SITE_ADDR_ZIPCODE", "01011-100");
  * COLORS
  */
 define("CONF_WEB_COLOR","smsub");
-define("CONF_APP_COLOR","secondary");
+define("CONF_APP_COLOR","smsub");
 define("CONF_ADMIN_COLOR","dark");
 
 /**

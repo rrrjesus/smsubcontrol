@@ -1,5 +1,6 @@
 // Local docs variables
-$bd-purple:        #041680;
+$bd-purple:        #6f42c1;
+$bd-smsub:         #011fcf;
 $bd-violet:        lighten(saturate($bd-purple, 5%), 15%); // stylelint-disable-line function-disallowed-list
 $bd-purple-light:  lighten(saturate($bd-purple, 5%), 45%); // stylelint-disable-line function-disallowed-list
 $bd-accent:        #ffe484;
@@ -11,14 +12,17 @@ $bd-callout-variants: info, warning, danger !default;
 [data-bs-theme="light"] {
   --bd-purple: #{$bd-purple};
   --bd-violet: #{$bd-violet};
+  --bd-smsub: #{$bd-smsub};
   --bd-accent: #{$bd-accent};
   --bd-violet-rgb: #{to-rgb($bd-violet)};
+  --bd-smsub-rgb: #{to-rgb($bd-smsub)};
   --bd-accent-rgb: #{to-rgb($bd-accent)};
   --bd-pink-rgb: #{to-rgb($pink-500)};
   --bd-teal-rgb: #{to-rgb($teal-500)};
   --bd-violet-bg: var(--bd-violet);
-  --bd-toc-color: var(--bd-violet);
-  --bd-sidebar-link-bg: rgba(var(--bd-violet-rgb), .1);
+  --bd-smsub-bg: var(--bd-smsub);
+  --bd-toc-color: var(--bd-smsub);
+  --bd-sidebar-link-bg: rgba(var(--bd-smsub-rgb), .1);
   --bd-callout-link: #{to-rgb($blue-600)};
   --bd-callout-code-color: #{$pink-600};
   --bd-pre-bg: var(--bs-tertiary-bg);
@@ -27,8 +31,10 @@ $bd-callout-variants: info, warning, danger !default;
 @include color-mode(dark, true) {
   --bd-violet: #{mix($bd-violet, $white, 75%)};
   --bd-violet-bg: #{$bd-violet};
+  --bd-smsub: #{mix($bd-smsub, $white, 75%)};
+  --bd-smsub-bg: #{$bd-smsub};
   --bd-toc-color: var(--#{$prefix}emphasis-color);
-  --bd-sidebar-link-bg: rgba(#{to-rgb(mix($bd-violet, $black, 75%))}, .5);
+  --bd-sidebar-link-bg: rgba(#{to-rgb(mix($bd-smsub, $black, 75%))}, .5);
   --bd-callout-link: #{to-rgb($blue-300)};
   --bd-callout-code-color: #{$pink-300};
   --bd-pre-bg: #{adjust-color($gray-900, $lightness: -2.5%)}; // stylelint-disable-line scss/at-function-named-arguments

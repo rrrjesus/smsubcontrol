@@ -5,9 +5,9 @@ namespace Source\Support;
 use Source\Core\Session;
 
 /**
- * Class Message
+ * FSPHP | Class Message
  *
- * @authores Robson V. Leite  & Rodolfo Romaioli R. de Jesus
+ * @author Robson V. Leite <cursos@upinside.com.br>
  * @package Source\Core
  */
 class Message
@@ -18,31 +18,39 @@ class Message
     /** @var string */
     private $type;
 
-    /** @var */
+    /** @var string */
     private $after;
 
-    /** @var */
+    /** @var string */
     private $before;
 
-    /** @var */
+    /** @var string */
     private $icon;
 
-    /**
-     * @return string
-     */
+    /** @return string */
     public function __toString()
     {
         return $this->render();
     }
 
-    /**
-     * @param string $text
-     * @return $this
-     */
-    public function after(string $text): Message
+    /** @return string */
+    public function getText(): ?string
     {
-        $this->after = $text;
-        return $this;
+        return $this->before.$this->text.$this->after;
+    }
+
+    /** @return string */
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getIcon(): ?string
+    {
+        return $this->icon;
     }
 
     /**
@@ -57,36 +65,18 @@ class Message
 
     /**
      * @param string $text
-     * @return $this|null
+     * @return $this
      */
-    public function icon(string $text = "book-half"): ?Message
+    public function after(string $text): Message
     {
-        $this->icon = $text;
+        $this->after = $text;
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getIcon(): ?string
+    public function icon(string $text = "exclamation-octagon"): Message
     {
-        return $this->icon;
-
-    }
-    /**
-     * @return string
-     */
-    public function getText(): ?string
-    {
-        return $this->after.$this->text.$this->before;
-    }
-
-    /**
-     * @return string
-     */
-    public function getType(): ?string
-    {
-        return $this->type;
+        $this->icon = $text;
+        return $this;
     }
 
     /**
@@ -95,7 +85,7 @@ class Message
      */
     public function info(string $message): Message
     {
-        $this->type = "bd-callout-info";
+        $this->type = "info";
         $this->text = $this->filter($message);
         return $this;
     }
@@ -106,7 +96,7 @@ class Message
      */
     public function success(string $message): Message
     {
-        $this->type = "bd-callout-success";
+        $this->type = "success";
         $this->text = $this->filter($message);
         return $this;
     }
@@ -117,7 +107,7 @@ class Message
      */
     public function warning(string $message): Message
     {
-        $this->type = "bd-callout-warning";
+        $this->type = "warning";
         $this->text = $this->filter($message);
         return $this;
     }
@@ -128,22 +118,21 @@ class Message
      */
     public function error(string $message): Message
     {
-        $this->type = "bd-callout-danger";
+        $this->type = "danger";
         $this->text = $this->filter($message);
         return $this;
     }
 
-    /**
-     * @return string
-     */
+    /** @return string */
     public function render(): string
     {
-        return "<div class='bd-callout fw-semibold text-center message" . " {$this->getType()}'><i class='bi bi-{$this->getIcon()} fs-5 me-2'></i> {$this->getText()}</div>";
+        return "<div class='alert alert-{$this->getType()} alert-dismissible fade show text-center fw-semibold fs-5x' role='alert'>
+                    <i class='bi bi-{$this->getIcon()}'></i> {$this->getText()}
+                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button> 
+                </div>";
     }
 
-    /**
-     * @return string
-     */
+    /** @return string */
     public function json(): string
     {
         return json_encode(["error" => $this->getText()]);
@@ -163,6 +152,6 @@ class Message
      */
     private function filter(string $message): string
     {
-        return $message;
+        return filter_var($message, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     }
 }

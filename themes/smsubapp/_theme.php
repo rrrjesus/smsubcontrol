@@ -6,90 +6,58 @@
 
     <?= $head; ?>
 
+    <link rel="icon" type="image/png" href="<?= theme("/assets/images/favicon.ico", CONF_VIEW_APP); ?>"/>
+
     <link rel="stylesheet" href="<?= theme("/assets/style.css", CONF_VIEW_APP); ?>"/>
-    <link rel="icon" type="image/png" href="<?= theme("/assets/images/favicon.png", CONF_VIEW_APP); ?>"/>
+
 </head>
 <body>
 
-<div class="ajax_load">
-    <div class="ajax_load_box">
-        <div class="ajax_load_box_circle"></div>
-        <p class="ajax_load_box_title">Aguarde, carregando...</p>
+    <div class="ajax_load">
+        <div class="ajax_load_box">
+            <div class="ajax_load_box_circle"></div>
+            <p class="ajax_load_box_title">Aguarde, carregando...</p>
+        </div>
     </div>
-</div>
 
-<div class="app">
-    <header class="app_header">
-        <h1><a class="icon-coffee transition" href="<?= url("/app"); ?>" title="CaféApp">CaféApp</a></h1>
-        <ul class="app_header_widget">
-            <li class="radius icon-filter wallet"> <?= (session()->has("walletfilter") ? (new \Source\Models\CafeApp\AppWallet())->findById(session()->walletfilter)->wallet : "Saldo Geral"); ?>
-                <ul>
-                    <?php if (session()->has("walletfilter")): ?>
-                        <li class="radius icon-briefcase" data-walletfilter="<?= url("/app/dash"); ?>"
-                            data-wallet="all">Saldo Geral
-                        </li>
-                    <?php endif; ?>
+    <?= $this->insert("views/theme/color-theme"); ?>
 
-                    <?php
-                    $userId = user()->id;
-               
-                    ?>
-                </ul>
-            </li>
-            <li data-mobilemenu="open" class="app_header_widget_mobile radius transition icon-menu icon-notext"></li>
-        </ul>
-    </header>
+<header class="navbar sticky-top bg-smsub flex-md-nowrap p-0 shadow">
 
-    <div class="app_box">
-        <nav class="app_sidebar radius box-shadow">
-            <div data-mobilemenu="close"
-                 class="app_sidebar_widget_mobile radius transition icon-error icon-notext"></div>
+ <!-- Navbar-->
+<?= $this->insert("views/theme/navbar"); ?>
 
-            <div class="app_sidebar_user app_widget_title">
-                <span class="user">
-                    <?php if (user()->photo()): ?>
-                        <img class="rounded" alt="<?= user()->first_name; ?>" title="<?= user()->first_name; ?>"
-                             src="<?= image(user()->photo, 260, 260); ?>"/>
-                    <?php else: ?>
-                        <img class="rounded" alt="<?= user()->first_name; ?>" title="<?= user()->first_name; ?>"
-                             src="<?= theme("/assets/images/avatar.jpg", CONF_VIEW_APP); ?>"/>
-                    <?php endif; ?>
-                    <span><?= user()->first_name; ?></span>
-                </span>
+</header>
 
-                <?php
-                $subscribe = (new \Source\Models\CafeApp\AppSubscription())
-                    ->find("user_id = :user AND status != :status", "user={$userId}&status=canceled")
-                    ->fetch();
+<div class="container-fluid">
+  <div class="row">
+    
+  <?= $this->insert("views/sidebar"); ?>
 
-                if ($subscribe):?>
-                    <span class="plan radius icon-star"><?= $subscribe->plan()->name; ?></span>
-                <?php else: ?>
-                    <span class="plan radius">FREE</span>
-                <?php endif; ?>
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
+      <?= $this->section("content"); ?>
+
+    </main>
+
+    <?php if ($this->section("optout")): ?>
+    <?= $this->section("optout"); ?>
+    <?php else: ?>
+        <div class="row justify-content-center text-center mt-5 mb-5">
+            <div class="col-md-4">
+                <i class="bi bi-book-half display-1 text-<?=CONF_WEB_COLOR;?>"></i>
+                <p class="fw-bolder fs-3">Comece a utilizar a agenda inteligente agora mesmo</p>
+                <p class="fs-5">É rápida, simples e funcional!</p>
             </div>
+        </div>
+    <?php endif; ?>
 
-            <?= $this->insert("views/sidebar"); ?>
-        </nav>
-
-        <main class="app_main">
-            <div class="al-center"><?= flash(); ?></div>
-            <?= $this->section("content"); ?>
-        </main>
-    </div>
-
-    <footer class="app_footer">
-        <span class="icon-coffee">
-            CaféApp - Desenvolvido na formação FSPHP<br>
-            &copy; UpInside - Todos os direitos reservados
-        </span>
-    </footer>
-
-    <?= $this->insert("views/modals"); ?>
+    <!--FOOTER-->
+    <?= $this->insert("views/theme/footer"); ?>
+  </div>
 </div>
 
 <script src="<?= theme("/assets/scripts.js", CONF_VIEW_APP); ?>"></script>
 <?= $this->section("scripts"); ?>
 
-</body>
 </html>

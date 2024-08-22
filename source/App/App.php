@@ -6,19 +6,20 @@ use Source\Core\Controller;
 use Source\Core\Session;
 use Source\Core\View;
 use Source\Models\Auth;
-use Source\Models\CafeApp\AppCategory;
-use Source\Models\CafeApp\AppInvoice;
-use Source\Models\CafeApp\AppOrder;
-use Source\Models\CafeApp\AppPlan;
-use Source\Models\CafeApp\AppSubscription;
-use Source\Models\CafeApp\AppWallet;
-use Source\Models\Post;
+use Source\Models\App\AppCategory;
+use Source\Models\App\AppInvoice;
+use Source\Models\App\AppOrder;
+use Source\Models\App\AppPlan;
+use Source\Models\App\AppSubscription;
+use Source\Models\App\AppWallet;
+use Source\Models\Event;
 use Source\Models\Report\Access;
 use Source\Models\Report\Online;
 use Source\Models\User;
 use Source\Support\Email;
 use Source\Support\Thumb;
 use Source\Support\Upload;
+use Source\Models\QRCode;
 
 /**
  * Class App
@@ -48,7 +49,7 @@ class App extends Controller
         if ($this->user->status != "confirmed") {
             $session = new Session();
             if (!$session->has("appconfirmed")) {
-                $this->message->info("IMPORTANTE: Acesse seu e-mail para confirmar seu cadastro e ativar todos os recursos.")->flash();
+                $this->message->info("IMPORTANTE: Acesse seu e-mail para confirmar seu cadastro e ativar todos os recursos.")->icon()->flash();
                 $session->set("appconfirmed", true);
                 (new Auth())->register($this->user);
             }
@@ -107,20 +108,46 @@ class App extends Controller
     public function home(): void
     {
         $head = $this->seo->render(
-            "Olá {$this->user->first_name}. Vamos controlar? - " . CONF_SITE_NAME,
+            "Olá {$this->user->first_name}. - " . CONF_SITE_NAME,
             CONF_SITE_DESC,
             url(),
-            theme("/assets/images/share.jpg"),
+            theme("/assets/images/favicon.ico"),
             false
         );
 
-        //POSTS
-        $posts = (new Post())->findPost()->limit(3)->order("post_at DESC")->fetch(true);
-        //END POSTS
-
         echo $this->view->render("home", [
             "head" => $head,
-            "posts" => $posts
+            "urls" => "",
+            "icon" => "" 
+        ]);
+    }
+
+        /**
+     * APP EVENTS
+     */
+    public function events(): void
+    {
+        $head = $this->seo->render(
+            "Eventos de {$this->user->first_name}. - " . CONF_SITE_NAME,
+            CONF_SITE_DESC,
+            url(),
+            theme("/assets/images/favicon.ico"),
+            false
+        );
+
+        $event = (new Event());
+        $events = $event->find("status = :s", "s=actived")->fetch(true);
+
+        echo $this->view->render("events", [
+            "head" => $head,
+            "events" => $events,
+            "registers" => (object)[
+                "actived" => $event->find("status = :s", "s=actived")->count(),
+                "disabled" => $event->find("status = :s", "s=disabled")->count()
+            ],
+            "urls" => "eventos",
+            "icon" => "calendar2-check",
+            "page" => "Lista de Contatos"
         ]);
     }
 
@@ -161,7 +188,7 @@ class App extends Controller
             "Minhas receitas - " . CONF_SITE_NAME,
             CONF_SITE_DESC,
             url(),
-            theme("/assets/images/share.jpg"),
+            theme("/assets/images/favicon.ico"),
             false
         );
 
@@ -193,7 +220,7 @@ class App extends Controller
             "Minhas despesas - " . CONF_SITE_NAME,
             CONF_SITE_DESC,
             url(),
-            theme("/assets/images/share.jpg"),
+            theme("/assets/images/favicon.ico"),
             false
         );
 
@@ -225,7 +252,7 @@ class App extends Controller
             "Minhas contas fixas - " . CONF_SITE_NAME,
             CONF_SITE_DESC,
             url(),
-            theme("/assets/images/share.jpg"),
+            theme("/assets/images/favicon.ico"),
             false
         );
 
@@ -261,7 +288,7 @@ class App extends Controller
 
             $wallet = new AppWallet();
             $wallet->user_id = $this->user->id;
-            $wallet->wallet = filter_var($data["wallet_name"], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $wallet->wallet = filter_var($data["wallet_name"], FILTER_SANITIZE_STRIPPED);
             $wallet->save();
 
             echo json_encode(["reload" => true]);
@@ -274,7 +301,7 @@ class App extends Controller
                 "user={$this->user->id}&id={$data["wallet"]}")->fetch();
 
             if ($wallet) {
-                $wallet->wallet = filter_var($data["wallet_edit"], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                $wallet->wallet = filter_var($data["wallet_edit"], FILTER_SANITIZE_STRIPPED);
                 $wallet->save();
             }
 
@@ -297,10 +324,10 @@ class App extends Controller
         }
 
         $head = $this->seo->render(
-            "Minhas carteiras - " . CONF_SITE_NAME,
+            "Meus Eventos - " . CONF_SITE_NAME,
             CONF_SITE_DESC,
             url(),
-            theme("/assets/images/share.jpg"),
+            theme("/assets/images/favicon.ico"),
             false
         );
 
@@ -351,7 +378,7 @@ class App extends Controller
             return;
         }
 
-        $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
         $status = (date($data["due_at"]) <= date("Y-m-d") ? "paid" : "unpaid");
 
         $invoice = (new AppInvoice());
@@ -493,7 +520,7 @@ class App extends Controller
                 return;
             }
 
-            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
             $due_day = date("Y-m", strtotime($invoice->due_at)) . "-" . $data["due_day"];
             $invoice->category_id = $data["category"];
             $invoice->description = $data["description"];
@@ -540,7 +567,7 @@ class App extends Controller
             "Aluguel - " . CONF_SITE_NAME,
             CONF_SITE_DESC,
             url(),
-            theme("/assets/images/share.jpg"),
+            theme("/assets/images/favicon.ico"),
             false
         );
 
@@ -590,13 +617,11 @@ class App extends Controller
     public function profile(?array $data): void
     {
         if (!empty($data["update"])) {
-            list($d, $m, $y) = explode("/", $data["datebirth"]);
             $user = (new User())->findById($this->user->id);
             $user->first_name = $data["first_name"];
             $user->last_name = $data["last_name"];
-            $user->genre = $data["genre"];
-            $user->datebirth = "{$y}-{$m}-{$d}";
-            $user->document = preg_replace("/[^0-9]/", "", $data["document"]);
+            $user->email = $data["email"];
+            $user->phone = preg_replace("/[^0-9]/", "", $data["phone"]);
 
             if (!empty($_FILES["photo"])) {
                 $file = $_FILES["photo"];
@@ -630,7 +655,7 @@ class App extends Controller
                 return;
             }
 
-            $json["message"] = $this->message->success("Pronto {$this->user->first_name}. Seus dados foram atualizados com sucesso!")->render();
+            $json["message"] = $this->message->success("Pronto {$this->user->first_name}. Seus dados foram atualizados com sucesso!")->icon("person me-2")->render();
             echo json_encode($json);
             return;
         }
@@ -639,13 +664,52 @@ class App extends Controller
             "Meu perfil - " . CONF_SITE_NAME,
             CONF_SITE_DESC,
             url(),
-            theme("/assets/images/share.jpg"),
+            theme("/assets/images/favicon.ico"),
             false
         );
 
         echo $this->view->render("profile", [
             "head" => $head,
             "user" => $this->user,
+            "urls" => "perfil",
+            "icon" => "person",
+            "photo" => ($this->user->photo() ? image($this->user->photo, 360, 360) :
+                theme("/assets/images/avatar.jpg", CONF_VIEW_APP))
+        ]);
+    }
+
+    /**
+     * @param array|null $data
+     * @throws \Exception
+     */
+    public function identifier(): void
+    {
+
+        $qr = new QRCode();
+
+        // Definindo o nível de correção de erro
+        $qr->setErrorCorrectLevel(QR_ERROR_CORRECT_LEVEL_L); // _L:7% ,_M:15% ,_Q:25% ,_H:30%
+        $qr->setTypeNumber(8); // Definindo o número do modelo (tamanho grande) 1-40
+
+        // Definindo os dados (string de caracteres *)
+        $qr->addData('http://controlst11/authentic/search.php?id='.$this->user->id.'&crypto='.$this->user->hash_cracha);
+        $qr->make(); // Criando um código QR
+
+
+        $head = $this->seo->render(
+            "Meu Cracha - " . CONF_SITE_NAME,
+            CONF_SITE_DESC,
+            url(),
+            theme("/assets/images/favicon.ico"),
+            false
+        );
+
+        echo $this->view->render("identifier", [
+            "head" => $head,
+            "user" => $this->user,
+            "urls" => "identidade",
+            "icon" => "person", 
+            "qr" => $qr,
             "photo" => ($this->user->photo() ? image($this->user->photo, 360, 360) :
                 theme("/assets/images/avatar.jpg", CONF_VIEW_APP))
         ]);
@@ -657,7 +721,7 @@ class App extends Controller
             "Assinatura - " . CONF_SITE_NAME,
             CONF_SITE_DESC,
             url(),
-            theme("/assets/images/share.jpg"),
+            theme("/assets/images/favicon.ico"),
             false
         );
 

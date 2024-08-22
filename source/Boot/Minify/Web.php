@@ -29,9 +29,11 @@ if (strpos(url(), "localhost")) {
      * JS
      */
     $minJS = new MatthiasMullie\Minify\JS();
+    $minJS->add(__DIR__ . "/../../../shared/scripts/bootstrap/bootstrap.bundle.min.js");
+    $minJS->add(__DIR__ . "/../../../shared/scripts/bootstrap/color-modes.js");
     $minJS->add(__DIR__ . "/../../../shared/scripts/jquery/jquery.min.js");
     $minJS->add(__DIR__ . "/../../../shared/scripts/jquery/jquery.form.js");
-    $minJS->add(__DIR__ . "/../../../shared/scripts/jquery/jquery-ui.min.js");
+    $minJS->add(__DIR__ . "/../../../shared/scripts/jquery/jquery-ui.js");
     $minJS->add(__DIR__ . "/../../../shared/scripts/jquery/jquery.mask.js");
     $minJS->add(__DIR__ . "/../../../shared/scripts/highcharts.js");
     $minJS->add(__DIR__ . "/../../../shared/scripts/jquery/jquery.validate.min.js");
