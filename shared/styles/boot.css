@@ -23,6 +23,7 @@
     --color-yellow: #F5B946;
     --color-red: #D94352;
     --color-fsphp: #1D2025;
+    --color-smsub: #011fcf;
 
     --weight-light: 300;
     --weight-normal: 400;
@@ -136,12 +137,12 @@ input:-webkit-autofill {
 }
 
 .ajax_load_box_circle {
-    border: 16px solid #e3e3e3;
-    border-top: 16px solid var(--hover-color-green);
+    border: 8px solid #a3d3e9;
+    border-top: 8px solid var(--hover-color-smsub);
     border-radius: 50%;
     margin: auto;
-    width: 80px;
-    height: 80px;
+    width: 40px;
+    height: 40px;
 
     -webkit-animation: spin 1.2s linear infinite;
     -o-animation: spin 1.2s linear infinite;

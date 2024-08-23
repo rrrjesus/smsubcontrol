@@ -19,43 +19,36 @@
             <ul class="nav flex-column">
             <li class="nav-item">
                 <a class="nav-link link-light d-flex align-items-center fs-6 gap-2" aria-current="page" href="<?=url("/app")?>">
-                    <i class="bi bi-house-fill mb-1"></i>
-                    Geral
+                    <i class="bi bi-house-fill mb-2"></i>
+                    Início
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link link-light d-flex align-items-center fs-6 gap-2 icon-link icon-link-hover"
                 style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="<?=url("/app/eventos")?>">
-                <i class="bi bi-file-earmark mb-1"></i>
-                Eventos
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link link-light d-flex align-items-center fs-6 gap-2 icon-link icon-link-hover" 
-                style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="<?=url("/app/perfil")?>">
-                <i class="bi bi-person mb-1"></i>
-                Perfil
+                <i class="bi bi-card-heading mb-2"></i>
+                Contratos
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link link-light d-flex align-items-center fs-6 gap-2 icon-link icon-link-hover" 
                 style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="<?=url("/app/identidade")?>">
-                <i class="bi bi-qr-code mb-1"></i>
-                Crachá
+                <i class="bi bi-card-checklist mb-2"></i>
+                Chamados
                 </a>
             </li>
-            </ul>
-
-            <hr class="my-3">
-
-            <h5 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-body-secondary fw-semibold text-uppercase">
-            Relatórios
-            </h5>
-            <ul class="nav flex-column mb-auto">
             <li class="nav-item">
-                <a class="nav-link link-light d-flex align-items-center fs-6 gap-2 icon-link icon-link-hover" href="#">
-                <i class="bi bi-file-earmark-text mb-1"></i>
-                Participantes
+                <a class="nav-link link-light d-flex align-items-center fs-6 gap-2 icon-link icon-link-hover" 
+                style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="<?=url("/app/identidade")?>">
+                <i class="bi bi-card-checklist mb-2"></i>
+                Agenda
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link link-light d-flex align-items-center fs-6 gap-2 icon-link icon-link-hover" 
+                style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="<?=url("/app/perfil")?>">
+                <i class="bi bi-person mb-2"></i>
+                Perfil
                 </a>
             </li>
             </ul>
@@ -65,7 +58,7 @@
             <ul class="nav flex-column mb-auto">
             <li class="nav-item">
                 <a class="nav-link link-light d-flex align-items-center fs-6 gap-2 mb-4 icon-link icon-link-hover" href="<?=url("/app/sair")?>">
-                <i class="bi bi-door-closed mb-1"></i>
+                <i class="bi bi-door-closed mb-2"></i>
                 Sair
                 </a>
             </li>

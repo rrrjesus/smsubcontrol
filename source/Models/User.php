@@ -102,7 +102,7 @@ class User extends Model
     public function save(): bool
     {
         if (!$this->required()) {
-            $this->message->warning("Nome, sobrenome, email e senha são obrigatórios")->icon();
+            $this->message->warning("Nome, sobrenome, email  são obrigatórios !!!")->icon();
             return false;
         }
 

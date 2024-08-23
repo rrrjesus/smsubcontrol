@@ -655,7 +655,7 @@ class App extends Controller
                 return;
             }
 
-            $json["message"] = $this->message->success("Pronto {$this->user->first_name}. Seus dados foram atualizados com sucesso!")->icon("person me-2")->render();
+            $json["message"] = $this->message->success("Pronto {$this->user->first_name}. Seus dados foram atualizados com sucesso !!!")->icon("person me-2")->render();
             echo json_encode($json);
             return;
         }

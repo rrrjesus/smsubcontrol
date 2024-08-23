@@ -32,15 +32,13 @@
 <div class="container-fluid">
   <div class="row">
     
-  <?= $this->insert("views/sidebar"); ?>
+  <?= $this->insert("views/theme/sidebar"); ?>
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
       <?= $this->section("content"); ?>
 
-    </main>
-
-    <?php if ($this->section("optout")): ?>
+      <?php if ($this->section("optout")): ?>
     <?= $this->section("optout"); ?>
     <?php else: ?>
         <div class="row justify-content-center text-center mt-5 mb-5">
@@ -51,6 +49,8 @@
             </div>
         </div>
     <?php endif; ?>
+
+    </main>
 
     <!--FOOTER-->
     <?= $this->insert("views/theme/footer"); ?>
