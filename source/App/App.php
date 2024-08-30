@@ -12,6 +12,7 @@ use Source\Models\App\AppOrder;
 use Source\Models\App\AppPlan;
 use Source\Models\App\AppSubscription;
 use Source\Models\App\AppWallet;
+use Source\Models\Contact;
 use Source\Models\Event;
 use Source\Models\Report\Access;
 use Source\Models\Report\Online;
@@ -20,6 +21,7 @@ use Source\Support\Email;
 use Source\Support\Thumb;
 use Source\Support\Upload;
 use Source\Models\QRCode;
+use Source\Models\Patrimonio;
 
 /**
  * Class App
@@ -38,7 +40,7 @@ class App extends Controller
         parent::__construct(__DIR__ . "/../../themes/" . CONF_VIEW_APP . "/");
 
         if (!$this->user = Auth::user()) {
-            $this->message->warning("Efetue login para acessar o APP.")->flash();
+            $this->message->warning("Efetue login para acessar !.")->icon('emoji-wink fs-3 me-1')->flash();
             redirect("/entrar");
         }
 
@@ -119,6 +121,114 @@ class App extends Controller
             "head" => $head,
             "urls" => "",
             "icon" => "" 
+        ]);
+    }
+
+    /**
+     * APP CONTATOS
+     * @param array|null $data
+     * @return void
+     */
+    public function contact(?array $data): void
+    {
+        $head = $this->seo->render(
+            "Agenda - " . CONF_SITE_NAME ,
+            "Agenda de contatos SMSUB",
+            url("/agenda"),
+            theme("/assets/images/share.jpg")
+        );
+
+        $contact = (new Contact())->find("status = :s", "s=actived")->fetch(true);
+
+        echo $this->view->render("contact",
+            [
+                "head" => $head,
+                "contact" => $contact,
+                "urls" => "contatos",
+                "icon" => "telephone",
+                "iconpage" => "list",
+                "page" => "Lista de Contatos"
+            ]);
+    }
+
+    /**
+     * APP HOME
+     */
+    public function patrimonioList(): void
+    {
+        $head = $this->seo->render(
+            "Olá {$this->user->first_name}. - " . CONF_SITE_NAME,
+            CONF_SITE_DESC,
+            url(),
+            theme("/assets/images/favicon.ico"),
+            false
+        );
+
+        $patrimonio = (new Patrimonio())->find("status = :s", "s=actived")->fetch(true);
+
+        echo $this->view->render("views/patrimonio/patrimonioList", [
+            "head" => $head,
+            "patrimonio" => $patrimonio,
+            "urls" => "",
+            "icon" => "" 
+        ]);
+    }
+
+    /**
+     * @param array|null $data
+     * @throws \Exception
+     */
+    public function patrimonio(?array $data): void
+    {
+        if (!empty($data["update"])) {
+            $patrimonio = (new Patrimonio())->findById($this->patrimonio->id);
+            $patrimonio->first_name = $data["first_name"];
+            $patrimonio->last_name = $data["last_name"];
+            $patrimonio->email = $data["email"];
+            $patrimonio->phone = preg_replace("/[^0-9]/", "", $data["phone"]);
+
+            if (!empty($_FILES["photo"])) {
+                $file = $_FILES["photo"];
+                $upload = new Upload();
+
+                if ($this->patrimonio->photo()) {
+                    (new Thumb())->flush("storage/{$this->patrimonio->photo}");
+                    $upload->remove("storage/{$this->patrimonio->photo}");
+                }
+
+                if (!$patrimonio->photo = $upload->image($file, "{$patrimonio->first_name} {$patrimonio->last_name} " . time(), 360)) {
+                    $json["message"] = $upload->message()->before("Ooops {$this->patrimonio->first_name}! ")->after(".")->render();
+                    echo json_encode($json);
+                    return;
+                }
+            }
+
+            if (!$patrimonio->save()) {
+                $json["message"] = $patrimonio->message()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            $json["message"] = $this->message->success("Pronto {$this->patrimonio->first_name}. Seus dados foram atualizados com sucesso !!!")->icon("emoji-grin me-1")->render();
+            echo json_encode($json);
+            return;
+        }
+
+        $head = $this->seo->render(
+            "Meu perfil - " . CONF_SITE_NAME,
+            CONF_SITE_DESC,
+            url(),
+            theme("/assets/images/favicon.ico"),
+            false
+        );
+
+        echo $this->view->render("views/patrimonio/patrimonio", [
+            "head" => $head,
+            "user" => $this->user,
+            "urls" => "perfil",
+            "icon" => "person",
+            "photo" => ($this->user->photo() ? image($this->user->photo, 360, 360) :
+                theme("/assets/images/avatar.jpg", CONF_VIEW_APP))
         ]);
     }
 
@@ -618,9 +728,9 @@ class App extends Controller
     {
         if (!empty($data["update"])) {
             $user = (new User())->findById($this->user->id);
-            $user->first_name = $data["first_name"];
-            $user->last_name = $data["last_name"];
-            $user->email = $data["email"];
+            // $user->first_name = $data["first_name"];
+            // $user->last_name = $data["last_name"];
+            // $user->email = $data["email"];
             $user->phone = preg_replace("/[^0-9]/", "", $data["phone"]);
 
             if (!empty($_FILES["photo"])) {
@@ -641,7 +751,7 @@ class App extends Controller
 
             if (!empty($data["password"])) {
                 if (empty($data["password_re"]) || $data["password"] != $data["password_re"]) {
-                    $json["message"] = $this->message->warning("Para alterar sua senha, informa e repita a nova senha!")->render();
+                    $json["message"] = $this->message->warning("Para alterar sua senha, informe e repita a nova senha!")->icon()->render();
                     echo json_encode($json);
                     return;
                 }
@@ -655,7 +765,7 @@ class App extends Controller
                 return;
             }
 
-            $json["message"] = $this->message->success("Pronto {$this->user->first_name}. Seus dados foram atualizados com sucesso !!!")->icon("person me-2")->render();
+            $json["message"] = $this->message->success("Pronto {$this->user->first_name}. Seus dados foram atualizados com sucesso !!!")->icon("emoji-grin me-1")->render();
             echo json_encode($json);
             return;
         }

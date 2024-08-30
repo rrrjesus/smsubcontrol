@@ -320,7 +320,7 @@ class Web extends Controller
                 $this->message->success("Seja bem-vindo(a) de volta " . Auth::user()->first_name . "!")->icon()->flash();
                 $json['redirect'] = url("/app");
             } else {
-                $json['message'] = $auth->message()->after("Ooops! ")->icon()->render();
+                $json['message'] = $auth->message()->before("Ooops! ")->icon()->render();
             }
 
             echo json_encode($json);

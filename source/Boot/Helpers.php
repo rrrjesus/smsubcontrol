@@ -304,16 +304,20 @@ function date_fmt(?string $date, string $format = "d/m/Y H\hi"): string
     return (new DateTime($date))->format($format);
 }
 
-
 /**
  * @param string $date
+ * @param string $format
  * @return string
  * @throws Exception
  */
-function date_fmt_br(?string $date): string
+function date_fmt_null(?string $date, string $format = "d/m/Y"): string
 {
-    $date = (empty($date) ? "now" : $date);
-    return (new DateTime($date))->format(CONF_DATE_BR);
+    $date = (empty($date) ? "" : $date);
+    if(empty($date)) {
+        return '';
+    } else {
+        return (new DateTime($date))->format($format);
+    }
 }
 
 /**

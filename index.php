@@ -59,11 +59,27 @@ $route->group(null);
 $route->get("/termos", "Web:terms");
 
 /**
- * APP
+ * APP ROUTES
  */
+$route->namespace("Source\App\App");
 $route->group("/app");
+
+//login
+$route->get("/", "Login:root");
+$route->get("/login", "Login:login");
+$route->post("/login", "Login:login");
+
+//dash
+$route->get("/dash", "Dash:dash");
+$route->get("/dash/home", "Dash:home");
+$route->post("/dash/home", "Dash:home");
+$route->get("/logoff", "Dash:logoff");
+
 $route->get("/", "App:home");
 $route->get("/perfil", "App:profile");
+$route->get("/contatos", "App:contact");
+$route->get("/patrimonio", "App:patrimonioList");
+$route->get("/patrimonio/{patrimonio_id}", "App:patrimonio");
 $route->get("/sair", "App:logout");
 
 $route->post("/dash", "App:dash");

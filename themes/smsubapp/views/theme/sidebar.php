@@ -24,10 +24,23 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link link-light d-flex align-items-center fs-6 gap-2" aria-current="page" href="<?=url("/")?>">
+                    <i class="bi bi-globe mb-2"></i>
+                    Ver Site
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link link-light d-flex align-items-center fs-6 gap-2 icon-link icon-link-hover"
                 style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="<?=url("/app/eventos")?>">
                 <i class="bi bi-card-heading mb-2"></i>
                 Contratos
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link link-light d-flex align-items-center fs-6 gap-2 icon-link icon-link-hover"
+                style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="<?=url("/app/patrimonio")?>">
+                <i class="bi bi-card-heading mb-2"></i>
+                Patrimonio
                 </a>
             </li>
             <li class="nav-item">
@@ -39,7 +52,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link link-light d-flex align-items-center fs-6 gap-2 icon-link icon-link-hover" 
-                style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="<?=url("/app/identidade")?>">
+                style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="<?=url("/app/contatos")?>">
                 <i class="bi bi-card-checklist mb-2"></i>
                 Agenda
                 </a>

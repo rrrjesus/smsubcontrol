@@ -5,49 +5,46 @@ namespace Source\Models;
 use Source\Core\Model;
 
 /**
- * FSPHP | Class User Active Record Pattern
+ * SMSUB | Class Patrimonio
  *
- * @author Robson V. Leite <cursos@upinside.com.br>
+ * @author Rodolfo Romaioli Ribeiro de Jesus <rodolfo.romaioli@gmail.com>
  * @package Source\Models
  */
-class User extends Model
+class Patrimonio extends Model
 {
     /**
-     * User constructor.
+     * Patrimonio constructor.
      */
     public function __construct()
     {
-        parent::__construct("users", ["id"], ["first_name", "last_name", "email", "password"]);
+        parent::__construct("patrimonio", ["id"], ["patrimonio_nome", "marca_id", "modelo", "descricao", "unit_id", "imei", "status"]);
     }
 
     /**
-     * @param string $email
-     * @param string $columns
-     * @return null|User
+     * @return string
      */
-    public function findByEmail(string $email, string $columns = "*"): ?User
+    public function statusBadge(): string
     {
-        $find = $this->find("email = :email", "email={$email}", $columns);
-        return $find->fetch();
+        if($this->status == 'actived'):
+            return '<span class="badge text-bg-success ms-2">Ativo</span>';
+        else:
+            return '<span class="badge text-bg-danger ms-2">Inativo</span>';
+        endif;  
     }
 
-    public function statusSelected(): ?string
+    public function statusSelect(): ?string
     {
-        if ($this->status == "registered") {
-            return '<option value="registered" selected>Registrado</option><option value="confirmed">Confirmado</option><option value="disabled">Desabilitado</option>';
-        } elseif ($this->status == "confirmed") {
-            return '<option value="confirmed" selected>Confirmado</option><option value="registered">Registrado</option><option value="disabled">Desabilitado</option>';
+        if ($this->status == "actived") {
+            return '<option value="actived" selected>Ativado</option><option value="disabled">Desativado</option>';
         } else {
-            return '<option value="disabled" selected>Desabilitado</option><option value="registered">Registrado</option><option value="confirmed">Confirmado</option>';
+            return '<option value="disabled" selected>Desativado</option><option value="actived">Ativado</option>';
         }
         return null; 
     }
 
     public function statusInput(): ?string
     {
-        if ($this->status == "registered") {
-            return 'Registrado';
-        } elseif ($this->status == "confirmed") {
+        if ($this->status == "actived") {
             return 'Ativo';
         } else {
             return 'Inativo';
@@ -56,9 +53,31 @@ class User extends Model
     }
 
     /**
+     * @return null|PatrimonioMarca
+     */
+    public function patrimonioMarca(): ?PatrimonioMarca
+    {
+        if($this->marca_id) {
+            return(new PatrimonioMarca())->findById($this->marca_id);
+        }
+        return null;
+    }
+
+    /**
+     * @return null|PatrimonioMarca
+     */
+    public function patrimonioModelo(): ?PatrimonioModelo
+    {
+        if($this->modelo_id) {
+            return(new PatrimonioModelo())->findById($this->modelo_id);
+        }
+        return null;
+    }
+
+    /**
      * @return null|Unit
      */
-    public function unit(): ?Unit
+    public function patrimonioUnit(): ?Unit
     {
         if($this->unit_id) {
             return(new Unit())->findById($this->unit_id);
@@ -67,12 +86,12 @@ class User extends Model
     }
 
     /**
-     * @return null|UserPosition
+     * @return null|User
      */
-    public function userPosition(): ?UserPosition
+    public function user(): ?User
     {
-        if($this->position_id) {
-            return(new UserPosition())->findById($this->position_id);
+        if($this->user_id) {
+            return(new User())->findById($this->user_id);
         }
         return null;
     }
@@ -86,21 +105,6 @@ class User extends Model
             return(new UserCategory())->findById($this->category_id);
         }
         return null;
-    }
-
-    public function level(): ?Level    {
-        if($this->level_id) {
-            return(new Level())->findById($this->level_id);
-        }
-        return null;
-    }
-
-    /**
-     * @return string
-     */
-    public function fullName(): string
-    {
-        return "{$this->first_name} {$this->last_name}";
     }
 
     /**
@@ -121,7 +125,7 @@ class User extends Model
     public function levelBadge(): string
     {
         if($this->level_id == 1):
-            return '<span class="badge text-bg-primary ms-2">User</span>';
+            return '<span class="badge text-bg-primary ms-2">Patrimonio</span>';
         elseif($this->level_id == 2):
             return '<span class="badge text-bg-light ms-2">Edit*</span>';
         elseif($this->level_id == 3):
@@ -157,7 +161,7 @@ class User extends Model
             $this->password = passwd($this->password);
         }
 
-        /** User Update */
+        /** Patrimonio Update */
         if (!empty($this->id)) {
             $userId = $this->id;
 
@@ -173,7 +177,7 @@ class User extends Model
             }
         }
 
-        /** User Create */
+        /** Patrimonio Create */
         if (empty($this->id)) {
             if ($this->findByEmail($this->email, "id")) {
                 $this->message->warning("O e-mail informado já está cadastrado");

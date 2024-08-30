@@ -61,7 +61,7 @@ $(function () {
                 }
             },
             error: function () {
-                var message = "<div class='message error icon-warning'>Desculpe mas não foi possível processar a requisição. Favor tente novamente!</div>";
+                var message = "<div class='alert alert-danger alert-dismissible fade show text-center fw-semibold fs-5x' role='alert'><i class='bi bi-emoji-tear pb-1'></i> Desculpe mas não foi possível processar a requisição. Favor tente novamente!</div>";
 
                 if (flash.length) {
                     flash.html(message).fadeIn(100).effect("bounce", 300);
@@ -74,6 +74,12 @@ $(function () {
             }
         });
     });
+
+    //  data-bs-toggle="tooltip" Bootstrap Title
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-togglee="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
 
         /*
      * IMAGE RENDER

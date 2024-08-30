@@ -6,8 +6,13 @@
 
     <?= $head; ?>
 
-    <link rel="icon" type="image/png" href="<?= theme("/assets/images/favicon.ico", CONF_VIEW_APP); ?>"/>
-
+    <link rel="apple-touch-icon" sizes="180x180" href="<?= theme("/assets/images/favicon/apple-touch-icon.png", CONF_VIEW_APP); ?>">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?= theme("/assets/images/favicon/favicon-32x32.png", CONF_VIEW_APP); ?>">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?= theme("/assets/images/favicon/favicon-16x16.png", CONF_VIEW_APP); ?>">
+    <!-- <link rel="manifest" href="/site.webmanifest"> -->
+    <link rel="mask-icon" href="<?= theme("/assets/images/favicon/safari-pinned-tab.svg", CONF_VIEW_APP); ?>" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="<?= theme("/assets/style.css", CONF_VIEW_APP); ?>"/>
 
 </head>
@@ -41,19 +46,12 @@
       <?php if ($this->section("optout")): ?>
     <?= $this->section("optout"); ?>
     <?php else: ?>
-        <div class="row justify-content-center text-center mt-5 mb-5">
-            <div class="col-md-4">
-                <i class="bi bi-book-half display-1 text-<?=CONF_WEB_COLOR;?>"></i>
-                <p class="fw-bolder fs-3">Comece a utilizar a agenda inteligente agora mesmo</p>
-                <p class="fs-5">É rápida, simples e funcional!</p>
-            </div>
-        </div>
+        <!--FOOTER-->
+        <?= $this->insert("views/theme/footer"); ?>
     <?php endif; ?>
 
     </main>
 
-    <!--FOOTER-->
-    <?= $this->insert("views/theme/footer"); ?>
   </div>
 </div>
 
