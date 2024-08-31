@@ -17,7 +17,7 @@ If your images are stored outside document root (a rare case), you can simply us
 ```php
 $destination = $imageRoot . $source . '.webp';      // pst: $source is an absolute path, and starts with '/'
 ```
-This will ie store a converted image in */var/www/example.com/public_html/app/webp-images/var/www/example.com/images/logo.jpg.webp*
+This will ie store a converted image in */var/www/example.com/public_html/beta/webp-images/var/www/example.com/images/logo.jpg.webp*
 
 If your application can be configured to store outside document root, but rarely is, you can go for this structure:
 

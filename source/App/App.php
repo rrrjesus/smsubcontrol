@@ -285,7 +285,7 @@ class App extends Controller
         }
 
         $redirect = ($data["filter"] == "income" ? "receber" : "pagar");
-        $json["redirect"] = url("/app/{$redirect}/{$status}/{$category}/{$m}-{$y}");
+        $json["redirect"] = url("/beta/{$redirect}/{$status}/{$category}/{$m}-{$y}");
         echo json_encode($json);
     }
 
@@ -392,7 +392,7 @@ class App extends Controller
 
             if (!$subscribe->count()) {
                 $this->message->error("Desculpe {$this->user->first_name}, para criar novas carteiras é preciso ser PRO. Confira abaixo...")->flash();
-                echo json_encode(["redirect" => url("/app/assinatura")]);
+                echo json_encode(["redirect" => url("/beta/assinatura")]);
                 return;
             }
 
@@ -478,7 +478,7 @@ class App extends Controller
 
         if (!$wallet->free && !$subscribe->count()) {
             $this->message->error("Sua carteira {$wallet->wallet} é PRO {$this->user->first_name}. Para controla-la é preciso ser PRO. Assine abaixo...")->flash();
-            echo json_encode(["redirect" => url("/app/assinatura")]);
+            echo json_encode(["redirect" => url("/beta/assinatura")]);
             return;
         }
 
@@ -686,7 +686,7 @@ class App extends Controller
 
         if (!$invoice) {
             $this->message->error("Ooops! Você tentou acessar uma fatura que não existe")->flash();
-            redirect("/app");
+            redirect("/beta");
         }
 
         echo $this->view->render("invoice", [
@@ -716,7 +716,7 @@ class App extends Controller
         }
 
         $this->message->success("Tudo pronto {$this->user->first_name}. O lançamento foi removido com sucesso!")->flash();
-        $json["redirect"] = url("/app");
+        $json["redirect"] = url("/beta");
         echo json_encode($json);
     }
 

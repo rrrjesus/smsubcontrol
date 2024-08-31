@@ -1,4 +1,4 @@
-<?php $this->layout("_theme"); ?>
+<?php $this->layout("_beta"); ?>
 
   <!-- Breacrumb-->
   <?= $this->insert("views/theme/breadcrumb"); ?>
@@ -10,7 +10,7 @@
                 <div class="container-fluid">
                     <div class="d-flex justify-content-center">
                         <div class="col-12">
-                            <form class="row gy-2 gx-3 align-items-center needs-validation" novalidate action="<?= url("/app/patrimonio"); ?>" method="post" enctype="multipart/form-data">
+                            <form class="row gy-2 gx-3 align-items-center needs-validation" novalidate action="<?= url("/beta/patrimonio"); ?>" method="post" enctype="multipart/form-data">
                                 
                             <input type="hidden" name="update" value="true"/>
 

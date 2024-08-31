@@ -5,7 +5,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
-            <a href="<?=url("/app/perfil")?>" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+            <a href="<?=url("/beta/perfil")?>" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
             <?php if (user()->photo()): ?>
                 <img class="rounded-circle m-2" width="32" height="32" alt="<?= user()->first_name; ?>" title="<?= user()->first_name; ?>"
                         src="<?= image(user()->photo, 260, 260); ?>"/>
@@ -18,7 +18,7 @@
             <hr>
             <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link link-light d-flex align-items-center fs-6 gap-2" aria-current="page" href="<?=url("/app")?>">
+                <a class="nav-link link-light d-flex align-items-center fs-6 gap-2" aria-current="page" href="<?=url("/beta")?>">
                     <i class="bi bi-house-fill mb-2"></i>
                     Início
                 </a>
@@ -31,35 +31,35 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link link-light d-flex align-items-center fs-6 gap-2 icon-link icon-link-hover"
-                style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="<?=url("/app/eventos")?>">
+                style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="<?=url("/beta/eventos")?>">
                 <i class="bi bi-card-heading mb-2"></i>
                 Contratos
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link link-light d-flex align-items-center fs-6 gap-2 icon-link icon-link-hover"
-                style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="<?=url("/app/patrimonio")?>">
+                style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="<?=url("/beta/patrimonio/lista")?>">
                 <i class="bi bi-card-heading mb-2"></i>
                 Patrimonio
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link link-light d-flex align-items-center fs-6 gap-2 icon-link icon-link-hover" 
-                style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="<?=url("/app/identidade")?>">
+                style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="<?=url("/beta/identidade")?>">
                 <i class="bi bi-card-checklist mb-2"></i>
                 Chamados
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link link-light d-flex align-items-center fs-6 gap-2 icon-link icon-link-hover" 
-                style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="<?=url("/app/contatos")?>">
+                style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="<?=url("/beta/contatos")?>">
                 <i class="bi bi-card-checklist mb-2"></i>
                 Agenda
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link link-light d-flex align-items-center fs-6 gap-2 icon-link icon-link-hover" 
-                style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="<?=url("/app/perfil")?>">
+                style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="<?=url("/beta/perfil")?>">
                 <i class="bi bi-person mb-2"></i>
                 Perfil
                 </a>
@@ -70,7 +70,7 @@
 
             <ul class="nav flex-column mb-auto">
             <li class="nav-item">
-                <a class="nav-link link-light d-flex align-items-center fs-6 gap-2 mb-4 icon-link icon-link-hover" href="<?=url("/app/sair")?>">
+                <a class="nav-link link-light d-flex align-items-center fs-6 gap-2 mb-4 icon-link icon-link-hover" href="<?=url("/beta/logoff")?>">
                 <i class="bi bi-door-closed mb-2"></i>
                 Sair
                 </a>

@@ -31,7 +31,7 @@
             ?>
             <article class="app_launch_item">
                 <p class="desc app_invoice_link transition">
-                    <a title="<?= $invoice->description; ?>" href="<?= url("/app/fatura/{$invoice->id}"); ?>">
+                    <a title="<?= $invoice->description; ?>" href="<?= url("/beta/fatura/{$invoice->id}"); ?>">
                         <?= ($invoice->type == "fixed_income" ? "Receita / " : "Despesa / "); ?>
                         <?= str_limit_words($invoice->description, 3,
                             "&nbsp;<span class='icon-info icon-notext'></span>") ?>

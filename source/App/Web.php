@@ -289,7 +289,7 @@ class Web extends Controller
     public function login(?array $data): void
     {
         if (Auth::user()) {
-            redirect("/app");
+            redirect("/beta");
         }
 
         if (!empty($data['csrf'])) {
@@ -318,7 +318,7 @@ class Web extends Controller
 
             if ($login) {
                 $this->message->success("Seja bem-vindo(a) de volta " . Auth::user()->first_name . "!")->icon()->flash();
-                $json['redirect'] = url("/app");
+                $json['redirect'] = url("/beta");
             } else {
                 $json['message'] = $auth->message()->before("Ooops! ")->icon()->render();
             }
@@ -347,7 +347,7 @@ class Web extends Controller
     public function forget(?array $data)
     {
         if (Auth::user()) {
-            redirect("/app");
+            redirect("/beta");
         }
 
         if (!empty($data['csrf'])) {
@@ -399,7 +399,7 @@ class Web extends Controller
     public function reset(array $data): void
     {
         if (Auth::user()) {
-            redirect("/app");
+            redirect("/beta");
         }
 
         if (!empty($data['csrf'])) {
@@ -449,7 +449,7 @@ class Web extends Controller
     public function register(?array $data): void
     {
         if (Auth::user()) {
-            redirect("/app");
+            redirect("/beta");
         }
 
         if (!empty($data['csrf'])) {

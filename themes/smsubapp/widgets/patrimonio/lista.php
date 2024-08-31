@@ -1,4 +1,4 @@
-<?php $this->layout("_theme"); ?>
+<?php $this->layout("_beta"); ?>
 
 <!-- Breacrumb-->
 <?= $this->insert("views/theme/breadcrumb"); ?>
@@ -33,20 +33,20 @@
                     <tbody>
                     <?php foreach ($patrimonio as $lista): ?>
                     <tr>
-                        <td class="text-center fw-semibold"><a href="<?= url("/app/patrimonio/{$lista->id}"); ?>" role="button" aria-disabled="true" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
+                        <td class="text-center fw-semibold"><a href="<?= url("/beta/patrimonio/{$lista->id}"); ?>" role="button" aria-disabled="true" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
                         data-bs-title="Clique para editar" class="btn btn-sm btn-outline-warning fw-bold me-2"><i class="bi bi-pencil me-2"></i><?=$lista->id?></a></td>
-                        <td class="text-center fw-semibold"><?=(!empty($lista->patrimonio_nome) ? $lista->patrimonio_nome : "")?></td>
+                        <td class="text-center fw-semibold"><?=(!empty($lista->bens_nome) ? $lista->bens_nome : "")?></td>
                         <td class="text-center fw-semibold">
-                        <?php if(!empty($lista->patrimonioMarca()->marca_nome) && !empty($lista->patrimonioMarca()->status == "actived")):
-                            echo (!empty($lista->patrimonioMarca()->marca_nome) ? $lista->patrimonioMarca()->marca_nome : "NÃO CADASTRADO");
+                        <?php if(!empty($lista->bemMarca()->marca_nome) && !empty($lista->bemMarca()->status == "actived")):
+                            echo (!empty($lista->bemMarca()->marca_nome) ? $lista->bemMarca()->marca_nome : "NÃO CADASTRADO");
                         else:
                             echo "EXCLUÍDO";
                         endif;
                             ?>
                         </td>
                         <td class="text-center fw-semibold">
-                            <?php if(!empty($lista->patrimonioModelo()->modelo_nome) && !empty($lista->patrimonioModelo()->status == "actived")):
-                                echo (!empty($lista->patrimonioModelo()->modelo_nome) ? $lista->patrimonioModelo()->modelo_nome : "NÃO CADASTRADO");
+                            <?php if(!empty($lista->bemModelo()->modelo_nome) && !empty($lista->bemModelo()->status == "actived")):
+                                echo (!empty($lista->bemModelo()->modelo_nome) ? $lista->bemModelo()->modelo_nome : "NÃO CADASTRADO");
                         else:
                             echo "EXCLUÍDO";
                         endif;
@@ -54,8 +54,8 @@
                         </td>
                         <td class="text-center fw-semibold"><?=(!empty($lista->descricao) ? $lista->descricao : "")?></td>
                         <td class="text-center fw-semibold">
-                        <?php if(!empty($lista->patrimonioUnit()->unit_name) && !empty($lista->patrimonioUnit()->status == "actived")):
-                            echo (!empty($lista->patrimonioUnit()->unit_name) ? $lista->patrimonioUnit()->unit_name : "NÃO CADASTRADO");
+                        <?php if(!empty($lista->BemUnit()->unit_name) && !empty($lista->BemUnit()->status == "actived")):
+                            echo (!empty($lista->BemUnit()->unit_name) ? $lista->BemUnit()->unit_name : "NÃO CADASTRADO");
                         else:
                             echo "EXCLUÍDO";
                         endif;

@@ -10,22 +10,22 @@ use Source\Core\Model;
  * @author Rodolfo Romaioli Ribeiro de Jesus <rodolfo.romaioli@gmail.com>
  * @package Source\Models
  */
-class PatrimonioModelo extends Model
+class BemModelo extends Model
 {
     /**
-     * PatrimonioModelo constructor.
+     * BemModelo constructor.
      */
     public function __construct()
     {
-        parent::__construct("patrimonio_modelo", ["id"], ["marca_id", "modelo_nome". "descricao", "status"]);
+        parent::__construct("bens_modelo", ["id"], ["marca_id", "modelo_nome". "descricao", "status"]);
     }
 
     /**
      * @param string $modelo
      * @param string $columns
-     * @return null|PatrimonioModelo
+     * @return null|BemModelo
      */
-    public function findByModelo(string $modelo, string $columns = "*"): ?PatrimonioModelo
+    public function findByModelo(string $modelo, string $columns = "*"): ?BemModelo
     {
         $find = $this->find("modelo = :modelo", "modelo={$modelo}", $columns);
         return $find->fetch();
@@ -63,7 +63,7 @@ class PatrimonioModelo extends Model
             return false;
         }
 
-        /** PatrimonioModelo Update */
+        /** BemModelo Update */
         if (!empty($this->id)) {
             $modeloId = $this->id;
 
@@ -79,7 +79,7 @@ class PatrimonioModelo extends Model
             }
         }
 
-        /** PatrimonioModelo Create */
+        /** BemModelo Create */
         if (empty($this->id)) {
             if ($this->findByModelo($this->modelo_nome, "id")) {
                 $this->message->warning("O modelo informada já está cadastrada");

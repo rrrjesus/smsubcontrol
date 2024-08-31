@@ -10,22 +10,22 @@ use Source\Core\Model;
  * @author Rodolfo Romaioli Ribeiro de Jesus <rodolfo.romaioli@gmail.com>
  * @package Source\Models
  */
-class PatrimonioMarca extends Model
+class BemMarca extends Model
 {
     /**
-     * PatrimonioMarca constructor.
+     * BemMarca constructor.
      */
     public function __construct()
     {
-        parent::__construct("patrimonio_marca", ["id"], ["marca_nome". "descricao", "status"]);
+        parent::__construct("bens_marca", ["id"], ["marca_nome". "descricao", "status"]);
     }
 
     /**
      * @param string $marca
      * @param string $columns
-     * @return null|PatrimonioModelo
+     * @return null|BemMarca
      */
-    public function findByMarca(string $marca, string $columns = "*"): ?PatrimonioMarca
+    public function findByMarca(string $marca, string $columns = "*"): ?BemMarca
     {
         $find = $this->find("marca = :marca", "marca={$marca}", $columns);
         return $find->fetch();
@@ -63,7 +63,7 @@ class PatrimonioMarca extends Model
             return false;
         }
 
-        /** PatrimonioMarca Update */
+        /** BemMarca Update */
         if (!empty($this->id)) {
             $marcaId = $this->id;
 
@@ -79,7 +79,7 @@ class PatrimonioMarca extends Model
             }
         }
 
-        /** PatrimonioMarca Create */
+        /** BemMarca Create */
         if (empty($this->id)) {
             if ($this->findByMarca($this->marca_nome, "id")) {
                 $this->message->warning("A marca informada já está cadastrada");

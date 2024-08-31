@@ -1,7 +1,7 @@
 <?php $this->layout("_theme"); ?>
 
 <div class="app_formbox app_widget">
-    <form class="app_form" action="<?= url("/app/invoice/{$invoice->id}"); ?>" method="post">
+    <form class="app_form" action="<?= url("/beta/invoice/{$invoice->id}"); ?>" method="post">
         <input type="hidden" name="update" value="true"/>
 
         <label>
@@ -63,7 +63,7 @@
 
         <div class="al-center">
             <div class="app_formbox_actions">
-                <span data-invoiceremove="<?= url("/app/remove/{$invoice->id}"); ?>"
+                <span data-invoiceremove="<?= url("/beta/remove/{$invoice->id}"); ?>"
                       class="btn_remove transition icon-error">Excluir</span>
                 <button class="btn btn_inline radius transition icon-pencil-square-o">Atualizar</button>
                 <a class="btn_back transition radius icon-sign-in" href="<?= url_back(); ?>" title="Voltar">Voltar</a>

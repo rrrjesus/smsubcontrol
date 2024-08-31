@@ -1,7 +1,7 @@
 <?php $this->layout("_theme"); ?>
 
 <div class="app_launch_header">
-    <form class="app_launch_form_filter app_form" action="<?= url("/app/filter"); ?>" method="post">
+    <form class="app_launch_form_filter app_form" action="<?= url("/beta/filter"); ?>" method="post">
         <input type="hidden" name="filter" value="<?= $type; ?>"/>
 
         <select name="status">
@@ -67,7 +67,7 @@
             <article class="app_launch_item">
                 <p class="desc app_invoice_link transition">
                     <a title="<?= $invoice->description; ?>"
-                       href="<?= url("/app/fatura/{$invoice->id}"); ?>"><?= str_limit_words($invoice->description,
+                       href="<?= url("/beta/fatura/{$invoice->id}"); ?>"><?= str_limit_words($invoice->description,
                             3, "&nbsp;<span class='icon-info icon-notext'></span>") ?></a>
                 </p>
                 <p class="date">Dia <?= date_fmt($invoice->due_at, "d"); ?></p>
@@ -75,12 +75,12 @@
                 <p class="enrollment">
                     <?php if ($invoice->repeat_when == "fixed"): ?>
                         <span class="app_invoice_link">
-                            <a href="<?= url("/app/fatura/{$invoice->invoice_of}"); ?>" class="icon-exchange"
+                            <a href="<?= url("/beta/fatura/{$invoice->invoice_of}"); ?>" class="icon-exchange"
                                title="Controlar Conta Fixa">Fixa</a>
                         </span>
                     <?php elseif ($invoice->repeat_when == 'enrollment'): ?>
                         <span class="app_invoice_link">
-                            <a href="<?= url("/app/fatura/{$invoice->invoice_of}"); ?>"
+                            <a href="<?= url("/beta/fatura/{$invoice->invoice_of}"); ?>"
                                title="Controlar Parcelamento"><?= str_pad($invoice->enrollment_of, 2, 0,
                                     0); ?> de <?= str_pad($invoice->enrollments, 2, 0, 0); ?></a>
                         </span>
@@ -94,13 +94,13 @@
                     <?php if ($invoice->status == 'unpaid'): $unpaid += $invoice->value; ?>
                         <span class="check <?= $type; ?> icon-thumbs-o-down transition"
                               data-toggleclass="active icon-thumbs-o-down icon-thumbs-o-up"
-                              data-onpaid="<?= url("/app/onpaid"); ?>"
+                              data-onpaid="<?= url("/beta/onpaid"); ?>"
                               data-date="<?= ($filter->date ?? date("m/Y")); ?>"
                               data-invoice="<?= $invoice->id; ?>"></span>
                     <?php else: $paid += $invoice->value; ?>
                         <span class="check <?= $type; ?> icon-thumbs-o-up transition"
                               data-toggleclass="active icon-thumbs-o-down icon-thumbs-o-up"
-                              data-onpaid="<?= url("/app/onpaid"); ?>"
+                              data-onpaid="<?= url("/beta/onpaid"); ?>"
                               data-date="<?= ($filter->date ?? date("m/Y")); ?>"
                               data-invoice="<?= $invoice->id; ?>"></span>
                     <?php endif; ?>

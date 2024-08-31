@@ -1,6 +1,6 @@
 <?php
 
-namespace Source\App\App;
+namespace Source\App\Beta;
 
 use Source\Models\Auth;
 use Source\Models\CafeApp\AppPlan;
@@ -12,7 +12,7 @@ use Source\Models\User;
 
 /**
  * Class Dash
- * @package Source\App\App
+ * @package Source\App\Beta
  */
 class Dash extends Admin
 {
@@ -29,7 +29,7 @@ class Dash extends Admin
      */
     public function dash(): void
     {
-        redirect("/app/home");
+        redirect("/beta/dash/home");
     }
 
     /**
@@ -39,14 +39,14 @@ class Dash extends Admin
     public function home(?array $data): void
     {
 
-
         $head = $this->seo->render(
-            CONF_SITE_NAME . " | App,
+            CONF_SITE_NAME . " | Aplicativo",
             CONF_SITE_DESC,
-            url("/admin"),
-            theme("/assets/images/image.jpg", AppCONF_VIEW_APP),
+            url("/beta"),
+            theme("/assets/images/image.jpg", CONF_VIEW_APP),
             false
         );
+        
 
         echo $this->view->render("widgets/dash/home", [
             "app" => "dash",
@@ -55,8 +55,6 @@ class Dash extends Admin
                 "users" => (new User())->find("level < 5")->count(),
                 "admins" => (new User())->find("level >= 5")->count()
             ],
-            "online" => (new Online())->findByActive(),
-            "onlineCount" => (new Online())->findByActive(true)
         ]);
     }
 
@@ -65,9 +63,9 @@ class Dash extends Admin
      */
     public function logoff(): void
     {
-        $this->message->success("Você saiu com sucesso {$this->user->first_name}.")->flash();
+        $this->message->success("Você saiu com sucesso {$this->user->first_name}.")->icon()->flash();
 
         Auth::logout();
-        redirect("/app/login");
+        redirect("/beta/login");
     }
 }

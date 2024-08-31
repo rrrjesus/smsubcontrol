@@ -5,19 +5,19 @@ namespace Source\Models;
 use Source\Core\Model;
 
 /**
- * SMSUB | Class Patrimonio
+ * SMSUB | Class Bem
  *
  * @author Rodolfo Romaioli Ribeiro de Jesus <rodolfo.romaioli@gmail.com>
  * @package Source\Models
  */
-class Patrimonio extends Model
+class Bem extends Model
 {
     /**
-     * Patrimonio constructor.
+     * Bem constructor.
      */
     public function __construct()
     {
-        parent::__construct("patrimonio", ["id"], ["patrimonio_nome", "marca_id", "modelo", "descricao", "unit_id", "imei", "status"]);
+        parent::__construct("bens", ["id"], ["bens_nome", "marca_id", "modelo", "descricao", "unit_id", "imei", "status"]);
     }
 
     /**
@@ -53,23 +53,23 @@ class Patrimonio extends Model
     }
 
     /**
-     * @return null|PatrimonioMarca
+     * @return null|BemMarca
      */
-    public function patrimonioMarca(): ?PatrimonioMarca
+    public function bemMarca(): ?BemMarca
     {
         if($this->marca_id) {
-            return(new PatrimonioMarca())->findById($this->marca_id);
+            return(new BemMarca())->findById($this->marca_id);
         }
         return null;
     }
 
     /**
-     * @return null|PatrimonioMarca
+     * @return null|BemModelo
      */
-    public function patrimonioModelo(): ?PatrimonioModelo
+    public function bemModelo(): ?BemModelo
     {
         if($this->modelo_id) {
-            return(new PatrimonioModelo())->findById($this->modelo_id);
+            return(new BemModelo())->findById($this->modelo_id);
         }
         return null;
     }
@@ -77,7 +77,7 @@ class Patrimonio extends Model
     /**
      * @return null|Unit
      */
-    public function patrimonioUnit(): ?Unit
+    public function bemUnit(): ?Unit
     {
         if($this->unit_id) {
             return(new Unit())->findById($this->unit_id);
@@ -125,7 +125,7 @@ class Patrimonio extends Model
     public function levelBadge(): string
     {
         if($this->level_id == 1):
-            return '<span class="badge text-bg-primary ms-2">Patrimonio</span>';
+            return '<span class="badge text-bg-primary ms-2">Bem</span>';
         elseif($this->level_id == 2):
             return '<span class="badge text-bg-light ms-2">Edit*</span>';
         elseif($this->level_id == 3):
@@ -161,7 +161,7 @@ class Patrimonio extends Model
             $this->password = passwd($this->password);
         }
 
-        /** Patrimonio Update */
+        /** Bem Update */
         if (!empty($this->id)) {
             $userId = $this->id;
 
@@ -177,7 +177,7 @@ class Patrimonio extends Model
             }
         }
 
-        /** Patrimonio Create */
+        /** Bem Create */
         if (empty($this->id)) {
             if ($this->findByEmail($this->email, "id")) {
                 $this->message->warning("O e-mail informado já está cadastrado");
