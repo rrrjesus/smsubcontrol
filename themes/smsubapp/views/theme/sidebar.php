@@ -38,7 +38,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link link-light d-flex align-items-center fs-6 gap-2 icon-link icon-link-hover"
-                style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="<?=url("/beta/patrimonio/lista")?>">
+                style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="<?=url("/beta/patrimonio/bens/lista")?>">
                 <i class="bi bi-card-heading mb-2"></i>
                 Patrimonio
                 </a>

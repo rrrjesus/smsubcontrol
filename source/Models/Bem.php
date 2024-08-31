@@ -17,7 +17,7 @@ class Bem extends Model
      */
     public function __construct()
     {
-        parent::__construct("bens", ["id"], ["bens_nome", "marca_id", "modelo", "descricao", "unit_id", "imei", "status"]);
+        parent::__construct("bens", ["id"], ["bens_nome", "marca_id", "modelo", "descricao", "unit_id", "imei", "status", "photo"]);
     }
 
     /**

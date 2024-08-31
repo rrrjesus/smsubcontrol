@@ -74,10 +74,13 @@ $route->get("/dash", "Dash:dash");
 $route->get("/dash/home", "Dash:home");
 $route->post("/dash/home", "Dash:home");
 
-$route->get("/perfil", "Patrimonio:profile");
+$route->get("/perfil", "Profile:profile");
+$route->post("/perfil", "Profile:profile");
 $route->get("/contatos", "Patrimonio:contact");
-$route->get("/patrimonio/lista", "Patrimonio:patrimonioLista");
-$route->get("/patrimonio/bens/{patrimonio_id}", "Patrimonio:patrimonio");
+$route->get("/patrimonio/bens/lista", "Bens:bensLista");
+$route->get("/patrimonio/bens/cadastrar", "Bens:bens");
+$route->get("/patrimonio/bens/editar/{bens_id}", "Bens:bens");
+
 
 $route->get("/logoff", "Dash:logoff");
 
