@@ -1,6 +1,6 @@
 <?php
 
-namespace Source\Models;
+namespace Source\Models\Patrimonio;
 
 use Source\Core\Model;
 
@@ -21,22 +21,22 @@ class BemMarca extends Model
     }
 
     /**
-     * @param string $marca
+     * @param string $marca_nome
      * @param string $columns
      * @return null|BemMarca
      */
-    public function findByMarca(string $marca, string $columns = "*"): ?BemMarca
+    public function findByMarca(string $marca_nome, string $columns = "*"): ?BemMarca
     {
-        $find = $this->find("marca = :marca", "marca={$marca}", $columns);
+        $find = $this->find("marca_nome = :marca_nome", "marca_nome={$marca_nome}", $columns);
         return $find->fetch();
     }
 
-    public function status(): ?string
+    public function statusSelect(): ?string
     {
         if ($this->status == "actived") {
-            return '<option value="actived" selected>Ativado</option><option value="disabled">Desativado</option>';
+            return '<option value="actived" selected>Ativo</option><option value="disabled">Inativo</option>';
         } else {
-            return '<option value="disabled" selected>Desativado</option><option value="actived">Ativado</option>';
+            return '<option value="disabled" selected>Inativo</option><option value="actived">Ativo</option>';
         }
         return null; 
     }
@@ -58,10 +58,6 @@ class BemMarca extends Model
      */
     public function save(): bool
     {
-        if (!$this->required()) {
-            $this->message->warning("O campo : Marca é obrigatório !!!")->icon();
-            return false;
-        }
 
         /** BemMarca Update */
         if (!empty($this->id)) {

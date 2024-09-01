@@ -1,8 +1,10 @@
 <?php
 
-namespace Source\Models;
+namespace Source\Models\Patrimonio;
 
 use Source\Core\Model;
+use Source\Models\Unit;
+
 
 /**
  * SMSUB | Class Bem
@@ -17,7 +19,18 @@ class Bem extends Model
      */
     public function __construct()
     {
-        parent::__construct("bens", ["id"], ["bens_nome", "marca_id", "modelo", "descricao", "unit_id", "imei", "status", "photo"]);
+        parent::__construct("bens", ["id"], ["bens_nome", "marca_id", "modelo_id", "descricao", "unit_id", "imei", "status", "photo", "observacoes"]);
+    }
+
+    /**
+     * @param string $imei
+     * @param string $columns
+     * @return null|Bem
+     */
+    public function findByImei(string $imei, string $columns = "*"): ?Bem
+    {
+        $find = $this->find("imei = :imei", "imei={$imei}", $columns);
+        return $find->fetch();
     }
 
     /**
@@ -35,12 +48,48 @@ class Bem extends Model
     public function statusSelect(): ?string
     {
         if ($this->status == "actived") {
-            return '<option value="actived" selected>Ativado</option><option value="disabled">Desativado</option>';
+            return '<option value="actived" selected>Ativo</option><option value="disabled">Inativo</option>';
         } else {
-            return '<option value="disabled" selected>Desativado</option><option value="actived">Ativado</option>';
+            return '<option value="disabled" selected>Inativo</option><option value="actived">Ativo</option>';
         }
         return null; 
     }
+
+    public function marcaSelect(): ?BemMarca
+    {
+        $stm = (new BemMarca())->find("status=:s","s=actived")->fetch(true);
+
+        if(!empty($stm)):
+            foreach ($stm as $row):
+                echo '<option value="'.$row->id.'">'.$row->bem_nome.'</option>'; //Return the JSON Array
+            endforeach;
+        endif;
+        return null;
+    } 
+
+    public function modeloSelect(): ?BemModelo
+    {
+        $stm = (new BemModelo())->find("status=:s","s=actived")->fetch(true);
+
+        if(!empty($stm)):
+            foreach ($stm as $row):
+                echo '<option value="'.$row->id.'">'.$row->modelo_nome.'</option>'; //Return the JSON Array
+            endforeach;
+        endif;
+        return null;
+    } 
+
+    public function unitSelect(): ?Unit
+    {
+        $stm = (new Unit())->find("status=:s","s=actived")->fetch(true);
+
+        if(!empty($stm)):
+            foreach ($stm as $row):
+                echo '<option value="'.$row->id.'">'.$row->unit_name.'</option>'; //Return the JSON Array
+            endforeach;
+        endif;
+        return null;
+    } 
 
     public function statusInput(): ?string
     {
@@ -142,45 +191,27 @@ class Bem extends Model
      */
     public function save(): bool
     {
-        if (!$this->required()) {
-            $this->message->warning("Nome, sobrenome, email  são obrigatórios !!!")->icon();
-            return false;
-        }
 
-        if (!is_email($this->email)) {
-            $this->message->warning("O e-mail informado não tem um formato válido")->icon();
-            return false;
-        }
+            /** Bem Update */
+            if (!empty($this->id)) {
+            $bemId = $this->id;
 
-        if (!is_passwd($this->password)) {
-            $min = CONF_PASSWD_MIN_LEN;
-            $max = CONF_PASSWD_MAX_LEN;
-            $this->message->warning("A senha deve ter entre {$min} e {$max} caracteres");
-            return false;
-        } else {
-            $this->password = passwd($this->password);
-        }
-
-        /** Bem Update */
-        if (!empty($this->id)) {
-            $userId = $this->id;
-
-            if ($this->find("email = :e AND id != :i", "e={$this->email}&i={$userId}", "id")->fetch()) {
-                $this->message->warning("O e-mail informado já está cadastrado");
+            if ($this->find("bem_nome = :b AND id != :i", "b={$this->bem_nome}&i={$bemId}", "id")->fetch()) {
+                $this->message->warning("O Bem informado já está cadastrado");
                 return false;
             }
 
-            $this->update($this->safe(), "id = :id", "id={$userId}");
+            $this->update($this->safe(), "id = :id", "id={$bemId}");
             if ($this->fail()) {
                 $this->message->error("Erro ao atualizar, verifique os dados");
                 return false;
             }
         }
 
-        /** Bem Create */
+        /** User Create */
         if (empty($this->id)) {
-            if ($this->findByEmail($this->email, "id")) {
-                $this->message->warning("O e-mail informado já está cadastrado");
+            if ($this->findByImei($this->imei, "id")) {
+                $this->message->warning("O imei informado já está cadastrado");
                 return false;
             }
 

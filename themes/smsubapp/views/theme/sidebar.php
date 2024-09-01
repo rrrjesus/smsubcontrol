@@ -31,25 +31,36 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link link-light d-flex align-items-center fs-6 gap-2 icon-link icon-link-hover"
-                style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="<?=url("/beta/eventos")?>">
-                <i class="bi bi-card-heading mb-2"></i>
-                Contratos
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link link-light d-flex align-items-center fs-6 gap-2 icon-link icon-link-hover"
                 style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="<?=url("/beta/patrimonio/bens/lista")?>">
                 <i class="bi bi-card-heading mb-2"></i>
-                Patrimonio
+                Patrimonio/Bens
                 </a>
             </li>
+
             <li class="nav-item">
-                <a class="nav-link link-light d-flex align-items-center fs-6 gap-2 icon-link icon-link-hover" 
-                style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="<?=url("/beta/identidade")?>">
-                <i class="bi bi-card-checklist mb-2"></i>
-                Chamados
+                <a class="nav-link link-light d-flex align-items-center fs-6 gap-2 icon-link icon-link-hover"
+                style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="<?=url("/beta/patrimonio/marcas/lista")?>">
+                <i class="bi bi-card-heading mb-2"></i>
+                Patrimonio/Marcas
                 </a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link link-light d-flex align-items-center fs-6 gap-2 icon-link icon-link-hover"
+                style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="<?=url("/beta/patrimonio/modelos/lista")?>">
+                <i class="bi bi-card-heading mb-2"></i>
+                Patrimonio/Modelos
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link link-light d-flex align-items-center fs-6 gap-2 icon-link icon-link-hover"
+                style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="<?=url("/beta/patrimonio/historicos/lista")?>">
+                <i class="bi bi-card-heading mb-2"></i>
+                Patrimonio/Historico
+                </a>
+            </li>
+
             <li class="nav-item">
                 <a class="nav-link link-light d-flex align-items-center fs-6 gap-2 icon-link icon-link-hover" 
                 style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="<?=url("/beta/contatos")?>">

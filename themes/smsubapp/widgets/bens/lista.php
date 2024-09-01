@@ -16,7 +16,7 @@
                     </div>
                 </div>
             
-
+                <?=flash();?>
                 <table id="patrimonio" class="table table-hover table-bordered table-sm border-<?=CONF_WEB_COLOR?> p-2" style="width:100%">
                     <thead class="table-<?=CONF_WEB_COLOR?>">
                     <tr>

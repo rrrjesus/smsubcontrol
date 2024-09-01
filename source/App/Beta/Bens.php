@@ -3,9 +3,9 @@
 namespace Source\App\Beta;
 
 use Source\Models\User;
-use Source\Models\Bem;
-use Source\Models\Upload;
-use Source\Models\Thumb;
+use Source\Support\Upload;
+use Source\Support\Thumb;
+use Source\Models\Patrimonio\Bem;
 
 /**
  * Class Bens
@@ -51,34 +51,28 @@ class Bens extends Admin
      */
     public function bens(?array $data): void
     {
+        $user = (new User())->findById($this->user->id);
+
         //create
         if (!empty($data["action"]) && $data["action"] == "create") {
             $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             $bensCreate = new Bem();
-            $bensCreate->first_name = $data["first_name"];
-            $bensCreate->last_name = $data["last_name"];
-            $bensCreate->email = $data["email"];
-            $bensCreate->password = $data["password"];
-            $bensCreate->level = $data["level"];
-            $bensCreate->genre = $data["genre"];
-            $bensCreate->datebirth = date_fmt_back($data["datebirth"]);
-            $bensCreate->document = preg_replace("/[^0-9]/", "", $data["document"]);
+            $bensCreate->bens_nome = $data["bens_nome"];
+            $bensCreate->marca_id = $data["marca_id"];
+            $bensCreate->modelo_id = $data["modelo_id"];
+            $bensCreate->imei = $data["imei"];
+            $bensCreate->unit_id = $data["unit_id"];
+            $bensCreate->descricao = $data["descricao"];
             $bensCreate->status = $data["status"];
+            $bensCreate->observacoes = $data["observacoes"];
+            $bensCreate->login_created = $user->login;
+            $bensCreate->created_at = date_fmt('', "Y-m-d hh:mm:ss");
 
-            //upload photo
-            if (!empty($_FILES["photo"])) {
-                $files = $_FILES["photo"];
-                $upload = new Upload();
-                $image = $upload->image($files, $bensCreate->fullName(), 600);
-
-                if (!$image) {
-                    $json["message"] = $upload->message()->render();
-                    echo json_encode($json);
-                    return;
-                }
-
-                $bensCreate->photo = $image;
+            if(in_array("", $data)){
+                $json['message'] = $this->message->info("Informe o nome, descrição e status para criar o registro !")->icon()->render();
+                echo json_encode($json);
+                return;
             }
 
             if (!$bensCreate->save()) {
@@ -87,8 +81,8 @@ class Bens extends Admin
                 return;
             }
 
-            $this->message->success("Patrimônio cadastrado com sucesso...")->flash();
-            $json["redirect"] = url("/admin/users/patrimonio/{$bensCreate->id}");
+            $this->message->success("Bem {$bensCreate->bem_nome} cadastrado com sucesso...")->icon("emoji-grin me-1")->flash();
+            $json["redirect"] = url("/beta/patrimonio/bens/cadastrar");
 
             echo json_encode($json);
             return;
@@ -100,23 +94,25 @@ class Bens extends Admin
             $bensUpdate = (new Bem())->findById($data["bens_id"]);
 
             if (!$bensUpdate) {
-                $this->message->error("Você tentou gerenciar um patrimônio que não existe")->flash();
+                $this->message->error("Você tentou gerenciar um bem que não existe")->flash();
                 echo json_encode(["redirect" => url("/beta/patrimonio/bens/lista")]);
                 return;
             }
 
-            $bensUpdate->first_name = $data["first_name"];
-            $bensUpdate->last_name = $data["last_name"];
-            $bensUpdate->email = $data["email"];
-            $bensUpdate->password = (!empty($data["password"]) ? $data["password"] : $bensUpdate->password);
-            $bensUpdate->level = $data["level"];
-            $bensUpdate->genre = $data["genre"];
-            $bensUpdate->datebirth = date_fmt_back($data["datebirth"]);
-            $bensUpdate->document = preg_replace("/[^0-9]/", "", $data["document"]);
+            $bensUpdate = (new Bem())->findById($data["bens_id"]);
+            $bensUpdate->bens_nome = $data["bens_nome"];
+            $bensUpdate->marca_id = $data["marca_id"];
+            $bensUpdate->modelo_id = $data["modelo_id"];
+            $bensUpdate->imei = $data["imei"];
+            $bensUpdate->unit_id = $data["unit_id"];
+            $bensUpdate->descricao = $data["descricao"];
             $bensUpdate->status = $data["status"];
+            $bensUpdate->observacoes = $data["observacoes"];
+            $bensUpdate->login_updated = $user->login;
+            $bensUpdate->updated_at = date_fmt('', "Y-m-d hh:mm:ss");
 
-            //upload photo
-            if (!empty($_FILES["photo"])) {
+             //upload photo
+             if (!empty($_FILES["photo"])) {
                 if ($bensUpdate->photo && file_exists(__DIR__ . "/../../../" . CONF_UPLOAD_DIR . "/{$bensUpdate->photo}")) {
                     unlink(__DIR__ . "/../../../" . CONF_UPLOAD_DIR . "/{$bensUpdate->photo}");
                     (new Thumb())->flush($bensUpdate->photo);
@@ -124,7 +120,7 @@ class Bens extends Admin
 
                 $files = $_FILES["photo"];
                 $upload = new Upload();
-                $image = $upload->image($files, $bensUpdate->fullName(), 600);
+                $image = $upload->image($files, $bensUpdate->imei, 600);
 
                 if (!$image) {
                     $json["message"] = $upload->message()->render();
@@ -135,14 +131,20 @@ class Bens extends Admin
                 $bensUpdate->photo = $image;
             }
 
+            if(in_array("", $data)){
+                $json['message'] = $this->message->info("Informe o bem, descrição e status para criar o registro !")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
+
             if (!$bensUpdate->save()) {
                 $json["message"] = $bensUpdate->message()->render();
                 echo json_encode($json);
                 return;
             }
 
-            $this->message->success("Patrimônio atualizado com sucesso...")->flash();
-            echo json_encode(["reload" => true]);
+            $json["message"] = $this->message->success("Bem {$bensUpdate->bem_nome} atualizado com sucesso !!!")->icon("emoji-grin me-1")->render();
+            echo json_encode($json);
             return;
         }
 
@@ -176,6 +178,8 @@ class Bens extends Admin
             $bensEdit = (new Bem())->findById($bemId);
         }
 
+        $bensCreates = new Bem();
+
         $head = $this->seo->render(
             CONF_SITE_NAME . " | " . ($bensEdit ? "Bens de {$bensEdit->bens_nome}" : "Não Encontrado"),
             CONF_SITE_DESC,
@@ -188,6 +192,7 @@ class Bens extends Admin
             "app" => "beta/patrimonio/bens",
             "head" => $head,
             "bens" => $bensEdit,
+            "benscreates" => $bensCreates,
             "urls" => "perfil",
             "icon" => "person"
         ]);
