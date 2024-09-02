@@ -58,9 +58,9 @@ class Bens extends Admin
             $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             $bensCreate = new Bem();
-            $bensCreate->bens_nome = $data["bens_nome"];
             $bensCreate->modelo_id = $data["modelo_id"];
             $bensCreate->imei = $data["imei"];
+            $bensCreate->user_id = $data["user_id"];
             $bensCreate->unit_id = $data["unit_id"];
             $bensCreate->descricao = $data["descricao"];
             $bensCreate->status = $data["status"];
@@ -99,9 +99,9 @@ class Bens extends Admin
             }
 
             $bensUpdate = (new Bem())->findById($data["bens_id"]);
-            $bensUpdate->bens_nome = $data["bens_nome"];
             $bensUpdate->modelo_id = $data["modelo_id"];
             $bensUpdate->imei = $data["imei"];
+            $bensUpdate->user_id = $data["user_id"];
             $bensUpdate->unit_id = $data["unit_id"];
             $bensUpdate->descricao = $data["descricao"];
             $bensUpdate->status = $data["status"];
@@ -109,8 +109,8 @@ class Bens extends Admin
             $bensUpdate->login_updated = $user->login;
             $bensUpdate->updated_at = date_fmt('', "Y-m-d hh:mm:ss");
 
-            if(in_array("", $data)){
-                $json['message'] = $this->message->info("Informe o bem, descrição e status para criar o registro !")->icon()->render();
+            if($data["descricao"] == ""){
+                $json['message'] = $this->message->warning("Descreva o patrimonio !!!")->icon()->render();
                 echo json_encode($json);
                 return;
             }

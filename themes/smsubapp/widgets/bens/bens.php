@@ -22,29 +22,8 @@
                                     <div class="ajax_response"><?=flash();?></div>
 
                                     <?=csrf_input();?>
-                                        
-                                    <div class="row mb-1">
-        
-                                        <div class="col-md-1 app_formbox_photo mb-1">
-                                            <div class="rounded-circle j_profile_image thumb" style="background-image: url('<?=theme("/assets/images/avatar.jpg", CONF_VIEW_APP);?>')"></div>
-                                        </div>
 
-                                        <div class="col-md-4 mb-1">
-                                            <label for="formFileSm" class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>"> <strong><i class="bi bi-upload me-1"></i>  Extensões aceitas : .bmp ,.png, .svg, .jpeg e .jpg </strong></label>
-                                            <input class="form-control form-control-sm" data-image=".j_profile_image" type="file" class="radius" name="photo"/>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="row">
-
-                                        <div class="col-md-3 mb-1">
-                                            <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputNome"><strong><i class="bi bi-person me-1"></i> Nome</strong></label>
-                                            <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                                data-bs-title="Nome" class="form-control form-control-sm"
-                                                name="bens_nome" placeholder="NOME">
-
-                                        </div>      
+                                    <div class="row">    
 
                                         <div class="col-md-3 mb-1">
                                             <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSetor"><strong><i class="bi bi-building ms-3 me-3"></i> ID/Marca/Modelo</strong></label>
@@ -59,6 +38,14 @@
                                             <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                             data-bs-title="Imei" class="form-control form-control-sm" name="imei" placeholder="15 NUMEROS">
                                         </div>
+
+                                        <div class="col-md-4 mb-1">
+                                            <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSetor"><strong><i class="bi bi-building ms-3 me-3"></i> Usuario</strong></label>
+                                            <select class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                                data-bs-title="Digite ò Usuario" name="user_id">
+                                                <?=$benscreates->userSelect()?>
+                                            </select>
+                                        </div>  
 
                                     </div>
 
@@ -132,15 +119,7 @@
                                         
                                     <div class="row">
 
-                                        <div class="col-md-3 mb-1">
-                                            <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputNome"><strong><i class="bi bi-person me-1"></i> Nome</strong></label>
-                                            <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                                data-bs-title="Nome" class="form-control form-control-sm"
-                                                name="bens_nome" placeholder="NOME" value="<?=$bens->bens_nome?>" >
-
-                                        </div>  
-
-                                        <div class="col-md-3 mb-1">
+                                        <div class="col-md-5 mb-1">
                                             <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSetor"><strong><i class="bi bi-building ms-3 me-3"></i> ID/Marca/Modelo</strong></label>
                                             <select class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                                 data-bs-title="Digite o Modelo" name="modelo_id">
@@ -155,11 +134,20 @@
                                             data-bs-title="Imei" class="form-control form-control-sm" name="imei" value="<?=$bens->imei?>" placeholder="15 NUMEROS">
                                         </div>
 
+                                        <div class="col-md-4 mb-1">
+                                            <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSetor"><strong><i class="bi bi-building ms-3 me-3"></i> Usuario</strong></label>
+                                            <select class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                                data-bs-title="Digite ò Usuario" name="user_id">
+                                                <option value="<?=$bens->user()->id?>" selected><?=$bens->user()->login.' - '.$bens->user()->fullName()?></option>
+                                                <?=$benscreates->userSelect()?>
+                                            </select>
+                                        </div>  
+
                                     </div>
 
                                     <div class="row">   
 
-                                        <div class="col-md-3 mb-1">
+                                        <div class="col-md-4 mb-1">
                                             <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSetor"><strong><i class="bi bi-building ms-3 me-3"></i> Unidade</strong></label>
                                             <select class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                                 data-bs-title="Digite a Unidade" name="unit_id">
@@ -168,14 +156,14 @@
                                             </select>
                                         </div>  
 
-                                        <div class="col-md-6 mb-1">
+                                        <div class="col-md-5 mb-1">
                                             <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSobreNome"><strong><i class="bi bi-person-add me-1"></i> Descrição</strong></label>
                                             <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                                 data-bs-title="Descrição" class="form-control form-control-sm"
                                                 name="descricao" placeholder="DESCRIÇÃO" id="descricao" value="<?=$bens->descricao?>" >
                                         </div>
 
-                                        <div class="col-md-2 mb-1">
+                                        <div class="col-md-3 mb-1">
                                             <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSetor"><strong><i class="bi bi-building ms-3 me-3"></i> Status</strong></label>
                                             <select class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                                 data-bs-title="Digite o Status" name="status">
@@ -209,3 +197,4 @@
             </div>
         <?php endif; ?>
     </div>
+    

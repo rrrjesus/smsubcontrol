@@ -4,6 +4,7 @@ namespace Source\Models\Patrimonio;
 
 use Source\Core\Model;
 use Source\Models\Unit;
+use Source\Models\User;
 
 
 /**
@@ -31,6 +32,14 @@ class Bem extends Model
     {
         $find = $this->find("imei = :imei", "imei={$imei}", $columns);
         return $find->fetch();
+    }
+
+    /**
+     * @return AppCategory
+     */
+    public function bemMarca(): BemMarca
+    {
+        return (new BemMarca())->findById($this->marca_id);
     }
 
     /**
@@ -82,11 +91,10 @@ class Bem extends Model
     public function marcamodeloSelect(): ?BemModelo
     {
         $stm = (new BemModelo())->find("status=:s","s=actived")->fetch(true);
-        $marca = new Bem();
 
         if(!empty($stm)):
             foreach ($stm as $row):
-                echo '<option value="'.$row->id.'">'.$row->id.' - '.$marca->bemMarcas($row->marca_id)->marca_nome.' - '.$row->modelo_nome.'</option>'; //Return the JSON Array
+                echo '<option value="'.$row->id.'">'.$row->id.' - '.$this->bemMarcas($row->marca_id)->marca_nome.' - '.$row->modelo_nome.'</option>'; //Return the JSON Array
             endforeach;
         endif;
         return null;
@@ -104,6 +112,46 @@ class Bem extends Model
         return null;
     } 
 
+    public function userSelect(): ?User
+    {
+        $stm = (new User())->find("status != :s","s=trash")->fetch(true);
+
+        if(!empty($stm)):
+            foreach ($stm as $row):
+                echo '<option value="'.$row->id.'">'.$row->login.' - '.$row->fullName().'</option>'; //Return the JSON Array
+            endforeach;
+        endif;
+        return null;
+    } 
+
+    static function completeUser($columns): ?User
+    {
+        $stm = (new User())->find("status != :s","s=trash", $columns);
+        $array = array();
+
+        if(!empty($stm)):
+            foreach ($stm->fetch(true) as $row):
+                $array[] = $row->first_name;
+            endforeach;
+            echo json_encode($array); //Return the JSON Array
+        endif;
+        return null;
+    }
+
+    static function completeSector($columns): ?Sector
+    {
+        $stm = (new Sector())->find("status=:s","s=post",$columns);
+        $array = array();
+
+        if(!empty($stm)):
+            foreach ($stm->fetch(true) as $row):
+                $array[] = $row->sector_name;
+            endforeach;
+            echo json_encode($array); //Return the JSON Array
+        endif;
+        return null;
+    }
+
     public function statusInput(): ?string
     {
         if ($this->status == "actived") {
@@ -117,7 +165,7 @@ class Bem extends Model
     /**
      * @return null|BemMarca
      */
-    public function bemMarca(): ?BemMarca
+    public function bemMarcai(): ?BemMarca
     {
         if($this->marca_id) {
             return(new BemMarca())->findById($this->marca_id);
