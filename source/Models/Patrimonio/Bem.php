@@ -61,7 +61,7 @@ class Bem extends Model
 
         if(!empty($stm)):
             foreach ($stm as $row):
-                echo '<option value="'.$row->id.'">'.$row->bem_nome.'</option>'; //Return the JSON Array
+                echo '<option value="'.$row->id.'">'.$row->marca_nome.'</option>'; //Return the JSON Array
             endforeach;
         endif;
         return null;
@@ -74,6 +74,19 @@ class Bem extends Model
         if(!empty($stm)):
             foreach ($stm as $row):
                 echo '<option value="'.$row->id.'">'.$row->modelo_nome.'</option>'; //Return the JSON Array
+            endforeach;
+        endif;
+        return null;
+    } 
+
+    public function marcamodeloSelect(): ?BemModelo
+    {
+        $stm = (new BemModelo())->find("status=:s","s=actived")->fetch(true);
+        $marca = new Bem();
+
+        if(!empty($stm)):
+            foreach ($stm as $row):
+                echo '<option value="'.$row->id.'">'.$row->id.' - '.$marca->bemMarcas($row->marca_id)->marca_nome.' - '.$row->modelo_nome.'</option>'; //Return the JSON Array
             endforeach;
         endif;
         return null;
@@ -119,6 +132,17 @@ class Bem extends Model
     {
         if($this->modelo_id) {
             return(new BemModelo())->findById($this->modelo_id);
+        }
+        return null;
+    }
+
+    /**
+     * @return null|BemMarcas
+     */
+    public function bemMarcas(string $marca): ?BemMarca
+    {
+        if($marca) {
+            return(new BemMarca())->findById($marca);
         }
         return null;
     }
@@ -191,13 +215,12 @@ class Bem extends Model
      */
     public function save(): bool
     {
-
-            /** Bem Update */
-            if (!empty($this->id)) {
+        /** Bem Update */
+        if (!empty($this->id)) {
             $bemId = $this->id;
 
-            if ($this->find("bem_nome = :b AND id != :i", "b={$this->bem_nome}&i={$bemId}", "id")->fetch()) {
-                $this->message->warning("O Bem informado já está cadastrado");
+            if ($this->find("imei = :c AND id != :i", "c={$this->imei}&i={$bemId}", "id")->fetch()) {
+                $this->message->warning("O imei informado já está cadastrado");
                 return false;
             }
 
@@ -208,21 +231,21 @@ class Bem extends Model
             }
         }
 
-        /** User Create */
+        /** Bem Create */
         if (empty($this->id)) {
             if ($this->findByImei($this->imei, "id")) {
                 $this->message->warning("O imei informado já está cadastrado");
                 return false;
             }
 
-            $userId = $this->create($this->safe());
+            $bemId = $this->create($this->safe());
             if ($this->fail()) {
                 $this->message->error("Erro ao cadastrar, verifique os dados");
                 return false;
             }
         }
 
-        $this->data = ($this->findById($userId))->data();
+        $this->data = ($this->findById($bemId))->data();
         return true;
     }
 }

@@ -17,83 +17,106 @@ class BemModelo extends Model
      */
     public function __construct()
     {
-        parent::__construct("bens_modelo", ["id"], ["marca_id", "modelo_nome". "descricao", "status"]);
+        parent::__construct("bens_modelo", ["id"], ["marca_id", "modelo_nome", "descricao", "status"]);
     }
 
+    
     /**
-     * @param string $modelo
+     * @param string $modelo_nome
      * @param string $columns
      * @return null|BemModelo
      */
-    public function findByModelo(string $modelo, string $columns = "*"): ?BemModelo
+    public function findByModelo(string $modelo_nome, string $columns = "*"): ?BemModelo
     {
-        $find = $this->find("modelo = :modelo", "modelo={$modelo}", $columns);
+        $find = $this->find("modelo_nome = :modelo_nome", "modelo_nome={$modelo_nome}", $columns);
         return $find->fetch();
     }
 
-    public function status(): ?string
-    {
-        if ($this->status == "actived") {
-            return '<option value="actived" selected>Ativado</option><option value="disabled">Desativado</option>';
-        } else {
-            return '<option value="disabled" selected>Desativado</option><option value="actived">Ativado</option>';
-        }
-        return null; 
-    }
-
     /**
-     * @return string
+     * @return null|BemMarca
      */
-    public function statusBadge(): string
+    public function marcaSelect(): ?BemMarca
     {
-        if($this->status == 'actived'):
-            return '<span class="badge text-bg-success ms-2">Ativo</span>';
-        else:
-            return '<span class="badge text-bg-danger ms-2">Inativo</span>';
-        endif;  
-    }
+        $stm = (new BemMarca())->find("status=:s","s=actived")->fetch(true);
 
+        if(!empty($stm)):
+            foreach ($stm as $row):
+                echo '<option value="'.$row->id.'">'.$row->marca_nome.'</option>'; //Return the JSON Array
+            endforeach;
+        endif;
+        return null;
+    } 
+    
     /**
-     * @return bool
+     * @return null|BemMarca
      */
-    public function save(): bool
+    public function bemMarca(): ?BemMarca
     {
-        if (!$this->required()) {
-            $this->message->warning("O campo : Modelo é obrigatório !!!")->icon();
-            return false;
+        if($this->marca_id) {
+            return(new BemMarca())->findById($this->marca_id);
         }
-
-        /** BemModelo Update */
-        if (!empty($this->id)) {
-            $modeloId = $this->id;
-
-            if ($this->find("modelo_nome = :c AND id != :i", "c={$this->modelo_nome}&i={$modeloId}", "id")->fetch()) {
-                $this->message->warning("O modelo informada já está cadastrada");
-                return false;
-            }
-
-            $this->update($this->safe(), "id = :id", "id={$modeloId}");
-            if ($this->fail()) {
-                $this->message->error("Erro ao atualizar, verifique os dados");
-                return false;
-            }
-        }
-
-        /** BemModelo Create */
-        if (empty($this->id)) {
-            if ($this->findByModelo($this->modelo_nome, "id")) {
-                $this->message->warning("O modelo informada já está cadastrada");
-                return false;
-            }
-
-            $modeloId = $this->create($this->safe());
-            if ($this->fail()) {
-                $this->message->error("Erro ao cadastrar, verifique os dados");
-                return false;
-            }
-        }
-
-        $this->data = ($this->findById($modeloId))->data();
-        return true;
+        return null;
     }
-}
+    
+        public function statusSelect(): ?string
+        {
+            if ($this->status == "actived") {
+                return '<option value="actived" selected>Ativo</option><option value="disabled">Inativo</option>';
+            } else {
+                return '<option value="disabled" selected>Inativo</option><option value="actived">Ativo</option>';
+            }
+            return null; 
+        }
+    
+        /**
+         * @return string
+         */
+        public function statusBadge(): string
+        {
+            if($this->status == 'actived'):
+                return '<span class="badge text-bg-success ms-2">Ativo</span>';
+            else:
+                return '<span class="badge text-bg-danger ms-2">Inativo</span>';
+            endif;  
+        }
+    
+        /**
+         * @return bool
+         */
+        public function save(): bool
+        {
+    
+            /** BemModelo Update */
+            if (!empty($this->id)) {
+                $modeloId = $this->id;
+    
+                if ($this->find("modelo_nome = :c AND id != :i", "c={$this->modelo_nome}&i={$modeloId}", "id")->fetch()) {
+                    $this->message->warning("O modelo informado já está cadastrado");
+                    return false;
+                }
+    
+                $this->update($this->safe(), "id = :id", "id={$modeloId}");
+                if ($this->fail()) {
+                    $this->message->error("Erro ao atualizar, verifique os dados");
+                    return false;
+                }
+            }
+    
+            /** BemModelo Create */
+            if (empty($this->id)) {
+                if ($this->findByModelo($this->modelo_nome, "id")) {
+                    $this->message->warning("O modelo informado já está cadastrado");
+                    return false;
+                }
+    
+                $modeloId = $this->create($this->safe());
+                if ($this->fail()) {
+                    $this->message->error("Erro ao cadastrar, verifique os dados");
+                    return false;
+                }
+            }
+    
+            $this->data = ($this->findById($modeloId))->data();
+            return true;
+        }
+    }

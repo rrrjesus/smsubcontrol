@@ -44,21 +44,13 @@
                                                 data-bs-title="Nome" class="form-control form-control-sm"
                                                 name="bens_nome" placeholder="NOME">
 
-                                        </div>
+                                        </div>      
 
                                         <div class="col-md-3 mb-1">
-                                            <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSetor"><strong><i class="bi bi-building ms-3 me-3"></i> Marca</strong></label>
+                                            <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSetor"><strong><i class="bi bi-building ms-3 me-3"></i> ID/Marca/Modelo</strong></label>
                                             <select class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                                data-bs-title="Digite o Modelo" name="modelo_id">
-                                                <?=$benscreates->marcaSelect()?>
-                                            </select>
-                                        </div>        
-
-                                        <div class="col-md-3 mb-1">
-                                            <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSetor"><strong><i class="bi bi-building ms-3 me-3"></i> Marca</strong></label>
-                                            <select class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                                data-bs-title="Digite a Marca" name="marca_id">
-                                                <?=$benscreates->modeloSelect()?>
+                                                data-bs-title="Digite a Marca" name="modelo_id">
+                                                <?=$benscreates->marcamodeloSelect()?>
                                             </select>
                                         </div> 
 
@@ -138,19 +130,6 @@
 
                                     <?=csrf_input();?>
                                         
-                                    <div class="row mb-1">
-        
-                                        <div class="col-md-1 app_formbox_photo mb-1">
-                                            <div class="rounded-circle j_profile_image thumb" style="background-image: url('<?=($bens->photo() ? image($bens->photo, 360, 360) : theme("/assets/images/avatar.jpg", CONF_VIEW_APP));?>')"></div>
-                                        </div>
-
-                                        <div class="col-md-4 mb-1">
-                                            <label for="formFileSm" class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>"> <strong><i class="bi bi-upload me-1"></i>  Extensões aceitas : .bmp ,.png, .svg, .jpeg e .jpg </strong></label>
-                                            <input class="form-control form-control-sm" data-image=".j_profile_image" type="file" class="radius" name="photo"/>
-                                        </div>
-
-                                    </div>
-
                                     <div class="row">
 
                                         <div class="col-md-3 mb-1">
@@ -159,23 +138,14 @@
                                                 data-bs-title="Nome" class="form-control form-control-sm"
                                                 name="bens_nome" placeholder="NOME" value="<?=$bens->bens_nome?>" >
 
-                                        </div>
+                                        </div>  
 
                                         <div class="col-md-3 mb-1">
-                                            <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSetor"><strong><i class="bi bi-building ms-3 me-3"></i> Marca</strong></label>
-                                            <select class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                                data-bs-title="Digite a Marca" name="marca_id">
-                                                <option value="<?=$bens->bemMarca()->id?>" selected><?=$bens->bemMarca()->marca_nome?></option>
-                                                <?=$benscreates->marcaSelect()?>
-                                            </select>
-                                        </div>        
-
-                                        <div class="col-md-3 mb-1">
-                                            <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSetor"><strong><i class="bi bi-building ms-3 me-3"></i> Marca</strong></label>
+                                            <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSetor"><strong><i class="bi bi-building ms-3 me-3"></i> ID/Marca/Modelo</strong></label>
                                             <select class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                                 data-bs-title="Digite o Modelo" name="modelo_id">
-                                                <option value="<?=$bens->bemModelo()->id?>" selected><?=$bens->bemModelo()->modelo_nome?></option>
-                                                <?=$benscreates->modeloSelect()?>
+                                                <option value="<?=$bens->bemModelo()->id?>" selected><?=$bens->bemModelo()->id.' - '.$bens->bemMarcas($bens->bemModelo()->marca_id)->marca_nome.' - '.$bens->bemModelo()->modelo_nome?></option>
+                                                <?=$benscreates->marcamodeloSelect()?>
                                             </select>
                                         </div> 
 
@@ -188,13 +158,6 @@
                                     </div>
 
                                     <div class="row">   
-
-                                        <div class="col-md-4 mb-1">
-                                            <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSobreNome"><strong><i class="bi bi-person-add me-1"></i> Unidade</strong></label>
-                                            <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                                data-bs-title="Unidade" class="form-control form-control-sm"
-                                                name="unit_id" placeholder="UNIDADE" id="unit_name" value="<?=$bens->bemUnit()->unit_name?>" >
-                                        </div>
 
                                         <div class="col-md-3 mb-1">
                                             <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSetor"><strong><i class="bi bi-building ms-3 me-3"></i> Unidade</strong></label>

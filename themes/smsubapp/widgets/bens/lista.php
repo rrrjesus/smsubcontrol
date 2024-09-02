@@ -37,12 +37,12 @@
                         data-bs-title="Clique para editar" class="btn btn-sm btn-outline-warning fw-bold me-2"><i class="bi bi-pencil me-2"></i><?=$lista->id?></a></td>
                         <td class="text-center fw-semibold"><?=(!empty($lista->bens_nome) ? $lista->bens_nome : "")?></td>
                         <td class="text-center fw-semibold">
-                        <?php if(!empty($lista->bemMarca()->marca_nome) && !empty($lista->bemMarca()->status == "actived")):
-                            echo (!empty($lista->bemMarca()->marca_nome) ? $lista->bemMarca()->marca_nome : "NÃO CADASTRADO");
+                            <?php if(!empty($lista->bemModelo()->marca_id) && !empty($lista->bemModelo()->status == "actived")):
+                                echo $lista->bemMarcas($lista->bemModelo()->marca_id)->marca_nome;
                         else:
                             echo "EXCLUÍDO";
                         endif;
-                            ?>
+                        ?>
                         </td>
                         <td class="text-center fw-semibold">
                             <?php if(!empty($lista->bemModelo()->modelo_nome) && !empty($lista->bemModelo()->status == "actived")):

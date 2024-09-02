@@ -59,7 +59,6 @@ class Bens extends Admin
 
             $bensCreate = new Bem();
             $bensCreate->bens_nome = $data["bens_nome"];
-            $bensCreate->marca_id = $data["marca_id"];
             $bensCreate->modelo_id = $data["modelo_id"];
             $bensCreate->imei = $data["imei"];
             $bensCreate->unit_id = $data["unit_id"];
@@ -101,7 +100,6 @@ class Bens extends Admin
 
             $bensUpdate = (new Bem())->findById($data["bens_id"]);
             $bensUpdate->bens_nome = $data["bens_nome"];
-            $bensUpdate->marca_id = $data["marca_id"];
             $bensUpdate->modelo_id = $data["modelo_id"];
             $bensUpdate->imei = $data["imei"];
             $bensUpdate->unit_id = $data["unit_id"];
@@ -110,26 +108,6 @@ class Bens extends Admin
             $bensUpdate->observacoes = $data["observacoes"];
             $bensUpdate->login_updated = $user->login;
             $bensUpdate->updated_at = date_fmt('', "Y-m-d hh:mm:ss");
-
-             //upload photo
-             if (!empty($_FILES["photo"])) {
-                if ($bensUpdate->photo && file_exists(__DIR__ . "/../../../" . CONF_UPLOAD_DIR . "/{$bensUpdate->photo}")) {
-                    unlink(__DIR__ . "/../../../" . CONF_UPLOAD_DIR . "/{$bensUpdate->photo}");
-                    (new Thumb())->flush($bensUpdate->photo);
-                }
-
-                $files = $_FILES["photo"];
-                $upload = new Upload();
-                $image = $upload->image($files, $bensUpdate->imei, 600);
-
-                if (!$image) {
-                    $json["message"] = $upload->message()->render();
-                    echo json_encode($json);
-                    return;
-                }
-
-                $bensUpdate->photo = $image;
-            }
 
             if(in_array("", $data)){
                 $json['message'] = $this->message->info("Informe o bem, descrição e status para criar o registro !")->icon()->render();

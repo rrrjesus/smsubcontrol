@@ -77,17 +77,26 @@ $route->post("/dash/home", "Dash:home");
 $route->get("/perfil", "Profile:profile");
 $route->post("/perfil", "Profile:profile");
 $route->get("/contatos", "Patrimonio:contact");
+
+//Modelos de Marcas
 $route->get("/patrimonio/marcas/lista", "BensMarcas:bensmarcasLista");
 $route->get("/patrimonio/marcas/cadastrar", "BensMarcas:bensMarcas");
 $route->post("/patrimonio/marcas/cadastrar", "BensMarcas:bensMarcas");
 $route->get("/patrimonio/marcas/editar/{bensmarcas_id}", "BensMarcas:bensMarcas");
 $route->post("/patrimonio/marcas/editar/{bensmarcas_id}", "BensMarcas:bensMarcas");
+
+//Modelos de Bens
+$route->get("/patrimonio/modelos/lista", "BensModelos:bensmodelosLista");
+$route->get("/patrimonio/modelos/cadastrar", "BensModelos:bensModelos");
+$route->post("/patrimonio/modelos/cadastrar", "BensModelos:bensModelos");
+$route->get("/patrimonio/modelos/editar/{bensmodelos_id}", "BensModelos:bensModelos");
+$route->post("/patrimonio/modelos/editar/{bensmodelos_id}", "BensModelos:bensModelos");
+
 $route->get("/patrimonio/bens/lista", "Bens:bensLista");
 $route->get("/patrimonio/bens/cadastrar", "Bens:bens");
 $route->post("/patrimonio/bens/cadastrar", "Bens:bens");
 $route->get("/patrimonio/bens/editar/{bens_id}", "Bens:bens");
 $route->post("/patrimonio/bens/editar/{bens_id}", "Bens:bens");
-
 
 $route->get("/logoff", "Dash:logoff");
 

@@ -17,7 +17,7 @@ class BemMarca extends Model
      */
     public function __construct()
     {
-        parent::__construct("bens_marca", ["id"], ["marca_nome". "descricao", "status"]);
+        parent::__construct("bens_marca", ["id"], ["marca_nome", "descricao", "status"]);
     }
 
     /**
