@@ -59,7 +59,7 @@ class BensMarcas extends Admin
             $marcaCreate->descricao = $data["descricao"];
             $marcaCreate->status = $data["status"];
             $marcaCreate->login_created = $user->login;
-            $marcaCreate->created_at = date_fmt('', "Y-m-d hh:mm:ss");
+            $marcaCreate->created_at = date_fmt('', "Y-m-d h:m:s");
 
             if(in_array("", $data)){
                 $json['message'] = $this->message->info("Informe a marca, descrição e status para criar o registro !")->icon()->render();
@@ -96,7 +96,7 @@ class BensMarcas extends Admin
             $marcaUpdate->descricao = $data["descricao"];
             $marcaUpdate->status = $data["status"];
             $marcaUpdate->login_updated = $user->login;
-            $marcaUpdate->updated_at = date_fmt('', "Y-m-d hh:mm:ss");
+            $marcaUpdate->updated_at = date_fmt('', "Y-m-d h:m:s");
 
             if(in_array("", $data)){
                 $json['message'] = $this->message->info("Informe a marca, descrição e status para criar o registro !")->icon()->render();

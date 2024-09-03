@@ -25,7 +25,7 @@
 
                                     <div class="row">    
 
-                                        <div class="col-md-3 mb-1">
+                                        <div class="col-md-4 mb-1">
                                             <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSetor"><strong><i class="bi bi-building ms-3 me-3"></i> ID/Marca/Modelo</strong></label>
                                             <select class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                                 data-bs-title="Digite a Marca" name="modelo_id">
@@ -39,13 +39,19 @@
                                             data-bs-title="Imei" class="form-control form-control-sm" name="imei" placeholder="15 NUMEROS">
                                         </div>
 
-                                        <div class="col-md-4 mb-1">
+                                        <div class="col-md-3 mb-1">
                                             <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSetor"><strong><i class="bi bi-building ms-3 me-3"></i> Usuario</strong></label>
                                             <select class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                                 data-bs-title="Digite ò Usuario" name="user_id">
                                                 <?=$benscreates->userSelect()?>
                                             </select>
                                         </div>  
+
+                                        <div class="col-md-2 mb-1">
+                                            <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputCelular"><strong><i class="bi bi-phone me-1"></i> Data Entrega</strong></label>
+                                            <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                            data-bs-title="Data Devolução" class="form-control form-control-sm mask-date" name="returned_at" placeholder="15 NUMEROS">
+                                        </div>
 
                                     </div>
 
@@ -81,7 +87,7 @@
                                         <div class="mb-3 mb-1">
                                             <label for="textareaObservacoes" class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>"><i class="bi bi-exclamation-diamond me-1"></i><strong>Observações</strong></label>
                                             <textarea class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                            data-bs-title="Observações" rows="3" name="observacoes"></textarea>
+                                            data-bs-title="Observações" rows="2" name="observacoes"></textarea>
                                         </div>
                                     </div>
 
@@ -119,7 +125,13 @@
                                         
                                     <div class="row">
 
-                                        <div class="col-md-5 mb-1">
+                                        <div class="col-md-2 mb-1">
+                                            <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputCelular"><strong><i class="bi bi-phone me-1"></i> Data Entrada</strong></label>
+                                            <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                            data-bs-title="Data Entrada" class="form-control form-control-sm mask-date" name="created_at" value="<?=date_fmt($bens->created_at, "d/m/Y");?>" placeholder="00/00/0000"  disabled readonly>
+                                        </div>
+
+                                        <div class="col-md-3 mb-1">
                                             <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSetor"><strong><i class="bi bi-building ms-3 me-3"></i> ID/Marca/Modelo</strong></label>
                                             <select class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                                 data-bs-title="Digite o Modelo" name="modelo_id">
@@ -128,13 +140,13 @@
                                             </select>
                                         </div> 
 
-                                        <div class="col-md-3 mb-1">
+                                        <div class="col-md-2 mb-1">
                                             <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputCelular"><strong><i class="bi bi-phone me-1"></i> Imei</strong></label>
                                             <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                            data-bs-title="Imei" class="form-control form-control-sm" name="imei" value="<?=$bens->imei?>" placeholder="15 NUMEROS">
+                                            data-bs-title="Imei" class="form-control form-control-sm mask-imei" name="imei" value="<?=$bens->imei?>" placeholder="15 NUMEROS">
                                         </div>
 
-                                        <div class="col-md-4 mb-1">
+                                        <div class="col-md-3 mb-1">
                                             <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSetor"><strong><i class="bi bi-building ms-3 me-3"></i> Usuario</strong></label>
                                             <select class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                                 data-bs-title="Digite ò Usuario" name="user_id">
@@ -142,6 +154,12 @@
                                                 <?=$benscreates->userSelect()?>
                                             </select>
                                         </div>  
+
+                                        <div class="col-md-2 mb-1">
+                                            <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputCelular"><strong><i class="bi bi-phone me-1"></i> Data Entrega</strong></label>
+                                            <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                            data-bs-title="Data Devolução" class="form-control form-control-sm mask-date" name="returned_at" value="<?=date_fmt($bens->returned_at, "d/m/Y");?>" placeholder="15 NUMEROS">
+                                        </div>
 
                                     </div>
 
@@ -173,11 +191,11 @@
 
                                     </div>
 
-                                    <div class="row">   
+                                    <div class="row">
                                         <div class="mb-3 mb-1">
                                             <label for="textareaObservacoes" class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>"><i class="bi bi-exclamation-diamond me-1"></i><strong>Observações</strong></label>
                                             <textarea class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                            data-bs-title="Observações" name="observacoes" rows="3" ><?=$bens->observacoes?></textarea>
+                                            data-bs-title="Observações" name="observacoes" rows="2" ><?=$bens->observacoes?></textarea>
                                         </div>
                                     </div>
 
@@ -186,6 +204,8 @@
                                         <div class="col-auto">
                                             <button data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
                                                 data-bs-title="Clique para atualizar o colaborador" class="btn btn-sm btn-outline-success fw-bold me-2"><i class="bi bi-disc-fill me-2"></i>ATUALIZAR</button>
+                                            <a href="<?=url("/beta/patrimonio/bens/lista")?>" role="button" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
+                                            data-bs-title="Clique para listar os bens" class="btn btn-sm btn-outline-smsub fw-bold me-2"><i class="bi bi-list me-2"></i>LISTAR</a>
                                         </div>
                                     </div>
                                 </form>
@@ -193,6 +213,11 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <h4 class="fw-semibold text-body-emphasis text-center">Histórico do Patrimônio</h4>
+                <div class="card-footer">
+                     <!-- Histórico-->
+                                <?= $this->insert("widgets/bens/listahistorico"); ?>
                 </div>
             </div>
         <?php endif; ?>

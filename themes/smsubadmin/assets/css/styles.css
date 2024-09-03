@@ -1,0 +1,51 @@
+.form-signin {
+    max-width: 330px;
+    padding: 1rem;
+}
+
+.form-signin .form-floating:focus-within {
+    z-index: 2;
+}
+
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+
+/* Typeahead Color*/
+span.twitter-typeahead .tt-suggestion:focus,
+.dropdown-item:hover,
+span.twitter-typeahead .tt-suggestion:hover {
+    text-decoration: none;
+    background-color: var(--bs-secondary);
+}
+
+.dropdown-item.active, .dropdown-item:active {
+    text-decoration: none;
+    background-color: var(--bs-secondary);
+}
+
+/* AJUDA */
+.custom-tooltip {
+    --bs-tooltip-bg: var(--bs-secondary);
+    --bs-tooltip-color: var(--bs-white);
+}
+
+.page-link {color: var(--bs-secondary)}
+.pagination {--bs-link-hover-color: #0c1390;}
+.active>.page-link, .page-link.active {background-color: var(--bs-secondary);border-color: var(--bs-secondary);}
+
+.bd-navbar .dropdown-menu .active .bi {
+    display:block !important
+}
+.bi {
+   fill:currentcolor
+}

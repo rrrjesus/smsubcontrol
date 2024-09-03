@@ -6,6 +6,7 @@ use Source\Models\User;
 use Source\Support\Upload;
 use Source\Support\Thumb;
 use Source\Models\Patrimonio\Bem;
+use Source\Models\Patrimonio\BemHistorico;
 
 /**
  * Class Bens
@@ -60,16 +61,15 @@ class Bens extends Admin
             $bensCreate = new Bem();
             $bensCreate->modelo_id = $data["modelo_id"];
             $bensCreate->imei = $data["imei"];
-            $bensCreate->user_id = $data["user_id"];
             $bensCreate->unit_id = $data["unit_id"];
             $bensCreate->descricao = $data["descricao"];
             $bensCreate->status = $data["status"];
             $bensCreate->observacoes = $data["observacoes"];
             $bensCreate->login_created = $user->login;
-            $bensCreate->created_at = date_fmt('', "Y-m-d hh:mm:ss");
+            $bensCreate->created_at = date_fmt('', "Y-m-d h:m:s");
 
-            if(in_array("", $data)){
-                $json['message'] = $this->message->info("Informe o nome, descrição e status para criar o registro !")->icon()->render();
+            if($data["imei"] == ""){
+                $json['message'] = $this->message->warning("Informe o imei para criar o registro !")->icon()->render();
                 echo json_encode($json);
                 return;
             }
@@ -90,7 +90,18 @@ class Bens extends Admin
         //update
         if (!empty($data["action"]) && $data["action"] == "update") {
             $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $bensUpdate = (new Bem())->findById($data["bens_id"]);
+
+            $bens_id = $data["bens_id"];
+            $user_id = $data["user_id"];
+            $modelo_id = $data["modelo_id"];
+            $imei = $data["imei"];
+            $unit_id = $data["unit_id"];
+            $returned_at = $data["returned_at"];
+            $descricao = $data["descricao"];
+            $status = $data["status"];
+            $observacoes = $data["observacoes"];
+
+            $bensUpdate = (new Bem())->findById($bens_id);
 
             if (!$bensUpdate) {
                 $this->message->error("Você tentou gerenciar um bem que não existe")->flash();
@@ -98,16 +109,16 @@ class Bens extends Admin
                 return;
             }
 
-            $bensUpdate = (new Bem())->findById($data["bens_id"]);
-            $bensUpdate->modelo_id = $data["modelo_id"];
-            $bensUpdate->imei = $data["imei"];
-            $bensUpdate->user_id = $data["user_id"];
-            $bensUpdate->unit_id = $data["unit_id"];
-            $bensUpdate->descricao = $data["descricao"];
-            $bensUpdate->status = $data["status"];
-            $bensUpdate->observacoes = $data["observacoes"];
+            $bensUpdate->user_id = $user_id;
+            $bensUpdate->modelo_id = $modelo_id;
+            $bensUpdate->descricao = $descricao;
+            $bensUpdate->unit_id = $unit_id;
+            $bensUpdate->imei = $imei;
+            $bensUpdate->status = $status;
+            $bensUpdate->observacoes = $observacoes;
+            $bensUpdate->returned_at = date_fmt($returned_at, "Y-m-d h:m:s");
             $bensUpdate->login_updated = $user->login;
-            $bensUpdate->updated_at = date_fmt('', "Y-m-d hh:mm:ss");
+            $bensUpdate->updated_at = date_fmt('', "Y-m-d h:m:s");
 
             if($data["descricao"] == ""){
                 $json['message'] = $this->message->warning("Descreva o patrimonio !!!")->icon()->render();
@@ -120,6 +131,20 @@ class Bens extends Admin
                 echo json_encode($json);
                 return;
             }
+
+            $bensCreate = new BemHistorico();
+            $bensCreate->bens_id = $bens_id;
+            $bensCreate->user_id = $user_id;
+            $bensCreate->modelo_id = $modelo_id;
+            $bensCreate->imei = $imei;
+            $bensCreate->unit_id = $unit_id;
+            $bensCreate->descricao = $descricao;
+            $bensCreate->status = $status;
+            $bensCreate->observacoes = $observacoes;
+            $bensCreate->returned_at = date_fmt($returned_at, "Y-m-d h:m:s");
+            $bensCreate->login_created = $user->login;
+            $bensCreate->created_at = date_fmt('', "Y-m-d h:m:s");
+            $bensCreate->save();
 
             $json["message"] = $this->message->success("Bem {$bensUpdate->bem_nome} atualizado com sucesso !!!")->icon("emoji-grin me-1")->render();
             echo json_encode($json);
@@ -151,13 +176,16 @@ class Bens extends Admin
         }
 
         $bensEdit = null;
+        $historico = null;
+        
         if (!empty($data["bens_id"])) {
             $bemId = filter_var($data["bens_id"], FILTER_VALIDATE_INT);
             $bensEdit = (new Bem())->findById($bemId);
+            $historico = (new BemHistorico())->find("status = :s AND bens_id = :b", "s=actived&b={$bemId}")->fetch(true);
         }
 
         $bensCreates = new Bem();
-
+       
         $head = $this->seo->render(
             CONF_SITE_NAME . " | " . ($bensEdit ? "Bens de {$bensEdit->bens_nome}" : "Não Encontrado"),
             CONF_SITE_DESC,
@@ -171,6 +199,7 @@ class Bens extends Admin
             "head" => $head,
             "bens" => $bensEdit,
             "benscreates" => $bensCreates,
+            "historico" => $historico,
             "urls" => "perfil",
             "icon" => "person"
         ]);

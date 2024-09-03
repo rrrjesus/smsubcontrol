@@ -310,6 +310,17 @@ function date_fmt(?string $date, string $format = "d/m/Y H\hi"): string
  * @return string
  * @throws Exception
  */
+function date_now(string $format = "d/m/Y"): string
+{
+    return (new DateTime("now"))->format($format);
+}
+
+/**
+ * @param string $date
+ * @param string $format
+ * @return string
+ * @throws Exception
+ */
 function date_fmt_null(?string $date, string $format = "d/m/Y"): string
 {
     $date = (empty($date) ? "" : $date);

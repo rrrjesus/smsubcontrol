@@ -271,8 +271,9 @@ class Bem extends Model
                 $this->message->warning("O imei informado já está cadastrado");
                 return false;
             }
-
+            
             $this->update($this->safe(), "id = :id", "id={$bemId}");
+            
             if ($this->fail()) {
                 $this->message->error("Erro ao atualizar, verifique os dados");
                 return false;

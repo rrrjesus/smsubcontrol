@@ -60,7 +60,7 @@ class BensModelos extends Admin
             $modeloCreate->descricao = $data["descricao"];
             $modeloCreate->status = $data["status"];
             $modeloCreate->login_created = $user->login;
-            $modeloCreate->created_at = date_fmt('', "Y-m-d hh:mm:ss");
+            $modeloCreate->created_at = date_fmt('', "Y-m-d h:m:s");
 
             if(in_array("", $data)){
                 $json['message'] = $this->message->info("Informe o modelo, descrição e status para criar o registro !")->icon()->render();
@@ -98,7 +98,7 @@ class BensModelos extends Admin
             $modeloUpdate->descricao = $data["descricao"];
             $modeloUpdate->status = $data["status"];
             $modeloUpdate->login_updated = $user->login;
-            $modeloUpdate->updated_at = date_fmt('', "Y-m-d hh:mm:ss");
+            $modeloUpdate->updated_at = date_fmt('', "Y-m-d h:m:s");
 
             if(in_array("", $data)){
                 $json['message'] = $this->message->info("Informe o modelo, descrição e status para criar o registro !")->icon()->render();

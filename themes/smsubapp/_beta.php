@@ -56,6 +56,7 @@
 </div>
 
 <script src="<?= theme("/assets/scripts.js", CONF_VIEW_APP); ?>"></script>
+<script src="shared/scripts/datatables/pdfmake.min.js"></script>
 <?= $this->section("scripts"); ?>
 
 </html>

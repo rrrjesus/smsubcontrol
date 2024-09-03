@@ -27,7 +27,7 @@
                     <?php foreach ($subscriptions as $subscription):
                         $photo = $subscription->user()->photo();
                         $userPhoto = ($photo ? image($photo, 300, 300) :
-                            theme("/assets/images/avatar.jpg", CONF_VIEW_ADMIN));
+                            theme("/assets/images/avatar.jpg", CONF_VIEW_THEME_ADMIN));
                         ?>
                         <article class="radius">
                             <div class="cover" style="background-image: url(<?= $userPhoto; ?>);"></div>

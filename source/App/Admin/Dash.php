@@ -64,7 +64,7 @@ class Dash extends Admin
             CONF_SITE_NAME . " | Dashboard",
             CONF_SITE_DESC,
             url("/admin"),
-            theme("/assets/images/image.jpg", CONF_VIEW_ADMIN),
+            theme("/assets/images/image.jpg", CONF_VIEW_THEME_ADMIN),
             false
         );
 

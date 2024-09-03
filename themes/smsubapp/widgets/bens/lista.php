@@ -18,7 +18,9 @@
                         <th class="text-center">EDITAR</th>
                         <th class="text-center">NOME</th>
                         <th class="text-center">LOGIN</th>
+                        <th class="text-center">RF</th>
                         <th class="text-center">TELEFONE</th>
+                        <th class="text-center">EMAIL</th>
                         <th class="text-center">RESPONSAVEL UN.</th>
                         <th class="text-center">UNIDADE</th>
                         <th class="text-center">TELEFONE UN.</th>
@@ -35,12 +37,12 @@
                     <?php foreach ($patrimonio as $lista): ?>
                     <tr>
                         <td class="text-center fw-semibold"><a href="<?= url("/beta/patrimonio/bens/editar/{$lista->id}"); ?>" role="button" aria-disabled="true" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
-                        data-bs-title="Clique para editar" class="btn btn-sm btn-outline-warning fw-bold me-2"><i class="bi bi-pencil me-2"></i><?=$lista->id?></a></td>
+                        data-bs-title="Clique para editar" class="btn btn-sm btn-outline-warning rounded-circle fw-bold me-2"><i class="bi bi-pencil"></i></a></td>
                         <td class="text-center fw-semibold">
                             <?php if(!empty($lista->user()->first_name) && !empty($lista->user()->status != "trash")):
                                 echo $lista->user()->fullName();
                         else:
-                            echo "EXCLUÍDO";
+                            echo "Excluido";
                         endif;
                         ?>
                         </td>
@@ -48,11 +50,13 @@
                             <?php if(!empty($lista->user()->login) && !empty($lista->bemModelo()->status != "trash")):
                                 echo $lista->user()->login;
                         else:
-                            echo "EXCLUÍDO";
+                            echo "Excluido";
                         endif;
                         ?>
+                        <td class="text-center fw-semibold"><?=(!empty($lista->user()->rf) ? $lista->user()->rf : "")?></td>
                         </td>
                         <td class="text-center fw-semibold"><?=(!empty($lista->user()->phone) ? $lista->user()->phone : "")?></td>
+                        <td class="text-center fw-semibold"><?=(!empty($lista->user()->email) ? $lista->user()->email : "")?></td>
                         <td class="text-center fw-semibold">
                         <?php if(!empty($lista->BemUnit()->unit_name) && !empty($lista->BemUnit()->status == "actived")):
                             echo (!empty($lista->BemUnit()->it_professional) ? $lista->BemUnit()->it_professional : "Não Cadastrado");
@@ -65,7 +69,7 @@
                         <?php if(!empty($lista->BemUnit()->unit_name) && !empty($lista->BemUnit()->status == "actived")):
                             echo (!empty($lista->BemUnit()->unit_name) ? $lista->BemUnit()->unit_name : "NÃO CADASTRADO");
                         else:
-                            echo "EXCLUÍDO";
+                            echo "Excluido";
                         endif;
                             ?>
                         </td>
@@ -81,7 +85,7 @@
                             <?php if(!empty($lista->bemModelo()->marca_id) && !empty($lista->bemModelo()->status == "actived")):
                                 echo $lista->bemMarcas($lista->bemModelo()->marca_id)->marca_nome;
                         else:
-                            echo "EXCLUÍDO";
+                            echo "Excluido";
                         endif;
                         ?>
                         </td>
@@ -89,7 +93,7 @@
                             <?php if(!empty($lista->bemModelo()->modelo_nome) && !empty($lista->bemModelo()->status == "actived")):
                                 echo (!empty($lista->bemModelo()->modelo_nome) ? $lista->bemModelo()->modelo_nome : "NÃO CADASTRADO");
                         else:
-                            echo "EXCLUÍDO";
+                            echo "Excluido";
                         endif;
                         ?>
                         </td>

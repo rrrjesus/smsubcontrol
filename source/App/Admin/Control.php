@@ -30,7 +30,7 @@ class Control extends Admin
             CONF_SITE_NAME . " | Control",
             CONF_SITE_DESC,
             url("/admin"),
-            theme("/assets/images/image.jpg", CONF_VIEW_ADMIN),
+            theme("/assets/images/image.jpg", CONF_VIEW_THEME_ADMIN),
             false
         );
 
@@ -81,7 +81,7 @@ class Control extends Admin
             CONF_SITE_NAME . " | Assinantes",
             CONF_SITE_DESC,
             url("/admin"),
-            theme("/assets/images/image.jpg", CONF_VIEW_ADMIN),
+            theme("/assets/images/image.jpg", CONF_VIEW_THEME_ADMIN),
             false
         );
 
@@ -145,7 +145,7 @@ class Control extends Admin
             CONF_SITE_NAME . " | Assinatura de " . $subscription->user()->fullName(),
             CONF_SITE_DESC,
             url("/admin"),
-            theme("/assets/images/image.jpg", CONF_VIEW_ADMIN),
+            theme("/assets/images/image.jpg", CONF_VIEW_THEME_ADMIN),
             false
         );
 
