@@ -2,8 +2,8 @@
 
 namespace Source\App\Admin;
 
+use Source\App\Admin\Dashboard;
 use Source\Models\User;
-use Source\Support\Pager;
 use Source\Support\Thumb;
 use Source\Support\Upload;
 
@@ -22,48 +22,63 @@ class Users extends Admin
     }
 
     /**
-     * @param array|null $data
+     * 
      */
-    public function home(?array $data): void
+
+    /**
+     * @param array|null $data
+     * @throws \Exception
+     */
+    /** @return void */
+    public function disabledUsers(): void
     {
-        //search redirect
-        if (!empty($data["s"])) {
-            $s = str_search($data["s"]);
-            echo json_encode(["redirect" => url("/admin/users/home/{$s}/1")]);
-            return;
-        }
-
-        $search = null;
-        $users = (new User())->find();
-
-        if (!empty($data["search"]) && str_search($data["search"]) != "all") {
-            $search = str_search($data["search"]);
-            $users = (new User())->find("MATCH(first_name, last_name, email) AGAINST(:s)", "s={$search}");
-            if (!$users->count()) {
-                $this->message->info("Sua pesquisa não retornou resultados")->flash();
-                redirect("/admin/users/home");
-            }
-        }
-
-        $all = ($search ?? "all");
-        $pager = new Pager(url("/admin/users/home/{$all}/"));
-        $pager->pager($users->count(), 12, (!empty($data["page"]) ? $data["page"] : 1));
-
         $head = $this->seo->render(
-            CONF_SITE_NAME . " | Usuários",
-            CONF_SITE_DESC,
-            url("/admin"),
-            url("/admin/assets/images/image.jpg"),
-            false
+            "Usuarios Registrados - " . CONF_SITE_NAME ,
+            "Painel para gerenciamento de usuarios registrados",
+            url("/painel/usuarios/registrados"),
+            theme("/assets/images/favicon.ico")
         );
 
-        echo $this->view->render("widgets/users/home", [
-            "app" => "users/home",
-            "head" => $head,
-            "search" => $search,
-            "users" => $users->order("first_name, last_name")->limit($pager->limit())->offset($pager->offset())->fetch(true),
-            "paginator" => $pager->render()
-        ]);
+        $user = (new User());
+        $users = $user->find("status = :s", "s=disabled")->fetch(true);
+
+        echo $this->view->render("widgets/users/disabledList",
+            [
+                "app" => "usuarios",
+                "head" => $head,
+                "users" => $users
+            ]);
+
+    }
+
+    /**
+     * @param array|null $data
+     * @throws \Exception
+     */
+    /** @return void */
+    public function users(): void
+    {
+        $head = $this->seo->render(
+            CONF_SITE_NAME . " Usuarios",
+            "Lista de usuarios ativos",
+            url("/usuarios"),
+            theme("/assets/images/favicon.ico")
+        );
+
+        $user = (new User());
+        $users = $user->find("status != :s", "s=disabled")->fetch(true);
+
+        echo $this->view->render("widgets/users/list",
+            [
+                "app" => "usuarios",
+                "head" => $head,
+                "users" => $users,
+                "registers" => (object)[
+                    "actived" => $user->find("status != :s", "s=disabled")->count(),
+                    "disabled" => $user->find("status = :s", "s=disabled")->count()
+                ]
+            ]);
+
     }
 
     /**
@@ -74,17 +89,19 @@ class Users extends Admin
     {
         //create
         if (!empty($data["action"]) && $data["action"] == "create") {
-            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
 
             $userCreate = new User();
             $userCreate->first_name = $data["first_name"];
             $userCreate->last_name = $data["last_name"];
             $userCreate->email = $data["email"];
+            $userCreate->phone = preg_replace("/[^0-9]/", "", $data["phone"]);
+            $userCreate->churche_id = $data["churche_id"];
             $userCreate->password = $data["password"];
-            $userCreate->level = $data["level"];
-            $userCreate->genre = $data["genre"];
-            $userCreate->datebirth = date_fmt_back($data["datebirth"]);
-            $userCreate->document = preg_replace("/[^0-9]/", "", $data["document"]);
+            $userCreate->level_id = $data["level_id"];
+            //$userCreate->genre = $data["genre"];
+            //$userCreate->datebirth = date_fmt_back($data["datebirth"]);
+            //$userCreate->document = preg_replace("/[^0-9]/", "", $data["document"]);
             $userCreate->status = $data["status"];
 
             //upload photo
@@ -108,8 +125,8 @@ class Users extends Admin
                 return;
             }
 
-            $this->message->success("Usuário cadastrado com sucesso...")->flash();
-            $json["redirect"] = url("/admin/users/user/{$userCreate->id}");
+            $this->message->success("Usuário {$userCreate->first_name} cadastrado com sucesso...")->icon("person")->flash();
+            $json["redirect"] = url("/painel/usuarios/adicionar");
 
             echo json_encode($json);
             return;
@@ -117,23 +134,22 @@ class Users extends Admin
 
         //update
         if (!empty($data["action"]) && $data["action"] == "update") {
-            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
             $userUpdate = (new User())->findById($data["user_id"]);
 
             if (!$userUpdate) {
-                $this->message->error("Você tentou gerenciar um usuário que não existe")->flash();
-                echo json_encode(["redirect" => url("/admin/users/home")]);
+                $this->message->error("Você tentou gerenciar um usuário que não existe")->icon("person")->flash();
+                echo json_encode(["redirect" => url("/usuarios")]);
                 return;
             }
 
             $userUpdate->first_name = $data["first_name"];
             $userUpdate->last_name = $data["last_name"];
             $userUpdate->email = $data["email"];
+            $userUpdate->phone = preg_replace("/[^0-9]/", "", $data["phone"]);
+            $userUpdate->churche_id = $data["churche_id"];
             $userUpdate->password = (!empty($data["password"]) ? $data["password"] : $userUpdate->password);
-            $userUpdate->level = $data["level"];
-            $userUpdate->genre = $data["genre"];
-            $userUpdate->datebirth = date_fmt_back($data["datebirth"]);
-            $userUpdate->document = preg_replace("/[^0-9]/", "", $data["document"]);
+            $userUpdate->level_id = $data["level_id"];
             $userUpdate->status = $data["status"];
 
             //upload photo
@@ -162,19 +178,19 @@ class Users extends Admin
                 return;
             }
 
-            $this->message->success("Usuário atualizado com sucesso...")->flash();
+            $this->message->success("Usuário {$userUpdate->first_name} atualizado com sucesso...")->icon("person")->flash();
             echo json_encode(["reload" => true]);
             return;
         }
 
         //delete
         if (!empty($data["action"]) && $data["action"] == "delete") {
-            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
             $userDelete = (new User())->findById($data["user_id"]);
 
             if (!$userDelete) {
-                $this->message->error("Você tentou deletar um usuário que não existe")->flash();
-                echo json_encode(["redirect" => url("/admin/users/home")]);
+                $this->message->error("Você tentou deletar um usuário que não existe")->icon()->icon("person")->flash();
+                redirect("/usuarios");
                 return;
             }
 
@@ -185,8 +201,8 @@ class Users extends Admin
 
             $userDelete->destroy();
 
-            $this->message->success("O usuário foi excluído com sucesso...")->flash();
-            echo json_encode(["redirect" => url("/admin/users/home")]);
+            $this->message->success("O usuário {$userDelete->first_name} foi excluído com sucesso...")->icon("person")->flash();
+            redirect("/usuarios");
 
             return;
         }
@@ -200,13 +216,13 @@ class Users extends Admin
         $head = $this->seo->render(
             CONF_SITE_NAME . " | " . ($userEdit ? "Perfil de {$userEdit->fullName()}" : "Novo Usuário"),
             CONF_SITE_DESC,
-            url("/admin"),
-            url("/admin/assets/images/image.jpg"),
+            url("/painel"),
+            url("/painel/assets/images/image.jpg"),
             false
         );
 
         echo $this->view->render("widgets/users/user", [
-            "app" => "users/user",
+            "app" => "usuarios",
             "head" => $head,
             "user" => $userEdit
         ]);

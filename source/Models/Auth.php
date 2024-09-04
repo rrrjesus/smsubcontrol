@@ -106,7 +106,7 @@ class Auth extends Model
             return false;
         }
 
-        if ($user->level < $level) {
+        if ($user->level_id < $level) {
             $this->message->error("Desculpe, mas você não tem permissão para logar-se aqui");
             return false;
         }

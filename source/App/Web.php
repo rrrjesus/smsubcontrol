@@ -259,7 +259,7 @@ class Web extends Controller
         }
 
         $user = Auth::user();
-        if (!$user || $user->level < 5) {
+        if (!$user || $user->level_id < 5) {
             $post->views += 1;
             $post->save();
         }

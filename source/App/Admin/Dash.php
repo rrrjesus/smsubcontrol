@@ -3,10 +3,7 @@
 namespace Source\App\Admin;
 
 use Source\Models\Auth;
-use Source\Models\CafeApp\AppPlan;
-use Source\Models\CafeApp\AppSubscription;
-use Source\Models\Category;
-use Source\Models\Post;
+use Source\Models\Churche;
 use Source\Models\Report\Online;
 use Source\Models\User;
 
@@ -29,7 +26,7 @@ class Dash extends Admin
      */
     public function dash(): void
     {
-        redirect("/admin/dash/home");
+        redirect("/painel/controle/inicial");
     }
 
     /**
@@ -63,8 +60,8 @@ class Dash extends Admin
         $head = $this->seo->render(
             CONF_SITE_NAME . " | Dashboard",
             CONF_SITE_DESC,
-            url("/admin"),
-            theme("/assets/images/image.jpg", CONF_VIEW_THEME_ADMIN),
+            url("/painel"),
+            theme("/assets/images/image.jpg", CONF_VIEW_ADMIN),
             false
         );
 
@@ -72,8 +69,14 @@ class Dash extends Admin
             "app" => "dash",
             "head" => $head,
             "users" => (object)[
-                "users" => (new User())->find("level < 5")->count(),
-                "admins" => (new User())->find("level >= 5")->count()
+                "users" => (new User())->find("level_id < 5")->count(),
+                "admins" => (new User())->find("level_id >= 5")->count(),
+                "totais" => (new User())->find()->count()
+            ],
+            "churches" => (object)[
+                "churches" => (new Churche())->find("status != :s", "s=disabled")->count(),
+                "disableds" => (new Churche())->find("status = :s", "s=disabled")->count(),
+                "totais" => (new Churche())->find()->count()
             ],
             "online" => (new Online())->findByActive(),
             "onlineCount" => (new Online())->findByActive(true)
@@ -88,6 +91,6 @@ class Dash extends Admin
         $this->message->success("Você saiu com sucesso {$this->user->first_name}.")->flash();
 
         Auth::logout();
-        redirect("/admin/login");
+        redirect("/painel/login");
     }
 }

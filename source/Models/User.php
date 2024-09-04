@@ -58,7 +58,7 @@ class User extends Model
     /**
      * @return null|Unit
      */
-    public function unit(): ?Unit
+    public function userUnit(): ?Unit
     {
         if($this->unit_id) {
             return(new Unit())->findById($this->unit_id);
@@ -91,6 +91,14 @@ class User extends Model
     public function level(): ?Level    {
         if($this->level_id) {
             return(new Level())->findById($this->level_id);
+        }
+        return null;
+    }
+
+    public function churche(): ?Churche
+    {
+        if($this->churche_id) {
+            return(new Churche())->findById($this->churche_id);
         }
         return null;
     }

@@ -31,7 +31,7 @@ class Admin extends Controller
             redirect("/beta/login");
         }
 
-        if (!$this->user || $this->user->level < 3) {
+        if (!$this->user || $this->user->level_id < 3) {
             $this->message->error("Nível de usuário não permitido !")->icon()->flash();
             redirect("/beta/login");
         }

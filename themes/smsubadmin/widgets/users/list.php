@@ -45,7 +45,7 @@
                                     <th class="text-center text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-person-circle me-1"></i><br>FOTO</th>
                                     <th class="text-center text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-person me-1"></i><br>NOME</th>
                                     <th class="text-center text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-person me-1"></i><br>SOBRENOME</th>
-                                    <th class="text-center text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-building me-1"></i><br>COMUM</th>
+                                    <th class="text-center text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-building me-1"></i><br>UNIDADE</th>
                                     <th class="text-center text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-envelope-at me-1"></i><br>EMAIL</th>
                                     <th class="text-center text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-envelope-at me-1"></i><br>STATUS</th>
                                     <th class="text-center text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-person me-1"></i><br>NIVEL</th>
@@ -75,15 +75,7 @@
                                         
                                         <td class="text-center"><?=$lista->first_name?></td>
                                         <td class="text-center"><?=$lista->last_name?></td>
-                                        <?php
-                                            if(!empty($lista->churche_id) && $lista->churche()->status == "actived"):
-                                                echo '<td class="text-center">'.$lista->churche()->churche_name.'</td>';
-                                            else:
-                                                echo '<td class="text-center"><span class="badge fw-semibold text-bg-danger pt-2 pb-2 mt-2" data-bs-togglee="tooltip" 
-                                                            data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Igreja desativada">
-                                                            '.$lista->churche()->churche_name.'</span></td>';
-                                            endif;
-                                        ?>
+                                        <td class="text-center fw-semibold"><?=(!empty($lista->userUnit()->unit_name) ? $lista->userUnit()->unit_name : "")?></td>
                                         <td class="text-center"><?=$lista->email?></td>
                                         <?php
                                             switch ($lista->status) {

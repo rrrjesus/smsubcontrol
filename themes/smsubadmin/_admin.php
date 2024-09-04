@@ -6,8 +6,8 @@
 
     <?= $head; ?>
 
-    <link href="<?=theme("/assets/style.css", CONF_VIEW_THEME_ADMIN)?>" rel="stylesheet" />
-    <link rel="icon" type="image/png" href="<?= theme("/assets/images/favicon.ico", CONF_VIEW_THEME_ADMIN); ?>"/>
+    <link href="<?=theme("/assets/style.css", CONF_VIEW_ADMIN)?>" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="<?= theme("/assets/images/favicon.ico", CONF_VIEW_ADMIN); ?>"/>
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 
 </head>
@@ -55,12 +55,10 @@
     </div>
 </div>
 
-<script src="<?= theme("/assets/scripts.js", CONF_VIEW_THEME_ADMIN); ?>"></script>
-<script src="<?= theme("/assets/sidebar.js", CONF_VIEW_THEME_ADMIN); ?>"></script>
-<script src="<?= theme("/assets/datatables.js", CONF_VIEW_THEME_ADMIN); ?>"></script>
+<script src="<?= theme("/assets/scripts.js", CONF_VIEW_ADMIN); ?>"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-<script src="<?=theme("/assets/demo/chart-area-demo.js", CONF_VIEW_THEME_ADMIN)?>"></script>
-<script src="<?=theme("/assets/demo/chart-bar-demo.js", CONF_VIEW_THEME_ADMIN)?>"></script>
+<script src="<?=theme("/assets/demo/chart-area-demo.js", CONF_VIEW_ADMIN)?>"></script>
+<script src="<?=theme("/assets/demo/chart-bar-demo.js", CONF_VIEW_ADMIN)?>"></script>
 <?= $this->section("scripts"); ?>
 
 </body>

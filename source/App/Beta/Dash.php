@@ -52,8 +52,8 @@ class Dash extends Admin
             "app" => "dash",
             "head" => $head,
             "users" => (object)[
-                "users" => (new User())->find("level < 5")->count(),
-                "admins" => (new User())->find("level >= 5")->count()
+                "users" => (new User())->find("level_id < 5")->count(),
+                "admins" => (new User())->find("level_id >= 5")->count()
             ],
         ]);
     }

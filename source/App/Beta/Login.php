@@ -26,7 +26,7 @@ class Login extends Controller
     {
         $user = Auth::user();
 
-        if ($user && $user->level >= 3) {
+        if ($user && $user->level_id >= 3) {
             redirect("/beta/dash");
         } else {
             redirect("/beta/login");
@@ -40,7 +40,7 @@ class Login extends Controller
     {
         $user = Auth::user();
 
-        if ($user && $user->level >= 3) {
+        if ($user && $user->level_id >= 3) {
             redirect("/beta/dash");
         }
 

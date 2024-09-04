@@ -21,13 +21,13 @@ class Admin extends Controller
      */
     public function __construct()
     {
-        parent::__construct(__DIR__ . "/../../../themes/" . CONF_VIEW_THEME_ADMIN . "/");
+        parent::__construct(__DIR__ . "/../../../themes/" . CONF_VIEW_ADMIN . "/");
 
         $this->user = Auth::user();
 
-        if (!$this->user || $this->user->level < 5) {
+        if (!$this->user || $this->user->level_id < 5) {
             $this->message->error("Para acessar é preciso logar-se")->flash();
-            redirect("/admin/login");
+            redirect("/painel/login");
         }
     }
 }

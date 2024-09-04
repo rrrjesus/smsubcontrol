@@ -110,7 +110,7 @@ $route->get("/logoff", "Dash:logoff");
  * ADMIN ROUTES
  */
 $route->namespace("Source\App\Admin");
-$route->group("/admin");
+$route->group("/painel");
 
 //login
 $route->get("/", "Login:root");
@@ -118,46 +118,57 @@ $route->get("/login", "Login:login");
 $route->post("/login", "Login:login");
 
 //dash
-$route->get("/dash", "Dash:dash");
-$route->get("/dash/home", "Dash:home");
-$route->post("/dash/home", "Dash:home");
+$route->get("/controle", "Dash:dash");
+$route->get("/controle/inicial", "Dash:home");
+$route->post("/controle/inicial", "Dash:home");
 $route->get("/logoff", "Dash:logoff");
 
-//blog
-$route->get("/blog/home", "Blog:home");
-$route->post("/blog/home", "Blog:home");
-$route->get("/blog/home/{search}/{page}", "Blog:home");
-$route->get("/blog/post", "Blog:post");
-$route->post("/blog/post", "Blog:post");
-$route->get("/blog/post/{post_id}", "Blog:post");
-$route->post("/blog/post/{post_id}", "Blog:post");
-$route->get("/blog/categories", "Blog:categories");
-$route->get("/blog/categories/{page}", "Blog:categories");
-$route->get("/blog/category", "Blog:category");
-$route->post("/blog/category", "Blog:category");
-$route->get("/blog/category/{category_id}", "Blog:category");
-$route->post("/blog/category/{category_id}", "Blog:category");
+// Colaboradores
+$route->get("/colaboradores", "Collaborators:Collaborators");
+$route->get("/colaboradores/desativados", "Collaborators:disabledCollaborators");
+$route->get("/colaboradores/adicionar", "Collaborators:collaborator");
+$route->post("/colaboradores/adicionar", "Collaborators:collaborator");
+$route->get("/colaboradores/editar/{collaborator_id}", "Collaborators:collaborator");
+$route->post("/colaboradores/editar/{collaborator_id}", "Collaborators:collaborator");
+$route->get("/colaboradores/identidade/{collaborator_id}", "Collaborators:Identifier");
+$route->get("/colaboradores/verificador/{collaborator_id}/{crypto}", "Collaborators:Identifier");
+$route->get("/colaboradores/ativar/{collaborator_id}", "Collaborators:activedCollaborator");
+$route->get("/colaboradores/desativar/{collaborator_id}", "Collaborators:disabledCollaborator");
+$route->get("/colaboradores/excluir/{collaborator_id}/{action}", "Collaborators:collaborator");
 
-//faqs
-$route->get("/faq/home", "Faq:home");
-$route->get("/faq/home/{page}", "Faq:home");
-$route->get("/faq/channel", "Faq:channel");
-$route->post("/faq/channel", "Faq:channel");
-$route->get("/faq/channel/{channel_id}", "Faq:channel");
-$route->post("/faq/channel/{channel_id}", "Faq:channel");
-$route->get("/faq/question/{channel_id}", "Faq:question");
-$route->post("/faq/question/{channel_id}", "Faq:question");
-$route->get("/faq/question/{channel_id}/{question_id}", "Faq:question");
-$route->post("/faq/question/{channel_id}/{question_id}", "Faq:question");
+// Igrejas
+$route->get("/igrejas", "Churches:Churches");
+$route->get("/igrejas/desativadas", "Churches:disabledChurches");
+$route->get("/igrejas/adicionar", "Churches:churche");
+$route->post("/igrejas/adicionar", "Churches:churche");
+$route->get("/igrejas/editar/{churche_id}", "Churches:churche");
+$route->post("/igrejas/editar/{churche_id}", "Churches:churche");
+$route->get("/igrejas/identidade/{churche_id}", "Churches:Identifier");
+$route->get("/igrejas/ativar/{churche_id}", "Churches:activedChurche");
+$route->get("/igrejas/desativar/{churche_id}", "Churches:disabledChurche");
+$route->get("/igrejas/excluir/{churche_id}/{action}", "Churches:churche");
+
+// Grupos
+$route->get("/grupos", "Groups:Groups");
+$route->get("/grupos/desativados", "Groups:disabledGroups");
+$route->get("/grupos/adicionar", "Groups:group");
+$route->post("/grupos/adicionar", "Groups:group");
+$route->get("/grupos/editar/{group_id}", "Groups:group");
+$route->post("/grupos/editar/{group_id}", "Groups:group");
+$route->get("/grupos/ativar/{group_id}", "Groups:activedGroup");
+$route->get("/grupos/desativar/{group_id}", "Groups:disabledGroup");
+$route->get("/grupos/excluir/{group_id}/{action}", "Groups:group");
 
 //users
-$route->get("/users/home", "Users:home");
-$route->post("/users/home", "Users:home");
-$route->get("/users/home/{search}/{page}", "Users:home");
-$route->get("/users/user", "Users:user");
-$route->post("/users/user", "Users:user");
-$route->get("/users/user/{user_id}", "Users:user");
-$route->post("/users/user/{user_id}", "Users:user");
+$route->get("/usuarios", "Users:users");
+$route->get("/usuarios/desativados", "Users:disabledUsers");
+$route->get("/usuarios/adicionar", "Users:user");
+$route->post("/usuarios/adicionar", "Users:user");
+$route->get("/usuarios/editar/{user_id}", "Users:user");
+$route->post("/usuarios/editar/{user_id}", "Users:user");
+$route->get("/usuarios/ativar/{user_id}", "Users:activedUser");
+$route->get("/usuarios/desativar/{user_id}", "Users:disabledUser");
+$route->get("/usuarios/excluir/{user_id}/{action}", "Users:user");
 
 //notification center
 $route->post("/notifications/count", "Notifications:count");

@@ -6,8 +6,8 @@
 
     <?= $head; ?>
 
-    <link href="<?=theme("/assets/style.css", CONF_VIEW_THEME_ADMIN)?>" rel="stylesheet" />
-    <link rel="icon" type="image/png" href="<?= theme("/assets/images/favicon.png", CONF_VIEW_THEME_ADMIN); ?>"/>
+    <link href="<?=theme("/assets/style.css", CONF_VIEW_ADMIN)?>" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="<?= theme("/assets/images/favicon.png", CONF_VIEW_ADMIN); ?>"/>
 </head>
 <body>
 

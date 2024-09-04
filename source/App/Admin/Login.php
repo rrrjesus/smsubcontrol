@@ -16,7 +16,7 @@ class Login extends Controller
      */
     public function __construct()
     {
-        parent::__construct(__DIR__ . "/../../../themes/" . CONF_VIEW_THEME_ADMIN . "/");
+        parent::__construct(__DIR__ . "/../../../themes/" . CONF_VIEW_ADMIN . "/");
     }
 
     /**
@@ -26,10 +26,10 @@ class Login extends Controller
     {
         $user = Auth::user();
 
-        if ($user && $user->level >= 5) {
-            redirect("/admin/dash");
+        if ($user && $user->level_id >= 5) {
+            redirect("/painel/controle");
         } else {
-            redirect("/admin/login");
+            redirect("/painel/login");
         }
     }
 
@@ -40,8 +40,8 @@ class Login extends Controller
     {
         $user = Auth::user();
 
-        if ($user && $user->level >= 5) {
-            redirect("/admin/dash");
+        if ($user && $user->level_id >= 5) {
+            redirect("/painel/controle");
         }
 
         if (!empty($data["email"]) && !empty($data["password"])) {
@@ -55,7 +55,7 @@ class Login extends Controller
             $login = $auth->login($data["email"], $data["password"], true, 5);
 
             if ($login) {
-                $json["redirect"] = url("/admin/dash");
+                $json["redirect"] = url("/painel/controle");
             } else {
                 $json["message"] = $auth->message()->render();
             }
@@ -67,8 +67,8 @@ class Login extends Controller
         $head = $this->seo->render(
             CONF_SITE_NAME . " | Admin",
             CONF_SITE_DESC,
-            url("/admin"),
-            theme("/assets/images/image.jpg", CONF_VIEW_THEME_ADMIN),
+            url("/painel"),
+            theme("/assets/images/image.jpg", CONF_VIEW_ADMIN),
             false
         );
 
