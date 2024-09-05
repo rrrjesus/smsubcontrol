@@ -1,3 +1,5 @@
+/* Styles do Painel de Administração */
+
 /* Configurações de Foto do usuario */
 .app_formbox_photo {
     display: flex;
@@ -28,6 +30,7 @@
     width: calc(100% - 80px);
   }
 
+/* Login de Usuário*/
 .form-signin {
     max-width: 330px;
     padding: 1rem;
@@ -49,7 +52,6 @@
     border-top-right-radius: 0;
 }
 
-
 /* Typeahead Color*/
 span.twitter-typeahead .tt-suggestion:focus,
 .dropdown-item:hover,
@@ -69,9 +71,11 @@ span.twitter-typeahead .tt-suggestion:hover {
     --bs-tooltip-color: var(--bs-white);
 }
 
+/* Datatables Pagination */
 .page-link {color: var(--bs-secondary)}
 .pagination {--bs-link-hover-color: #0c1390;}
 .active>.page-link, .page-link.active {background-color: var(--bs-secondary);border-color: var(--bs-secondary);}
+
 
 .bd-navbar .dropdown-menu .active .bi {
     display:block !important
