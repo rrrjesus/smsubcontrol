@@ -91,7 +91,7 @@ $(function () {
         return new bootstrap.Tooltip(tooltipTriggerEl)
     })
 
-        /*
+    /*
      * IMAGE RENDER
      */
         $("[data-image]").change(function (e) {

@@ -1,3 +1,33 @@
+/* Configurações de Foto do usuario */
+.app_formbox_photo {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--area-box);
+  }
+  
+  .app_formbox_photo .thumb {
+    width: 120px;
+    height: 120px;
+    border: 5px solid #CCCCCC;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+  
+  .app_formbox_photo div {
+    width: calc(100% - 120px);
+    padding-left: var(--area-box);
+  }
+  
+  .app_formbox_photo .thumb {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .app_formbox_photo div {
+    width: calc(100% - 80px);
+  }
+
 .form-signin {
     max-width: 330px;
     padding: 1rem;

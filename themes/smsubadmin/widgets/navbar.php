@@ -1,8 +1,7 @@
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
     <!-- Navbar Brand-->
-<!--    <a class="navbar-brand ps-3" href="index.html">Start Bootstrap</a>-->
-    <a class="navbar-brand p-3 me-0 me-lg-2 fw-bold fs-4" href="<?=url("/painel")?>" aria-label="Agenda">
-        <img width="80" height="40" src="<?=theme("/assets/images/smsub_logo/SUBPREFEITURAS_HORIZONTAL_FUNDO_ESCURO.png")?>">
+    <a class="navbar-brand ps-3" href="<?=url("/painel")?>">
+        <img width="120" height="40" src="<?=theme("/assets/images/smsub_logo/SUBPREFEITURAS_HORIZONTAL_FUNDO_ESCURO.png")?>">
     </a>
     <!-- Sidebar Toggle-->
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>

@@ -91,7 +91,7 @@
                                         <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSobreNome"><i class="bi bi-person-add me-1"></i><strong>Unidade</strong></label>
                                         <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                             data-bs-title="Unidade" class="form-control form-control-sm"
-                                            name="unit" placeholder="Unidade" value="<?='00'.$user->unit()->id.' - '.$user->unit()->unidade_nome?>" disabled readonly>
+                                            name="unit" placeholder="Unidade" value="<?='00'.$user->userUnidade()->id.' - '.$user->userUnidade()->unidade_nome?>" disabled readonly>
                                     </div>
 
                                     <div class="col-md-3 mb-1">
@@ -156,3 +156,4 @@
             </div>
         </div>
     </div>
+</div>

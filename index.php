@@ -136,18 +136,6 @@ $route->get("/colaboradores/ativar/{collaborator_id}", "Collaborators:activedCol
 $route->get("/colaboradores/desativar/{collaborator_id}", "Collaborators:disabledCollaborator");
 $route->get("/colaboradores/excluir/{collaborator_id}/{action}", "Collaborators:collaborator");
 
-// Igrejas
-$route->get("/igrejas", "Churches:Churches");
-$route->get("/igrejas/desativadas", "Churches:disabledChurches");
-$route->get("/igrejas/adicionar", "Churches:churche");
-$route->post("/igrejas/adicionar", "Churches:churche");
-$route->get("/igrejas/editar/{churche_id}", "Churches:churche");
-$route->post("/igrejas/editar/{churche_id}", "Churches:churche");
-$route->get("/igrejas/identidade/{churche_id}", "Churches:Identifier");
-$route->get("/igrejas/ativar/{churche_id}", "Churches:activedChurche");
-$route->get("/igrejas/desativar/{churche_id}", "Churches:disabledChurche");
-$route->get("/igrejas/excluir/{churche_id}/{action}", "Churches:churche");
-
 // Grupos
 $route->get("/grupos", "Groups:Groups");
 $route->get("/grupos/desativados", "Groups:disabledGroups");
@@ -162,8 +150,8 @@ $route->get("/grupos/excluir/{group_id}/{action}", "Groups:group");
 //users
 $route->get("/usuarios", "Users:users");
 $route->get("/usuarios/desativados", "Users:disabledUsers");
-$route->get("/usuarios/adicionar", "Users:user");
-$route->post("/usuarios/adicionar", "Users:user");
+$route->get("/usuarios/cadastrar", "Users:user");
+$route->post("/usuarios/cadastrar", "Users:user");
 $route->get("/usuarios/editar/{user_id}", "Users:user");
 $route->post("/usuarios/editar/{user_id}", "Users:user");
 $route->get("/usuarios/ativar/{user_id}", "Users:activedUser");

@@ -144,6 +144,7 @@ class Users extends Admin
             }
 
             $userUpdate->first_name = $data["first_name"];
+            $userUpdate->first_name = $data["first_name"];
             $userUpdate->last_name = $data["last_name"];
             $userUpdate->email = $data["email"];
             $userUpdate->phone = preg_replace("/[^0-9]/", "", $data["phone"]);
@@ -224,7 +225,9 @@ class Users extends Admin
         echo $this->view->render("widgets/users/user", [
             "app" => "usuarios",
             "head" => $head,
-            "user" => $userEdit
+            "user" => $userEdit,
+            "photo" => ($this->user->photo() ? image($this->user->photo, 360, 360) :
+            theme("/assets/images/avatar.jpg", CONF_VIEW_APP))
         ]);
     }
 }
