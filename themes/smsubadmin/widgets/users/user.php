@@ -180,7 +180,7 @@
                 </div>
             </div>
             <?php else: ?>
-            div class="card mb-4">
+            <div class="card mb-4">
                 <div class="card-header text-center fw-bold fs-6 pt-1 pb-1 text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-qr-code pe-3"></i>   SISTEMA JAÇANA CONTROLE - 2024</div>
                 <div class="card-body">
                     <div class="container-fluid">
