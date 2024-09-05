@@ -4,16 +4,16 @@ namespace Source\Models;
 
 use Source\Core\Model;
 
-class Unit extends Model
+class Unidade extends Model
 {
     public function __construct()
     {
-        parent::__construct("units", ["id"], ["unidade_nome", "description", "street", "zip_code", "logo"]);
+        parent::__construct("unidades", ["id"], ["unidade_nome", "description", "street", "zip_code", "logo"]);
     }
 
-    static function completeName($columns): ?Unit
+    static function completeName($columns): ?Unidade
     {
-        $stm = (new Unit())->find("","",$columns);
+        $stm = (new Unidade())->find("","",$columns);
         $array[] = array();
 
         if(!empty($stm)):

@@ -18549,7 +18549,6 @@ ALTER TABLE `user_positions`
 -- Restrições para tabelas `bens`
 --
 ALTER TABLE `bens`
-  ADD CONSTRAINT `pat_marca` FOREIGN KEY (`marca_id`) REFERENCES `bens_marca` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   ADD CONSTRAINT `pat_modelo` FOREIGN KEY (`modelo_id`) REFERENCES `bens_modelo` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   ADD CONSTRAINT `pat_unit` FOREIGN KEY (`unit_id`) REFERENCES `unidades` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 

@@ -182,7 +182,7 @@
 
                 let secsubinp = new Bloodhound({
                     datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
-                    local: <?=(new \Source\Models\Unit())->completeName("unidade_nome")?>
+                    local: <?=(new \Source\Models\Unidade())->completeName("unidade_nome")?>
                 });
                 secsubinp.initialize();
                 $('.secsubinp').typeahead({hint: true, highlight: true, minLength: 1}, {source: secsubinp});

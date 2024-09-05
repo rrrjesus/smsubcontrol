@@ -56,12 +56,12 @@ class User extends Model
     }
 
     /**
-     * @return null|Unit
+     * @return null|Unidade
      */
-    public function userUnit(): ?Unit
+    public function userUnidade(): ?Unidade
     {
         if($this->unit_id) {
-            return(new Unit())->findById($this->unit_id);
+            return(new Unidade())->findById($this->unit_id);
         }
         return null;
     }

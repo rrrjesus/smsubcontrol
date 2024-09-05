@@ -75,7 +75,7 @@
                                         
                                         <td class="text-center"><?=$lista->first_name?></td>
                                         <td class="text-center"><?=$lista->last_name?></td>
-                                        <td class="text-center fw-semibold"><?=(!empty($lista->userUnit()->unidade_nome) ? $lista->userUnit()->unidade_nome : "")?></td>
+                                        <td class="text-center fw-semibold"><?=(!empty($lista->userUnidade()->unidade_nome) ? $lista->userUnidade()->unidade_nome : "")?></td>
                                         <td class="text-center"><?=$lista->email?></td>
                                         <?php
                                             switch ($lista->status) {

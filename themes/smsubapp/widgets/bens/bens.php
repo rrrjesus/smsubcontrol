@@ -91,6 +91,12 @@
                                         </div>
                                     </div>
 
+                                    <div class="col-5">
+                        <strong><label for="inputLogoTitle" class="col-4 col-form-label col-form-label-sm">SMSUB/SUBS</label></strong>
+                        <input tabindex="8" data-bs-togglee="tooltip" data-bs-placement="top" maxlength="50" data-bs-custom-class="custom-tooltip"
+                                value="SMSUB" data-bs-title="Digite a Secretaria ou Subprefeitura" class="form-control form-control-sm border-<?=CONF_WEB_COLOR;?> secsubinp" name="secsubinp" id="secsubinp" type="text" placeholder="DIGITE A SECRETARIA/SUBPREFEIRURA"/>
+                    </div>
+
 
                                     <div class="row justify-content-center mt-4 mb-3">
                                         <div class="col-auto">
@@ -101,6 +107,17 @@
                                         </div>
                                     </div>
                                 </form>
+
+                                <?php $this->start("scripts"); ?>
+                                    <script>
+                                        let secsubinp = new Bloodhound({
+                                            datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
+                                            local: <?=(new \Source\Models\Unidade())->completeName("unidade_nome")?>
+                                        });
+                                        secsubinp.initialize();
+                                        $('.secsubinp').typeahead({limit: 10, hint: true, highlight: true, minLength: 1}, {source: secsubinp});
+                                    </script>
+                                <?php $this->end(); ?>
                                 
                             </div>
                         </div>
@@ -169,7 +186,7 @@
                                             <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSetor"><strong><i class="bi bi-building ms-3 me-3"></i> Unidade</strong></label>
                                             <select class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                                 data-bs-title="Digite a Unidade" name="unit_id">
-                                                <option value="<?=$bens->bemUnit()->id?>" selected><?=$bens->bemUnit()->unidade_nome?></option>
+                                                <option value="<?=$bens->bemUnidade()->id?>" selected><?=$bens->bemUnidade()->unidade_nome?></option>
                                                 <?=$benscreates->unitSelect()?>
                                             </select>
                                         </div>  
@@ -199,6 +216,12 @@
                                         </div>
                                     </div>
 
+                                    <div class="col-4">
+                        <strong><label for="inputCargo" class="col-4 col-form-label col-form-label-sm">CARGO</label></strong>
+                        <input tabindex="2" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
+                                data-bs-title="Digite o cargo que você ocupa" class="form-control form-control-sm border-<?=CONF_WEB_COLOR;?> cargoinp" type="text" maxlength="62" name="cargoinp" id="cargoinp" placeholder="DIGITE O CARGO"/>
+                    </div>
+
 
                                     <div class="row justify-content-center mt-4 mb-3">
                                         <div class="col-auto">
@@ -209,6 +232,23 @@
                                         </div>
                                     </div>
                                 </form>
+
+                                <?php $this->start("scripts"); ?>
+                                <script>
+                                    let cargoinp = new Bloodhound({
+                                        datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
+                                        local: ['ANALISTA DE ORDENAMENTO TERRITORIAL' , 'ANALISTA FISCAL DE SERVICOS' , 'ASSESSOR I' , 'ASSESSOR II' , 'ASSESSOR III' ,
+                                            'ASSESSOR IV' , 'ASSESSOR JURIDICO II' , 'ASSESSOR V' , 'ASSESSOR VI' , 'ASSISTENTE ADMINISTRATIVO DE GESTAO' , 'ASSISTENTE DE SAUDE' ,
+                                            'ASSISTENTE DE SUPORTE OPERACIONAL' , 'CHEFE DE ASSESSORIA II' , 'CHEFE DE GABINETE' , 'COORDENADOR I' , 'DIRETOR I' , 'DIRETOR II' , 'DIRETOR JURIDICO I' ,
+                                            'FISCAL DE POSTURAS MUNICIPAIS' , 'PROCURADOR DO MUNICIPIO' , 'PROFISSIONAL ENG, ARQ, AGRONOMIA,GEOLOGIA - AGRONOMIA' , 'PROFISSIONAL ENG, ARQ, AGRONOMIA,GEOLOGIA - ARQUITETURA' ,
+                                            'PROFISSIONAL ENG, ARQ, AGRONOMIA,GEOLOGIA - ENGENHARIA CIVIL' , 'PROFISSIONAL ENG, ARQ, AGRONOMIA,GEOLOGIA - ENGENHARIA QUIMICA' , 'PROFISSIONAL ENG, ARQ, AGRONOMIA,GEOLOGIA - GEOLOGIA' ,
+                                            'SECRETARIO ADJUNTO' , 'SECRETARIO EXECUTIVO ADJUNTO' , 'SECRETARIO MUNICIPAL']
+                                    });
+                                    cargoinp.initialize();
+                                    $('.cargoinp').typeahead({hint: true, highlight: true, minLength: 1}, {source: cargoinp});
+
+                                    </script>
+                                <?php $this->end(); ?>
                                 
                             </div>
                         </div>
