@@ -106,7 +106,7 @@ class Bem extends Model
 
         if(!empty($stm)):
             foreach ($stm as $row):
-                echo '<option value="'.$row->id.'">'.$row->unit_name.'</option>'; //Return the JSON Array
+                echo '<option value="'.$row->id.'">'.$row->unidade_nome.'</option>'; //Return the JSON Array
             endforeach;
         endif;
         return null;

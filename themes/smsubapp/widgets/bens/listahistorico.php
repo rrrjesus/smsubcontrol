@@ -44,7 +44,7 @@
                         </td>
                         <td class="text-center fw-semibold"><?=(!empty($lista->user()->phone) ? $lista->user()->phone : "")?></td>
                         <td class="text-center fw-semibold">
-                        <?php if(!empty($lista->BemUnit()->unit_name) && !empty($lista->BemUnit()->status == "actived")):
+                        <?php if(!empty($lista->BemUnit()->unidade_nome) && !empty($lista->BemUnit()->status == "actived")):
                             echo (!empty($lista->BemUnit()->it_professional) ? $lista->BemUnit()->it_professional : "Não Cadastrado");
                         else:
                             echo "Excluído";
@@ -52,15 +52,15 @@
                             ?>
                         </td>
                         <td class="text-center fw-semibold">
-                        <?php if(!empty($lista->BemUnit()->unit_name) && !empty($lista->BemUnit()->status == "actived")):
-                            echo (!empty($lista->BemUnit()->unit_name) ? $lista->BemUnit()->unit_name : "NÃO CADASTRADO");
+                        <?php if(!empty($lista->BemUnit()->unidade_nome) && !empty($lista->BemUnit()->status == "actived")):
+                            echo (!empty($lista->BemUnit()->unidade_nome) ? $lista->BemUnit()->unidade_nome : "NÃO CADASTRADO");
                         else:
                             echo "EXCLUÍDO";
                         endif;
                             ?>
                         </td>
                         <td class="text-center fw-semibold">
-                        <?php if(!empty($lista->BemUnit()->unit_name) && !empty($lista->BemUnit()->status == "actived")):
+                        <?php if(!empty($lista->BemUnit()->unidade_nome) && !empty($lista->BemUnit()->status == "actived")):
                             echo (!empty($lista->BemUnit()->telephone) ? $lista->BemUnit()->telephone : "Não Cadastrado");
                         else:
                             echo "Excluído";

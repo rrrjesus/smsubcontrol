@@ -8,7 +8,7 @@ class Unit extends Model
 {
     public function __construct()
     {
-        parent::__construct("units", ["id"], ["unit_name", "description", "street", "zip_code", "logo"]);
+        parent::__construct("units", ["id"], ["unidade_nome", "description", "street", "zip_code", "logo"]);
     }
 
     static function completeName($columns): ?Unit
@@ -18,7 +18,7 @@ class Unit extends Model
 
         if(!empty($stm)):
             foreach ($stm->fetch(true) as $row):
-                    $array[] = $row->unit_name;
+                    $array[] = $row->unidade_nome;
             endforeach;
             echo json_encode($array); //Return the JSON Array
         endif;

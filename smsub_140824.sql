@@ -5861,7 +5861,7 @@ INSERT INTO `signatures` (`id`, `first_name`, `last_name`, `email`) VALUES
 
 CREATE TABLE `units` (
   `id` int(11) UNSIGNED NOT NULL,
-  `unit_name` varchar(40) DEFAULT NULL,
+  `unidade_nome` varchar(40) DEFAULT NULL,
   `unit_contact` varchar(255) NOT NULL,
   `description` varchar(255) DEFAULT NULL,
   `street` varchar(74) DEFAULT NULL,
@@ -5881,7 +5881,7 @@ CREATE TABLE `units` (
 -- Despejando dados para a tabela `units`
 --
 
-INSERT INTO `units` (`id`, `unit_name`, `unit_contact`, `description`, `street`, `zip_code`, `logo`, `url`, `it_professional`, `telephone`, `ramal`, `cell_phone`, `email`, `created_at`, `updated_at`) VALUES
+INSERT INTO `units` (`id`, `unidade_nome`, `unit_contact`, `description`, `street`, `zip_code`, `logo`, `url`, `it_professional`, `telephone`, `ramal`, `cell_phone`, `email`, `created_at`, `updated_at`) VALUES
 (1, 'SMSUB', '', 'SECRETARIA MUNICIPAL DAS SUBPREFEITURAS', 'Rua São Bento, 405 - Edifício Martinelli - Centro', '01011-100', 'logo_ass_smsub', 'www.prefeitura.sp.gov.br/cidade/secretarias/subprefeituras', '', '4934-3000', '', '', '', '06/10/2023 17:54', ''),
 (2, 'SEABAST/DEA (10º AND)', '', 'SEABAST/DEA - Divisão de Equipamentos de Abastecimento', 'Rua São Bento, 405 - Edifício Martinelli - Centro', '01011-100', 'logo_ass_smsub', 'www.prefeitura.sp.gov.br/cidade/secretarias/subprefeituras', '', '4934-3000', '', '', '', '06/10/2023 17:54', ''),
 (3, 'SEABAST/DFL (10º AND)', '', 'SEABAST/DFL - Divisão de Feiras Livres', 'Rua São Bento, 405 - Edifício Martinelli - Centro', '01011-100', 'logo_ass_smsub', 'www.prefeitura.sp.gov.br/cidade/secretarias/subprefeituras', '', '4934-3000', '', '', '', '06/10/2023 17:54', ''),

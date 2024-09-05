@@ -3,7 +3,8 @@
 namespace Source\App\Admin;
 
 use Source\Models\Auth;
-use Source\Models\Churche;
+use Source\Models\Patrimonio\BemMarca;
+use Source\Models\Patrimonio\BemModelo;
 use Source\Models\Report\Online;
 use Source\Models\User;
 
@@ -69,14 +70,19 @@ class Dash extends Admin
             "app" => "dash",
             "head" => $head,
             "users" => (object)[
-                "users" => (new User())->find("level_id < 5")->count(),
-                "admins" => (new User())->find("level_id >= 5")->count(),
+                "users" => (new User())->find("level_id < 4")->count(),
+                "admins" => (new User())->find("level_id >= 4")->count(),
                 "totais" => (new User())->find()->count()
             ],
-            "churches" => (object)[
-                "churches" => (new Churche())->find("status != :s", "s=disabled")->count(),
-                "disableds" => (new Churche())->find("status = :s", "s=disabled")->count(),
-                "totais" => (new Churche())->find()->count()
+            "marcas" => (object)[
+                "marcas" => (new BemMarca())->find("status != :s", "s=disabled")->count(),
+                "disableds" => (new BemMarca())->find("status = :s", "s=disabled")->count(),
+                "totais" => (new BemMarca())->find()->count()
+            ],
+            "modelos" => (object)[
+                "modelos" => (new BemModelo())->find("status != :s", "s=disabled")->count(),
+                "disableds" => (new BemModelo())->find("status = :s", "s=disabled")->count(),
+                "totais" => (new BemModelo())->find()->count()
             ],
             "online" => (new Online())->findByActive(),
             "onlineCount" => (new Online())->findByActive(true)

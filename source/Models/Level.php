@@ -11,7 +11,7 @@ class Level extends Model
 {
     public function __construct()
     {
-        parent::__construct("levels", ["id"], ["level_name"]);
+        parent::__construct("levels", ["id"], ["level_nome"]);
     }
 
     /** @param string $uri
@@ -20,7 +20,7 @@ class Level extends Model
      */
     public function findyByLevel(string $level, string $columns = "*"): ?Level
     {
-        $find = $this->find("level_name = :s", "s={$level}", $columns);
+        $find = $this->find("level_nome = :s", "s={$level}", $columns);
         return $find->fetch();
     }
 
@@ -42,7 +42,7 @@ class Level extends Model
 
         if(!empty($stm)):
             foreach ($stm->fetch(true) as $row):
-                $array[] = $row->level_name;
+                $array[] = $row->level_nome;
             endforeach;
             echo json_encode($array); //Return the JSON Array
         endif;
@@ -55,7 +55,7 @@ class Level extends Model
 
         if(!empty($stm)):
             foreach ($stm as $row):
-                echo '<option value="'.$row->level_name.'">'.$row->level_name.'</option>'; //Return the JSON Array
+                echo '<option value="'.$row->level_nome.'">'.$row->level_nome.'</option>'; //Return the JSON Array
             endforeach;
         endif;
         return null;
@@ -67,7 +67,7 @@ class Level extends Model
 
         if(!empty($stm)):
             foreach ($stm as $row):
-                echo '<option value="'.$row->id.'">'.$row->level_name.'</option>'; //Return the JSON Array
+                echo '<option value="'.$row->id.'">'.$row->level_nome.'</option>'; //Return the JSON Array
             endforeach;
         endif;
         return null;
@@ -87,7 +87,7 @@ class Level extends Model
         if (!empty($this->id)) {
             $levelId = $this->id;
 
-            if ($this->find("level_name = :d AND id != :i", "d={$this->level_name}&i={$levelId}", "id")->fetch()) {
+            if ($this->find("level_nome = :d AND id != :i", "d={$this->level_nome}&i={$levelId}", "id")->fetch()) {
                 $this->message->warning("O nível informado já está cadastrado")->icon("building");
                 return false;
             }
@@ -101,7 +101,7 @@ class Level extends Model
 
         /** Level Create */
         if (empty($this->id)) {
-            if ($this->findyByLevel($this->level_name, "id")) {
+            if ($this->findyByLevel($this->level_nome, "id")) {
                 $this->message->warning("O nível informado já está cadastrado")->icon("building");
                 return false;
             }

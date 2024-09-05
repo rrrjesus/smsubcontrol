@@ -75,7 +75,7 @@
                                         
                                         <td class="text-center"><?=$lista->first_name?></td>
                                         <td class="text-center"><?=$lista->last_name?></td>
-                                        <td class="text-center fw-semibold"><?=(!empty($lista->userUnit()->unit_name) ? $lista->userUnit()->unit_name : "")?></td>
+                                        <td class="text-center fw-semibold"><?=(!empty($lista->userUnit()->unidade_nome) ? $lista->userUnit()->unidade_nome : "")?></td>
                                         <td class="text-center"><?=$lista->email?></td>
                                         <?php
                                             switch ($lista->status) {
@@ -94,9 +94,9 @@
                                         ?>
                                         <?php
                                             if(!empty($lista->level_id)):
-                                                echo '<td class="text-center">'.$lista->level()->level_name.'</td>';
+                                                echo '<td class="text-center">'.$lista->level()->level_nome.'</td>';
                                             else:
-                                                echo '<td class="text-center text-danger"><del>'.$lista->level()->level_name.'<del></td>';
+                                                echo '<td class="text-center text-danger"><del>'.$lista->level()->level_nome.'<del></td>';
                                             endif;
                                         ?>
                                     </tr>

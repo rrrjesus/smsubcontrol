@@ -209,7 +209,7 @@
                                             <select class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                                 data-bs-title="Digite a Igreja" name="churche_id" id="churche_id">
                                                 <?=(new \Source\Models\Churche())->selectChurcheId()?>
-                                                <option value="<?=$user->churche()->id?>" selected><?=$user->churche()->churche_name?></option>
+                                                <option value="<?=$user->churche()->id?>" selected><?=$user->unit()->churche_name?></option>
                                             </select>
                                         </div>
 
@@ -218,7 +218,7 @@
                                             <select class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                                 data-bs-title="Digite o level" name="level_id" id="level_id">
                                                 <?=(new \Source\Models\Level())->selectLevelId()?>
-                                                <option value="<?=$user->level()->id?>" selected><?=$user->level()->level_name?></option>
+                                                <option value="<?=$user->level()->id?>" selected><?=$user->level()->level_nome?></option>
                                             </select>
                                         </div>
 
@@ -226,7 +226,7 @@
                                             <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputStatus"><strong><i class="bi bi-check2-square ms-3 me-3"></i> Status</strong></label>
                                             <select class="form-control form-control-sm" data-bs-togglee="tooltip" title="Ex: ATIVO/INATIVO"
                                                     name="status" id="status">                                                
-                                                <?=$user->status()?>
+                                                <?=$user->statusSelected()?>
                                             </select>
                                             
                                         </div>

@@ -91,9 +91,9 @@
                                             ?>
                                         <?php
                                             if(!empty($lista->level_id)):
-                                                echo '<td class="text-center text-danger">'.$lista->level()->level_name.'</td>';
+                                                echo '<td class="text-center text-danger">'.$lista->level()->level_nome.'</td>';
                                             else:
-                                                echo '<td class="text-center text-danger"><del>'.$lista->level()->level_name.'<del></td>';
+                                                echo '<td class="text-center text-danger"><del>'.$lista->level()->level_nome.'<del></td>';
                                             endif;
                                         ?>
                                     </tr>

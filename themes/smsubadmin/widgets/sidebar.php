@@ -1,6 +1,6 @@
 <style>
     .sb-sidenav-menu a:hover {
-        background: #00BFFF;
+        background: #424242;
         color: #ffffff;
     }
 </style>
@@ -12,6 +12,11 @@
             <div class="nav">
                 <div class="sb-sidenav-menu-heading text-light fw-semibold fs-6">SISTEMA</div>
 
+                <a class="nav-link text-light fw-semibold fs-6" href="<?=url("/painel/controle")?>">
+                    <div class="sb-nav-link-icon"><i class="bi bi-speedometer bi-2xx"></i></div>
+                    Monitoramento
+                </a>
+
                 <a class="nav-link text-light fw-semibold fs-6" target="_blank" rel="noopener" href="<?=url("/")?>">
                     <div class="sb-nav-link-icon"><i class="bi bi-link-45deg bi-2xx"></i></div>
                     Ver Site
@@ -22,11 +27,6 @@
                     Ver Aplicativo
                 </a>
 
-
-                <a class="nav-link text-light fw-semibold fs-6" href="<?=url("/painel/controle")?>">
-                    <div class="sb-nav-link-icon"><i class="bi bi-speedometer bi-2xx"></i></div>
-                    Monitoramento
-                </a>
                 <div class="sb-sidenav-menu-heading text-light fw-semibold fs-6">CADASTROS</div>
 
                 <!-- Sidebar de usuários -->

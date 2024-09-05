@@ -169,7 +169,7 @@
                                             <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSetor"><strong><i class="bi bi-building ms-3 me-3"></i> Unidade</strong></label>
                                             <select class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                                 data-bs-title="Digite a Unidade" name="unit_id">
-                                                <option value="<?=$bens->bemUnit()->id?>" selected><?=$bens->bemUnit()->unit_name?></option>
+                                                <option value="<?=$bens->bemUnit()->id?>" selected><?=$bens->bemUnit()->unidade_nome?></option>
                                                 <?=$benscreates->unitSelect()?>
                                             </select>
                                         </div>  

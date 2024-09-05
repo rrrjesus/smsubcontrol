@@ -101,7 +101,7 @@ if(!empty($user->id)): echo "Editar ".$user->first_name; else : echo "Cadastrar"
                                             <select class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                                 data-bs-title="Digite o level" name="level_id" id="level_id">
                                                 <?=(new \Source\Models\Level())->selectLevelId()?>
-                                                <option value="<?=$user->level()->id?>" selected><?=$user->level()->level_name?></option>
+                                                <option value="<?=$user->level()->id?>" selected><?=$user->level()->level_nome?></option>
                                             </select>
                                         </div>
 

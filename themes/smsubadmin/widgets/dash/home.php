@@ -45,10 +45,28 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="fw-semibold text-<?=CONF_ADMIN_COLOR?> text-uppercase mb-1 fs-5">Igrejas</div>
-                                            <div class="h6 mb-1 font-weight-bold text-gray-800">Igrejas :  <?=$churches->churches?></div>
-                                            <div class="h6 mb-1 font-weight-bold text-gray-800">Desativadas :  <?=$churches->disableds?></div>
-                                            <div class="h6 mb-0 font-weight-bold text-gray-800">Total Geral:  <?=$churches->totais?></div>
+                                            <div class="fw-semibold text-<?=CONF_ADMIN_COLOR?> text-uppercase mb-1 fs-5">Patrimônio/Marcas</div>
+                                            <div class="h6 mb-1 font-weight-bold text-gray-800">Marcas :  <?=$marcas->marcas?></div>
+                                            <div class="h6 mb-1 font-weight-bold text-gray-800">Desativadas :  <?=$marcas->disableds?></div>
+                                            <div class="h6 mb-0 font-weight-bold text-gray-800">Total Geral:  <?=$marcas->totais?></div>
+                                        </div>
+                                        <div class="col-auto text-gray-300">
+                                            <i class="bi bi-building bi-2x"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-<?=CONF_ADMIN_COLOR?> shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="fw-semibold text-<?=CONF_ADMIN_COLOR?> text-uppercase mb-1 fs-5">Patrimônio/Modelos</div>
+                                            <div class="h6 mb-1 font-weight-bold text-gray-800">Modelos :  <?=$modelos->modelos?></div>
+                                            <div class="h6 mb-1 font-weight-bold text-gray-800">Desativadas :  <?=$modelos->disableds?></div>
+                                            <div class="h6 mb-0 font-weight-bold text-gray-800">Total Geral:  <?=$modelos->totais?></div>
                                         </div>
                                         <div class="col-auto text-gray-300">
                                             <i class="bi bi-building bi-2x"></i>
