@@ -3,7 +3,7 @@
 namespace Source\Models\Patrimonio;
 
 use Source\Core\Model;
-use Source\Models\Unidade;
+use Source\Models\Unit;
 use Source\Models\User;
 
 
@@ -46,12 +46,12 @@ class  BemHistorico extends Model
     }
 
     /**
-     * @return null|Unidade
+     * @return null|Unit
      */
-    public function bemUnidade(): ?Unidade
+    public function bemUnidade(): ?Unit
     {
         if($this->unit_id) {
-            return(new Unidade())->findById($this->unit_id);
+            return(new Unit())->findById($this->unit_id);
         }
         return null;
     }

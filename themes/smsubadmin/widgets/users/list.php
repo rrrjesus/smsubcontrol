@@ -62,20 +62,20 @@
                                             class="btn btn-info rounded-circle btn-md text-center">
                                             <i class="bi bi-person-gear text-dark"></i></a></td>
                                             <?php
-                                                if(!empty($lista->photo)):
+                                                if(file_exists($lista->photo)):
                                                     echo '<td class="text-center"><a href="'.$lista->photo.'" target="_blank">
                                                         <img src="'.$lista->photo.'" class="img-thumbnail rounded-circle float-left" height="40" 
                                                         width="40"></a></td>';
                                                 else:
-                                                    echo '<td class="text-center"><a href="themes/painel/assets/images/padrao.jpg" target="_blank">
-                                                    <img src="themes/painel/assets/images/padrao.jpg" class="img-thumbnail rounded-circle float-left" height="40" 
+                                                    echo '<td class="text-center"><a href="../themes/smsubadmin/assets/images/padrao.jpg" target="_blank">
+                                                    <img src="../themes/smsubadmin/assets/images/padrao.jpg" class="img-thumbnail rounded-circle float-left" height="40" 
                                                     width="40"></a></td>';
                                                 endif;
                                             ?>                                      
                                         
                                         <td class="text-center"><?=$lista->first_name?></td>
                                         <td class="text-center"><?=$lista->last_name?></td>
-                                        <td class="text-center fw-semibold"><?=(!empty($lista->userUnidade()->unidade_nome) ? $lista->userUnidade()->unidade_nome : "")?></td>
+                                        <td class="text-center fw-semibold"><?=(!empty($lista->userUnidade()->unit_name) ? $lista->userUnidade()->unit_name : "")?></td>
                                         <td class="text-center"><?=$lista->email?></td>
                                         <?php
                                             switch ($lista->status) {

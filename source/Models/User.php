@@ -17,7 +17,29 @@ class User extends Model
      */
     public function __construct()
     {
-        parent::__construct("users", ["id"], ["first_name", "last_name", "email", "password"]);
+        parent::__construct("users", ["id"], ["login", "rf", "first_name", "last_name", "phone", "email", "password"]);
+    }
+
+    /**
+     * @param string $login
+     * @param string $columns
+     * @return null|User
+     */
+    public function findByLogin(string $login, string $columns = "*"): ?User
+    {
+        $find = $this->find("login = :login", "login={$login}", $columns);
+        return $find->fetch();
+    }
+
+    /**
+     * @param string $rf
+     * @param string $columns
+     * @return null|User
+     */
+    public function findByRf(string $rf, string $columns = "*"): ?User
+    {
+        $find = $this->find("rf = :rf", "rf={$rf}", $columns);
+        return $find->fetch();
     }
 
     /**
@@ -56,12 +78,12 @@ class User extends Model
     }
 
     /**
-     * @return null|Unidade
+     * @return null|Unit
      */
-    public function userUnidade(): ?Unidade
+    public function userUnidade(): ?Unit
     {
         if($this->unit_id) {
-            return(new Unidade())->findById($this->unit_id);
+            return(new Unit())->findById($this->unit_id);
         }
         return null;
     }
@@ -155,15 +177,37 @@ class User extends Model
         return null;
     }
 
+    static function completePosition($columns): ?UserPosition
+    {
+        $stm = (new UserPosition())->find("status= :s","s=confirmed", $columns);
+        $array = array();
+
+        if(!empty($stm)):
+            foreach ($stm->fetch(true) as $row):
+                $array[] = $row->position_name;
+            endforeach;
+            echo json_encode($array); //Return the JSON Array
+        endif;
+        return null;
+    }
+
+    public function unitSelect(): ?Unit
+    {
+        $stm = (new Unit())->find("status=:s","s=actived")->fetch(true);
+
+        if(!empty($stm)):
+            foreach ($stm as $row):
+                echo '<option value="'.$row->id.'">'.$row->unit_name.'</option>'; //Return the JSON Array
+            endforeach;
+        endif;
+        return null;
+    } 
+
     /**
      * @return bool
      */
     public function save(): bool
     {
-        if (!$this->required()) {
-            $this->message->warning("Nome, sobrenome, email  são obrigatórios !!!")->icon();
-            return false;
-        }
 
         if (!is_email($this->email)) {
             $this->message->warning("O e-mail informado não tem um formato válido")->icon();
@@ -199,6 +243,16 @@ class User extends Model
         if (empty($this->id)) {
             if ($this->findByEmail($this->email, "id")) {
                 $this->message->warning("O e-mail informado já está cadastrado");
+                return false;
+            }
+
+            if ($this->findByLogin($this->login, "id")) {
+                $this->message->warning("O login informado já está cadastrado");
+                return false;
+            }
+
+            if ($this->findByRf($this->rf, "id")) {
+                $this->message->warning("O rf informado já está cadastrado");
                 return false;
             }
 

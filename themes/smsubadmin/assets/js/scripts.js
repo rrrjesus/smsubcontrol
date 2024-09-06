@@ -38,7 +38,7 @@ $(function () {
         }
     });
 
-    $("#collaborator-register").validate({
+    $("#user").validate({
         rules: {
             first_name: {
                 required: true
@@ -178,15 +178,20 @@ $(function () {
         }
     }
 
-        /*
+    /*
      * jQuery MASK
      */
         $(".mask-money").mask('000.000.000.000.000,00', {reverse: true, placeholder: "0,00"});
         $(".mask-date").mask('00/00/0000', {reverse: true});
         $(".mask-month").mask('00/0000', {reverse: true});
         $(".mask-doc").mask('000.000.000-00', {reverse: true});
+        $(".mask-phone").mask('000000000', {reverse: true});
         $(".mask-imei").mask('000000000000000', {reverse: true});
         $(".mask-card").mask('0000  0000  0000  0000', {reverse: true});
+        $('.mask-phone').mask('(00)00000-0000');
+        $('.mask-phone-fixed').mask('(00)0000-0000');
+        $('.mask-login').mask('S000000');
+        $('.mask-rf').mask('0000000');
 
     //  data-bs-toggle="tooltip" Bootstrap Title
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-togglee="tooltip"]'))

@@ -58,9 +58,9 @@
                                     <div class="row">   
 
                                         <div class="col-md-3 mb-1">
-                                            <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSetor"><strong><i class="bi bi-building ms-3 me-3"></i> Unidade</strong></label>
+                                            <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSetor"><strong><i class="bi bi-building ms-3 me-3"></i> Unit</strong></label>
                                             <select class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                                data-bs-title="Digite a Unidade" name="unit_id">
+                                                data-bs-title="Digite a Unit" name="unit_id">
                                                 <?=$benscreates->unitSelect()?>
                                             </select>
                                         </div>  
@@ -112,7 +112,7 @@
                                     <script>
                                         let secsubinp = new Bloodhound({
                                             datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
-                                            local: <?=(new \Source\Models\Unidade())->completeName("unidade_nome")?>
+                                            local: <?=(new \Source\Models\Unit())->completeName("unit_name")?>
                                         });
                                         secsubinp.initialize();
                                         $('.secsubinp').typeahead({limit: 10, hint: true, highlight: true, minLength: 1}, {source: secsubinp});
@@ -183,10 +183,10 @@
                                     <div class="row">   
 
                                         <div class="col-md-4 mb-1">
-                                            <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSetor"><strong><i class="bi bi-building ms-3 me-3"></i> Unidade</strong></label>
+                                            <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSetor"><strong><i class="bi bi-building ms-3 me-3"></i> Unit</strong></label>
                                             <select class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                                data-bs-title="Digite a Unidade" name="unit_id">
-                                                <option value="<?=$bens->bemUnidade()->id?>" selected><?=$bens->bemUnidade()->unidade_nome?></option>
+                                                data-bs-title="Digite a Unit" name="unit_id">
+                                                <option value="<?=$bens->bemUnidade()->id?>" selected><?=$bens->bemUnidade()->unit_name?></option>
                                                 <?=$benscreates->unitSelect()?>
                                             </select>
                                         </div>  

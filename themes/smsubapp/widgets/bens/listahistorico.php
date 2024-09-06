@@ -44,7 +44,7 @@
                         </td>
                         <td class="text-center fw-semibold"><?=(!empty($lista->user()->phone) ? $lista->user()->phone : "")?></td>
                         <td class="text-center fw-semibold">
-                        <?php if(!empty($lista->BemUnidade()->unidade_nome) && !empty($lista->BemUnidade()->status == "actived")):
+                        <?php if(!empty($lista->BemUnidade()->unit_name) && !empty($lista->BemUnidade()->status == "actived")):
                             echo (!empty($lista->BemUnidade()->it_professional) ? $lista->BemUnidade()->it_professional : "Não Cadastrado");
                         else:
                             echo "Excluído";
@@ -52,15 +52,15 @@
                             ?>
                         </td>
                         <td class="text-center fw-semibold">
-                        <?php if(!empty($lista->BemUnidade()->unidade_nome) && !empty($lista->BemUnidade()->status == "actived")):
-                            echo (!empty($lista->BemUnidade()->unidade_nome) ? $lista->BemUnidade()->unidade_nome : "NÃO CADASTRADO");
+                        <?php if(!empty($lista->BemUnidade()->unit_name) && !empty($lista->BemUnidade()->status == "actived")):
+                            echo (!empty($lista->BemUnidade()->unit_name) ? $lista->BemUnidade()->unit_name : "NÃO CADASTRADO");
                         else:
                             echo "EXCLUÍDO";
                         endif;
                             ?>
                         </td>
                         <td class="text-center fw-semibold">
-                        <?php if(!empty($lista->BemUnidade()->unidade_nome) && !empty($lista->BemUnidade()->status == "actived")):
+                        <?php if(!empty($lista->BemUnidade()->unit_name) && !empty($lista->BemUnidade()->status == "actived")):
                             echo (!empty($lista->BemUnidade()->telephone) ? $lista->BemUnidade()->telephone : "Não Cadastrado");
                         else:
                             echo "Excluído";

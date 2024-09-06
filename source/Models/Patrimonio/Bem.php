@@ -3,7 +3,7 @@
 namespace Source\Models\Patrimonio;
 
 use Source\Core\Model;
-use Source\Models\Unidade;
+use Source\Models\Unit;
 use Source\Models\User;
 
 
@@ -100,13 +100,13 @@ class Bem extends Model
         return null;
     } 
 
-    public function unitSelect(): ?Unidade
+    public function unitSelect(): ?Unit
     {
-        $stm = (new Unidade())->find("status=:s","s=actived")->fetch(true);
+        $stm = (new Unit())->find("status=:s","s=actived")->fetch(true);
 
         if(!empty($stm)):
             foreach ($stm as $row):
-                echo '<option value="'.$row->id.'">'.$row->unidade_nome.'</option>'; //Return the JSON Array
+                echo '<option value="'.$row->id.'">'.$row->unit_name.'</option>'; //Return the JSON Array
             endforeach;
         endif;
         return null;
@@ -196,12 +196,12 @@ class Bem extends Model
     }
 
     /**
-     * @return null|Unidade
+     * @return null|Unit
      */
-    public function bemUnidade(): ?Unidade
+    public function bemUnidade(): ?Unit
     {
         if($this->unit_id) {
-            return(new Unidade())->findById($this->unit_id);
+            return(new Unit())->findById($this->unit_id);
         }
         return null;
     }

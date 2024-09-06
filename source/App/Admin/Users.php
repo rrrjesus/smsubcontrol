@@ -4,6 +4,8 @@ namespace Source\App\Admin;
 
 use Source\App\Admin\Dashboard;
 use Source\Models\User;
+use Source\Models\UserPosition;
+use Source\Models\Unit;
 use Source\Support\Thumb;
 use Source\Support\Upload;
 
@@ -87,22 +89,28 @@ class Users extends Admin
      */
     public function user(?array $data): void
     {
+        $user = (new User())->findById($this->user->id);
+        
         //create
         if (!empty($data["action"]) && $data["action"] == "create") {
             $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
 
             $userCreate = new User();
+            $userCreate->login = $data["login"];
+            $userCreate->rf = $data["rf"];
             $userCreate->first_name = $data["first_name"];
             $userCreate->last_name = $data["last_name"];
             $userCreate->email = $data["email"];
             $userCreate->phone = preg_replace("/[^0-9]/", "", $data["phone"]);
-            $userCreate->churche_id = $data["churche_id"];
+            $userCreate->phone_fixed = preg_replace("/[^0-9]/", "", $data["phone_fixed"]);
+            $userCreate->position_id = preg_replace("/[^0-9\s]/", "", $data["position_id"]);
+            $userCreate->category_id = preg_replace("/[^0-9\s]/", "", $data["category_id"]);
+            $userCreate->unit_id = preg_replace("/[^0-9\s]/", "", $data["unit_id"]);
             $userCreate->password = $data["password"];
             $userCreate->level_id = $data["level_id"];
-            //$userCreate->genre = $data["genre"];
-            //$userCreate->datebirth = date_fmt_back($data["datebirth"]);
-            //$userCreate->document = preg_replace("/[^0-9]/", "", $data["document"]);
-            $userCreate->status = $data["status"];
+            $userCreate->observations = $data["observations"];
+            $userCreate->created_at = date("Y-m-d h:m:s");
+            $userCreate->login_created = $user->login;
 
             //upload photo
             if (!empty($_FILES["photo"])) {
@@ -119,6 +127,36 @@ class Users extends Admin
                 $userCreate->photo = $image;
             }
 
+            if($data["login"] == ""){
+                $json['message'] = $this->message->warning("Informe o login para criar o registro !")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            if($data["rf"] == ""){
+                $json['message'] = $this->message->warning("Informe o RF para criar o registro !")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            if($data["category_id"] == ""){
+                $json['message'] = $this->message->warning("Informe o Regime para criar o registro !")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            if($data["unit_id"] == ""){
+                $json['message'] = $this->message->warning("Informe a Unidade para criar o registro !")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            if($data["position_id"] == ""){
+                $json['message'] = $this->message->warning("Informe o Cargo para criar o registro !")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
+
             if (!$userCreate->save()) {
                 $json["message"] = $userCreate->message()->render();
                 echo json_encode($json);
@@ -126,7 +164,7 @@ class Users extends Admin
             }
 
             $this->message->success("Usuário {$userCreate->first_name} cadastrado com sucesso...")->icon("person")->flash();
-            $json["redirect"] = url("/painel/usuarios/adicionar");
+            $json["redirect"] = url("/painel/usuarios/cadastrar");
 
             echo json_encode($json);
             return;
@@ -139,16 +177,20 @@ class Users extends Admin
 
             if (!$userUpdate) {
                 $this->message->error("Você tentou gerenciar um usuário que não existe")->icon("person")->flash();
-                echo json_encode(["redirect" => url("/usuarios")]);
+                echo json_encode(["redirect" => url("/painel/usuarios")]);
                 return;
             }
 
-            $userUpdate->first_name = $data["first_name"];
+            $userUpdate->first_name = $data["login"];
+            $userUpdate->first_name = $data["rf"];
             $userUpdate->first_name = $data["first_name"];
             $userUpdate->last_name = $data["last_name"];
             $userUpdate->email = $data["email"];
             $userUpdate->phone = preg_replace("/[^0-9]/", "", $data["phone"]);
-            $userUpdate->churche_id = $data["churche_id"];
+            $userUpdate->first_name = $data["status"];
+            $userUpdate->first_name = $data["position"];
+            $userUpdate->first_name = $data["regime"];
+            $userUpdate->first_name = $data["unit"];
             $userUpdate->password = (!empty($data["password"]) ? $data["password"] : $userUpdate->password);
             $userUpdate->level_id = $data["level_id"];
             $userUpdate->status = $data["status"];
@@ -208,6 +250,9 @@ class Users extends Admin
             return;
         }
 
+        $userposition = new UserPosition();
+        $unit = new Unit();
+
         $userEdit = null;
         if (!empty($data["user_id"])) {
             $userId = filter_var($data["user_id"], FILTER_VALIDATE_INT);
@@ -226,6 +271,8 @@ class Users extends Admin
             "app" => "usuarios",
             "head" => $head,
             "user" => $userEdit,
+            "userposition" => $userposition,
+            "unit" => $unit,
             "photo" => ($this->user->photo() ? image($this->user->photo, 360, 360) :
             theme("/assets/images/avatar.jpg", CONF_VIEW_APP))
         ]);

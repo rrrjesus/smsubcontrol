@@ -5,7 +5,7 @@ namespace Source\Models;
 use Source\Core\Model;
 
 /**
- * Rodolfo | Class Unidade Active Record Pattern
+ * Rodolfo | Class Unit Active Record Pattern
  *
  * @author Rodolfo Romaioli Ribeiro de Jesus <rodolfo.romaioli@gmail.com>
  * @package Source\Models

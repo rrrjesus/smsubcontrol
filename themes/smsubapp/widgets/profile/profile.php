@@ -77,7 +77,7 @@
                                         <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSobreNome"><strong><i class="bi bi-person-add me-1"></i> Cargo</strong></label>
                                         <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                             data-bs-title="Cargo" class="form-control form-control-sm"
-                                            name="position" placeholder="Unidade" value="<?=$user->userPosition()->position_name?>" disabled readonly>
+                                            name="position" placeholder="Unit" value="<?=$user->userPosition()->position_name?>" disabled readonly>
                                     </div>
 
                                     <div class="col-md-2 mb-1">
@@ -88,10 +88,10 @@
                                     </div>
 
                                     <div class="col-md-3 mb-1">
-                                        <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSobreNome"><i class="bi bi-person-add me-1"></i><strong>Unidade</strong></label>
+                                        <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSobreNome"><i class="bi bi-person-add me-1"></i><strong>Unit</strong></label>
                                         <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                            data-bs-title="Unidade" class="form-control form-control-sm"
-                                            name="unit" placeholder="Unidade" value="<?='00'.$user->userUnidade()->id.' - '.$user->userUnidade()->unidade_nome?>" disabled readonly>
+                                            data-bs-title="Unit" class="form-control form-control-sm"
+                                            name="unit" placeholder="Unit" value="<?='00'.$user->userUnidade()->id.' - '.$user->userUnidade()->unit_name?>" disabled readonly>
                                     </div>
 
                                     <div class="col-md-3 mb-1">

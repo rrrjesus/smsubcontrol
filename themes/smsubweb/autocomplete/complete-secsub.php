@@ -14,13 +14,13 @@ use Source\Core\Connect;
 
 function retorna($name) {
 
-    $stmt = Connect::getInstance()->query("SELECT `id`, `unidade_nome`, `descricao`, `endereco`, `cep`, `logo`, `url` FROM unidades WHERE unidade_nome = '{$name}'");
+    $stmt = Connect::getInstance()->query("SELECT `id`, `unit_name`, `description`, `adress`, `zip`, `logo`, `url` FROM units WHERE unit_name = '{$name}'");
 
     $arr = Array();
     if ($stmt->rowCount()) {
         while ($dados = $stmt->fetch()) {
-            $arr['enderecoinp'] = $dados->endereco;
-            $arr['cepinp'] = $dados->cep;
+            $arr['enderecoinp'] = $dados->adress;
+            $arr['cepinp'] = $dados->zip;
             $arr['aslogo'] = $dados->logo;
             $arr['url'] = $dados->url;
         }

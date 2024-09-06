@@ -5,7 +5,7 @@ namespace Source\Models;
 use Source\Core\Model;
 
 /**
- * Rodolfo | Class Unidade Active Record Pattern
+ * Rodolfo | Class Unit Active Record Pattern
  *
  * @author Rodolfo Romaioli Ribeiro de Jesus <rodolfo.romaioli@gmail.com>
  * @package Source\Models
@@ -18,6 +18,20 @@ class UserPosition extends Model
     public function __construct()
     {
         parent::__construct("user_positions", ["id"], ["position_name"]);
+    }
+
+    static function completePosition(): ?UserPosition
+    {
+        $stm = (new UserPosition())->find("status= :s","s=actived");
+        $array[] = array();
+
+        if(!empty($stm)):
+            foreach ($stm->fetch(true) as $row):
+                    $array[] = $row->id.' - '.$row->position_name;
+            endforeach;
+            echo json_encode($array); //Return the JSON Array
+        endif;
+        return null;
     }
 
     public function status(): ?string
