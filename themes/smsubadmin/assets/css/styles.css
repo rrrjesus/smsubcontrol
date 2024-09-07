@@ -57,24 +57,25 @@ span.twitter-typeahead .tt-suggestion:focus,
 .dropdown-item:hover,
 span.twitter-typeahead .tt-suggestion:hover {
     text-decoration: none;
-    background-color: var(--bs-secondary);
+    background-color: var(--bs-dark);
+    color: #fff;
 }
 
 .dropdown-item.active, .dropdown-item:active {
     text-decoration: none;
-    background-color: var(--bs-secondary);
+    background-color: var(--bs-dark);
 }
 
 /* AJUDA */
 .custom-tooltip {
-    --bs-tooltip-bg: var(--bs-secondary);
+    --bs-tooltip-bg: var(--bs-dark);
     --bs-tooltip-color: var(--bs-white);
 }
 
 /* Datatables Pagination */
-.page-link {color: var(--bs-secondary)}
+.page-link {color: var(--bs-dark)}
 .pagination {--bs-link-hover-color: #0c1390;}
-.active>.page-link, .page-link.active {background-color: var(--bs-secondary);border-color: var(--bs-secondary);}
+.active>.page-link, .page-link.active {background-color: var(--bs-dark);border-color: var(--bs-dark);}
 
 
 .bd-navbar .dropdown-menu .active .bi {

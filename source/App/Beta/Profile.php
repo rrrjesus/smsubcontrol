@@ -3,8 +3,8 @@
 namespace Source\App\Beta;
 
 use Source\Models\User;
-use Source\Models\Thumb;
-use Source\Models\Upload;
+use Source\Support\Thumb;
+use Source\Support\Upload;
 
 /**
  * Class Profile

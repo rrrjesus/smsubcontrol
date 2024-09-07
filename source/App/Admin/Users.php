@@ -2,7 +2,6 @@
 
 namespace Source\App\Admin;
 
-use Source\App\Admin\Dashboard;
 use Source\Models\User;
 use Source\Models\UserPosition;
 use Source\Models\Unit;
@@ -181,19 +180,21 @@ class Users extends Admin
                 return;
             }
 
-            $userUpdate->first_name = $data["login"];
-            $userUpdate->first_name = $data["rf"];
+            $userUpdate->login = $data["login"];
+            $userUpdate->rf = $data["rf"];
             $userUpdate->first_name = $data["first_name"];
             $userUpdate->last_name = $data["last_name"];
             $userUpdate->email = $data["email"];
             $userUpdate->phone = preg_replace("/[^0-9]/", "", $data["phone"]);
-            $userUpdate->first_name = $data["status"];
-            $userUpdate->first_name = $data["position"];
-            $userUpdate->first_name = $data["regime"];
-            $userUpdate->first_name = $data["unit"];
+            $userUpdate->phone_fixed = preg_replace("/[^0-9]/", "", $data["phone_fixed"]);
+            $userUpdate->position_id = preg_replace("/[^0-9\s]/", "", $data["position_id"]);
+            $userUpdate->category_id = preg_replace("/[^0-9\s]/", "", $data["category_id"]);
+            $userUpdate->unit_id = preg_replace("/[^0-9\s]/", "", $data["unit_id"]);
             $userUpdate->password = (!empty($data["password"]) ? $data["password"] : $userUpdate->password);
             $userUpdate->level_id = $data["level_id"];
-            $userUpdate->status = $data["status"];
+            $userUpdate->status = (new User())->statusInputDecode($data["status"]);
+            $userUpdate->observations = $data["observations"];
+            $userUpdate->login_updated = $user->login;
 
             //upload photo
             if (!empty($_FILES["photo"])) {
@@ -215,13 +216,29 @@ class Users extends Admin
                 $userUpdate->photo = $image;
             }
 
+            if (!empty($_FILES["photo"])) {
+                $file = $_FILES["photo"];
+                $upload = new Upload();
+
+                if ($this->user->photo()) {
+                    (new Thumb())->flush("storage/{$this->user->photo}");
+                    $upload->remove("storage/{$this->user->photo}");
+                }
+
+                if (!$user->photo = $upload->image($file, "{$user->first_name} {$user->last_name} " . time(), 360)) {
+                    $json["message"] = $upload->message()->before("Ooops {$this->user->first_name}! ")->after(".")->render();
+                    echo json_encode($json);
+                    return;
+                }
+            }
+
             if (!$userUpdate->save()) {
                 $json["message"] = $userUpdate->message()->render();
                 echo json_encode($json);
                 return;
             }
 
-            $this->message->success("Usuário {$userUpdate->first_name} atualizado com sucesso...")->icon("person")->flash();
+            $this->message->success("Usuário {$userUpdate->login} - {$userUpdate->first_name} atualizado com sucesso !!!")->icon("person")->flash();
             echo json_encode(["reload" => true]);
             return;
         }
@@ -274,7 +291,7 @@ class Users extends Admin
             "userposition" => $userposition,
             "unit" => $unit,
             "photo" => ($this->user->photo() ? image($this->user->photo, 360, 360) :
-            theme("/assets/images/avatar.jpg", CONF_VIEW_APP))
+            theme("/assets/images/avatar.jpg", CONF_VIEW_ADMIN))
         ]);
     }
 }

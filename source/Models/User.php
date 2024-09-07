@@ -17,7 +17,7 @@ class User extends Model
      */
     public function __construct()
     {
-        parent::__construct("users", ["id"], ["login", "rf", "first_name", "last_name", "phone", "email", "password"]);
+        parent::__construct("users", ["id"], ["login", "rf", "status", "photo", "first_name", "last_name", "phone", "email", "password"]);
     }
 
     /**
@@ -68,11 +68,23 @@ class User extends Model
     public function statusInput(): ?string
     {
         if ($this->status == "registered") {
-            return 'Registrado';
+            return '1 - REGISTRADO';
         } elseif ($this->status == "confirmed") {
-            return 'Ativo';
+            return '2 - CONFIRMADO';
         } else {
-            return 'Inativo';
+            return '3 - INATIVO';
+        }
+        return null; 
+    }
+
+    public function statusInputDecode($status): ?string
+    {
+        if ($status == "1 - REGISTRADO") {
+            return 'registered';
+        } elseif ($status == "2 - CONFIRMADO") {
+            return 'confirmed';
+        } else {
+            return 'trash';
         }
         return null; 
     }
@@ -80,7 +92,7 @@ class User extends Model
     /**
      * @return null|Unit
      */
-    public function userUnidade(): ?Unit
+    public function userUnit(): ?Unit
     {
         if($this->unit_id) {
             return(new Unit())->findById($this->unit_id);
@@ -113,14 +125,6 @@ class User extends Model
     public function level(): ?Level    {
         if($this->level_id) {
             return(new Level())->findById($this->level_id);
-        }
-        return null;
-    }
-
-    public function churche(): ?Churche
-    {
-        if($this->churche_id) {
-            return(new Churche())->findById($this->churche_id);
         }
         return null;
     }
@@ -226,6 +230,16 @@ class User extends Model
         /** User Update */
         if (!empty($this->id)) {
             $userId = $this->id;
+
+            if ($this->find("login = :l AND id != :i", "l={$this->login}&i={$userId}", "id")->fetch()) {
+                $this->message->warning("O login informado já está cadastrado");
+                return false;
+            }
+
+            if ($this->find("rf = :r AND id != :i", "r={$this->rf}&i={$userId}", "id")->fetch()) {
+                $this->message->warning("O RF informado já está cadastrado");
+                return false;
+            }
 
             if ($this->find("email = :e AND id != :i", "e={$this->email}&i={$userId}", "id")->fetch()) {
                 $this->message->warning("O e-mail informado já está cadastrado");

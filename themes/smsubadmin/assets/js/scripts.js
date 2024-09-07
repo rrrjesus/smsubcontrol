@@ -40,10 +40,25 @@ $(function () {
 
     $("#user").validate({
         rules: {
+            login: {
+                required: true
+            },
+            rf: {
+                required: true
+            },
             first_name: {
                 required: true
             },
             last_name: {
+                required: true
+            },
+            position_id: {
+                required: true
+            },
+            category_id: {
+                required: true
+            },
+            unit_id: {
                 required: true
             },
             email: {
@@ -51,11 +66,26 @@ $(function () {
             }
         },
         messages: {
+            login: {
+                required: "Digite o login !!!"
+            },
+            rf: {
+                required: "Digite o RF !!!"
+            },
             first_name: {
                 required: "Digite o nome !!!"
             },
             last_name: {
                 required: "Digite o sobrenome !!!"
+            },
+            position_id: {
+                required: "Digite o cargo !!!"
+            },
+            category_id: {
+                required: "Digite o regime !!!"
+            },
+            unit_id: {
+                required: "Digite a unidade !!!"
             },
             email: {
                 required: "Digite um email !!!"
@@ -188,8 +218,8 @@ $(function () {
         $(".mask-phone").mask('000000000', {reverse: true});
         $(".mask-imei").mask('000000000000000', {reverse: true});
         $(".mask-card").mask('0000  0000  0000  0000', {reverse: true});
-        $('.mask-phone').mask('(00)00000-0000');
-        $('.mask-phone-fixed').mask('(00)0000-0000');
+        $('.mask-phone').mask('00000-0000');
+        $('.mask-phone-fixed').mask('0000-0000');
         $('.mask-login').mask('S000000');
         $('.mask-rf').mask('0000000');
 
