@@ -98,7 +98,7 @@
                                             <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSetor"><strong><i class="bi bi-building ms-3 me-3"></i> Marca</strong></label>
                                             <select class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                                 data-bs-title="Digite a Marca" name="marca_id">
-                                                <option value="<?=$modelos->bemMarca()->id?>" selected><?=$modelos->bemMarca()->marca_nome?></option>
+                                                <option value="<?=$modelos->bemMarca()->id?>" selected><?=$modelos->bemMarca()->brand_name?></option>
                                                 <?=$bensfunctions->marcaSelect()?>
                                             </select>
                                         </div>    

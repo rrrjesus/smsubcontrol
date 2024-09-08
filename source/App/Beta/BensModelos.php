@@ -2,8 +2,8 @@
 
 namespace Source\App\Beta;
 
-use Source\Models\Patrimonio\Bem;
-use Source\Models\Patrimonio\BemModelo;
+use Source\Models\Patrimony\Bem;
+use Source\Models\Patrimony\BemModelo;
 use Source\Models\User;
 
 /**

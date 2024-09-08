@@ -152,7 +152,7 @@
                                             <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSetor"><strong><i class="bi bi-building ms-3 me-3"></i> ID/Marca/Modelo</strong></label>
                                             <select class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                                 data-bs-title="Digite o Modelo" name="modelo_id">
-                                                <option value="<?=$bens->bemModelo()->id?>" selected><?=$bens->bemModelo()->id.' - '.$bens->bemMarcas($bens->bemModelo()->marca_id)->marca_nome.' - '.$bens->bemModelo()->modelo_nome?></option>
+                                                <option value="<?=$bens->bemModelo()->id?>" selected><?=$bens->bemModelo()->id.' - '.$bens->bemMarcas($bens->bemModelo()->marca_id)->brand_name.' - '.$bens->bemModelo()->modelo_nome?></option>
                                                 <?=$benscreates->marcamodeloSelect()?>
                                             </select>
                                         </div> 

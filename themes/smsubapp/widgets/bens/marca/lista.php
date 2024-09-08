@@ -32,7 +32,7 @@
                     <tr>
                         <td class="text-center fw-semibold"><a href="<?= url("/beta/patrimonio/marcas/editar/{$lista->id}"); ?>" role="button" aria-disabled="true" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
                         data-bs-title="Clique para editar" class="btn btn-sm btn-outline-warning fw-bold me-2"><i class="bi bi-pencil me-2"></i><?=$lista->id?></a></td>
-                        <td class="text-center fw-semibold"><?=(!empty($lista->marca_nome) ? $lista->marca_nome : "")?></td>
+                        <td class="text-center fw-semibold"><?=(!empty($lista->brand_name) ? $lista->brand_name : "")?></td>
                         <td class="text-center fw-semibold"><?=(!empty($lista->descricao) ? $lista->descricao : "")?></td>
                         <td class="text-center fw-semibold"><?=$lista->statusBadge()?></td>
                         </tr>

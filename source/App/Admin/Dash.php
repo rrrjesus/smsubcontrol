@@ -3,8 +3,8 @@
 namespace Source\App\Admin;
 
 use Source\Models\Auth;
-use Source\Models\Patrimonio\BemMarca;
-use Source\Models\Patrimonio\BemModelo;
+use Source\Models\Patrimony\BemMarca;
+use Source\Models\Patrimony\BemModelo;
 use Source\Models\Report\Online;
 use Source\Models\User;
 

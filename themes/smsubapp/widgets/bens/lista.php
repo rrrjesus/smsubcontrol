@@ -83,7 +83,7 @@
                         </td>
                         <td class="text-center fw-semibold">
                             <?php if(!empty($lista->bemModelo()->marca_id) && !empty($lista->bemModelo()->status == "actived")):
-                                echo $lista->bemMarcas($lista->bemModelo()->marca_id)->marca_nome;
+                                echo $lista->bemMarcas($lista->bemModelo()->marca_id)->brand_name;
                         else:
                             echo "Excluido";
                         endif;

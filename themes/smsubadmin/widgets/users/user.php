@@ -78,14 +78,14 @@
                                         <div class="col-md-2 mb-1">
                                             <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputCelular"><strong><i class="bi bi-phone me-1"></i> Tel Fixo</strong></label>
                                             <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                            data-bs-title="Digite o numero do fixo - DDD + 8 dígitos" class="form-control form-control-sm mask-phone-fixed" name="phone_fixed" placeholder="49343000" value="1149343000">
+                                            data-bs-title="Digite o numero do fixo - DDD + 8 dígitos" class="form-control form-control-sm mask-phone-fixed" name="phone_fixed" placeholder="49343000" value="49343000">
                                         </div>
     
                                     </div>
     
                                     <div class="row">
 
-                                        <div class="col-md-3 mb-1">
+                                        <div class="col-md-4 mb-1">
                                             <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputEmail"><strong><i class="bi bi-envelope-at me-1"></i> E-mail</strong></label>
                                             <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                                 data-bs-title="Digite o email" class="form-control form-control-sm" name="email">
@@ -97,14 +97,7 @@
                                             data-bs-title="Digite o numero do celular - DDD + 9 dígitos" class="form-control form-control-sm mask-phone" name="phone" placeholder="991065284">
                                         </div>
     
-                                        <div class="col-md-2 mb-1">
-                                            <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputCategoria"><strong><i class="bi bi-person-add me-1"></i> Situação</strong></label>
-                                            <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                            data-bs-title="Situação" class="form-control form-control-sm"
-                                            name="status" placeholder="Status" value="1 - Registrado" disabled readonly>
-                                        </div>
-    
-                                        <div class="col-md-5 mb-1">
+                                        <div class="col-md-6 mb-1">
                                             <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputSobreNome"><strong><i class="bi bi-person-add me-1"></i> Cargo</strong></label>
                                             <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                                 data-bs-title="Cargo" class="form-control form-control-sm position_id"
@@ -118,30 +111,14 @@
                                             name="category_id" placeholder="Regime">
                                         </div>
     
-                                        <div class="col-md-5 mb-1">
+                                        <div class="col-md-6 mb-1">
                                             <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputSobreNome"><i class="bi bi-person-add me-1"></i><strong>Unit</strong></label>
                                             <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                                 data-bs-title="Unit" class="form-control form-control-sm unit_id"
                                                 name="unit_id" placeholder="Unidade">
                                         </div>
 
-                                        <div class="col-md-2 mb-1">
-                                            <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputSenha"><strong><i class="bi bi-calendar4-week me-1"></i>Cadastro</strong></label>
-                                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                                    data-bs-title="Data de Cadastro" class="form-control form-control-sm mask-date" name="created_at" value="<?=date("d/m/Y")?>" disabled readonly>
-                                        </div>  
-    
-                                        <div class="col-md-2 mb-1">
-                                            <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputSenha"><strong><i class="bi bi-calendar2-x me-1"></i>Bloqueio</strong></label>
-                                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                                    data-bs-title="Data de Bloqueio" class="form-control form-control-sm mask-date" name="blocked_at">
-                                        </div>
-    
-                                    </div>
-    
-                                    <div class="row">
-
-                                        <div class="col-md-2 mb-1">
+                                        <div class="col-md-3 mb-1">
                                             <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputSetor"><strong><i class="bi bi-building ms-3 me-3"></i> Nivel</strong></label>
                                             <select class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                                 data-bs-title="Selecione o nível de usuario" name="level_id">
@@ -151,7 +128,11 @@
                                                 <option value="4">Editor Administrador</option>
                                                 <option value="5">Administrador do Sistema</option>
                                             </select>
-                                        </div>   
+                                        </div> 
+    
+                                    </div>
+    
+                                    <div class="row">  
     
                                         <div class="col-md-3 mb-1">
                                             <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputSenha"><strong><i class="bi bi-lock me-1"></i>Senha</strong></label>
@@ -213,11 +194,11 @@
                                 <div class="row mb-1">
     
                                 <div class="col-md-1 mb-1">
-                                    <a href="<?php if ($user->photo) {echo '../../../'.CONF_UPLOAD_DIR .'/'.$user->photo;} 
-                                        else {echo '../../../themes/'.CONF_VIEW_ADMIN.'/assets/images/avatar.jpg';}?>" target="_blank">
+                                    <a href="<?php if (file_exists(CONF_UPLOAD_DIR .'/'.$user->photo)) {echo '../../../'.CONF_UPLOAD_DIR .'/'.$user->photo;} 
+                                        else {echo url('themes/'.CONF_VIEW_ADMIN.'/assets/images/avatar.jpg');}?>" target="_blank">
                                     <img data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                        data-bs-title="Foto" height="90" width="90" src="<?php if (file_exists(CONF_UPLOAD_DIR .'/'.$user->photo)) 
-                                        {echo image($user->photo, 200, 200);}?>" class="img-thumbnail rounded-circle float-left" id="foto-cliente">
+                                        data-bs-title="Foto" height="90" width="90" src="<?php if ($user->photo && file_exists(CONF_UPLOAD_DIR .'/'.$user->photo)) 
+                                        {echo image($user->photo, 200, 200);}else {echo url('themes/'.CONF_VIEW_ADMIN.'/assets/images/avatar.jpg');}?>" class="img-thumbnail rounded-circle float-left" id="foto-cliente">
                                     </a>
                                 </div>
                                 <div class="col-md-5 mb-1">

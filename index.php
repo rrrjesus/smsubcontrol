@@ -158,6 +158,9 @@ $route->get("/usuarios/ativar/{user_id}", "Users:activedUser");
 $route->get("/usuarios/desativar/{user_id}", "Users:disabledUser");
 $route->get("/usuarios/excluir/{user_id}/{action}", "Users:user");
 
+//marcas
+$route->get("/marcas", "Brands:brands");
+
 //notification center
 $route->post("/notifications/count", "Notifications:count");
 $route->post("/notifications/list", "Notifications:list");

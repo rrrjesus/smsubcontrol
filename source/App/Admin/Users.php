@@ -126,32 +126,8 @@ class Users extends Admin
                 $userCreate->photo = $image;
             }
 
-            if($data["login"] == ""){
-                $json['message'] = $this->message->warning("Informe o login para criar o registro !")->icon()->render();
-                echo json_encode($json);
-                return;
-            }
-
-            if($data["rf"] == ""){
-                $json['message'] = $this->message->warning("Informe o RF para criar o registro !")->icon()->render();
-                echo json_encode($json);
-                return;
-            }
-
-            if($data["category_id"] == ""){
-                $json['message'] = $this->message->warning("Informe o Regime para criar o registro !")->icon()->render();
-                echo json_encode($json);
-                return;
-            }
-
-            if($data["unit_id"] == ""){
-                $json['message'] = $this->message->warning("Informe a Unidade para criar o registro !")->icon()->render();
-                echo json_encode($json);
-                return;
-            }
-
-            if($data["position_id"] == ""){
-                $json['message'] = $this->message->warning("Informe o Cargo para criar o registro !")->icon()->render();
+            if($data["login"] == "" || $data["rf"] == "" || $data["category_id"] == "" || $data["unit_id"] == "" || $data["position_id"] == "" || $data["status"] == ""){
+                $json['message'] = $this->message->warning("Preencha os campos obrigatórios para criar o registro !")->icon()->render();
                 echo json_encode($json);
                 return;
             }
@@ -196,26 +172,6 @@ class Users extends Admin
             $userUpdate->observations = $data["observations"];
             $userUpdate->login_updated = $user->login;
 
-            //upload photo
-            if (!empty($_FILES["photo"])) {
-                if ($userUpdate->photo && file_exists(__DIR__ . "/../../../" . CONF_UPLOAD_DIR . "/{$userUpdate->photo}")) {
-                    unlink(__DIR__ . "/../../../" . CONF_UPLOAD_DIR . "/{$userUpdate->photo}");
-                    (new Thumb())->flush($userUpdate->photo);
-                }
-
-                $files = $_FILES["photo"];
-                $upload = new Upload();
-                $image = $upload->image($files, $userUpdate->fullName(), 600);
-
-                if (!$image) {
-                    $json["message"] = $upload->message()->render();
-                    echo json_encode($json);
-                    return;
-                }
-
-                $userUpdate->photo = $image;
-            }
-
             if (!empty($_FILES["photo"])) {
                 $file = $_FILES["photo"];
                 $upload = new Upload();
@@ -230,6 +186,12 @@ class Users extends Admin
                     echo json_encode($json);
                     return;
                 }
+            }
+
+            if($data["login"] == "" || $data["rf"] == "" || $data["category_id"] == "" || $data["unit_id"] == "" || $data["position_id"] == "" || $data["status"] == ""){
+                $json['message'] = $this->message->warning("Preencha os campos obrigatórios para criar o registro !")->icon()->render();
+                echo json_encode($json);
+                return;
             }
 
             if (!$userUpdate->save()) {
