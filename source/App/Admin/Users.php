@@ -176,13 +176,13 @@ class Users extends Admin
                 $file = $_FILES["photo"];
                 $upload = new Upload();
 
-                if ($this->user->photo()) {
-                    (new Thumb())->flush("storage/{$this->user->photo}");
-                    $upload->remove("storage/{$this->user->photo}");
+                if ($userUpdate->photo()) {
+                    (new Thumb())->flush("storage/{$userUpdate->photo}");
+                    $upload->remove("storage/{$userUpdate->photo}");
                 }
 
-                if (!$user->photo = $upload->image($file, "{$user->first_name} {$user->last_name} " . time(), 360)) {
-                    $json["message"] = $upload->message()->before("Ooops {$this->user->first_name}! ")->after(".")->render();
+                if (!$userUpdate->photo = $upload->image($file, "{$userUpdate->first_name} {$userUpdate->last_name} " . time(), 360)) {
+                    $json["message"] = $upload->message()->before("Ooops {$userUpdate->user->first_name}! ")->after(".")->render();
                     echo json_encode($json);
                     return;
                 }
