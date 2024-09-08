@@ -47,7 +47,9 @@ class Users extends Admin
             [
                 "app" => "usuarios",
                 "head" => $head,
-                "users" => $users
+                "users" => $users,
+                "urls" => "usuarios",
+                "icon" => "list",
             ]);
 
     }
@@ -74,6 +76,8 @@ class Users extends Admin
                 "app" => "usuarios",
                 "head" => $head,
                 "users" => $users,
+                "urls" => "usuarios",
+                "icon" => "list",
                 "registers" => (object)[
                     "actived" => $user->find("status != :s", "s=disabled")->count(),
                     "disabled" => $user->find("status = :s", "s=disabled")->count()
