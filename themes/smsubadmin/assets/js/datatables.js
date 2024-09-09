@@ -644,7 +644,7 @@ $(document).ready(function() {
         ]
     });
 
-    Lista de Unidades
+    //Lista de Unidades
     $('#units').DataTable( {
         drawCallback: function() {
             $('body').tooltip({
