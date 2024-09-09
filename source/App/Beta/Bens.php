@@ -6,7 +6,7 @@ use Source\Models\User;
 use Source\Support\Upload;
 use Source\Support\Thumb;
 use Source\Models\Patrimony\Bem;
-use Source\Models\Patrimonio\BemHistorico;
+use Source\Models\Patrimony\BemHistorico;
 
 /**
  * Class Bens

@@ -78,7 +78,7 @@ class Brands extends Admin
             }
 
             $this->message->success("Marca {$brandCreate->brand_name} cadastrada com sucesso...")->icon("emoji-grin me-1")->flash();
-            $json["redirect"] = url("/beta/patrimonio/marcas/cadastrar");
+            $json["redirect"] = url("/patrimonio/patrimonio/marcas/cadastrar");
 
             echo json_encode($json);
             return;
@@ -91,7 +91,7 @@ class Brands extends Admin
 
             if (!$brandUpdate) {
                 $this->message->error("Você tentou gerenciar uma marca que não existe")->flash();
-                echo json_encode(["redirect" => url("/beta/patrimonio/marcas/lista")]);
+                echo json_encode(["redirect" => url("/patrimonio/patrimonio/marcas/lista")]);
                 return;
             }
 
@@ -126,14 +126,14 @@ class Brands extends Admin
 
             if (!$brandDelete) {
                 $this->message->error("Você tentou deletar uma marca que não existe")->flash();
-                echo json_encode(["redirect" => url("/beta/patrimonio/marcas/lista")]);
+                echo json_encode(["redirect" => url("/patrimonio/patrimonio/marcas/lista")]);
                 return;
             }
 
             $brandDelete->destroy();
 
             $this->message->success("A marca {$brandDelete->brand_name} foi excluída com sucesso...")->flash();
-            echo json_encode(["redirect" => url("/beta/patrimonio/marcas/lista")]);
+            echo json_encode(["redirect" => url("/patrimonio/patrimonio/marcas/lista")]);
 
             return;
         }

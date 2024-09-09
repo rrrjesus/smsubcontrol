@@ -77,6 +77,35 @@ class User extends Model
         return null; 
     }
 
+    public function statusSpan(): ?string
+    {
+
+    if ($this->status == "registered") {
+        return '<span class="badge fw-semibold text-bg-warning pt-2 pb-2 mt-2" data-bs-togglee="tooltip" 
+                    data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Falta acesso ao e-mail de confirmação">
+                    Registrado</span>';
+    } elseif ($this->status == "confirmed") {
+        return '<span class="badge fw-semibold text-bg-success pt-2 pb-2 mt-2" data-bs-togglee="tooltip" 
+                    data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Usuário confirmou">Confirmado</span>';
+    } else {
+        return '<span class="badge fw-semibold text-bg-danger pt-2 pb-2 mt-2">Inativo</span>';
+    }
+    return null; 
+    }
+
+    public function photoList(): ?string
+    {
+        if($this->photo && file_exists(CONF_UPLOAD_DIR.'/'.$this->photo)){
+            return '<a href="../'.CONF_UPLOAD_DIR.'/'.$this->photo.'" target="_blank">
+                    <img src="'.image($this->photo, 30,30).'" class="img-thumbnail rounded-circle float-left"></a>';
+        }else{
+            return '<a href="../storage/images/avatar.jpg" target="_blank">
+                    <img src="../storage/images/avatar.jpg" class="img-thumbnail rounded-circle float-left"
+                    height="40" width="40"></a>';
+        }
+        return null;
+    }          
+
     public function statusInputDecode($status): ?string
     {
         if ($status == "1 - REGISTRADO") {

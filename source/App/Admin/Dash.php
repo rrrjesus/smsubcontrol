@@ -3,8 +3,10 @@
 namespace Source\App\Admin;
 
 use Source\Models\Auth;
-use Source\Models\Patrimony\BemMarca;
-use Source\Models\Patrimony\BemModelo;
+use Source\Models\Patrimony\Brand;
+use Source\Models\Patrimony\Model;
+use Source\Models\Patrimony\Patrimony;
+use Source\Models\Patrimony\Product;
 use Source\Models\Report\Online;
 use Source\Models\User;
 
@@ -72,17 +74,22 @@ class Dash extends Admin
             "users" => (object)[
                 "users" => (new User())->find("level_id < 4")->count(),
                 "admins" => (new User())->find("level_id >= 4")->count(),
-                "totais" => (new User())->find()->count()
+                "totals" => (new User())->find()->count()
             ],
-            "marcas" => (object)[
-                "marcas" => (new BemMarca())->find("status != :s", "s=disabled")->count(),
-                "disableds" => (new BemMarca())->find("status = :s", "s=disabled")->count(),
-                "totais" => (new BemMarca())->find()->count()
+            "patrimonys" => (object)[
+                "patrimonys" => (new Patrimony())->find("status != :s", "s=disabled")->count(),
+                "disableds" => (new Patrimony())->find("status = :s", "s=disabled")->count(),
+                "totals" => (new Patrimony())->find()->count()
             ],
-            "modelos" => (object)[
-                "modelos" => (new BemModelo())->find("status != :s", "s=disabled")->count(),
-                "disableds" => (new BemModelo())->find("status = :s", "s=disabled")->count(),
-                "totais" => (new BemModelo())->find()->count()
+            "brands" => (object)[
+                "brands" => (new Brand())->find("status != :s", "s=disabled")->count(),
+                "disableds" => (new Brand())->find("status = :s", "s=disabled")->count(),
+                "totals" => (new Brand())->find()->count()
+            ],
+            "products" => (object)[
+                "products" => (new Product())->find("status != :s", "s=disabled")->count(),
+                "disableds" => (new Product())->find("status = :s", "s=disabled")->count(),
+                "totals" => (new Product())->find()->count()
             ],
             "online" => (new Online())->findByActive(),
             "onlineCount" => (new Online())->findByActive(true)

@@ -23,38 +23,6 @@ class Users extends Admin
     }
 
     /**
-     * 
-     */
-
-    /**
-     * @param array|null $data
-     * @throws \Exception
-     */
-    /** @return void */
-    public function disabledUsers(): void
-    {
-        $head = $this->seo->render(
-            "Usuarios Registrados - " . CONF_SITE_NAME ,
-            "Painel para gerenciamento de usuarios registrados",
-            url("/painel/usuarios/registrados"),
-            theme("/assets/images/favicon.ico")
-        );
-
-        $user = (new User());
-        $users = $user->find("status = :s", "s=disabled")->fetch(true);
-
-        echo $this->view->render("widgets/users/disabledList",
-            [
-                "app" => "usuarios",
-                "head" => $head,
-                "users" => $users,
-                "urls" => "usuarios",
-                "icon" => "list",
-            ]);
-
-    }
-
-    /**
      * @param array|null $data
      * @throws \Exception
      */
@@ -82,6 +50,34 @@ class Users extends Admin
                     "actived" => $user->find("status != :s", "s=disabled")->count(),
                     "disabled" => $user->find("status = :s", "s=disabled")->count()
                 ]
+            ]);
+
+    }
+
+    /**
+     * @param array|null $data
+     * @throws \Exception
+     */
+    /** @return void */
+    public function disabledUsers(): void
+    {
+        $head = $this->seo->render(
+            "Usuarios Registrados - " . CONF_SITE_NAME ,
+            "Painel para gerenciamento de usuarios registrados",
+            url("/painel/usuarios/registrados"),
+            theme("/assets/images/favicon.ico")
+        );
+
+        $user = (new User());
+        $users = $user->find("status = :s", "s=disabled")->fetch(true);
+
+        echo $this->view->render("widgets/users/disabledList",
+            [
+                "app" => "usuarios",
+                "head" => $head,
+                "users" => $users,
+                "urls" => "usuarios",
+                "icon" => "list",
             ]);
 
     }
@@ -209,6 +205,57 @@ class Users extends Admin
             return;
         }
 
+         //actived
+         if (!empty($data["action"]) && $data["action"] == "actived") {
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
+            $userActived = (new User())->findById($data["user_id"]);
+
+            if (!$userActived) {
+                $this->message->error("Você tentou gerenciar um usuário que não existe")->icon("person")->flash();
+                echo json_encode(["redirect" => url("/painel/usuarios")]);
+                return;
+            }
+
+            $userActived->status = "registered";
+            $userActived->login_updated = $user->login;
+
+            if (!$userActived->save()) {
+                $json["message"] = $userActived->message()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            $this->message->success("Usuário {$userActived->login} - {$userActived->first_name} reativado com sucesso !!!")->icon("person")->flash();
+            redirect("/painel/usuarios");
+            return;
+        }
+
+        
+         //disabled
+         if (!empty($data["action"]) && $data["action"] == "disabled") {
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
+            $userActived = (new User())->findById($data["user_id"]);
+
+            if (!$userActived) {
+                $this->message->error("Você tentou gerenciar um usuário que não existe")->icon("person")->flash();
+                echo json_encode(["redirect" => url("/painel/usuarios")]);
+                return;
+            }
+
+            $userActived->status = "disabled";
+            $userActived->login_updated = $user->login;
+
+            if (!$userActived->save()) {
+                $json["message"] = $userActived->message()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            $this->message->success("Usuário {$userActived->login} - {$userActived->first_name} desativado com sucesso !!!")->icon("person")->flash();
+            redirect("/painel/usuarios");
+            return;
+        }
+
         //delete
         if (!empty($data["action"]) && $data["action"] == "delete") {
             $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
@@ -216,7 +263,7 @@ class Users extends Admin
 
             if (!$userDelete) {
                 $this->message->error("Você tentou deletar um usuário que não existe")->icon()->icon("person")->flash();
-                redirect("/usuarios");
+                redirect("/painel/usuarios");
                 return;
             }
 
@@ -227,8 +274,8 @@ class Users extends Admin
 
             $userDelete->destroy();
 
-            $this->message->success("O usuário {$userDelete->first_name} foi excluído com sucesso...")->icon("person")->flash();
-            redirect("/usuarios");
+            $this->message->success("O usuário com RF {$userDelete->rf} - {$userDelete->first_name} foi excluído com sucesso...")->icon("person")->flash();
+            redirect("/painel/usuarios");
 
             return;
         }

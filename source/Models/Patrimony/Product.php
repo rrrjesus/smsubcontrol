@@ -1,6 +1,6 @@
 <?php
 
-namespace Source\Models\Patrimonio;
+namespace Source\Models\Patrimony;
 
 use Source\Core\Model;
 
@@ -10,34 +10,34 @@ use Source\Core\Model;
  * @author Rodolfo Romaioli Ribeiro de Jesus <rodolfo.romaioli@gmail.com>
  * @package Source\Models
  */
-class BemModelo extends Model
+class Product extends Model
 {
     /**
-     * BemModelo constructor.
+     * Model constructor.
      */
     public function __construct()
     {
-        parent::__construct("bens_modelo", ["id"], ["marca_id", "modelo_nome", "descricao", "status"]);
+        parent::__construct("products", ["id"], ["brand_id", "model_name", "description", "status"]);
     }
 
     
     /**
-     * @param string $modelo_nome
+     * @param string $product_name
      * @param string $columns
-     * @return null|BemModelo
+     * @return null|Model
      */
-    public function findByModelo(string $modelo_nome, string $columns = "*"): ?BemModelo
+    public function findByModelo(string $product_name, string $columns = "*"): ?Model
     {
-        $find = $this->find("modelo_nome = :modelo_nome", "modelo_nome={$modelo_nome}", $columns);
+        $find = $this->find("product_name = :product_name", "product_name={$product_name}", $columns);
         return $find->fetch();
     }
 
     /**
-     * @return null|BemMarca
+     * @return null|Brand
      */
-    public function marcaSelect(): ?BemMarca
+    public function brandSelect(): ?Brand
     {
-        $stm = (new BemMarca())->find("status=:s","s=actived")->fetch(true);
+        $stm = (new Brand())->find("status=:s","s=actived")->fetch(true);
 
         if(!empty($stm)):
             foreach ($stm as $row):
@@ -48,12 +48,12 @@ class BemModelo extends Model
     } 
     
     /**
-     * @return null|BemMarca
+     * @return null|Brand
      */
-    public function bemMarca(): ?BemMarca
+    public function Brand(): ?Brand
     {
-        if($this->marca_id) {
-            return(new BemMarca())->findById($this->marca_id);
+        if($this->brand_id) {
+            return(new Brand())->findById($this->brand_id);
         }
         return null;
     }
@@ -86,37 +86,37 @@ class BemModelo extends Model
         public function save(): bool
         {
     
-            /** BemModelo Update */
+            /** Model Update */
             if (!empty($this->id)) {
-                $modeloId = $this->id;
+                $productId = $this->id;
     
-                if ($this->find("modelo_nome = :c AND id != :i", "c={$this->modelo_nome}&i={$modeloId}", "id")->fetch()) {
-                    $this->message->warning("O modelo informado já está cadastrado");
+                if ($this->find("product_name = :c AND id != :i", "c={$this->product_name}&i={$productId}", "id")->fetch()) {
+                    $this->message->warning("O product informado já está cadastrado");
                     return false;
                 }
     
-                $this->update($this->safe(), "id = :id", "id={$modeloId}");
+                $this->update($this->safe(), "id = :id", "id={$productId}");
                 if ($this->fail()) {
                     $this->message->error("Erro ao atualizar, verifique os dados");
                     return false;
                 }
             }
     
-            /** BemModelo Create */
+            /** Model Create */
             if (empty($this->id)) {
-                if ($this->findByModelo($this->modelo_nome, "id")) {
-                    $this->message->warning("O modelo informado já está cadastrado");
+                if ($this->findByModelo($this->product_name, "id")) {
+                    $this->message->warning("O product informado já está cadastrado");
                     return false;
                 }
     
-                $modeloId = $this->create($this->safe());
+                $productId = $this->create($this->safe());
                 if ($this->fail()) {
                     $this->message->error("Erro ao cadastrar, verifique os dados");
                     return false;
                 }
             }
     
-            $this->data = ($this->findById($modeloId))->data();
+            $this->data = ($this->findById($productId))->data();
             return true;
         }
     }

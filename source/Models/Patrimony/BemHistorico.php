@@ -1,6 +1,6 @@
 <?php
 
-namespace Source\Models\Patrimonio;
+namespace Source\Models\Patrimony;
 
 use Source\Core\Model;
 use Source\Models\Unit;

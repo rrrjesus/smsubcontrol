@@ -76,7 +76,7 @@ $route->post("/dash/home", "Dash:home");
 
 $route->get("/perfil", "Profile:profile");
 $route->post("/perfil", "Profile:profile");
-$route->get("/contatos", "Patrimonio:contact");
+$route->get("/contatos", "Patrimony:contact");
 
 //Marcas
 $route->get("/patrimonio/marcas/lista", "BensMarcas:bensmarcasLista");
@@ -123,19 +123,6 @@ $route->get("/controle/inicial", "Dash:home");
 $route->post("/controle/inicial", "Dash:home");
 $route->get("/logoff", "Dash:logoff");
 
-// Colaboradores
-$route->get("/colaboradores", "Collaborators:Collaborators");
-$route->get("/colaboradores/desativados", "Collaborators:disabledCollaborators");
-$route->get("/colaboradores/adicionar", "Collaborators:collaborator");
-$route->post("/colaboradores/adicionar", "Collaborators:collaborator");
-$route->get("/colaboradores/editar/{collaborator_id}", "Collaborators:collaborator");
-$route->post("/colaboradores/editar/{collaborator_id}", "Collaborators:collaborator");
-$route->get("/colaboradores/identidade/{collaborator_id}", "Collaborators:Identifier");
-$route->get("/colaboradores/verificador/{collaborator_id}/{crypto}", "Collaborators:Identifier");
-$route->get("/colaboradores/ativar/{collaborator_id}", "Collaborators:activedCollaborator");
-$route->get("/colaboradores/desativar/{collaborator_id}", "Collaborators:disabledCollaborator");
-$route->get("/colaboradores/excluir/{collaborator_id}/{action}", "Collaborators:collaborator");
-
 // Grupos
 $route->get("/grupos", "Groups:Groups");
 $route->get("/grupos/desativados", "Groups:disabledGroups");
@@ -154,12 +141,20 @@ $route->get("/usuarios/cadastrar", "Users:user");
 $route->post("/usuarios/cadastrar", "Users:user");
 $route->get("/usuarios/editar/{user_id}", "Users:user");
 $route->post("/usuarios/editar/{user_id}", "Users:user");
-$route->get("/usuarios/ativar/{user_id}", "Users:activedUser");
-$route->get("/usuarios/desativar/{user_id}", "Users:disabledUser");
+$route->get("/usuarios/ativar/{user_id}/{action}", "Users:user");
+$route->get("/usuarios/desativar/{user_id}/{action}", "Users:user");
 $route->get("/usuarios/excluir/{user_id}/{action}", "Users:user");
 
 //marcas
 $route->get("/marcas", "Brands:brands");
+$route->get("/marcas/desativados", "Brands:disabledBrands");
+$route->get("/marcas/cadastrar", "Brands:brand");
+$route->post("/marcas/cadastrar", "Brands:brand");
+$route->get("/marcas/editar/{brand_id}", "Brands:brand");
+$route->post("/marcas/editar/{brand_id}", "Brands:brand");
+$route->get("/marcas/ativar/{brand_id}/{action}", "Brands:brand");
+$route->get("/marcas/desativar/{brand_id}/{action}", "Brands:brand");
+$route->get("/marcas/excluir/{brand_id}/{action}", "Brands:brand");
 
 //notification center
 $route->post("/notifications/count", "Notifications:count");

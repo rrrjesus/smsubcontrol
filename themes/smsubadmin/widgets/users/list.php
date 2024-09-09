@@ -33,12 +33,16 @@
                     <th class="text-center text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-unlock me-1"></i><br>ID</th>
                     <th class="text-center text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-person-gear me-1"></i><br>GERENCIAR</th>
                     <th class="text-center text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-person-circle me-1"></i><br>FOTO</th>
+                    <th class="text-center text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-person me-1"></i><br>RF</th>
                     <th class="text-center text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-person me-1"></i><br>NOME</th>
                     <th class="text-center text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-person me-1"></i><br>SOBRENOME</th>
+                    <th class="text-center text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-building me-1"></i><br>CARGO</th>
                     <th class="text-center text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-building me-1"></i><br>UNIDADE</th>
                     <th class="text-center text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-envelope-at me-1"></i><br>EMAIL</th>
                     <th class="text-center text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-envelope-at me-1"></i><br>STATUS</th>
                     <th class="text-center text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-person me-1"></i><br>NIVEL</th>
+                    <th class="text-center text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-person me-1"></i><br>DESATIVAR</th>
+                    <th class="text-center text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-person me-1"></i><br>EXCLUIR</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -51,44 +55,17 @@
                             data-bs-title="Clique para editar <?=$lista->first_name?>" role="button" 
                             class="btn btn-info rounded-circle btn-md text-center">
                             <i class="bi bi-person-gear text-dark"></i></a></td>
-                            <?php
-                                    if ($lista->photo && file_exists(CONF_UPLOAD_DIR .'/'.$lista->photo)):
-                                    echo '<td class="text-center"><a href="../'.CONF_UPLOAD_DIR.'/'.$lista->photo.'" target="_blank">
-                                        <img src="'.image($lista->photo, 200,200).'" class="img-thumbnail rounded-circle float-left" height="40" 
-                                        width="40"></a></td>';
-                                else:
-                                    echo '<td class="text-center"><a href="../themes/smsubadmin/assets/images/avatar.jpg" target="_blank">
-                                    <img src="../themes/smsubadmin/assets/images/avatar.jpg" class="img-thumbnail rounded-circle float-left" height="40" 
-                                    width="40"></a></td>';
-                                endif;
-                            ?>                                      
-                        
-                        <td class="text-center"><?=$lista->first_name?></td>
-                        <td class="text-center"><?=$lista->last_name?></td>
-                        <td class="text-center"><?=(!empty($lista->userUnit()->unit_name) ? $lista->userUnit()->unit_name : "")?></td>
-                        <td class="text-center"><?=$lista->email?></td>
-                        <?php
-                            switch ($lista->status) {
-                                case 'registered':
-                                    echo '<td class="text-center"><span class="badge fw-semibold text-bg-warning pt-2 pb-2 mt-2" data-bs-togglee="tooltip" 
-                                            data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Falta acesso ao e-mail de confirmação">
-                                            REGISTRADO</span></td>';
-                                    break;
-                                case 'confirmed':
-                                    echo '<td class="text-center"><span class="badge fw-semibold text-bg-success pt-2 pb-2 mt-2" data-bs-togglee="tooltip" 
-                                            data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Usuário confirmou">CONFIRMADO</span></td>';
-                                    break;
-                                default:
-                                    echo '<td class="text-center"><span class="badge fw-semibold text-bg-danger pt-2 pb-2 mt-2">???</span></td>';
-                            }
-                        ?>
-                        <?php
-                            if(!empty($lista->level_id)):
-                                echo '<td class="text-center">'.$lista->level()->level_nome.'</td>';
-                            else:
-                                echo '<td class="text-center text-danger"><del>Inativado<del></td>';
-                            endif;
-                        ?>
+                        <td class="text-center"><?=$lista->photoList();?></td>
+                        <td class="text-center"><?=$lista->rf;?></td>
+                        <td class="text-center text-uppercase"><?=$lista->first_name;?></td>
+                        <td class="text-center text-uppercase"><?=$lista->last_name;?></td>
+                        <td class="text-center"><?=$lista->userPosition()->position_name;?></td>
+                        <td class="text-center"><?=$lista->userUnit()->unit_name;?></td>
+                        <td class="text-center"><?=$lista->email;?></td>
+                        <td class="text-center"><?=$lista->statusSpan();?></td>
+                        <td class="text-center text-uppercase"><?=$lista->level()->level_nome;?>
+                        <td class="text-center"><?=$lista->id;?></td>
+                        <td class="text-center"><?=$lista->id;?></td>
                     </tr>
                 <?php endforeach; ?>
                 <?php } ?>

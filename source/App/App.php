@@ -21,7 +21,7 @@ use Source\Support\Email;
 use Source\Support\Thumb;
 use Source\Support\Upload;
 use Source\Models\QRCode;
-use Source\Models\Patrimonio;
+use Source\Models\Patrimony;
 
 /**
  * Class App
@@ -164,7 +164,7 @@ class App extends Controller
             false
         );
 
-        $patrimonio = (new Patrimonio())->find("status = :s", "s=actived")->fetch(true);
+        $patrimonio = (new Patrimony())->find("status = :s", "s=actived")->fetch(true);
 
         echo $this->view->render("views/patrimonio/patrimonioList", [
             "head" => $head,
@@ -181,7 +181,7 @@ class App extends Controller
     public function patrimonio(?array $data): void
     {
         if (!empty($data["update"])) {
-            $patrimonio = (new Patrimonio())->findById($this->patrimonio->id);
+            $patrimonio = (new Patrimony())->findById($this->patrimonio->id);
             $patrimonio->first_name = $data["first_name"];
             $patrimonio->last_name = $data["last_name"];
             $patrimonio->email = $data["email"];

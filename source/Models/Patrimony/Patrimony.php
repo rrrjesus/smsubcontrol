@@ -1,6 +1,6 @@
 <?php
 
-namespace Source\Models\Patrimonio;
+namespace Source\Models\Patrimony;
 
 use Source\Core\Model;
 use Source\Models\Unit;
@@ -8,38 +8,71 @@ use Source\Models\User;
 
 
 /**
- * SMSUB | Class Bem
+ * SMSUB | Class Patrimony
  *
  * @author Rodolfo Romaioli Ribeiro de Jesus <rodolfo.romaioli@gmail.com>
  * @package Source\Models
  */
-class Bem extends Model
+class Patrimony extends Model
 {
     /**
-     * Bem constructor.
+     * Patrimony constructor.
      */
     public function __construct()
     {
-        parent::__construct("bens", ["id"], ["bens_nome", "marca_id", "modelo_id", "descricao", "unit_id", "imei", "status", "photo", "observacoes"]);
+        parent::__construct("patrimonys", ["id"], ["patrimonys_name", "brand_id", "product_id", "description", "unit_id", "imei", "status", "photo", "observations"]);
     }
 
     /**
      * @param string $imei
      * @param string $columns
-     * @return null|Bem
+     * @return null|Patrimony
      */
-    public function findByImei(string $imei, string $columns = "*"): ?Bem
+    public function findByImei(string $imei, string $columns = "*"): ?Patrimony
     {
         $find = $this->find("imei = :imei", "imei={$imei}", $columns);
         return $find->fetch();
     }
 
     /**
-     * @return AppCategory
+     * @return Brand
      */
-    public function bemMarca(): BemMarca
+    public function brand(): Brand
     {
-        return (new BemMarca())->findById($this->marca_id);
+        return (new Brand())->findById($this->brand_id);
+    }
+
+    /**
+     * @return null|Product
+     */
+    public function product(): ?Brand
+    {
+        if($this->product_id) {
+            return(new Product())->findById($this->product_id);
+        }
+        return null;
+    }
+
+        /**
+     * @return null|Unit
+     */
+    public function Unit(): ?Unit
+    {
+        if($this->unit_id) {
+            return(new Unit())->findById($this->unit_id);
+        }
+        return null;
+    }
+
+    /**
+     * @return null|User
+     */
+    public function user(): ?User
+    {
+        if($this->user_id) {
+            return(new User())->findById($this->user_id);
+        }
+        return null;
     }
 
     /**
@@ -64,9 +97,9 @@ class Bem extends Model
         return null; 
     }
 
-    public function marcaSelect(): ?BemMarca
+    public function brandSelect(): ?Brand
     {
-        $stm = (new BemMarca())->find("status=:s","s=actived")->fetch(true);
+        $stm = (new Brand())->find("status=:s","s=actived")->fetch(true);
 
         if(!empty($stm)):
             foreach ($stm as $row):
@@ -76,25 +109,25 @@ class Bem extends Model
         return null;
     } 
 
-    public function modeloSelect(): ?BemModelo
+    public function productSelect(): ?Product
     {
-        $stm = (new BemModelo())->find("status=:s","s=actived")->fetch(true);
+        $stm = (new Product())->find("status=:s","s=actived")->fetch(true);
 
         if(!empty($stm)):
             foreach ($stm as $row):
-                echo '<option value="'.$row->id.'">'.$row->modelo_nome.'</option>'; //Return the JSON Array
+                echo '<option value="'.$row->id.'">'.$row->product_name.'</option>'; //Return the JSON Array
             endforeach;
         endif;
         return null;
     } 
 
-    public function marcamodeloSelect(): ?BemModelo
+    public function brandproductSelect(): ?Product
     {
-        $stm = (new BemModelo())->find("status=:s","s=actived")->fetch(true);
+        $stm = (new Product())->find("status=:s","s=actived")->fetch(true);
 
         if(!empty($stm)):
             foreach ($stm as $row):
-                echo '<option value="'.$row->id.'">'.$row->id.' - '.$this->bemMarcas($row->marca_id)->brand_name.' - '.$row->modelo_nome.'</option>'; //Return the JSON Array
+                echo '<option value="'.$row->id.'">'.$row->id.' - '.$this->brand($row->brand_id)->brand_name.' - '.$row->product_name.'</option>'; //Return the JSON Array
             endforeach;
         endif;
         return null;
@@ -138,20 +171,6 @@ class Bem extends Model
         return null;
     }
 
-    static function completeSector($columns): ?Sector
-    {
-        $stm = (new Sector())->find("status=:s","s=post",$columns);
-        $array = array();
-
-        if(!empty($stm)):
-            foreach ($stm->fetch(true) as $row):
-                $array[] = $row->sector_name;
-            endforeach;
-            echo json_encode($array); //Return the JSON Array
-        endif;
-        return null;
-    }
-
     public function statusInput(): ?string
     {
         if ($this->status == "actived") {
@@ -163,67 +182,12 @@ class Bem extends Model
     }
 
     /**
-     * @return null|BemMarca
+     * @return null|PatrimonyMarcas
      */
-    public function bemMarcai(): ?BemMarca
+    public function productBrand(string $brand): ?Brand
     {
-        if($this->marca_id) {
-            return(new BemMarca())->findById($this->marca_id);
-        }
-        return null;
-    }
-
-    /**
-     * @return null|BemModelo
-     */
-    public function bemModelo(): ?BemModelo
-    {
-        if($this->modelo_id) {
-            return(new BemModelo())->findById($this->modelo_id);
-        }
-        return null;
-    }
-
-    /**
-     * @return null|BemMarcas
-     */
-    public function bemMarcas(string $marca): ?BemMarca
-    {
-        if($marca) {
-            return(new BemMarca())->findById($marca);
-        }
-        return null;
-    }
-
-    /**
-     * @return null|Unit
-     */
-    public function bemUnidade(): ?Unit
-    {
-        if($this->unit_id) {
-            return(new Unit())->findById($this->unit_id);
-        }
-        return null;
-    }
-
-    /**
-     * @return null|User
-     */
-    public function user(): ?User
-    {
-        if($this->user_id) {
-            return(new User())->findById($this->user_id);
-        }
-        return null;
-    }
-
-    /**
-     * @return null|UserCategory
-     */
-    public function userCategory(): ?UserCategory
-    {
-        if($this->category_id) {
-            return(new UserCategory())->findById($this->category_id);
+        if($brand) {
+            return(new Brand())->findById($brand);
         }
         return null;
     }
@@ -246,7 +210,7 @@ class Bem extends Model
     public function levelBadge(): string
     {
         if($this->level_id == 1):
-            return '<span class="badge text-bg-primary ms-2">Bem</span>';
+            return '<span class="badge text-bg-primary ms-2">Patrimony</span>';
         elseif($this->level_id == 2):
             return '<span class="badge text-bg-light ms-2">Edit*</span>';
         elseif($this->level_id == 3):
@@ -263,7 +227,7 @@ class Bem extends Model
      */
     public function save(): bool
     {
-        /** Bem Update */
+        /** Patrimony Update */
         if (!empty($this->id)) {
             $bemId = $this->id;
 
@@ -280,7 +244,7 @@ class Bem extends Model
             }
         }
 
-        /** Bem Create */
+        /** Patrimony Create */
         if (empty($this->id)) {
             if ($this->findByImei($this->imei, "id")) {
                 $this->message->warning("O imei informado já está cadastrado");

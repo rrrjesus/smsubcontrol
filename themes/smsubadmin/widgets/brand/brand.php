@@ -1,4 +1,4 @@
-<?php $this->layout("_beta"); ?>
+<?php $this->layout("_admin"); ?>
 
   <!-- Breacrumb-->
   <?= $this->insert("views/theme/breadcrumb"); ?>

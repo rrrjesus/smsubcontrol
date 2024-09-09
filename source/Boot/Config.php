@@ -76,7 +76,7 @@ define("CONF_VIEW_APP", "smsubapp");
 define("CONF_VIEW_ADMIN", "smsubadmin");
 
 /**
- * UPLOAD
+ * UPLOAD   
  */
 define("CONF_UPLOAD_DIR", "storage");
 define("CONF_UPLOAD_IMAGE_DIR", "images");
