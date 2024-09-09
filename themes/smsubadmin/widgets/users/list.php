@@ -24,10 +24,11 @@
 
         </div>
     </div>
+    
 
     <div class="d-flex justify-content-center">
         <div class="col-12">
-            <table id="users" class="table table-bordered table-sm border-secondary table-hover" style="width:100%">
+            <table id="units" class="table table-bordered table-sm border-secondary table-hover" style="width:100%">
                 <thead class="table-secondary">
                 <tr>
                     <th class="text-center text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-unlock me-1"></i><br>ID</th>
@@ -46,8 +47,8 @@
                 </tr>
                 </thead>
                 <tbody>
-                <?php if(!empty($registers->actived)){ ?>
-                <?php foreach ($users as $lista): ?>
+                <?php if(!empty($units)){ ?>
+                <?php foreach ($units as $lista): ?>
                     <tr>
                         <td class="text-center"><?=$lista->id?></td>
                         <td class="text-center"><a href="usuarios/editar/<?=$lista->id?>" data-bs-togglee="tooltip" 

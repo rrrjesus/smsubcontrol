@@ -31,6 +31,20 @@ class Brand extends Model
         return $find->fetch();
     }
 
+    static function completeBrand(): ?Brand
+    {
+        $stm = (new Brand())->find("status= :s","s=actived");
+        $array[] = array();
+
+        if(!empty($stm)):
+            foreach ($stm->fetch(true) as $row):
+                    $array[] = $row->id.' - '.$row->brand_name;
+            endforeach;
+            echo json_encode($array); //Return the JSON Array
+        endif;
+        return null;
+    }
+
     public function statusSelect(): ?string
     {
         if ($this->status == "actived") {

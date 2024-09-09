@@ -93,45 +93,27 @@ $(function () {
         }
     });
 
-    $("#group-register").validate({
-        rules: {
-            group_name: {
-                required: true
-            },
-            description: {
-                required: true
-            }
-        },
-        messages: {
-            group_name: {
-                required: "Digite o Grupo !!!"
-            },
-            description: {
-                required: "Digite a Descrição !!!"
-            }
-        }
-    });
-
-    $("#churche-register").validate({
-        rules: {
-            churche_name: {
-                required: true
-            }
-        },
-        messages: {
-            churche_name: {
-                required: "Digite o nome da Igreja !!!"
-            }
-        }
-    });
-
-
     $("#user-edit").validate({
         rules: {
+            login: {
+                required: true
+            },
+            rf: {
+                required: true
+            },
             first_name: {
                 required: true
             },
             last_name: {
+                required: true
+            },
+            position_id: {
+                required: true
+            },
+            category_id: {
+                required: true
+            },
+            unit_id: {
                 required: true
             },
             email: {
@@ -139,39 +121,117 @@ $(function () {
             }
         },
         messages: {
+            login: {
+                required: "Digite o login !!!"
+            },
+            rf: {
+                required: "Digite o RF !!!"
+            },
             first_name: {
                 required: "Digite o nome !!!"
             },
             last_name: {
                 required: "Digite o sobrenome !!!"
             },
+            position_id: {
+                required: "Digite o cargo !!!"
+            },
+            category_id: {
+                required: "Digite o regime !!!"
+            },
+            unit_id: {
+                required: "Digite a unidade !!!"
+            },
             email: {
-                required: "Digite o e-mail !!!"
+                required: "Digite um email !!!"
             }
         }
     });
 
-    $("#user-register").validate({
+    $("#brand").validate({
         rules: {
-            first_name: {
+            brand_name: {
                 required: true
             },
-            last_name: {
-                required: true
-            },
-            email: {
+            description: {
                 required: true
             }
         },
         messages: {
-            first_name: {
-                required: "Digite o nome !!!"
+            brand_name: {
+                required: "Digite a marca !!!"
             },
-            last_name: {
-                required: "Digite o sobrenome !!!"
+            description: {
+                required: "Digite a descrição !!!"
+            }
+        }
+    });
+
+    $("#brand-edit").validate({
+        rules: {
+            brand_name: {
+                required: true
             },
-            email: {
-                required: "Digite o e-mail !!!"
+            description: {
+                required: true
+            }
+        },
+        messages: {
+            brand_name: {
+                required: "Digite a marca !!!"
+            },
+            description: {
+                required: "Digite a descrição !!!"
+            }
+        }
+    });
+
+    $("#product").validate({
+        rules: {
+            brand_id: {
+                required: true
+            },
+            product_name: {
+                required: true
+            },
+            description: {
+                required: true
+            }
+        },
+        messages: {
+            brand_id: {
+                required: "Digite a marca !!!"
+            },
+            product_name: {
+                required: "Digite o produto !!!"
+            },
+            description: {
+                required: "Digite a descrição !!!"
+            }
+        }
+    });
+
+    $("#product-edit").validate({
+        rules: {
+            brand_id: {
+                required: true
+            },
+            product_name: {
+                required: true
+            },
+            description: {
+                required: true
+            }
+        },
+        messages: {
+            brand_id: {
+                required: "Digite a marca !!!"
+            },
+            product_name: {
+                required: "Digite o produto !!!"
+            },
+            description: {
+                required: "Digite a descrição !!!"
             }
         }
     });

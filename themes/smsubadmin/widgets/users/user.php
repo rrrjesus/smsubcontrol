@@ -1,16 +1,7 @@
 <?= $this->layout("_admin"); ?>
 
-<div class="col-md-12 ml-auto mt-3"> <!-- https://getbootstrap.com/docs/4.0/layout/grid/#mix-and-match -->
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb breadcrumb-chevron p-2 bg-body-tertiary rounded-3">
-            <li class="breadcrumb-item"><a class="link-body-emphasis fw-semibold text-decoration-none" href="<?=url("/painel")?>"><i class="bi bi-house-heart"></i> Painel</a></li>
-            <li class="breadcrumb-item"><a class="link-body-emphasis fw-semibold text-decoration-none" href="<?=url("/usuarios")?>"><i class="bi bi-person"></i> Usuarios</a></li>
-            <li class="breadcrumb-item fw-semibold active" aria-current="page"><i class="bi bi-list"></i> <?php
-
- if(!empty($user->id)): echo "Editar ".$user->first_name; else : echo "Cadastrar"; endif;?></li>
-        </ol>
-    </nav>
-</div>
+  <!-- Breacrumb-->
+  <?= $this->insert("views/theme/breadcrumb"); ?>
 
 <div class="row justify-content-center">
     <div class="col-xl-12">
@@ -177,7 +168,7 @@
         <div class="container-fluid">
             <div class="d-flex justify-content-center">
                 <div class="col-12">
-                <form class="row gy-2 gx-3 align-items-center needs-validation" novalidate action="<?= url("/painel/usuarios/editar/{$user->id}"); ?>" method="post" enctype="multipart/form-data">
+                <form class="row gy-2 gx-3 align-items-center needs-validation" id="user-edit" novalidate action="<?= url("/painel/usuarios/editar/{$user->id}"); ?>" method="post" enctype="multipart/form-data">
                         
                     <input type="hidden" name="action" value="update"/>
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 05/09/2024 às 03:52
+-- Tempo de geração: 09/09/2024 às 22:51
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -20,578 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `smsub`
 --
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `app_churches`
---
-
-CREATE TABLE `app_churches` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `churche_name` text NOT NULL,
-  `status` text NOT NULL DEFAULT 'actived',
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Despejando dados para a tabela `app_churches`
---
-
-INSERT INTO `app_churches` (`id`, `churche_name`, `status`, `created_at`, `updated_at`) VALUES
-(3, 'Jardim Ataliba Leonel', 'actived', '2024-06-14 03:02:14', '2024-06-23 18:29:51'),
-(4, 'Jardim Cabuçu', 'actived', '2024-06-14 03:02:14', '2024-06-23 18:22:51'),
-(7, 'Jardim Japão', 'actived', '2024-06-14 03:02:14', '2024-06-23 18:22:54'),
-(21, 'Santana', 'actived', '2024-06-14 03:02:14', '2024-06-23 18:22:57'),
-(22, 'Tremembé', 'disabled', '2024-06-14 03:02:14', '2024-06-23 02:49:52'),
-(23, 'Tucuruvi', 'actived', '2024-06-14 03:02:14', '2024-06-23 18:15:15'),
-(24, 'Vila Albertina', 'actived', '2024-06-14 03:02:14', '2024-06-14 03:02:14'),
-(25, 'Vila Aurora', 'actived', '2024-06-14 03:02:14', '2024-06-14 03:02:14'),
-(26, 'Vila Ayrosa', 'actived', '2024-06-14 03:02:14', '2024-06-14 03:02:14'),
-(27, 'Vila Cachoeira', 'actived', '2024-06-14 03:02:14', '2024-06-14 03:02:14'),
-(28, 'Vila Ede', 'actived', '2024-06-14 03:02:14', '2024-06-14 03:02:14'),
-(29, 'Vila Guilherme', 'actived', '2024-06-14 03:02:14', '2024-06-14 03:02:14'),
-(30, 'Vila Maria', 'actived', '2024-06-14 03:02:14', '2024-06-14 03:02:14'),
-(31, 'Vila Medeiros', 'actived', '2024-06-14 03:02:14', '2024-06-14 03:02:14'),
-(32, 'Vila Nova Galvão', 'actived', '2024-06-14 03:02:14', '2024-06-14 03:02:14'),
-(33, 'Vila Rosa', 'actived', '2024-06-14 03:02:14', '2024-06-14 03:02:14'),
-(34, 'Não Informado', 'actived', '2024-06-14 03:29:05', '2024-06-14 03:29:25'),
-(40, 'Teste', 'actived', '2024-06-23 20:03:51', '2024-06-23 20:03:51');
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `bens`
---
-
-CREATE TABLE `bens` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL DEFAULT 1,
-  `modelo_id` int(11) UNSIGNED NOT NULL,
-  `descricao` text NOT NULL,
-  `unit_id` int(11) UNSIGNED NOT NULL,
-  `imei` text NOT NULL,
-  `ns` text DEFAULT NULL,
-  `photo` varchar(255) DEFAULT NULL,
-  `status` varchar(20) NOT NULL DEFAULT 'actived' COMMENT 'actived, disabled',
-  `patrimonio_id_1` int(11) DEFAULT NULL,
-  `patrimonio_id_2` int(11) DEFAULT NULL,
-  `observacoes` text DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `login_created` varchar(7) NOT NULL,
-  `login_updated` varchar(7) NOT NULL,
-  `returned_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Despejando dados para a tabela `bens`
---
-
-INSERT INTO `bens` (`id`, `user_id`, `modelo_id`, `descricao`, `unit_id`, `imei`, `ns`, `photo`, `status`, `patrimonio_id_1`, `patrimonio_id_2`, `observacoes`, `created_at`, `updated_at`, `login_created`, `login_updated`, `returned_at`) VALUES
-(1, 1, 1, 'Tablet utilizado por fiscais', 7, '353996961366768', 'R9XR604CBLX', 'images/2024/08/rodolfo-romaioli-ribeiro-de-jesus-1724763581.png', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-09-03 16:44:02', 'd788796', 'd788796', '2023-01-01 15:01:00'),
-(2, 2, 1, 'Tablet utilizado por fiscais', 16, '353996961573641', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-09-03 12:48:47', 'd788796', 'd788796', NULL),
-(3, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961570902', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(4, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961569060', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(5, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573997', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(6, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576859', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(7, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961567593', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(8, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576370', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(9, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580232', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(10, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576149', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(11, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578285', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(12, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577600', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(13, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961570258', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(14, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961570472', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(15, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961571074', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(16, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580398', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(17, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961572353', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(18, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580349', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(19, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961568351', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(20, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961581917', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(21, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961583467', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(22, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577196', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(23, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961583483', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(24, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573070', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(25, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961565860', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(26, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961569318', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(27, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577345', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(28, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961570985', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(29, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580729', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(30, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961579804', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(31, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576263', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(32, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578038', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(33, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961564616', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(34, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961582402', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(35, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961569763', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(36, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580299', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(37, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580463', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(38, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573229', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(39, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961582451', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(40, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578756', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(41, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961585215', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(42, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577113', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(43, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961582311', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(44, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576800', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(45, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576982', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(46, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961574987', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(47, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961579515', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(48, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961568930', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(49, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961564772', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(50, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575455', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(51, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961586957', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(52, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577501', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(53, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580570', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(54, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961570324', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(55, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575364', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(56, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580182', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(57, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578079', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(58, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961586817', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(59, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961570795', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(60, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575869', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(61, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961581099', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(62, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961566785', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(63, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961581081', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(64, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961568385', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(65, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576826', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(66, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576586', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(67, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580281', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(68, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573922', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(69, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573781', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(70, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961565555', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(71, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573633', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(72, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575547', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(73, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961574680', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(74, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961568088', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(75, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573666', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(76, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961570548', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(77, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961583756', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(78, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961584077', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(79, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576792', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(80, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577956', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(81, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960648824', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(82, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580745', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(83, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961568443', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(84, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577360', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(85, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576818', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(86, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961568559', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(87, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961567767', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(88, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960647073', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(89, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961571967', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(90, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577386', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(91, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576875', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(92, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961566710', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(93, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961583210', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(94, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961574854', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(95, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573427', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(96, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961602432', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(97, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961570423', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(98, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576925', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(99, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578491', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(100, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580315', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(101, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961567841', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(102, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573575', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(103, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960644682', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(104, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576883', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(105, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576511', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(106, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577378', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(107, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575182', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(108, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961564699', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(109, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576727', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(110, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961598432', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(111, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961583616', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(112, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573088', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(113, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960654566', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(114, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961569946', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(115, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575448', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(116, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576255', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(117, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960649699', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(118, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576404', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(119, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960650325', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(120, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575521', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(121, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580455', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(122, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961566439', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(123, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578368', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(124, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573682', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(125, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576396', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(126, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575935', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(127, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575554', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(128, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961583806', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(129, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575802', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(130, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961567924', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(131, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578459', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(132, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960646513', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(133, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961583020', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(134, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580752', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(135, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575612', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(136, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961552496', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(137, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577972', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(138, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961574375', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(139, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577733', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(140, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961587005', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(141, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577477', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(142, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580844', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(143, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961581057', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(144, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961602200', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(145, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961584002', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(146, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578301', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(147, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578269', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(148, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575836', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(149, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577576', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(150, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961601541', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(151, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580257', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(152, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580414', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(153, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577469', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(154, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576271', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(155, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578061', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(156, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961568757', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(157, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577618', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(158, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961570720', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(159, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961572031', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(160, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580687', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(161, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961574573', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(162, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961567833', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(163, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576644', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(164, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961603042', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(165, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961582535', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(166, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578616', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(167, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575919', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(168, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961570415', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(169, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961586924', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(170, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961569193', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(171, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575927', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(172, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961566090', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(173, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961584119', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(174, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577634', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(175, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577535', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(176, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576966', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(177, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577758', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(178, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580562', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(179, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575786', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(180, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961598382', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(181, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960696971', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(182, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961566124', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(183, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580406', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(184, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961569391', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(185, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575323', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(186, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961574557', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(187, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576230', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(188, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961566058', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(189, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577774', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(190, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961583624', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(191, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961571298', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(192, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577899', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(193, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580422', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(194, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575000', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(195, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961583434', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(196, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580596', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(197, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575307', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(198, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961601095', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(199, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576487', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(200, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578772', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(201, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576669', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(202, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578236', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(203, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961569466', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(204, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573484', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(205, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577915', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(206, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961568369', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(207, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961572338', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(208, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961579770', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(209, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576503', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(210, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577907', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(211, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573534', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(212, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961570373', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(213, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576578', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(214, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576917', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(215, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961583533', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(216, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577642', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(217, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960648790', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(218, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580273', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(219, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580356', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(220, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961569524', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(221, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573500', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(222, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575299', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(223, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961566603', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(224, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575653', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(225, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961599356', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(226, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578194', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(227, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577626', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(228, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961585231', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(229, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961599026', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(230, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960644641', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(231, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573708', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(232, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961598473', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(233, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577436', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(234, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573526', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(235, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961574441', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(236, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961564517', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(237, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575760', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(238, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961571033', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(239, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576743', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(240, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961569771', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(241, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577170', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(242, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578483', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(243, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575513', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(244, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961585249', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(245, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961567452', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(246, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961582147', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(247, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580828', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(248, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577923', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(249, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575596', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(250, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961568450', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(251, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961566504', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(252, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575224', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(253, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576248', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(254, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961568500', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(255, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961570647', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(256, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961569375', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(257, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578293', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(258, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961565241', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(259, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961564913', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(260, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961568104', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(261, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576131', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(262, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961564079', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(263, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577881', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(264, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575430', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(265, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961569797', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(266, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578020', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(267, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575810', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(268, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575877', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(269, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961583475', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(270, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577337', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(271, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577741', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(272, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961586981', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(273, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576537', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(274, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576677', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(275, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577527', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(276, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577998', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(277, 1, 1, 'Tablet utilizado por fiscais', 1, '7892509116183', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(278, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961583517', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(279, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961586429', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL);
-INSERT INTO `bens` (`id`, `user_id`, `modelo_id`, `descricao`, `unit_id`, `imei`, `ns`, `photo`, `status`, `patrimonio_id_1`, `patrimonio_id_2`, `observacoes`, `created_at`, `updated_at`, `login_created`, `login_updated`, `returned_at`) VALUES
-(280, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578111', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(281, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961581107', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(282, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961564145', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(283, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961569920', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(284, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961568997', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(285, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580307', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(286, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961603075', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(287, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573849', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(288, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575117', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(289, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578582', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(290, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961570639', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(291, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576552', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(292, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577931', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(293, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961574508', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(294, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575562', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(295, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961584036', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(296, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961579762', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(297, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961570464', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(298, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580380', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(299, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961565159', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(300, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576362', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(301, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577980', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(302, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961565472', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(303, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961564483', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(304, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961565597', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(305, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961584085', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(306, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576974', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(307, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578343', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(308, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576156', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(309, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961574532', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(310, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578137', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(311, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961568872', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(312, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573294', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(313, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961568120', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(314, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575646', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(315, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575463', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(316, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575778', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(317, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578764', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(318, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961568310', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(319, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961567791', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(320, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961565746', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(321, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961567858', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(322, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961567031', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(323, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578723', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(324, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961570993', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(325, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577725', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(326, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960649673', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(327, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961567965', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(328, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961583962', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(329, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573104', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(330, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961581065', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(331, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578715', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(332, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576412', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(333, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577568', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(334, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961581073', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(335, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961584168', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(336, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961567395', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(337, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580851', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(338, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961600907', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(339, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961600980', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(340, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961582501', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(341, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961586718', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(342, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575703', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(343, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961583574', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(344, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580265', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(345, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576560', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(346, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961570100', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(347, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961570019', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(348, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960647222', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(349, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576347', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(350, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961566447', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(351, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961602630', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(352, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580497', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(353, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961567478', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(354, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960648915', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(355, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961574045', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(356, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961574458', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(357, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961568740', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(358, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577238', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(359, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573245', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(360, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961568393', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(361, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961567049', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(362, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580331', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(363, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961564277', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(364, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961569334', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(365, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575794', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(366, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961564897', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(367, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575372', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(368, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576545', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(369, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580372', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(370, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960649590', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(371, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961587013', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(372, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960647164', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(373, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961583608', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(374, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961568260', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(375, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961567288', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(376, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576685', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(377, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961571595', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(378, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961572148', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(379, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960646646', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(380, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961566140', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(381, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961574920', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(382, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575570', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(383, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961565563', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(384, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961568682', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(385, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577246', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(386, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961585025', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(387, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961582188', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(388, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960648808', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(389, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576867', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(390, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573062', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(391, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961567247', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(392, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961570480', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(393, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961566389', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(394, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576776', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(395, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578350', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(396, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575885', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(397, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961581461', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(398, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961574144', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(399, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960647180', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(400, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960696948', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(401, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580364', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(402, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578558', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(403, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578012', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(404, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576941', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(405, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573872', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(406, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575638', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(407, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580711', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(408, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575489', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(409, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960688432', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(410, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182108064', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-04-27 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(411, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960650481', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-01-04 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(412, 1, 2, 'Tablet utilizado por fiscais', 1, 'EQ-10530/49', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-01-04 08:00:00', '2024-08-31 00:23:41', 'd788796', '', NULL),
-(413, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960647941', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-01-12 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(414, 1, 1, 'Tablet utilizado por fiscais', 1, '353996962275683', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-01-12 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(415, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182387189', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(416, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182460044', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(417, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183149752', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(418, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182981619', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(419, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183150172', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(420, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183161104', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(421, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183155205', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(422, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183255278', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(423, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183150909', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(424, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182378931', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(425, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183150891', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(426, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182386108', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(427, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182390977', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(428, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183150743', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(429, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182994927', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(430, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182377776', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(431, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182993788', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(432, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182387619', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(433, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182394110', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(434, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183184338', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(435, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182386124', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(436, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182377818', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(437, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182982757', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(438, 1, 2, 'Tablet utilizado por fiscais', 1, '353150181909892', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(439, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183150628', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(440, 1, 2, 'Tablet utilizado por fiscais', 1, '353150181871324', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(441, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182379541', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(442, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183149869', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(443, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182981346', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(444, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182966719', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(445, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183179221', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(446, 1, 2, 'Tablet utilizado por fiscais', 1, '353150181881729', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(447, 1, 2, 'Tablet utilizado por fiscais', 1, '353150181669439', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(448, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183149950', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(449, 1, 2, 'Tablet utilizado por fiscais', 1, '353150181882396', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(450, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182460275', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(451, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182378758', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(452, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182992624', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(453, 1, 2, 'Tablet utilizado por fiscais', 1, '353150181792561', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(454, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182379525', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(455, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182460333', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(456, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183151790', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(457, 1, 2, 'Tablet utilizado por fiscais', 1, '353150181603198', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(458, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182987178', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(459, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183167853', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(460, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182980918', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(461, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183231147', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(462, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182460226', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(463, 1, 2, 'Tablet utilizado por fiscais', 1, '353150181872090', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(464, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183149703', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(465, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183155668', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(466, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182982336', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(467, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183150164', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(468, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182999603', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(469, 1, 2, 'Tablet utilizado por fiscais', 1, '353150181767076', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(470, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183151782', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(471, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182387296', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(472, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182974283', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(473, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183149927', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(474, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182381430', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(475, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182386132', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(476, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183150214', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(477, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183155122', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(478, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182460051', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(479, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183164942', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(480, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182387239', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(481, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182993440', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(482, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183156070', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(483, 1, 2, 'Tablet utilizado por fiscais', 1, '353150181857604', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(484, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183234687', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(485, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183100482', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(486, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182994521', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(487, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183228945', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(488, 1, 2, 'Tablet utilizado por fiscais', 1, '353150181858271', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(489, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182390886', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(490, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183149588', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(491, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182982674', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(492, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182460127', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(493, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183230727', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(494, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183017330', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
-(495, 1, 1, 'Tablet utilizado por fiscais', 1, 'S/SN-10530/105', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-12-18 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(496, 1, 1, 'Tablet utilizado por fiscais', 1, 'R9XR406FWXD', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-12-18 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(497, 1, 1, 'Tablet utilizado por fiscais', 1, 'S/SN-10530/413', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-12-21 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
-(498, 1, 1, 'Samsung Electronics Co., Ltd', 1, '123456789101235', 'R9XR604CBLX', 'images/2024/09/123456789101235.jpg', 'actived', NULL, NULL, 'as', '2024-09-02 01:31:10', '2024-09-02 01:31:40', 'd788796', 'd788796', NULL),
-(499, 1, 1, 'Samsung Electronics Co., Ltd', 1, '123452789101235', 'R9XR604CBLX', NULL, 'actived', NULL, NULL, 'asd', '2024-09-02 01:37:13', '2024-09-02 01:37:13', 'd788796', '', NULL),
-(500, 1, 1, 'Samsung Electronics Co., Ltd', 1, '123256789101235', 'R9XR604CBLX', NULL, 'actived', NULL, NULL, 'as', '2024-09-02 01:43:38', '2024-09-02 01:43:38', 'd788796', '', NULL),
-(505, 1, 1, 'Samsung Electronics Co., Ltd', 1, '123152789101235', 'R9XR604CBLX', NULL, 'actived', NULL, NULL, 'as', '2024-09-02 05:08:36', '2024-09-02 05:08:36', 'd788796', '', NULL);
 
 -- --------------------------------------------------------
 
@@ -627,60 +55,6 @@ CREATE TABLE `bens_historico` (
 INSERT INTO `bens_historico` (`id`, `bens_id`, `user_id`, `modelo_id`, `descricao`, `unit_id`, `imei`, `ns`, `photo`, `status`, `patrimonio_id_1`, `patrimonio_id_2`, `observacoes`, `returned_at`, `created_at`, `updated_at`, `login_created`, `login_updated`) VALUES
 (1, 1, 2, 1, 'Tablet utilizado por fiscais', 7, '353996961366768', NULL, NULL, 'actived', NULL, NULL, '', '2023-01-01 15:01:00', '2024-09-03 16:43:57', '2024-09-03 16:43:57', 'd788796', ''),
 (2, 1, 1, 1, 'Tablet utilizado por fiscais', 7, '353996961366768', NULL, NULL, 'actived', NULL, NULL, '', '2023-01-01 15:01:00', '2024-09-03 16:44:02', '2024-09-03 16:44:02', 'd788796', '');
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `bens_marca`
---
-
-CREATE TABLE `bens_marca` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `marca_nome` text NOT NULL,
-  `descricao` text NOT NULL,
-  `status` varchar(20) NOT NULL DEFAULT 'actived' COMMENT 'actived, disabled',
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `login_created` varchar(7) NOT NULL,
-  `login_updated` varchar(7) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Despejando dados para a tabela `bens_marca`
---
-
-INSERT INTO `bens_marca` (`id`, `marca_nome`, `descricao`, `status`, `created_at`, `updated_at`, `login_created`, `login_updated`) VALUES
-(1, 'Samsung', 'Samsung Electronics Co., Ltd', 'actived', '2024-08-30 16:52:29', '2024-09-01 06:37:31', 'd788796', 'd788796'),
-(2, 'asv', 'Testando', 'actived', '2024-09-01 05:59:42', '2024-09-02 04:15:01', '', 'd788796'),
-(3, 'Samsungs', 'Samsung Electronics Co., Ltd', 'actived', '2024-09-01 06:42:40', '2024-09-01 06:42:40', 'd788796', ''),
-(4, 'Esquecesd', 'Samsung Electronics Co., Ltd', 'actived', '2024-09-01 06:46:45', '2024-09-01 06:48:53', 'd788796', 'd788796'),
-(5, 'Vivo', 'Empresa de Telefonia', 'actived', '2024-09-01 06:49:36', '2024-09-03 02:05:24', 'd788796', 'd788796');
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `bens_modelo`
---
-
-CREATE TABLE `bens_modelo` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `marca_id` int(11) UNSIGNED NOT NULL,
-  `modelo_nome` text NOT NULL,
-  `descricao` text NOT NULL,
-  `status` varchar(20) NOT NULL DEFAULT 'actived' COMMENT 'actived, disabled',
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `login_created` varchar(7) NOT NULL,
-  `login_updated` varchar(7) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Despejando dados para a tabela `bens_modelo`
---
-
-INSERT INTO `bens_modelo` (`id`, `marca_id`, `modelo_nome`, `descricao`, `status`, `created_at`, `updated_at`, `login_created`, `login_updated`) VALUES
-(1, 1, 'Tablet Galaxy Tab A7', 'Samsung Galaxy Tab A7 Android', 'actived', '2024-08-30 19:20:52', '2024-09-02 04:51:44', '', 'd788796'),
-(2, 1, 'Galaxy Tab A8', 'Samsung Galaxy Tab A8 Android', 'actived', '2024-08-30 19:20:52', '2024-09-02 05:01:02', '', 'd788796');
 
 -- --------------------------------------------------------
 
@@ -1210,6 +584,33 @@ INSERT INTO `bens_old` (`id`, `bens_nome`, `marca_id`, `modelo_id`, `descricao`,
 (495, 'Tablet Simpress', 1, 1, 'Tablet utilizado por fiscais', 1, 'S/SN-10530/105', '', '', 'actived', NULL, NULL, '2023-12-18 03:00:00', '2024-08-30 19:22:51', 'd788796', ''),
 (496, 'Tablet Simpress', 1, 1, 'Tablet utilizado por fiscais', 1, 'R9XR406FWXD', '', '', 'actived', NULL, NULL, '2023-12-18 03:00:00', '2024-08-30 19:22:51', 'd788796', ''),
 (497, 'Tablet Simpress', 1, 1, 'Tablet utilizado por fiscais', 1, 'S/SN-10530/413', '', '', 'actived', NULL, NULL, '2023-12-21 03:00:00', '2024-08-30 19:22:51', 'd788796', '');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `brands`
+--
+
+CREATE TABLE `brands` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `brand_name` text NOT NULL,
+  `description` text NOT NULL,
+  `status` varchar(20) NOT NULL DEFAULT 'actived' COMMENT 'actived, disabled',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `login_created` varchar(7) NOT NULL,
+  `login_updated` varchar(7) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `brands`
+--
+
+INSERT INTO `brands` (`id`, `brand_name`, `description`, `status`, `created_at`, `updated_at`, `login_created`, `login_updated`) VALUES
+(1, 'Samsung', 'Samsung Electronics Co., Ltd', 'actived', '2024-08-30 16:52:29', '2024-09-09 17:55:20', 'd788796', 'd788796'),
+(2, 'asv', 'Testando', 'actived', '2024-09-01 05:59:42', '2024-09-02 04:15:01', '', 'd788796'),
+(3, 'Samsungs', 'Samsung Electronics Co., Ltd', 'actived', '2024-09-01 06:42:40', '2024-09-09 17:56:38', 'd788796', 'd788796'),
+(4, 'Esquecesd', 'Samsung Electronics Co., Ltd', 'actived', '2024-09-01 06:46:45', '2024-09-09 17:56:34', 'd788796', 'd788796');
 
 -- --------------------------------------------------------
 
@@ -1784,6 +1185,540 @@ INSERT INTO `notifications` (`id`, `image`, `title`, `link`, `view`, `created_at
 -- --------------------------------------------------------
 
 --
+-- Estrutura para tabela `patrimonys`
+--
+
+CREATE TABLE `patrimonys` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL DEFAULT 1,
+  `product_id` int(11) UNSIGNED NOT NULL,
+  `description` text NOT NULL,
+  `unit_id` int(11) UNSIGNED NOT NULL,
+  `imei` text NOT NULL,
+  `ns` text DEFAULT NULL,
+  `photo` varchar(255) DEFAULT NULL,
+  `status` varchar(20) NOT NULL DEFAULT 'actived' COMMENT 'actived, disabled',
+  `patrimonio_id_1` int(11) DEFAULT NULL,
+  `patrimonio_id_2` int(11) DEFAULT NULL,
+  `observations` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `login_created` varchar(7) NOT NULL,
+  `login_updated` varchar(7) NOT NULL,
+  `returned_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `patrimonys`
+--
+
+INSERT INTO `patrimonys` (`id`, `user_id`, `product_id`, `description`, `unit_id`, `imei`, `ns`, `photo`, `status`, `patrimonio_id_1`, `patrimonio_id_2`, `observations`, `created_at`, `updated_at`, `login_created`, `login_updated`, `returned_at`) VALUES
+(1, 1, 1, 'Tablet utilizado por fiscais', 7, '353996961366768', 'R9XR604CBLX', 'images/2024/08/rodolfo-romaioli-ribeiro-de-jesus-1724763581.png', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-09-03 16:44:02', 'd788796', 'd788796', '2023-01-01 15:01:00'),
+(2, 2, 1, 'Tablet utilizado por fiscais', 16, '353996961573641', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-09-03 12:48:47', 'd788796', 'd788796', NULL),
+(3, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961570902', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(4, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961569060', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(5, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573997', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(6, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576859', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(7, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961567593', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(8, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576370', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(9, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580232', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(10, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576149', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(11, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578285', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(12, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577600', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(13, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961570258', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(14, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961570472', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(15, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961571074', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(16, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580398', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(17, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961572353', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(18, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580349', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(19, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961568351', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(20, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961581917', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(21, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961583467', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(22, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577196', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(23, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961583483', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(24, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573070', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(25, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961565860', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(26, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961569318', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(27, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577345', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(28, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961570985', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(29, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580729', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(30, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961579804', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(31, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576263', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(32, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578038', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(33, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961564616', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(34, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961582402', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(35, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961569763', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(36, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580299', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(37, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580463', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(38, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573229', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(39, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961582451', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(40, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578756', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(41, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961585215', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(42, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577113', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(43, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961582311', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(44, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576800', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(45, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576982', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(46, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961574987', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(47, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961579515', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(48, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961568930', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(49, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961564772', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(50, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575455', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(51, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961586957', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(52, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577501', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(53, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580570', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(54, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961570324', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(55, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575364', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(56, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580182', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(57, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578079', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(58, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961586817', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(59, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961570795', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(60, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575869', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(61, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961581099', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(62, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961566785', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(63, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961581081', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(64, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961568385', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(65, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576826', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(66, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576586', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(67, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580281', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(68, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573922', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(69, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573781', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(70, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961565555', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(71, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573633', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(72, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575547', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(73, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961574680', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(74, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961568088', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(75, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573666', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(76, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961570548', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(77, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961583756', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(78, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961584077', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(79, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576792', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(80, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577956', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(81, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960648824', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(82, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580745', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(83, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961568443', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(84, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577360', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(85, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576818', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(86, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961568559', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(87, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961567767', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(88, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960647073', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(89, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961571967', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(90, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577386', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(91, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576875', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(92, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961566710', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(93, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961583210', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(94, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961574854', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(95, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573427', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(96, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961602432', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(97, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961570423', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(98, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576925', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(99, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578491', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(100, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580315', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(101, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961567841', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(102, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573575', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(103, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960644682', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(104, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576883', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(105, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576511', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(106, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577378', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(107, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575182', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(108, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961564699', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(109, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576727', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(110, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961598432', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(111, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961583616', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(112, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573088', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(113, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960654566', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(114, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961569946', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(115, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575448', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(116, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576255', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(117, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960649699', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(118, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576404', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(119, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960650325', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(120, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575521', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(121, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580455', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(122, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961566439', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(123, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578368', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(124, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573682', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(125, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576396', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(126, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575935', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(127, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575554', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(128, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961583806', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(129, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575802', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(130, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961567924', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(131, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578459', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(132, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960646513', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(133, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961583020', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(134, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580752', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(135, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575612', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(136, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961552496', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(137, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577972', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(138, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961574375', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(139, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577733', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(140, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961587005', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(141, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577477', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(142, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580844', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(143, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961581057', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(144, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961602200', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(145, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961584002', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(146, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578301', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(147, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578269', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(148, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575836', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(149, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577576', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(150, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961601541', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(151, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580257', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(152, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580414', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(153, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577469', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(154, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576271', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(155, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578061', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(156, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961568757', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(157, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577618', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(158, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961570720', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(159, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961572031', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(160, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580687', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(161, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961574573', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(162, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961567833', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(163, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576644', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(164, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961603042', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(165, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961582535', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(166, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578616', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(167, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575919', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(168, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961570415', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(169, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961586924', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(170, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961569193', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(171, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575927', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(172, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961566090', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(173, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961584119', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(174, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577634', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(175, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577535', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(176, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576966', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(177, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577758', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(178, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580562', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(179, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575786', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(180, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961598382', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(181, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960696971', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(182, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961566124', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(183, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580406', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(184, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961569391', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(185, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575323', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(186, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961574557', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(187, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576230', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(188, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961566058', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(189, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577774', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(190, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961583624', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(191, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961571298', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(192, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577899', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(193, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580422', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(194, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575000', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(195, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961583434', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(196, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580596', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(197, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575307', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(198, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961601095', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(199, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576487', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(200, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578772', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(201, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576669', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(202, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578236', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(203, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961569466', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(204, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573484', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(205, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577915', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(206, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961568369', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(207, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961572338', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(208, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961579770', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(209, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576503', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(210, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577907', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(211, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573534', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(212, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961570373', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(213, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576578', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(214, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576917', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(215, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961583533', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(216, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577642', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(217, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960648790', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(218, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580273', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(219, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580356', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(220, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961569524', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(221, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573500', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(222, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575299', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(223, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961566603', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(224, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575653', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(225, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961599356', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(226, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578194', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(227, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577626', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(228, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961585231', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(229, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961599026', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(230, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960644641', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(231, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573708', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(232, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961598473', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(233, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577436', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(234, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573526', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(235, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961574441', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(236, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961564517', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(237, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575760', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(238, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961571033', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(239, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576743', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(240, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961569771', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(241, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577170', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(242, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578483', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(243, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575513', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(244, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961585249', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(245, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961567452', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(246, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961582147', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(247, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580828', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(248, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577923', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(249, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575596', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(250, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961568450', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(251, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961566504', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(252, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575224', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(253, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576248', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(254, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961568500', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(255, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961570647', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(256, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961569375', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(257, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578293', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(258, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961565241', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(259, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961564913', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(260, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961568104', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(261, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576131', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(262, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961564079', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(263, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577881', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(264, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575430', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(265, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961569797', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(266, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578020', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(267, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575810', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(268, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575877', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(269, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961583475', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(270, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577337', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(271, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577741', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(272, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961586981', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(273, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576537', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(274, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576677', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(275, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577527', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(276, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577998', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(277, 1, 1, 'Tablet utilizado por fiscais', 1, '7892509116183', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(278, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961583517', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(279, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961586429', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL);
+INSERT INTO `patrimonys` (`id`, `user_id`, `product_id`, `description`, `unit_id`, `imei`, `ns`, `photo`, `status`, `patrimonio_id_1`, `patrimonio_id_2`, `observations`, `created_at`, `updated_at`, `login_created`, `login_updated`, `returned_at`) VALUES
+(280, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578111', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(281, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961581107', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(282, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961564145', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(283, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961569920', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(284, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961568997', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(285, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580307', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(286, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961603075', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(287, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573849', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(288, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575117', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(289, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578582', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(290, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961570639', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(291, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576552', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(292, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577931', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(293, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961574508', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(294, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575562', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(295, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961584036', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(296, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961579762', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(297, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961570464', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(298, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580380', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(299, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961565159', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(300, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576362', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(301, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577980', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(302, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961565472', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(303, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961564483', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(304, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961565597', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(305, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961584085', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(306, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576974', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(307, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578343', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(308, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576156', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(309, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961574532', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(310, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578137', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(311, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961568872', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(312, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573294', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(313, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961568120', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(314, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575646', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(315, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575463', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(316, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575778', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(317, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578764', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(318, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961568310', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(319, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961567791', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(320, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961565746', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(321, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961567858', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(322, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961567031', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(323, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578723', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(324, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961570993', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(325, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577725', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(326, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960649673', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(327, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961567965', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(328, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961583962', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(329, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573104', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(330, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961581065', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(331, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578715', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(332, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576412', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(333, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577568', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(334, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961581073', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(335, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961584168', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(336, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961567395', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(337, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580851', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(338, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961600907', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(339, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961600980', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(340, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961582501', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(341, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961586718', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(342, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575703', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(343, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961583574', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(344, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580265', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(345, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576560', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(346, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961570100', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(347, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961570019', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(348, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960647222', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(349, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576347', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(350, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961566447', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(351, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961602630', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(352, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580497', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(353, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961567478', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(354, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960648915', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(355, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961574045', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(356, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961574458', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(357, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961568740', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(358, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577238', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(359, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573245', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(360, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961568393', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(361, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961567049', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(362, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580331', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(363, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961564277', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(364, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961569334', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(365, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575794', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(366, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961564897', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(367, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575372', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(368, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576545', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(369, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580372', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(370, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960649590', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(371, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961587013', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(372, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960647164', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(373, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961583608', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(374, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961568260', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(375, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961567288', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(376, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576685', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(377, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961571595', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(378, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961572148', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(379, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960646646', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(380, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961566140', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(381, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961574920', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(382, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575570', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(383, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961565563', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(384, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961568682', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(385, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961577246', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(386, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961585025', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(387, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961582188', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(388, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960648808', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(389, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576867', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(390, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573062', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(391, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961567247', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(392, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961570480', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(393, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961566389', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(394, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576776', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(395, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578350', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(396, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575885', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(397, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961581461', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(398, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961574144', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(399, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960647180', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(400, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960696948', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(401, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580364', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(402, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578558', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(403, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961578012', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(404, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961576941', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(405, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961573872', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(406, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575638', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(407, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961580711', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-07-30 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(408, 1, 1, 'Tablet utilizado por fiscais', 1, '353996961575489', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-06 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(409, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960688432', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2021-08-28 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(410, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182108064', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-04-27 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(411, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960650481', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-01-04 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(412, 1, 2, 'Tablet utilizado por fiscais', 1, 'EQ-10530/49', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-01-04 08:00:00', '2024-08-31 00:23:41', 'd788796', '', NULL),
+(413, 1, 1, 'Tablet utilizado por fiscais', 1, '353996960647941', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-01-12 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(414, 1, 1, 'Tablet utilizado por fiscais', 1, '353996962275683', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-01-12 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(415, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182387189', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(416, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182460044', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(417, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183149752', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(418, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182981619', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(419, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183150172', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(420, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183161104', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(421, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183155205', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(422, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183255278', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(423, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183150909', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(424, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182378931', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(425, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183150891', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(426, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182386108', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(427, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182390977', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(428, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183150743', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(429, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182994927', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(430, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182377776', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(431, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182993788', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(432, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182387619', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(433, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182394110', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(434, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183184338', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(435, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182386124', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(436, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182377818', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(437, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182982757', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(438, 1, 2, 'Tablet utilizado por fiscais', 1, '353150181909892', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(439, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183150628', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(440, 1, 2, 'Tablet utilizado por fiscais', 1, '353150181871324', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(441, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182379541', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(442, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183149869', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(443, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182981346', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(444, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182966719', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(445, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183179221', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(446, 1, 2, 'Tablet utilizado por fiscais', 1, '353150181881729', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(447, 1, 2, 'Tablet utilizado por fiscais', 1, '353150181669439', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(448, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183149950', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(449, 1, 2, 'Tablet utilizado por fiscais', 1, '353150181882396', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(450, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182460275', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(451, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182378758', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(452, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182992624', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(453, 1, 2, 'Tablet utilizado por fiscais', 1, '353150181792561', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(454, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182379525', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(455, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182460333', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(456, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183151790', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(457, 1, 2, 'Tablet utilizado por fiscais', 1, '353150181603198', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(458, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182987178', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(459, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183167853', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(460, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182980918', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(461, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183231147', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(462, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182460226', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(463, 1, 2, 'Tablet utilizado por fiscais', 1, '353150181872090', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(464, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183149703', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(465, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183155668', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(466, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182982336', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(467, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183150164', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(468, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182999603', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(469, 1, 2, 'Tablet utilizado por fiscais', 1, '353150181767076', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(470, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183151782', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(471, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182387296', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(472, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182974283', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(473, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183149927', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(474, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182381430', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(475, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182386132', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(476, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183150214', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(477, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183155122', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(478, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182460051', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(479, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183164942', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(480, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182387239', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(481, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182993440', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(482, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183156070', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(483, 1, 2, 'Tablet utilizado por fiscais', 1, '353150181857604', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(484, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183234687', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(485, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183100482', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(486, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182994521', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(487, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183228945', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(488, 1, 2, 'Tablet utilizado por fiscais', 1, '353150181858271', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(489, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182390886', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(490, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183149588', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(491, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182982674', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(492, 1, 2, 'Tablet utilizado por fiscais', 1, '353150182460127', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(493, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183230727', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-26 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(494, 1, 2, 'Tablet utilizado por fiscais', 1, '353150183017330', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-09-06 08:00:00', '2024-08-31 00:24:18', 'd788796', '', NULL),
+(495, 1, 1, 'Tablet utilizado por fiscais', 1, 'S/SN-10530/105', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-12-18 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(496, 1, 1, 'Tablet utilizado por fiscais', 1, 'R9XR406FWXD', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-12-18 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(497, 1, 1, 'Tablet utilizado por fiscais', 1, 'S/SN-10530/413', 'R9XR604CBLX', '', 'actived', NULL, NULL, '', '2023-12-21 08:00:00', '2024-08-31 00:22:51', 'd788796', '', NULL),
+(498, 1, 1, 'Samsung Electronics Co., Ltd', 1, '123456789101235', 'R9XR604CBLX', 'images/2024/09/123456789101235.jpg', 'actived', NULL, NULL, 'as', '2024-09-02 01:31:10', '2024-09-02 01:31:40', 'd788796', 'd788796', NULL),
+(499, 1, 1, 'Samsung Electronics Co., Ltd', 1, '123452789101235', 'R9XR604CBLX', NULL, 'actived', NULL, NULL, 'asd', '2024-09-02 01:37:13', '2024-09-02 01:37:13', 'd788796', '', NULL),
+(500, 1, 1, 'Samsung Electronics Co., Ltd', 1, '123256789101235', 'R9XR604CBLX', NULL, 'actived', NULL, NULL, 'as', '2024-09-02 01:43:38', '2024-09-02 01:43:38', 'd788796', '', NULL),
+(505, 1, 1, 'Samsung Electronics Co., Ltd', 1, '123152789101235', 'R9XR604CBLX', NULL, 'actived', NULL, NULL, 'as', '2024-09-02 05:08:36', '2024-09-02 05:08:36', 'd788796', '', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura para tabela `posts`
 --
 
@@ -1846,6 +1781,33 @@ INSERT INTO `posts` (`id`, `author`, `category`, `title`, `uri`, `subtitle`, `co
 -- --------------------------------------------------------
 
 --
+-- Estrutura para tabela `products`
+--
+
+CREATE TABLE `products` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `brand_id` int(11) UNSIGNED NOT NULL,
+  `product_name` text NOT NULL,
+  `description` text NOT NULL,
+  `status` varchar(20) NOT NULL DEFAULT 'actived' COMMENT 'actived, disabled',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `login_created` varchar(7) NOT NULL,
+  `login_updated` varchar(7) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `products`
+--
+
+INSERT INTO `products` (`id`, `brand_id`, `product_name`, `description`, `status`, `created_at`, `updated_at`, `login_created`, `login_updated`) VALUES
+(1, 3, 'Tablet Galaxy Tab A7', 'Samsung Galaxy Tab A7 Android', 'actived', '2024-08-30 19:20:52', '2024-09-09 19:45:36', '', 'd788796'),
+(2, 1, 'Galaxy Tab A8', 'Samsung Galaxy Tab A8 Android', 'actived', '2024-08-30 19:20:52', '2024-09-09 19:42:04', '', 'd788796'),
+(3, 1, 'Ovo', 'Para fritar', 'actived', '2024-09-09 19:21:14', '2024-09-09 19:41:22', 'd788796', 'd788796');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura para tabela `report_access`
 --
 
@@ -1879,7 +1841,12 @@ INSERT INTO `report_access` (`id`, `users`, `views`, `pages`, `created_at`, `upd
 (14, 1, 1, 1, '2024-08-23 12:55:15', '2024-08-23 12:55:15'),
 (15, 1, 1, 9, '2024-08-29 16:03:23', '2024-08-29 16:08:52'),
 (16, 1, 1, 81, '2024-09-03 22:46:02', '2024-09-03 23:06:01'),
-(17, 6, 6, 64, '2024-09-04 11:48:09', '2024-09-05 01:52:12');
+(17, 6, 6, 64, '2024-09-04 11:48:09', '2024-09-05 01:52:12'),
+(18, 6, 6, 327, '2024-09-05 12:12:13', '2024-09-05 21:01:53'),
+(19, 5, 5, 73, '2024-09-06 16:59:06', '2024-09-07 02:58:08'),
+(20, 1, 2, 17, '2024-09-07 03:37:43', '2024-09-08 02:58:49'),
+(21, 1, 2, 36, '2024-09-08 03:18:57', '2024-09-09 02:54:29'),
+(22, 3, 4, 34, '2024-09-09 03:18:59', '2024-09-09 20:03:29');
 
 -- --------------------------------------------------------
 
@@ -1903,7 +1870,7 @@ CREATE TABLE `report_online` (
 --
 
 INSERT INTO `report_online` (`id`, `user`, `ip`, `url`, `agent`, `pages`, `created_at`, `updated_at`) VALUES
-(65, NULL, '10.23.237.201', '/sobre', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36', 4, '2024-09-05 01:50:49', '2024-09-05 01:52:12');
+(31, 2, '10.23.237.201', '/ops/400', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36', 4, '2024-09-09 19:28:28', '2024-09-09 20:03:29');
 
 -- --------------------------------------------------------
 
@@ -7220,16 +7187,16 @@ INSERT INTO `signatures` (`id`, `first_name`, `last_name`, `email`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `unidades`
+-- Estrutura para tabela `units`
 --
 
-CREATE TABLE `unidades` (
+CREATE TABLE `units` (
   `id` int(11) UNSIGNED NOT NULL,
-  `unidade_nome` text DEFAULT NULL,
-  `unidade_contato` varchar(255) NOT NULL,
-  `descricao` text DEFAULT NULL,
-  `endereco` text DEFAULT NULL,
-  `cep` varchar(9) DEFAULT NULL,
+  `unit_name` text DEFAULT NULL,
+  `unit_contact` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `adress` text DEFAULT NULL,
+  `zip` varchar(9) DEFAULT NULL,
   `logo` varchar(34) DEFAULT NULL,
   `url` varchar(84) DEFAULT NULL,
   `it_professional` varchar(36) DEFAULT NULL,
@@ -7244,10 +7211,10 @@ CREATE TABLE `unidades` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Despejando dados para a tabela `unidades`
+-- Despejando dados para a tabela `units`
 --
 
-INSERT INTO `unidades` (`id`, `unidade_nome`, `unidade_contato`, `descricao`, `endereco`, `cep`, `logo`, `url`, `it_professional`, `telephone`, `ramal`, `cell_phone`, `email`, `status`, `created_at`, `updated_at`, `observacoes`) VALUES
+INSERT INTO `units` (`id`, `unit_name`, `unit_contact`, `description`, `adress`, `zip`, `logo`, `url`, `it_professional`, `telephone`, `ramal`, `cell_phone`, `email`, `status`, `created_at`, `updated_at`, `observacoes`) VALUES
 (1, 'SMSUB', '', 'SECRETARIA MUNICIPAL DAS SUBPREFEITURAS', 'Rua São Bento, 405 - Edifício Martinelli - Centro', '01011-100', 'logo_ass_smsub', 'www.prefeitura.sp.gov.br/cidade/secretarias/subprefeituras', 'Jessyca', '4934-3000', '', '', '', 'actived', '06/10/2023 17:54', '', ''),
 (2, 'SEABAST/DEA (10º AND)', '', 'SEABAST/DEA - Divisão de Equipamentos de Abastecimento', 'Rua São Bento, 405 - Edifício Martinelli - Centro', '01011-100', 'logo_ass_smsub', 'www.prefeitura.sp.gov.br/cidade/secretarias/subprefeituras', '', '4934-3000', '', '', '', 'actived', '06/10/2023 17:54', '', ''),
 (3, 'SEABAST/DFL (10º AND)', '', 'SEABAST/DFL - Divisão de Feiras Livres', 'Rua São Bento, 405 - Edifício Martinelli - Centro', '01011-100', 'logo_ass_smsub', 'www.prefeitura.sp.gov.br/cidade/secretarias/subprefeituras', '', '4934-3000', '', '', '', 'actived', '06/10/2023 17:54', '', ''),
@@ -7342,36 +7309,38 @@ INSERT INTO `unidades` (`id`, `unidade_nome`, `unidade_contato`, `descricao`, `e
 
 CREATE TABLE `users` (
   `id` int(11) UNSIGNED NOT NULL,
-  `login` varchar(7) DEFAULT NULL,
+  `login` varchar(7) NOT NULL,
   `rf` int(7) NOT NULL,
   `first_name` varchar(255) NOT NULL,
   `last_name` varchar(255) NOT NULL,
-  `status` varchar(50) NOT NULL DEFAULT 'registred' COMMENT 'registered, confirmed, trash',
-  `position_id` int(11) UNSIGNED NOT NULL,
-  `category_id` int(11) UNSIGNED NOT NULL DEFAULT 5,
+  `position_id` int(11) UNSIGNED DEFAULT NULL,
+  `category_id` int(11) UNSIGNED DEFAULT 5,
   `unit_id` int(11) UNSIGNED DEFAULT 34,
-  `num_ramal` int(4) NOT NULL DEFAULT 3000,
-  `phone` int(9) DEFAULT NULL,
+  `status` varchar(50) DEFAULT 'registered' COMMENT 'registered, confirmed, trash',
+  `num_ramal` int(4) DEFAULT 3000,
+  `phone` varchar(11) DEFAULT NULL,
+  `phone_fixed` varchar(10) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
-  `level_id` int(11) UNSIGNED NOT NULL DEFAULT 1,
+  `level_id` int(11) UNSIGNED DEFAULT 1,
   `password` varchar(255) NOT NULL DEFAULT '$2y$10$7aQNdKPaeaX0wwxShqfDN.Jwc4SzPPQGOk7fZdLgV/WmGvVx6oFwm',
   `forget` varchar(255) DEFAULT NULL,
   `login_created` varchar(7) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `description` text DEFAULT NULL,
+  `login_updated` varchar(7) NOT NULL,
   `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `login_blocked` varchar(7) DEFAULT NULL,
   `blocked_at` timestamp NULL DEFAULT NULL,
   `observations` text DEFAULT NULL,
-  `photo` varchar(255) NOT NULL
+  `photo` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Despejando dados para a tabela `users`
 --
 
-INSERT INTO `users` (`id`, `login`, `rf`, `first_name`, `last_name`, `status`, `position_id`, `category_id`, `unit_id`, `num_ramal`, `phone`, `email`, `level_id`, `password`, `forget`, `login_created`, `created_at`, `description`, `updated_at`, `blocked_at`, `observations`, `photo`) VALUES
-(1, 'd504405', 5044050, 'Reservado', 'Secretaria', 'registered', 19, 5, 22, 3235, 2147483647, 'rrrjesus@smsub.prefeitura.sp.gov.br', 1, '$2y$10$e2uEIXHsiaZQDYwd3Zd7eeyiIMrvwbQZfC.0nUloqRHg/yLrxySJK', NULL, 'd788796', '2024-07-31 14:10:39', NULL, '2024-09-03 17:43:15', NULL, 'O pedaço padrão do Lorem Ipsum usado desde 1500 é reproduzido abaixo para os interessados. As seções 1.10.32 e 1.10.33 de \"de Finibus Bonorum et Malorum\" de Cícero também são reproduzidas em sua forma original exata.', 'images/2024/08/rodolfo-romaioli-ribeiro-de-jesus-1724763581.png'),
-(2, 'd788796', 7887965, 'Rodolfo', 'Romaioli Ribeiro de Jesus', 'confirmed', 43, 5, 34, 3000, NULL, 'rodolfo.romaioli@gmail.com', 5, '$2y$10$7aQNdKPaeaX0wwxShqfDN.Jwc4SzPPQGOk7fZdLgV/WmGvVx6oFwm', NULL, 'd788796', '2024-09-02 13:30:22', NULL, '2024-09-03 17:43:31', NULL, NULL, '');
+INSERT INTO `users` (`id`, `login`, `rf`, `first_name`, `last_name`, `position_id`, `category_id`, `unit_id`, `status`, `num_ramal`, `phone`, `phone_fixed`, `email`, `level_id`, `password`, `forget`, `login_created`, `created_at`, `login_updated`, `updated_at`, `login_blocked`, `blocked_at`, `observations`, `photo`) VALUES
+(2, 'd788796', 7887965, 'Rodolfo', 'Romaioli Ribeiro de Jesus', 18, 5, 22, 'confirmed', 3000, '991091365', '', 'rodolfo.romaioli@gmail.com', 5, '$2y$10$7aQNdKPaeaX0wwxShqfDN.Jwc4SzPPQGOk7fZdLgV/WmGvVx6oFwm', NULL, 'd788796', '2024-09-02 13:30:22', 'd788796', '2024-09-09 18:39:03', '', NULL, '', 'images/2024/09/rodolfo-romaioli-ribeiro-de-jesus-1725907105.png'),
+(18, 'd930735', 9307354, 'Cynthia', 'Ayumi Takagi Kurashima', 18, 5, 22, 'confirmed', 3000, '', '49343000', 'cynthiaayumi@smsub.prefeitura.sp.gov.br', 5, '$2y$10$xAfLB3o1Xsn4ZfBdvypqJ.MGCE5Pju8XzFXKeJjiBKh6EA2qgjoPi', NULL, 'd788796', '2024-09-09 14:29:30', 'd788796', '2024-09-09 14:30:07', NULL, NULL, '', NULL);
 
 -- --------------------------------------------------------
 
@@ -18259,39 +18228,12 @@ INSERT INTO `user_positions` (`id`, `position_name`, `created_at`, `updated_at`,
 --
 
 --
--- Índices de tabela `app_churches`
---
-ALTER TABLE `app_churches`
-  ADD PRIMARY KEY (`id`);
-
---
--- Índices de tabela `bens`
---
-ALTER TABLE `bens`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `pat_modelo` (`modelo_id`),
-  ADD KEY `pat_unit` (`unit_id`) USING BTREE;
-
---
 -- Índices de tabela `bens_historico`
 --
 ALTER TABLE `bens_historico`
   ADD PRIMARY KEY (`id`),
   ADD KEY `pat_modelo` (`modelo_id`),
   ADD KEY `pat_unit` (`unit_id`) USING BTREE;
-
---
--- Índices de tabela `bens_marca`
---
-ALTER TABLE `bens_marca`
-  ADD PRIMARY KEY (`id`);
-
---
--- Índices de tabela `bens_modelo`
---
-ALTER TABLE `bens_modelo`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `pat_marca_modelo` (`marca_id`);
 
 --
 -- Índices de tabela `bens_old`
@@ -18301,6 +18243,12 @@ ALTER TABLE `bens_old`
   ADD KEY `pat_marca` (`marca_id`),
   ADD KEY `pat_unit` (`unit_id`),
   ADD KEY `pat_modelo` (`modelo_id`);
+
+--
+-- Índices de tabela `brands`
+--
+ALTER TABLE `brands`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices de tabela `categories`
@@ -18340,6 +18288,14 @@ ALTER TABLE `notifications`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices de tabela `patrimonys`
+--
+ALTER TABLE `patrimonys`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `pat_unit` (`unit_id`) USING BTREE,
+  ADD KEY `pat_product` (`product_id`) USING BTREE;
+
+--
 -- Índices de tabela `posts`
 --
 ALTER TABLE `posts`
@@ -18347,6 +18303,13 @@ ALTER TABLE `posts`
   ADD KEY `category_id` (`category`),
   ADD KEY `user_id` (`author`);
 ALTER TABLE `posts` ADD FULLTEXT KEY `full_text` (`title`,`subtitle`);
+
+--
+-- Índices de tabela `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `pat_brand` (`brand_id`) USING BTREE;
 
 --
 -- Índices de tabela `report_access`
@@ -18367,9 +18330,9 @@ ALTER TABLE `signatures`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `unidades`
+-- Índices de tabela `units`
 --
-ALTER TABLE `unidades`
+ALTER TABLE `units`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -18410,40 +18373,22 @@ ALTER TABLE `user_positions`
 --
 
 --
--- AUTO_INCREMENT de tabela `app_churches`
---
-ALTER TABLE `app_churches`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
-
---
--- AUTO_INCREMENT de tabela `bens`
---
-ALTER TABLE `bens`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=506;
-
---
 -- AUTO_INCREMENT de tabela `bens_historico`
 --
 ALTER TABLE `bens_historico`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de tabela `bens_marca`
---
-ALTER TABLE `bens_marca`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT de tabela `bens_modelo`
---
-ALTER TABLE `bens_modelo`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
 -- AUTO_INCREMENT de tabela `bens_old`
 --
 ALTER TABLE `bens_old`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=498;
+
+--
+-- AUTO_INCREMENT de tabela `brands`
+--
+ALTER TABLE `brands`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `categories`
@@ -18482,22 +18427,34 @@ ALTER TABLE `notifications`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
+-- AUTO_INCREMENT de tabela `patrimonys`
+--
+ALTER TABLE `patrimonys`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=506;
+
+--
 -- AUTO_INCREMENT de tabela `posts`
 --
 ALTER TABLE `posts`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
+-- AUTO_INCREMENT de tabela `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT de tabela `report_access`
 --
 ALTER TABLE `report_access`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de tabela `report_online`
 --
 ALTER TABLE `report_online`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de tabela `signatures`
@@ -18506,16 +18463,16 @@ ALTER TABLE `signatures`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5286;
 
 --
--- AUTO_INCREMENT de tabela `unidades`
+-- AUTO_INCREMENT de tabela `units`
 --
-ALTER TABLE `unidades`
+ALTER TABLE `units`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 
 --
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de tabela `users_mail`
@@ -18546,23 +18503,23 @@ ALTER TABLE `user_positions`
 --
 
 --
--- Restrições para tabelas `bens`
+-- Restrições para tabelas `patrimonys`
 --
-ALTER TABLE `bens`
-  ADD CONSTRAINT `pat_modelo` FOREIGN KEY (`modelo_id`) REFERENCES `bens_modelo` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
-  ADD CONSTRAINT `pat_unit` FOREIGN KEY (`unit_id`) REFERENCES `unidades` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+ALTER TABLE `patrimonys`
+  ADD CONSTRAINT `pat_modelo` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `pat_unit` FOREIGN KEY (`unit_id`) REFERENCES `units` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
--- Restrições para tabelas `bens_modelo`
+-- Restrições para tabelas `products`
 --
-ALTER TABLE `bens_modelo`
-  ADD CONSTRAINT `pat_marca_modelo` FOREIGN KEY (`marca_id`) REFERENCES `bens_marca` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+ALTER TABLE `products`
+  ADD CONSTRAINT `pat_marca_modelo` FOREIGN KEY (`brand_id`) REFERENCES `brands` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Restrições para tabelas `users`
 --
 ALTER TABLE `users`
-  ADD CONSTRAINT `unit` FOREIGN KEY (`unit_id`) REFERENCES `unidades` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `unit` FOREIGN KEY (`unit_id`) REFERENCES `units` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   ADD CONSTRAINT `user_category` FOREIGN KEY (`category_id`) REFERENCES `user_categories` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   ADD CONSTRAINT `user_position` FOREIGN KEY (`position_id`) REFERENCES `user_positions` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   ADD CONSTRAINT `user_positions` FOREIGN KEY (`position_id`) REFERENCES `user_positions` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;

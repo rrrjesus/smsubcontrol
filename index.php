@@ -145,16 +145,31 @@ $route->get("/usuarios/ativar/{user_id}/{action}", "Users:user");
 $route->get("/usuarios/desativar/{user_id}/{action}", "Users:user");
 $route->get("/usuarios/excluir/{user_id}/{action}", "Users:user");
 
+//perfil
+$route->get("/perfil", "Users:profile");
+$route->post("/perfil", "Users:profile");
+
 //marcas
-$route->get("/marcas", "Brands:brands");
-$route->get("/marcas/desativados", "Brands:disabledBrands");
-$route->get("/marcas/cadastrar", "Brands:brand");
-$route->post("/marcas/cadastrar", "Brands:brand");
-$route->get("/marcas/editar/{brand_id}", "Brands:brand");
-$route->post("/marcas/editar/{brand_id}", "Brands:brand");
-$route->get("/marcas/ativar/{brand_id}/{action}", "Brands:brand");
-$route->get("/marcas/desativar/{brand_id}/{action}", "Brands:brand");
-$route->get("/marcas/excluir/{brand_id}/{action}", "Brands:brand");
+$route->get("/patrimonio/marcas", "Brands:brands");
+$route->get("/patrimonio/marcas/desativadas", "Brands:disabledBrands");
+$route->get("/patrimonio/marcas/cadastrar", "Brands:brand");
+$route->post("/patrimonio/marcas/cadastrar", "Brands:brand");
+$route->get("/patrimonio/marcas/editar/{brand_id}", "Brands:brand");
+$route->post("/patrimonio/marcas/editar/{brand_id}", "Brands:brand");
+$route->get("/patrimonio/marcas/ativar/{brand_id}/{action}", "Brands:brand");
+$route->get("/patrimonio/marcas/desativar/{brand_id}/{action}", "Brands:brand");
+$route->get("/patrimonio/marcas/excluir/{brand_id}/{action}", "Brands:brand");
+
+//produtos
+$route->get("/patrimonio/produtos", "Products:products");
+$route->get("/patrimonio/produtos/desativados", "Products:disabledProducts");
+$route->get("/patrimonio/produtos/cadastrar", "Products:product");
+$route->post("/patrimonio/produtos/cadastrar", "Products:product");
+$route->get("/patrimonio/produtos/editar/{product_id}", "Products:product");
+$route->post("/patrimonio/produtos/editar/{product_id}", "Products:product");
+$route->get("/patrimonio/produtos/ativar/{product_id}/{action}", "Products:product");
+$route->get("/patrimonio/produtos/desativar/{product_id}/{action}", "Products:product");
+$route->get("/patrimonio/produtos/excluir/{product_id}/{action}", "Products:product");
 
 //notification center
 $route->post("/notifications/count", "Notifications:count");

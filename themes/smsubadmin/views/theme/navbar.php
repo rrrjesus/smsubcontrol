@@ -3,11 +3,20 @@
     <a class="navbar-brand ps-3" href="<?=url("/painel")?>">
         <img width="120" height="40" src="<?=theme("/assets/images/smsub_logo/SUBPREFEITURAS_HORIZONTAL_FUNDO_ESCURO.png")?>">
     </a>
+
     <!-- Sidebar Toggle-->
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
 
-    <!-- Navbar Search-->
-<!--    <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">-->
+        <!-- Navbar Search-->
+        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                <p class="text-light fw-semibold fs-6">HOSTNAME: <?=gethostname();?> / USUÁRIO: <?=get_current_user();?></p>
+        </form>
+        <!-- Navbar-->
+        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+            
+        </ul>
+        <!-- Navbar Search-->
+        <!-- <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">-->
         <ul class="navbar-nav ms-auto me-0 me-md-3 my-2 my-md-0">
             <li class="nav-item dropdown">
             <button class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center"
@@ -49,7 +58,7 @@
     <!-- Navbar-->
     <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">            <?php if (user()->photo()): ?>
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?php if (user()->photo()): ?>
                 <img class="rounded-circle m-2" width="32" height="32" alt="<?= user()->first_name; ?>" title="<?= user()->first_name; ?>"
                         src="<?= image(user()->photo, 260, 260); ?>"/>
             <?php else: ?>
@@ -57,7 +66,7 @@
                         src="<?= theme("/assets/images/avatar.jpg", CONF_VIEW_APP); ?>"/>
             <?php endif; ?></i></a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#!"><i class="bi bi-person-fill-gear"></i> Perfil</a></li>
+                <li><a class="dropdown-item" href="<?=url("/painel/perfil")?>"><i class="bi bi-person-fill-gear"></i> Perfil</a></li>
             </ul>
         </li>
     </ul>

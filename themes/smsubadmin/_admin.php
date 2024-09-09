@@ -6,9 +6,14 @@
 
     <?= $head; ?>
 
+    <link rel="apple-touch-icon" sizes="180x180" href="<?= theme("/assets/images/favicon/apple-touch-icon.png", CONF_VIEW_ADMIN); ?>">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?= theme("/assets/images/favicon/favicon-32x32.png", CONF_VIEW_ADMIN); ?>">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?= theme("/assets/images/favicon/favicon-16x16.png", CONF_VIEW_ADMIN); ?>">
+    <!-- <link rel="manifest" href="/site.webmanifest"> -->
+    <link rel="mask-icon" href="<?= theme("/assets/images/favicon/safari-pinned-tab.svg", CONF_VIEW_ADMIN); ?>" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
     <link href="<?=theme("/assets/style.css", CONF_VIEW_ADMIN)?>" rel="stylesheet" />
-    <link href="<?=theme("/assets/sdadmin_old.css", CONF_VIEW_ADMIN)?>" rel="stylesheet" />
-    <link rel="icon" type="image/png" href="<?= theme("/assets/images/favicon.ico", CONF_VIEW_ADMIN); ?>"/>
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 
 </head>
@@ -35,11 +40,11 @@
     </symbol>
 </svg>
 
-    <?php $this->insert("widgets/navbar"); ?>
+    <?php $this->insert("views/theme/navbar"); ?>
 
 <div id="layoutSidenav">
     <div id="layoutSidenav_nav">
-        <?php $this->insert("widgets/sidebar"); ?>
+        <?php $this->insert("views/theme/sidebar"); ?>
     </div>
 
     <div id="layoutSidenav_content">
@@ -51,7 +56,7 @@
         </main>
 
         <!-- footer -->
-        <?php $this->insert("widgets/footer"); ?>
+        <?php $this->insert("views/theme/footer"); ?>
 
     </div>
 </div>

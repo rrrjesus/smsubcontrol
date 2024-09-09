@@ -25,7 +25,7 @@ class Brands extends Admin
     public function brands(): void
     {
         $head = $this->seo->render(
-            "Bens/Marcas - " . CONF_SITE_NAME,
+            "Patrimônios / Marcas - " . CONF_SITE_NAME,
             CONF_SITE_DESC,
             url(),
             theme("/assets/images/favicon.ico"),
@@ -35,15 +35,45 @@ class Brands extends Admin
         $brands = (new Brand())->find("status = :s", "s=actived")->fetch(true);
         $brand = new Brand();
 
-        echo $this->view->render("widgets/brand/list", [
+        echo $this->view->render("widgets/patrimonys/brands/list", [
             "head" => $head,
             "brands" => $brands,
-            "urls" => "marcas",
-            "icon" => "list",
+            "urls" => "patrimonio/marcas",
+            "namepage" => "Marcas",
+            "name" => "Lista",
             "registers" => (object)[
                 "disabled" => $brand->find("status = :s", "s=disabled")->count()
             ]
         ]);
+    }
+
+        /**
+     * @param array|null $data
+     * @throws \Exception
+     */
+    /** @return void */
+    public function disabledBrands(): void
+    {
+        $head = $this->seo->render(
+            "Marcas Desabilitadas - " . CONF_SITE_NAME ,
+            "Lista de Marcas Desativadas",
+            url("/painel/patrimonio/marcas/desativadas"),
+            theme("/assets/images/favicon.ico")
+        );
+
+        $brand = (new Brand());
+        $brands = $brand->find("status = :s", "s=disabled")->fetch(true);
+
+        echo $this->view->render("widgets/patrimonys/brands/disabledList",
+            [
+                "admin" => "marcas",
+                "head" => $head,
+                "brands" => $brands,
+                "urls" => "patrimonio/marcas",
+                "namepage" => "Marcas",
+                "name" => "Lista"
+            ]);
+
     }
 
     /**
@@ -61,12 +91,11 @@ class Brands extends Admin
             $brandCreate = new Brand();
             $brandCreate->brand_name = $data["brand_name"];
             $brandCreate->description = $data["description"];
-            $brandCreate->status = $data["status"];
             $brandCreate->login_created = $user->login;
             $brandCreate->created_at = date_fmt('', "Y-m-d h:m:s");
 
             if(in_array("", $data)){
-                $json['message'] = $this->message->info("Informe a marca, descrição e status para criar o registro !")->icon()->render();
+                $json['message'] = $this->message->info("Informe a marca e descrição para criar o registro !")->icon()->render();
                 echo json_encode($json);
                 return;
             }
@@ -78,7 +107,7 @@ class Brands extends Admin
             }
 
             $this->message->success("Marca {$brandCreate->brand_name} cadastrada com sucesso...")->icon("emoji-grin me-1")->flash();
-            $json["redirect"] = url("/patrimonio/patrimonio/marcas/cadastrar");
+            $json["redirect"] = url("/painel/patrimonio/marcas/cadastrar");
 
             echo json_encode($json);
             return;
@@ -87,18 +116,17 @@ class Brands extends Admin
         //update
         if (!empty($data["action"]) && $data["action"] == "update") {
             $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $brandUpdate = (new Brand())->findById($data["brands_id"]);
+            $brandUpdate = (new Brand())->findById($data["brand_id"]);
 
             if (!$brandUpdate) {
-                $this->message->error("Você tentou gerenciar uma marca que não existe")->flash();
-                echo json_encode(["redirect" => url("/patrimonio/patrimonio/marcas/lista")]);
+                $this->message->error("Você tentou gerenciar uma marca que não existe")->icon("gift")->flash();
+                echo json_encode(["redirect" => url("/painel/patrimonio/marcas")]);
                 return;
             }
 
-            $brandUpdate = (new Brand())->findById($data["brands_id"]);
+            $brandUpdate = (new Brand())->findById($data["brand_id"]);
             $brandUpdate->brand_name = $data["brand_name"];
             $brandUpdate->description = $data["description"];
-            $brandUpdate->status = $data["status"];
             $brandUpdate->login_updated = $user->login;
             $brandUpdate->updated_at = date_fmt('', "Y-m-d h:m:s");
 
@@ -119,44 +147,95 @@ class Brands extends Admin
             return;
         }
 
+          //actived
+         if (!empty($data["action"]) && $data["action"] == "actived") {
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
+            $brandActived = (new Brand())->findById($data["brand_id"]);
+
+            if (!$brandActived) {
+                $this->message->error("Você tentou gerenciar uma marca que não existe")->icon("gift")->flash();
+                echo json_encode(["redirect" => url("/painel/patrimonio/marcas")]);
+                return;
+            }
+
+            $brandActived->status = "actived";
+            $brandActived->login_updated = $user->login;
+
+            if (!$brandActived->save()) {
+                $json["message"] = $brandActived->message()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            $this->message->success("Marca {$brandActived->brand_name} reativada com sucesso !!!")->icon("gift")->flash();
+            redirect("/painel/patrimonio/marcas/desativadas");
+            return;
+        }
+
+        
+         //disabled
+         if (!empty($data["action"]) && $data["action"] == "disabled") {
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
+            $brandDisabled = (new Brand())->findById($data["brand_id"]);
+
+            if (!$brandDisabled) {
+                $this->message->error("Você tentou gerenciar uma marca que não existe")->icon("gift")->flash();
+                echo json_encode(["redirect" => url("/painel/patrimonio/marcas")]);
+                return;
+            }
+
+            $brandDisabled->status = "disabled";
+            $brandDisabled->login_updated = $user->login;
+
+            if (!$brandDisabled->save()) {
+                $json["message"] = $brandDisabled->message()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            $this->message->success("Marca {$brandDisabled->brand_name} desativada com sucesso !!!")->icon("gift")->flash();
+            redirect("/painel/patrimonio/marcas");
+            return;
+        }
+
         //delete
         if (!empty($data["action"]) && $data["action"] == "delete") {
             $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $brandDelete = (new Brand())->findById($data["brands_id"]);
+            $brandDelete = (new Brand())->findById($data["brand_id"]);
 
             if (!$brandDelete) {
-                $this->message->error("Você tentou deletar uma marca que não existe")->flash();
-                echo json_encode(["redirect" => url("/patrimonio/patrimonio/marcas/lista")]);
+                $this->message->error("Você tentou deletar uma marca que não existe")->icon("gift")->flash();
+                echo json_encode(["redirect" => url("/painel/patrimonio/marcas")]);
                 return;
             }
 
             $brandDelete->destroy();
 
-            $this->message->success("A marca {$brandDelete->brand_name} foi excluída com sucesso...")->flash();
-            echo json_encode(["redirect" => url("/patrimonio/patrimonio/marcas/lista")]);
-
+            $this->message->success("A marca {$brandDelete->brand_name} foi excluída com sucesso...")->icon("gift")->flash();
+            redirect("/painel/patrimonio/marcas");
             return;
         }
 
-        $brandsEdit = null;
-        if (!empty($data["brands_id"])) {
-            $brandId = filter_var($data["brands_id"], FILTER_VALIDATE_INT);
-            $brandsEdit = (new Brand())->findById($brandId);
+        $brandEdit = null;
+        if (!empty($data["brand_id"])) {
+            $brandId = filter_var($data["brand_id"], FILTER_VALIDATE_INT);
+            $brandEdit = (new Brand())->findById($brandId);
         }
 
         $head = $this->seo->render(
-            "Marca - " . CONF_SITE_NAME,
+            "Marcas - " . CONF_SITE_NAME,
             CONF_SITE_DESC,
             url(),
             theme("/assets/images/favicon.ico"),
             false
         );
 
-        echo $this->view->render("widgets/bens/marca/marca", [
+        echo $this->view->render("widgets/patrimonys/brands/brand", [
             "head" => $head,
-            "marcas" => $brandsEdit,
-            "urls" => "marca",
-            "icon" => "person"
+            "marcas" => $brandEdit,
+            "urls" => ($brandEdit ? "marcas/editar/{$brandEdit->id}" : "cadastrar"),
+            "namepage" => "Marcas",
+            "name" => ($brandEdit ? "Editar" : "Cadastrar")
         ]);
     }
 }

@@ -44,8 +44,9 @@ class Users extends Admin
                 "app" => "usuarios",
                 "head" => $head,
                 "users" => $users,
-                "urls" => "usuarios",
-                "icon" => "list",
+                "urls" => "usuarios/listar",
+                "namepage" => "Usuarios",
+                "name" => "Listar",
                 "registers" => (object)[
                     "actived" => $user->find("status != :s", "s=disabled")->count(),
                     "disabled" => $user->find("status = :s", "s=disabled")->count()
@@ -80,6 +81,103 @@ class Users extends Admin
                 "icon" => "list",
             ]);
 
+    }
+
+    /**
+     * @param array|null $data
+     * @throws \Exception
+     */
+    public function profile(?array $data): void
+    {
+        //update profile
+        if (!empty($data["action"]) && $data["action"] == "profile") {
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
+            $userProfile = (new User())->findById($this->user->id);
+
+            if (!$userProfile) {
+                $this->message->error("Erro ao gerenciar seu perfil")->icon("person")->flash();
+                echo json_encode(["redirect" => url("/painel/perfil")]);
+                return;
+            }
+
+            $userProfile->login = $data["login"];
+            $userProfile->rf = $data["rf"];
+            $userProfile->first_name = $data["first_name"];
+            $userProfile->last_name = $data["last_name"];
+            $userProfile->email = $data["email"];
+            $userProfile->phone = preg_replace("/[^0-9]/", "", $data["phone"]);
+            $userProfile->phone_fixed = preg_replace("/[^0-9]/", "", $data["phone_fixed"]);
+            $userProfile->position_id = preg_replace("/[^0-9\s]/", "", $data["position_id"]);
+            $userProfile->category_id = preg_replace("/[^0-9\s]/", "", $data["category_id"]);
+            $userProfile->unit_id = preg_replace("/[^0-9\s]/", "", $data["unit_id"]);
+            $userProfile->password = (!empty($data["password"]) ? $data["password"] : $userProfile->password);
+            $userProfile->level_id = $data["level_id"];
+            $userProfile->status = (new User())->statusInputDecode($data["status"]);
+            $userProfile->observations = $data["observations"];
+            $userProfile->login_updated = $this->user->login;
+
+            if (!empty($_FILES["photo"])) {
+                $file = $_FILES["photo"];
+                $upload = new Upload();
+
+                if ($userProfile->photo()) {
+                    (new Thumb())->flush("storage/{$userProfile->photo}");
+                    $upload->remove("storage/{$userProfile->photo}");
+                }
+
+                if (!$userProfile->photo = $upload->image($file, "{$userProfile->first_name} {$userProfile->last_name} " . time(), 360)) {
+                    $json["message"] = $upload->message()->before("Ooops {$userProfile->user->first_name}! ")->after(".")->render();
+                    echo json_encode($json);
+                    return;
+                }
+            }
+
+            if($data["login"] == "" || $data["rf"] == "" || $data["category_id"] == "" || $data["unit_id"] == "" || $data["position_id"] == "" || $data["status"] == ""){
+                $json['message'] = $this->message->warning("Preencha os campos obrigatórios para criar o registro !")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            if (!$userProfile->save()) {
+                $json["message"] = $userProfile->message()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            $this->message->success("Seu perfil foi atualizado com sucesso !!!")->icon("person")->flash();
+            echo json_encode(["reload" => true]);
+            return;
+        }
+
+        $profileEdit = null;
+        $userposition = new UserPosition();
+        $unit = new Unit();
+
+        if (!empty($this->user->id)) {
+            $profileId = filter_var($this->user->id, FILTER_VALIDATE_INT);
+            $profileEdit = (new User())->findById($profileId);
+        }
+
+        $head = $this->seo->render(
+            CONF_SITE_NAME . " | " . "Perfil de {$profileEdit->fullName()}",
+            CONF_SITE_DESC,
+            url("/painel/perfil"),
+            url("/painel/assets/images/image.jpg"),
+            false
+        );
+
+        echo $this->view->render("widgets/users/profile", [
+            "app" => "perfil",
+            "head" => $head,
+            "profile" => $profileEdit,
+            "userposition" => $userposition,
+            "unit" => $unit,
+            "urls" => "perfil",
+            "namepage" => "Perfil",
+            "name" => "{$profileEdit->fullName()}",
+            "photo" => ($this->user->photo() ? image($this->user->photo, 360, 360) :
+            theme("/assets/images/avatar.jpg", CONF_VIEW_ADMIN))
+        ]);
     }
 
     /**
@@ -126,7 +224,7 @@ class Users extends Admin
                 $userCreate->photo = $image;
             }
 
-            if($data["login"] == "" || $data["rf"] == "" || $data["category_id"] == "" || $data["unit_id"] == "" || $data["position_id"] == "" || $data["status"] == ""){
+            if($data["login"] == "" || $data["rf"] == "" || $data["category_id"] == "" || $data["unit_id"] == "" || $data["position_id"] == ""){
                 $json['message'] = $this->message->warning("Preencha os campos obrigatórios para criar o registro !")->icon()->render();
                 echo json_encode($json);
                 return;
@@ -267,6 +365,11 @@ class Users extends Admin
                 return;
             }
 
+            if($userDelete->id == user()->id) {
+                $this->message->error("Operação invalida ...")->icon("person")->flash();
+                redirect("/painel/usuarios");
+            }
+
             if ($userDelete->photo && file_exists(__DIR__ . "/../../../" . CONF_UPLOAD_DIR . "/{$userDelete->photo}")) {
                 unlink(__DIR__ . "/../../../" . CONF_UPLOAD_DIR . "/{$userDelete->photo}");
                 (new Thumb())->flush($userDelete->photo);
@@ -303,6 +406,9 @@ class Users extends Admin
             "user" => $userEdit,
             "userposition" => $userposition,
             "unit" => $unit,
+            "urls" => ($userEdit ? "usuarios/editar/{$userEdit->id}" : "cadastrar"),
+            "namepage" => "Usuários",
+            "name" => ($userEdit ? "Editar" : "Cadastrar"),
             "photo" => ($this->user->photo() ? image($this->user->photo, 360, 360) :
             theme("/assets/images/avatar.jpg", CONF_VIEW_ADMIN))
         ]);

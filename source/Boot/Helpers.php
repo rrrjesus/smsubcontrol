@@ -400,6 +400,25 @@ function passwd_rehash(string $hash): bool
 
 /**
  * ###################
+ * ###  BREADCRUMB ###
+ * ###################
+ */
+   
+ /**
+ * @return string
+ */
+
+function breadcrumb(string $urls = null,string $namepage = null,string $name = null): string
+{
+    if($urls){
+        return "<li class='breadcrumb-item'><a class='link-body-emphasis fw-semibold text-decoration-none text-capitalize' href='".url("/painel/{$urls}")."'> ".$namepage."</a></li>
+        <li class='breadcrumb-item'><a class='link-body-emphasis fw-semibold text-decoration-none' href='#'>".$name."</a>";
+    }
+    return null;
+}
+
+/**
+ * ###################
  * ###   REQUEST   ###
  * ###################
  */

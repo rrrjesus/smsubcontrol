@@ -3,6 +3,7 @@
 namespace Source\Models\Patrimony;
 
 use Source\Core\Model;
+use Source\Models\Patrimony\Brand;
 
 /**
  * Rodolfo | Class Unit Active Record Pattern
@@ -91,7 +92,7 @@ class Product extends Model
                 $productId = $this->id;
     
                 if ($this->find("product_name = :c AND id != :i", "c={$this->product_name}&i={$productId}", "id")->fetch()) {
-                    $this->message->warning("O product informado já está cadastrado");
+                    $this->message->warning("O produto informado já está cadastrado");
                     return false;
                 }
     
@@ -105,7 +106,7 @@ class Product extends Model
             /** Model Create */
             if (empty($this->id)) {
                 if ($this->findByModelo($this->product_name, "id")) {
-                    $this->message->warning("O product informado já está cadastrado");
+                    $this->message->warning("O produto informado já está cadastrado");
                     return false;
                 }
     
