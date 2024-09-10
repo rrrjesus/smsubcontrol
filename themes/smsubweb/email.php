@@ -115,7 +115,7 @@
                     <div class="assinatura-email">
                         <div id="assinatura-download" class="assinatura-download pt-3 pb-3">
                             <div class="assinatura-logo pt-2 pb-2 pe-3 ps-3">
-                                <span class="aslogo me-0" id="aslogo"></span>
+                                <span class="asphoto me-0" id="asphoto"></span>
                             </div>
                             <div class="assinatura-escrita ps-4">
                                 <h4 class="asnome fw-bold m-0" id="asnome"></h4>

@@ -34,6 +34,7 @@
                         <th class="text-center">FOTO</th>
                         <th class="text-center">NOME</th>
                         <th class="text-center">TELEFONE</th>
+                        <th class="text-center">E-MAIL</th>
                         <th class="text-center">DESCRIÇÃO</th>
                         <th class="text-center">ENDEREÇO</th>
                         <th class="text-center">CEP</th>
@@ -45,17 +46,27 @@
                     </tr>
                 </thead>
                 <tbody>
-                <?php if(!empty($brands)){ ?>
-                <?php foreach ($brands as $lista): ?>
-                <tr>
-                    <td class="text-center fw-semibold"><a href="<?= url("/painel/unidades/editar/{$lista->id}"); ?>" role="button" aria-disabled="true" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
-                    data-bs-title="Clique para editar" class="btn btn-sm btn-outline-warning rounded-circle fw-bold me-2"><i class="bi bi-pencil text-secondary"></i></a></td>
-                    <td class="text-center fw-semibold"><?=(!empty($lista->brand_name) ? $lista->brand_name : "")?></td>
-                    <td class="text-center fw-semibold"><?=(!empty($lista->description) ? $lista->description : "")?></td>
-                    <td class="text-center fw-semibold"><?=$lista->statusBadge()?></td>
-                    <td class="text-center fw-semibold"><?=$lista->id?></td>
-                    <td class="text-center fw-semibold"><?=$lista->id?></td>
-                </tr>
+                <?php if(!empty($units)){ ?>
+                <?php foreach ($units as $lista): ?>
+                    <tr>
+                        <td class="text-center"><a href="unidades/editar/<?=$lista->id?>" data-bs-togglee="tooltip" 
+                            data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                            data-bs-title="Clique para editar <?=$lista->unit_name?>" role="button" 
+                            class="btn btn-outline-warning rounded-circle btn-md text-center">
+                            <i class="bi bi-pencil text-secundary"></i></a></td>
+                        <td class="text-center"><?=$lista->photoList();?></td>
+                        <td class="text-center"><?=$lista->unit_name;?></td>
+                        <td class="text-center text-uppercase"><?=$lista->phone;?></td>
+                        <td class="text-center text-uppercase"><?=$lista->email;?></td>
+                        <td class="text-center text-uppercase"><?=$lista->description;?></td>
+                        <td class="text-center"><?=$lista->adress;?></td>
+                        <td class="text-center"><?=$lista->zip;?></td>
+                        <td class="text-center"><?=$lista->it_professional;?></td>
+                        <td class="text-center"><?=$lista->cell_phone;?></td>
+                        <td class="text-center text-uppercase"><?=$lista->statusBadge();?>
+                        <td class="text-center"><?=$lista->id;?></td>
+                        <td class="text-center"><?=$lista->id;?></td>
+                    </tr>
                 <?php endforeach; ?>
                 <?php } ?>
             </tbody>

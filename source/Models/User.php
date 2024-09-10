@@ -104,7 +104,20 @@ class User extends Model
                     height="40" width="40"></a>';
         }
         return null;
-    }          
+    } 
+    
+    public function photoListDisabled(): ?string
+    {
+        if($this->photo && file_exists(CONF_UPLOAD_DIR.'/'.$this->photo)){
+            return '<a href="../../'.CONF_UPLOAD_DIR.'/'.$this->photo.'" target="_blank">
+                    <img src="'.image($this->photo, 30,30).'" class="img-thumbnail rounded-circle float-left"></a>';
+        }else{
+            return '<a href="../../storage/images/avatar.jpg" target="_blank">
+                    <img src="../../storage/images/avatar.jpg" class="img-thumbnail rounded-circle float-left"
+                    height="40" width="40"></a>';
+        }
+        return null;
+    } 
 
     public function statusInputDecode($status): ?string
     {
@@ -113,7 +126,7 @@ class User extends Model
         } elseif ($status == "2 - CONFIRMADO") {
             return 'confirmed';
         } else {
-            return 'trash';
+            return 'disabled';
         }
         return null; 
     }

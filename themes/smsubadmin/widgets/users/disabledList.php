@@ -47,7 +47,7 @@
                             data-bs-title="Clique para editar <?=$lista->first_name?>" role="button" 
                             class="btn btn-info rounded-circle btn-md text-center">
                             <i class="bi bi-person-gear text-dark"></i></a></td>
-                        <td class="text-center"><?=$lista->photoList();?></td>                                     
+                        <td class="text-center"><?=$lista->photoListDisabled();?></td>                                     
                         <td class="text-center"><?=$lista->first_name?></td>
                         <td class="text-center"><?=$lista->last_name?></td>
                         <td class="text-center"><?=$lista->userUnit()->unit_name;?></td>

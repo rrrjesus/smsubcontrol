@@ -149,6 +149,17 @@ $route->get("/usuarios/excluir/{user_id}/{action}", "Users:user");
 $route->get("/perfil", "Users:profile");
 $route->post("/perfil", "Users:profile");
 
+//unidade
+$route->get("/unidades", "Units:units");
+$route->get("/unidades/desativados", "Units:disabledUnits");
+$route->get("/unidades/cadastrar", "Units:unit");
+$route->post("/unidades/cadastrar", "Units:unit");
+$route->get("/unidades/editar/{unit_id}", "Units:unit");
+$route->post("/unidades/editar/{unit_id}", "Units:unit");
+$route->get("/unidades/ativar/{unit_id}/{action}", "Units:unit");
+$route->get("/unidades/desativar/{unit_id}/{action}", "Units:unit");
+$route->get("/unidades/excluir/{unit_id}/{action}", "Units:unit");
+
 //marcas
 $route->get("/patrimonio/marcas", "Brands:brands");
 $route->get("/patrimonio/marcas/desativadas", "Brands:disabledBrands");

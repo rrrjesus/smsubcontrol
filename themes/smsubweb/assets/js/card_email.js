@@ -21,7 +21,7 @@ $(function () {
             // Obtendo um blob de imagem PNG e baixando (usando FileSaver):
             domtoimage.toBlob(asspng)
                 .then(function (blob) {
-                    window.saveAs(blob, assnome + '_' + dataAtual + '.png');
+                    window.saveAs(blob, assnome + '_' + dataAtual);
                 }).catch(function (error) {
                 console.error('Não foi possivel gerar a imagem ...', error);
             });
@@ -76,56 +76,50 @@ $(function () {
             {
                 var jsonendereco = json.enderecoinp;
                 var jsoncep = json.cepinp;
-                var jsonlogo = json.aslogo;
+                var jsonphoto = json.asphoto;
                 var jsonurl = json.url;
-                var logo;
+                var photo;
                 var mode = $('body').css("background-color");
                 if(mode==='rgb(255, 255, 255)') {
-                    logo = '<img id="logo-assinatura mb-0" src="themes/smsubweb/assets/images/assinatura/' + jsonlogo + '.png">';
+                    photo = '<img id="logo-assinatura mb-0" src="themes/smsubweb/assets/images/assinatura/' + jsonphoto + '">';
                 } else {
-                    logo = '<img id="logo-assinatura mb-0" src="themes/smsubweb/assets/images/assinatura/' + jsonlogo + '_dark.png">';
+                    photo = '<img id="logo-assinatura mb-0" src="themes/smsubweb/assets/images/assinatura/dark_' + jsonphoto + '">';
                 }
                 if(jsonendereco!=='') {
                     enderecoinp.val(jsonendereco);
                     cepinp.val(jsoncep);
-                    $('.aslogo').html(logo);
+                    $('.asphoto').html(photo);
                     $('.asendereco').html(jsonendereco)
                     $('.ascep').html(jsoncep)
                     $('.asurl').html(jsonurl)
-                    // $(".enderecoinp").prop('readonly',true);
-                    // $(".cepinp").prop('readonly',true);
                 } else {
-                    $('.aslogo').html(logo);
+                    $('.asphoto').html(photo);
                     $('.asendereco').html("Rua São Bento, 405 - Edifício Martinelli - Centro ")
                     $('.ascep').html("01011-100");
                     $('.asurl').html("www.prefeitura.sp.gov.br/cidade/secretarias/subprefeituras/ ");
-                    // $(".enderecoinp").prop('readonly',false);
-                    // $(".cepinp").prop('readonly',false);
                 }
 
             }
         );
     });
 
-    var logoinicial;
+    var photoinicial;
     var modeinicial = $('body').css("background-color");
 
     if(modeinicial==='rgb(255, 255, 255)') {
-        logoinicial = '<img id="logo-assinatura mb-0" src="themes/smsubweb/assets/images/assinatura/logo_ass_smsub.png">';
+        photoinicial = '<img id="logo-assinatura mb-0" src="themes/smsubweb/assets/images/assinatura/logo_ass_smsub.png">';
     } else {
-        logoinicial = '<img id="logo-assinatura mb-0" src="themes/smsubweb/assets/images/assinatura/logo_ass_smsub_dark.png">';
+        photoinicial = '<img id="logo-assinatura mb-0" src="themes/smsubweb/assets/images/assinatura/dark_logo_ass_smsub.png">';
     }
 
     $('.asnome').html("NOME COMPLETO");
     $('.ascargo').html("CARGO");
     $('.assector').html("SETOR");
-    $('.aslogo').html(logoinicial);
+    $('.asphoto').html(photoinicial);
     $('.asendereco').html("Rua São Bento, 405 - Edifício Martinelli - Centro ");
     $('.ascep').html("01011-100");
     $('.asemail').html("@smsub.prefeitura.sp.gov.br");
     $('.asramal').html("Tel : +55 (11) 4934-3000");
-    // $(".enderecoinp").prop('readonly',true);
-    // $(".cepinp").prop('readonly',true);
 
     $('.nomeinp').on('keyup',function(){
         var asnome = $('#nomeinp').val().toUpperCase();

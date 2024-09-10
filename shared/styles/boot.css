@@ -128,6 +128,18 @@ input:-webkit-autofill {
     z-index: calc(var(--index-modal) * 2);
 }
 
+/*DEFAULT LOAD*/
+.ajax_load {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: calc(var(--index-modal) * 2);
+}
+
 .ajax_load_box {
     margin: auto;
     text-align: center;
@@ -137,12 +149,12 @@ input:-webkit-autofill {
 }
 
 .ajax_load_box_circle {
-    border: 8px solid #a3d3e9;
-    border-top: 8px solid var(--hover-color-smsub);
+    border: 16px solid #e3e3e3;
+    border-top: 16px solid var(--color-smsub);
     border-radius: 50%;
     margin: auto;
-    width: 40px;
-    height: 40px;
+    width: 80px;
+    height: 80px;
 
     -webkit-animation: spin 1.2s linear infinite;
     -o-animation: spin 1.2s linear infinite;

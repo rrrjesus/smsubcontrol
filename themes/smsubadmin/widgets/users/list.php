@@ -47,8 +47,8 @@
                 </tr>
                 </thead>
                 <tbody>
-                <?php if(!empty($units)){ ?>
-                <?php foreach ($units as $lista): ?>
+                <?php if(!empty($users)){ ?>
+                <?php foreach ($users as $lista): ?>
                     <tr>
                         <td class="text-center"><?=$lista->id?></td>
                         <td class="text-center"><a href="usuarios/editar/<?=$lista->id?>" data-bs-togglee="tooltip" 

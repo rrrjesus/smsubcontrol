@@ -77,8 +77,9 @@ class Users extends Admin
                 "app" => "usuarios",
                 "head" => $head,
                 "users" => $users,
-                "urls" => "usuarios",
-                "icon" => "list",
+                "urls" => "usuarios/desativados",
+                "namepage" => "Usuarios",
+                "name" => "Desativados",
             ]);
 
     }
@@ -338,6 +339,11 @@ class Users extends Admin
                 $this->message->error("Você tentou gerenciar um usuário que não existe")->icon("person")->flash();
                 echo json_encode(["redirect" => url("/painel/usuarios")]);
                 return;
+            }
+
+            if($userActived->id == user()->id) {
+                $this->message->error("Você não pode desativar seu próprio usuário ...")->icon("person")->flash();
+                redirect("/painel/usuarios");
             }
 
             $userActived->status = "disabled";

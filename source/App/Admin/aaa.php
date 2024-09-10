@@ -1,10 +1,86 @@
-//users
-$route->get("/unidades", "Units:users");
-$route->get("/unidades/desativados", "Units:disabledUnits");
-$route->get("/unidades/cadastrar", "Units:unit");
-$route->post("/unidades/cadastrar", "Units:unit");
-$route->get("/unidades/editar/{user_id}", "Units:unit");
-$route->post("/unidades/editar/{user_id}", "Units:unit");
-$route->get("/unidades/ativar/{user_id}/{action}", "Units:unit");
-$route->get("/unidades/desativar/{user_id}/{action}", "Units:unit");
-$route->get("/unidades/excluir/{user_id}/{action}", "Units:unit");
+cell_phone
+945986415
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+970750050
+
+971939941
+
+976018789
+991213191
+
+976277647
+932555887
+993281998
+958846711
+976907791
+970949665
+962265551
+973830146
+974981380
+972888812
+982043167
+989454736
+983516716
+960422764
+984596359
+994192717
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+995589269
+960521027
+
+983621091
+993543544
+993966068
+992026262
+982796769
+967304576
+964175495
+
