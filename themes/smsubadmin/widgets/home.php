@@ -27,7 +27,7 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="fw-semibold text-<?=CONF_ADMIN_COLOR?> text-uppercase mb-1 fs-5">Usuarios</div>
+                                            <div class="fw-semibold text-uppercase mb-1 fs-5">Usuarios</div>
                                             <div class="h6 mb-1 font-weight-bold text-gray-800">Usuários :  <?=$users->users?></div>
                                             <div class="h6 mb-1 font-weight-bold text-gray-800">Administradores :  <?=$users->admins?></div>
                                             <div class="h6 mb-0 font-weight-bold text-gray-800">Total Geral:  <?=$users->totais?></div>
@@ -45,7 +45,7 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="fw-semibold text-<?=CONF_ADMIN_COLOR?> text-uppercase mb-1 fs-5">Igrejas</div>
+                                            <div class="fw-semibold text-uppercase mb-1 fs-5">Igrejas</div>
                                             <div class="h6 mb-1 font-weight-bold text-gray-800">Igrejas :  <?=$churches->churches?></div>
                                             <div class="h6 mb-1 font-weight-bold text-gray-800">Desativadas :  <?=$churches->disableds?></div>
                                             <div class="h6 mb-0 font-weight-bold text-gray-800">Total Geral:  <?=$churches->totais?></div>
@@ -61,7 +61,7 @@
 
             <div class="d-flex justify-content-center app_dash_home_trafic_list">
                 <div class="col-12 col-md-12">
-                    <div class="fw-semibold text-<?=CONF_ADMIN_COLOR?> text-uppercase mb-3 fs-5"><i class="bi bi-bar-chart-line-fill"></i> Online agora : 
+                    <div class="fw-semibold text-uppercase mb-3 fs-5"><i class="bi bi-bar-chart-line-fill"></i> Online agora : 
                         <span class="trafic_count"><?= $onlineCount; ?></span>
                     </div>
                     <?php if (!$online): ?>
@@ -81,9 +81,9 @@
                                 <table id="online" class="table table-bordered table-sm border- table-hover" style="width:100%">
                                     <thead class="table-secondary">    
                                         <tr>
-                                            <th class="text-center text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-unlock me-1"></i><br>ID</th>
-                                            <th class="text-center text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-person-gear me-1"></i><br>GERENCIAR</th>
-                                            <th class="text-center text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-person-circle me-1"></i><br>FOTO</th>
+                                            <th class="text-center"><i class="bi bi-unlock me-1"></i><br>ID</th>
+                                            <th class="text-center"><i class="bi bi-person-gear me-1"></i><br>GERENCIAR</th>
+                                            <th class="text-center"><i class="bi bi-person-circle me-1"></i><br>FOTO</th>
                                         </tr>
                                     </thead>
                                 <?php foreach ($online as $onlineNow): ?>

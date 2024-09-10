@@ -106,8 +106,8 @@ class Users extends Admin
             $userProfile->first_name = $data["first_name"];
             $userProfile->last_name = $data["last_name"];
             $userProfile->email = $data["email"];
-            $userProfile->phone = preg_replace("/[^0-9]/", "", $data["phone"]);
-            $userProfile->phone_fixed = preg_replace("/[^0-9]/", "", $data["phone_fixed"]);
+            $userProfile->cell_phone = preg_replace("/[^0-9]/", "", $data["cell_phone"]);
+            $userProfile->fixed_phone = preg_replace("/[^0-9]/", "", $data["fixed_phone"]);
             $userProfile->position_id = preg_replace("/[^0-9\s]/", "", $data["position_id"]);
             $userProfile->category_id = preg_replace("/[^0-9\s]/", "", $data["category_id"]);
             $userProfile->unit_id = preg_replace("/[^0-9\s]/", "", $data["unit_id"]);
@@ -199,8 +199,8 @@ class Users extends Admin
             $userCreate->first_name = $data["first_name"];
             $userCreate->last_name = $data["last_name"];
             $userCreate->email = $data["email"];
-            $userCreate->phone = preg_replace("/[^0-9]/", "", $data["phone"]);
-            $userCreate->phone_fixed = preg_replace("/[^0-9]/", "", $data["phone_fixed"]);
+            $userCreate->cell_phone = preg_replace("/[^0-9]/", "", $data["cell_phone"]);
+            $userCreate->fixed_phone = preg_replace("/[^0-9]/", "", $data["fixed_phone"]);
             $userCreate->position_id = preg_replace("/[^0-9\s]/", "", $data["position_id"]);
             $userCreate->category_id = preg_replace("/[^0-9\s]/", "", $data["category_id"]);
             $userCreate->unit_id = preg_replace("/[^0-9\s]/", "", $data["unit_id"]);
@@ -260,8 +260,8 @@ class Users extends Admin
             $userUpdate->first_name = $data["first_name"];
             $userUpdate->last_name = $data["last_name"];
             $userUpdate->email = $data["email"];
-            $userUpdate->phone = preg_replace("/[^0-9]/", "", $data["phone"]);
-            $userUpdate->phone_fixed = preg_replace("/[^0-9]/", "", $data["phone_fixed"]);
+            $userUpdate->cell_phone = preg_replace("/[^0-9]/", "", $data["cell_phone"]);
+            $userUpdate->fixed_phone = preg_replace("/[^0-9]/", "", $data["fixed_phone"]);
             $userUpdate->position_id = preg_replace("/[^0-9\s]/", "", $data["position_id"]);
             $userUpdate->category_id = preg_replace("/[^0-9\s]/", "", $data["category_id"]);
             $userUpdate->unit_id = preg_replace("/[^0-9\s]/", "", $data["unit_id"]);
@@ -414,9 +414,7 @@ class Users extends Admin
             "unit" => $unit,
             "urls" => ($userEdit ? "usuarios/editar/{$userEdit->id}" : "cadastrar"),
             "namepage" => "Usuários",
-            "name" => ($userEdit ? "Editar" : "Cadastrar"),
-            "photo" => ($this->user->photo() ? image($this->user->photo, 360, 360) :
-            theme("/assets/images/avatar.jpg", CONF_VIEW_ADMIN))
+            "name" => ($userEdit ? "Editar" : "Cadastrar")
         ]);
     }
 }

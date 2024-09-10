@@ -23,7 +23,7 @@
                         <div class="row justify-content-center">
 
                             <div class="col-md-6 mb-1">
-                                <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputNome"><strong><i class="bi bi-person me-1"></i> Marca</strong></label>
+                                <label class="col-form-label col-form-label-sm" for="inputNome"><strong><i class="bi bi-person me-1"></i> Marca</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Digite o nome da marca" class="form-control form-control-sm brand_id"
                                     name="brand_id" placeholder="NOME">
@@ -34,7 +34,7 @@
                         <div class="row justify-content-center">
 
                             <div class="col-md-6 mb-1">
-                                <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputNome"><strong><i class="bi bi-person me-1"></i> Produto</strong></label>
+                                <label class="col-form-label col-form-label-sm" for="inputNome"><strong><i class="bi bi-person me-1"></i> Produto</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Nome" class="form-control form-control-sm"
                                     name="product_name" placeholder="NOME">
@@ -46,7 +46,7 @@
                         <div class="row justify-content-center">  
 
                             <div class="col-md-6 mb-1">
-                                <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputSobreNome"><strong><i class="bi bi-person-add me-1"></i> Descrição</strong></label>
+                                <label class="col-form-label col-form-label-sm" for="inputSobreNome"><strong><i class="bi bi-person-add me-1"></i> Descrição</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Descrição" class="form-control form-control-sm"
                                     name="description" placeholder="DESCRIÇÃO" id="description">
@@ -74,7 +74,7 @@
         <div class="container-fluid">
             <div class="d-flex justify-content-center">
                 <div class="col-12">
-                    <form class="row gy-2 gx-3 align-items-center needs-validation" id="product-edit" novalidate action="<?= url("/painel/patrimonio/produtos/editar/{$produtos->id}"); ?>" method="post" enctype="multipart/form-data">
+                    <form class="row gy-2 gx-3 align-items-center needs-validation" id="product" novalidate action="<?= url("/painel/patrimonio/produtos/editar/{$produtos->id}"); ?>" method="post" enctype="multipart/form-data">
                         
                     <input type="hidden" name="action" value="update"/>
 
@@ -85,7 +85,7 @@
                         <div class="row justify-content-center">
 
                             <div class="col-md-6 mb-1">
-                                <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputNome"><strong><i class="bi bi-person me-1"></i> Marca</strong></label>
+                                <label class="col-form-label col-form-label-sm" for="inputNome"><strong><i class="bi bi-person me-1"></i> Marca</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Digite o nome da marca" class="form-control form-control-sm brand_id"
                                     name="brand_id" placeholder="NOME" value="<?=$produtos->brand()->id.' - '.$produtos->brand()->brand_name?>">
@@ -97,7 +97,7 @@
 
                             <div class="col-md-6 mb-1">
 
-                                <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputNome"><strong><i class="bi bi-person me-1"></i> Nome</strong></label>
+                                <label class="col-form-label col-form-label-sm" for="inputNome"><strong><i class="bi bi-person me-1"></i> Nome</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Nome" class="form-control form-control-sm"
                                     name="product_name" placeholder="NOME" value="<?=$produtos->product_name?>">
@@ -109,7 +109,7 @@
                         <div class="row justify-content-center">  
 
                             <div class="col-md-6 mb-1">
-                                <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputSobreNome"><strong><i class="bi bi-person-add me-1"></i> Descrição</strong></label>
+                                <label class="col-form-label col-form-label-sm" for="inputSobreNome"><strong><i class="bi bi-person-add me-1"></i> Descrição</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Descrição" class="form-control form-control-sm"
                                     name="description" placeholder="DESCRIÇÃO" id="description" value="<?=$produtos->description?>" >

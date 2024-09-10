@@ -1,5 +1,129 @@
 $(function () {
-    var effecttime = 200;
+
+    $.validator.setDefaults({
+        highlight: function (element, errorClass, validClass) {
+            $(element).addClass('is-invalid');
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $(element).removeClass('is-invalid');
+            $(element).addClass('is-valid');
+        },
+
+        // errorElement: 'span',
+        errorClass: 'help-block',
+
+        errorPlacement: function (error, element) {
+            error.addClass('invalid-feedback');
+            if (element.parent('.input-group').length) {
+                error.insertAfter(element.parent());
+            }
+            else if (element.prop('type') === 'radio' && element.parent('.radio-inline').length) {
+                error.insertAfter(element.parent().parent());
+            }
+            else if (element.prop('type') === 'checkbox' || element.prop('type') === 'radio') {
+                error.appendTo(element.parent().parent());
+            }
+            else if (element.prop('type') === 'password') {
+                error.appendTo(element.parent());
+            }
+            else if (element.prop('type') === 'file') {
+                error.appendTo(element.parent());
+            }
+            if (element.parent('select').length) {
+                error.insertAfter(element.parent());
+            }
+            else {
+                error.insertAfter(element);
+            }
+        }
+    });
+
+    $("#user").validate({
+        rules: {
+            login: {
+                required: true
+            }
+        },
+        messages: {
+            login: {
+                required: "Digite o login !!!"
+            }
+        }
+    });
+
+    //  data-bs-toggle="tooltip" Bootstrap Title
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-togglee="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+
+
+    /*
+        * CARREGAR A FOTO NO UPLOAD
+    */
+
+    /* Atribui ao evento change do input FILE para upload da foto*/
+    var inputFile = document.getElementById("photo");
+    var foto_cliente = document.getElementById("foto-cliente");
+    if (inputFile != null && inputFile.addEventListener) {
+        inputFile.addEventListener("change", function(){loadFoto(this, foto_cliente)});
+    } else if (inputFile != null && inputFile.attachEvent) {
+        inputFile.attachEvent("onchange", function(){loadFoto(this, foto_cliente)});
+    }
+
+    /* Função para exibir a imagem selecionada no input file na tag <img>  */
+    function loadFoto(file, img){
+        if (file.files && file.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                img.src = e.target.result;
+            }
+            reader.readAsDataURL(file.files[0]);
+        }
+    }
+
+    /*
+     * jQuery MASK
+     */
+        $(".mask-money").mask('000.000.000.000.000,00', {reverse: true, placeholder: "0,00"});
+        $(".mask-date").mask('00/00/0000', {reverse: true});
+        $(".mask-month").mask('00/0000', {reverse: true});
+        $(".mask-doc").mask('000.000.000-00', {reverse: true});
+        $(".mask-phone").mask('000000000', {reverse: true});
+        $(".mask-imei").mask('000000000000000', {reverse: true});
+        $(".mask-card").mask('0000  0000  0000  0000', {reverse: true});
+        $('.mask-phone').mask('00000-0000');
+        $('.mask-phone-fixed').mask('0000-0000');
+        $('.mask-cep').mask('00000-000');
+        $('.mask-login').mask('S000000');
+        $('.mask-rf').mask('0000000');
+
+    //  data-bs-toggle="tooltip" Bootstrap Title
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-togglee="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+
+    /*
+     * IMAGE RENDER
+     */
+        $("[data-image]").change(function (e) {
+            var changed = $(this);
+            var file = this;
+    
+            if (file.files && file.files[0]) {
+                var render = new FileReader();
+    
+                render.onload = function (e) {
+                    $(changed.data("image")).fadeTo(100, 0.1, function () {
+                        $(this).css("background-image", "url('" + e.target.result + "')")
+                            .fadeTo(100, 1);
+                    });
+                };
+                render.readAsDataURL(file.files[0]);
+            }
+        });
 
     /*
         * AJAX FORM
@@ -9,7 +133,7 @@ $(function () {
         var form = $(this);
         var load = $(".ajax_load");
         var flashClass = "ajax_response";
-        var flash = $("." + flashClass); 
+        var flash = $("." + flashClass);
 
         form.ajaxSubmit({
             url: form.attr("action"),
@@ -61,7 +185,7 @@ $(function () {
                 }
             },
             error: function () {
-                var message = "<div class='alert alert-danger alert-dismissible fade show text-center fw-semibold fs-5x' role='alert'><i class='bi bi-emoji-tear pb-1'></i> Desculpe mas não foi possível processar a requisição. Favor tente novamente!</div>";
+                var message = "<div class='alert alert-warning alert-dismissible fade show text-center fw-semibold fs-5x' role='alert'><i class='bi bi-exclamation-diamond p-2'></i>Desculpe mas não foi possível processar a requisição. Favor tente novamente!</div>";
 
                 if (flash.length) {
                     flash.html(message).fadeIn(100).effect("bounce", 300);
@@ -74,41 +198,4 @@ $(function () {
             }
         });
     });
-
-    /*
-     * jQuery MASK
-     */
-        $(".mask-money").mask('000.000.000.000.000,00', {reverse: true, placeholder: "0,00"});
-        $(".mask-date").mask('00/00/0000', {reverse: true});
-        $(".mask-month").mask('00/0000', {reverse: true});
-        $(".mask-doc").mask('000.000.000-00', {reverse: true});
-        $(".mask-imei").mask('000000000000000', {reverse: true});
-        $(".mask-card").mask('0000  0000  0000  0000', {reverse: true});
-
-    //  data-bs-toggle="tooltip" Bootstrap Title
-    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-togglee="tooltip"]'))
-    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl)
-    })
-
-    /*
-     * IMAGE RENDER
-     */
-        $("[data-image]").change(function (e) {
-            var changed = $(this);
-            var file = this;
-    
-            if (file.files && file.files[0]) {
-                var render = new FileReader();
-    
-                render.onload = function (e) {
-                    $(changed.data("image")).fadeTo(100, 0.1, function () {
-                        $(this).css("background-image", "url('" + e.target.result + "')")
-                            .fadeTo(100, 1);
-                    });
-                };
-                render.readAsDataURL(file.files[0]);
-            }
-        });
-        
 });

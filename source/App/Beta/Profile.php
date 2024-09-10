@@ -29,10 +29,8 @@ class Profile extends Admin
     {
         if (!empty($data["update"])) {
             $user = (new User())->findById($this->user->id);
-            // $user->first_name = $data["first_name"];
-            // $user->last_name = $data["last_name"];
-            // $user->email = $data["email"];
-            $user->phone = preg_replace("/[^0-9]/", "", $data["phone"]);
+            $user->fixed_phone = preg_replace("/[^0-9]/", "", $data["fixed_phone"]);
+            $user->cell_phone = preg_replace("/[^0-9]/", "", $data["cell_phone"]);
 
             if (!empty($_FILES["photo"])) {
                 $file = $_FILES["photo"];
@@ -84,6 +82,9 @@ class Profile extends Admin
             "user" => $this->user,
             "urls" => "perfil",
             "icon" => "person",
+            "urls" => "perfil",
+            "namepage" => "Usuários",
+            "name" => "Perfil",
             "photo" => ($this->user->photo() ? image($this->user->photo, 360, 360) :
                 theme("/assets/images/avatar.jpg", CONF_VIEW_APP))
         ]);

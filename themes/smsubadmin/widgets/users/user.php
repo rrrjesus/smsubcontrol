@@ -20,11 +20,11 @@
                         <div class="row mb-1">
 
                             <div class="col-md-1 app_formbox_photo mb-1">
-                                <div class="rounded-circle j_profile_image thumb" style="background-image: url('<?= $photo; ?>')"></div>
+                                <div class="rounded-circle j_profile_image thumb" style="background-image: url('<?=url('themes/'.CONF_VIEW_ADMIN.'/assets/images/avatar.jpg');?>')"></div>
                             </div>
 
                             <div class="col-md-4 mb-1">
-                                <label for="formFileSm" class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>"> <strong><i class="bi bi-upload me-1"></i>  Extensões aceitas : .bmp ,.png, .svg, .jpeg e .jpg </strong></label>
+                                <label for="formFileSm" class="col-form-label col-form-label-sm"> <strong><i class="bi bi-upload me-1"></i>  Extensões aceitas : .bmp ,.png, .svg, .jpeg e .jpg </strong></label>
                                 <input class="form-control form-control-sm" data-image=".j_profile_image" type="file" class="radius" name="photo"/>
                             </div>
 
@@ -33,7 +33,7 @@
                         <div class="row">
 
                             <div class="col-md-2 mb-1">
-                                <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputLogin"><strong><i class="bi bi-person me-1"></i> Login</strong></label>
+                                <label class="col-form-label col-form-label-sm" for="inputLogin"><strong><i class="bi bi-person me-1"></i> Login</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Digite o login - letra + 6 dígitos" class="form-control form-control-sm mask-login"
                                     name="login" placeholder="d123456">
@@ -41,7 +41,7 @@
                             </div>
 
                             <div class="col-md-2 mb-1">
-                                <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputNome"><strong><i class="bi bi-person me-1"></i> RF</strong></label>
+                                <label class="col-form-label col-form-label-sm" for="inputNome"><strong><i class="bi bi-person me-1"></i> RF</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Digite o RF - 7 dígitos" class="form-control form-control-sm mask-rf"
                                     name="rf" placeholder="1234567">
@@ -49,7 +49,7 @@
                             </div>
 
                             <div class="col-md-3 mb-1">
-                                <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputNome"><strong><i class="bi bi-person me-1"></i> Nome</strong></label>
+                                <label class="col-form-label col-form-label-sm" for="inputNome"><strong><i class="bi bi-person me-1"></i> Nome</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Digite o nome" class="form-control form-control-sm"
                                     name="first_name" placeholder="NOME">
@@ -57,16 +57,16 @@
                             </div>
 
                             <div class="col-md-3 mb-1">
-                                <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputSobreNome"><strong><i class="bi bi-person-add me-1"></i> SobreNome</strong></label>
+                                <label class="col-form-label col-form-label-sm" for="inputSobreNome"><strong><i class="bi bi-person-add me-1"></i> SobreNome</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Digite o sobrenome" class="form-control form-control-sm"
                                     name="last_name" placeholder="SOBRENOME">
                             </div>
 
                             <div class="col-md-2 mb-1">
-                                <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputCelular"><strong><i class="bi bi-phone me-1"></i> Tel Fixo</strong></label>
+                                <label class="col-form-label col-form-label-sm" for="inputCelular"><strong><i class="bi bi-phone me-1"></i> Tel Fixo</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                data-bs-title="Digite o numero do fixo - DDD + 8 dígitos" class="form-control form-control-sm mask-phone-fixed" name="phone_fixed" placeholder="49343000" value="49343000">
+                                data-bs-title="Digite o numero do fixo - DDD + 8 dígitos" class="form-control form-control-sm mask-phone-fixed" name="fixed_phone" placeholder="49343000" value="49343000">
                             </div>
 
                         </div>
@@ -74,40 +74,40 @@
                         <div class="row">
 
                             <div class="col-md-4 mb-1">
-                                <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputEmail"><strong><i class="bi bi-envelope-at me-1"></i> E-mail</strong></label>
+                                <label class="col-form-label col-form-label-sm" for="inputEmail"><strong><i class="bi bi-envelope-at me-1"></i> E-mail</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Digite o email" class="form-control form-control-sm" name="email">
                             </div>
 
                             <div class="col-md-2 mb-1">
-                                <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputCelular"><strong><i class="bi bi-phone me-1"></i> Celular</strong></label>
+                                <label class="col-form-label col-form-label-sm" for="inputCelular"><strong><i class="bi bi-phone me-1"></i> Celular</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                data-bs-title="Digite o numero do celular - DDD + 9 dígitos" class="form-control form-control-sm mask-phone" name="phone" placeholder="991065284">
+                                data-bs-title="Digite o numero do celular - DDD + 9 dígitos" class="form-control form-control-sm mask-phone" name="cell_phone" placeholder="991065284">
                             </div>
 
                             <div class="col-md-6 mb-1">
-                                <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputSobreNome"><strong><i class="bi bi-person-add me-1"></i> Cargo</strong></label>
+                                <label class="col-form-label col-form-label-sm" for="inputSobreNome"><strong><i class="bi bi-person-add me-1"></i> Cargo</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Cargo" class="form-control form-control-sm position_id"
                                     name="position_id" placeholder="Cargo">
                             </div>
 
                             <div class="col-md-3 mb-1">
-                                <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputCategoria"><strong><i class="bi bi-person-add me-1"></i> Regime</strong></label>
+                                <label class="col-form-label col-form-label-sm" for="inputCategoria"><strong><i class="bi bi-person-add me-1"></i> Regime</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                 data-bs-title="Regime" class="form-control form-control-sm category_id"
                                 name="category_id" placeholder="Regime">
                             </div>
 
                             <div class="col-md-6 mb-1">
-                                <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputSobreNome"><i class="bi bi-person-add me-1"></i><strong>Unit</strong></label>
+                                <label class="col-form-label col-form-label-sm" for="inputSobreNome"><i class="bi bi-person-add me-1"></i><strong>Unit</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Unit" class="form-control form-control-sm unit_id"
                                     name="unit_id" placeholder="Unidade">
                             </div>
 
                             <div class="col-md-3 mb-1">
-                                <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputSetor"><strong><i class="bi bi-building ms-3 me-3"></i> Nivel</strong></label>
+                                <label class="col-form-label col-form-label-sm" for="inputSetor"><strong><i class="bi bi-building ms-3 me-3"></i> Nivel</strong></label>
                                 <select class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Selecione o nível de usuario" name="level_id">
                                     <option value="1" selected>Usuario</option>
@@ -123,14 +123,14 @@
                         <div class="row">  
 
                             <div class="col-md-3 mb-1">
-                                <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputSenha"><strong><i class="bi bi-lock me-1"></i>Senha</strong></label>
+                                <label class="col-form-label col-form-label-sm" for="inputSenha"><strong><i class="bi bi-lock me-1"></i>Senha</strong></label>
                                     <input type="password" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                         data-bs-title="Digite a senha, Padrão : smsub12345" class="form-control form-control-sm"
                                         name="password" placeholder="********" value="smsub12345">
                                 </div>  
 
                                 <div class="col-md-3 mb-1">
-                                    <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputSenha"><i class="bi bi-lock me-1"><strong></i>Repetir Senha</strong></label>
+                                    <label class="col-form-label col-form-label-sm" for="inputSenha"><i class="bi bi-lock me-1"><strong></i>Repetir Senha</strong></label>
                                         <input type="password" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                             data-bs-title="Redigite a senha" class="form-control form-control-sm"
                                             name="password_re" placeholder="********" value="smsub12345">
@@ -141,7 +141,7 @@
                         <div class="row">   
                             
                             <div class="mb-3 mb-1">
-                                <label for="textareaObservacoes" class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-exclamation-diamond me-1"></i><strong>Observações</strong></label>
+                                <label for="textareaObservacoes" class="col-form-label col-form-label-sm"><i class="bi bi-exclamation-diamond me-1"></i><strong>Observações</strong></label>
                                 <textarea class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                 data-bs-title=Observações" rows="2" name="observations"></textarea>
                             </div>
@@ -168,7 +168,7 @@
         <div class="container-fluid">
             <div class="d-flex justify-content-center">
                 <div class="col-12">
-                <form class="row gy-2 gx-3 align-items-center needs-validation" id="user-edit" novalidate action="<?= url("/painel/usuarios/editar/{$user->id}"); ?>" method="post" enctype="multipart/form-data">
+                <form class="row gy-2 gx-3 align-items-center needs-validation" id="user" novalidate action="<?= url("/painel/usuarios/editar/{$user->id}"); ?>" method="post" enctype="multipart/form-data">
                         
                     <input type="hidden" name="action" value="update"/>
 
@@ -187,7 +187,7 @@
                         </a>
                     </div>
                     <div class="col-md-5 mb-1">
-                        <label for="formFileSm" class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>"> <strong> Extensões aceitas : .bmp ,.png, .svg, .jpeg e .jpg </strong></label>
+                        <label for="formFileSm" class="col-form-label col-form-label-sm"> <strong> Extensões aceitas : .bmp ,.png, .svg, .jpeg e .jpg </strong></label>
                         <input data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                             data-bs-title="Clique para carregar o arquivo" class="form-control form-control-sm" name="photo" id="photo" value="<?=$user->photo?>" type="file">
                     </div>
@@ -196,7 +196,7 @@
                     <div class="row">
 
                         <div class="col-md-2 mb-1">
-                            <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputLogin"><strong><i class="bi bi-person me-1"></i> Login</strong></label>
+                            <label class="col-form-label col-form-label-sm" for="inputLogin"><strong><i class="bi bi-person me-1"></i> Login</strong></label>
                             <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                 data-bs-title="Digite o login - letra + 6 dígitos" class="form-control form-control-sm mask-login"
                                 name="login" placeholder="d123456" value="<?=$user->login?>">
@@ -204,7 +204,7 @@
                         </div>
 
                         <div class="col-md-2 mb-1">
-                            <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputNome"><strong><i class="bi bi-person me-1"></i> RF</strong></label>
+                            <label class="col-form-label col-form-label-sm" for="inputNome"><strong><i class="bi bi-person me-1"></i> RF</strong></label>
                             <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                 data-bs-title="Digite o RF - 7 dígitos" class="form-control form-control-sm mask-rf"
                                 name="rf" placeholder="1234567" value="<?=$user->rf?>">
@@ -212,23 +212,23 @@
                         </div>
 
                         <div class="col-md-3 mb-1">
-                            <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputNome"><strong><i class="bi bi-person me-1"></i> Nome</strong></label>
+                            <label class="col-form-label col-form-label-sm" for="inputNome"><strong><i class="bi bi-person me-1"></i> Nome</strong></label>
                             <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                 data-bs-title="Digite o nome" class="form-control form-control-sm"
                                 name="first_name" placeholder="NOME" value="<?=$user->first_name?>">
                         </div>
 
                         <div class="col-md-3 mb-1">
-                            <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputSobreNome"><strong><i class="bi bi-person-add me-1"></i> SobreNome</strong></label>
+                            <label class="col-form-label col-form-label-sm" for="inputSobreNome"><strong><i class="bi bi-person-add me-1"></i> SobreNome</strong></label>
                             <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                 data-bs-title="Digite o sobrenome" class="form-control form-control-sm"
                                 name="last_name" placeholder="SOBRENOME" value="<?=$user->last_name?>">
                         </div>
 
                         <div class="col-md-2 mb-1">
-                            <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputCelular"><strong><i class="bi bi-phone me-1"></i> Tel Fixo</strong></label>
+                            <label class="col-form-label col-form-label-sm" for="inputCelular"><strong><i class="bi bi-phone me-1"></i> Tel Fixo</strong></label>
                             <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                            data-bs-title="Digite o numero do fixo - DDD + 8 dígitos" class="form-control form-control-sm mask-phone-fixed" name="phone_fixed" 
+                            data-bs-title="Digite o numero do fixo - DDD + 8 dígitos" class="form-control form-control-sm mask-phone-fixed" name="fixed_phone" 
                             placeholder="49343000" value="<?=$user->phone_fixed?>">
                         </div>
 
@@ -237,48 +237,48 @@
                     <div class="row">
 
                         <div class="col-md-3 mb-1">
-                            <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputEmail"><strong><i class="bi bi-envelope-at me-1"></i> E-mail</strong></label>
+                            <label class="col-form-label col-form-label-sm" for="inputEmail"><strong><i class="bi bi-envelope-at me-1"></i> E-mail</strong></label>
                             <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                             data-bs-title="Digite o email" class="form-control form-control-sm" name="email" value="<?=$user->email?>">
                         </div>
 
                         <div class="col-md-2 mb-1">
-                            <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputCelular"><strong><i class="bi bi-phone me-1"></i> Celular</strong></label>
+                            <label class="col-form-label col-form-label-sm" for="inputCelular"><strong><i class="bi bi-phone me-1"></i> Celular</strong></label>
                             <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                             data-bs-title="Digite o numero do celular - DDD + 9 dígitos" class="form-control form-control-sm mask-phone" 
-                            name="phone" placeholder="991065284" value="<?=$user->phone?>">
+                            name="cell_phone" placeholder="991065284" value="<?=$user->phone?>">
                         </div>
 
                         <div class="col-md-2 mb-1">
-                            <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputCategoria"><strong><i class="bi bi-person-add me-1"></i> Situação</strong></label>
+                            <label class="col-form-label col-form-label-sm" for="inputCategoria"><strong><i class="bi bi-person-add me-1"></i> Situação</strong></label>
                             <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                             data-bs-title="Situação" class="form-control form-control-sm status"
                             name="status" placeholder="Status" value="<?=$user->statusInput()?>">
                         </div>
 
                         <div class="col-md-5 mb-1">
-                            <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputSobreNome"><strong><i class="bi bi-person-add me-1"></i> Cargo</strong></label>
+                            <label class="col-form-label col-form-label-sm" for="inputSobreNome"><strong><i class="bi bi-person-add me-1"></i> Cargo</strong></label>
                             <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                 data-bs-title="Cargo" class="form-control form-control-sm position_id"
                                 name="position_id" placeholder="Cargo" value="<?=$user->userPosition()->id.' - '.$user->userPosition()->position_name?>">
                         </div>
 
                         <div class="col-md-2 mb-1">
-                            <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputCategoria"><strong><i class="bi bi-person-add me-1"></i> Regime</strong></label>
+                            <label class="col-form-label col-form-label-sm" for="inputCategoria"><strong><i class="bi bi-person-add me-1"></i> Regime</strong></label>
                             <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                             data-bs-title="Regime" class="form-control form-control-sm category_id" name="category_id" placeholder="Regime"
                             value="<?=$user->userCategory()->id.' - '.$user->userCategory()->category_name?>">
                         </div>
 
                         <div class="col-md-4 mb-1">
-                            <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputSobreNome"><i class="bi bi-person-add me-1"></i><strong>Unidade</strong></label>
+                            <label class="col-form-label col-form-label-sm" for="inputSobreNome"><i class="bi bi-person-add me-1"></i><strong>Unidade</strong></label>
                             <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                             data-bs-title="Unit" class="form-control form-control-sm unit_id" name="unit_id" placeholder="Unidade"
                             value="<?=$user->userUnit()->id.' - '.$user->userUnit()->unit_name?>">
                         </div>
 
                         <div class="col-md-3 mb-1">
-                            <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputSetor"><strong><i class="bi bi-building ms-3 me-3"></i> Nivel</strong></label>
+                            <label class="col-form-label col-form-label-sm" for="inputSetor"><strong><i class="bi bi-building ms-3 me-3"></i> Nivel</strong></label>
                             <select class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                 data-bs-title="Selecione o nível de usuario" name="level_id">
                                 <option value="<?=$user->level_id?>" selected><?=$user->level()->level_nome?></option>
@@ -291,7 +291,7 @@
                         </div>   
 
                         <div class="col-md-3 mb-1">
-                            <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputSenha"><strong><i class="bi bi-lock me-1"></i>Senha</strong></label>
+                            <label class="col-form-label col-form-label-sm" for="inputSenha"><strong><i class="bi bi-lock me-1"></i>Senha</strong></label>
                                 <input type="password" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Digite a senha, Padrão : smsub12345" class="form-control form-control-sm"
                                     name="password" placeholder="********">
@@ -302,7 +302,7 @@
                     <div class="row">   
                         
                         <div class="mb-3 mb-1">
-                            <label for="textareaObservacoes" class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-exclamation-diamond me-1"></i><strong>Observações</strong></label>
+                            <label for="textareaObservacoes" class="col-form-label col-form-label-sm"><i class="bi bi-exclamation-diamond me-1"></i><strong>Observações</strong></label>
                             <textarea class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                             data-bs-title=Observações" name="observations" rows="2"><?=$user->observations?></textarea>
                         </div>

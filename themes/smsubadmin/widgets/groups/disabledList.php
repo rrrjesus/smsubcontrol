@@ -3,7 +3,7 @@
 <div class="col-md-12 ml-auto mt-3"> <!-- https://getbootstrap.com/docs/4.0/layout/grid/#mix-and-match -->
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb breadcrumb-chevron p-2 bg-body-tertiary rounded-3">
-        <li class="breadcrumb-item"><a class="link-body-emphasis fw-semibold text-decoration-none text-<?=CONF_ADMIN_COLOR?>" href="<?=url("/dashboard")?>"><i class="bi bi-house-door"></i> Lista</a></li>
+        <li class="breadcrumb-item"><a class="link-body-emphasis fw-semibold text-decoration-none" href="<?=url("/dashboard")?>"><i class="bi bi-house-door"></i> Lista</a></li>
             <li class="breadcrumb-item fw-semibold active" aria-current="page"><i class="bi bi-person"></i> Grupos</li>
         </ol>
     </nav>

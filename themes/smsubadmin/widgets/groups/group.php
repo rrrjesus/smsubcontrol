@@ -3,8 +3,8 @@
 <div class="col-md-12 ml-auto mt-3"> <!-- https://getbootstrap.com/docs/4.0/layout/grid/#mix-and-match -->
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb breadcrumb-chevron p-2 bg-body-tertiary rounded-3">
-            <li class="breadcrumb-item"><a class="link-body-emphasis fw-semibold text-decoration-none text-<?=CONF_ADMIN_COLOR?>" href="<?=url("/painel")?>"><i class="bi bi-house-heart"></i> Painel</a></li>
-            <li class="breadcrumb-item"><a class="link-body-emphasis fw-semibold text-decoration-none text-<?=CONF_ADMIN_COLOR?>" href="<?=url("/grupos")?>"><i class="bi bi-people"></i> Grupos</a></li>
+            <li class="breadcrumb-item"><a class="link-body-emphasis fw-semibold text-decoration-none" href="<?=url("/painel")?>"><i class="bi bi-house-heart"></i> Painel</a></li>
+            <li class="breadcrumb-item"><a class="link-body-emphasis fw-semibold text-decoration-none" href="<?=url("/grupos")?>"><i class="bi bi-people"></i> Grupos</a></li>
             <li class="breadcrumb-item fw-semibold active" aria-current="page"><i class="bi bi-list"></i> <?php
 
  if(!empty($group->id)): echo "Editar ".$group->group_name; else : echo "Cadastrar"; endif;?></li>

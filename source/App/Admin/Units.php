@@ -89,13 +89,20 @@ class Units extends Admin
             $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             $unitCreate = new Unit();
-            $unitCreate->brand_name = $data["brand_name"];
+            $unitCreate->unit_name = $data["unit_name"];
             $unitCreate->description = $data["description"];
+            $unitCreate->fixed_phone = $data["fixed_phone"];
+            $unitCreate->email = $data["email"];
+            $unitCreate->adress = $data["adress"];
+            $unitCreate->zip = $data["zip"];
+            $unitCreate->it_professional = $data["it_professional"];
+            $unitCreate->cell_phone = $data["cell_phone"];
+            $unitCreate->observations = $data["observations"];
             $unitCreate->login_created = $user->login;
             $unitCreate->created_at = date_fmt('', "Y-m-d h:m:s");
 
-            if(in_array("", $data)){
-                $json['message'] = $this->message->info("Informe a unidade e descrição para criar o registro !")->icon()->render();
+            if($data["unit_name"] == "" || $data["description"] == "" || $data["adress"] == "" || $data["zip"] == "" || $data["it_professional"] == ""){
+                $json['message'] = $this->message->info("Informe a unidade, descrição, endereço, cep e responsável para criar o registro !")->icon()->render();
                 echo json_encode($json);
                 return;
             }
@@ -106,8 +113,8 @@ class Units extends Admin
                 return;
             }
 
-            $this->message->success("Unidade {$unitCreate->brand_name} cadastrada com sucesso...")->icon("emoji-grin me-1")->flash();
-            $json["redirect"] = url("/painel/patrimonio/marcas/cadastrar");
+            $this->message->success("Unidade {$unitCreate->unit_name} cadastrada com sucesso...")->icon("emoji-grin me-1")->flash();
+            $json["redirect"] = url("/painel/unidades/cadastrar");
 
             echo json_encode($json);
             return;
@@ -116,22 +123,29 @@ class Units extends Admin
         //update
         if (!empty($data["action"]) && $data["action"] == "update") {
             $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $unitUpdate = (new Unit())->findById($data["brand_id"]);
+            $unitUpdate = (new Unit())->findById($data["unit_id"]);
 
             if (!$unitUpdate) {
                 $this->message->error("Você tentou gerenciar uma unidade que não existe")->icon("gift")->flash();
-                echo json_encode(["redirect" => url("/painel/patrimonio/marcas")]);
+                echo json_encode(["redirect" => url("/painel/unidades")]);
                 return;
             }
 
-            $unitUpdate = (new Unit())->findById($data["brand_id"]);
-            $unitUpdate->brand_name = $data["brand_name"];
+            $unitUpdate = (new Unit())->findById($data["unit_id"]);
+            $unitUpdate->unit_name = $data["unit_name"];
             $unitUpdate->description = $data["description"];
+            $unitUpdate->fixed_phone = $data["fixed_phone"];
+            $unitUpdate->email = $data["email"];
+            $unitUpdate->adress = $data["adress"];
+            $unitUpdate->zip = $data["zip"];
+            $unitUpdate->it_professional = $data["it_professional"];
+            $unitUpdate->cell_phone = $data["cell_phone"];
+            $unitUpdate->observations = $data["observations"];
             $unitUpdate->login_updated = $user->login;
             $unitUpdate->updated_at = date_fmt('', "Y-m-d h:m:s");
 
-            if(in_array("", $data)){
-                $json['message'] = $this->message->info("Informe a unidade, descrição e status para criar o registro !")->icon()->render();
+            if($data["unit_name"] == "" || $data["description"] == "" || $data["adress"] == "" || $data["zip"] == "" || $data["it_professional"] == ""){
+                $json['message'] = $this->message->info("Informe a unidade, descrição, endereço, cep e responsável para criar o registro !")->icon()->render();
                 echo json_encode($json);
                 return;
             }
@@ -142,7 +156,7 @@ class Units extends Admin
                 return;
             }
 
-            $json["message"] = $this->message->success("Unidade {$unitUpdate->brand_name} atualizada com sucesso !!!")->icon("emoji-grin me-1")->render();
+            $json["message"] = $this->message->success("Unidade {$unitUpdate->unit_name} atualizada com sucesso !!!")->icon("emoji-grin me-1")->render();
             echo json_encode($json);
             return;
         }
@@ -150,11 +164,11 @@ class Units extends Admin
           //actived
          if (!empty($data["action"]) && $data["action"] == "actived") {
             $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
-            $unitActived = (new Unit())->findById($data["brand_id"]);
+            $unitActived = (new Unit())->findById($data["unit_id"]);
 
             if (!$unitActived) {
                 $this->message->error("Você tentou gerenciar uma unidade que não existe")->icon("gift")->flash();
-                echo json_encode(["redirect" => url("/painel/patrimonio/marcas")]);
+                echo json_encode(["redirect" => url("/painel/unidades")]);
                 return;
             }
 
@@ -167,8 +181,8 @@ class Units extends Admin
                 return;
             }
 
-            $this->message->success("Unidade {$unitActived->brand_name} reativada com sucesso !!!")->icon("gift")->flash();
-            redirect("/painel/patrimonio/marcas/desativadas");
+            $this->message->success("Unidade {$unitActived->unit_name} reativada com sucesso !!!")->icon("gift")->flash();
+            redirect("/painel/unidades/desativadas");
             return;
         }
 
@@ -176,11 +190,11 @@ class Units extends Admin
          //disabled
          if (!empty($data["action"]) && $data["action"] == "disabled") {
             $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
-            $unitDisabled = (new Unit())->findById($data["brand_id"]);
+            $unitDisabled = (new Unit())->findById($data["unit_id"]);
 
             if (!$unitDisabled) {
                 $this->message->error("Você tentou gerenciar uma unidade que não existe")->icon("gift")->flash();
-                echo json_encode(["redirect" => url("/painel/patrimonio/marcas")]);
+                echo json_encode(["redirect" => url("/painel/unidades")]);
                 return;
             }
 
@@ -193,32 +207,32 @@ class Units extends Admin
                 return;
             }
 
-            $this->message->success("Unidade {$unitDisabled->brand_name} desativada com sucesso !!!")->icon("gift")->flash();
-            redirect("/painel/patrimonio/marcas");
+            $this->message->success("Unidade {$unitDisabled->unit_name} desativada com sucesso !!!")->icon("gift")->flash();
+            redirect("/painel/unidades");
             return;
         }
 
         //delete
         if (!empty($data["action"]) && $data["action"] == "delete") {
             $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $unitDelete = (new Unit())->findById($data["brand_id"]);
+            $unitDelete = (new Unit())->findById($data["unit_id"]);
 
             if (!$unitDelete) {
                 $this->message->error("Você tentou deletar uma unidade que não existe")->icon("gift")->flash();
-                echo json_encode(["redirect" => url("/painel/patrimonio/marcas")]);
+                echo json_encode(["redirect" => url("/painel/unidades")]);
                 return;
             }
 
             $unitDelete->destroy();
 
-            $this->message->success("A unidade {$unitDelete->brand_name} foi excluída com sucesso...")->icon("gift")->flash();
-            redirect("/painel/patrimonio/marcas");
+            $this->message->success("A unidade {$unitDelete->unit_name} foi excluída com sucesso...")->icon("gift")->flash();
+            redirect("/painel/unidades");
             return;
         }
 
         $unitEdit = null;
-        if (!empty($data["brand_id"])) {
-            $unitId = filter_var($data["brand_id"], FILTER_VALIDATE_INT);
+        if (!empty($data["unit_id"])) {
+            $unitId = filter_var($data["unit_id"], FILTER_VALIDATE_INT);
             $unitEdit = (new Unit())->findById($unitId);
         }
 
@@ -232,8 +246,8 @@ class Units extends Admin
 
         echo $this->view->render("widgets/units/unit", [
             "head" => $head,
-            "marcas" => $unitEdit,
-            "urls" => ($unitEdit ? "marcas/editar/{$unitEdit->id}" : "cadastrar"),
+            "unit" => $unitEdit,
+            "urls" => ($unitEdit ? "unidades/editar/{$unitEdit->id}" : "cadastrar"),
             "namepage" => "Unidades",
             "name" => ($unitEdit ? "Editar" : "Cadastrar")
         ]);

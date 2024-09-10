@@ -3,12 +3,12 @@
 namespace Source\App\Beta;
 
 use Source\Models\Auth;
-use Source\Models\CafeApp\AppPlan;
-use Source\Models\CafeApp\AppSubscription;
-use Source\Models\Category;
-use Source\Models\Post;
-use Source\Models\Report\Online;
 use Source\Models\User;
+use Source\Models\Contact;
+use Source\Models\Patrimony\Brand;
+use Source\Models\Patrimony\Model;
+use Source\Models\Patrimony\Patrimony;
+use Source\Models\Patrimony\Product;
 
 /**
  * Class Dash
@@ -29,7 +29,7 @@ class Dash extends Admin
      */
     public function dash(): void
     {
-        redirect("/beta/dash/home");
+        redirect("/beta/home");
     }
 
     /**
@@ -51,10 +51,26 @@ class Dash extends Admin
         echo $this->view->render("widgets/dash/home", [
             "app" => "dash",
             "head" => $head,
-            "users" => (object)[
-                "users" => (new User())->find("level_id < 5")->count(),
-                "admins" => (new User())->find("level_id >= 5")->count()
+            "contacts" => (object)[
+                "contacts" => (new Contact())->find("status != :s", "s=disabled")->count(),
+                "disableds" => (new Contact())->find("status = :s", "s=disabled")->count(),
+                "totals" => (new Contact())->find()->count()
             ],
+            "patrimonys" => (object)[
+                "patrimonys" => (new Patrimony())->find("status != :s", "s=disabled")->count(),
+                "disableds" => (new Patrimony())->find("status = :s", "s=disabled")->count(),
+                "totals" => (new Patrimony())->find()->count()
+            ],
+            "brands" => (object)[
+                "brands" => (new Brand())->find("status != :s", "s=disabled")->count(),
+                "disableds" => (new Brand())->find("status = :s", "s=disabled")->count(),
+                "totals" => (new Brand())->find()->count()
+            ],
+            "products" => (object)[
+                "products" => (new Product())->find("status != :s", "s=disabled")->count(),
+                "disableds" => (new Product())->find("status = :s", "s=disabled")->count(),
+                "totals" => (new Product())->find()->count()
+            ]
         ]);
     }
 

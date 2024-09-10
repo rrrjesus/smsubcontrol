@@ -1,151 +1,76 @@
-<div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-smsub">
-    <div class="offcanvas-md offcanvas-end bg-smsub" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
-        <div class="offcanvas-header bg-smsub text-white">
-            <h5 class="offcanvas-title" id="sidebarMenuLabel"><img width="130" height="40" src="<?=theme("/assets/images/smsub_logo/SUBPREFEITURAS_HORIZONTAL_FUNDO_ESCURO.png")?>"></h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
-            <a href="<?=url("/beta/perfil")?>" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-            <?php if (user()->photo()): ?>
-                <img class="rounded-circle m-2" width="32" height="32" alt="<?= user()->first_name; ?>" title="<?= user()->first_name; ?>"
-                        src="<?= image(user()->photo, 260, 260); ?>"/>
-            <?php else: ?>
-                <img class="rounded-circle m-2" width="32" height="32" alt="<?= user()->first_name; ?>" title="<?= user()->first_name; ?>"
-                        src="<?= theme("/assets/images/avatar.jpg", CONF_VIEW_APP); ?>"/>
-            <?php endif; ?>
-            <span class="fw-semibold fs-6"><?= user()->first_name; ?></span><?=user()->levelBadge()?>
-            </a>
-            <hr>
-
-    <ul class="list-unstyled ps-0">
-      <li class="mb-1">
-
-        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
-          Dashboard
-        </button>
-        <div class="collapse" id="dashboard-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-body-emphasis text-light d-inline-flex text-decoration-none rounded">Overview</a></li>
-            <li><a href="#" class="link-body-emphasis text-light d-inline-flex text-decoration-none rounded">Weekly</a></li>
-            <li><a href="#" class="link-body-emphasis text-light d-inline-flex text-decoration-none rounded">Monthly</a></li>
-            <li><a href="#" class="link-body-emphasis text-light d-inline-flex text-decoration-none rounded">Annually</a></li>
-          </ul>
-        </div>
-      </li>
-      <li class="mb-1">
-        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
-          Dashboard
-        </button>
-        <div class="collapse" id="dashboard-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-body-emphasis text-light d-inline-flex text-decoration-none rounded">Overview</a></li>
-            <li><a href="#" class="link-body-emphasis text-light d-inline-flex text-decoration-none rounded">Weekly</a></li>
-            <li><a href="#" class="link-body-emphasis text-light d-inline-flex text-decoration-none rounded">Monthly</a></li>
-            <li><a href="#" class="link-body-emphasis text-light d-inline-flex text-decoration-none rounded">Annually</a></li>
-          </ul>
-        </div>
-      </li>
-      <li class="mb-1">
-        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
-          Orders
-        </button>
-        <div class="collapse" id="orders-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-body-emphasis text-light d-inline-flex text-decoration-none rounded">New</a></li>
-            <li><a href="#" class="link-body-emphasis text-light d-inline-flex text-decoration-none rounded">Processed</a></li>
-            <li><a href="#" class="link-body-emphasis text-light d-inline-flex text-decoration-none rounded">Shipped</a></li>
-            <li><a href="#" class="link-body-emphasis text-light d-inline-flex text-decoration-none rounded">Returned</a></li>
-          </ul>
-        </div>
-      </li>
-      <li class="border-top my-3"></li>
-      <li class="mb-1">
-        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
-          Account
-        </button>
-        <div class="collapse" id="account-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-body-emphasis text-light d-inline-flex text-decoration-none rounded">New...</a></li>
-            <li><a href="#" class="link-body-emphasis text-light d-inline-flex text-decoration-none rounded">Profile</a></li>
-            <li><a href="#" class="link-body-emphasis text-light d-inline-flex text-decoration-none rounded">Settings</a></li>
-            <li><a href="#" class="link-body-emphasis text-light d-inline-flex text-decoration-none rounded">Sign out</a></li>
-          </ul>
-        </div>
-      </li>
-    </ul>
+<style>
+    .sb-sidenav-menu a:hover {
+        background: #157347;
+        color: #ffffff;
+    }
+</style>
 
 
-            <ul class="nav flex-column">
-            <li class="nav-item">
-                <a class="nav-link link-light d-flex align-items-center fs-6 gap-2" aria-current="page" href="<?=url("/beta")?>">
-                    <i class="bi bi-house-fill mb-2"></i>
-                    Início
+<div id="layoutSidenav_nav">
+    <nav class="sb-sidenav accordion bg-<?=CONF_APP_COLOR?>" id="sidenavAccordion">
+        <div class="sb-sidenav-menu">
+            <div class="nav">
+                <div class="sb-sidenav-menu-heading text-light fw-semibold fs-6">SISTEMA</div>
+
+                <a class="nav-link text-light fw-semibold fs-6" href="<?=url("/beta/beta/home")?>">
+                    <div class="sb-nav-link-icon"><i class="bi bi-speedometer bi-2xx"></i></div>
+                    Monitoramento
                 </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link link-light d-flex align-items-center fs-6 gap-2" aria-current="page" href="<?=url("/")?>">
-                    <i class="bi bi-globe mb-2"></i>
+
+                <a class="nav-link text-light fw-semibold fs-6" target="_blank" rel="noopener" href="<?=url("/")?>">
+                    <div class="sb-nav-link-icon"><i class="bi bi-link-45deg bi-2xx"></i></div>
                     Ver Site
                 </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link link-light d-flex align-items-center fs-6 gap-2 icon-link icon-link-hover"
-                style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="<?=url("/beta/patrimonio/bens/lista")?>">
-                <i class="bi bi-card-heading mb-2"></i>
-                Patrimony/Bens
-                </a>
-            </li>
+                
+                <?php if(user()->level_id > 4){
+                    echo '<a class="nav-link text-light fw-semibold fs-6" target="_blank" rel="noopener" href="'.url("/beta").'">
+                    <div class="sb-nav-link-icon"><i class="bi bi-link-45deg bi-2xx"></i></div>Ver Painel</a>';
+                }?>
 
-            <li class="nav-item">
-                <a class="nav-link link-light d-flex align-items-center fs-6 gap-2 icon-link icon-link-hover"
-                style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="<?=url("/beta/patrimonio/marcas/lista")?>">
-                <i class="bi bi-card-heading mb-2"></i>
-                Patrimony/Marcas
-                </a>
-            </li>
+                <div class="sb-sidenav-menu-heading text-light fw-semibold fs-6">CADASTROS</div>
 
-            <li class="nav-item">
-                <a class="nav-link link-light d-flex align-items-center fs-6 gap-2 icon-link icon-link-hover"
-                style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="<?=url("/beta/patrimonio/modelos/lista")?>">
-                <i class="bi bi-card-heading mb-2"></i>
-                Patrimony/Modelos
+                <!-- Sidebar de usuários -->
+                <a class="nav-link text-light collapsed fw-semibold fs-6" href="" data-bs-toggle="collapse" data-bs-target="#collapseContact" aria-expanded="false" aria-controls="collapseContact">
+                    <div class="sb-nav-link-icon"><i class="bi bi-person bi-2xx"></i></div>
+                    Contatos
+                    <div class="sb-sidenav-collapse-arrow"><i class="bi bi-chevron-double-down"></i></div>
                 </a>
-            </li>
+                <div class="collapse" id="collapseContact" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionContact">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link text-light fw-semibold fs-6" href="<?=url("/beta/contatos")?>"><i class="bi bi-list bi-2xx me-2"></i> Listar</a>
+                        <a class="nav-link text-light fw-semibold fs-6" href="<?=url("/beta/contatos/cadastrar")?>"><i class="bi bi-person-add bi-2xx me-2"></i> Cadastrar</a>
+                    </nav>
+                </div>
 
-            <li class="nav-item">
-                <a class="nav-link link-light d-flex align-items-center fs-6 gap-2 icon-link icon-link-hover"
-                style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="<?=url("/beta/patrimonio/historicos/lista")?>">
-                <i class="bi bi-card-heading mb-2"></i>
-                Patrimony/Historico
+                <!-- Sidebar de setores -->
+                <a class="nav-link text-light collapsed fw-semibold fs-6" href="" data-bs-toggle="collapse" data-bs-target="#collapsePatrimony" aria-expanded="false" aria-controls="collapsePatrimony">
+                    <div class="sb-nav-link-icon"><i class="bi bi-journal-text bi-2xx"></i></div>
+                    Patrimonio
+                    <div class="sb-sidenav-collapse-arrow"><i class="bi bi-chevron-double-down"></i></div>
                 </a>
-            </li>
+                <div class="collapse" id="collapsePatrimony" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPatrimony">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link text-light fw-semibold fs-6" href="<?=url("/beta/patrimonio")?>"><i class="bi bi-list bi-2xx me-2"></i> Listar</a>
+                        <a class="nav-link text-light fw-semibold fs-6" href="<?=url("/beta/patrimonio/cadastrar")?>"><i class="bi bi-building-add bi-2xx me-2"></i> Cadastrar</a>
+                    </nav>
+                </div>
 
-            <li class="nav-item">
-                <a class="nav-link link-light d-flex align-items-center fs-6 gap-2 icon-link icon-link-hover" 
-                style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="<?=url("/beta/contatos")?>">
-                <i class="bi bi-card-checklist mb-2"></i>
-                Agenda
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link link-light d-flex align-items-center fs-6 gap-2 icon-link icon-link-hover" 
-                style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="<?=url("/beta/perfil")?>">
-                <i class="bi bi-person mb-2"></i>
-                Perfil
-                </a>
-            </li>
-            </ul>
+                <div class="sb-sidenav-menu-heading text-light fw-semibold fs-6">UTILIDADES</div>
 
-            <hr class="my-3">
-
-            <ul class="nav flex-column mb-auto">
-            <li class="nav-item">
-                <a class="nav-link link-light d-flex align-items-center fs-6 gap-2 mb-4 icon-link icon-link-hover" href="<?=url("/beta/logoff")?>">
-                <i class="bi bi-door-closed mb-2"></i>
-                Sair
+                <a class="nav-link text-light fw-semibold fs-6" href="<?=url("/beta/logoff")?>" data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip" 
+                    data-bs-title="Clique para sair do sistema" data-bs-toggle="modal" data-bs-target="#modalSair">
+                    <div class="sb-nav-link-icon"><i class="bi bi-link-45deg bi-2xx"></i></div>
+                    Sair
                 </a>
-            </li>
-            </ul>
+
+                <?= $this->insert("views/modals/modalSystem"); ?>
+
+
+            </div>
         </div>
-    </div>
+        <div class="sb-sidenav-footer text-light fw-semibold fs-6">
+            <div class="sb-sidenav-menu-heading text-light fw-semibold fs-6">Logado como: <?=get_current_user();?></div>
+            <div class="sb-sidenav-menu-heading text-light fw-semibold fs-6">Hostname : <?=gethostname();?></div>
+        </div>
+    </nav>
 </div>

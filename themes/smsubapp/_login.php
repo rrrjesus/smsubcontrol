@@ -7,8 +7,14 @@
 
     <?= $head; ?>
 
-    <link rel="icon" type="image/png" href="<?= theme("/assets/images/favicon.png"); ?>"/>
-    <link rel="stylesheet" href="<?=theme("/assets/style.css"); ?>"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="<?= theme("/assets/images/favicon/apple-touch-icon.png", CONF_VIEW_APP); ?>">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?= theme("/assets/images/favicon/favicon-32x32.png", CONF_VIEW_APP); ?>">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?= theme("/assets/images/favicon/favicon-16x16.png", CONF_VIEW_APP); ?>">
+    <!-- <link rel="manifest" href="/site.webmanifest"> -->
+    <link rel="mask-icon" href="<?= theme("/assets/images/favicon/safari-pinned-tab.svg", CONF_VIEW_APP); ?>" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link href="<?=theme("/assets/style.css", CONF_VIEW_APP)?>" rel="stylesheet" />
 
 </head>
 <body>
@@ -22,7 +28,7 @@
 
 <header class="navbar navbar-expand-lg bd-navbar sticky-top">
   <!-- Navbar-->
-  <?= $this->insert("views/theme/navbar"); ?>
+  <?= $this->insert("views/theme/navbarLogin"); ?>
 </header>
 
 <!--CONTENT-->
@@ -47,7 +53,7 @@
 <?php endif; ?>
 
 <!--FOOTER-->
-<?= $this->insert("views/theme/footer"); ?>
+<?= $this->insert("views/theme/footerLogin"); ?>
 
 <!-- Javascript do Tema -->
 <script src="<?= theme("assets/scripts.js")?>"></script>

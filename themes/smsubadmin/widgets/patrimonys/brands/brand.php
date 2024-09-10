@@ -23,7 +23,7 @@
                         <div class="row justify-content-center">
 
                             <div class="col-md-6 mb-1">
-                                <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputNome"><strong><i class="bi bi-person me-1"></i> Nome</strong></label>
+                                <label class="col-form-label col-form-label-sm" for="inputNome"><strong><i class="bi bi-person me-1"></i> Nome</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Nome" class="form-control form-control-sm"
                                     name="brand_name" placeholder="NOME">
@@ -35,7 +35,7 @@
                         <div class="row justify-content-center">  
 
                             <div class="col-md-6 mb-1">
-                                <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputSobreNome"><strong><i class="bi bi-person-add me-1"></i> Descrição</strong></label>
+                                <label class="col-form-label col-form-label-sm" for="inputSobreNome"><strong><i class="bi bi-person-add me-1"></i> Descrição</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Descrição" class="form-control form-control-sm"
                                     name="description" placeholder="DESCRIÇÃO" id="description">
@@ -63,7 +63,7 @@
         <div class="container-fluid">
             <div class="d-flex justify-content-center">
                 <div class="col-12">
-                    <form class="row gy-2 gx-3 align-items-center needs-validation" id="brand-edit" novalidate action="<?= url("/painel/patrimonio/marcas/editar/{$marcas->id}"); ?>" method="post" enctype="multipart/form-data">
+                    <form class="row gy-2 gx-3 align-items-center needs-validation" id="brand" novalidate action="<?= url("/painel/patrimonio/marcas/editar/{$marcas->id}"); ?>" method="post" enctype="multipart/form-data">
                         
                     <input type="hidden" name="action" value="update"/>
 
@@ -75,7 +75,7 @@
 
                             <div class="col-md-6 mb-1">
 
-                                <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputNome"><strong><i class="bi bi-person me-1"></i> Nome</strong></label>
+                                <label class="col-form-label col-form-label-sm" for="inputNome"><strong><i class="bi bi-person me-1"></i> Nome</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Nome" class="form-control form-control-sm"
                                     name="brand_name" placeholder="NOME" value="<?=$marcas->brand_name?>">
@@ -87,7 +87,7 @@
                         <div class="row justify-content-center">  
 
                             <div class="col-md-6 mb-1">
-                                <label class="col-form-label col-form-label-sm text-<?=CONF_ADMIN_COLOR?>" for="inputSobreNome"><strong><i class="bi bi-person-add me-1"></i> Descrição</strong></label>
+                                <label class="col-form-label col-form-label-sm" for="inputSobreNome"><strong><i class="bi bi-person-add me-1"></i> Descrição</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Descrição" class="form-control form-control-sm"
                                     name="description" placeholder="DESCRIÇÃO" id="description" value="<?=$marcas->description?>" >

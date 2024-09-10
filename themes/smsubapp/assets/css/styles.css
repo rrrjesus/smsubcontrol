@@ -25,9 +25,10 @@
   font-weight: var(--weight-strong);
 }
 
+/* Color Ajax Carregando ... */
 .ajax_load_box_circle {
   border: 16px solid #e3e3e3;
-  border-top: 16px solid var(--bs-dark);
+  border-top: 16px solid var(--bs-success);
   border-radius: 50%;
   margin: auto;
   width: 80px;
@@ -68,52 +69,30 @@
     width: calc(100% - 80px);
   }
 
-/* Login de Usuário*/
-.form-signin {
-    max-width: 330px;
-    padding: 1rem;
-}
-
-.form-signin .form-floating:focus-within {
-    z-index: 2;
-}
-
-.form-signin input[type="email"] {
-    margin-bottom: -1px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-}
-
-.form-signin input[type="password"] {
-    margin-bottom: 10px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-}
-
 /* Typeahead Color*/
 span.twitter-typeahead .tt-suggestion:focus,
 .dropdown-item:hover,
 span.twitter-typeahead .tt-suggestion:hover {
     text-decoration: none;
-    background-color: var(--bs-dark);
+    background-color: var(--bs-success);
     color: #fff;
 }
 
 .dropdown-item.active, .dropdown-item:active {
     text-decoration: none;
-    background-color: var(--bs-dark);
+    background-color: var(--bs-success);
 }
 
 /* AJUDA */
 .custom-tooltip {
-    --bs-tooltip-bg: var(--bs-dark);
+    --bs-tooltip-bg: var(--bs-success);
     --bs-tooltip-color: var(--bs-white);
 }
 
 /* Datatables Pagination */
-.page-link {color: var(--bs-dark)}
-.pagination {--bs-link-hover-color: #0c1390;}
-.active>.page-link, .page-link.active {background-color: var(--bs-dark);border-color: var(--bs-dark);}
+.page-link {color: var(--bs-success)}
+.pagination {--bs-link-hover-color: #0d5f14;}
+.active>.page-link, .page-link.active {background-color: var(--bs-success);border-color: var(--bs-success);}
 
 
 .bd-navbar .dropdown-menu .active .bi {
@@ -121,4 +100,37 @@ span.twitter-typeahead .tt-suggestion:hover {
 }
 .bi {
    fill:currentcolor
+}
+
+/* Typeahead Color*/
+span.twitter-typeahead .tt-suggestion:focus,
+.dropdown-item:hover,
+span.twitter-typeahead .tt-suggestion:hover {
+    text-decoration: none;
+    background-color: var(--bs-success);
+    color: #FFF;
+}
+
+/*
+FORM LOGIN
+*/
+.form-signin {
+  max-width: 330px;
+  padding: 1rem;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }

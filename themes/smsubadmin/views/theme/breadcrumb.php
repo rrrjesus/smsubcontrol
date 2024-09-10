@@ -4,7 +4,7 @@
 
         <?php
             if(isset($urls)){
-                echo breadcrumb($urls, $namepage, $name);
+                echo breadcrumbAdmin($urls, $namepage, $name);
             }
         ?>
     </ol>

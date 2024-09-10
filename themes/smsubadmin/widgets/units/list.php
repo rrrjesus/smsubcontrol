@@ -33,9 +33,9 @@
                         <th class="text-center">EDITAR</th>
                         <th class="text-center">FOTO</th>
                         <th class="text-center">NOME</th>
+                        <th class="text-center">DESCRIÇÃO</th>
                         <th class="text-center">TELEFONE</th>
                         <th class="text-center">E-MAIL</th>
-                        <th class="text-center">DESCRIÇÃO</th>
                         <th class="text-center">ENDEREÇO</th>
                         <th class="text-center">CEP</th>
                         <th class="text-center">RESPONSAVEL</th>
@@ -55,13 +55,13 @@
                             class="btn btn-outline-warning rounded-circle btn-md text-center">
                             <i class="bi bi-pencil text-secundary"></i></a></td>
                         <td class="text-center"><?=$lista->photoList();?></td>
-                        <td class="text-center"><?=$lista->unit_name;?></td>
-                        <td class="text-center text-uppercase"><?=$lista->phone;?></td>
-                        <td class="text-center text-uppercase"><?=$lista->email;?></td>
+                        <td class="text-center text-uppercase"><?=$lista->unit_name;?></td>
                         <td class="text-center text-uppercase"><?=$lista->description;?></td>
-                        <td class="text-center"><?=$lista->adress;?></td>
+                        <td class="text-center text-uppercase"><?=$lista->fixed_phone;?></td>
+                        <td class="text-center"><?=$lista->email;?></td>
+                        <td class="text-center text-uppercase"><?=$lista->adress;?></td>
                         <td class="text-center"><?=$lista->zip;?></td>
-                        <td class="text-center"><?=$lista->it_professional;?></td>
+                        <td class="text-center text-uppercase"><?=$lista->it_professional;?></td>
                         <td class="text-center"><?=$lista->cell_phone;?></td>
                         <td class="text-center text-uppercase"><?=$lista->statusBadge();?>
                         <td class="text-center"><?=$lista->id;?></td>

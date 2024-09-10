@@ -96,7 +96,7 @@
 
             <div class="d-flex justify-content-center">
                 <div class="col-12 col-md-12">
-                    <div class="fw-semibold text-<?=CONF_ADMIN_COLOR?> text-uppercase mb-3 fs-5"><i class="bi bi-bar-chart-line-fill"></i> Online agora : 
+                    <div class="fw-semibold text-uppercase mb-3 fs-5"><i class="bi bi-bar-chart-line-fill"></i> Online agora : 
                         <span class="trafic_count"><?= $onlineCount; ?></span>
                     </div>
 
@@ -113,9 +113,9 @@
                                     <table id="online" class="table table-bordered table-sm border-secondary table-hover" style="width:100%">
                                         <thead class="table-secondary">    
                                             <tr>
-                                                <th class="text-center text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-emoji-grin me-1"></i><br>DATA/USUARIO</th>
-                                                <th class="text-center text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-clipboard-check me-1"></i><br>QTD PÁGINAS</th>
-                                                <th class="text-center text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-binoculars me-1"></i><br>ÚLTIMO ACESSO</th>
+                                                <th class="text-center"><i class="bi bi-emoji-grin me-1"></i><br>DATA/USUARIO</th>
+                                                <th class="text-center"><i class="bi bi-clipboard-check me-1"></i><br>QTD PÁGINAS</th>
+                                                <th class="text-center"><i class="bi bi-binoculars me-1"></i><br>ÚLTIMO ACESSO</th>
                                             </tr>
                                         </thead>
                                         <tbody>

@@ -70,20 +70,20 @@ $route->get("/login", "Login:login");
 $route->post("/login", "Login:login");
 
 //dash
-$route->get("/dash", "Dash:dash");
-$route->get("/dash/home", "Dash:home");
-$route->post("/dash/home", "Dash:home");
+$route->get("/", "Dash:dash");
+$route->get("/home", "Dash:home");
+$route->post("/home", "Dash:home");
 
 $route->get("/perfil", "Profile:profile");
 $route->post("/perfil", "Profile:profile");
 $route->get("/contatos", "Patrimony:contact");
 
-//Marcas
-$route->get("/patrimonio/marcas/lista", "BensMarcas:bensmarcasLista");
-$route->get("/patrimonio/marcas/cadastrar", "BensMarcas:bensMarcas");
-$route->post("/patrimonio/marcas/cadastrar", "BensMarcas:bensMarcas");
-$route->get("/patrimonio/marcas/editar/{bensmarcas_id}", "BensMarcas:bensMarcas");
-$route->post("/patrimonio/marcas/editar/{bensmarcas_id}", "BensMarcas:bensMarcas");
+//Contatos
+$route->get("/beta/contatos", "Contacts:contacts");
+$route->get("/beta/contatos/cadastrar", "Contacts:contact");
+$route->post("/beta/contatos/cadastrar", "Contacts:contact");
+$route->get("/beta/contatos/editar/{bensmarcas_id}", "Contacts:contact");
+$route->post("/beta/contatos/editar/{bensmarcas_id}", "Contacts:contact");
 
 //Modelos
 $route->get("/patrimonio/modelos/lista", "BensModelos:bensmodelosLista");

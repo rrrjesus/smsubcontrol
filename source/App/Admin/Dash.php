@@ -4,7 +4,6 @@ namespace Source\App\Admin;
 
 use Source\Models\Auth;
 use Source\Models\Patrimony\Brand;
-use Source\Models\Patrimony\Model;
 use Source\Models\Patrimony\Patrimony;
 use Source\Models\Patrimony\Product;
 use Source\Models\Report\Online;

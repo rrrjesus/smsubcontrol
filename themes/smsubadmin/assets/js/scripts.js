@@ -93,81 +93,8 @@ $(function () {
         }
     });
 
-    $("#user-edit").validate({
-        rules: {
-            login: {
-                required: true
-            },
-            rf: {
-                required: true
-            },
-            first_name: {
-                required: true
-            },
-            last_name: {
-                required: true
-            },
-            position_id: {
-                required: true
-            },
-            category_id: {
-                required: true
-            },
-            unit_id: {
-                required: true
-            },
-            email: {
-                required: true
-            }
-        },
-        messages: {
-            login: {
-                required: "Digite o login !!!"
-            },
-            rf: {
-                required: "Digite o RF !!!"
-            },
-            first_name: {
-                required: "Digite o nome !!!"
-            },
-            last_name: {
-                required: "Digite o sobrenome !!!"
-            },
-            position_id: {
-                required: "Digite o cargo !!!"
-            },
-            category_id: {
-                required: "Digite o regime !!!"
-            },
-            unit_id: {
-                required: "Digite a unidade !!!"
-            },
-            email: {
-                required: "Digite um email !!!"
-            }
-        }
-    });
 
     $("#brand").validate({
-        rules: {
-            brand_name: {
-                required: true
-            },
-            description: {
-                required: true
-            }
-        },
-        messages: {
-            brand_name: {
-                required: "Digite a marca !!!"
-            },
-            description: {
-                required: "Digite a descrição !!!"
-            }
-        }
-    });
-
-    $("#brand-edit").validate({
         rules: {
             brand_name: {
                 required: true
@@ -211,27 +138,39 @@ $(function () {
         }
     });
 
-    $("#product-edit").validate({
+    $("#unit").validate({
         rules: {
-            brand_id: {
-                required: true
-            },
-            product_name: {
+            unit_name: {
                 required: true
             },
             description: {
+                required: true
+            },
+            adress: {
+                required: true
+            },
+            zip: {
+                required: true
+            },
+            it_professional: {
                 required: true
             }
         },
         messages: {
-            brand_id: {
-                required: "Digite a marca !!!"
-            },
-            product_name: {
-                required: "Digite o produto !!!"
+            unit_name: {
+                required: "Digite o nome da Unidade !!!"
             },
             description: {
-                required: "Digite a descrição !!!"
+                required: "Descreva o nome da Unidade !!!"
+            },
+            adress: {
+                required: "Digite o endereço !!!"
+            },
+            zip: {
+                required: "Digite o cep da Unidade!!!"
+            },
+            it_professional: {
+                required: "Digite o nome do responsável da Unidade !!!"
             }
         }
     });
@@ -280,6 +219,7 @@ $(function () {
         $(".mask-card").mask('0000  0000  0000  0000', {reverse: true});
         $('.mask-phone').mask('00000-0000');
         $('.mask-phone-fixed').mask('0000-0000');
+        $('.mask-cep').mask('00000-000');
         $('.mask-login').mask('S000000');
         $('.mask-rf').mask('0000000');
 

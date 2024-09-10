@@ -31,19 +31,19 @@
             <table id="units" class="table table-bordered table-sm border-secondary table-hover" style="width:100%">
                 <thead class="table-secondary">
                 <tr>
-                    <th class="text-center text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-unlock me-1"></i><br>ID</th>
-                    <th class="text-center text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-person-gear me-1"></i><br>GERENCIAR</th>
-                    <th class="text-center text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-person-circle me-1"></i><br>FOTO</th>
-                    <th class="text-center text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-person me-1"></i><br>RF</th>
-                    <th class="text-center text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-person me-1"></i><br>NOME</th>
-                    <th class="text-center text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-person me-1"></i><br>SOBRENOME</th>
-                    <th class="text-center text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-building me-1"></i><br>CARGO</th>
-                    <th class="text-center text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-building me-1"></i><br>UNIDADE</th>
-                    <th class="text-center text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-envelope-at me-1"></i><br>EMAIL</th>
-                    <th class="text-center text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-envelope-at me-1"></i><br>STATUS</th>
-                    <th class="text-center text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-person me-1"></i><br>NIVEL</th>
-                    <th class="text-center text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-person me-1"></i><br>DESATIVAR</th>
-                    <th class="text-center text-<?=CONF_ADMIN_COLOR?>"><i class="bi bi-person me-1"></i><br>EXCLUIR</th>
+                    <th class="text-center"><i class="bi bi-unlock me-1"></i><br>ID</th>
+                    <th class="text-center"><i class="bi bi-person-gear me-1"></i><br>GERENCIAR</th>
+                    <th class="text-center"><i class="bi bi-person-circle me-1"></i><br>FOTO</th>
+                    <th class="text-center"><i class="bi bi-person me-1"></i><br>RF</th>
+                    <th class="text-center"><i class="bi bi-person me-1"></i><br>NOME</th>
+                    <th class="text-center"><i class="bi bi-person me-1"></i><br>SOBRENOME</th>
+                    <th class="text-center"><i class="bi bi-building me-1"></i><br>CARGO</th>
+                    <th class="text-center"><i class="bi bi-building me-1"></i><br>UNIDADE</th>
+                    <th class="text-center"><i class="bi bi-envelope-at me-1"></i><br>EMAIL</th>
+                    <th class="text-center"><i class="bi bi-envelope-at me-1"></i><br>STATUS</th>
+                    <th class="text-center"><i class="bi bi-person me-1"></i><br>NIVEL</th>
+                    <th class="text-center"><i class="bi bi-person me-1"></i><br>DESATIVAR</th>
+                    <th class="text-center"><i class="bi bi-person me-1"></i><br>EXCLUIR</th>
                 </tr>
                 </thead>
                 <tbody>
