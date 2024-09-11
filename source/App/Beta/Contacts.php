@@ -4,6 +4,7 @@ namespace Source\App\Beta;
 
 use Source\Models\User;
 use Source\Models\Contact;
+use Source\Models\Unit;
 
 /**
  * Class Contacts
@@ -88,8 +89,9 @@ class Contacts extends Admin
             $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             $contactCreate = new Contact();
+            $contactCreate->unit_id = preg_replace("/[^0-9\s]/", "", $data["unit_id"]);
             $contactCreate->contact_name = $data["contact_name"];
-            $contactCreate->description = $data["description"];
+            $contactCreate->ramal = $data["ramal"];
             $contactCreate->login_created = $user->login;
             $contactCreate->created_at = date_fmt('', "Y-m-d h:m:s");
 
@@ -124,8 +126,9 @@ class Contacts extends Admin
             }
 
             $contactUpdate = (new Contact())->findById($data["contact_id"]);
+            $contactUpdate->unit_id = preg_replace("/[^0-9\s]/", "", $data["unit_id"]);
             $contactUpdate->contact_name = $data["contact_name"];
-            $contactUpdate->description = $data["description"];
+            $contactUpdate->ramal = $data["ramal"];
             $contactUpdate->login_updated = $user->login;
             $contactUpdate->updated_at = date_fmt('', "Y-m-d h:m:s");
 
@@ -221,6 +224,8 @@ class Contacts extends Admin
             $contactEdit = (new Contact())->findById($brandId);
         }
 
+        $unit = new Unit();
+
         $head = $this->seo->render(
             "Contatos - " . CONF_SITE_NAME,
             CONF_SITE_DESC,
@@ -231,7 +236,8 @@ class Contacts extends Admin
 
         echo $this->view->render("widgets/contact/contact", [
             "head" => $head,
-            "contatos" => $contactEdit,
+            "contacts" => $contactEdit,
+            "unit" => $unit,
             "urls" => ($contactEdit ? "contatos/editar/{$contactEdit->id}" : "cadastrar"),
             "namepage" => "Contatos",
             "name" => ($contactEdit ? "Editar" : "Cadastrar")

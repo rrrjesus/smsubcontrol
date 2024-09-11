@@ -70,7 +70,7 @@
                         <div class="col-md-2 mb-1">
                             <label class="col-form-label col-form-label-sm" for="inputCelular"><strong><i class="bi bi-phone me-1"></i> Tel Fixo</strong></label>
                             <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                            data-bs-title="Digite o numero do fixo - DDD + 8 dígitos" class="form-control form-control-sm mask-phone-fixed" name="phone_fixed" 
+                            data-bs-title="Digite o numero do fixo - DDD + 8 dígitos" class="form-control form-control-sm mask-fixed-phone" name="phone_fixed" 
                             placeholder="49343000" value="<?=$profile->phone_fixed?>">
                         </div>
 

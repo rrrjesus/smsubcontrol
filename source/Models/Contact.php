@@ -94,13 +94,8 @@ class Contact extends Model
 
         /** Contact Create */
         if (empty($this->id)) {
-            if ($this->findByEmail($this->email, "id")) {
-                $this->message->warning("O e-mail informado já está cadastrado");
-                return false;
-            }
-
-            if ($this->findByUnit($this->unit_id, "id")) {
-                $this->message->warning("A unidade informada não existe !!!");
+            if ($this->findByRamal($this->ramal, "id")) {
+                $this->message->warning("O ramal informado já está cadastrado !!!");
                 return false;
             }
 

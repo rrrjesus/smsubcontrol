@@ -15,9 +15,7 @@
 
     <div class="row justify-content-center mb-4">
         <div class="col-md-12 ml-auto text-center">
-            <a data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip"
-                data-bs-title="Clique para cadastrar novo colaborador" class="btn btn-outline-success btn-sm me-3 fw-semibold" href="<?=url("/contatos/cadastrar")?>"
-                role="button"><i class="bi bi-telephone-plus me-2 mt-1"></i>Cadastrar</a>
+            <?=buttonLink("/beta/contatos/cadastrar", "top", "Cadastrar contato", "success", "person", "Cadastrar")?>
             <?php if(!empty($registers->disabled) && user()->level_id > 3){ ?>
                 <a role="button" href="<?=url("/beta/contatos/desativados")?>" data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip"
                     data-bs-title="Clique para acessar usuarios desativados" class="btn btn-outline-secondary btn-sm position-relative fw-semibold"><i class="bi bi-telephone-x text-danger me-2 mt-1">
@@ -30,27 +28,52 @@
 
     <div class="d-flex justify-content-center">
         <div class="col-12">
-            <table id="contacts" class="table table-bordered table-sm border-secondary table-hover" style="width:100%">
-                <thead class="table-secondary">
+            <table id="contacts" class="table table-bordered table-sm border-<?=CONF_APP_COLOR?> table-hover" style="width:100%">
+                <thead class="table-<?=CONF_APP_COLOR?>">
                 <tr>
                     <th class="text-center"><i class="bi bi-unlock me-1"></i><br>EDITAR</th>
                     <th class="text-center"><i class="bi bi-person-gear me-1"></i><br>NOME</th>
-                    <th class="text-center"><i class="bi bi-person-circle me-1"></i><br>SETOR</th>
                     <th class="text-center"><i class="bi bi-person me-1"></i><br>RAMAL</th>
+                    <th class="text-center"><i class="bi bi-person-circle me-1"></i><br>SETOR</th>
+                    <th class="text-center"><i class="bi bi-person-circle me-1"></i><br>RESPONSAVEL</th>
+                    <th class="text-center"><i class="bi bi-person-circle me-1"></i><br>TEL RESP.</th>
                     <th class="text-center"><i class="bi bi-person me-1"></i><br>STATUS</th>
+                    <th class="text-center"><i class="bi bi-person me-1"></i><br>DESATIVAR</th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php if(!empty($contacts)){ ?>
                 <?php foreach ($contacts as $lista): ?>
                     <tr>
-                        <td class="text-center"><a href="contatos/<?=$lista->id?>" data-bs-togglee="tooltip" 
-                            data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Clique para editar <?=$lista->contact_name?>" role="button" 
-                            class="btn btn-outline-warning rounded-circle btn-md text-center <?php if(user()->level_id < 3){echo 'disabled';}?>"><i class="bi bi-pencil text-secondary"></i></a></td>
-                        <td class="text-center"><?=$lista->contact_name;?></td>
+                        <td class="text-center"><a href="contatos/editar/<?=$lista->id?>" data-bs-togglee="tooltip" 
+                            data-bs-placement="right" data-bs-custom-class="custom-tooltip" data-bs-title="Clique para editar <?=$lista->contact_name?>" role="button" 
+                            class="btn btn-outline-warning rounded-circle btn-md text-center <?php if(user()->level_id < 3){echo 'disabled';}?>"><i class="bi bi-pencil text-<?=CONF_APP_COLOR?>"></i></a></td>
+                        <td class="text-center text-uppercase"><?=$lista->contact_name;?></td>
+                        <td class="text-center">4934-<?=$lista->ramal;?></td>
                         <td class="text-center"><?=$lista->unit()->unit_name;?></td>
-                        <td class="text-center"><?=$lista->ramal;?></td>
+                        <td class="text-center text-uppercase"><?=$lista->unit()->it_professional;?></td>
+                        <td class="text-center"><?=$lista->unit()->fixed_phone;?></td>
                         <td class="text-center"><?=$lista->statusBadge();?></td>
+                        <td class="text-center"><button type="button" data-bs-togglee="modal" data-bs-toggle="modal" data-bs-target="#disabled-<?=$lista->id;?>" 
+                        class="btn btn-outline-danger rounded-circle btn-md text-center"><i class="bi bi-telephone-x"></i></b></td>
+                            <!-- Modal -->
+                        <div class="modal fade" id="disabled-<?=$lista->id;?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-sm modal-dialog-centered">
+                                <div class="modal-content">
+                                <div class="modal-header bg-warning text-secondary">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="bi bi-telephone-x text-secondary me-2"></i> DESATIVAR <?=$lista->ramal;?></h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body fs-5 text-center">
+                                    Deseja desativar o Ramal <?=$lista->ramal?> ?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-danger fw-semibold" data-bs-dismiss="modal">Não</button>
+                                    <a href="contatos/desativar/<?=$lista->id?>/disabled" role="button" class="btn btn-outline-success fw-semibold">Sim</a>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
                     </tr>
                 <?php endforeach; ?>
                 <?php } ?>
@@ -63,8 +86,8 @@
 
     <div class="d-flex justify-content-center">
         <div class="col-12">
-            <table id="contacts" class="table table-bordered table-sm border-secondary table-hover" style="width:100%">
-                <thead class="table-secondary">
+            <table id="contacts" class="table table-bordered table-sm border-<?=CONF_APP_COLOR?> table-hover" style="width:100%">
+                <thead class="table-<?=CONF_APP_COLOR?>">
                 <tr>
                     <th class="text-center"><i class="bi bi-person-gear me-1"></i><br>NOME</th>
                     <th class="text-center"><i class="bi bi-person-circle me-1"></i><br>SETOR</th>

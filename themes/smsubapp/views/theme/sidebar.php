@@ -12,7 +12,7 @@
             <div class="nav">
                 <div class="sb-sidenav-menu-heading text-light fw-semibold fs-6">SISTEMA</div>
 
-                <a class="nav-link text-light fw-semibold fs-6" href="<?=url("/beta/beta/home")?>">
+                <a class="nav-link text-light fw-semibold fs-6" href="<?=url("/beta/home")?>">
                     <div class="sb-nav-link-icon"><i class="bi bi-speedometer bi-2xx"></i></div>
                     Monitoramento
                 </a>

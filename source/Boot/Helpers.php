@@ -288,6 +288,25 @@ function image(?string $image, int $width, int $height = null): ?string
 
 /**
  * ################
+ * ###  BUTTONS ###
+ * ################
+ */
+
+ function buttonLink(string $href = "/", string $placement = "top", string $title = "Olá", string $btncolor = "success", string $icon = "person", string $name = "Button"): ?string
+ {
+    return '<a role="button" href="'.url($href).'" data-bs-togglee="tooltip" data-bs-placement="'.$placement.'" data-bs-custom-class="custom-tooltip"
+    data-bs-title="'.$title.'" class="btn btn-outline-'.$btncolor.' btn-sm position-relative fw-semibold me-3"><i class="bi bi-'.$icon.' me-2 mt-1"></i> '.$name.'</a>';
+ }
+
+ function button(?string $placement = "top", string $title = "Olá", string $btncolor = "success", string $icon = "person", string $name = "Button"): string
+ {
+    return '<button data-bs-togglee="tooltip" data-bs-placement="'.$placement.'" data-bs-custom-class="custom-tooltip" data-bs-title="'.$title.'" 
+        class="btn btn-sm btn-outline-'.$btncolor.' fw-semibold me-3"><i class="bi bi-'.$icon.' me-2"></i> '.$name.'</button>';
+ }
+
+
+/**
+ * ################
  * ###   DATE   ###
  * ################
  */
