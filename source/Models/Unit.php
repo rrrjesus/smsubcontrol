@@ -22,7 +22,6 @@ class Unit extends Model
         return $find->fetch();
     }
 
-
     /**
      * @return string|null
      */

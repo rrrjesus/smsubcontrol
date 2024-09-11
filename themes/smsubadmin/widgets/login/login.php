@@ -3,9 +3,12 @@
 <div class="form-signin w-100 m-auto mt-2">
     <form class="needs-validation" novalidate id="login" name="login" action="<?= url("/painel/login"); ?>" method="post" enctype="multipart/form-data">
         <?=csrf_input();?>
-        <h1 class="h3 mb-3 fw-normal text-center">
-            <img src="<?=theme("assets/images/smsub_logo/smsub.png", CONF_VIEW_ADMIN)?>" class="mb-1 me-2" alt="logo" ><?=CONF_SITE_NAME?></h1>
-        <div class="ajax_response"><?=flash();?></div>
+        <div class="row justify-content-center">
+            <div class="form-floating mb-3 mt-1 text-center">
+                <img height="80" width="200" src="<?=theme("assets/images/smsub_logo/SUBPREFEITURAS_HORIZONTAL_FUNDO_CLARO.png", CONF_VIEW_ADMIN)?>" class="mb-1 me-2" alt="logo" >
+            </div>
+        </div>
+                <div class="ajax_response"><?=flash();?></div>
 
         <label for="inputPassword" class="form-label fw-semibold"><i class="bi bi-envelope-at pe-2"></i>Email</label>
         <div class="form-floating mb-3 mt-1">
@@ -30,7 +33,7 @@
         <p class="my-3"><a class="link-body-emphasis text-decoration-none fw-semibold text-danger" href="<?= url("/recuperar"); ?>">Esqueceu a senha ?</a></p>
 
         <div class="d-grid">
-            <button class="btn btn-outline-secondary fw-semibold mt-3" type="submit" data-bs-togglee="tooltip" data-bs-placement="right" data-bs-title="Clique para fazer o login">Entrar</button>
+            <button class="btn btn-outline-<?=CONF_ADMIN_COLOR?> fw-semibold mt-3" type="submit" data-bs-togglee="tooltip" data-bs-placement="right" data-bs-title="Clique para fazer o login">Entrar</button>
         </div>
     </form>
 

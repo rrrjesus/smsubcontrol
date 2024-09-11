@@ -1,8 +1,9 @@
 <?php
 
-namespace Source\App\Admin;
+namespace Source\App\Beta;
 
 use Source\Models\User;
+use Source\Models\Contact;
 
 /**
  * Class Contacts
@@ -34,7 +35,7 @@ class Contacts extends Admin
         $contacts = (new Contact())->find("status = :s", "s=actived")->fetch(true);
         $contact = new Contact();
 
-        echo $this->view->render("widgets/contacts/list", [
+        echo $this->view->render("widgets/contact/list", [
             "head" => $head,
             "contacts" => $contacts,
             "urls" => "contatos",
@@ -63,7 +64,7 @@ class Contacts extends Admin
         $contact = (new Contact());
         $contacts = $contact->find("status = :s", "s=disabled")->fetch(true);
 
-        echo $this->view->render("widgets/contacts/disabledList",
+        echo $this->view->render("widgets/contact/disabledList",
             [
                 "head" => $head,
                 "contacts" => $contacts,
@@ -228,7 +229,7 @@ class Contacts extends Admin
             false
         );
 
-        echo $this->view->render("widgets/contacts/contact", [
+        echo $this->view->render("widgets/contact/contact", [
             "head" => $head,
             "contatos" => $contactEdit,
             "urls" => ($contactEdit ? "contatos/editar/{$contactEdit->id}" : "cadastrar"),

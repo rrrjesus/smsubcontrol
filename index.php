@@ -79,11 +79,15 @@ $route->post("/perfil", "Profile:profile");
 $route->get("/contatos", "Patrimony:contact");
 
 //Contatos
-$route->get("/beta/contatos", "Contacts:contacts");
-$route->get("/beta/contatos/cadastrar", "Contacts:contact");
-$route->post("/beta/contatos/cadastrar", "Contacts:contact");
-$route->get("/beta/contatos/editar/{bensmarcas_id}", "Contacts:contact");
-$route->post("/beta/contatos/editar/{bensmarcas_id}", "Contacts:contact");
+$route->get("/contatos", "Contacts:contacts");
+$route->get("/contatos/desativados", "Contacts:disabledContacts");
+$route->get("/contatos/cadastrar", "Contacts:contact");
+$route->post("/contatos/cadastrar", "Contacts:contact");
+$route->get("/contatos/editar/{contact_id}", "Contacts:contact");
+$route->post("/contatos/editar/{contact_id}", "Contacts:contact");
+$route->get("/contatos/ativar/{contact_id}/{action}", "Contacts:contact");
+$route->get("/contatos/desativar/{contact_id}/{action}", "Contacts:contact");
+$route->get("/contatos/excluir/{contact_id}/{action}", "Contacts:contact");
 
 //Modelos
 $route->get("/patrimonio/modelos/lista", "BensModelos:bensmodelosLista");
