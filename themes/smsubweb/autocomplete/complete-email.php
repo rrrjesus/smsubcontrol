@@ -14,12 +14,12 @@ use Source\Core\Connect;
 
 function retorna($nome) {
 
-    $stmt = Connect::getInstance()->query("SELECT `id`, `first_name`, `last_name`, `email` FROM signatures WHERE CONCAT(first_name, ' ', last_name) = '{$nome}'");
+    $stmt = Connect::getInstance()->query("SELECT `id`, `user_name`, `email` FROM signatures WHERE CONCAT(user_name) = '{$nome}'");
 
     $arr = Array();
     if ($stmt->rowCount()) {
         while ($dados = $stmt->fetch()) {
-            $arr['nomeinp'] = $dados->first_name.' '.$dados->last_name;
+            $arr['nomeinp'] = $dados->user_name;
             $arr['emailinp'] = substr($dados->email, 0, -27);
         }
     }

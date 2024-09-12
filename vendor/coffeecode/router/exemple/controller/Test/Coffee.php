@@ -61,8 +61,8 @@ class Coffee
         echo "<h3>", __METHOD__, "::", $_SERVER["REQUEST_METHOD"], "</h3><hr>";
 
         echo "<form name='coffeecode' method='post' enctype='multipart/form-data'>
-            <input name=\"first_name\" value=\"Robson\">
-            <input name=\"last_name\" value=\"V. Leite\">
+            <input name=\"user_name\" value=\"Robson\">
+
             <input name=\"email\" value=\"cursos@upinside.com.br\">
             <button>@CoffeeCode</button>
         </form>";

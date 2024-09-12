@@ -110,7 +110,7 @@ class App extends Controller
     public function home(): void
     {
         $head = $this->seo->render(
-            "Olá {$this->user->first_name}. - " . CONF_SITE_NAME,
+            "Olá {$this->user->user_name}. - " . CONF_SITE_NAME,
             CONF_SITE_DESC,
             url(),
             theme("/assets/images/favicon.ico"),
@@ -157,7 +157,7 @@ class App extends Controller
     public function patrimonioList(): void
     {
         $head = $this->seo->render(
-            "Olá {$this->user->first_name}. - " . CONF_SITE_NAME,
+            "Olá {$this->user->user_name}. - " . CONF_SITE_NAME,
             CONF_SITE_DESC,
             url(),
             theme("/assets/images/favicon.ico"),
@@ -182,8 +182,7 @@ class App extends Controller
     {
         if (!empty($data["update"])) {
             $patrimonio = (new Patrimony())->findById($this->patrimonio->id);
-            $patrimonio->first_name = $data["first_name"];
-            $patrimonio->last_name = $data["last_name"];
+            $patrimonio->user_name = $data["user_name"];
             $patrimonio->email = $data["email"];
             $patrimonio->phone = preg_replace("/[^0-9]/", "", $data["phone"]);
 
@@ -196,8 +195,8 @@ class App extends Controller
                     $upload->remove("storage/{$this->patrimonio->photo}");
                 }
 
-                if (!$patrimonio->photo = $upload->image($file, "{$patrimonio->first_name} {$patrimonio->last_name} " . time(), 360)) {
-                    $json["message"] = $upload->message()->before("Ooops {$this->patrimonio->first_name}! ")->after(".")->render();
+                if (!$patrimonio->photo = $upload->image($file, "{$patrimonio->user_name} " . time(), 360)) {
+                    $json["message"] = $upload->message()->before("Ooops {$this->patrimonio->user_name}! ")->after(".")->render();
                     echo json_encode($json);
                     return;
                 }
@@ -209,7 +208,7 @@ class App extends Controller
                 return;
             }
 
-            $json["message"] = $this->message->success("Pronto {$this->patrimonio->first_name}. Seus dados foram atualizados com sucesso !!!")->icon("emoji-grin me-1")->render();
+            $json["message"] = $this->message->success("Pronto {$this->patrimonio->user_name}. Seus dados foram atualizados com sucesso !!!")->icon("emoji-grin me-1")->render();
             echo json_encode($json);
             return;
         }
@@ -238,7 +237,7 @@ class App extends Controller
     public function events(): void
     {
         $head = $this->seo->render(
-            "Eventos de {$this->user->first_name}. - " . CONF_SITE_NAME,
+            "Eventos de {$this->user->user_name}. - " . CONF_SITE_NAME,
             CONF_SITE_DESC,
             url(),
             theme("/assets/images/favicon.ico"),
@@ -391,7 +390,7 @@ class App extends Controller
                 "user={$this->user->id}&status=canceled");
 
             if (!$subscribe->count()) {
-                $this->message->error("Desculpe {$this->user->first_name}, para criar novas carteiras é preciso ser PRO. Confira abaixo...")->flash();
+                $this->message->error("Desculpe {$this->user->user_name}, para criar novas carteiras é preciso ser PRO. Confira abaixo...")->flash();
                 echo json_encode(["redirect" => url("/beta/assinatura")]);
                 return;
             }
@@ -458,7 +457,7 @@ class App extends Controller
     public function launch(array $data): void
     {
         if (request_limit("applaunch", 20, 60 * 5)) {
-            $json["message"] = $this->message->warning("Foi muito rápido {$this->user->first_name}! Por favor aguarde 5 minutos para novos lançamentos.")->render();
+            $json["message"] = $this->message->warning("Foi muito rápido {$this->user->user_name}! Por favor aguarde 5 minutos para novos lançamentos.")->render();
             echo json_encode($json);
             return;
         }
@@ -477,13 +476,13 @@ class App extends Controller
             "user={$this->user->id}&status=canceled");
 
         if (!$wallet->free && !$subscribe->count()) {
-            $this->message->error("Sua carteira {$wallet->wallet} é PRO {$this->user->first_name}. Para controla-la é preciso ser PRO. Assine abaixo...")->flash();
+            $this->message->error("Sua carteira {$wallet->wallet} é PRO {$this->user->user_name}. Para controla-la é preciso ser PRO. Assine abaixo...")->flash();
             echo json_encode(["redirect" => url("/beta/assinatura")]);
             return;
         }
 
         if (!empty($data["enrollments"]) && ($data["enrollments"] < 2 || $data["enrollments"] > 420)) {
-            $json["message"] = $this->message->warning("Ooops {$this->user->first_name}! Para lançar o número de parcelas deve ser entre 2 e 420.")->render();
+            $json["message"] = $this->message->warning("Ooops {$this->user->user_name}! Para lançar o número de parcelas deve ser entre 2 e 420.")->render();
             echo json_encode($json);
             return;
         }
@@ -554,7 +553,7 @@ class App extends Controller
         }
 
         if (request_repeat("message", $data["message"])) {
-            $json["message"] = $this->message->info("Já recebemos sua solicitação {$this->user->first_name}. Agradecemos pelo contato e responderemos em breve.")->render();
+            $json["message"] = $this->message->info("Já recebemos sua solicitação {$this->user->user_name}. Agradecemos pelo contato e responderemos em breve.")->render();
             echo json_encode($json);
             return;
         }
@@ -573,9 +572,9 @@ class App extends Controller
             $body,
             CONF_MAIL_SUPPORT,
             "Suporte " . CONF_SITE_NAME
-        )->queue($this->user->email, "{$this->user->first_name} {$this->user->last_name}");
+        )->queue($this->user->email, "{$this->user->user_name}");
 
-        $this->message->success("Recebemos sua solicitação {$this->user->first_name}. Agradecemos pelo contato e responderemos em breve.")->flash();
+        $this->message->success("Recebemos sua solicitação {$this->user->user_name}. Agradecemos pelo contato e responderemos em breve.")->flash();
         $json["reload"] = true;
         echo json_encode($json);
     }
@@ -619,7 +618,7 @@ class App extends Controller
                 "user={$this->user->id}&id={$data["invoice"]}")->fetch();
 
             if (!$invoice) {
-                $json["message"] = $this->message->error("Ooops! Não foi possível carregar a fatura {$this->user->first_name}. Você pode tentar novamente.")->render();
+                $json["message"] = $this->message->error("Ooops! Não foi possível carregar a fatura {$this->user->user_name}. Você pode tentar novamente.")->render();
                 echo json_encode($json);
                 return;
             }
@@ -640,7 +639,7 @@ class App extends Controller
             $invoice->status = $data["status"];
 
             if (!$invoice->save()) {
-                $json["message"] = $invoice->message()->before("Ooops! ")->after(" {$this->user->first_name}.")->render();
+                $json["message"] = $invoice->message()->before("Ooops! ")->after(" {$this->user->user_name}.")->render();
                 echo json_encode($json);
                 return;
             }
@@ -668,7 +667,7 @@ class App extends Controller
                 }
             }
 
-            $json["message"] = $this->message->success("Pronto {$this->user->first_name}, a atualização foi efetuada com sucesso!")->render();
+            $json["message"] = $this->message->success("Pronto {$this->user->user_name}, a atualização foi efetuada com sucesso!")->render();
             echo json_encode($json);
             return;
         }
@@ -715,7 +714,7 @@ class App extends Controller
             $invoice->destroy();
         }
 
-        $this->message->success("Tudo pronto {$this->user->first_name}. O lançamento foi removido com sucesso!")->flash();
+        $this->message->success("Tudo pronto {$this->user->user_name}. O lançamento foi removido com sucesso!")->flash();
         $json["redirect"] = url("/beta");
         echo json_encode($json);
     }
@@ -728,9 +727,6 @@ class App extends Controller
     {
         if (!empty($data["update"])) {
             $user = (new User())->findById($this->user->id);
-            // $user->first_name = $data["first_name"];
-            // $user->last_name = $data["last_name"];
-            // $user->email = $data["email"];
             $user->phone = preg_replace("/[^0-9]/", "", $data["phone"]);
 
             if (!empty($_FILES["photo"])) {
@@ -742,8 +738,8 @@ class App extends Controller
                     $upload->remove("storage/{$this->user->photo}");
                 }
 
-                if (!$user->photo = $upload->image($file, "{$user->first_name} {$user->last_name} " . time(), 360)) {
-                    $json["message"] = $upload->message()->before("Ooops {$this->user->first_name}! ")->after(".")->render();
+                if (!$user->photo = $upload->image($file, "{$user->user_name} " . time(), 360)) {
+                    $json["message"] = $upload->message()->before("Ooops {$this->user->user_name}! ")->after(".")->render();
                     echo json_encode($json);
                     return;
                 }
@@ -765,7 +761,7 @@ class App extends Controller
                 return;
             }
 
-            $json["message"] = $this->message->success("Pronto {$this->user->first_name}. Seus dados foram atualizados com sucesso !!!")->icon("emoji-grin me-1")->render();
+            $json["message"] = $this->message->success("Pronto {$this->user->user_name}. Seus dados foram atualizados com sucesso !!!")->icon("emoji-grin me-1")->render();
             echo json_encode($json);
             return;
         }
@@ -856,7 +852,7 @@ class App extends Controller
      */
     public function logout(): void
     {
-        $this->message->info("Você saiu com sucesso " . Auth::user()->first_name . ". Volte logo :)")->flash();
+        $this->message->info("Você saiu com sucesso " . Auth::user()->user_name . ". Volte logo :)")->flash();
 
         Auth::logout();
         redirect("/entrar");

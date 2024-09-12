@@ -50,8 +50,8 @@
                 </a>
                 <div class="collapse" id="collapsePatrimony" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPatrimony">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link text-light fw-semibold fs-6" href="<?=url("/beta/patrimonio")?>"><i class="bi bi-list bi-2xx me-2"></i> Listar</a>
-                        <a class="nav-link text-light fw-semibold fs-6" href="<?=url("/beta/patrimonio/cadastrar")?>"><i class="bi bi-building-add bi-2xx me-2"></i> Cadastrar</a>
+                        <a class="nav-link text-light fw-semibold fs-6" href="<?=url("/beta/patrimonios")?>"><i class="bi bi-list bi-2xx me-2"></i> Listar</a>
+                        <a class="nav-link text-light fw-semibold fs-6" href="<?=url("/beta/patrimonios/cadastrar")?>"><i class="bi bi-building-add bi-2xx me-2"></i> Cadastrar</a>
                     </nav>
                 </div>
 

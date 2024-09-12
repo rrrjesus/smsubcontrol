@@ -41,8 +41,8 @@ class Profile extends Admin
                     $upload->remove("storage/{$this->user->photo}");
                 }
 
-                if (!$user->photo = $upload->image($file, "{$user->first_name} {$user->last_name} " . time(), 360)) {
-                    $json["message"] = $upload->message()->before("Ooops {$this->user->first_name}! ")->after(".")->render();
+                if (!$user->photo = $upload->image($file, "{$user->user_name} " . time(), 360)) {
+                    $json["message"] = $upload->message()->before("Ooops {$this->user->user_name}! ")->after(".")->render();
                     echo json_encode($json);
                     return;
                 }
@@ -64,7 +64,7 @@ class Profile extends Admin
                 return;
             }
 
-            $json["message"] = $this->message->success("Pronto {$this->user->first_name}. Seus dados foram atualizados com sucesso !!!")->icon("emoji-grin me-1")->render();
+            $json["message"] = $this->message->success("Pronto {$this->user->user_name}. Seus dados foram atualizados com sucesso !!!")->icon("emoji-grin me-1")->render();
             echo json_encode($json);
             return;
         }

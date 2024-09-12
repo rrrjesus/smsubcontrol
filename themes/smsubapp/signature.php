@@ -4,7 +4,7 @@
     <article class="app_signature app_signature_me radius">
         <?php if ($subscription->status == "past_due"): ?>
             <div class="message warning icon-warning">
-                Importante <?= user()->first_name; ?>: Não foi possível cobrar seu cartão e sua assinatura está
+                Importante <?= user()->user_name; ?>: Não foi possível cobrar seu cartão e sua assinatura está
                 atrasada, para não perder os recursos PRO é preciso regularizar seu pagamento.
                 <p style="margin-top: 20px">Cadastre um novo cartão de crédito <span data-go=".payment" class="message_btn">CLICANDO AQUI</span></p>
             </div>
@@ -135,7 +135,7 @@
 
         <article class="app_signature_pay">
             <?php if (!$plans): ?>
-                <div class="message info al-center">Desculpe <?= user()->first_name; ?>, mas no momento não existem
+                <div class="message info al-center">Desculpe <?= user()->user_name; ?>, mas no momento não existem
                     planos
                     para assinatura :/
                 </div>

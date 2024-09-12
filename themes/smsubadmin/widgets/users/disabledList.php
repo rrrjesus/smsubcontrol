@@ -25,16 +25,16 @@
             <table id="usersDisabled" class="table table-bordered table-sm border-warning table-hover" style="width:100%">
                 <thead class="table-warning">
                 <tr>
-                    <th class="text-center"><i class="bi bi-unlock me-1"></i><br>ID</th>
-                    <th class="text-center"><i class="bi bi-person-gear me-1"></i><br>GERENCIAR</th>
+                <th class="text-center"><i class="bi bi-unlock me-1"></i><br>ID</th>
                     <th class="text-center"><i class="bi bi-person-circle me-1"></i><br>FOTO</th>
+                    <th class="text-center"><i class="bi bi-person me-1"></i><br>RF</th>
                     <th class="text-center"><i class="bi bi-person me-1"></i><br>NOME</th>
-                    <th class="text-center"><i class="bi bi-person me-1"></i><br>SOBRENOME</th>
+                    <th class="text-center"><i class="bi bi-building me-1"></i><br>CARGO</th>
                     <th class="text-center"><i class="bi bi-building me-1"></i><br>UNIDADE</th>
                     <th class="text-center"><i class="bi bi-envelope-at me-1"></i><br>EMAIL</th>
                     <th class="text-center"><i class="bi bi-envelope-at me-1"></i><br>STATUS</th>
                     <th class="text-center"><i class="bi bi-person me-1"></i><br>NIVEL</th>
-                    <th class="text-center"><i class="bi bi-person me-1"></i><br>ATIVAR</th>
+                    <th class="text-center"><i class="bi bi-person me-1"></i><br>DESATIVAR</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -42,19 +42,15 @@
                 <?php foreach ($users as $lista): ?>
                     <tr>
                         <td class="text-center"><?=$lista->id?></td>
-                        <td class="text-center"><a href="editar/<?=$lista->id?>" data-bs-togglee="tooltip" 
-                            data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                            data-bs-title="Clique para editar <?=$lista->first_name?>" role="button" 
-                            class="btn btn-info rounded-circle btn-md text-center">
-                            <i class="bi bi-person-gear text-dark"></i></a></td>
-                        <td class="text-center"><?=$lista->photoListDisabled();?></td>                                     
-                        <td class="text-center"><?=$lista->first_name?></td>
-                        <td class="text-center"><?=$lista->last_name?></td>
+                        <td class="text-center"><?=$lista->photoListDisabled();?></td>
+                        <td class="text-center"><?=$lista->rf;?></td>
+                        <td class="text-center text-uppercase"><?=$lista->user_name;?></td>
+                        <td class="text-center"><?=$lista->userPosition()->position_name;?></td>
                         <td class="text-center"><?=$lista->userUnit()->unit_name;?></td>
-                        <td class="text-center"><?=$lista->email;?></td>    
+                        <td class="text-center"><?=$lista->email;?></td>
                         <td class="text-center"><?=$lista->statusSpan();?></td>
-                        <td class="text-center"><?=$lista->level()->level_nome;?>
-                        <td class="text-center"><?=$lista->id;?></td>  
+                        <td class="text-center text-uppercase"><?=$lista->level()->level_nome;?>
+                        <td class="text-center"><?=$lista->id;?></td>
                     </tr>
                 <?php endforeach; ?>
                 <?php } ?>

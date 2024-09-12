@@ -52,26 +52,26 @@ class Patrimonys extends Admin
     }
 
        /**
-     * @param array|null $data
-     * @throws \Exception
+     * PATRIMONY LIST
      */
-    public function bens(?array $data): void
+    public function patrimony(): void
     {
+       
         $user = (new User())->findById($this->user->id);
 
         //create
         if (!empty($data["action"]) && $data["action"] == "create") {
             $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-            $bensCreate = new Patrimony();
-            $bensCreate->modelo_id = $data["modelo_id"];
-            $bensCreate->imei = $data["imei"];
-            $bensCreate->unit_id = $data["unit_id"];
-            $bensCreate->descricao = $data["descricao"];
-            $bensCreate->status = $data["status"];
-            $bensCreate->observacoes = $data["observacoes"];
-            $bensCreate->login_created = $user->login;
-            $bensCreate->created_at = date_fmt('', "Y-m-d h:m:s");
+            $patrimonysCreate = new Patrimony();
+            $patrimonysCreate->modelo_id = $data["modelo_id"];
+            $patrimonysCreate->imei = $data["imei"];
+            $patrimonysCreate->unit_id = $data["unit_id"];
+            $patrimonysCreate->descricao = $data["descricao"];
+            $patrimonysCreate->status = $data["status"];
+            $patrimonysCreate->observacoes = $data["observacoes"];
+            $patrimonysCreate->login_created = $user->login;
+            $patrimonysCreate->created_at = date_fmt('', "Y-m-d h:m:s");
 
             if($data["imei"] == ""){
                 $json['message'] = $this->message->warning("Informe o imei para criar o registro !")->icon()->render();
@@ -79,14 +79,14 @@ class Patrimonys extends Admin
                 return;
             }
 
-            if (!$bensCreate->save()) {
-                $json["message"] = $bensCreate->message()->render();
+            if (!$patrimonysCreate->save()) {
+                $json["message"] = $patrimonysCreate->message()->render();
                 echo json_encode($json);
                 return;
             }
 
-            $this->message->success("Bem {$bensCreate->bem_nome} cadastrado com sucesso...")->icon("emoji-grin me-1")->flash();
-            $json["redirect"] = url("/beta/patrimonio/bens/cadastrar");
+            $this->message->success("Bem {$patrimonysCreate->bem_nome} cadastrado com sucesso...")->icon("emoji-grin me-1")->flash();
+            $json["redirect"] = url("/beta/patrimonio/cadastrar");
 
             echo json_encode($json);
             return;
@@ -96,7 +96,7 @@ class Patrimonys extends Admin
         if (!empty($data["action"]) && $data["action"] == "update") {
             $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-            $bens_id = $data["bens_id"];
+            $patrimonys_id = $data["patrimonys_id"];
             $user_id = $data["user_id"];
             $modelo_id = $data["modelo_id"];
             $imei = $data["imei"];
@@ -106,24 +106,24 @@ class Patrimonys extends Admin
             $status = $data["status"];
             $observacoes = $data["observacoes"];
 
-            $bensUpdate = (new Patrimony())->findById($bens_id);
+            $patrimonysUpdate = (new Patrimony())->findById($patrimonys_id);
 
-            if (!$bensUpdate) {
+            if (!$patrimonysUpdate) {
                 $this->message->error("Você tentou gerenciar um bem que não existe")->flash();
-                echo json_encode(["redirect" => url("/beta/patrimonio/bens/lista")]);
+                echo json_encode(["redirect" => url("/beta/patrimonio/lista")]);
                 return;
             }
 
-            $bensUpdate->user_id = $user_id;
-            $bensUpdate->modelo_id = $modelo_id;
-            $bensUpdate->descricao = $descricao;
-            $bensUpdate->unit_id = $unit_id;
-            $bensUpdate->imei = $imei;
-            $bensUpdate->status = $status;
-            $bensUpdate->observacoes = $observacoes;
-            $bensUpdate->returned_at = date_fmt($returned_at, "Y-m-d h:m:s");
-            $bensUpdate->login_updated = $user->login;
-            $bensUpdate->updated_at = date_fmt('', "Y-m-d h:m:s");
+            $patrimonysUpdate->user_id = $user_id;
+            $patrimonysUpdate->modelo_id = $modelo_id;
+            $patrimonysUpdate->descricao = $descricao;
+            $patrimonysUpdate->unit_id = $unit_id;
+            $patrimonysUpdate->imei = $imei;
+            $patrimonysUpdate->status = $status;
+            $patrimonysUpdate->observacoes = $observacoes;
+            $patrimonysUpdate->returned_at = date_fmt($returned_at, "Y-m-d h:m:s");
+            $patrimonysUpdate->login_updated = $user->login;
+            $patrimonysUpdate->updated_at = date_fmt('', "Y-m-d h:m:s");
 
             if($data["descricao"] == ""){
                 $json['message'] = $this->message->warning("Descreva o patrimonio !!!")->icon()->render();
@@ -131,27 +131,27 @@ class Patrimonys extends Admin
                 return;
             }
 
-            if (!$bensUpdate->save()) {
-                $json["message"] = $bensUpdate->message()->render();
+            if (!$patrimonysUpdate->save()) {
+                $json["message"] = $patrimonysUpdate->message()->render();
                 echo json_encode($json);
                 return;
             }
 
-            $bensCreate = new BemHistorico();
-            $bensCreate->bens_id = $bens_id;
-            $bensCreate->user_id = $user_id;
-            $bensCreate->modelo_id = $modelo_id;
-            $bensCreate->imei = $imei;
-            $bensCreate->unit_id = $unit_id;
-            $bensCreate->descricao = $descricao;
-            $bensCreate->status = $status;
-            $bensCreate->observacoes = $observacoes;
-            $bensCreate->returned_at = date_fmt($returned_at, "Y-m-d h:m:s");
-            $bensCreate->login_created = $user->login;
-            $bensCreate->created_at = date_fmt('', "Y-m-d h:m:s");
-            $bensCreate->save();
+            $patrimonysCreate = new BemHistorico();
+            $patrimonysCreate->patrimonys_id = $patrimonys_id;
+            $patrimonysCreate->user_id = $user_id;
+            $patrimonysCreate->modelo_id = $modelo_id;
+            $patrimonysCreate->imei = $imei;
+            $patrimonysCreate->unit_id = $unit_id;
+            $patrimonysCreate->descricao = $descricao;
+            $patrimonysCreate->status = $status;
+            $patrimonysCreate->observacoes = $observacoes;
+            $patrimonysCreate->returned_at = date_fmt($returned_at, "Y-m-d h:m:s");
+            $patrimonysCreate->login_created = $user->login;
+            $patrimonysCreate->created_at = date_fmt('', "Y-m-d h:m:s");
+            $patrimonysCreate->save();
 
-            $json["message"] = $this->message->success("Bem {$bensUpdate->bem_nome} atualizado com sucesso !!!")->icon("emoji-grin me-1")->render();
+            $json["message"] = $this->message->success("Bem {$patrimonysUpdate->bem_nome} atualizado com sucesso !!!")->icon("emoji-grin me-1")->render();
             echo json_encode($json);
             return;
         }
@@ -159,11 +159,11 @@ class Patrimonys extends Admin
         //delete
         if (!empty($data["action"]) && $data["action"] == "delete") {
             $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $updateDelete = (new Patrimony())->findById($data["bens_id"]);
+            $updateDelete = (new Patrimony())->findById($data["patrimonys_id"]);
 
             if (!$updateDelete) {
                 $this->message->error("Você tentou deletar um patrimônio que não existe")->flash();
-                echo json_encode(["redirect" => url("/beta/patrimonio/bens/lista")]);
+                echo json_encode(["redirect" => url("/beta/patrimonio/lista")]);
                 return;
             }
 
@@ -175,38 +175,38 @@ class Patrimonys extends Admin
             $updateDelete->destroy();
 
             $this->message->success("O patrimônio foi excluído com sucesso...")->flash();
-            echo json_encode(["redirect" => url("/beta/patrimonio/bens/lista")]);
+            echo json_encode(["redirect" => url("/beta/patrimonio/lista")]);
 
             return;
         }
 
-        $bensEdit = null;
+        $PatrimonysEdit = null;
         $historico = null;
         
-        if (!empty($data["bens_id"])) {
-            $bemId = filter_var($data["bens_id"], FILTER_VALIDATE_INT);
-            $bensEdit = (new Patrimony())->findById($bemId);
-            $historico = (new BemHistorico())->find("status = :s AND bens_id = :b", "s=actived&b={$bemId}")->fetch(true);
+        if (!empty($data["patrimonys_id"])) {
+            $bemId = filter_var($data["patrimonys_id"], FILTER_VALIDATE_INT);
+            $PatrimonysEdit = (new Patrimony())->findById($bemId);
+            $historico = (new BemHistorico())->find("status = :s AND patrimonys_id = :b", "s=actived&b={$bemId}")->fetch(true);
         }
 
-        $bensCreates = new Patrimony();
+        $patrimonysCreates = new Patrimony();
        
         $head = $this->seo->render(
-            CONF_SITE_NAME . " | " . ($bensEdit ? "Patrimonys de {$bensEdit->bens_nome}" : "Não Encontrado"),
+            "Patrimonios - " . CONF_SITE_NAME,
             CONF_SITE_DESC,
-            url("/admin"),
-            url("/admin/assets/images/image.jpg"),
+            url(),
+            theme("/assets/images/favicon.ico"),
             false
         );
 
-        echo $this->view->render("widgets/bens/bens", [
-            "app" => "beta/patrimonio/bens",
+        echo $this->view->render("widgets/patrimonys/patrimony", [
             "head" => $head,
-            "bens" => $bensEdit,
-            "benscreates" => $bensCreates,
+            "patrimonys" => $PatrimonysEdit,
+            "patrimonyscreates" => $patrimonysCreates,
             "historico" => $historico,
-            "urls" => "perfil",
-            "icon" => "person"
+            "urls" => "patrimonios",
+            "namepage" => "Patrimonios",
+            "name" => "Lista"
         ]);
     }
 

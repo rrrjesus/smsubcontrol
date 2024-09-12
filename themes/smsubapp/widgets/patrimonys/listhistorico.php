@@ -27,7 +27,7 @@
                         <td class="text-center fw-semibold"><a href="#" role="button" aria-disabled="true" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
                         data-bs-title="Clique para editar" class="btn btn-sm btn-outline-danger rounded-circle fw-bold me-2"><i class="bi bi-trash"></i></a></td>
                         <td class="text-center fw-semibold">
-                            <?php if(!empty($lista->user()->first_name) && !empty($lista->user()->status != "trash")):
+                            <?php if(!empty($lista->user()->user_name) && !empty($lista->user()->status != "trash")):
                                 echo $lista->user()->fullName();
                         else:
                             echo "EXCLUÍDO";

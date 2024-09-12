@@ -65,7 +65,7 @@ class Control extends Admin
 
         if (!empty($data["search"]) && str_search($data["search"]) != "all") {
             $search = str_search($data["search"]);
-            $subscriptions = (new AppSubscription())->find("user_id IN(SELECT id FROM users WHERE MATCH(first_name, last_name, email) AGAINST(:s))",
+            $subscriptions = (new AppSubscription())->find("user_id IN(SELECT id FROM users WHERE MATCH(user_name, email) AGAINST(:s))",
                 "s={$search}");
             if (!$subscriptions->count()) {
                 $this->message->info("Sua pesquisa não retornou resultados")->flash();

@@ -103,8 +103,7 @@ class Users extends Admin
 
             $userProfile->login = $data["login"];
             $userProfile->rf = $data["rf"];
-            $userProfile->first_name = $data["first_name"];
-            $userProfile->last_name = $data["last_name"];
+            $userProfile->user_name = $data["user_name"];
             $userProfile->email = $data["email"];
             $userProfile->cell_phone = preg_replace("/[^0-9]/", "", $data["cell_phone"]);
             $userProfile->fixed_phone = preg_replace("/[^0-9]/", "", $data["fixed_phone"]);
@@ -126,8 +125,8 @@ class Users extends Admin
                     $upload->remove("storage/{$userProfile->photo}");
                 }
 
-                if (!$userProfile->photo = $upload->image($file, "{$userProfile->first_name} {$userProfile->last_name} " . time(), 360)) {
-                    $json["message"] = $upload->message()->before("Ooops {$userProfile->user->first_name}! ")->after(".")->render();
+                if (!$userProfile->photo = $upload->image($file, "{$userProfile->user_name}" . time(), 360)) {
+                    $json["message"] = $upload->message()->before("Ooops {$userProfile->user->user_name}! ")->after(".")->render();
                     echo json_encode($json);
                     return;
                 }
@@ -196,8 +195,7 @@ class Users extends Admin
             $userCreate = new User();
             $userCreate->login = $data["login"];
             $userCreate->rf = $data["rf"];
-            $userCreate->first_name = $data["first_name"];
-            $userCreate->last_name = $data["last_name"];
+            $userCreate->user_name = $data["user_name"];
             $userCreate->email = $data["email"];
             $userCreate->cell_phone = preg_replace("/[^0-9]/", "", $data["cell_phone"]);
             $userCreate->fixed_phone = preg_replace("/[^0-9]/", "", $data["fixed_phone"]);
@@ -237,7 +235,7 @@ class Users extends Admin
                 return;
             }
 
-            $this->message->success("Usuário {$userCreate->first_name} cadastrado com sucesso...")->icon("person")->flash();
+            $this->message->success("Usuário {$userCreate->user_name} cadastrado com sucesso...")->icon("person")->flash();
             $json["redirect"] = url("/painel/usuarios/cadastrar");
 
             echo json_encode($json);
@@ -257,8 +255,7 @@ class Users extends Admin
 
             $userUpdate->login = $data["login"];
             $userUpdate->rf = $data["rf"];
-            $userUpdate->first_name = $data["first_name"];
-            $userUpdate->last_name = $data["last_name"];
+            $userUpdate->user_name = $data["user_name"];
             $userUpdate->email = $data["email"];
             $userUpdate->cell_phone = preg_replace("/[^0-9]/", "", $data["cell_phone"]);
             $userUpdate->fixed_phone = preg_replace("/[^0-9]/", "", $data["fixed_phone"]);
@@ -280,14 +277,14 @@ class Users extends Admin
                     $upload->remove("storage/{$userUpdate->photo}");
                 }
 
-                if (!$userUpdate->photo = $upload->image($file, "{$userUpdate->first_name} {$userUpdate->last_name} " . time(), 360)) {
-                    $json["message"] = $upload->message()->before("Ooops {$userUpdate->user->first_name}! ")->after(".")->render();
+                if (!$userUpdate->photo = $upload->image($file, "{$userUpdate->user_name} " . time(), 360)) {
+                    $json["message"] = $upload->message()->before("Ooops {$userUpdate->user->user_name}! ")->after(".")->render();
                     echo json_encode($json);
                     return;
                 }
             }
 
-            if($data["login"] == "" || $data["rf"] == "" || $data["category_id"] == "" || $data["unit_id"] == "" || $data["position_id"] == "" || $data["status"] == ""){
+            if($data["user_name"] == "" ||  $data["login"] == "" || $data["rf"] == "" || $data["category_id"] == "" || $data["unit_id"] == "" || $data["position_id"] == "" || $data["status"] == ""){
                 $json['message'] = $this->message->warning("Preencha os campos obrigatórios para criar o registro !")->icon()->render();
                 echo json_encode($json);
                 return;
@@ -299,7 +296,7 @@ class Users extends Admin
                 return;
             }
 
-            $this->message->success("Usuário {$userUpdate->login} - {$userUpdate->first_name} atualizado com sucesso !!!")->icon("person")->flash();
+            $this->message->success("Usuário {$userUpdate->login} - {$userUpdate->user_name} atualizado com sucesso !!!")->icon("person")->flash();
             echo json_encode(["reload" => true]);
             return;
         }
@@ -324,7 +321,7 @@ class Users extends Admin
                 return;
             }
 
-            $this->message->success("Usuário {$userActived->login} - {$userActived->first_name} reativado com sucesso !!!")->icon("person")->flash();
+            $this->message->success("Usuário {$userActived->login} - {$userActived->user_name} reativado com sucesso !!!")->icon("person")->flash();
             redirect("/painel/usuarios");
             return;
         }
@@ -355,7 +352,7 @@ class Users extends Admin
                 return;
             }
 
-            $this->message->success("Usuário {$userActived->login} - {$userActived->first_name} desativado com sucesso !!!")->icon("person")->flash();
+            $this->message->success("Usuário {$userActived->login} - {$userActived->user_name} desativado com sucesso !!!")->icon("person")->flash();
             redirect("/painel/usuarios");
             return;
         }
@@ -383,7 +380,7 @@ class Users extends Admin
 
             $userDelete->destroy();
 
-            $this->message->success("O usuário com RF {$userDelete->rf} - {$userDelete->first_name} foi excluído com sucesso...")->icon("person")->flash();
+            $this->message->success("O usuário com RF {$userDelete->rf} - {$userDelete->user_name} foi excluído com sucesso...")->icon("person")->flash();
             redirect("/painel/usuarios");
 
             return;

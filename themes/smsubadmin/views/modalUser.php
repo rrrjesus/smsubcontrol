@@ -7,7 +7,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body fw-semibold">
-        Deseja ativar o usuário : <?=$user->first_name?> ?
+        Deseja ativar o usuário : <?=$user->user_name?> ?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-danger btn-sm fw-semibold" data-bs-dismiss="modal"><i class="bi bi-trash"></i> Não</button>

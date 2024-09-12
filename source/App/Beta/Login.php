@@ -68,7 +68,7 @@ class Login extends Controller
                 $login = $auth->login($data["email"], $data["password"], true, 5);
 
                 if ($login) {
-                    $this->message->success("Seja bem-vindo(a) de volta " . Auth::user()->first_name . "!")->icon()->flash();
+                    $this->message->success("Seja bem-vindo(a) de volta " . Auth::user()->user_name . "!")->icon()->flash();
                     $json["redirect"] = url("/beta/home");
                 } else {
                     $json['message'] = $auth->message()->before("Ooops! ")->icon()->render();

@@ -46,10 +46,7 @@ $(function () {
             rf: {
                 required: true
             },
-            first_name: {
-                required: true
-            },
-            last_name: {
+            user_name: {
                 required: true
             },
             position_id: {
@@ -72,10 +69,7 @@ $(function () {
             rf: {
                 required: "Digite o RF !!!"
             },
-            first_name: {
-                required: "Digite o nome !!!"
-            },
-            last_name: {
+            user_name: {
                 required: "Digite o sobrenome !!!"
             },
             position_id: {

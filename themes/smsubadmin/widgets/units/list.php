@@ -42,7 +42,6 @@
                         <th class="text-center">TEL RESP</th>
                         <th class="text-center">STATUS</th>
                         <th class="text-center">DESATIVAR</th>
-                        <th class="text-center">EXCLUIR</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -52,7 +51,7 @@
                         <td class="text-center"><a href="unidades/editar/<?=$lista->id?>" data-bs-togglee="tooltip" 
                             data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                             data-bs-title="Clique para editar <?=$lista->unit_name?>" role="button" 
-                            class="btn btn-outline-warning rounded-circle btn-md text-center">
+                            class="btn btn-outline-warning rounded-circle btn-md text-center"><?=$lista->id;?>
                             <i class="bi bi-pencil text-secundary"></i></a></td>
                         <td class="text-center"><?=$lista->photoList();?></td>
                         <td class="text-center text-uppercase"><?=$lista->unit_name;?></td>
@@ -64,7 +63,6 @@
                         <td class="text-center text-uppercase"><?=$lista->it_professional;?></td>
                         <td class="text-center"><?=$lista->cell_phone;?></td>
                         <td class="text-center text-uppercase"><?=$lista->statusBadge();?>
-                        <td class="text-center"><?=$lista->id;?></td>
                         <td class="text-center"><?=$lista->id;?></td>
                     </tr>
                 <?php endforeach; ?>

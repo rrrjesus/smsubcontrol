@@ -8,11 +8,11 @@
                      src="<?= image($post->cover, 1280); ?>"/>
                 <div class="post_page_meta">
                     <div class="author">
-                        <div><img alt="<?= "{$post->author()->first_name} {$post->author()->last_name}"; ?>"
-                                  title="<?= "{$post->author()->first_name} {$post->author()->last_name}"; ?>"
+                        <div><img alt="<?= "{$post->author()->user_name}"; ?>"
+                                  title="<?= "{$post->author()->user_name}"; ?>"
                                   src="<?= image($post->author()->photo, 200); ?>"/></div>
                         <div class="name">
-                            Por: <?= "{$post->author()->first_name} {$post->author()->last_name}"; ?>
+                            Por: <?= "{$post->author()->user_name}"; ?>
                         </div>
                     </div>
                     <div class="date">Dia <?= date_fmt($post->post_at); ?></div>

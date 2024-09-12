@@ -73,8 +73,8 @@ $router->dispatch();
         <option value="DELETE">DELETE</option>
     </select>
 
-    <input type="text" name="first_name" value="Robson"/>
-    <input type="text" name="last_name" value="Leite"/>
+    <input type="text" name="user_name" value="Robson"/>
+
     <input type="text" name="email" value="cursos@upinside.com.br"/>
 
     <button>CoffeeCode</button>

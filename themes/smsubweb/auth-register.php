@@ -13,12 +13,7 @@
 
             <label>
                 <div><span class="icon-user">Nome:</span></div>
-                <input type="text" name="first_name" placeholder="Primeiro nome:" required/>
-            </label>
-
-            <label>
-                <div><span class="icon-user-plus">Sobrenome:</span></div>
-                <input type="text" name="last_name" placeholder="Último nome:" required/>
+                <input type="text" name="user_name" placeholder="Primeiro nome:" required/>
             </label>
 
             <label>

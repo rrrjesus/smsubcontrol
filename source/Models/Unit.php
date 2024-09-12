@@ -61,9 +61,9 @@ class Unit extends Model
     
     public function photoListDisabled(): ?string
     {
-        if($this->photo && file_exists(CONF_UPLOAD_DIR.'/'.$this->photo)){
-            return '<a href="../../'.CONF_UPLOAD_DIR.'/'.$this->photo.'" target="_blank">
-                    <img src="'.image($this->photo, 30,30).'" class="img-thumbnail rounded-circle float-left"></a>';
+        if($this->photo && file_exists('themes/'.CONF_VIEW_ADMIN.'/assets/images/assinatura/'.$this->photo)){
+            return '<a href="../../themes/'.CONF_VIEW_ADMIN.'/assets/images/assinatura/'.$this->photo.'" target="_blank">
+                    <img src="../../themes/'.CONF_VIEW_ADMIN.'/assets/images/assinatura/'.$this->photo.'" height="40" width="40" class="img-thumbnail rounded-circle float-left"></a>';
         }else{
             return '<a href="../../storage/images/avatar.jpg" target="_blank">
                     <img src="../../storage/images/avatar.jpg" class="img-thumbnail rounded-circle float-left"
@@ -106,7 +106,7 @@ class Unit extends Model
     public function save(): bool
     {
 
-        if (!is_email($this->email)) {
+        if (!empty($this->email) && (!is_email($this->email))) {
             $this->message->warning("O e-mail informado não tem um formato válido")->icon();
             return false;
         }
@@ -115,7 +115,7 @@ class Unit extends Model
         if (!empty($this->id)) {
             $unitId = $this->id;
 
-            if ($this->find("email = :e AND id != :i", "e={$this->email}&i={$unitId}", "id")->fetch()) {
+            if (!empty($this->email) && $this->find("email = :e AND id != :i", "e={$this->email}&i={$unitId}", "id")->fetch()) {
                 $this->message->warning("O e-mail informado já está cadastrado");
                 return false;
             }

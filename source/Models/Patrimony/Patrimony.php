@@ -22,7 +22,7 @@ class Patrimony extends Model
      */
     public function __construct()
     {
-        parent::__construct("patrimonys", ["id"], ["patrimonys_name", "brand_id", "product_id", "description", "unit_id", "imei", "status", "photo", "observations"]);
+        parent::__construct("patrimonys", ["id"], ["user_id","patrimonys_name", "brand_id", "product_id", "description", "unit_id", "imei", "status", "photo", "observations"]);
     }
 
     /**
@@ -75,6 +75,44 @@ class Patrimony extends Model
             return(new User())->findById($this->user_id);
         }
         return null;
+    }
+
+    /**
+     * @return null|PatrimonyMarcas
+     */
+    public function productBrand(string $brand): ?Brand
+    {
+        if($brand) {
+            return(new Brand())->findById($brand);
+        }
+        return null;
+    }
+
+    static function completeBrand($columns): ?Brand
+    {
+        $stm = (new Brand())->find("status = :s","s=actived", $columns);
+        $array = array();
+
+        if(!empty($stm)):
+            foreach ($stm->fetch(true) as $row):
+                $array[] = $row->brand_name;
+            endforeach;
+            echo json_encode($array); //Return the JSON Array
+        endif;
+        return null;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function statusBadgeUser($status): string
+    {
+        if($status == 'disabled'){
+            return '<span class="badge text-bg-danger ms-2">Inativo</span>';
+        }else{
+            return '<span class="badge text-bg-success ms-2">Ativo</span>';
+        }
+        return null;  
     }
 
     /**
@@ -166,7 +204,7 @@ class Patrimony extends Model
 
         if(!empty($stm)):
             foreach ($stm->fetch(true) as $row):
-                $array[] = $row->first_name;
+                $array[] = $row->user_name;
             endforeach;
             echo json_encode($array); //Return the JSON Array
         endif;
@@ -181,17 +219,6 @@ class Patrimony extends Model
             return 'Inativo';
         }
         return null; 
-    }
-
-    /**
-     * @return null|PatrimonyMarcas
-     */
-    public function productBrand(string $brand): ?Brand
-    {
-        if($brand) {
-            return(new Brand())->findById($brand);
-        }
-        return null;
     }
 
     /**

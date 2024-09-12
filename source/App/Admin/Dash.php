@@ -100,7 +100,7 @@ class Dash extends Admin
      */
     public function logoff(): void
     {
-        $this->message->success("Você saiu com sucesso {$this->user->first_name}.")->flash();
+        $this->message->success("Você saiu com sucesso {$this->user->user_name}.")->flash();
 
         Auth::logout();
         redirect("/painel/login");

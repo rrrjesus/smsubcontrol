@@ -14,7 +14,7 @@
     <div class="row justify-content-center mb-4">
         <div class="col-md-12 ml-auto text-center">
             <a data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip"
-                data-bs-title="Clique para sair" class="btn btn-outline-danger btn-sm me-3 fw-semibold" href="<?=url("/painel/patrimonio/marcas")?>"
+                data-bs-title="Clique para sair" class="btn btn-outline-danger btn-sm me-3 fw-semibold" href="<?=url("/beta/contatos")?>"
                 role="button"><i class="bi bi-arrow-right-circle me-2 mt-1"></i>Sair</a>
 
         </div>
@@ -22,29 +22,40 @@
 
     <div class="d-flex justify-content-center">
         <div class="col-12">
-            <table id="brandsDisabled" class="table table-bordered table-sm border-secondary table-hover" style="width:100%">
-                <thead class="table-secondary">
+            <table id="unitsDisabled" class="table table-bordered table-sm border-warning table-hover" style="width:100%">
+                <thead class="table-warning">
                     <tr>
-                        <th class="text-center">EDITAR</th>
-                        <th class="text-center">MARCA</th>
-                        <th class="text-center">DESCRICAO</th>
+                        <th class="text-center">FOTO</th>
+                        <th class="text-center">NOME</th>
+                        <th class="text-center">DESCRIÇÃO</th>
+                        <th class="text-center">TELEFONE</th>
+                        <th class="text-center">E-MAIL</th>
+                        <th class="text-center">ENDEREÇO</th>
+                        <th class="text-center">CEP</th>
+                        <th class="text-center">RESPONSAVEL</th>
+                        <th class="text-center">TEL RESP</th>
                         <th class="text-center">STATUS</th>
-                        <th class="text-center">ATIVAR</th>
+                        <th class="text-center">DESATIVAR</th>
                     </tr>
                 </thead>
                 <tbody>
-                <?php if(!empty($brands)){ ?>
-                <?php foreach ($brands as $lista): ?>
-                <tr>
-                    <td class="text-center fw-semibold"><a href="<?= url("/beta/patrimonio/marcas/editar/{$lista->id}"); ?>" role="button" aria-disabled="true" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
-                    data-bs-title="Clique para editar" class="btn btn-sm btn-outline-warning rounded-circle fw-bold me-2"><i class="bi bi-pencil text-secondary"></i></a></td>
-                    <td class="text-center fw-semibold"><?=(!empty($lista->brand_name) ? $lista->brand_name : "")?></td>
-                    <td class="text-center fw-semibold"><?=(!empty($lista->description) ? $lista->description : "")?></td>
-                    <td class="text-center fw-semibold"><?=$lista->statusBadge()?></td>
-                    <td class="text-center fw-semibold"><?=$lista->id?></td>
-                </tr>
+                <?php if(!empty($units)){ ?>
+                <?php foreach ($units as $lista): ?>
+                    <tr>
+                        <td class="text-center"><?=$lista->photoListDisabled();?></td>
+                        <td class="text-center text-uppercase"><?=$lista->unit_name;?></td>
+                        <td class="text-center text-uppercase"><?=$lista->description;?></td>
+                        <td class="text-center text-uppercase"><?=$lista->fixed_phone;?></td>
+                        <td class="text-center"><?=$lista->email;?></td>
+                        <td class="text-center text-uppercase"><?=$lista->adress;?></td>
+                        <td class="text-center"><?=$lista->zip;?></td>
+                        <td class="text-center text-uppercase"><?=$lista->it_professional;?></td>
+                        <td class="text-center"><?=$lista->cell_phone;?></td>
+                        <td class="text-center text-uppercase"><?=$lista->statusBadge();?>
+                        <td class="text-center"><?=$lista->id;?></td>
+                    </tr>
                 <?php endforeach; ?>
-                <?php }else{redirect("/painel/patrimonio/marcas");} ?>
+                <?php }else{redirect("/painel/unidades");} ?>
             </tbody>
         </table>
     </div>     

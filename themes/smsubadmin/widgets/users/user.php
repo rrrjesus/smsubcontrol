@@ -48,19 +48,12 @@
 
                             </div>
 
-                            <div class="col-md-3 mb-1">
+                            <div class="col-md-6 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputNome"><strong><i class="bi bi-person me-1"></i> Nome</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Digite o nome" class="form-control form-control-sm"
-                                    name="first_name" placeholder="NOME">
+                                    name="user_name" placeholder="NOME">
 
-                            </div>
-
-                            <div class="col-md-3 mb-1">
-                                <label class="col-form-label col-form-label-sm" for="inputSobreNome"><strong><i class="bi bi-person-add me-1"></i> SobreNome</strong></label>
-                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                    data-bs-title="Digite o sobrenome" class="form-control form-control-sm"
-                                    name="last_name" placeholder="SOBRENOME">
                             </div>
 
                             <div class="col-md-2 mb-1">
@@ -211,18 +204,11 @@
 
                         </div>
 
-                        <div class="col-md-3 mb-1">
+                        <div class="col-md-6 mb-1">
                             <label class="col-form-label col-form-label-sm" for="inputNome"><strong><i class="bi bi-person me-1"></i> Nome</strong></label>
                             <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                 data-bs-title="Digite o nome" class="form-control form-control-sm"
-                                name="first_name" placeholder="NOME" value="<?=$user->first_name?>">
-                        </div>
-
-                        <div class="col-md-3 mb-1">
-                            <label class="col-form-label col-form-label-sm" for="inputSobreNome"><strong><i class="bi bi-person-add me-1"></i> SobreNome</strong></label>
-                            <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                data-bs-title="Digite o sobrenome" class="form-control form-control-sm"
-                                name="last_name" placeholder="SOBRENOME" value="<?=$user->last_name?>">
+                                name="user_name" placeholder="NOME" value="<?=$user->user_name?>">
                         </div>
 
                         <div class="col-md-2 mb-1">

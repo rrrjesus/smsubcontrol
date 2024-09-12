@@ -32,6 +32,12 @@ $(function () {
             "oPaginate": {"sNext": "Próximo","sPrevious": "Anterior","sFirst": "Primeiro","sLast": "Último"},
             "oAria": {"sSortAscending": "Ordenar colunas de forma ascendente","sPrevious": "Ordenar colunas de forma descendente"}
         },
+        // columnDefs: [
+        //     {
+        //         target: 2,
+        //         visible: false
+        //     },
+        // ],
         // dom: "lBftipr",
         "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
         "aaSorting": [0, 'asc']

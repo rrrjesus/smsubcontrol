@@ -317,7 +317,7 @@ class Web extends Controller
             $login = $auth->login($data['email'], $data['password'], $save);
 
             if ($login) {
-                $this->message->success("Seja bem-vindo(a) de volta " . Auth::user()->first_name . "!")->icon()->flash();
+                $this->message->success("Seja bem-vindo(a) de volta " . Auth::user()->user_name . "!")->icon()->flash();
                 $json['redirect'] = url("/beta");
             } else {
                 $json['message'] = $auth->message()->before("Ooops! ")->icon()->render();
@@ -468,8 +468,7 @@ class Web extends Controller
             $auth = new Auth();
             $user = new User();
             $user->bootstrap(
-                $data["first_name"],
-                $data["last_name"],
+                $data["user_name"],
                 $data["email"],
                 $data["password"]
             );

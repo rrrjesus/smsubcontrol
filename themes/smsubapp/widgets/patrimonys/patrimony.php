@@ -6,7 +6,7 @@
 <div class="col-xl-12">
     <div class="card mb-4">
 
-        <?php if (!$bens): ?>
+        <?php if (!$patrimonys): ?>
 
         <!-- Cadastro de Bens -->
 
@@ -15,7 +15,7 @@
                     <div class="container-fluid">
                         <div class="d-flex justify-content-center">
                             <div class="col-12">
-                                <form class="row gy-2 gx-3 align-items-center needs-validation" novalidate action="<?= url("/beta/patrimonio/bens/cadastrar"); ?>" method="post" enctype="multipart/form-data">
+                                <form class="row gy-2 gx-3 align-items-center needs-validation" novalidate action="<?= url("/beta/patrimonio/cadastrar"); ?>" method="post" enctype="multipart/form-data">
                                     
                                 <input type="hidden" name="action" value="create"/>
 
@@ -29,9 +29,16 @@
                                             <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSetor"><strong><i class="bi bi-building ms-3 me-3"></i> ID/Marca/Modelo</strong></label>
                                             <select class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                                 data-bs-title="Digite a Marca" name="modelo_id">
-                                                <?=$benscreates->marcamodeloSelect()?>
+                                                <?=$patrimonyscreates->marcamodeloSelect()?>
                                             </select>
                                         </div> 
+
+                                        <div class="col-md-5 mb-1">
+                                            <label class="col-form-label col-form-label-sm" for="inputSobreNome"><strong><i class="bi bi-person-add me-1"></i> Cargo</strong></label>
+                                            <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                                data-bs-title="Cargo" class="form-control form-control-sm position_id"
+                                                name="position_id" placeholder="Cargo" value="<?=$user->userPosition()->id.' - '.$user->userPosition()->position_name?>">
+                                        </div>
 
                                         <div class="col-md-3 mb-1">
                                             <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputCelular"><strong><i class="bi bi-phone me-1"></i> Imei</strong></label>
@@ -43,7 +50,7 @@
                                             <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSetor"><strong><i class="bi bi-building ms-3 me-3"></i> Usuario</strong></label>
                                             <select class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                                 data-bs-title="Digite ò Usuario" name="user_id">
-                                                <?=$benscreates->userSelect()?>
+                                                <?=$patrimonyscreates->userSelect()?>
                                             </select>
                                         </div>  
 
@@ -61,7 +68,7 @@
                                             <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSetor"><strong><i class="bi bi-building ms-3 me-3"></i> Unit</strong></label>
                                             <select class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                                 data-bs-title="Digite a Unit" name="unit_id">
-                                                <?=$benscreates->unitSelect()?>
+                                                <?=$patrimonyscreates->unitSelect()?>
                                             </select>
                                         </div>  
 
@@ -92,18 +99,18 @@
                                     </div>
 
                                     <div class="col-5">
-                        <strong><label for="inputLogoTitle" class="col-4 col-form-label col-form-label-sm">SMSUB/SUBS</label></strong>
-                        <input tabindex="8" data-bs-togglee="tooltip" data-bs-placement="top" maxlength="50" data-bs-custom-class="custom-tooltip"
-                                value="SMSUB" data-bs-title="Digite a Secretaria ou Subprefeitura" class="form-control form-control-sm border-<?=CONF_WEB_COLOR;?> secsubinp" name="secsubinp" id="secsubinp" type="text" placeholder="DIGITE A SECRETARIA/SUBPREFEIRURA"/>
-                    </div>
+                                        <strong><label for="inputLogoTitle" class="col-4 col-form-label col-form-label-sm">SMSUB/SUBS</label></strong>
+                                        <input tabindex="8" data-bs-togglee="tooltip" data-bs-placement="top" maxlength="50" data-bs-custom-class="custom-tooltip"
+                                                value="SMSUB" data-bs-title="Digite a Secretaria ou Subprefeitura" class="form-control form-control-sm border-<?=CONF_WEB_COLOR;?> secsubinp" name="secsubinp" id="secsubinp" type="text" placeholder="DIGITE A SECRETARIA/SUBPREFEIRURA"/>
+                                    </div>
 
 
                                     <div class="row justify-content-center mt-4 mb-3">
                                         <div class="col-auto">
                                             <button data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
                                                 data-bs-title="Clique para criar o registro" class="btn btn-sm btn-outline-success fw-bold me-2"><i class="bi bi-disc-fill me-2"></i>CADASTRAR</button>
-                                            <a href="<?=url("/beta/patrimonio/bens/lista")?>" role="button" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
-                                            data-bs-title="Clique para listar os bens" class="btn btn-sm btn-outline-smsub fw-bold me-2"><i class="bi bi-list me-2"></i>LISTAR</a>
+                                            <a href="<?=url("/beta/patrimonios/lista")?>" role="button" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
+                                            data-bs-title="Clique para listar os patrimonios" class="btn btn-sm btn-outline-smsub fw-bold me-2"><i class="bi bi-list me-2"></i>LISTAR</a>
                                         </div>
                                     </div>
                                 </form>
@@ -127,12 +134,12 @@
 
         <?php else: ?>
 
-            <div class="card-header text-center fw-bold fs-6 pt-1 pb-1 text-<?=CONF_APP_COLOR?>"><i class="bi bi-person"></i>   <?=CONF_SITE_NAME?> 2024 - BENS - ID <?=$bens->id?></div>
+            <div class="card-header text-center fw-bold fs-6 pt-1 pb-1 text-<?=CONF_APP_COLOR?>"><i class="bi bi-person"></i>   <?=CONF_SITE_NAME?> 2024 - BENS - ID <?=$patrimonys->id?></div>
                 <div class="card-body">
                     <div class="container-fluid">
                         <div class="d-flex justify-content-center">
                             <div class="col-12">
-                                <form class="row gy-2 gx-3 align-items-center needs-validation" novalidate action="<?= url("/beta/patrimonio/bens/editar/{$bens->id}"); ?>" method="post" enctype="multipart/form-data">
+                                <form class="row gy-2 gx-3 align-items-center needs-validation" novalidate action="<?= url("/beta/patrimonio/editar/{$patrimonys->id}"); ?>" method="post" enctype="multipart/form-data">
                                     
                                 <input type="hidden" name="action" value="update"/>
 
@@ -145,37 +152,37 @@
                                         <div class="col-md-2 mb-1">
                                             <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputCelular"><strong><i class="bi bi-phone me-1"></i> Data Entrada</strong></label>
                                             <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                            data-bs-title="Data Entrada" class="form-control form-control-sm mask-date" name="created_at" value="<?=date_fmt($bens->created_at, "d/m/Y");?>" placeholder="00/00/0000"  disabled readonly>
+                                            data-bs-title="Data Entrada" class="form-control form-control-sm mask-date" name="created_at" value="<?=date_fmt($patrimonys->created_at, "d/m/Y");?>" placeholder="00/00/0000"  disabled readonly>
                                         </div>
 
                                         <div class="col-md-3 mb-1">
                                             <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSetor"><strong><i class="bi bi-building ms-3 me-3"></i> ID/Marca/Modelo</strong></label>
                                             <select class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                                 data-bs-title="Digite o Modelo" name="modelo_id">
-                                                <option value="<?=$bens->bemModelo()->id?>" selected><?=$bens->bemModelo()->id.' - '.$bens->bemMarcas($bens->bemModelo()->marca_id)->brand_name.' - '.$bens->bemModelo()->modelo_nome?></option>
-                                                <?=$benscreates->marcamodeloSelect()?>
+                                                <option value="<?=$patrimonys->bemModelo()->id?>" selected><?=$patrimonys->bemModelo()->id.' - '.$patrimonys->bemMarcas($patrimonys->bemModelo()->marca_id)->brand_name.' - '.$patrimonys->bemModelo()->modelo_nome?></option>
+                                                <?=$patrimonyscreates->marcamodeloSelect()?>
                                             </select>
                                         </div> 
 
                                         <div class="col-md-2 mb-1">
                                             <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputCelular"><strong><i class="bi bi-phone me-1"></i> Imei</strong></label>
                                             <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                            data-bs-title="Imei" class="form-control form-control-sm mask-imei" name="imei" value="<?=$bens->imei?>" placeholder="15 NUMEROS">
+                                            data-bs-title="Imei" class="form-control form-control-sm mask-imei" name="imei" value="<?=$patrimonys->imei?>" placeholder="15 NUMEROS">
                                         </div>
 
                                         <div class="col-md-3 mb-1">
                                             <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSetor"><strong><i class="bi bi-building ms-3 me-3"></i> Usuario</strong></label>
                                             <select class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                                 data-bs-title="Digite ò Usuario" name="user_id">
-                                                <option value="<?=$bens->user()->id?>" selected><?=$bens->user()->login.' - '.$bens->user()->fullName()?></option>
-                                                <?=$benscreates->userSelect()?>
+                                                <option value="<?=$patrimonys->user()->id?>" selected><?=$patrimonys->user()->login.' - '.$patrimonys->user()->fullName()?></option>
+                                                <?=$patrimonyscreates->userSelect()?>
                                             </select>
                                         </div>  
 
                                         <div class="col-md-2 mb-1">
                                             <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputCelular"><strong><i class="bi bi-phone me-1"></i> Data Entrega</strong></label>
                                             <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                            data-bs-title="Data Devolução" class="form-control form-control-sm mask-date" name="returned_at" value="<?=date_fmt($bens->returned_at, "d/m/Y");?>" placeholder="15 NUMEROS">
+                                            data-bs-title="Data Devolução" class="form-control form-control-sm mask-date" name="returned_at" value="<?=date_fmt($patrimonys->returned_at, "d/m/Y");?>" placeholder="15 NUMEROS">
                                         </div>
 
                                     </div>
@@ -186,8 +193,8 @@
                                             <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSetor"><strong><i class="bi bi-building ms-3 me-3"></i> Unit</strong></label>
                                             <select class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                                 data-bs-title="Digite a Unit" name="unit_id">
-                                                <option value="<?=$bens->bemUnidade()->id?>" selected><?=$bens->bemUnidade()->unit_name?></option>
-                                                <?=$benscreates->unitSelect()?>
+                                                <option value="<?=$patrimonys->bemUnidade()->id?>" selected><?=$patrimonys->bemUnidade()->unit_name?></option>
+                                                <?=$patrimonyscreates->unitSelect()?>
                                             </select>
                                         </div>  
 
@@ -195,14 +202,14 @@
                                             <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSobreNome"><strong><i class="bi bi-person-add me-1"></i> Descrição</strong></label>
                                             <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                                 data-bs-title="Descrição" class="form-control form-control-sm"
-                                                name="descricao" placeholder="DESCRIÇÃO" id="descricao" value="<?=$bens->descricao?>" >
+                                                name="descricao" placeholder="DESCRIÇÃO" id="descricao" value="<?=$patrimonys->descricao?>" >
                                         </div>
 
                                         <div class="col-md-3 mb-1">
                                             <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSetor"><strong><i class="bi bi-building ms-3 me-3"></i> Status</strong></label>
                                             <select class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                                 data-bs-title="Digite o Status" name="status">
-                                                <?=$bens->statusSelect()?>
+                                                <?=$patrimonys->statusSelect()?>
                                             </select>
                                         </div>   
 
@@ -212,40 +219,57 @@
                                         <div class="mb-3 mb-1">
                                             <label for="textareaObservacoes" class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>"><i class="bi bi-exclamation-diamond me-1"></i><strong>Observações</strong></label>
                                             <textarea class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                            data-bs-title="Observações" name="observacoes" rows="2" ><?=$bens->observacoes?></textarea>
+                                            data-bs-title="Observações" name="observacoes" rows="2" ><?=$patrimonys->observacoes?></textarea>
                                         </div>
                                     </div>
 
                                     <div class="col-4">
-                        <strong><label for="inputCargo" class="col-4 col-form-label col-form-label-sm">CARGO</label></strong>
-                        <input tabindex="2" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
-                                data-bs-title="Digite o cargo que você ocupa" class="form-control form-control-sm border-<?=CONF_WEB_COLOR;?> cargoinp" type="text" maxlength="62" name="cargoinp" id="cargoinp" placeholder="DIGITE O CARGO"/>
-                    </div>
+                                        <strong><label for="inputCargo" class="col-4 col-form-label col-form-label-sm">CARGO</label></strong>
+                                        <input tabindex="2" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
+                                                data-bs-title="Digite o cargo que você ocupa" class="form-control form-control-sm border-<?=CONF_WEB_COLOR;?> cargoinp" type="text" maxlength="62" name="cargoinp" id="cargoinp" placeholder="DIGITE O CARGO"/>
+                                    </div>
 
 
                                     <div class="row justify-content-center mt-4 mb-3">
                                         <div class="col-auto">
                                             <button data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
                                                 data-bs-title="Clique para atualizar o colaborador" class="btn btn-sm btn-outline-success fw-bold me-2"><i class="bi bi-disc-fill me-2"></i>ATUALIZAR</button>
-                                            <a href="<?=url("/beta/patrimonio/bens/lista")?>" role="button" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
+                                            <a href="<?=url("/beta/patrimonio/lista")?>" role="button" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
                                             data-bs-title="Clique para listar os bens" class="btn btn-sm btn-outline-smsub fw-bold me-2"><i class="bi bi-list me-2"></i>LISTAR</a>
                                         </div>
                                     </div>
                                 </form>
 
                                 <?php $this->start("scripts"); ?>
-                                <script>
-                                    let cargoinp = new Bloodhound({
+                                    <script>
+
+                                        let status = new Bloodhound({
+                                            datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
+                                            local: ['1 - REGISTRADO', '2 - CONFIRMADO', '3 - INATIVO']
+                                            });
+                                        status.initialize();
+                                        $('.status').typeahead({hint: true, highlight: true, minLength: 1}, {source: status});
+
+                                        let position_id = new Bloodhound({
+                                            datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
+                                            local: <?=$userposition->completePosition()?>
+                                        });
+                                        position_id.initialize();
+                                        $('.position_id').typeahead({hint: true, highlight: true, minLength: 1}, {source: position_id});
+
+                                        let category_id = new Bloodhound({
                                         datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
-                                        local: ['ANALISTA DE ORDENAMENTO TERRITORIAL' , 'ANALISTA FISCAL DE SERVICOS' , 'ASSESSOR I' , 'ASSESSOR II' , 'ASSESSOR III' ,
-                                            'ASSESSOR IV' , 'ASSESSOR JURIDICO II' , 'ASSESSOR V' , 'ASSESSOR VI' , 'ASSISTENTE ADMINISTRATIVO DE GESTAO' , 'ASSISTENTE DE SAUDE' ,
-                                            'ASSISTENTE DE SUPORTE OPERACIONAL' , 'CHEFE DE ASSESSORIA II' , 'CHEFE DE GABINETE' , 'COORDENADOR I' , 'DIRETOR I' , 'DIRETOR II' , 'DIRETOR JURIDICO I' ,
-                                            'FISCAL DE POSTURAS MUNICIPAIS' , 'PROCURADOR DO MUNICIPIO' , 'PROFISSIONAL ENG, ARQ, AGRONOMIA,GEOLOGIA - AGRONOMIA' , 'PROFISSIONAL ENG, ARQ, AGRONOMIA,GEOLOGIA - ARQUITETURA' ,
-                                            'PROFISSIONAL ENG, ARQ, AGRONOMIA,GEOLOGIA - ENGENHARIA CIVIL' , 'PROFISSIONAL ENG, ARQ, AGRONOMIA,GEOLOGIA - ENGENHARIA QUIMICA' , 'PROFISSIONAL ENG, ARQ, AGRONOMIA,GEOLOGIA - GEOLOGIA' ,
-                                            'SECRETARIO ADJUNTO' , 'SECRETARIO EXECUTIVO ADJUNTO' , 'SECRETARIO MUNICIPAL']
-                                    });
-                                    cargoinp.initialize();
-                                    $('.cargoinp').typeahead({hint: true, highlight: true, minLength: 1}, {source: cargoinp});
+                                        local: ['1 - ADMITIDO', '2 - COMISSIONADO', '3 - CONSULTORIA', '4 - CONTRATADO', '5 - EFETIVO' ,'6 - ESTAGIO', '7 - PRODAM', '8 - RESIDENCIA']
+                                        });
+                                        category_id.initialize();
+                                        $('.category_id').typeahead({hint: true, highlight: true, minLength: 1}, {source: category_id});
+
+                                        let unit_id = new Bloodhound({
+                                            datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
+                                            local: <?=$unit->completeUnit()?>
+                                        });
+                                        unit_id.initialize();
+                                        $('.unit_id').typeahead({hint: true, highlight: true, minLength: 1}, {source: unit_id});
 
                                     </script>
                                 <?php $this->end(); ?>
@@ -257,7 +281,7 @@
                 <h4 class="fw-semibold text-body-emphasis text-center">Histórico do Patrimônio</h4>
                 <div class="card-footer">
                      <!-- Histórico-->
-                                <?= $this->insert("widgets/bens/listahistorico"); ?>
+                               
                 </div>
             </div>
         <?php endif; ?>

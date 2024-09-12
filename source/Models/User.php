@@ -17,7 +17,7 @@ class User extends Model
      */
     public function __construct()
     {
-        parent::__construct("users", ["id"], ["login", "rf", "status", "photo", "first_name", "last_name", "phone", "email", "password"]);
+        parent::__construct("users", ["id"], ["login", "rf", "status", "photo", "user_name", "phone", "email", "password"]);
     }
 
     /**
@@ -176,7 +176,7 @@ class User extends Model
      */
     public function fullName(): string
     {
-        return "{$this->first_name} {$this->last_name}";
+        return "{$this->user_name}";
     }
 
     /**
@@ -216,7 +216,7 @@ class User extends Model
 
         if(!empty($stm)):
             foreach ($stm->fetch(true) as $row):
-                $array[] = $row->first_name;
+                $array[] = $row->user_name;
             endforeach;
             echo json_encode($array); //Return the JSON Array
         endif;

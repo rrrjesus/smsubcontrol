@@ -89,12 +89,15 @@ $route->get("/contatos/ativar/{contact_id}/{action}", "Contacts:contact");
 $route->get("/contatos/desativar/{contact_id}/{action}", "Contacts:contact");
 $route->get("/contatos/excluir/{contact_id}/{action}", "Contacts:contact");
 
-//Bens
-$route->get("/patrimonio", "Patrimonys:patrimonys");
-$route->get("/patrimonio/bens/cadastrar", "Bens:bens");
-$route->post("/patrimonio/bens/cadastrar", "Bens:bens");
-$route->get("/patrimonio/bens/editar/{bens_id}", "Bens:bens");
-$route->post("/patrimonio/bens/editar/{bens_id}", "Bens:bens");
+//Patrimonios
+$route->get("/patrimonios", "Patrimonys:patrimonys");
+$route->get("/patrimonios/desativados", "Patrimonys:disabledPatrimonys");
+$route->get("/patrimonios/cadastrar", "Patrimonys:patrimony");
+$route->post("/patrimonios/cadastrar", "Patrimonys:patrimony");
+$route->get("/patrimonios/editar/{patrimonys_id}", "Patrimonys:patrimony");
+$route->post("/patrimonios/editar/{patrimonys_id}", "Patrimonys:patrimony");
+$route->get("/patrimonios/ativar/{patrimonys_id}/{action}", "Patrimonys:patrimony");
+$route->get("/patrimonios/desativar/{patrimonys_id}/{action}", "Patrimonys:patrimony");
 
 //Historico Bens
 $route->get("/patrimonio/benshistorico/lista", "BensHistorico:bensLista");
@@ -148,7 +151,7 @@ $route->post("/perfil", "Users:profile");
 
 //unidade
 $route->get("/unidades", "Units:units");
-$route->get("/unidades/desativados", "Units:disabledUnits");
+$route->get("/unidades/desativadas", "Units:disabledUnits");
 $route->get("/unidades/cadastrar", "Units:unit");
 $route->post("/unidades/cadastrar", "Units:unit");
 $route->get("/unidades/editar/{unit_id}", "Units:unit");
