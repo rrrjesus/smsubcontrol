@@ -5,44 +5,49 @@ namespace Source\App\Beta;
 use Source\Models\User;
 use Source\Support\Upload;
 use Source\Support\Thumb;
-use Source\Models\Patrimony\Bem;
+use Source\Models\Patrimony\Patrimony;
 use Source\Models\Patrimony\BemHistorico;
 
 /**
- * Class Bens
+ * Class Patrimonys
  * @package Source\App\Beta
  */
-class Bens extends Admin
+class Patrimonys extends Admin
 {
     
     /**
-     * Bens constructor.
+     * Patrimonys constructor.
      */
     public function __construct()
     {
         parent::__construct();
     }
 
-/**
-     * APP HOME
+    /**
+     * PATRIMONY LIST
      */
-    public function bensLista(): void
+    public function patrimonys(): void
     {
         $head = $this->seo->render(
-            "Bens - " . CONF_SITE_NAME,
+            "Patrimonios - " . CONF_SITE_NAME,
             CONF_SITE_DESC,
             url(),
             theme("/assets/images/favicon.ico"),
             false
         );
 
-        $patrimonio = (new Bem())->find("status = :s", "s=actived")->fetch(true);
+        $patrimonys = (new Patrimony())->find("status = :s", "s=actived")->fetch(true);
+        $patrimony = new Patrimony();
 
-        echo $this->view->render("widgets/bens/lista", [
+        echo $this->view->render("widgets/patrimonys/list", [
             "head" => $head,
-            "patrimonio" => $patrimonio,
-            "urls" => "",
-            "icon" => "" 
+            "patrimonys" => $patrimonys,
+            "urls" => "patrimonios",
+            "namepage" => "Patrimonios",
+            "name" => "Lista",
+            "registers" => (object)[
+                "disabled" => $patrimony->find("status = :s", "s=disabled")->count()
+            ]
         ]);
     }
 
@@ -58,7 +63,7 @@ class Bens extends Admin
         if (!empty($data["action"]) && $data["action"] == "create") {
             $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-            $bensCreate = new Bem();
+            $bensCreate = new Patrimony();
             $bensCreate->modelo_id = $data["modelo_id"];
             $bensCreate->imei = $data["imei"];
             $bensCreate->unit_id = $data["unit_id"];
@@ -101,7 +106,7 @@ class Bens extends Admin
             $status = $data["status"];
             $observacoes = $data["observacoes"];
 
-            $bensUpdate = (new Bem())->findById($bens_id);
+            $bensUpdate = (new Patrimony())->findById($bens_id);
 
             if (!$bensUpdate) {
                 $this->message->error("Você tentou gerenciar um bem que não existe")->flash();
@@ -154,7 +159,7 @@ class Bens extends Admin
         //delete
         if (!empty($data["action"]) && $data["action"] == "delete") {
             $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $updateDelete = (new Bem())->findById($data["bens_id"]);
+            $updateDelete = (new Patrimony())->findById($data["bens_id"]);
 
             if (!$updateDelete) {
                 $this->message->error("Você tentou deletar um patrimônio que não existe")->flash();
@@ -180,14 +185,14 @@ class Bens extends Admin
         
         if (!empty($data["bens_id"])) {
             $bemId = filter_var($data["bens_id"], FILTER_VALIDATE_INT);
-            $bensEdit = (new Bem())->findById($bemId);
+            $bensEdit = (new Patrimony())->findById($bemId);
             $historico = (new BemHistorico())->find("status = :s AND bens_id = :b", "s=actived&b={$bemId}")->fetch(true);
         }
 
-        $bensCreates = new Bem();
+        $bensCreates = new Patrimony();
        
         $head = $this->seo->render(
-            CONF_SITE_NAME . " | " . ($bensEdit ? "Bens de {$bensEdit->bens_nome}" : "Não Encontrado"),
+            CONF_SITE_NAME . " | " . ($bensEdit ? "Patrimonys de {$bensEdit->bens_nome}" : "Não Encontrado"),
             CONF_SITE_DESC,
             url("/admin"),
             url("/admin/assets/images/image.jpg"),

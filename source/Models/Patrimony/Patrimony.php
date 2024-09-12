@@ -3,6 +3,8 @@
 namespace Source\Models\Patrimony;
 
 use Source\Core\Model;
+use Source\Models\Patrimony\Brand;
+use Source\Models\Patrimony\Product;
 use Source\Models\Unit;
 use Source\Models\User;
 
@@ -45,7 +47,7 @@ class Patrimony extends Model
     /**
      * @return null|Product
      */
-    public function product(): ?Brand
+    public function product(): ?Product
     {
         if($this->product_id) {
             return(new Product())->findById($this->product_id);
@@ -56,7 +58,7 @@ class Patrimony extends Model
         /**
      * @return null|Unit
      */
-    public function Unit(): ?Unit
+    public function unit(): ?Unit
     {
         if($this->unit_id) {
             return(new Unit())->findById($this->unit_id);
@@ -67,7 +69,7 @@ class Patrimony extends Model
     /**
      * @return null|User
      */
-    public function user(): ?User
+    public function userPatrimony(): ?User
     {
         if($this->user_id) {
             return(new User())->findById($this->user_id);

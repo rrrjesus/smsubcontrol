@@ -89,15 +89,8 @@ $route->get("/contatos/ativar/{contact_id}/{action}", "Contacts:contact");
 $route->get("/contatos/desativar/{contact_id}/{action}", "Contacts:contact");
 $route->get("/contatos/excluir/{contact_id}/{action}", "Contacts:contact");
 
-//Modelos
-$route->get("/patrimonio/modelos/lista", "BensModelos:bensmodelosLista");
-$route->get("/patrimonio/modelos/cadastrar", "BensModelos:bensModelos");
-$route->post("/patrimonio/modelos/cadastrar", "BensModelos:bensModelos");
-$route->get("/patrimonio/modelos/editar/{bensmodelos_id}", "BensModelos:bensModelos");
-$route->post("/patrimonio/modelos/editar/{bensmodelos_id}", "BensModelos:bensModelos");
-
 //Bens
-$route->get("/patrimonio/bens/lista", "Bens:bensLista");
+$route->get("/patrimonio", "Patrimonys:patrimonys");
 $route->get("/patrimonio/bens/cadastrar", "Bens:bens");
 $route->post("/patrimonio/bens/cadastrar", "Bens:bens");
 $route->get("/patrimonio/bens/editar/{bens_id}", "Bens:bens");

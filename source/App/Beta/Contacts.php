@@ -36,7 +36,7 @@ class Contacts extends Admin
         $contacts = (new Contact())->find("status = :s", "s=actived")->fetch(true);
         $contact = new Contact();
 
-        echo $this->view->render("widgets/contact/list", [
+        echo $this->view->render("widgets/contacts/list", [
             "head" => $head,
             "contacts" => $contacts,
             "urls" => "contatos",
@@ -65,7 +65,7 @@ class Contacts extends Admin
         $contact = (new Contact());
         $contacts = $contact->find("status = :s", "s=disabled")->fetch(true);
 
-        echo $this->view->render("widgets/contact/disabledList",
+        echo $this->view->render("widgets/contacts/disabledList",
             [
                 "head" => $head,
                 "contacts" => $contacts,
@@ -234,7 +234,7 @@ class Contacts extends Admin
             false
         );
 
-        echo $this->view->render("widgets/contact/contact", [
+        echo $this->view->render("widgets/contacts/contact", [
             "head" => $head,
             "contacts" => $contactEdit,
             "unit" => $unit,

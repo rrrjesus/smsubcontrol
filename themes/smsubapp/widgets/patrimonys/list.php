@@ -34,64 +34,57 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <?php foreach ($patrimonio as $lista): ?>
+                    <?php foreach ($patrimonys as $lista): ?>
                     <tr>
-                        <td class="text-center fw-semibold"><a href="<?= url("/beta/patrimonio/bens/editar/{$lista->id}"); ?>" role="button" aria-disabled="true" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
-                        data-bs-title="Clique para editar" class="btn btn-sm btn-outline-warning rounded-circle fw-bold me-2"><i class="bi bi-pencil"></i></a></td>
+                        <td class="text-center fw-semibold"><a href="<?= url("/beta/patrimonio/editar/{$lista->id}"); ?>" role="button" aria-disabled="true" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
+                        data-bs-title="Clique para editar" class="btn btn-sm btn-outline-warning rounded-circle fw-bold me-2"><i class="bi bi-pencil text-secondary"></i></a></td>
+                        <td class="text-center fw-semibold"><?=(!empty($lista->userPatrimony()->first_name) ? $lista->userPatrimony()->first_name : "");?></td>
                         <td class="text-center fw-semibold">
-                            <?php if(!empty($lista->user()->first_name) && !empty($lista->user()->status != "trash")):
-                                echo $lista->user()->fullName();
+                            <?php if(!empty($lista->userPatrimony()->login) && !empty($lista->product()->status != "trash")):
+                                echo $lista->userPatrimony()->login;
                         else:
                             echo "Excluido";
                         endif;
                         ?>
+                        <td class="text-center fw-semibold"><?=(!empty($lista->userPatrimony()->rf) ? $lista->userPatrimony()->rf : "")?></td>
                         </td>
+                        <td class="text-center fw-semibold"><?=(!empty($lista->userPatrimony()->phone) ? $lista->userPatrimony()->phone : "")?></td>
+                        <td class="text-center fw-semibold"><?=(!empty($lista->userPatrimony()->email) ? $lista->userPatrimony()->email : "")?></td>
                         <td class="text-center fw-semibold">
-                            <?php if(!empty($lista->user()->login) && !empty($lista->bemModelo()->status != "trash")):
-                                echo $lista->user()->login;
-                        else:
-                            echo "Excluido";
-                        endif;
-                        ?>
-                        <td class="text-center fw-semibold"><?=(!empty($lista->user()->rf) ? $lista->user()->rf : "")?></td>
-                        </td>
-                        <td class="text-center fw-semibold"><?=(!empty($lista->user()->phone) ? $lista->user()->phone : "")?></td>
-                        <td class="text-center fw-semibold"><?=(!empty($lista->user()->email) ? $lista->user()->email : "")?></td>
-                        <td class="text-center fw-semibold">
-                        <?php if(!empty($lista->BemUnidade()->unit_name) && !empty($lista->BemUnidade()->status == "actived")):
-                            echo (!empty($lista->BemUnidade()->it_professional) ? $lista->BemUnidade()->it_professional : "Não Cadastrado");
+                        <?php if(!empty($lista->unit()->unit_name) && !empty($lista->unit()->status == "actived")):
+                            echo (!empty($lista->unit()->it_professional) ? $lista->unit()->it_professional : "Não Cadastrado");
                         else:
                             echo "Excluído";
                         endif;
                             ?>
                         </td>
                         <td class="text-center fw-semibold">
-                        <?php if(!empty($lista->BemUnidade()->unit_name) && !empty($lista->BemUnidade()->status == "actived")):
-                            echo (!empty($lista->BemUnidade()->unit_name) ? $lista->BemUnidade()->unit_name : "NÃO CADASTRADO");
+                        <?php if(!empty($lista->unit()->unit_name) && !empty($lista->unit()->status == "actived")):
+                            echo (!empty($lista->unit()->unit_name) ? $lista->unit()->unit_name : "NÃO CADASTRADO");
                         else:
                             echo "Excluido";
                         endif;
                             ?>
                         </td>
                         <td class="text-center fw-semibold">
-                        <?php if(!empty($lista->BemUnidade()->unit_name) && !empty($lista->BemUnidade()->status == "actived")):
-                            echo (!empty($lista->BemUnidade()->telephone) ? $lista->BemUnidade()->telephone : "Não Cadastrado");
+                        <?php if(!empty($lista->unit()->unit_name) && !empty($lista->unit()->status == "actived")):
+                            echo (!empty($lista->unit()->telephone) ? $lista->unit()->telephone : "Não Cadastrado");
                         else:
                             echo "Excluído";
                         endif;
                             ?>
                         </td>
                         <td class="text-center fw-semibold">
-                            <?php if(!empty($lista->bemModelo()->marca_id) && !empty($lista->bemModelo()->status == "actived")):
-                                echo $lista->bemMarcas($lista->bemModelo()->marca_id)->brand_name;
+                            <?php if(!empty($lista->product()->marca_id) && !empty($lista->product()->status == "actived")):
+                                echo $lista->bemMarcas($lista->product()->marca_id)->brand_name;
                         else:
                             echo "Excluido";
                         endif;
                         ?>
                         </td>
                         <td class="text-center fw-semibold">
-                            <?php if(!empty($lista->bemModelo()->modelo_nome) && !empty($lista->bemModelo()->status == "actived")):
-                                echo (!empty($lista->bemModelo()->modelo_nome) ? $lista->bemModelo()->modelo_nome : "NÃO CADASTRADO");
+                            <?php if(!empty($lista->product()->modelo_nome) && !empty($lista->product()->status == "actived")):
+                                echo (!empty($lista->product()->modelo_nome) ? $lista->product()->modelo_nome : "NÃO CADASTRADO");
                         else:
                             echo "Excluido";
                         endif;
