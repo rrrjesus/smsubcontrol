@@ -6,7 +6,7 @@ use Source\Models\User;
 use Source\Support\Upload;
 use Source\Support\Thumb;
 use Source\Models\Patrimony\Patrimony;
-use Source\Models\Patrimony\BemHistorico;
+use Source\Models\Patrimony\PatrimonyHistory;
 
 /**
  * Class Patrimonys
@@ -90,17 +90,18 @@ class Patrimonys extends Admin
             $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             $patrimonysCreate = new Patrimony();
-            $patrimonysCreate->modelo_id = $data["modelo_id"];
+            $patrimonysCreate->product_id = $data["product_id"];
             $patrimonysCreate->imei = $data["imei"];
+            $patrimonysCreate->ns = $data["ns"];
             $patrimonysCreate->unit_id = $data["unit_id"];
-            $patrimonysCreate->descricao = $data["descricao"];
+            $patrimonysCreate->user_id = $data["user_id"];
             $patrimonysCreate->status = $data["status"];
-            $patrimonysCreate->observacoes = $data["observacoes"];
+            $patrimonysCreate->observations = $data["observations"];
             $patrimonysCreate->login_created = $user->login;
             $patrimonysCreate->created_at = date_fmt('', "Y-m-d h:m:s");
 
-            if($data["imei"] == ""){
-                $json['message'] = $this->message->warning("Informe o imei para criar o registro !")->icon()->render();
+            if($data["imei"] == "" || $data["ns"] == ""){
+                $json['message'] = $this->message->warning("Informe um Imei ou Ns para criar o registro !")->icon()->render();
                 echo json_encode($json);
                 return;
             }
@@ -123,36 +124,41 @@ class Patrimonys extends Admin
             $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             $patrimonys_id = $data["patrimonys_id"];
-            $user_id = $data["user_id"];
-            $modelo_id = $data["modelo_id"];
+            $product_id = preg_replace("/[^0-9\s]/", "", $data["product_id"]);
             $imei = $data["imei"];
-            $unit_id = $data["unit_id"];
-            $returned_at = $data["returned_at"];
-            $descricao = $data["descricao"];
-            $status = $data["status"];
-            $observacoes = $data["observacoes"];
+            $ns = $data["ns"];
+            $unit_id_number = preg_replace("/[^0-9\s]/", "", $data["unit_id"]);
+            $unit_id = substr($unit_id_number, 0, 2);  // 12
+            $user_id = preg_replace("/[^0-9\s]/", "", $data["user_id"]);
+            $observations = $data["observations"];
+            $created_at = $data["created_at"];
+            $login_created = $data["login_created"];
 
             $patrimonysUpdate = (new Patrimony())->findById($patrimonys_id);
 
             if (!$patrimonysUpdate) {
-                $this->message->error("Você tentou gerenciar um bem que não existe")->flash();
+                $this->message->error("Você tentou gerenciar um patrimônio que não existe")->flash();
                 echo json_encode(["redirect" => url("/beta/patrimonio/lista")]);
                 return;
             }
 
-            $patrimonysUpdate->user_id = $user_id;
-            $patrimonysUpdate->modelo_id = $modelo_id;
-            $patrimonysUpdate->descricao = $descricao;
+            $patrimonysUpdate->product_id = $product_id;
             $patrimonysUpdate->unit_id = $unit_id;
+            $patrimonysUpdate->user_id = $user_id;
             $patrimonysUpdate->imei = $imei;
-            $patrimonysUpdate->status = $status;
-            $patrimonysUpdate->observacoes = $observacoes;
-            $patrimonysUpdate->returned_at = date_fmt($returned_at, "Y-m-d h:m:s");
+            $patrimonysUpdate->ns = $ns;
+            $patrimonysUpdate->observations = $observations;
             $patrimonysUpdate->login_updated = $user->login;
             $patrimonysUpdate->updated_at = date_fmt('', "Y-m-d h:m:s");
 
-            if($data["descricao"] == ""){
-                $json['message'] = $this->message->warning("Descreva o patrimonio !!!")->icon()->render();
+            if($data["product_id"] == ""){
+                $json['message'] = $this->message->warning("Informe uma unidade para salvar o registro !")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            if($data["unit_id"] == ""){
+                $json['message'] = $this->message->warning("Informe uma unidade para salvar o registro !")->icon()->render();
                 echo json_encode($json);
                 return;
             }
@@ -163,21 +169,21 @@ class Patrimonys extends Admin
                 return;
             }
 
-            $patrimonysCreate = new BemHistorico();
-            $patrimonysCreate->patrimonys_id = $patrimonys_id;
-            $patrimonysCreate->user_id = $user_id;
-            $patrimonysCreate->modelo_id = $modelo_id;
-            $patrimonysCreate->imei = $imei;
+            $patrimonysCreate = new PatrimonyHistory();
+            $patrimonysCreate->patrimony_id = $patrimonys_id;
+            $patrimonysCreate->product_id = $product_id;
             $patrimonysCreate->unit_id = $unit_id;
-            $patrimonysCreate->descricao = $descricao;
-            $patrimonysCreate->status = $status;
-            $patrimonysCreate->observacoes = $observacoes;
-            $patrimonysCreate->returned_at = date_fmt($returned_at, "Y-m-d h:m:s");
-            $patrimonysCreate->login_created = $user->login;
-            $patrimonysCreate->created_at = date_fmt('', "Y-m-d h:m:s");
+            $patrimonysCreate->user_id = $user_id;
+            $patrimonysCreate->imei = $imei;
+            $patrimonysCreate->ns = $ns;
+            $patrimonysCreate->observations = $observations;
+            $patrimonysCreate->login_created = $login_created;
+            $patrimonysCreate->created_at = $created_at;
+            $patrimonysCreate->login_updated = $user->login;
+            $patrimonysCreate->updated_at = date_fmt('', "Y-m-d h:m:s");
             $patrimonysCreate->save();
 
-            $json["message"] = $this->message->success("Bem {$patrimonysUpdate->bem_nome} atualizado com sucesso !!!")->icon("emoji-grin me-1")->render();
+            $json["message"] = $this->message->success("Bem {$imei} {$ns} {$created_at} atualizado com sucesso !!!")->icon("emoji-grin me-1")->render();
             echo json_encode($json);
             return;
         }
@@ -210,9 +216,9 @@ class Patrimonys extends Admin
         $historico = null;
         
         if (!empty($data["patrimonys_id"])) {
-            $bemId = filter_var($data["patrimonys_id"], FILTER_VALIDATE_INT);
-            $PatrimonysEdit = (new Patrimony())->findById($bemId);
-            $historico = (new BemHistorico())->find("status = :s AND patrimonys_id = :b", "s=actived&b={$bemId}")->fetch(true);
+            $patrimonyId = filter_var($data["patrimonys_id"], FILTER_VALIDATE_INT);
+            $PatrimonysEdit = (new Patrimony())->findById($patrimonyId);
+            $historico = (new PatrimonyHistory())->find("status = :s AND patrimony_id = :p", "s=actived&p={$patrimonyId}")->fetch(true);
         }
 
         $patrimonysCreates = new Patrimony();

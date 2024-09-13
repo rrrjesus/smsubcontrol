@@ -1,24 +1,9 @@
-<?php $this->layout("_beta"); ?>
 
-<!-- Breacrumb-->
-<?= $this->insert("views/theme/breadcrumb"); ?>
-
-
-                <div class="row justify-content-center mt-4 mb-3">
-                    <div class="col-auto">
-                    <?=buttonLink("/beta/patrimonios/cadastrar", "top", "Clique para cadastrar patrimônio", "success", "building-add", "Cadastrar")?> 
-                    <?php if(!empty($registers->disabled)){ ?>
-                        <?=buttonLink("/beta/patrimonios/desativados", "top", "Clique para listar os patrimônios desativados", "secondary", "building-add", "Desativados<span class='position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger'>".$registers->disabled."</span>")?> 
-                    <?php } ?>
-                    </div>
-                </div>
-            
-                <?=flash();?>
-                <table id="patrimonys" class="table table-hover table-bordered table-sm border-<?=CONF_APP_COLOR?> p-2" style="width:100%">
+                <table id="historyPatrimony" class="table table-hover table-bordered table-sm border-<?=CONF_APP_COLOR?> p-2" style="width:100%">
                     <thead class="table-<?=CONF_APP_COLOR?>">
                         <tr>
-                            <th class="text-center">EDITAR</th>
-                            <th class="text-center">ENTRADA</th>
+                            <th class="text-center">CRIADO</th>
+                            <th class="text-center">ALTERADO</th>
                             <th class="text-center">IMEI</th>
                             <th class="text-center">NS</th>
                             <th class="text-center">MARCA</th>
@@ -31,15 +16,14 @@
                             <th class="text-center">RESPONSAVEL UN.</th>
                             <th class="text-center">TELEFONE UN.</th>
                             <th class="text-center">OBSERVACOES</th>
-                            <th class="text-center">DESATIVAR</th>
                         </tr>
                     </thead>
                     <tbody>
-                    <?php foreach ($patrimonys as $lista): ?>
+                    <?php if(!empty($historico)){ ?>
+                    <?php foreach ($historico as $lista): ?>
                         <tr>
-                            <td class="text-center fw-semibold"><a href="<?= url("/beta/patrimonios/editar/{$lista->id}"); ?>" role="button" aria-disabled="true" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
-                            data-bs-title="Clique para editar" class="btn btn-sm btn-outline-warning rounded-circle fw-bold me-2"><i class="bi bi-pencil text-secondary"></i></a></td>
                             <td class="text-center fw-semibold"><?=date_fmt_null($lista->created_at)?></td>
+                            <td class="text-center fw-semibold"><?=date_fmt_null($lista->updated_at)?></td>
                             <td class="text-center fw-semibold"><?=(!empty($lista->imei ) ? $lista->imei : "")?></td>
                             <td class="text-center fw-semibold"><?=(!empty($lista->ns)? $lista->ns : "")?></td>
                             <td class="text-center fw-semibold"><?=$lista->productBrand($lista->product()->brand_id)->brand_name;?></td>
@@ -60,9 +44,9 @@
                             <td class="text-center fw-semibold"><?=(!empty($lista->unit()->it_professional) ? $lista->unit()->it_professional : "Não Cadastrado");?></td>
                             <td class="text-center fw-semibold"><?=(!empty($lista->unit()->telephone) ? $lista->unit()->telephone : "");?></td>
                             <td class="text-center fw-semibold"><?=$lista->observations?></td>
-                            <td class="text-center fw-semibold"><?=$lista->id?></td>
                         </tr>
                         <?php endforeach; ?>
+                        <?php } ?>
                     </tbody>
                 </table>
 

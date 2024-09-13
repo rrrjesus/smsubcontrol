@@ -6,17 +6,17 @@ use Source\Models\User;
 use Source\Support\Upload;
 use Source\Support\Thumb;
 use Source\Models\Patrimony\Bem;
-use Source\Models\Patrimony\BemHistorico;
+use Source\Models\Patrimony\PatrimonyHistory;
 
 /**
- * Class BensHistorico
+ * Class PatrimonyHistory
  * @package Source\App\Beta
  */
-class BensHistorico extends Admin
+class PatrimonysHistory extends Admin
 {
     
     /**
-     * BensHistorico constructor.
+     * PatrimonyHistory constructor.
      */
     public function __construct()
     {

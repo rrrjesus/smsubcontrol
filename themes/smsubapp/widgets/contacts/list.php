@@ -37,7 +37,6 @@
                     <th class="text-center"><i class="bi bi-person-circle me-1"></i><br>SETOR</th>
                     <th class="text-center"><i class="bi bi-person-circle me-1"></i><br>RESPONSAVEL</th>
                     <th class="text-center"><i class="bi bi-person-circle me-1"></i><br>TEL RESP.</th>
-                    <th class="text-center"><i class="bi bi-person me-1"></i><br>STATUS</th>
                     <th class="text-center"><i class="bi bi-person me-1"></i><br>DESATIVAR</th>
                 </tr>
                 </thead>
@@ -53,7 +52,6 @@
                         <td class="text-center"><?=$lista->unit()->unit_name;?></td>
                         <td class="text-center text-uppercase"><?=$lista->unit()->it_professional;?></td>
                         <td class="text-center"><?=$lista->unit()->fixed_phone;?></td>
-                        <td class="text-center"><?=$lista->statusBadge();?></td>
                         <td class="text-center"><button type="button" data-bs-togglee="modal" data-bs-toggle="modal" data-bs-target="#disabled-<?=$lista->id;?>" 
                         class="btn btn-outline-danger rounded-circle btn-sm text-center"><i class="bi bi-telephone-x"></i></b></td>
                             <!-- Modal -->

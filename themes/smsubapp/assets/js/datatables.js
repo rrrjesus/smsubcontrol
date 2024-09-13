@@ -1,6 +1,6 @@
 $(function () {
 
-    $('#patrimony').DataTable({
+    $('#patrimonys').DataTable({
         drawCallback: function() {
             $('body').tooltip({
                 selector: '[data-bs-togglee="tooltip"]'
@@ -170,6 +170,20 @@ $(function () {
                 }
             }
         ]
+    });
+
+    $('#historyPatrimony').DataTable({
+        "language": {
+            "sEmptyTable": "Nenhum registro encontrado","sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+            "sInfoEmpty": "Mostrando 0 até 0 de 0 registros","sInfoFiltered": "(Filtrados de _MAX_ registros)",
+            "sInfoThousands": ".","sLengthMenu": "_MENU_ Resultados por Página","sLoadingRecords": "Carregando...",
+            "sProcessing": "Processando...","sZeroRecords": "Nenhum registro encontrado","sSearch": "Pesquisar",
+            "oPaginate": {"sNext": "Próximo","sPrevious": "Anterior","sFirst": "Primeiro","sLast": "Último"},
+            "oAria": {"sSortAscending": "Ordenar colunas de forma ascendente","sPrevious": "Ordenar colunas de forma descendente"}
+        },
+        // dom: "lBftipr",
+        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
+        "aaSorting": [0, 'asc']
     });
 
     $('#contacts').DataTable({

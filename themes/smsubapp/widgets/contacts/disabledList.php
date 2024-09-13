@@ -36,7 +36,6 @@
                     <th class="text-center"><i class="bi bi-person-gear me-1"></i><br>NOME</th>
                     <th class="text-center"><i class="bi bi-person-circle me-1"></i><br>SETOR</th>
                     <th class="text-center"><i class="bi bi-person me-1"></i><br>RAMAL</th>
-                    <th class="text-center"><i class="bi bi-person me-1"></i><br>STATUS</th>
                     <th class="text-center"><i class="bi bi-person me-1"></i><br>ATIVAR</th>
                 </tr>
                 </thead>
@@ -46,13 +45,12 @@
                     <tr>
                         <td class="text-center"><a href="../contatos/ativar/<?=$lista->id?>/actived" data-bs-togglee="tooltip" 
                             data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Clique para reativar <?=$lista->contact_name?>" role="button" 
-                            class="btn btn-outline-warning rounded-circle btn-md text-center"><i class="bi bi-telephone-outbound text-secondary"></i></a></td>
+                            class="btn btn-outline-warning rounded-circle btn-sm text-center"><i class="bi bi-telephone-outbound text-secondary"></i></a></td>
                         <td class="text-center"><?=$lista->contact_name;?></td>
                         <td class="text-center"><?=$lista->unit()->unit_name;?></td>
                         <td class="text-center"><?=$lista->ramal;?></td>
-                        <td class="text-center"><?=$lista->statusBadge();?></td>
                         <td class="text-center"><button type="button" data-bs-togglee="modal" data-bs-toggle="modal" data-bs-target="#disabled-<?=$lista->id;?>" 
-                        class="btn btn-outline-success rounded-circle btn-md text-center"><i class="bi bi-telephone-x"></i></b></td>
+                        class="btn btn-outline-success rounded-circle btn-sm text-center"><i class="bi bi-telephone-x"></i></b></td>
                             <!-- Modal -->
                         <div class="modal fade" id="disabled-<?=$lista->id;?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-sm modal-dialog-centered">

@@ -100,9 +100,9 @@ $route->get("/patrimonios/ativar/{patrimonys_id}/{action}", "Patrimonys:patrimon
 $route->get("/patrimonios/desativar/{patrimonys_id}/{action}", "Patrimonys:patrimony");
 
 //Historico Bens
-$route->get("/patrimonio/benshistorico/lista", "BensHistorico:bensLista");
-$route->get("/patrimonio/benshistorico/editar/{bens_id}", "BensHistorico:bens");
-$route->post("/patrimonio/benshistorico/editar/{bens_id}", "BensHistorico:bens");
+$route->get("/patrimonio/benshistorico/lista", "PatrimonyHistory:bensLista");
+$route->get("/patrimonio/benshistorico/editar/{bens_id}", "PatrimonyHistory:bens");
+$route->post("/patrimonio/benshistorico/editar/{bens_id}", "PatrimonyHistory:bens");
 
 $route->get("/logoff", "Dash:logoff");
 
