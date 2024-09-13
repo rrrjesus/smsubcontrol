@@ -178,7 +178,7 @@ class Patrimonys extends Admin
             $patrimonysCreate->ns = $ns;
             $patrimonysCreate->observations = $observations;
             $patrimonysCreate->login_created = $login_created;
-            $patrimonysCreate->created_at = $created_at;
+            $patrimonysCreate->criado = $created_at;
             $patrimonysCreate->login_updated = $user->login;
             $patrimonysCreate->updated_at = date_fmt('', "Y-m-d h:m:s");
             $patrimonysCreate->save();

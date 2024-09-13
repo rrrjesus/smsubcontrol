@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 13/09/2024 às 23:15
+-- Tempo de geração: 13/09/2024 às 23:32
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -2715,7 +2715,7 @@ CREATE TABLE `patrimonys_historys` (
   `observations` text DEFAULT NULL,
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `login_created` varchar(7) NOT NULL,
-  `created_at` text DEFAULT NULL,
+  `criado` varchar(20) NOT NULL,
   `login_updated` varchar(7) DEFAULT NULL,
   `returned_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -2724,8 +2724,8 @@ CREATE TABLE `patrimonys_historys` (
 -- Despejando dados para a tabela `patrimonys_historys`
 --
 
-INSERT INTO `patrimonys_historys` (`id`, `patrimony_id`, `user_id`, `product_id`, `unit_id`, `imei`, `ns`, `photo`, `status`, `patrimony_id_1`, `patrimony_id_2`, `observations`, `updated_at`, `login_created`, `created_at`, `login_updated`, `returned_at`) VALUES
-(14, 1, 6, 4, 66, '', '21187N0467', NULL, 'actived', NULL, NULL, '', '2024-09-13 21:09:05', '2021-08', NULL, 'd788796', NULL);
+INSERT INTO `patrimonys_historys` (`id`, `patrimony_id`, `user_id`, `product_id`, `unit_id`, `imei`, `ns`, `photo`, `status`, `patrimony_id_1`, `patrimony_id_2`, `observations`, `updated_at`, `login_created`, `criado`, `login_updated`, `returned_at`) VALUES
+(20, 1, 6, 4, 66, '', '21187N0467', NULL, 'actived', NULL, NULL, '', '2024-09-13 21:32:05', 'd788796', '2021-08-01 07:09:10', 'd788796', NULL);
 
 -- --------------------------------------------------------
 
@@ -21574,7 +21574,7 @@ ALTER TABLE `patrimonys`
 -- AUTO_INCREMENT de tabela `patrimonys_historys`
 --
 ALTER TABLE `patrimonys_historys`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de tabela `posts`

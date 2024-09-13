@@ -22,7 +22,7 @@
                     <?php if(!empty($historico)){ ?>
                     <?php foreach ($historico as $lista): ?>
                         <tr>
-                            <td class="text-center fw-semibold"><?=date_fmt_null($lista->created_at)?></td>
+                            <td class="text-center fw-semibold"><?=date_fmt_null($lista->criado)?></td>
                             <td class="text-center fw-semibold"><?=date_fmt_null($lista->updated_at)?></td>
                             <td class="text-center fw-semibold"><?=(!empty($lista->imei ) ? $lista->imei : "")?></td>
                             <td class="text-center fw-semibold"><?=(!empty($lista->ns)? $lista->ns : "")?></td>
