@@ -69,6 +69,7 @@
             </div>
         </div>
         <div class="sb-sidenav-footer text-light fw-semibold fs-6">
+            <div class="sb-sidenav-menu-heading text-light fw-semibold fs-6">Logado como: <?=gethostbyaddr($_SERVER['REMOTE_ADDR']);?></div>
             <div class="sb-sidenav-menu-heading text-light fw-semibold fs-6">Logado como: <?=get_current_user();?></div>
             <div class="sb-sidenav-menu-heading text-light fw-semibold fs-6">Hostname : <?=gethostname();?></div>
         </div>

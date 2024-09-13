@@ -1,6 +1,6 @@
 $(function () {
 
-    $('#patrimonio').DataTable({
+    $('#patrimony').DataTable({
         drawCallback: function() {
             $('body').tooltip({
                 selector: '[data-bs-togglee="tooltip"]'
@@ -32,15 +32,144 @@ $(function () {
             "oPaginate": {"sNext": "Próximo","sPrevious": "Anterior","sFirst": "Primeiro","sLast": "Último"},
             "oAria": {"sSortAscending": "Ordenar colunas de forma ascendente","sPrevious": "Ordenar colunas de forma descendente"}
         },
-        // columnDefs: [
-        //     {
-        //         target: 2,
-        //         visible: false
-        //     },
-        // ],
         // dom: "lBftipr",
         "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
-        "aaSorting": [0, 'asc']
+        "aaSorting": [0, 'asc'],
+        "aoColumnDefs": [
+            {
+                target: 1,
+                visible: false
+           },
+           {
+               target: 4,
+               visible: false
+           },
+           {
+               target: 8,
+               visible: false
+           },
+           {
+               target: 9,
+               visible: false
+           },
+           {
+               target: 11,
+               visible: false
+           },
+           {
+               target: 12,
+               visible: false
+           },
+           {
+            "aTargets": [14], // o numero da coluna
+            "mRender": function (data, type, full) { //aqui é uma funçãozinha para pegar os ids
+                return '<button type="button" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"\n' +
+                    'data-bs-title="Clique para desativar '+ full[1] +'" class="btn btn-outline-warning btn-sm rounded-circle" data-bs-toggle="modal" data-bs-target="#activedModal'+ full[14]+'">' +
+                    '<i class="bi bi-person-dash text-secondary"></i></button>' +
+                    '<div class="modal fade" id="activedModal' + full[14] + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">\n' +
+                        '<div class="modal-dialog modal-sm">\n' +
+                            '<div class="modal-content">\n' +
+                                '<div class="modal-header bg-warning text-light">\n' +
+                                '<h6 class="modal-title text-center" id="exampleModalLabel"><i class="bi bi-gift me-2"></i> Desativar ID: ' + full[14] + '</h6>\n' +
+                                '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>\n' +
+                                '</div>\n' +
+                                '<div class="modal-body fw-semibold">Deseja desativar o patrimonio id : ' + full[14] + ' ?</div>\n' +
+                                '<div class="modal-footer">\n' +
+                                '<button type="button" class="btn btn-outline-danger btn-sm fw-semibold" data-bs-dismiss="modal"><i class="bi bi-trash"></i> Não</button>\n' +
+                                '<a href="patrimonios/desativar/' + full[14] + '/disabled" class="btn btn-outline-success btn-sm fw-semibold"><i class="bi bi-plus-circle" role="button" ></i> Sim</a>\n' +
+                                '</div>\n' +
+                            '</div>\n' +
+                        '</div>\n' +
+                    '</div>';
+            }
+        }
+        ]
+    });
+
+    $('#disabledPatrimony').DataTable({
+        drawCallback: function() {
+            $('body').tooltip({
+                selector: '[data-bs-togglee="tooltip"]'
+            });
+        },
+        buttons: [
+            {extend:'csv',title:'Patrimonio',header: 'Patrimonio',filename:'Patrimonio',className: 'btn btn-outline-success mb-2 mt-2',text:'<i class="bi bi-file-earmark-excel"></i>' },
+            //{extend: 'pdf',exportOptions: {columns: ':visible'},title:'Patrimonio SMSUB',header: 'Patrimonio SMSUB',filename:'Patrimonio SMSUB',orientation: 'portrait',pageSize: 'LEGAL',className: 'btn btn-outline-danger mb-2 mt-2',text:'<i class="bi bi-file-earmark-pdf"></i>'},
+            {extend:'print', exportOptions: {columns: ':visible'},title:'Patrimonio SMSUB',header: 'Patrimonio',filename:'Patrimonio',orientation: 'portrait',className: 'btn btn-outline-secondary mb-2 mt-2',text:'<i class="bi bi-printer"></i>'},
+            {extend:'colvis',titleAttr: 'Select Colunas',className: 'btn btn-outline-smsub mb-2 mt-2',text:'<i class="bi bi-list"></i>'},],
+        "dom": "<'row justify-content-center'<'col-lg-4 col-sm-4 col-md-4 numporpag'l><'col-lg-2 col-sm-2 col-md-2 text-center'B><'col-lg-4 col-sm-4 col-md-4 searchbar mb-3 'f>>" +
+            "<'row justify-content-center'<'col-12'tr>>" +
+            "<'row justify-content-center'<'col-lg-5 col-md-5 col-sm-5'i><'col-lg-5 col-md-5 col-sm-5'p>>",
+        responsive:
+            {details:
+                    {display: DataTable.Responsive.display.modal({
+                            header: function (row) {
+                                var data = row.data();
+                                return data[0] + ' - ' + data[1] + ' - ' + data[2];
+                            },
+                            update: true
+                        }),
+                        renderer: DataTable.Responsive.renderer.tableAll({})}},
+        "language": {
+            "sEmptyTable": "Nenhum registro encontrado","sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+            "sInfoEmpty": "Mostrando 0 até 0 de 0 registros","sInfoFiltered": "(Filtrados de _MAX_ registros)",
+            "sInfoThousands": ".","sLengthMenu": "_MENU_ Resultados por Página","sLoadingRecords": "Carregando...",
+            "sProcessing": "Processando...","sZeroRecords": "Nenhum registro encontrado","sSearch": "Pesquisar",
+            "oPaginate": {"sNext": "Próximo","sPrevious": "Anterior","sFirst": "Primeiro","sLast": "Último"},
+            "oAria": {"sSortAscending": "Ordenar colunas de forma ascendente","sPrevious": "Ordenar colunas de forma descendente"}
+        },
+        // dom: "lBftipr",
+        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
+        "aaSorting": [0, 'asc'],
+        "aoColumnDefs": [
+            {
+                target: 0,
+                visible: false
+            },   
+           {
+               target: 3,
+               visible: false
+           },
+           {
+               target: 7,
+               visible: false
+           },
+           {
+               target: 8,
+               visible: false
+           },
+           {
+               target: 10,
+               visible: false
+           },
+           {
+               target: 11,
+               visible: false
+           },
+            {
+                "aTargets": [13], // o numero da coluna
+                "mRender": function (data, type, full) { //aqui é uma funçãozinha para pegar os ids
+                    return '<button type="button" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"\n' +
+                        'data-bs-title="Clique para desativar id : '+ full[13] +'" class="btn btn-outline-warning btn-sm rounded-circle" data-bs-toggle="modal" data-bs-target="#activedModal'+ full[13]+'">' +
+                        '<i class="bi bi-person-dash text-secondary"></i></button>' +
+                        '<div class="modal fade" id="activedModal' + full[13] + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">\n' +
+                            '<div class="modal-dialog modal-sm">\n' +
+                                '<div class="modal-content">\n' +
+                                    '<div class="modal-header bg-warning text-dark">\n' +
+                                    '<h6 class="modal-title text-center" id="exampleModalLabel"><i class="bi bi-gift me-2"></i> Ativar ID: ' + full[13] + '</h6>\n' +
+                                    '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>\n' +
+                                    '</div>\n' +
+                                    '<div class="modal-body fw-semibold">Deseja ativar o patrimonio id : ' + full[13] + ' ?</div>\n' +
+                                    '<div class="modal-footer">\n' +
+                                    '<button type="button" class="btn btn-outline-danger btn-sm fw-semibold" data-bs-dismiss="modal"><i class="bi bi-trash"></i> Não</button>\n' +
+                                    '<a href="ativar/' + full[13] + '/actived" class="btn btn-outline-success btn-sm fw-semibold"><i class="bi bi-plus-circle" role="button" ></i> Sim</a>\n' +
+                                    '</div>\n' +
+                                '</div>\n' +
+                            '</div>\n' +
+                        '</div>';
+                }
+            }
+        ]
     });
 
     $('#contacts').DataTable({

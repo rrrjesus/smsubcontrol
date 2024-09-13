@@ -53,8 +53,7 @@
                         <td class="text-center"><?=$lista->id;?></td>
                     </tr>
                 <?php endforeach; ?>
-                <?php } ?>
-
+                <?php }else{redirect("/painel/usuarios");} ?>
                 </tbody>
             </table>
         </div>

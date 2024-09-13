@@ -51,6 +51,31 @@ class Patrimonys extends Admin
         ]);
     }
 
+        /**
+     * PATRIMONY LIST
+     */
+    public function disabledPatrimonys(): void
+    {
+        $head = $this->seo->render(
+            "Patrimonios - " . CONF_SITE_NAME,
+            CONF_SITE_DESC,
+            url(),
+            theme("/assets/images/favicon.ico"),
+            false
+        );
+
+        $patrimonys = (new Patrimony())->find("status = :s", "s=disabled")->fetch(true);
+        $patrimony = new Patrimony();
+
+        echo $this->view->render("widgets/patrimonys/disabledList", [
+            "head" => $head,
+            "patrimonys" => $patrimonys,
+            "urls" => "patrimonios",
+            "namepage" => "Patrimonios",
+            "name" => "Lista"
+        ]);
+    }
+
        /**
      * PATRIMONY LIST
      */
