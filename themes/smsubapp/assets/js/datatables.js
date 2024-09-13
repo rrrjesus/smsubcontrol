@@ -85,7 +85,7 @@ $(function () {
         }
         ]
     });
-
+    
     $('#disabledPatrimony').DataTable({
         drawCallback: function() {
             $('body').tooltip({
