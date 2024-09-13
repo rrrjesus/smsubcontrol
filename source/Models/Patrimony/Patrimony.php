@@ -88,19 +88,59 @@ class Patrimony extends Model
         return null;
     }
 
-    static function completeBrand($columns): ?Brand
+    /**
+     * @return null|User
+     */
+
+    static function completeUser(): ?User
     {
-        $stm = (new Brand())->find("status = :s","s=actived", $columns);
-        $array = array();
+        $stm = (new User())->find("status != :s","s=disabled");
+        $array[] = array();
 
         if(!empty($stm)):
             foreach ($stm->fetch(true) as $row):
-                $array[] = $row->brand_name;
+                    $array[] = $row->id.' - '.$row->user_name;
             endforeach;
             echo json_encode($array); //Return the JSON Array
         endif;
         return null;
     }
+
+    /**
+     * @return null|Product
+     */
+
+    static function completeProduct(): ?Product
+    {
+        $stm = (new Product())->find("status = :s","s=actived");
+        $array = array();
+
+        if(!empty($stm)):
+            foreach ($stm->fetch(true) as $row):
+                $array[] = $row->id.' - '.$row->product_name;
+            endforeach;
+            echo json_encode($array); //Return the JSON Array
+        endif;
+        return null;
+    }
+
+        /**
+     * @return null|Unit
+     */
+
+     static function completeUnit(): ?Unit
+     {
+         $stm = (new Unit())->find("status = :s","s=actived");
+         $array = array();
+ 
+         if(!empty($stm)):
+             foreach ($stm->fetch(true) as $row):
+                 $array[] = $row->id.' - '.$row->unit_name;
+             endforeach;
+             echo json_encode($array); //Return the JSON Array
+         endif;
+         return null;
+     }
 
     /**
      * @return null|string
@@ -196,20 +236,6 @@ class Patrimony extends Model
         endif;
         return null;
     } 
-
-    static function completeUser($columns): ?User
-    {
-        $stm = (new User())->find("status != :s","s=trash", $columns);
-        $array = array();
-
-        if(!empty($stm)):
-            foreach ($stm->fetch(true) as $row):
-                $array[] = $row->user_name;
-            endforeach;
-            echo json_encode($array); //Return the JSON Array
-        endif;
-        return null;
-    }
 
     public function statusInput(): ?string
     {

@@ -76,10 +76,11 @@ class Patrimonys extends Admin
         ]);
     }
 
-       /**
-     * PATRIMONY LIST
+    /**
+     * @param array|null $data
+     * @throws \Exception
      */
-    public function patrimony(): void
+    public function patrimony(?array $data): void
     {
        
         $user = (new User())->findById($this->user->id);
@@ -229,9 +230,9 @@ class Patrimonys extends Admin
             "patrimonys" => $PatrimonysEdit,
             "patrimonyscreates" => $patrimonysCreates,
             "historico" => $historico,
-            "urls" => "patrimonios",
+            "urls" => ($PatrimonysEdit ? "patrimonios/editar/{$PatrimonysEdit->id}" : "patrimonios"),
             "namepage" => "Patrimonios",
-            "name" => "Lista"
+            "name" => ($PatrimonysEdit ? "Editar" : "Cadastrar")
         ]);
     }
 
