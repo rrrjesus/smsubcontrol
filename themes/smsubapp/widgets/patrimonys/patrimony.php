@@ -34,17 +34,17 @@
                             </div>
 
                             <div class="col-md-3 mb-1">
-                                <label class="col-form-label col-form-label-sm" for="inputImei"><i class="bi bi-person-add me-1"></i><strong>Imei</strong></label>
+                                <label class="col-form-label col-form-label-sm" for="inputImei"><i class="bi bi-person-add me-1"></i><strong>Tipo de Registro da Peça</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                    data-bs-title="Digite o Imei" class="form-control form-control-sm mask-imei"
-                                    name="imei" placeholder="IMEI">
+                                    data-bs-title="Digite o tipo de número da peça" class="form-control form-control-sm type_part_number"
+                                    name="type_part_number" placeholder="TIPO DE REGISTRO DA PEÇA">
                             </div>
 
                             <div class="col-md-3 mb-1">
-                                <label class="col-form-label col-form-label-sm" for="inputNs"><i class="bi bi-person-add me-1"></i><strong>Ns</strong></label>
+                                <label class="col-form-label col-form-label-sm" for="inputNs"><i class="bi bi-person-add me-1"></i><strong>Número de Registro</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                    data-bs-title="Digite o NS" class="form-control form-control-sm"
-                                    name="ns" placeholder="NS">
+                                    data-bs-title="Digite o numero de registro da peça" class="form-control form-control-sm"
+                                    name="part_number" placeholder="NÚMERO DA PEÇA">
                             </div>
                         </div>
 
@@ -110,19 +110,19 @@
                             </div>
 
                             <div class="col-md-3 mb-1">
-                                <label class="col-form-label col-form-label-sm" for="inputImei"><i class="bi bi-person-add me-1"></i><strong>Imei</strong></label>
+                                <label class="col-form-label col-form-label-sm" for="inputImei"><i class="bi bi-person-add me-1"></i><strong>Registro (NS/IMEI/SERVICE_TAG)</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                    data-bs-title="Digite o Imei" class="form-control form-control-sm mask-imei"
-                                    name="imei" placeholder="IMEI" value="<?=$patrimonys->imei?>">
+                                    data-bs-title="Digite o tipo de número da peça" class="form-control form-control-sm type_part_number"
+                                    name="type_part_number" placeholder="TIPO DE REGISTRO DA PEÇA" value="<?=$patrimonys->type_part_number?>">
                             </div>
 
                             <div class="col-md-3 mb-1">
-                                <label class="col-form-label col-form-label-sm" for="inputNs"><i class="bi bi-person-add me-1"></i><strong>Ns</strong></label>
+                                <label class="col-form-label col-form-label-sm" for="inputNs"><i class="bi bi-person-add me-1"></i><strong>Número de Registro</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                    data-bs-title="Digite o NS" class="form-control form-control-sm"
-                                    name="ns" placeholder="NS" value="<?=$patrimonys->ns?>">
+                                    data-bs-title="Digite o numero de registro da peça" class="form-control form-control-sm"
+                                    name="part_number" placeholder="NÚMERO DA PEÇA" value="<?=$patrimonys->part_number?>">
                             </div>
-                            </div>
+                        </div>
 
                             <div class="row mb-1">
 
@@ -160,7 +160,7 @@
                             </div>
 
                             <div class="row mb-1">
-                                <div class="col-md-12 mb-1">
+                                <div class="col-auto mb-1">
                                     <?php $this->insert("widgets/patrimonys/historyList"); ?>
                                 </div>
                             </div>
@@ -181,6 +181,13 @@
                 });
                 product_id.initialize();
                 $('.product_id').typeahead({hint: true, highlight: true, minLength: 1}, {source: product_id});
+                
+                let type_part_number = new Bloodhound({
+                    datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
+                    local: ['NS', 'IMEI', 'SERVICE_TAG']
+                });
+                type_part_number.initialize();
+                $('.type_part_number').typeahead({hint: true, highlight: true, minLength: 1}, {source: type_part_number});
                 
                 let user_id = new Bloodhound({
                     datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,

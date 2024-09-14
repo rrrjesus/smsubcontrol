@@ -52,7 +52,7 @@
                         <td class="text-center"><a href="usuarios/editar/<?=$lista->id?>" data-bs-togglee="tooltip" 
                             data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                             data-bs-title="Clique para editar <?=$lista->user_name?>" role="button" 
-                            class="btn btn-info rounded-circle btn-md text-center">
+                            class="btn btn-info rounded-circle btn-sm text-center">
                             <i class="bi bi-person-gear text-dark"></i></a></td>
                         <td class="text-center"><?=$lista->photoList();?></td>
                         <td class="text-center"><?=$lista->rf;?></td>

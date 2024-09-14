@@ -22,17 +22,17 @@ class Patrimony extends Model
      */
     public function __construct()
     {
-        parent::__construct("patrimonys", ["id"], ["user_id","patrimonys_name", "brand_id", "product_id", "description", "unit_id", "imei", "status", "photo", "observations"]);
+        parent::__construct("patrimonys", ["id"], ["user_id","patrimonys_name", "brand_id", "product_id", "description", "unit_id", "type_part_number", "part_number", "status", "photo", "observations"]);
     }
 
     /**
-     * @param string $imei
+     * @param string $part_number
      * @param string $columns
      * @return null|Patrimony
      */
-    public function findByImei(string $imei, string $columns = "*"): ?Patrimony
+    public function findByPartNumber(string $part_number, string $columns = "*"): ?Patrimony
     {
-        $find = $this->find("imei = :imei", "imei={$imei}", $columns);
+        $find = $this->find("part_number = :part_number", "part_number={$part_number}", $columns);
         return $find->fetch();
     }
 
@@ -110,6 +110,16 @@ class Patrimony extends Model
         return null;
     }
 
+    public function fileList(): ?string
+    {
+        if($this->file && file_exists(CONF_UPLOAD_DIR.'/'.$this->file)){
+            return '<a href="../'.CONF_UPLOAD_DIR.'/'.$this->file.'" role="button" class="btn btn-sm btn-outline-danger" target="_blank"><i class="bi bi-file-earmark-pdf"></a>';
+        }else{
+            return '';
+        }
+        return null;
+    } 
+
     /**
      * @return null|User
      */
@@ -182,19 +192,23 @@ class Patrimony extends Model
      */
     public function statusBadge(): string
     {
-        if($this->status == 'actived'):
+        if($this->status == 'actived'){
             return '<span class="badge text-bg-success ms-2">Ativo</span>';
-        else:
-            return '<span class="badge text-bg-danger ms-2">Inativo</span>';
-        endif;  
+        } elseif($this->status == 'disabled'){
+            return '<span class="badge text-bg-warning ms-2">Inativo</span>';
+        } else {
+            return '<span class="badge text-bg-danger ms-2">Baixa</span>';
+        } 
     }
 
     public function statusSelect(): ?string
     {
         if ($this->status == "actived") {
-            return '<option value="actived" selected>Ativo</option><option value="disabled">Inativo</option>';
+            return '<option value="actived" selected>Ativo</option><option value="disabled">Inativo</option><option value="writeoff">Baixa</option>';
+        } elseif ($this->status == "disabled") {
+            return '<option value="disabled" selected>Inativo</option><option value="actived">Ativo</option><option value="writeoff">Baixa</option>';
         } else {
-            return '<option value="disabled" selected>Inativo</option><option value="actived">Ativo</option>';
+            return '<option value="writeoff" selected>Baixa</option><option value="actived">Ativo</option><option value="disabled">Inativo</option>';
         }
         return null; 
     }
@@ -308,13 +322,8 @@ class Patrimony extends Model
         if (!empty($this->id)) {
             $patrimonyId = $this->id;
 
-            if (!empty($this->imei) && $this->find("imei = :c AND id != :i", "c={$this->imei}&i={$patrimonyId}", "id")->fetch()) {
-                $this->message->warning("O imei informado já está cadastrado");
-                return false;
-            }
-
-            if (!empty($this->ns) && $this->find("ns = :n AND id != :i", "n={$this->ns}&i={$patrimonyId}", "id")->fetch()) {
-                $this->message->warning("O ns informado já está cadastrado");
+            if (!empty($this->part_number) && $this->find("type_part_number = :t AND part_number = :c AND id != :i", "t={$this->type_part_number}&c={$this->part_number}&i={$patrimonyId}", "id")->fetch()) {
+                $this->message->warning("O patrimônio {$this->type_part_number} {$this->part_number} já está cadastrado");
                 return false;
             }
             
@@ -328,13 +337,8 @@ class Patrimony extends Model
 
         /** Patrimony Create */
         if (empty($this->id)) {
-            if (!empty($this->imei) && $this->findByImei($this->imei, "id")) {
-                $this->message->warning("O imei informado já está cadastrado");
-                return false;
-            }
-
-            if (!empty($this->ns) && $this->findByNs($this->ns, "id")) {
-                $this->message->warning("O ns informado já está cadastrado");
+            if (!empty($this->part_number) && $this->findByPartNumber($this->part_number, "id")) {
+                $this->message->warning("O patrimonio {$this->type_part_number} {$this->part_number} informado já está cadastrado");
                 return false;
             }
 

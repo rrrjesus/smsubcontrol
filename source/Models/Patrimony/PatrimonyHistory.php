@@ -22,7 +22,7 @@ class  PatrimonyHistory extends Model
      */
     public function __construct()
     {
-        parent::__construct("patrimonys_historys", ["id"], ["patrimony_id", "user_id","patrimonys_name", "brand_id", "product_id", "description", "unit_id", "imei", "status", "photo", "observations", "created_at"]);
+        parent::__construct("patrimonys_historys", ["id"], ["patrimony_id", "user_id","patrimonys_name", "brand_id", "product_id", "description", "unit_id", "type_part_number", "part_number", "status", "photo", "observations", "created_at"]);
     }
 
     /**
@@ -107,14 +107,14 @@ class  PatrimonyHistory extends Model
      */
     public function save(): bool
     {
-        if ($this->find("unit_id = :d AND imei = :i AND user_id = :u", "d={$this->unit_id}&i={$this->imei}&u={$this->user_id}", "patrimony_id")->fetch()) {
+        if ($this->find("unit_id = :d AND part_number = :p AND user_id = :u", "d={$this->unit_id}&p={$this->part_number}&u={$this->user_id}", "patrimony_id")->fetch()) {
             return false;
         }
 
         $patrimonyId = $this->create($this->safe());
 
         if ($this->fail()) {
-            $this->message->error("Erro ao cadastrar Histórico, verifique os dados");
+            $this->message->error("Erro ao registrar Histórico, verifique os dados");
             return false;
         }
 
