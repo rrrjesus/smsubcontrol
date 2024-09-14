@@ -107,7 +107,7 @@ class  PatrimonyHistory extends Model
      */
     public function save(): bool
     {
-        if ($this->find("imei = :i AND user_id = :u", "i={$this->imei}&u={$this->user_id}", "patrimony_id")->fetch()) {
+        if ($this->find("unit_id = :d AND imei = :i AND user_id = :u", "d={$this->unit_id}&i={$this->imei}&u={$this->user_id}", "patrimony_id")->fetch()) {
             return false;
         }
 

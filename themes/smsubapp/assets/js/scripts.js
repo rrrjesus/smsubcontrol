@@ -51,6 +51,32 @@ $(function () {
         }
     });
 
+    $("#patrimony").validate({
+        rules: {
+            product_id: {
+                required: true
+            },
+            unit_id: {
+                required: true
+            },
+            imei: {
+                minlength: 15
+            }
+        },
+        messages: {
+            product_id: {
+                required: "Digite o produto !!!"
+            },
+            unit_id: {
+                required: "Digite a unidade !!!"
+            },
+            imei: {
+                minlength: "Digite os 15 números !!!"
+            }
+        }
+    });
+
+
     //  data-bs-toggle="tooltip" Bootstrap Title
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-togglee="tooltip"]'))
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {

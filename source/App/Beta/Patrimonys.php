@@ -52,7 +52,7 @@ class Patrimonys extends Admin
     }
 
         /**
-     * PATRIMONY LIST
+     * PATRIMONY LIST DISABLED
      */
     public function disabledPatrimonys(): void
     {
@@ -89,31 +89,76 @@ class Patrimonys extends Admin
         if (!empty($data["action"]) && $data["action"] == "create") {
             $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-            $patrimonysCreate = new Patrimony();
-            $patrimonysCreate->product_id = $data["product_id"];
-            $patrimonysCreate->imei = $data["imei"];
-            $patrimonysCreate->ns = $data["ns"];
-            $patrimonysCreate->unit_id = $data["unit_id"];
-            $patrimonysCreate->user_id = $data["user_id"];
-            $patrimonysCreate->status = $data["status"];
-            $patrimonysCreate->observations = $data["observations"];
-            $patrimonysCreate->login_created = $user->login;
-            $patrimonysCreate->created_at = date_fmt('', "Y-m-d h:m:s");
+            $product_id = $data["product_id"];
+            $imei = $data["imei"];
+            $ns = $data["ns"];
+            $unit_id = $data["unit_id"];
+            $user_id = $data["user_id"];
+            $observations = $data["observations"];
 
-            if($data["imei"] == "" || $data["ns"] == ""){
-                $json['message'] = $this->message->warning("Informe um Imei ou Ns para criar o registro !")->icon()->render();
+            $patrimonyCreate = new Patrimony();
+            $patrimonyCreate->product_id = $product_id;
+            $patrimonyCreate->imei = $imei;
+            $patrimonyCreate->ns = $ns;
+            $patrimonyCreate->unit_id = $unit_id;
+            $patrimonyCreate->user_id = $user_id;
+            $patrimonyCreate->observations = $observations;
+            $patrimonyCreate->login_created = $user->login;
+            $patrimonyCreate->created_at = date_fmt('', "Y-m-d h:m:s");
+
+             //upload pdf
+             if (!empty($_FILES["pdf"])) {
+                $files = $_FILES["pdf"];
+                $upload = new Upload();
+                $pdf = $upload->file($files, $patrimonyCreate->user_id.'_'.$patrimonyCreate->ns);
+
+                if (!$pdf) {
+                    $json["message"] = $upload->message()->render();
+                    echo json_encode($json);
+                    return;
+                }
+
+                $patrimonyCreate->term = $pdf;
+            }
+
+            if($data["product_id"] == ""){
+                $json['message'] = $this->message->warning("Informe um produto para criar o patrimônio !")->icon()->render();
                 echo json_encode($json);
                 return;
             }
 
-            if (!$patrimonysCreate->save()) {
-                $json["message"] = $patrimonysCreate->message()->render();
+            if($data["imei"] == "" && $data["ns"] == ""){
+                $json['message'] = $this->message->warning("Informe um imei ou ns para criar o patrimônio !")->icon()->render();
                 echo json_encode($json);
                 return;
             }
 
-            $this->message->success("Bem {$patrimonysCreate->bem_nome} cadastrado com sucesso...")->icon("emoji-grin me-1")->flash();
-            $json["redirect"] = url("/beta/patrimonio/cadastrar");
+            if($data["unit_id"] == ""){
+                $json['message'] = $this->message->warning("Informe uma unidade para criar o patrimônio !")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            if (!$patrimonyCreate->save()) {
+                $json["message"] = $patrimonyCreate->message()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            $patrimonyCreateHistory = new PatrimonyHistory();
+            $patrimonyCreateHistory->patrimony_id = $patrimonyCreate->id;
+            $patrimonyCreateHistory->product_id = $product_id;
+            $patrimonyCreateHistory->unit_id = $unit_id;
+            $patrimonyCreateHistory->user_id = $user_id;
+            $patrimonyCreateHistory->imei = $imei;
+            $patrimonyCreateHistory->ns = $ns;
+            $patrimonyCreateHistory->observations = $observations;
+            $patrimonyCreateHistory->login_updated = $user->login;
+            $patrimonyCreateHistory->updated_at = date_fmt('', "Y-m-d h:m:s");
+            $patrimonyCreateHistory->save();
+
+            $this->message->success("Patrimônio {$patrimonyCreate->imei} {$patrimonyCreate->ns} cadastrado com sucesso...")->icon("emoji-grin me-1")->flash();
+            $json["redirect"] = url("/beta/patrimonios/cadastrar");
 
             echo json_encode($json);
             return;
@@ -131,14 +176,12 @@ class Patrimonys extends Admin
             $unit_id = substr($unit_id_number, 0, 2);  // 12
             $user_id = preg_replace("/[^0-9\s]/", "", $data["user_id"]);
             $observations = $data["observations"];
-            $created_at = $data["created_at"];
-            $login_created = $data["login_created"];
 
             $patrimonysUpdate = (new Patrimony())->findById($patrimonys_id);
 
             if (!$patrimonysUpdate) {
                 $this->message->error("Você tentou gerenciar um patrimônio que não existe")->flash();
-                echo json_encode(["redirect" => url("/beta/patrimonio/lista")]);
+                echo json_encode(["redirect" => url("/beta/patrimonios")]);
                 return;
             }
 
@@ -152,13 +195,19 @@ class Patrimonys extends Admin
             $patrimonysUpdate->updated_at = date_fmt('', "Y-m-d h:m:s");
 
             if($data["product_id"] == ""){
-                $json['message'] = $this->message->warning("Informe uma unidade para salvar o registro !")->icon()->render();
+                $json['message'] = $this->message->warning("Informe um produto para gravar o patrimônio !!!")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            if($data["imei"] == "" && $data["ns"] == ""){
+                $json['message'] = $this->message->warning("Informe um imei ou ns para gravar o patrimônio !!!")->icon()->render();
                 echo json_encode($json);
                 return;
             }
 
             if($data["unit_id"] == ""){
-                $json['message'] = $this->message->warning("Informe uma unidade para salvar o registro !")->icon()->render();
+                $json['message'] = $this->message->warning("Informe uma unidade para gravar o patrimônio !!!")->icon()->render();
                 echo json_encode($json);
                 return;
             }
@@ -177,14 +226,62 @@ class Patrimonys extends Admin
             $patrimonysCreate->imei = $imei;
             $patrimonysCreate->ns = $ns;
             $patrimonysCreate->observations = $observations;
-            $patrimonysCreate->login_created = $login_created;
-            $patrimonysCreate->criado = $created_at;
             $patrimonysCreate->login_updated = $user->login;
-            $patrimonysCreate->updated_at = date_fmt('', "Y-m-d h:m:s");
             $patrimonysCreate->save();
 
-            $json["message"] = $this->message->success("Bem {$imei} {$ns} {$created_at} atualizado com sucesso !!!")->icon("emoji-grin me-1")->render();
-            echo json_encode($json);
+            $this->message->success("Patrimonio {$imei} {$ns} atualizado com sucesso !!!")->icon("emoji-grin me-1")->flash();
+            echo json_encode(["redirect" => url("/beta/patrimonios")]);
+            return;
+        }
+
+         //actived
+         if (!empty($data["action"]) && $data["action"] == "actived") {
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
+            $patrimonyActived = (new Patrimony())->findById($data["patrimonys_id"]);
+
+            if (!$patrimonyActived) {
+                $this->message->error("Você tentou gerenciar um patrimônio que não existe")->icon()->flash();
+                echo json_encode(["redirect" => url("/beta/patrimonios")]);
+                return;
+            }
+
+            $patrimonyActived->status = "actived";
+            $patrimonyActived->login_updated = $user->login;
+
+            if (!$patrimonyActived->save()) {
+                $json["message"] = $patrimonyActived->message()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            $this->message->success("Patrimônio {$patrimonyActived->imei} {$patrimonyActived->ns} reativado com sucesso !!!")->icon("emoji-grin me-1")->flash();
+            redirect("/beta/patrimonios");
+            return;
+        }
+
+        
+         //disabled
+         if (!empty($data["action"]) && $data["action"] == "disabled") {
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
+            $patrimonyDisabled = (new Patrimony())->findById($data["patrimonys_id"]);
+
+            if (!$patrimonyDisabled) {
+                $this->message->error("Você tentou gerenciar um patrimônio que não existe")->icon()->flash();
+                echo json_encode(["redirect" => url("/beta/patrimonios")]);
+                return;
+            }
+
+            $patrimonyDisabled->status = "disabled";
+            $patrimonyDisabled->login_updated = $user->login;
+
+            if (!$patrimonyDisabled->save()) {
+                $json["message"] = $patrimonyDisabled->message()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            $this->message->success("Patrimônio {$patrimonyDisabled->imei} - {$patrimonyDisabled->ns} desativado com sucesso !!!")->icon("emoji-grin me-1")->flash();
+            redirect("/beta/patrimonios");
             return;
         }
 
@@ -195,7 +292,7 @@ class Patrimonys extends Admin
 
             if (!$updateDelete) {
                 $this->message->error("Você tentou deletar um patrimônio que não existe")->flash();
-                echo json_encode(["redirect" => url("/beta/patrimonio/lista")]);
+                echo json_encode(["redirect" => url("/beta/patrimonios")]);
                 return;
             }
 
@@ -207,7 +304,7 @@ class Patrimonys extends Admin
             $updateDelete->destroy();
 
             $this->message->success("O patrimônio foi excluído com sucesso...")->flash();
-            echo json_encode(["redirect" => url("/beta/patrimonio/lista")]);
+            echo json_encode(["redirect" => url("/beta/patrimonios")]);
 
             return;
         }

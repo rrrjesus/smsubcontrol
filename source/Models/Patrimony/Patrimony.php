@@ -37,6 +37,17 @@ class Patrimony extends Model
     }
 
     /**
+     * @param string $ns
+     * @param string $columns
+     * @return null|Patrimony
+     */
+    public function findByNs(string $ns, string $columns = "*"): ?Patrimony
+    {
+        $find = $this->find("ns = :ns", "ns={$ns}", $columns);
+        return $find->fetch();
+    }
+
+    /**
      * @return Brand
      */
     public function brand(): Brand
@@ -73,6 +84,17 @@ class Patrimony extends Model
     {
         if($this->user_id) {
             return(new User())->findById($this->user_id);
+        }
+        return null;
+    }
+
+    /**
+     * @return null|User
+     */
+    public function patrimonyUser(string $user): ?User
+    {
+        if($user) {
+            return(new User())->findById($user);
         }
         return null;
     }
@@ -252,7 +274,7 @@ class Patrimony extends Model
      */
     public function photo(): ?string
     {
-        if ($this->photo && file_exists(__DIR__ . "/../../" . CONF_UPLOAD_DIR . "/{$this->photo}")) {
+        if ($this->photo && file_exists(__DIR__ . "/../../" .CONF_UPLOAD_DIR. "/{$this->photo}")) {
             return $this->photo;
         }
 
@@ -284,14 +306,19 @@ class Patrimony extends Model
     {
         /** Patrimony Update */
         if (!empty($this->id)) {
-            $bemId = $this->id;
+            $patrimonyId = $this->id;
 
-            if ($this->find("imei = :c AND id != :i", "c={$this->imei}&i={$bemId}", "id")->fetch()) {
+            if (!empty($this->imei) && $this->find("imei = :c AND id != :i", "c={$this->imei}&i={$patrimonyId}", "id")->fetch()) {
                 $this->message->warning("O imei informado já está cadastrado");
                 return false;
             }
+
+            if (!empty($this->ns) && $this->find("ns = :n AND id != :i", "n={$this->ns}&i={$patrimonyId}", "id")->fetch()) {
+                $this->message->warning("O ns informado já está cadastrado");
+                return false;
+            }
             
-            $this->update($this->safe(), "id = :id", "id={$bemId}");
+            $this->update($this->safe(), "id = :id", "id={$patrimonyId}");
             
             if ($this->fail()) {
                 $this->message->error("Erro ao atualizar, verifique os dados");
@@ -301,19 +328,24 @@ class Patrimony extends Model
 
         /** Patrimony Create */
         if (empty($this->id)) {
-            if ($this->findByImei($this->imei, "id")) {
+            if (!empty($this->imei) && $this->findByImei($this->imei, "id")) {
                 $this->message->warning("O imei informado já está cadastrado");
                 return false;
             }
 
-            $bemId = $this->create($this->safe());
+            if (!empty($this->ns) && $this->findByNs($this->ns, "id")) {
+                $this->message->warning("O ns informado já está cadastrado");
+                return false;
+            }
+
+            $patrimonyId = $this->create($this->safe());
             if ($this->fail()) {
                 $this->message->error("Erro ao cadastrar, verifique os dados");
                 return false;
             }
         }
 
-        $this->data = ($this->findById($bemId))->data();
+        $this->data = ($this->findById($patrimonyId))->data();
         return true;
     }
 }

@@ -18,6 +18,13 @@
                         <div class="ajax_response"><?=flash();?></div>
 
                         <div class="row mb-1">
+                            <div class="col-md-4 mb-1">
+                                <label for="formFileSm" class="col-form-label col-form-label-sm"> <strong><i class="bi bi-upload me-1"></i>  Extensões aceitas : .bmp ,.png, .svg, .jpeg e .jpg </strong></label>
+                                <input class="form-control form-control-sm" data-image=".j_profile_image" type="file" class="radius" name="pdf"/>
+                            </div>
+                        </div>
+
+                        <div class="row mb-1">
 
                             <div class="col-md-6 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputProduto"><i class="bi bi-person-add me-1"></i><strong>Produto</strong></label>
@@ -68,7 +75,6 @@
                             </div>
 
                         </div>
-
 
                         <div class="row justify-content-center mt-4 mb-3">
                             <div class="col-auto">
@@ -123,14 +129,14 @@
                                 <div class="col-md-7 mb-1">
                                     <label class="col-form-label col-form-label-sm" for="inputSobreNome"><i class="bi bi-person-add me-1"></i><strong>Unidade</strong></label>
                                     <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                        data-bs-title="Digite a unidade" class="form-control form-control-sm unit_id"
+                                        data-bs-title="Digite o nome da unidade" class="form-control form-control-sm unit_id"
                                         name="unit_id" placeholder="UNIDADE" value="<?php if($patrimonys->unit_id){echo $patrimonys->unit()->id.' - '.$patrimonys->unit()->unit_name;}else{echo '';}?>">
                                 </div>
 
                                 <div class="col-md-5 mb-1">
                                     <label class="col-form-label col-form-label-sm" for="inputSobreNome"><i class="bi bi-person-add me-1"></i><strong>Usuario</strong></label>
                                     <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                        data-bs-title="Digite a unidade" class="form-control form-control-sm user_id"
+                                        data-bs-title="Digite o nome do usuário" class="form-control form-control-sm user_id"
                                         name="user_id" placeholder="USUÁRIO" value="<?php if($patrimonys->user_id){echo $patrimonys->userPatrimony()->id.' - '.$patrimonys->userPatrimony()->user_name;}else{echo '';}?>">
                                 </div>
 
@@ -144,11 +150,7 @@
                                     data-bs-title=Observações" rows="2" name="observations"><?=$patrimonys->observations?></textarea>
                                 </div>
 
-                            </div>
-
-                            <input type="text" name="created_at" value="<?=$patrimonys->created_at?>">
-                            <input type="hidden" name="login_created" value="<?=$patrimonys->login_created?>">
-                               
+                            </div>                               
 
                             <div class="row justify-content-center mt-4 mb-3">
                                 <div class="col-auto">
