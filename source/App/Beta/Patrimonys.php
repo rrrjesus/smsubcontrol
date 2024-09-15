@@ -76,18 +76,16 @@ class Patrimonys extends Admin
         ]);
     }
 
-       /**
-     * PATRIMONY TERM
+    /**
+     * @param array|null $data
+     * @throws \Exception
      */
-    public function term(): void
+    public function term(?array $data): void
     {
-        $PatrimonysEdit = null;
-        
-        if (!empty($data["patrimonys_id"])) {
-            $patrimonyId = filter_var($data["patrimonys_id"], FILTER_VALIDATE_INT);
-            $PatrimonysEdit = (new Patrimony())->findById($patrimonyId);
-        }
-       
+       //update term
+        $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
+        $termPrint = (new Patrimony())->findById($data["patrimonys_id"]);
+
         $head = $this->seo->render(
             "Patrimonios - " . CONF_SITE_NAME,
             CONF_SITE_DESC,
@@ -98,10 +96,10 @@ class Patrimonys extends Admin
 
         echo $this->view->render("widgets/patrimonys/term", [
             "head" => $head,
-            "patrimonys" => $PatrimonysEdit,
-            "urls" => "patrimonios/termo/{$PatrimonysEdit->id}",
-            "namepage" => "Patrimonios",
-            "name" => "Termo {$PatrimonysEdit->id}"
+            "term" => $termPrint,
+            "urls" => "usuarios/editar/{$termPrint->id}",
+            "namepage" => "Usuários",
+            "name" => "Termo"
         ]);
     }
 

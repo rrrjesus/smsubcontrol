@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -187,7 +188,7 @@ style='font-family:"Arial",sans-serif'>&nbsp;</span></p>
   style='font-family:"Arial",sans-serif'> em _____/ _____/ ________</span></p>
   <p class=MsoNormal style='margin-left:0cm;text-indent:-.1pt'><b><span
   style='font-family:"Arial",sans-serif'>NOME</span></b><span style='font-family:
-  "Arial",sans-serif'>: <?=$PatrimonysEdit->userPatrimony()->user_name?>"?></span></p>
+  "Arial",sans-serif'>: <?=$term->userPatrimony()->user_name?></span></p>
   <p class=MsoNormal style='margin-left:0cm;text-align:justify;text-indent:
   -.1pt;line-height:120%'><b><span style='font-family:"Arial",sans-serif'>R.F</span></b><span
   style='font-family:"Arial",sans-serif'> : 535.476-5</span></p>
