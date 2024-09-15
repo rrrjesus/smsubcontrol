@@ -98,6 +98,7 @@ $route->get("/patrimonios/editar/{patrimonys_id}", "Patrimonys:patrimony");
 $route->post("/patrimonios/editar/{patrimonys_id}", "Patrimonys:patrimony");
 $route->get("/patrimonios/ativar/{patrimonys_id}/{action}", "Patrimonys:patrimony");
 $route->get("/patrimonios/desativar/{patrimonys_id}/{action}", "Patrimonys:patrimony");
+$route->get("/patrimonios/termo/{patrimonys_id}", "Patrimonys:term");
 
 //Historico Bens
 $route->get("/patrimonio/benshistorico/lista", "PatrimonyHistory:bensLista");

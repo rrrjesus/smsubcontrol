@@ -51,7 +51,7 @@ class Patrimonys extends Admin
         ]);
     }
 
-        /**
+    /**
      * PATRIMONY LIST DISABLED
      */
     public function disabledPatrimonys(): void
@@ -75,6 +75,36 @@ class Patrimonys extends Admin
             "name" => "Lista"
         ]);
     }
+
+       /**
+     * PATRIMONY TERM
+     */
+    public function term(): void
+    {
+        $PatrimonysEdit = null;
+        
+        if (!empty($data["patrimonys_id"])) {
+            $patrimonyId = filter_var($data["patrimonys_id"], FILTER_VALIDATE_INT);
+            $PatrimonysEdit = (new Patrimony())->findById($patrimonyId);
+        }
+       
+        $head = $this->seo->render(
+            "Patrimonios - " . CONF_SITE_NAME,
+            CONF_SITE_DESC,
+            url(),
+            theme("/assets/images/favicon.ico"),
+            false
+        );
+
+        echo $this->view->render("widgets/patrimonys/term", [
+            "head" => $head,
+            "patrimonys" => $PatrimonysEdit,
+            "urls" => "patrimonios/termo/{$PatrimonysEdit->id}",
+            "namepage" => "Patrimonios",
+            "name" => "Termo {$PatrimonysEdit->id}"
+        ]);
+    }
+
 
     /**
      * @param array|null $data
