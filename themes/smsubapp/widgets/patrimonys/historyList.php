@@ -11,6 +11,7 @@
                             <th class="text-center">LOGIN</th>
                             <th class="text-center">RF</th>
                             <th class="text-center">EMAIL</th>
+                            <th class="text-center">TERMO</th>
                             <th class="text-center">UNIDADE</th>
                             <th class="text-center">RESPONSAVEL UN.</th>
                             <th class="text-center">TELEFONE UN.</th>
@@ -38,6 +39,7 @@
                             </td>
                             <td class="text-center fw-semibold"><?=(!empty($lista->userPatrimony()->rf) ?$lista->userPatrimony()->rf : "")?></td>
                             <td class="text-center fw-semibold"><?=(!empty($lista->userPatrimony()->email) ? $lista->userPatrimony()->email : "")?></td>
+                            <td class="text-center"><?=$lista->fileList()?></td>
                             <td class="text-center fw-semibold"><?=(!empty($lista->unit()->unit_name) ? $lista->unit()->unit_name : "")?></td>
                             <td class="text-center fw-semibold"><?=(!empty($lista->unit()->it_professional) ? $lista->unit()->it_professional : "Não Cadastrado");?></td>
                             <td class="text-center fw-semibold"><?=(!empty($lista->unit()->telephone) ? $lista->unit()->telephone : "");?></td>

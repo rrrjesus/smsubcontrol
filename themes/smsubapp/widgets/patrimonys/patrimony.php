@@ -19,8 +19,8 @@
 
                         <div class="row mb-1">
                             <div class="col-md-4 mb-1">
-                                <label for="formFileSm" class="col-form-label col-form-label-sm"> <strong><i class="bi bi-upload me-1"></i>  Extensões aceitas : .bmp ,.png, .svg, .jpeg e .jpg </strong></label>
-                                <input class="form-control form-control-sm" data-image=".j_profile_image" type="file" class="radius" name="pdf"/>
+                                <label for="formFileSm" class="col-form-label col-form-label-sm"> <strong><i class="bi bi-upload me-1"></i>  Extensões aceitas : .pdf </strong></label>
+                                <input class="form-control form-control-sm" type="file" class="radius" name="file_terms"/>
                             </div>
                         </div>
 
@@ -99,6 +99,23 @@
                         <div class="ajax_response"><?=flash();?></div>
 
                         <?=csrf_input();?>
+
+                        <div class="row mb-1">
+
+                            <div class="col-md-1 mb-1">
+                                <a href="<?php if (file_exists(CONF_UPLOAD_DIR .'/'.$patrimonys->file_terms)) {echo '../../../'.CONF_UPLOAD_DIR .'/'.$patrimonys->file_terms;} 
+                                    else {echo url('themes/'.CONF_VIEW_APP.'/assets/images/avatar.jpg');}?>" target="_blank">
+                                <img data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                    data-bs-title="Clique para abrir termo" height="90" width="90" src="<?php if ($patrimonys->file_terms && file_exists(CONF_UPLOAD_DIR .'/'.$patrimonys->file_terms)) 
+                                    {echo url('themes/'.CONF_VIEW_APP.'/assets/images/adobe.jpg');}else {echo url('themes/'.CONF_VIEW_APP.'/assets/images/avatar.jpg');}?>" class="img-thumbnail rounded-circle float-left" id="foto-cliente">
+                                </a>
+                            </div>
+
+                            <div class="col-md-4 mb-1">
+                                <label for="formFileSm" class="col-form-label col-form-label-sm"> <strong><i class="bi bi-upload me-1"></i>  Extensões aceitas : .pdf </strong></label>
+                                <input class="form-control form-control-sm" type="file" class="radius" name="file_terms"/>
+                            </div>
+                        </div>
                                 
                         <div class="row mb-1">
 

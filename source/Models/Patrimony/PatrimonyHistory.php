@@ -22,7 +22,7 @@ class  PatrimonyHistory extends Model
      */
     public function __construct()
     {
-        parent::__construct("patrimonys_historys", ["id"], ["patrimony_id", "user_id","patrimonys_name", "brand_id", "product_id", "description", "unit_id", "type_part_number", "part_number", "status", "photo", "observations", "created_at"]);
+        parent::__construct("patrimonys_historys", ["id"], ["patrimony_id", "user_id","patrimonys_name", "brand_id", "product_id", "description", "unit_id", "file_terms", "type_part_number", "part_number", "status", "photo", "observations", "created_at"]);
     }
 
     /**
@@ -76,6 +76,16 @@ class  PatrimonyHistory extends Model
         }
         return null;
     }
+
+    public function fileList(): ?string
+    {
+        if(!empty($this->file_terms) && file_exists(CONF_UPLOAD_DIR.'/'.$this->file_terms)){
+            return '<a href="../../../'.CONF_UPLOAD_DIR.'/'.$this->file_terms.'" role="button" class="btn btn-sm btn-outline-danger" target="_blank"><i class="bi bi-file-earmark-pdf"></a>';
+        }else{
+            return '';
+        }
+        return null;
+    } 
 
     /**
      * @return string

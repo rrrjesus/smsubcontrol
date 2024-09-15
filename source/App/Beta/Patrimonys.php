@@ -107,18 +107,18 @@ class Patrimonys extends Admin
             $patrimonyCreate->created_at = date_fmt('', "Y-m-d h:m:s");
 
              //upload pdf
-             if (!empty($_FILES["pdf"])) {
-                $files = $_FILES["pdf"];
+             if (!empty($_FILES["file_terms"])) {
+                $files = $_FILES["file_terms"];
                 $upload = new Upload();
-                $pdf = $upload->file($files, $patrimonyCreate->user_id.'_'.$patrimonyCreate->type_part_number.'_'.$patrimonyCreate->part_number);
+                $file_terms = $upload->file($files, $patrimonyCreate->user_id.'_'.$patrimonyCreate->type_part_number.'_'.$patrimonyCreate->part_number);
 
-                if (!$pdf) {
+                if (!$file_terms) {
                     $json["message"] = $upload->message()->render();
                     echo json_encode($json);
                     return;
                 }
 
-                $patrimonyCreate->file = $pdf;
+                $patrimonyCreate->file_terms = $file_terms;
             }
 
             if($data["product_id"] == ""){
@@ -158,6 +158,7 @@ class Patrimonys extends Admin
             $patrimonyCreateHistory->user_id = $user_id;
             $patrimonyCreateHistory->type_part_number = $type_part_number;
             $patrimonyCreateHistory->part_number = $part_number;
+            $patrimonyCreateHistory->file_terms = $file_terms;
             $patrimonyCreateHistory->observations = $observations;
             $patrimonyCreateHistory->login_updated = $user->login;
             $patrimonyCreateHistory->save();
@@ -179,7 +180,7 @@ class Patrimonys extends Admin
             $part_number = $data["part_number"];
             $unit_id_number = preg_replace("/[^0-9\s]/", "", $data["unit_id"]);
             $unit_id = substr($unit_id_number, 0, 2);  // 12
-            $user_id = preg_replace("/[^0-9\s]/", "", $data["user_id"]);
+            $user_id = $data["user_id"];
             $observations = $data["observations"];
 
             $patrimonysUpdate = (new Patrimony())->findById($patrimonys_id);
@@ -197,6 +198,26 @@ class Patrimonys extends Admin
             $patrimonysUpdate->part_number = $part_number;
             $patrimonysUpdate->observations = $observations;
             $patrimonysUpdate->login_updated = $user->login;
+
+            $file_terms = null;
+
+             //upload pdf
+             if (!empty($_FILES["file_terms"])) {
+                $files = $_FILES["file_terms"];
+                $upload = new Upload();
+                
+                if ($patrimonysUpdate->file_terms) {
+                    $file_terms = $upload->file($files, $patrimonysUpdate->user_id.'_'.$patrimonysUpdate->type_part_number.'_'.$patrimonysUpdate->part_number);
+                }
+
+                if (!$patrimonysUpdate->file_terms = $upload->file($files, $patrimonysUpdate->user_id.'_'.$patrimonysUpdate->type_part_number.'_'.$patrimonysUpdate->part_number)) {
+                    $json["message"] = $upload->message()->before("Ooops {$patrimonysUpdate->type_part_number}! ")->after(".")->render();
+                    echo json_encode($json);
+                    return;
+                }
+
+                $patrimonysUpdate->file_terms = $file_terms;
+            }
 
             if($data["product_id"] == ""){
                 $json['message'] = $this->message->warning("Informe um produto para gravar o patrimônio !!!")->icon()->render();
@@ -232,6 +253,7 @@ class Patrimonys extends Admin
             $patrimonysCreate->patrimony_id = $patrimonys_id;
             $patrimonysCreate->product_id = $product_id;
             $patrimonysCreate->unit_id = $unit_id;
+            $patrimonysCreate->file_terms = $file_terms;
             $patrimonysCreate->user_id = $user_id;
             $patrimonysCreate->type_part_number = $type_part_number;
             $patrimonysCreate->part_number = $part_number;
