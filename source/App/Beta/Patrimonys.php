@@ -87,7 +87,7 @@ class Patrimonys extends Admin
         $termPrint = (new Patrimony())->findById($data["patrimonys_id"]);
 
         $head = $this->seo->render(
-            "Patrimonios - " . CONF_SITE_NAME,
+            CONF_SITE_NAME . " - Termo - ".$termPrint->userPatrimony()->rf." - ".$termPrint->userPatrimony()->user_name." - ".$termPrint->type_part_number.":".$termPrint->part_number ,
             CONF_SITE_DESC,
             url(),
             theme("/assets/images/favicon.ico"),
@@ -97,7 +97,7 @@ class Patrimonys extends Admin
         echo $this->view->render("widgets/patrimonys/term", [
             "head" => $head,
             "term" => $termPrint,
-            "urls" => "usuarios/editar/{$termPrint->id}",
+            "urls" => "patrimonios/termo/{$termPrint->id}",
             "namepage" => "Usuários",
             "name" => "Termo"
         ]);

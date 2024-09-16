@@ -1,59 +1,37 @@
 
-<!doctype html>
-<html lang="en">
-  <head>
+<?= $this->layout("_beta"); ?>
 
-        <meta http-equiv=Content-Type content="text/html; charset=windows-1252">
-        <meta name=Generator content="Microsoft Word 15 (filtered)">
-        <title>Bootstrap demo</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        
 <style>
 <!--
  /* Font Definitions */
  @font-face
-	{font-family:"Cambria Math";
-	panose-1:2 4 5 3 5 4 6 3 2 4;}
+	{font-family:"Cambria Math"; panose-1:2 4 5 3 5 4 6 3 2 4;}
 @font-face
-	{font-family:Verdana;
-	panose-1:2 11 6 4 3 5 4 4 2 4;}
+	{font-family:Verdana;	panose-1:2 11 6 4 3 5 4 4 2 4;}
 @font-face
-	{font-family:Tahoma;
-	panose-1:2 11 6 4 3 5 4 4 2 4;}
+	{font-family:Tahoma; panose-1:2 11 6 4 3 5 4 4 2 4;}
 @font-face
-	{font-family:Georgia;
-	panose-1:2 4 5 2 5 4 5 2 3 3;}
+	{font-family:Georgia; panose-1:2 4 5 2 5 4 5 2 3 3;}
 @font-face
-	{font-family:"Arial Narrow";
-	panose-1:2 11 6 6 2 2 2 3 2 4;}
+	{font-family:"Arial Narrow"; panose-1:2 11 6 6 2 2 2 3 2 4;}
+
  /* Style Definitions */
  p.MsoNormal, li.MsoNormal, div.MsoNormal
-	{margin-top:0cm;
-	margin-right:0cm;
-	margin-bottom:0cm;
-	margin-left:-.05pt;
-	text-indent:-.05pt;
-	font-size:10.0pt;
-	font-family:"Times New Roman",serif;
-	position:relative;
-	top:.5pt;}
-.MsoChpDefault
-	{font-size:10.0pt;}
- /* Page Definitions */
- @page WordSection1
-	{size:21.0cm 842.0pt;
-	margin:28.95pt 2.0cm 31.2pt 70.9pt;}
-div.WordSection1
-	{page:WordSection1;}
+	{margin-top:0cm; margin-right:0cm; margin-bottom:0cm; margin-left:-.05pt; text-indent:-.05pt; font-size:10.0pt; font-family:"Times New Roman",serif; position:relative; top:.5pt;}
+.MsoChpDefault {font-size:10.0pt;}
+ 
+/* Page Definitions */
+ @page WordSection1 {size:21.0cm 842.0pt;	margin:28.95pt 2.0cm 31.2pt 70.9pt;}
+div.WordSection1 {page:WordSection1;}
+
  /* List Definitions */
- ol
-	{margin-bottom:0cm;}
-ul
-	{margin-bottom:0cm;}
+ ol {margin-bottom:0cm;}
+ul {margin-bottom:0cm;}
+
+ /* Print Definitions */
+@media print {nav {visibility: hidden;} footer {visibility: hidden;}}
 -->
 </style>
-
-</head>
 
 <body lang=PT-BR link=blue vlink=purple style='word-wrap:break-word'>
                                     
@@ -120,60 +98,59 @@ perda ou furto, ou danos ao equipamento devido à má utilização ou conservaç
 repondo o equipamento com a mesma especificação técnica á marca / modelo, ou similar,
 <b>Às minhas expensas</b>;</span></p>
 
-<p class=MsoNormal style='margin-top:14.0pt;margin-right:0cm;margin-bottom:
-0cm;margin-left:0cm;margin-bottom:.0001pt;text-align:justify;text-indent:-.1pt'><span
-style='font-family:"Arial",sans-serif'>&nbsp;</span></p>
+<p class=MsoNormal style='margin-top:14.0pt;margin-right:0cm;margin-bottom: 0cm;margin-left:0cm;margin-bottom:.0001pt;text-align:justify;text-indent:-.1pt'>
+  <span style='font-family:"Arial",sans-serif'>&nbsp;</span></p>
 
 <div align=center>
 
-<table class=a border=1 cellspacing=0 cellpadding=0 width=624 style='border-collapse:
- collapse;border:none'>
- <tr style='height:44.0pt'>
-  <td width=624 valign=top style='width:467.7pt;border:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:44.0pt'>
-  <p class=MsoNormal style='margin-left:0cm;text-indent:-.1pt'><b><span
-  style='font-size:9.0pt;font-family:"Verdana",sans-serif'>EQUIPAMENTO:</span></b><span
-  style='font-size:9.0pt;font-family:"Verdana",sans-serif'> 01 TABLET - Modelo
-  Samsung TAB7  NS: R9XR604CBLX - IMEI: 35396961575307 com cabo USB,
-  carregador e chave.</span></p>
-  <p class=MsoNormal style='margin-left:0cm;text-indent:-.1pt'><span
-  style='font-size:9.0pt;font-family:"Verdana",sans-serif'>
-  01 CHIP MÓVEL (11)97386-3518</span></p>
-  </td>
- </tr>
-</table>
+  <table class=a border=1 cellspacing=0 cellpadding=0 width=624 style='border-collapse: collapse;border:none'>
+    <tr style='height:44.0pt'>
+      <td width=624 valign=top style='width:467.7pt;border:solid black 1.0pt; padding:0cm 5.4pt 0cm 5.4pt;height:44.0pt'>
+        <p class=MsoNormal style='margin-left:0cm;text-indent:-.1pt'><b>
+          <span style='font-size:9.0pt;font-family:"Verdana",sans-serif'>Equipamento:</span></b>
+          <span style='font-size:9.0pt;font-family:"Verdana",sans-serif'> 01 <?=$term->productBrand($term->product()->brand_id)->brand_name?> 
+          <?=$term->product()->product_name?> - <?=$term->type_part_number?> : <?=$term->part_number?></span>
+        </p>
+        <p class=MsoNormal style='margin-left:0cm;text-indent:-.1pt'>
+          <span style='font-size:9.0pt;font-family:"Verdana",sans-serif'><strong>Descrição</strong> : <?=$term->product()->description?></span>
+        </p>
+      </td>
+    </tr>
+  </table>
 
-</div>
+  <p class=MsoNormal style='margin-left:0cm;text-align:justify;text-indent:-.1pt'>
+    <span style='font-family:"Arial",sans-serif'>&nbsp;</span>
+  </p>
 
-<p class=MsoNormal style='margin-left:0cm;text-align:justify;text-indent:-.1pt'><span
-style='font-family:"Arial",sans-serif'>&nbsp;</span></p>
-
-<table class=a0 border=1 cellspacing=0 cellpadding=0 width=624
- style='margin-left:-.15pt;border-collapse:collapse;border:none'>
- <tr style='height:39.7pt'>
-  <td width=314 valign=top style='width:235.85pt;border:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:39.7pt'>
-  <p class=MsoNormal style='margin-left:0cm;text-indent:-.1pt'><b><span
-  style='font-size:9.0pt;font-family:"Verdana",sans-serif'>AUTORIZADO</span></b><span
-  style='font-size:9.0pt;font-family:"Verdana",sans-serif'> EM</span><span
-  style='font-size:8.0pt;font-family:"Verdana",sans-serif'>:</span></p>
-  <p class=MsoNormal style='margin-left:0cm;text-indent:-.1pt'><span
-  style='font-size:8.0pt;font-family:"Verdana",sans-serif'>&nbsp;</span></p>
-  <p class=MsoNormal align=center style='margin-left:.05pt;text-align:center;
-  text-indent:-.15pt'><b><span style='font-size:14.0pt;font-family:"Verdana",sans-serif'>20/06/2024</span></b></p>
-  <p class=MsoNormal style='margin-left:.05pt;text-indent:-.15pt'><span
-  style='font-size:14.0pt;font-family:"Verdana",sans-serif'>&nbsp;</span></p>
-  <p class=MsoNormal><span style='font-size:6.0pt;font-family:"Arial",sans-serif'>&nbsp;</span></p>
-  </td>
-  <td width=309 valign=top style='width:231.95pt;border:solid black 1.0pt;
-  border-left:none;padding:0cm 5.4pt 0cm 5.4pt;height:39.7pt'>
-  <p class=MsoNormal style='margin-left:0cm;text-indent:-.1pt'><b><span
-  style='font-size:9.0pt'>OBSERVAÇÃO:</span></b></p>
-  <p class=MsoNormal style='margin-left:0cm;text-align:justify;text-indent:
-  -.1pt'><span style='font-size:10.0pt;font-family:"Arial",sans-serif'>&nbsp;</span></p>
-  </td>
- </tr>
-</table>
+  <table class=a0 border=1 cellspacing=0 cellpadding=0 width=624 style='margin-left:-.15pt;border-collapse:collapse;border:none'>
+    <tr style='height:39.7pt'>
+      <td width=314 valign=top style='width:235.85pt;border:solid black 1.0pt; padding:0cm 5.4pt 0cm 5.4pt;height:39.7pt'>
+        <p class=MsoNormal style='margin-left:0cm;text-indent:-.1pt'><b>
+          <span style='font-size:9.0pt;font-family:"Verdana",sans-serif'>AUTORIZADO EM</span></b>
+          <span style='font-size:8.0pt;font-family:"Verdana",sans-serif'>:</span>
+        </p>
+        <p class=MsoNormal style='margin-left:0cm;text-indent:-.1pt'>
+          <span style='font-size:8.0pt;font-family:"Verdana",sans-serif'>&nbsp;</span>
+        </p>
+        <p class=MsoNormal align=center style='margin-left:.05pt;text-align:center; text-indent:-.15pt'><b><span style='font-size:14.0pt;font-family:"Verdana",sans-serif'><?=date_now()?></span></b></p>
+        <p class=MsoNormal style='margin-left:.05pt;text-indent:-.15pt'>
+          <span style='font-size:14.0pt;font-family:"Verdana",sans-serif'>&nbsp;</span>
+        </p>
+        <p class=MsoNormal><span style='font-size:6.0pt;font-family:"Arial",sans-serif'>&nbsp;</span></p>
+      </td>
+      <td width=309 valign=top style='width:231.95pt;border:solid black 1.0pt; border-left:none;padding:0cm 5.4pt 0cm 5.4pt;height:39.7pt'>
+        <p class=MsoNormal style='margin-left:0cm;text-indent:-.1pt'><b>
+        <span style='font-size:9.0pt;font-family:"Verdana",sans-serif'>OBSERVAÇÃO:</span></b>
+        </p>
+        <p class=MsoNormal style='margin-left:0cm;text-indent:-.1pt'>
+          <span style='font-size:9.0pt;font-family:"Verdana",sans-serif'><?=$term->observations?></span>
+        </p>
+        <p class=MsoNormal style='margin-left:0cm;text-align:justify;text-indent: -.1pt'>
+          <span style='font-size:10.0pt;font-family:"Arial",sans-serif'>&nbsp;</span>
+        </p>
+      </td>
+    </tr>
+  </table>
 
 <p class=MsoNormal style='margin-left:0cm;text-align:justify;text-indent:-.1pt'><span
 style='font-family:"Arial",sans-serif'>&nbsp;</span></p>
@@ -188,22 +165,22 @@ style='font-family:"Arial",sans-serif'>&nbsp;</span></p>
   style='font-family:"Arial",sans-serif'> em _____/ _____/ ________</span></p>
   <p class=MsoNormal style='margin-left:0cm;text-indent:-.1pt'><b><span
   style='font-family:"Arial",sans-serif'>NOME</span></b><span style='font-family:
-  "Arial",sans-serif'>: <?=$term->userPatrimony()->user_name?></span></p>
+  "Arial",sans-serif' class=text-uppercase>: <?=$term->userPatrimony()->user_name?></span></p>
   <p class=MsoNormal style='margin-left:0cm;text-align:justify;text-indent:
   -.1pt;line-height:120%'><b><span style='font-family:"Arial",sans-serif'>R.F</span></b><span
-  style='font-family:"Arial",sans-serif'> : 535.476-5</span></p>
+  style='font-family:"Arial",sans-serif'> : <?=$term->userPatrimony()->rf?></span></p>
   <p class=MsoNormal style='margin-left:0cm;text-align:justify;text-indent:
   -.1pt;line-height:120%'><b><span style='font-family:"Arial",sans-serif'>FUNÇÃO</span></b><span
-  style='font-family:"Arial",sans-serif'>: FISCAL DE POSTURAS MUNICIPAIS</span></p>
+  style='font-family:"Arial",sans-serif'>: <?=$term->userPosition($term->userPatrimony()->position_id)->position_name?></span></p>
   <p class=MsoNormal style='margin-left:0cm;text-align:justify;text-indent:
   -.1pt;line-height:120%'><b><span style='font-family:"Arial",sans-serif'>UNIDADE</span></b><span
-  style='font-family:"Arial",sans-serif'>: SUB-AD</span></p>
+  style='font-family:"Arial",sans-serif'>: <?=$term->userUnit($term->userPatrimony()->unit_id)->unit_name?></span></p>
   <p class=MsoNormal style='margin-left:0cm;text-align:justify;text-indent:
   -.1pt;line-height:120%'><b><span style='font-family:"Arial",sans-serif'>TEL</span></b><span
-  style='font-family:"Arial",sans-serif'>.<b>PESSOAL</b>: (11) 99979-9328</span></p>
+  style='font-family:"Arial",sans-serif'>.<b>PESSOAL</b>: <?=$term->userPatrimony()->cell_phone?></span></p>
   <p class=MsoNormal style='margin-left:0cm;text-align:justify;text-indent:
   -.1pt;line-height:120%'><b><span style='font-family:"Arial",sans-serif'>E-MAIL</span></b><span
-  style='font-family:"Arial",sans-serif'>: emelonio@smsub.prefeitura.sp.gov.br</span></p>
+  style='font-family:"Arial",sans-serif'>: <?=$term->userPatrimony()->email?></span></p>
   </td>
   <td width=312 valign=top style='width:233.9pt;border:solid black 1.0pt;
   border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
@@ -260,5 +237,3 @@ font-family:"Arial",sans-serif'>&nbsp;</span></p>
 </div>
 
 </body>
-
-</html>

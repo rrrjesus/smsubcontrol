@@ -7,6 +7,7 @@ use Source\Models\Patrimony\Brand;
 use Source\Models\Patrimony\Product;
 use Source\Models\Unit;
 use Source\Models\User;
+use Source\Models\userPosition;
 
 
 /**
@@ -89,18 +90,29 @@ class Patrimony extends Model
     }
 
     /**
-     * @return null|User
+     * @return null|UserPosition
      */
-    public function patrimonyUser(string $user): ?User
+    public function userPosition(string $position): ?UserPosition
     {
-        if($user) {
-            return(new User())->findById($user);
+        if($position) {
+            return(new UserPosition())->findById($position);
+        }
+        return null;
+    }
+
+        /**
+     * @return null|Unit
+     */
+    public function userUnit(string $unit): ?Unit
+    {
+        if($unit) {
+            return(new Unit())->findById($unit);
         }
         return null;
     }
 
     /**
-     * @return null|PatrimonyMarcas
+     * @return null|Brand
      */
     public function productBrand(string $brand): ?Brand
     {
