@@ -122,18 +122,31 @@ class Patrimony extends Model
         return null;
     }
 
+    /**
+     * @return null|string
+     */
     public function fileList(): ?string
     {
         if($this->file_terms && file_exists(CONF_UPLOAD_DIR.'/'.$this->file_terms)){
-            return '<a href="../'.CONF_UPLOAD_DIR.'/'.$this->file_terms.'" role="button" class="btn btn-sm btn-outline-danger" target="_blank"><i class="bi bi-file-earmark-pdf"></a>';
-        }else{
-            return '';
+            return '<a href="../'.CONF_UPLOAD_DIR.'/'.$this->file_terms.'" role="button" class="btn btn-sm btn-outline-danger rounded-circle" target="_blank"><i class="bi bi-file-earmark-pdf"></a>';
         }
         return null;
     } 
 
     /**
-     * @return string|null
+     * @return null|string
+     */
+    public function termList(): ?string
+    {
+        if($this->user_id){
+            return '<a href="'.url("/beta/patrimonios/termo/{$this->id}").'" role="button" aria-disabled="true" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
+                            data-bs-title="Clique para editar" target="_blank" class="btn btn-sm btn-outline-primary rounded-circle fw-bold me-2"><i class="bi bi-file-earmark-word"></i></a>';
+        }
+        return null;
+    }
+
+    /**
+     * @return null|string
      */
     public function file(): ?string
     {

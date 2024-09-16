@@ -87,7 +87,8 @@ class Patrimonys extends Admin
         $termPrint = (new Patrimony())->findById($data["patrimonys_id"]);
 
         $head = $this->seo->render(
-            CONF_SITE_NAME . " - Termo - ".$termPrint->userPatrimony()->rf." - ".$termPrint->userPatrimony()->user_name." - ".$termPrint->type_part_number.":".$termPrint->part_number ,
+            CONF_SITE_NAME . " - Termo de - ".(!empty($termPrint->userPatrimony()->rf) ? $termPrint->userPatrimony()->rf : "Responsabilidade")." - "
+            .(!empty($termPrint->userPatrimony()->user_name) ? $termPrint->userPatrimony()->user_name : "")." - ".$termPrint->type_part_number.":".$termPrint->part_number ,
             CONF_SITE_DESC,
             url(),
             theme("/assets/images/favicon.ico"),
@@ -290,7 +291,7 @@ class Patrimonys extends Admin
             $patrimonysCreate->save();
 
             $this->message->success("Patrimonio {$type_part_number} {$part_number} atualizado com sucesso !!!")->icon("emoji-grin me-1")->flash();
-            echo json_encode(["redirect" => url("/beta/patrimonios")]);
+            echo json_encode(["redirect" => url("/beta/patrimonios/editar/{$patrimonysUpdate->id}")]);
             return;
         }
 
@@ -315,7 +316,7 @@ class Patrimonys extends Admin
             }
 
             $this->message->success("Patrimônio {$patrimonyActived->type_part_number} {$patrimonyActived->part_number} reativado com sucesso !!!")->icon("emoji-grin me-1")->flash();
-            redirect("/beta/patrimonios");
+            redirect("/beta/patrimonios/desativados");
             return;
         }
 

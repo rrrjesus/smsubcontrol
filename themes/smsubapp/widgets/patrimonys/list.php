@@ -63,8 +63,7 @@
                             <td class="text-center fw-semibold"><?=(!empty($lista->unit()->it_professional) ? $lista->unit()->it_professional : "Não Cadastrado");?></td>
                             <td class="text-center fw-semibold"><?=(!empty($lista->unit()->telephone) ? $lista->unit()->telephone : "");?></td>
                             <td class="text-center fw-semibold"><?=$lista->observations?></td>
-                            <td class="text-center fw-semibold"><a href="<?= url("/beta/patrimonios/termo/{$lista->id}"); ?>" role="button" aria-disabled="true" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
-                            data-bs-title="Clique para editar" class="btn btn-sm btn-outline-primary rounded-circle fw-bold me-2"><i class="bi bi-file-earmark-word"></i></a></td>
+                            <td class="text-center fw-semibold"><?=$lista->termList();?></td>
                             <td class="text-center"><?=$lista->fileList()?></td>
                             <td class="text-center fw-semibold"><?=$lista->id?></td>
                         </tr>

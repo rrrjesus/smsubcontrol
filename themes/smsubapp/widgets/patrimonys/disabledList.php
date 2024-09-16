@@ -14,8 +14,8 @@
                     <thead class="table-warning">
                         <tr>
                             <th class="text-center">ENTRADA</th>
-                            <th class="text-center">IMEI</th>
-                            <th class="text-center">NS</th>
+                            <th class="text-center">TIPO PN</th>
+                            <th class="text-center">PARTNUMBER</th>
                             <th class="text-center">MARCA</th>
                             <th class="text-center">MODELO</th>
                             <th class="text-center">NOME</th>
@@ -33,8 +33,8 @@
                     <?php foreach ($patrimonys as $lista): ?>
                         <tr>
                             <td class="text-center fw-semibold"><?=date_fmt_null($lista->created_at)?></td>
-                            <td class="text-center fw-semibold"><?=(!empty($lista->imei ) ? $lista->imei : "")?></td>
-                            <td class="text-center fw-semibold"><?=(!empty($lista->ns)? $lista->ns : "")?></td>
+                            <td class="text-center fw-semibold"><?=(!empty($lista->type_part_number ) ? $lista->type_part_number : "")?></td>
+                            <td class="text-center fw-semibold"><?=(!empty($lista->part_number)? $lista->part_number : "")?></td>
                             <td class="text-center fw-semibold"><?=$lista->productBrand($lista->product()->brand_id)->brand_name;?></td>
                             <td class="text-center fw-semibold"><?=$lista->product()->product_name?></td>
                             <td class="text-center fw-semibold"><?=(!empty($lista->userPatrimony()->user_name) ? $lista->userPatrimony()->user_name : "")?></td>

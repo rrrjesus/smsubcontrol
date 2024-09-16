@@ -172,7 +172,8 @@
                             <div class="row justify-content-center mt-4 mb-3">
                                 <div class="col-auto">
                                 <?=button("top", "Clique para gravar", "success", "disc-fill", "Gravar")?>
-                                <?=buttonLink("/beta/patrimonios", "top", "Clique para listar os patrimônios", "dark", "list", "Listar")?>                                  
+                                <?=buttonLink("/beta/patrimonios", "top", "Clique para listar os patrimônios", "dark", "list", "Listar")?>    
+                                <?=buttonLink("/beta/patrimonios/termo/{$patrimonys->id}", "top", "Clique para listar os patrimônios", "primary", "file-earmark-word", "Termo")?>                                   
                                 </div>
                             </div>
 
@@ -201,7 +202,7 @@
                 
                 let type_part_number = new Bloodhound({
                     datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
-                    local: ['NS', 'IMEI', 'SERVICE_TAG']
+                    local: ['CHIP', 'NS', 'IMEI', 'SERVICE_TAG']
                 });
                 type_part_number.initialize();
                 $('.type_part_number').typeahead({hint: true, highlight: true, minLength: 1}, {source: type_part_number});
