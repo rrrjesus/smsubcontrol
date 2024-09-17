@@ -129,6 +129,8 @@ class Patrimony extends Model
     {
         if($this->file_terms && file_exists(CONF_UPLOAD_DIR.'/'.$this->file_terms)){
             return '<a href="../'.CONF_UPLOAD_DIR.'/'.$this->file_terms.'" role="button" class="btn btn-sm btn-outline-danger rounded-circle" target="_blank"><i class="bi bi-file-earmark-pdf"></a>';
+        }else{
+            return '<p class="fw-semibold" >Sem Termo</p>';
         }
         return null;
     } 

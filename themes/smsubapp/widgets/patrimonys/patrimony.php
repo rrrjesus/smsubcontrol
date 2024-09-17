@@ -178,7 +178,7 @@
                             </div>
 
                             <div class="row mb-1">
-                                <div class="col-auto mb-1">
+                                <div class="col-md-12 mb-1">
                                     <?php $this->insert("widgets/patrimonys/historyList"); ?>
                                 </div>
                             </div>
