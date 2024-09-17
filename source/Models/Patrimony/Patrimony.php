@@ -7,7 +7,7 @@ use Source\Models\Patrimony\Brand;
 use Source\Models\Patrimony\Product;
 use Source\Models\Unit;
 use Source\Models\User;
-use Source\Models\userPosition;
+use Source\Models\UserPosition;
 
 
 /**

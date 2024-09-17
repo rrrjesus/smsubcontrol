@@ -5,6 +5,7 @@ namespace Source\Models\Patrimony;
 use Source\Core\Model;
 use Source\Models\Unit;
 use Source\Models\User;
+use Source\Models\UserPosition;
 use Source\Models\Patrimony\Brand;
 use Source\Models\Patrimony\Product;
 
@@ -43,6 +44,28 @@ class  PatrimonyHistory extends Model
     {
         if($this->user_id) {
             return(new User())->findById($this->user_id);
+        }
+        return null;
+    }
+
+    /**
+     * @return null|UserPosition
+     */
+    public function userPosition(string $position): ?UserPosition
+    {
+        if($position) {
+            return(new UserPosition())->findById($position);
+        }
+        return null;
+    }
+
+    /**
+     * @return null|Unit
+     */
+    public function userUnit(string $unit): ?Unit
+    {
+        if($unit) {
+            return(new Unit())->findById($unit);
         }
         return null;
     }
@@ -108,7 +131,7 @@ class  PatrimonyHistory extends Model
     public function termList(): ?string
     {
         if($this->user_id){
-            return '<a href="'.url("/beta/patrimonios/termo/{$this->id}").'" role="button" aria-disabled="true" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
+            return '<a href="'.url("/beta/patrimonios/historico/termo/{$this->id}").'" role="button" aria-disabled="true" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
                             data-bs-title="Clique para visualizar termo para assinar" target="_blank" class="btn btn-sm btn-outline-primary rounded-circle"><i class="bi bi-file-earmark-word"></i></a>';
         }
         return null;

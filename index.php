@@ -105,6 +105,7 @@ $route->get("/patrimonios/termo/{patrimonys_id}", "Patrimonys:term");
 $route->get("/patrimonio/benshistorico/lista", "PatrimonyHistory:bensLista");
 $route->get("/patrimonio/benshistorico/editar/{bens_id}", "PatrimonyHistory:bens");
 $route->post("/patrimonio/benshistorico/editar/{bens_id}", "PatrimonyHistory:bens");
+$route->get("/patrimonios/historico/termo/{patrimonys_id}", "PatrimonysHistory:term");
 
 $route->get("/logoff", "Dash:logoff");
 

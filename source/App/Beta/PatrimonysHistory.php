@@ -15,13 +15,41 @@ use Source\Models\Patrimony\PatrimonyHistory;
 class PatrimonysHistory extends Admin
 {
     
-    /**
-     * PatrimonyHistory constructor.
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
+/**
+ * PatrimonyHistory constructor.
+ */
+public function __construct()
+{
+    parent::__construct();
+}
+
+/**
+ * @param array|null $data
+ * @throws \Exception
+ */
+public function term(?array $data): void
+{
+    //update term
+    $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
+    $termPrint = (new PatrimonyHistory())->findById($data["patrimonys_id"]);
+
+    $head = $this->seo->render(
+        CONF_SITE_NAME . " - Termo de - ".(!empty($termPrint->userPatrimony()->rf) ? $termPrint->userPatrimony()->rf : "Responsabilidade")." - "
+        .(!empty($termPrint->userPatrimony()->user_name) ? $termPrint->userPatrimony()->user_name : "")." - ".$termPrint->type_part_number.":".$termPrint->part_number ,
+        CONF_SITE_DESC,
+        url(),
+        theme("/assets/images/favicon.ico"),
+        false
+    );
+
+    echo $this->view->render("widgets/patrimonys/term", [
+        "head" => $head,
+        "term" => $termPrint,
+        "urls" => "patrimonios/historico/termo/{$termPrint->id}",
+        "namepage" => "Termo",
+        "name" => "Imprimir"
+    ]);
+}
 
 /**
      * APP HOME
