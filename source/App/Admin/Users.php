@@ -7,6 +7,7 @@ use Source\Models\UserPosition;
 use Source\Models\Unit;
 use Source\Support\Thumb;
 use Source\Support\Upload;
+use Source\Models\Patrimony\PatrimonyHistory;
 
 /**
  * Class Users
@@ -393,6 +394,7 @@ class Users extends Admin
         if (!empty($data["user_id"])) {
             $userId = filter_var($data["user_id"], FILTER_VALIDATE_INT);
             $userEdit = (new User())->findById($userId);
+            $userHistory = (new PatrimonyHistory())->find("user_id = :u", "u={$userId}")->fetch(true);
         }
 
         $head = $this->seo->render(
@@ -407,6 +409,7 @@ class Users extends Admin
             "app" => "usuarios",
             "head" => $head,
             "user" => $userEdit,
+            "userhistory" => $userHistory,
             "userposition" => $userposition,
             "unit" => $unit,
             "urls" => ($userEdit ? "usuarios/editar/{$userEdit->id}" : "cadastrar"),

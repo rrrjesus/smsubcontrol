@@ -14,8 +14,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <?php if(!empty($historico)){ ?>
-                    <?php foreach ($historico as $lista): ?>
+                    <?php if(!empty($userhistory)){ ?>
+                    <?php foreach ($userhistory as $lista): ?>
                         <tr>
                             <td class="text-center fw-semibold"><?=date_fmt_null($lista->created_history)?></td>
                             <td class="text-center fw-semibold"><?=(!empty($lista->userPatrimony()->login) ? $lista->userPatrimony()->login : "")?></td>

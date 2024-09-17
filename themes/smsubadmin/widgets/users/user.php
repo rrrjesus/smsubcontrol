@@ -297,6 +297,11 @@
                         
                     </div>
 
+                    <div class="row mb-1">
+                        <div class="col-md-12 mb-1">
+                            <?php $this->insert("widgets/users/historyList"); ?>
+                        </div>
+                    </div>
 
                     <div class="row justify-content-center mt-4 mb-3">
                         <div class="col-auto">
