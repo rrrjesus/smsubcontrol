@@ -29,7 +29,13 @@ $primaryKey = 'id';
 // parameter represents the DataTables column identifier. In this case simple
 // indexes
 $columns = array(
-    array( 'db' => 'id', 'dt' => 0),
+    array(
+        'db'        => 'id',
+        'dt'        => 0,
+        'formatter' => function($d, $row) {
+            return '<a href="../beta/patrimonios/editar/'.$d.'" role="button" class="btn btn-outline-warning rounded-circle"><i class="bi bi-pencil"></i></a>';
+        }
+    ),
     array(
         'db'        => 'created_at',
         'dt'        => 1,
