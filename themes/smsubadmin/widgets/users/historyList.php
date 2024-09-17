@@ -1,5 +1,5 @@
 
-                <table id="historyPatrimony" class="table table-hover table-bordered table-sm border-<?=CONF_ADMIN_COLOR?> p-2" style="width:100%">
+                <table id="historyPatrimonyUser" class="table table-hover table-bordered table-sm border-<?=CONF_ADMIN_COLOR?> p-2" style="width:100%">
                     <thead class="table-<?=CONF_ADMIN_COLOR?>">
                         <tr>
                             <th class="text-center">ID</th>
