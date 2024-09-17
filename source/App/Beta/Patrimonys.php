@@ -428,7 +428,7 @@ class Patrimonys extends Admin
         if (!empty($data["patrimonys_id"])) {
             $patrimonyId = filter_var($data["patrimonys_id"], FILTER_VALIDATE_INT);
             $PatrimonysEdit = (new Patrimony())->findById($patrimonyId);
-            $historico = (new PatrimonyHistory())->find("status = :s AND patrimony_id = :p", "s=actived&p={$patrimonyId}")->fetch(true);
+            $historico = (new PatrimonyHistory())->find("patrimony_id = :p", "p={$patrimonyId}")->fetch(true);
         }
 
         $patrimonysCreates = new Patrimony();
