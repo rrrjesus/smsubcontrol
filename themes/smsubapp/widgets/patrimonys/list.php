@@ -38,6 +38,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                    <?php if(!empty($patrimonys)){ ?>
                     <?php foreach ($patrimonys as $lista): ?>
                         <tr>
                             <td class="text-center fw-semibold"><a href="<?= url("/beta/patrimonios/editar/{$lista->id}"); ?>" role="button" aria-disabled="true" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
@@ -68,6 +69,7 @@
                             <td class="text-center fw-semibold"><?=$lista->id?></td>
                         </tr>
                         <?php endforeach; ?>
+                        <?php }?>
                     </tbody>
                 </table>
 

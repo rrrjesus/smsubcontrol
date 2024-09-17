@@ -167,12 +167,12 @@
                                     data-bs-title=Observações" rows="2" name="observations"><?=$patrimonys->observations?></textarea>
                                 </div>
 
-                            </div>                               
+                            </div>         
 
                             <div class="row justify-content-center mt-4 mb-3">
                                 <div class="col-auto">
                                 <?=button("top", "Clique para gravar", "success", "disc-fill", "Gravar")?>
-                                <?=buttonLink("/beta/patrimonios", "top", "Clique para listar os patrimônios", "dark", "list", "Listar")?>    
+                                <?=buttonLink("/beta/patrimonios", "top", "Clique para listar os patrimônios", "secondary", "list", "Listar")?>    
                                 <?=buttonLink("/beta/patrimonios/termo/{$patrimonys->id}", "top", "Clique para listar os patrimônios", "primary", "file-earmark-word", "Termo")?>                                   
                                 </div>
                             </div>

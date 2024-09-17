@@ -22,7 +22,18 @@ class  PatrimonyHistory extends Model
      */
     public function __construct()
     {
-        parent::__construct("patrimonys_historys", ["id"], ["patrimony_id", "user_id","patrimonys_name", "brand_id", "product_id", "description", "unit_id", "file_terms", "type_part_number", "part_number", "status", "photo", "observations", "created_at"]);
+        parent::__construct("patrimonys_historys", ["id"], ["patrimony_id", "user_id","patrimonys_name", "product_id", "description", "unit_id", "file_terms", "type_part_number", "part_number", "status", "photo", "observations", "created_history", "login_created"]);
+    }
+
+    /**
+     * @param string $patrimony_id
+     * @param string $columns
+     * @return null|PatrimonyHistory
+     */
+    public function findByPatrimonyId(string $patrimony_id, string $columns = "*"): ?PatrimonyHistory
+    {
+        $find = $this->find("patrimony_id = :patrimony_id", "patrimony_id={$patrimony_id}", $columns);
+        return $find->fetch();
     }
 
     /**
@@ -77,15 +88,31 @@ class  PatrimonyHistory extends Model
         return null;
     }
 
+    /**
+     * @return null|string
+     */
     public function fileList(): ?string
     {
         if(!empty($this->file_terms) && file_exists(CONF_UPLOAD_DIR.'/'.$this->file_terms)){
-            return '<a href="../../../'.CONF_UPLOAD_DIR.'/'.$this->file_terms.'" role="button" class="btn btn-sm btn-outline-danger" target="_blank"><i class="bi bi-file-earmark-pdf"></a>';
+            return '<a href="../../../'.CONF_UPLOAD_DIR.'/'.$this->file_terms.'" role="button" aria-disabled="true" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
+                            data-bs-title="Clique para visualizar termo assinado" class="btn btn-sm btn-outline-danger rounded-circle" target="_blank"><i class="bi bi-file-earmark-pdf"></a>';
         }else{
             return '';
         }
         return null;
     } 
+
+    /**
+     * @return null|string
+     */
+    public function termList(): ?string
+    {
+        if($this->user_id){
+            return '<a href="'.url("/beta/patrimonios/termo/{$this->id}").'" role="button" aria-disabled="true" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
+                            data-bs-title="Clique para visualizar termo para assinar" target="_blank" class="btn btn-sm btn-outline-primary rounded-circle"><i class="bi bi-file-earmark-word"></i></a>';
+        }
+        return null;
+    }
 
     /**
      * @return string
@@ -117,15 +144,39 @@ class  PatrimonyHistory extends Model
      */
     public function save(): bool
     {
-        if ($this->find("unit_id = :d AND part_number = :p AND user_id = :u", "d={$this->unit_id}&p={$this->part_number}&u={$this->user_id}", "patrimony_id")->fetch()) {
-            return false;
+
+        /** PatrimonyHistory Update */
+        if (!empty($this->patrimony_id)) {
+
+            $patrimonyId = $this->patrimony_id;
+
+            if($this->find("unit_id = :d AND part_number = :p AND user_id = :u", "d={$this->unit_id}&p={$this->part_number}&u={$this->user_id}", "patrimony_id")->fetch()) {
+                $this->update($this->safe(), "patrimony_id = :patrimony_id AND user_id = :user_id AND unit_id = :unit_id", "patrimony_id={$patrimonyId}&user_id={$this->user_id}&unit_id={$this->unit_id}");
+            } else {
+                $patrimonyId = $this->create($this->safe());
+            }
+
+            if ($this->fail()) {
+                $this->message->error("Erro ao atualizar, verifique os dados");
+                return false;
+            }
         }
 
-        $patrimonyId = $this->create($this->safe());
+         /** Patrimony Create */
+         if (empty($this->id)) {
+            if ($this->find("unit_id = :d AND part_number = :p AND user_id = :u", "d={$this->unit_id}&p={$this->part_number}&u={$this->user_id}", "patrimony_id")->fetch()) {
+                return false;
+            }
 
-        if ($this->fail()) {
-            $this->message->error("Erro ao registrar Histórico, verifique os dados");
-            return false;
+            $this->login_created = (new User())->findById($this->user->id)->login;
+            $this->created_history = date("Y-m-d H:i:s");
+
+            $patrimonyId = $this->create($this->safe());
+
+            if ($this->fail()) {
+                $this->message->error("Erro ao cadastrar, verifique os dados");
+                return false;
+            }
         }
 
         $this->data = ($this->findById($patrimonyId))->data();

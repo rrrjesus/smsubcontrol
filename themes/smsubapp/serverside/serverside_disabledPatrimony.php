@@ -30,18 +30,28 @@ $primaryKey = 'id';
 // indexes
 $columns = array(
     array( 'db' => 'id', 'dt' => 0),
-    array( 'db' => 'imei', 'dt' => 1),
-    array( 'db' => 'ns', 'dt' => 2),
-    array( 'db' => 'photo', 'dt' => 3),
-    array( 'db' => 'product_id', 'dt' => 4),
-    array( 'db' => 'user_id', 'dt' => 5),
     array(
         'db'        => 'created_at',
-        'dt'        => 6,
-        'formatter' => function( $d, $row ) {
+        'dt'        => 1,
+        'formatter' => function( $d) {
             return date( 'd/m/Y', strtotime($d));
         }
-    )
+    ),
+    array( 'db' => 'type_part_number', 'dt' => 2),
+    array( 'db' => 'part_number', 'dt' => 3),
+    array( 'db' => 'product_id', 'dt' => 4),
+    array( 'db' => 'product_id', 'dt' => 5),
+    array( 'db' => 'user_id', 'dt' => 6),
+    array( 'db' => 'user_id', 'dt' => 7),
+    array( 'db' => 'user_id', 'dt' => 8),
+    array( 'db' => 'user_id', 'dt' => 9),
+    array( 'db' => 'unit_id', 'dt' => 10),
+    array( 'db' => 'unit_id', 'dt' => 11),
+    array( 'db' => 'unit_id', 'dt' => 12),
+    array( 'db' => 'observations', 'dt' => 13),
+    array( 'db' => 'id', 'dt' => 14),
+    array( 'db' => 'id', 'dt' => 15),
+    array( 'db' => 'id', 'dt' => 16)
 );
 
 // SQL server connection information
@@ -49,7 +59,7 @@ $sql_details = array(
     'user' => 'smsubcoti',
     'pass' => ')f9aGXVCh8YqJ8[L',
     'db'   => 'smsub',
-    'host' => '192.168.15.24'
+    'host' => '192.168.15.54'
     // ,'charset' => 'utf8' // Depending on your PHP and MySQL config, you may need this
 );
  
