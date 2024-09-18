@@ -51,6 +51,19 @@ $(function () {
         }
     });
 
+    $("#profile").validate({
+        rules: {
+            password_re: {
+                equalTo: "#password"
+            }
+        },
+        messages: {
+            password_re: {
+                equalTo: "A senha e Repetir Senha não conferem !!!"
+            }
+        }
+    });
+
     $("#patrimony").validate({
         rules: {
             product_id: {

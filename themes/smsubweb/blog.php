@@ -1,6 +1,6 @@
 <?php $this->layout("_theme"); ?>
 
-<link rel="stylesheet" href="<?=theme("/assets/css/blog.css"); ?>"/>
+<link rel="stylesheet" href="<?=theme("/assets/css_blog/blog.css"); ?>"/>
 
 <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
   <symbol id="chevron-right" viewBox="0 0 16 16">

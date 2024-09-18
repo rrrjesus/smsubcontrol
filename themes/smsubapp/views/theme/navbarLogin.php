@@ -122,7 +122,7 @@
                             </ul>
                             <?php else:?>
                                 <li class="nav-item col-6 col-lg-auto">
-                                    <a class="nav-link py-2 px-0 px-lg-2 <?=navbar_active("/beta/login")?>" href="<?=url("/beta/login")?>">
+                                    <a class="nav-link py-2 px-0 px-lg-2 <?=navbar_active("/entrar")?>" href="<?=url("/entrar")?>">
                                         <i class="bi bi-person-lock"></i> Entrar
                                     </a>
                                 </li>

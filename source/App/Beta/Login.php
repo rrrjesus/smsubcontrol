@@ -29,7 +29,7 @@ class Login extends Controller
         if ($user && $user->level_id >= 3) {
             redirect("/beta/home");
         } else {
-            redirect("/beta/login");
+            redirect("/entrar");
         }
     }
 

@@ -93,7 +93,7 @@
                                 <li><h6 class="dropdown-header">Aplicativo</h6></li>
                                 <li>
                                     <a class="dropdown-item d-flex align-items-center justify-content-between" aria-current="true" href="<?=url("/beta/home")?>">
-                                        Home
+                                        Início
                                     </a>
                                 </li>
                                 <li>
@@ -101,13 +101,15 @@
                                         Perfil
                                     </a>
                                 </li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><h6 class="dropdown-header">Painel</h6></li>
                                 <li>
-                                    <a class="dropdown-item d-flex align-items-center justify-content-between" aria-current="true" href="<?=url("/dashboard/listar-setores")?>">
-                                        Setores
+                                    <a class="dropdown-item d-flex align-items-center justify-content-between" aria-current="true" href="<?=url("/painel/controle/inicial")?>">
+                                        Início
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item d-flex align-items-center justify-content-between" aria-current="true" href="<?=url("/dashboard/listar-usuarios")?>">
+                                    <a class="dropdown-item d-flex align-items-center justify-content-between" aria-current="true" href="<?=url("/painel/usuarios")?>">
                                         Usuários
                                     </a>
                                 </li>
@@ -122,7 +124,7 @@
                             </ul>
                             <?php else:?>
                                 <li class="nav-item col-6 col-lg-auto">
-                                    <a class="nav-link py-2 px-0 px-lg-2 <?=navbar_active("/beta/login")?>" href="<?=url("/beta/login")?>">
+                                    <a class="nav-link py-2 px-0 px-lg-2 <?=navbar_active("/entrar")?>" href="<?=url("/entrar")?>">
                                         <i class="bi bi-person-lock"></i> Entrar
                                     </a>
                                 </li>

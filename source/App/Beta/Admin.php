@@ -28,12 +28,12 @@ class Admin extends Controller
 
         if (!$this->user = Auth::user()) {
             $this->message->warning("Efetue login para acessar !.")->icon('emoji-wink fs-3 me-1')->icon()->flash();
-            redirect("/beta/login");
+            redirect("/entrar");
         }
 
         if (!$this->user || $this->user->level_id < 3) {
             $this->message->error("Nível de usuário não permitido !")->icon()->flash();
-            redirect("/beta/login");
+            redirect("/entrar");
         }
 
         //UNCONFIRMED EMAIL

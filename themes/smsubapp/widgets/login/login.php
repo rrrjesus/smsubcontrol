@@ -1,7 +1,7 @@
 <?php $this->layout("_login"); ?>
 
 <div class="form-signin w-100 m-auto content">
-    <form class="needs-validation" novalidate id="login" action="<?=url("/beta/login")?>" method="post" enctype="multipart/form-data">
+    <form class="needs-validation" novalidate id="login" action="<?=url("/entrar")?>" method="post" enctype="multipart/form-data">
         <div class="ajax_response"><?=flash();?></div>
         <?=csrf_input();?>
 

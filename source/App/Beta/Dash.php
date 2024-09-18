@@ -82,6 +82,6 @@ class Dash extends Admin
         $this->message->success("Você saiu com sucesso {$this->user->user_name}.")->icon()->flash();
 
         Auth::logout();
-        redirect("/beta/login");
+        redirect("/entrar");
     }
 }

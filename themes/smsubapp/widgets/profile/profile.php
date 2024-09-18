@@ -6,7 +6,7 @@
 <div class="container-fluid">
     <div class="d-flex justify-content-center">
         <div class="col-12">
-            <form class="row gy-2 gx-3 align-items-center needs-validation" novalidate action="<?= url("/beta/perfil"); ?>" method="post" enctype="multipart/form-data">
+            <form class="row gy-2 gx-3 align-items-center needs-validation" id="profile" novalidate action="<?= url("/beta/perfil"); ?>" method="post" enctype="multipart/form-data">
                 
             <input type="hidden" name="update" value="true"/>
 
