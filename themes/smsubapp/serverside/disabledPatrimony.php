@@ -1,4 +1,6 @@
 <?php
+
+include_once '../../../source/Boot/Config.php';
  
 /*
  * DataTables example server-side processing script.
@@ -21,15 +23,15 @@
 // DB table to use
 $table = <<<EOT
  ( 
-SELECT patrimonys.id, patrimonys.created_at, patrimonys.type_part_number, patrimonys.part_number, brands.brand_name, products.product_name,
-users.user_name, users.login, users.rf, users.email, units.unit_name, units.it_professional, units.fixed_phone, patrimonys.observations
+SELECT patrimonys.id, patrimonys.created_at, patrimonys.type_part_number, patrimonys.part_number, brands.brand_name, 
+products.product_name, users.user_name, users.login, users.rf, users.email, units.unit_name, units.it_professional, 
+units.fixed_phone, patrimonys.observations, patrimonys.file_terms
 FROM patrimonys
 LEFT JOIN products ON patrimonys.product_id = products.id
 LEFT JOIN brands ON products.brand_id = brands.id
 LEFT JOIN units ON patrimonys.unit_id = units.id
 LEFT JOIN users ON patrimonys.user_id = users.id
-)temp
-    
+WHERE (((patrimonys.status) Like "disabled")))temp
 EOT;
  
 // Table's primary key
@@ -40,41 +42,33 @@ $primaryKey = 'id';
 // parameter represents the DataTables column identifier. In this case simple
 // indexes
 $columns = array(
-    array(
-        'db'        => 'id', 'dt'        => 0,
-        'formatter' => function($d) {
-            return '<a href="../beta/patrimonios/editar/'.$d.'" role="button" class="btn btn-sm btn-outline-warning rounded-circle"><i class="bi bi-pencil"></i></a>';
-        }
-    ),
-    array('db'        => 'created_at', 'dt'        => 1,
+    array('db'        => 'created_at', 'dt'        => 0,
         'formatter' => function( $d) {
             return date( 'd/m/Y', strtotime($d));
         }
     ),
-    array( 'db' => 'type_part_number', 'dt' => 2),
-    array( 'db' => 'part_number', 'dt' => 3),
-    array( 'db' => 'brand_name', 'dt' => 4),
-    array( 'db' => 'product_name', 'dt' => 5),
-    array( 'db' => 'user_name', 'dt' => 6),
-    array( 'db' => 'login', 'dt' => 7),
-    array( 'db' => 'rf', 'dt' => 8),
-    array( 'db' => 'email', 'dt' => 9),
-    array( 'db' => 'unit_name', 'dt' => 10),
-    array( 'db' => 'it_professional', 'dt' => 11),
-    array( 'db' => 'fixed_phone', 'dt' => 12),
-    array( 'db' => 'observations', 'dt' => 13),
-    array( 'db' => 'id', 'dt' => 14),
-    array( 'db' => 'id', 'dt' => 15),
-    array( 'db' => 'id', 'dt' => 16)
+    array( 'db' => 'type_part_number', 'dt' => 1),
+    array( 'db' => 'part_number', 'dt' => 2),
+    array( 'db' => 'brand_name', 'dt' => 3),
+    array( 'db' => 'product_name', 'dt' => 4),
+    array( 'db' => 'user_name', 'dt' => 5),
+    array( 'db' => 'login', 'dt' => 6),
+    array( 'db' => 'rf', 'dt' => 7),
+    array( 'db' => 'email', 'dt' => 8),
+    array( 'db' => 'unit_name', 'dt' => 9),
+    array( 'db' => 'it_professional', 'dt' => 10),
+    array( 'db' => 'fixed_phone', 'dt' => 11),
+    array( 'db' => 'observations', 'dt' => 12),
+    array( 'db' => 'id', 'dt' => 13)
 );
 
 // SQL server connection information
 $sql_details = array(
-    'user' => 'smsubcoti',
-    'pass' => ')f9aGXVCh8YqJ8[L',
-    'db'   => 'smsub',
-    'host' => '192.168.15.54'
-    // ,'charset' => 'utf8' // Depending on your PHP and MySQL config, you may need this
+    'user' => CONF_DB_USER,
+    'pass' => CONF_DB_PASS,
+    'db'   => CONF_DB_NAME,
+    'host' => CONF_DB_HOST,
+    'charset' => 'utf8' // Depending on your PHP and MySQL config, you may need this
 );
  
  

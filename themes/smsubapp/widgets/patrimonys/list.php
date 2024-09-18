@@ -41,39 +41,8 @@
                                 <th class="text-center">DESATIVAR</th>
                             </tr>
                         </thead>
-                        <tbody>
-                        <?php if(!empty($patrimonys)){ ?>
-                        <?php foreach ($patrimonys as $lista): ?>
-                            <tr>
-                                <td class="text-center fw-semibold"><a href="<?= url("/beta/patrimonios/editar/{$lista->id}"); ?>" role="button" aria-disabled="true" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
-                                data-bs-title="Clique para editar" class="btn btn-sm btn-outline-warning rounded-circle fw-bold me-2"><i class="bi bi-pencil text-secondary"></i></a></td>
-                                <td class="text-center fw-semibold"><?=date_fmt_null($lista->created_at)?></td>
-                                <td class="text-center fw-semibold"><?=(!empty($lista->type_part_number ) ? $lista->type_part_number : "")?></td>
-                                <td class="text-center fw-semibold"><?=(!empty($lista->part_number)? $lista->part_number : "")?></td>
-                                <td class="text-center fw-semibold"><?=$lista->productBrand($lista->product()->brand_id)->brand_name;?></td>
-                                <td class="text-center fw-semibold"><?=$lista->product()->product_name?></td>
-                                <td class="text-center fw-semibold"><?=(!empty($lista->userPatrimony()->user_name) ? $lista->userPatrimony()->user_name : "")?></td>
-                                <td class="text-center fw-semibold">
-                                <?php
-                                if(!empty($lista->user_id)):
-                                    echo $lista->userPatrimony()->login.' '.$lista->statusBadgeUser($lista->userPatrimony()->status);
-                                else:
-                                    echo '';
-                                endif;
-                                ?>
-                                </td>
-                                <td class="text-center fw-semibold"><?=(!empty($lista->userPatrimony()->rf) ?$lista->userPatrimony()->rf : "")?></td>
-                                <td class="text-center fw-semibold"><?=(!empty($lista->userPatrimony()->email) ? $lista->userPatrimony()->email : "")?></td>
-                                <td class="text-center fw-semibold"><?=(!empty($lista->unit()->unit_name) ? $lista->unit()->unit_name : "")?></td>
-                                <td class="text-center fw-semibold"><?=(!empty($lista->unit()->it_professional) ? $lista->unit()->it_professional : "Não Cadastrado");?></td>
-                                <td class="text-center fw-semibold"><?=(!empty($lista->unit()->telephone) ? $lista->unit()->telephone : "");?></td>
-                                <td class="text-center fw-semibold"><?=$lista->observations?></td>
-                                <td class="text-center fw-semibold"><?=$lista->termList();?></td>
-                                <td class="text-center"><?=$lista->fileList()?></td>
-                                <td class="text-center fw-semibold"><?=$lista->id?></td>
-                            </tr>
-                            <?php endforeach; ?>
-                            <?php }?>
+                        <tbody class="text-center">
+
                         </tbody>
                     </table>
                 </div>

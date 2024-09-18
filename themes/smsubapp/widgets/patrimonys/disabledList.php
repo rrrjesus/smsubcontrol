@@ -25,37 +25,12 @@
                             <th class="text-center">UNIDADE</th>
                             <th class="text-center">RESPONSAVEL UN.</th>
                             <th class="text-center">TELEFONE UN.</th>
+                            <th class="text-center">OBSERVAÇÕES</th>
                             <th class="text-center">ATIVAR</th>
                         </tr>
                     </thead>
-                    <tbody>
-                    <?php if(!empty($patrimonys)){ ?>
-                    <?php foreach ($patrimonys as $lista): ?>
-                        <tr>
-                            <td class="text-center fw-semibold"><?=date_fmt_null($lista->created_at)?></td>
-                            <td class="text-center fw-semibold"><?=(!empty($lista->type_part_number ) ? $lista->type_part_number : "")?></td>
-                            <td class="text-center fw-semibold"><?=(!empty($lista->part_number)? $lista->part_number : "")?></td>
-                            <td class="text-center fw-semibold"><?=$lista->productBrand($lista->product()->brand_id)->brand_name;?></td>
-                            <td class="text-center fw-semibold"><?=$lista->product()->product_name?></td>
-                            <td class="text-center fw-semibold"><?=(!empty($lista->userPatrimony()->user_name) ? $lista->userPatrimony()->user_name : "")?></td>
-                            <td class="text-center fw-semibold">
-                            <?php
-                            if(!empty($lista->user_id)):
-                                echo $lista->userPatrimony()->login.' '.$lista->statusBadgeUser($lista->userPatrimony()->status);
-                            else:
-                                echo '';
-                            endif;
-                            ?>
-                            </td>
-                            <td class="text-center fw-semibold"><?=(!empty($lista->userPatrimony()->rf) ?$lista->userPatrimony()->rf : "")?></td>
-                            <td class="text-center fw-semibold"><?=(!empty($lista->userPatrimony()->email) ? $lista->userPatrimony()->email : "")?></td>
-                            <td class="text-center fw-semibold"><?=(!empty($lista->unit()->unit_name) ? $lista->unit()->unit_name : "")?></td>
-                            <td class="text-center fw-semibold"><?=(!empty($lista->unit()->it_professional) ? $lista->unit()->it_professional : "Não Cadastrado");?></td>
-                            <td class="text-center fw-semibold"><?=(!empty($lista->unit()->telephone) ? $lista->unit()->telephone : "");?></td>
-                            <td class="text-center fw-semibold"><?=$lista->id?></td>
-                        </tr>
-                        <?php endforeach; ?>
-                        <?php }else{redirect("/beta/patrimonios");} ?>
+                    <tbody class="text-center">
+
                     </tbody>
                 </table>
 

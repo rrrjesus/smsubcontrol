@@ -161,6 +161,7 @@ style='font-family:"Arial",sans-serif'>&nbsp;</span></p>
 <table class=a1 border=1 cellspacing=0 cellpadding=0 width=624
  style='margin-left:-.15pt;border-collapse:collapse;border:none'>
  <tr>
+ <?php if($term->user_id){?>
   <td width=312 valign=top style='width:233.9pt;border:solid black 1.0pt;
   padding:0.25cm 5.4pt 0cm 5.4pt'>
   <p class=MsoNormal style='margin-left:0cm;text-align:justify;text-indent:
@@ -185,6 +186,32 @@ style='font-family:"Arial",sans-serif'>&nbsp;</span></p>
   -.1pt;line-height:120%;padding:0cm 0pt 0.25cm 0pt'><b><span style='font-family:"Arial",sans-serif'>E-MAIL</span></b><span
   style='font-family:"Arial",sans-serif'>: <?=$term->userPatrimony()->email?></span></p>
   </td>
+  <?php }else{;?>
+    <td width=312 valign=top style='width:233.9pt;border:solid black 1.0pt;
+  padding:0.25cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-left:0cm;text-align:justify;text-indent:
+  -.1pt;line-height:120%'><b><span style='font-family:"Arial",sans-serif'>RECEBIDO</span></b><span
+  style='font-family:"Arial",sans-serif'> em _____/ _____/ ________</span></p>
+  <p class=MsoNormal style='margin-left:0cm;text-indent:-.1pt'><b><span
+  style='font-family:"Arial",sans-serif'>NOME</span></b><span style='font-family:
+  "Arial",sans-serif' class=text-uppercase>: ________________________________</span></p>
+  <p class=MsoNormal style='margin-left:0cm;text-align:justify;text-indent:
+  -.1pt;line-height:120%'><b><span style='font-family:"Arial",sans-serif'>R.F</span></b><span
+  style='font-family:"Arial",sans-serif'> : ________________</span></p>
+  <p class=MsoNormal style='margin-left:0cm;text-align:justify;text-indent:
+  -.1pt;line-height:120%'><b><span style='font-family:"Arial",sans-serif'>FUNÇÃO</span></b><span
+  style='font-family:"Arial",sans-serif'>: _______________________________</span></p>
+  <p class=MsoNormal style='margin-left:0cm;text-align:justify;text-indent:
+  -.1pt;line-height:120%'><b><span style='font-family:"Arial",sans-serif'>UNIDADE</span></b><span
+  style='font-family:"Arial",sans-serif'>: ______________________________</span></p>
+  <p class=MsoNormal style='margin-left:0cm;text-align:justify;text-indent:
+  -.1pt;line-height:120%'><b><span style='font-family:"Arial",sans-serif'>TEL</span></b><span
+  style='font-family:"Arial",sans-serif'>.<b>PESSOAL</b>: _________________________</span></p>
+  <p class=MsoNormal style='margin-left:0cm;text-align:justify;text-indent:
+  -.1pt;line-height:120%;padding:0cm 0pt 0.25cm 0pt'><b><span style='font-family:"Arial",sans-serif'>E-MAIL</span></b><span
+  style='font-family:"Arial",sans-serif'>: _______________________________</span></p>
+  </td>
+  <?php };?>
   <td width=312 valign=top style='width:233.9pt;border:solid black 1.0pt;
   border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
   <p class=MsoNormal style='margin-left:0cm;text-align:justify;text-indent:

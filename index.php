@@ -91,7 +91,6 @@ $route->get("/contatos/excluir/{contact_id}/{action}", "Contacts:contact");
 
 //Patrimonios
 $route->get("/patrimonios", "Patrimonys:patrimonys");
-$route->get("/patrimonioserver", "Patrimonys:patrimonyserver");
 $route->get("/patrimonios/desativados", "Patrimonys:disabledPatrimonys");
 $route->get("/patrimonios/cadastrar", "Patrimonys:patrimony");
 $route->post("/patrimonios/cadastrar", "Patrimonys:patrimony");
