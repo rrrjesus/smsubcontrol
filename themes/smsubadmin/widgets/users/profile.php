@@ -80,7 +80,7 @@
                         <div class="col-md-2 mb-1">
                             <label class="col-form-label col-form-label-sm" for="inputCelular"><strong><i class="bi bi-phone me-1"></i> Celular</strong></label>
                             <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                            data-bs-title="Digite o numero do celular - DDD + 9 dígitos" class="form-control form-control-sm mask-phone" 
+                            data-bs-title="Digite o numero do celular - DDD + 9 dígitos" class="form-control form-control-sm mask-cell-phone" 
                             name="cell_phone" placeholder="991065284" value="<?=$profile->cell_phone?>">
                         </div>
 

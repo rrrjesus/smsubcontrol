@@ -17,14 +17,14 @@
                     Monitoramento
                 </a>
 
-                <a class="nav-link text-light fw-semibold fs-6" target="_blank" rel="noopener" href="<?=url("/")?>">
+                <a class="nav-link text-light fw-semibold fs-6" href="<?=url("/")?>">
                     <div class="sb-nav-link-icon"><i class="bi bi-link-45deg bi-2xx"></i></div>
-                    Ver Site
+                    Site
                 </a>
                 
                 <?php if(user()->level_id > 4){
-                    echo '<a class="nav-link text-light fw-semibold fs-6" target="_blank" rel="noopener" href="'.url("/painel").'">
-                    <div class="sb-nav-link-icon"><i class="bi bi-link-45deg bi-2xx"></i></div>Ver Painel</a>';
+                    echo '<a class="nav-link text-light fw-semibold fs-6" href="'.url("/painel").'">
+                    <div class="sb-nav-link-icon"><i class="bi bi-link-45deg bi-2xx"></i></div>Painel</a>';
                 }?>
 
                 <div class="sb-sidenav-menu-heading text-light fw-semibold fs-6">CADASTROS</div>

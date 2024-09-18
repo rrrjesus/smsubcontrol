@@ -48,13 +48,13 @@
                     <div class="col-md-2 mb-1">
                         <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputCelular"><strong><i class="bi bi-phone me-1"></i>Telefone Fixo</strong></label>
                         <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                        data-bs-title="Digite o nome do celular" class="form-control form-control-sm" name="fixed_phone" value="<?=$user->fixed_phone?>" placeholder="(11)49343000">
+                        data-bs-title="Digite o nome do celular" class="form-control form-control-sm mask-fixed-phone" name="fixed_phone" value="<?=$user->fixed_phone?>" placeholder="(11)49343000">
                     </div>
 
                     <div class="col-md-2 mb-1">
                         <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputCelular"><strong><i class="bi bi-phone me-1"></i>Telefone Celular</strong></label>
                         <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                        data-bs-title="Digite o nome do celular" class="form-control form-control-sm" name="cell_phone" value="<?=$user->cell_phone?>" placeholder="(11)991065284">
+                        data-bs-title="Digite o nome do celular" class="form-control form-control-sm mask-cell-phone" name="cell_phone" value="<?=$user->cell_phone?>" placeholder="(11)991065284">
                     </div>
 
                 </div>
