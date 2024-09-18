@@ -1,1 +1,2 @@
-source\Boot\Config.php
+# Ignore configs.
+/source/Boot/Config.php
