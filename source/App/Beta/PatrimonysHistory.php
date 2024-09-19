@@ -208,7 +208,7 @@ public function patrimonyHistory(?array $data): void
 
         $patrimonyHistoryDelete->destroy();
 
-        $this->message->success("O patrimônio {$patrimonyHistoryDelete->type_part_number} {$patrimonyHistoryDelete->part_number} {$patrimonyHistoryDelete->file_terms} foi excluído com sucesso...")->flash();
+        $this->message->success("O patrimônio {$patrimonyHistoryDelete->type_part_number} {$patrimonyHistoryDelete->part_number} foi excluído com sucesso...")->flash();
         redirect("/beta/patrimonios/editar/{$patrimonyHistoryDelete->patrimony_id}");
         return;
     }
