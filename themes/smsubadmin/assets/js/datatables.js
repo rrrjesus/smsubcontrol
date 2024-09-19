@@ -507,9 +507,9 @@ $(document).ready(function() {
             // {extend: 'pdfHtml5',exportOptions: {columns: ':visible'},title:'Usuario',header: 'Usuario',filename:'Usuario',orientation: 'portrait',pageSize: 'LEGAL',className: 'btn btn-outline-danger',text:'<i class="bi bi-file-earmark-pdf"></i>'},
             {extend:'print', exportOptions: {columns: ':visible'},title:'Usuario',header: 'Usuario',filename:'Usuario',orientation: 'portrait',className: 'btn btn-outline-secondary btn-sm mb-2',text:'<i class="bi bi-printer"></i>'},
             {extend:'colvis',titleAttr: 'Select Colunas',className: 'btn btn-outline-info btn-sm mb-2',text:'<i class="bi bi-list"></i>'}],
-        "dom": "<'row'<'col-lg-5 col-sm-5 col-md-5 numporpag'l><'col-lg-2 col-sm-2 col-md-2 text-center'B><'col-lg-5 col-sm-5 col-md-5 searchbar'f>>" +
-            "<'row'<'col-sm-12'tr>>" +
-            "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+            "dom": "<'row justify-content-center'<'col-lg-5 col-sm-5 col-md-5 numporpag'l><'col-lg-2 col-sm-2 col-md-2 text-center'B><'col-lg-5 col-sm-5 col-md-5 searchbar mb-3 'f>>" +
+                "<'row justify-content-center'<'col-12'tr>>" +
+                "<'row justify-content-center'<'col-lg-8 col-md-8 col-sm-6 pb-2 pt-2'i><'col-lg-4 col-md-4 col-sm-6 pb-2 pt-2'p>>",
         responsive:
             {details:
                 {display: DataTable.Responsive.display.modal({
@@ -758,9 +758,13 @@ $(document).ready(function() {
             //{extend: 'pdf',exportOptions: {columns: ':visible'},title:'Patrimonio SMSUB',header: 'Patrimonio SMSUB',filename:'Patrimonio SMSUB',orientation: 'portrait',pageSize: 'LEGAL',className: 'btn btn-outline-danger mb-2 mt-2',text:'<i class="bi bi-file-earmark-pdf"></i>'},
             {extend:'print', exportOptions: {columns: ':visible'},title:'Patrimonio SMSUB',header: 'Patrimonio',filename:'Patrimonio',orientation: 'portrait',className: 'btn btn-outline-secondary mb-2 mt-2',text:'<i class="bi bi-printer"></i>'},
             {extend:'colvis',titleAttr: 'Select Colunas',className: 'btn btn-outline-smsub mb-2 mt-2',text:'<i class="bi bi-list"></i>'},],
-        "dom": "<'row justify-content-center'<'col-lg-5 col-sm-5 col-md-5 numporpag'l><'col-lg-2 col-sm-2 col-md-2 text-center'B><'col-lg-5 col-sm-5 col-md-5 searchbar mb-3 'f>>" +
+            "dom": 
+            "<'row mt-2 justify-content-between'<'d-md-flex justify-content-between align-items-center dt-layout-start col-md-auto me-auto numporpag'l>" +
+            "<'d-md-flex justify-content-between align-items-center dt-layout-center col-md-auto ms-auto'B>" +
+            "<'d-md-flex justify-content-between align-items-center dt-layout-end col-md-auto ms-auto searchbar'f>>" +
             "<'row justify-content-center'<'col-12'tr>>" +
-            "<'row justify-content-center'<'col-lg-8 col-md-8 col-sm-8 pb-2 pt-2'i><'col-lg-4 col-md-4 col-sm-4 pb-2 pt-2'p>>",
+            "<'row mt-2 justify-content-between'<'d-md-flex justify-content-between align-items-center dt-layout-start col-md-auto me-auto'i>" +
+            "<'d-md-flex justify-content-between align-items-center dt-layout-end col-md-auto ms-auto'p>>",
         responsive:
             {details:
                     {display: DataTable.Responsive.display.modal({

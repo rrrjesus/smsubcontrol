@@ -140,7 +140,7 @@
                         <div class="row justify-content-center mt-4 mb-3">
                             <div class="col-auto">
                                 <button data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
-                                    data-bs-title="Clique para atualizar o colaborador" class="btn btn-sm btn-outline-success fw-bold me-3"><i class="bi bi-disc-fill me-2"></i>GRAVAR</button>
+                                    data-bs-title="Clique para atualizar o colaborador" class="btn btn-sm btn-outline-<?=CONF_ADMIN_COLOR?> fw-bold me-3"><i class="bi bi-disc-fill me-2"></i>GRAVAR</button>
                                 <a href="<?=url("/painel/usuarios")?>" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
                                     data-bs-title="Clique para listar os usuarios" class="btn btn-sm btn-outline-dark fw-bold">
                                     <i class="bi bi-list-columns me-2"></i>LISTAR</a>
@@ -290,12 +290,7 @@
                         
                     </div>
 
-                    <div class="row mb-1">
-                        <div class="col-md-12 mb-1">
-                            <?php $this->insert("widgets/users/historyList"); ?>
-                        </div>
-                    </div>
-
+                    
                     <div class="row justify-content-center mt-4 mb-3">
                         <div class="col-auto">
                             <button data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
@@ -303,6 +298,20 @@
                             <a href="<?=url("/painel/usuarios")?>" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
                                 data-bs-title="Clique para listar os usuarios" class="btn btn-sm btn-outline-dark fw-bold">
                                 <i class="bi bi-list-columns me-2"></i>LISTAR</a>
+                        </div>
+                    </div>
+
+                    <div class="row mb-2 mt-3">
+                        <div class="col-md-12 mb-1">
+                            <div class="card border-<?=CONF_ADMIN_COLOR?> mb-3">
+                                <div class="card-header bg-transparent border-<?=CONF_ADMIN_COLOR?>">
+                                    <h5 class="card-title text-<?=CONF_ADMIN_COLOR?> text-center"> EQUIPAMENTOS ATRIBUÍDOS AO SERVIDOR </h5>
+                                </div>
+                                <div class="card-body text-<?=CONF_ADMIN_COLOR?>">
+                                    
+                                        <?php $this->insert("widgets/users/historyList"); ?>
+                                </div>
+                            </div>
                         </div>
                     </div>
 

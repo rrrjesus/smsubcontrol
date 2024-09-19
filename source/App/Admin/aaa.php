@@ -1,90 +1,36 @@
-<?php
- 
-/*
- * DataTables example server-side processing script.
- *
- * Please note that this script is intentionally extremely simple to show how
- * server-side processing can be implemented, and probably shouldn't be used as
- * the basis for a large complex system. It is suitable for simple use cases as
- * for learning.
- *
- * See https://datatables.net/usage/server-side for full details on the server-
- * side processing requirements of DataTables.
- *
- * @license MIT - https://datatables.net/license_mit
- */
- 
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * Easy set variables
- */
- 
-// DB table to use
-$table = <<<EOT
- ( 
-SELECT patrimonys.id, patrimonys.created_at, patrimonys.type_part_number, patrimonys.part_number, brands.brand_name, products.product_name,
-users.user_name, users.login, users.rf, users.email, units.unit_name, units.it_professional, units.fixed_phone, patrimonys.observations
-FROM patrimonys
-LEFT JOIN products ON patrimonys.product_id = products.id
-LEFT JOIN brands ON products.brand_id = brands.id
-LEFT JOIN units ON patrimonys.unit_id = units.id
-LEFT JOIN users ON patrimonys.user_id = users.id
-)temp
-    
-EOT;
- 
-// Table's primary key
-$primaryKey = 'id';
- 
-// Array of database columns which should be read and sent back to DataTables.
-// The `db` parameter represents the column name in the database, while the `dt`
-// parameter represents the DataTables column identifier. In this case simple
-// indexes
-$columns = array(
-    array(
-        'db'        => 'id', 'dt'        => 0,
-        'formatter' => function($d) {
-            return '<a href="../beta/patrimonios/editar/'.$d.'" role="button" class="btn btn-sm btn-outline-warning rounded-circle"><i class="bi bi-pencil"></i></a>';
-        }
-    ),
-    array('db'        => 'created_at', 'dt'        => 1,
-        'formatter' => function( $d) {
-            return date( 'd/m/Y', strtotime($d));
-        }
-    ),
-    array( 'db' => 'type_part_number', 'dt' => 2),
-    array( 'db' => 'part_number', 'dt' => 3),
-    array( 'db' => 'brand_name', 'dt' => 4),
-    array( 'db' => 'product_name', 'dt' => 5),
-    array( 'db' => 'user_name', 'dt' => 6),
-    array( 'db' => 'login', 'dt' => 7),
-    array( 'db' => 'rf', 'dt' => 8),
-    array( 'db' => 'email', 'dt' => 9),
-    array( 'db' => 'unit_name', 'dt' => 10),
-    array( 'db' => 'it_professional', 'dt' => 11),
-    array( 'db' => 'fixed_phone', 'dt' => 12),
-    array( 'db' => 'observations', 'dt' => 13),
-    array( 'db' => 'id', 'dt' => 14),
-    array( 'db' => 'id', 'dt' => 15),
-    array( 'db' => 'id', 'dt' => 16)
-);
-
-// SQL server connection information
-$sql_details = array(
-    'user' => 'smsubcoti',
-    'pass' => ')f9aGXVCh8YqJ8[L',
-    'db'   => 'smsub',
-    'host' => '192.168.15.54'
-    // ,'charset' => 'utf8' // Depending on your PHP and MySQL config, you may need this
-);
- 
- 
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * If you just want to use the basic configuration for DataTables with PHP
- * server-side, there is no need to edit below this line.
- */
- 
-require( 'ssp.class.php' );
- 
-echo json_encode(
-    SSP::simple( $_GET, $sql_details, $table, $primaryKey, $columns )
-);
+echo Realizando backup do MySQL...
+c:\xampp\mysql\bin\mysqldump --single-transaction=TRUE -u smsubcoti -pU4cKZ_NI0*2UeSHs smsubcontrol brands > C:\Users\Administrador\Documents\backup_smsubcontrol\brands\brands_%date:~0,2%%date:~3,2%%date:~6,4%.sql
+c:\xampp\mysql\bin\mysqldump --single-transaction=TRUE -u smsubcoti -pU4cKZ_NI0*2UeSHs smsubcontrol categories > C:\Users\Administrador\Documents\backup_smsubcontrol\categories\categories_%date:~0,2%%date:~3,2%%date:~6,4%.sql
+c:\xampp\mysql\bin\mysqldump --single-transaction=TRUE -u smsubcoti -pU4cKZ_NI0*2UeSHs smsubcontrol contacts > C:\Users\Administrador\Documents\backup_smsubcontrol\contacts\contacts_%date:~0,2%%date:~3,2%%date:~6,4%.sql
+c:\xampp\mysql\bin\mysqldump --single-transaction=TRUE -u smsubcoti -pU4cKZ_NI0*2UeSHs smsubcontrol levels > C:\Users\Administrador\Documents\backup_smsubcontrol\levels\levels_%date:~0,2%%date:~3,2%%date:~6,4%.sql
+c:\xampp\mysql\bin\mysqldump --single-transaction=TRUE -u smsubcoti -pU4cKZ_NI0*2UeSHs smsubcontrol mail_queue > C:\Users\Administrador\Documents\backup_smsubcontrol\mail_queue\mail_queue_%date:~0,2%%date:~3,2%%date:~6,4%.sql
+c:\xampp\mysql\bin\mysqldump --single-transaction=TRUE -u smsubcoti -pU4cKZ_NI0*2UeSHs smsubcontrol notifications > C:\Users\Administrador\Documents\backup_smsubcontrol\notifications\notifications_%date:~0,2%%date:~3,2%%date:~6,4%.sql
+c:\xampp\mysql\bin\mysqldump --single-transaction=TRUE -u smsubcoti -pU4cKZ_NI0*2UeSHs smsubcontrol patrimonys > C:\Users\Administrador\Documents\backup_smsubcontrol\patrimonys\patrimonys_%date:~0,2%%date:~3,2%%date:~6,4%.sql
+c:\xampp\mysql\bin\mysqldump --single-transaction=TRUE -u smsubcoti -pU4cKZ_NI0*2UeSHs smsubcontrol patrimonys_historys > C:\Users\Administrador\Documents\backup_smsubcontrol\patrimonys_historys\patrimonys_historys_%date:~0,2%%date:~3,2%%date:~6,4%.sql
+c:\xampp\mysql\bin\mysqldump --single-transaction=TRUE -u smsubcoti -pU4cKZ_NI0*2UeSHs smsubcontrol posts > C:\Users\Administrador\Documents\backup_smsubcontrol\posts\posts_%date:~0,2%%date:~3,2%%date:~6,4%.sql
+c:\xampp\mysql\bin\mysqldump --single-transaction=TRUE -u smsubcoti -pU4cKZ_NI0*2UeSHs smsubcontrol products > C:\Users\Administrador\Documents\backup_smsubcontrol\products\products_%date:~0,2%%date:~3,2%%date:~6,4%.sql
+c:\xampp\mysql\bin\mysqldump --single-transaction=TRUE -u smsubcoti -pU4cKZ_NI0*2UeSHs smsubcontrol report_access > C:\Users\Administrador\Documents\backup_smsubcontrol\report_access\report_access_%date:~0,2%%date:~3,2%%date:~6,4%.sql
+c:\xampp\mysql\bin\mysqldump --single-transaction=TRUE -u smsubcoti -pU4cKZ_NI0*2UeSHs smsubcontrol report_online > C:\Users\Administrador\Documents\backup_smsubcontrol\report_online\report_online_%date:~0,2%%date:~3,2%%date:~6,4%.sql
+c:\xampp\mysql\bin\mysqldump --single-transaction=TRUE -u smsubcoti -pU4cKZ_NI0*2UeSHs smsubcontrol signatures > C:\Users\Administrador\Documents\backup_smsubcontrol\signatures\signatures_%date:~0,2%%date:~3,2%%date:~6,4%.sql
+c:\xampp\mysql\bin\mysqldump --single-transaction=TRUE -u smsubcoti -pU4cKZ_NI0*2UeSHs smsubcontrol units > C:\Users\Administrador\Documents\backup_smsubcontrol\units\units_%date:~0,2%%date:~3,2%%date:~6,4%.sql
+c:\xampp\mysql\bin\mysqldump --single-transaction=TRUE -u smsubcoti -pU4cKZ_NI0*2UeSHs smsubcontrol users > C:\Users\Administrador\Documents\backup_smsubcontrol\users\users_%date:~0,2%%date:~3,2%%date:~6,4%.sql
+c:\xampp\mysql\bin\mysqldump --single-transaction=TRUE -u smsubcoti -pU4cKZ_NI0*2UeSHs smsubcontrol user_categories > C:\Users\Administrador\Documents\backup_smsubcontrol\user_categories\user_categories_%date:~0,2%%date:~3,2%%date:~6,4%.sql
+c:\xampp\mysql\bin\mysqldump --single-transaction=TRUE -u smsubcoti -pU4cKZ_NI0*2UeSHs smsubcontrol user_positions > C:\Users\Administrador\Documents\backup_smsubcontrol\user_positions\user_positions_%date:~0,2%%date:~3,2%%date:~6,4%.sql
+c:\xampp\mysql\bin\mysqldump --single-transaction=TRUE -u smsubcoti -pU4cKZ_NI0*2UeSHs smsubcontrol brands > \\smsubgbs03\BACKUP_SMSUBCONTROL\brands\brands_%date:~0,2%%date:~3,2%%date:~6,4%.sql
+c:\xampp\mysql\bin\mysqldump --single-transaction=TRUE -u smsubcoti -pU4cKZ_NI0*2UeSHs smsubcontrol categories > \\smsubgbs03\BACKUP_SMSUBCONTROL\categories\categories_%date:~0,2%%date:~3,2%%date:~6,4%.sql
+c:\xampp\mysql\bin\mysqldump --single-transaction=TRUE -u smsubcoti -pU4cKZ_NI0*2UeSHs smsubcontrol contacts > \\smsubgbs03\BACKUP_SMSUBCONTROL\backup_smsubcontrol\contacts\contacts_%date:~0,2%%date:~3,2%%date:~6,4%.sql
+c:\xampp\mysql\bin\mysqldump --single-transaction=TRUE -u smsubcoti -pU4cKZ_NI0*2UeSHs smsubcontrol levels > \\smsubgbs03\BACKUP_SMSUBCONTROL\levels\levels_%date:~0,2%%date:~3,2%%date:~6,4%.sql
+c:\xampp\mysql\bin\mysqldump --single-transaction=TRUE -u smsubcoti -pU4cKZ_NI0*2UeSHs smsubcontrol mail_queue > \\smsubgbs03\BACKUP_SMSUBCONTROL\mail_queue\mail_queue_%date:~0,2%%date:~3,2%%date:~6,4%.sql
+c:\xampp\mysql\bin\mysqldump --single-transaction=TRUE -u smsubcoti -pU4cKZ_NI0*2UeSHs smsubcontrol notifications > \\smsubgbs03\BACKUP_SMSUBCONTROL\notifications\notifications_%date:~0,2%%date:~3,2%%date:~6,4%.sql
+c:\xampp\mysql\bin\mysqldump --single-transaction=TRUE -u smsubcoti -pU4cKZ_NI0*2UeSHs smsubcontrol patrimonys > \\smsubgbs03\BACKUP_SMSUBCONTROL\patrimonys\patrimonys_%date:~0,2%%date:~3,2%%date:~6,4%.sql
+c:\xampp\mysql\bin\mysqldump --single-transaction=TRUE -u smsubcoti -pU4cKZ_NI0*2UeSHs smsubcontrol patrimonys_historys > \\smsubgbs03\BACKUP_SMSUBCONTROL\patrimonys_historys\patrimonys_historys_%date:~0,2%%date:~3,2%%date:~6,4%.sql
+c:\xampp\mysql\bin\mysqldump --single-transaction=TRUE -u smsubcoti -pU4cKZ_NI0*2UeSHs smsubcontrol posts > \\smsubgbs03\BACKUP_SMSUBCONTROL\posts\posts_%date:~0,2%%date:~3,2%%date:~6,4%.sql
+c:\xampp\mysql\bin\mysqldump --single-transaction=TRUE -u smsubcoti -pU4cKZ_NI0*2UeSHs smsubcontrol products > \\smsubgbs03\BACKUP_SMSUBCONTROL\products\products_%date:~0,2%%date:~3,2%%date:~6,4%.sql
+c:\xampp\mysql\bin\mysqldump --single-transaction=TRUE -u smsubcoti -pU4cKZ_NI0*2UeSHs smsubcontrol report_access > \\smsubgbs03\BACKUP_SMSUBCONTROL\report_access\report_access_%date:~0,2%%date:~3,2%%date:~6,4%.sql
+c:\xampp\mysql\bin\mysqldump --single-transaction=TRUE -u smsubcoti -pU4cKZ_NI0*2UeSHs smsubcontrol report_online > \\smsubgbs03\BACKUP_SMSUBCONTROL\report_online\report_online_%date:~0,2%%date:~3,2%%date:~6,4%.sql
+c:\xampp\mysql\bin\mysqldump --single-transaction=TRUE -u smsubcoti -pU4cKZ_NI0*2UeSHs smsubcontrol signatures > \\smsubgbs03\BACKUP_SMSUBCONTROL\signatures\signatures_%date:~0,2%%date:~3,2%%date:~6,4%.sql
+c:\xampp\mysql\bin\mysqldump --single-transaction=TRUE -u smsubcoti -pU4cKZ_NI0*2UeSHs smsubcontrol units > \\smsubgbs03\BACKUP_SMSUBCONTROL\units\units_%date:~0,2%%date:~3,2%%date:~6,4%.sql
+c:\xampp\mysql\bin\mysqldump --single-transaction=TRUE -u smsubcoti -pU4cKZ_NI0*2UeSHs smsubcontrol users > \\smsubgbs03\BACKUP_SMSUBCONTROL\users\users_%date:~0,2%%date:~3,2%%date:~6,4%.sql
+c:\xampp\mysql\bin\mysqldump --single-transaction=TRUE -u smsubcoti -pU4cKZ_NI0*2UeSHs smsubcontrol user_categories > \\smsubgbs03\BACKUP_SMSUBCONTROL\user_categories\user_categories_%date:~0,2%%date:~3,2%%date:~6,4%.sql
+c:\xampp\mysql\bin\mysqldump --single-transaction=TRUE -u smsubcoti -pU4cKZ_NI0*2UeSHs smsubcontrol user_positions > \\smsubgbs03\BACKUP_SMSUBCONTROL\user_positions\user_positions_%date:~0,2%%date:~3,2%%date:~6,4%.sql
+echo Backup concluído com sucesso.

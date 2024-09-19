@@ -26,7 +26,7 @@
     </div>
     
 
-    <div class="d-flex justify-content-center">
+    <div class="dt-container dt-bootstrap5">
         <div class="col-12">
             <table id="users" class="table table-bordered table-sm border-secondary table-hover" style="width:100%">
                 <thead class="table-secondary">
