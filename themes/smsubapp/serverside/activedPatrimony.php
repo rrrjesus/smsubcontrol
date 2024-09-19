@@ -59,7 +59,13 @@ $columns = array(
     array( 'db' => 'product_name', 'dt' => 5),
     array( 'db' => 'user_name', 'dt' => 6),
     array( 'db' => 'login', 'dt' => 7),
-    array( 'db' => 'cell_phone', 'dt' => 8),
+    array( 'db' => 'cell_phone', 'dt' => 8,
+        'formatter' => function($d) {
+            if($d){
+                return '('.substr($d, 0, 2).')'.substr($d, 2, 9);
+            }
+        }
+    ),
     array( 'db' => 'rf', 'dt' => 9),
     array( 'db' => 'email', 'dt' => 10),
     array( 'db' => 'unit_name', 'dt' => 11),
