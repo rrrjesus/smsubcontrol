@@ -179,6 +179,31 @@ $(function () {
             }
         });
 
+    /**
+     * Função para tratativas e preenchimentos automáticos de campos
+     *
+     * @return {VoidFunction}
+     */
+
+   
+    $("input[name='user_id']").on('focusout',function() {
+        var unit_id = $("input[name='unit_id']");
+
+        unit_id.val('');
+
+        $.getJSON(
+            '../../themes/smsubapp/autocomplete/complete-user.php',
+            { user_id: $( this ).val() },
+            function( json )
+            {
+                var jsonunit = json.unit_id;
+                if(jsonunit!==''){
+                    unit_id.val(jsonunit);
+                }
+            }
+        );
+    });
+
     /*
         * AJAX FORM
         */

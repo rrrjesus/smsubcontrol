@@ -50,18 +50,18 @@
 
                         <div class="row mb-1">
 
-                            <div class="col-md-7 mb-1">
-                                <label class="col-form-label col-form-label-sm" for="inputSobreNome"><i class="bi bi-person-add me-1"></i><strong>Unidade</strong></label>
-                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                    data-bs-title="Digite a unidade" class="form-control form-control-sm unit_id"
-                                    name="unit_id" placeholder="UNIDADE">
-                            </div>
-
                             <div class="col-md-5 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputSobreNome"><i class="bi bi-person-add me-1"></i><strong>Usuario</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Digite a unidade" class="form-control form-control-sm user_id"
-                                    name="user_id" placeholder="USUÁRIO">
+                                    name="user_id" id="user_id" placeholder="USUÁRIO">
+                            </div>
+
+                            <div class="col-md-7 mb-1">
+                                <label class="col-form-label col-form-label-sm" for="inputSobreNome"><i class="bi bi-person-add me-1"></i><strong>Unidade</strong></label>
+                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                    data-bs-title="Digite a unidade" class="form-control form-control-sm unit_id"
+                                    name="unit_id" id="unit_id" placeholder="UNIDADE">
                             </div>
 
                         </div>
