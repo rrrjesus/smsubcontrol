@@ -112,17 +112,17 @@
                 </div>
 
                 <div class="col-md-3 mb-1">
-                    <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSenha"><strong><i class="bi bi-lock me-1"></i>Senha</strong></label>
+                    <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>"><strong><i class="bi bi-lock me-1"></i>Senha</strong></label>
                         <input type="password" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                             data-bs-title="Digite a senha" class="form-control form-control-sm"
-                            name="password" placeholder="********">
+                            name="password" id="password" placeholder="********">
                     </div>  
 
                     <div class="col-md-3 mb-1">
-                        <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSenha"><i class="bi bi-lock me-1"><strong></i>Repetir Senha</strong></label>
+                        <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>"><i class="bi bi-lock me-1"><strong></i>Repetir Senha</strong></label>
                             <input type="password" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                 data-bs-title="Digite a senha" class="form-control form-control-sm"
-                                name="password_re" placeholder="********">
+                                name="password_re" id="password_re" placeholder="********">
                     </div>  
 
                 </div>

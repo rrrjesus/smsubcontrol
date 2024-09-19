@@ -38,6 +38,14 @@ $(function () {
         }
     });
 
+    $.validator.addMethod('valsenha', function(value, element) {
+        return this.optional(element)
+            || value.length >= 8
+            && /\d/.test(value)
+            && /[a-z]/i.test(value);
+    }, 'Sua senha deve ter no mínimo 8 caracteres e conter pelo menos um número e um caractere.');
+
+
     $("#user").validate({
         rules: {
             login: {
@@ -60,6 +68,9 @@ $(function () {
             },
             email: {
                 required: true
+            },
+            password: {
+                valsenha: true
             }
         },
         messages: {
@@ -83,6 +94,9 @@ $(function () {
             },
             email: {
                 required: "Digite um email !!!"
+            },
+            password: {
+                valsenha: "Sua nova senha deve ter no mínimo 8 caracteres e conter pelo menos um número e um caractere"
             }
         }
     });

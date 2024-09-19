@@ -148,25 +148,24 @@
             <script>
                 let ramalinp = new Bloodhound({
                     datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
-                    local: <?=(new \Source\Models\Contact())->completeRamal("ramal")?>
+                    local: <?=(new \Source\Models\Contact())->completeRamal()?>
                 });
                 ramalinp.initialize();
                 $('.ramalinp').typeahead({hint: true, highlight: true, minLength: 1, limit: 8}, {source: ramalinp});
 
                 let sector = new Bloodhound({
                     datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
-                    local: <?=(new \Source\Models\Sector())->completeSector("sector_name")?>
+                    local: <?=(new \Source\Models\Contact())->completeUnit()?>
                 });
                 sector.initialize();
                 $('.sector').typeahead({hint: true, highlight: true, minLength: 1}, {source: sector});
 
                 let nomeinp = new Bloodhound({
                     datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
-                    local: <?=(new \Source\Models\Signature())->completeName("user_name")?>
+                    local: <?=(new \Source\Models\Signature())->completeName()?>
                 });
                 nomeinp.initialize();
                 $('.nomeinp').typeahead({hint: true, highlight: true, minLength: 1}, {source: nomeinp});
-
 
                 let cargoinp = new Bloodhound({
                     datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,

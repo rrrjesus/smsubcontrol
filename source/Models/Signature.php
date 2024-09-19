@@ -8,17 +8,20 @@ class Signature extends Model
 {
     public function __construct()
     {
-        parent::__construct("signatures", ["id"], ["user_name", "email"]);
+        parent::__construct("signatures", ["id"], ["first_name", "last_name", "email"]);
     }
 
-    static function completeName($columns): ?Signature
+    /**
+     * @return null|Signature
+     */
+    static function completeName(): ?Signature
     {
-        $stm = (new Signature())->find("","",$columns);
-        $array = array();
+        $stm = (new Signature())->find("","");
+        $array[] = array();
 
         if(!empty($stm)):
             foreach ($stm->fetch(true) as $row):
-                $array[] = $row->user_name;
+                    $array[] = $row->first_name.' '.$row->last_name;
             endforeach;
             echo json_encode($array); //Return the JSON Array
         endif;

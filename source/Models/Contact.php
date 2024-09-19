@@ -56,14 +56,48 @@ class Contact extends Model
         return null;
     }
 
-    static function completeUnit($columns): ?Unit
+    static function completePosition($columns): ?UserPosition
     {
-        $stm = (new Unit())->find("status= :s","s=confirmed", $columns);
+        $stm = (new UserPosition())->find("status= :s","s=confirmed", $columns);
         $array = array();
 
         if(!empty($stm)):
             foreach ($stm->fetch(true) as $row):
-                $array[] = $row->unit_name;
+                $array[] = $row->position_name;
+            endforeach;
+            echo json_encode($array); //Return the JSON Array
+        endif;
+        return null;
+    }
+
+    /**
+     * @return null|Contact
+     */
+    static function completeRamal(): ?Contact
+    {
+        $stm = (new Contact())->find("status= :s","s=actived");
+        $array[] = array();
+
+        if(!empty($stm)):
+            foreach ($stm->fetch(true) as $row):
+                    $array[] = $row->ramal;
+            endforeach;
+            echo json_encode($array); //Return the JSON Array
+        endif;
+        return null;
+    }
+
+    /**
+     * @return null|Unit
+     */
+    static function completeUnit(): ?Unit
+    {
+        $stm = (new Unit())->find("status= :s","s=actived");
+        $array[] = array();
+
+        if(!empty($stm)):
+            foreach ($stm->fetch(true) as $row):
+                    $array[] = $row->unit_name;
             endforeach;
             echo json_encode($array); //Return the JSON Array
         endif;

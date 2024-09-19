@@ -118,17 +118,10 @@
                         <div class="row">  
 
                             <div class="col-md-3 mb-1">
-                                <label class="col-form-label col-form-label-sm" for="inputSenha"><strong><i class="bi bi-lock me-1"></i>Senha</strong></label>
+                                <label class="col-form-label col-form-label-sm"><strong><i class="bi bi-lock me-1"></i>Senha</strong></label>
                                     <input type="password" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                         data-bs-title="Digite a senha, Padrão : smsub12345" class="form-control form-control-sm"
                                         name="password" placeholder="********" value="smsub12345">
-                                </div>  
-
-                                <div class="col-md-3 mb-1">
-                                    <label class="col-form-label col-form-label-sm" for="inputSenha"><i class="bi bi-lock me-1"><strong></i>Repetir Senha</strong></label>
-                                        <input type="password" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                            data-bs-title="Redigite a senha" class="form-control form-control-sm"
-                                            name="password_re" placeholder="********" value="smsub12345">
                                 </div>  
 
                             </div>

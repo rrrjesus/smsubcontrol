@@ -28,7 +28,7 @@ function retorna($name) {
         $arr['secsubinp'] = '';
         $arr['enderecoinp'] = '';
         $arr['cepinp'] = '';
-        $arr['asphoto'] = 'photo_ass_smsub.png';
+        $arr['asphoto'] = 'logo_ass_smsub.png';
         $arr['url'] = '';
     }
     return json_encode($arr);

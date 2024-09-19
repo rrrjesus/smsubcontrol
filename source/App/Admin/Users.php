@@ -391,6 +391,7 @@ class Users extends Admin
         $unit = new Unit();
 
         $userEdit = null;
+        $userHistory = null;
         if (!empty($data["user_id"])) {
             $userId = filter_var($data["user_id"], FILTER_VALIDATE_INT);
             $userEdit = (new User())->findById($userId);
