@@ -51,10 +51,6 @@ $(function () {
                 visible: false
             },
             {
-                target: 10,
-                visible: false
-            },
-            {
                 target: 12,
                 visible: false
             },
