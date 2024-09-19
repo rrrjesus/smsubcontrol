@@ -7,6 +7,7 @@ use Source\Models\UserPosition;
 use Source\Models\Unit;
 use Source\Support\Thumb;
 use Source\Support\Upload;
+use Source\Models\Patrimony\Patrimony;
 use Source\Models\Patrimony\PatrimonyHistory;
 
 /**
@@ -391,10 +392,13 @@ class Users extends Admin
         $unit = new Unit();
 
         $userEdit = null;
+        $userPatrimony = null;
         $userHistory = null;
+
         if (!empty($data["user_id"])) {
             $userId = filter_var($data["user_id"], FILTER_VALIDATE_INT);
             $userEdit = (new User())->findById($userId);
+            $userPatrimony = (new Patrimony())->find("user_id = :u", "u={$userId}")->fetch(true);
             $userHistory = (new PatrimonyHistory())->find("user_id = :u", "u={$userId}")->fetch(true);
         }
 
@@ -410,6 +414,7 @@ class Users extends Admin
             "app" => "usuarios",
             "head" => $head,
             "user" => $userEdit,
+            "userpatrimony" => $userPatrimony,
             "userhistory" => $userHistory,
             "userposition" => $userposition,
             "unit" => $unit,
@@ -425,6 +430,34 @@ class Users extends Admin
      * @throws \Exception
      */
     public function term(?array $data): void
+    {
+        //update term
+        $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
+        $termPrint = (new Patrimony())->findById($data["patrimonys_id"]);
+
+        $head = $this->seo->render(
+            CONF_SITE_NAME . " - Termo de - ".(!empty($termPrint->userPatrimony()->rf) ? $termPrint->userPatrimony()->rf : "Responsabilidade")." - "
+            .(!empty($termPrint->userPatrimony()->user_name) ? $termPrint->userPatrimony()->user_name : "")." - ".$termPrint->type_part_number.":".$termPrint->part_number ,
+            CONF_SITE_DESC,
+            url(),
+            theme("/assets/images/favicon.ico"),
+            false
+        );
+
+        echo $this->view->render("widgets/users/term", [
+            "head" => $head,
+            "term" => $termPrint,
+            "urls" => "patrimonios/termo/{$termPrint->id}",
+            "namepage" => "Termo",
+            "name" => "Imprimir"
+        ]);
+    }
+
+        /**
+     * @param array|null $data
+     * @throws \Exception
+     */
+    public function termHistory(?array $data): void
     {
         //update term
         $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);

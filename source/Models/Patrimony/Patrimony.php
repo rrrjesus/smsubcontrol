@@ -147,6 +147,19 @@ class Patrimony extends Model
         return null;
     }
 
+    
+    /**
+     * @return null|string
+     */
+    public function termlistUser(): ?string
+    {
+        if($this->user_id){
+            return '<a href="'.url("/painel/usuarios/termo/{$this->id}").'" role="button" aria-disabled="true" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
+                            data-bs-title="Clique para visualizar termo para assinar" target="_blank" class="btn btn-sm btn-outline-primary rounded-circle"><i class="bi bi-file-earmark-word"></i></a>';
+        }
+        return null;
+    }
+
     /**
      * @return null|string
      */

@@ -146,7 +146,8 @@ $route->post("/usuarios/editar/{user_id}", "Users:user");
 $route->get("/usuarios/ativar/{user_id}/{action}", "Users:user");
 $route->get("/usuarios/desativar/{user_id}/{action}", "Users:user");
 $route->get("/usuarios/excluir/{user_id}/{action}", "Users:user");
-$route->get("/usuarios/historico/termo/{patrimonys_id}", "Users:term");
+$route->get("/usuarios/termo/{patrimonys_id}", "Users:term");
+$route->get("/usuarios/historico/termo/{patrimonys_id}", "Users:termHistory");
 
 //perfil
 $route->get("/perfil", "Users:profile");
