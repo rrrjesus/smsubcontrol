@@ -6,6 +6,7 @@
                             <th class="text-center">LOGIN</th>
                             <th class="text-center">RF</th>
                             <th class="text-center">NOME</th>
+                            <th class="text-center">CEL</th>
                             <th class="text-center">EMAIL</th>
                             <th class="text-center">TERMO</th>
                             <th class="text-center">TERMO ASS</th>
@@ -21,6 +22,7 @@
                             <td class="text-center fw-semibold"><?=(!empty($lista->userPatrimony()->login) ? $lista->userPatrimony()->login : "")?></td>
                             <td class="text-center fw-semibold"><?=(!empty($lista->userPatrimony()->rf) ? $lista->userPatrimony()->rf : "")?></td>
                             <td class="text-center fw-semibold"><?=(!empty($lista->userPatrimony()->user_name) ? $lista->userPatrimony()->user_name : "")?></td>
+                            <td class="text-center fw-semibold"><?=(!empty($lista->userPatrimony()->cell_phone) ? '('.substr($lista->userPatrimony()->cell_phone, 0, 2).')'.substr($lista->userPatrimony()->cell_phone, 2, 9) : "")?></td>
                             <td class="text-center fw-semibold"><?=(!empty($lista->userPatrimony()->email) ? $lista->userPatrimony()->email : "")?></td>
                             <td class="text-center fw-semibold"><?=$lista->termList();?></td>
                             <td class="text-center"><?=$lista->fileList()?></td>

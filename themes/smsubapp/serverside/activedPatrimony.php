@@ -24,7 +24,7 @@ include_once '../../../source/Boot/Config.php';
 $table = <<<EOT
  ( 
 SELECT patrimonys.id, patrimonys.created_at, patrimonys.type_part_number, patrimonys.part_number, brands.brand_name, 
-products.product_name, users.user_name, users.login, users.rf, users.email, units.unit_name, units.it_professional, 
+products.product_name, users.user_name, users.login, users.cell_phone, users.rf, users.email, units.unit_name, units.it_professional, 
 units.fixed_phone, patrimonys.observations, patrimonys.file_terms
 FROM patrimonys
 LEFT JOIN products ON patrimonys.product_id = products.id
@@ -59,19 +59,20 @@ $columns = array(
     array( 'db' => 'product_name', 'dt' => 5),
     array( 'db' => 'user_name', 'dt' => 6),
     array( 'db' => 'login', 'dt' => 7),
-    array( 'db' => 'rf', 'dt' => 8),
-    array( 'db' => 'email', 'dt' => 9),
-    array( 'db' => 'unit_name', 'dt' => 10),
-    array( 'db' => 'it_professional', 'dt' => 11),
-    array( 'db' => 'fixed_phone', 'dt' => 12),
-    array( 'db' => 'observations', 'dt' => 13),
-    array( 'db' => 'id', 'dt' => 14,
+    array( 'db' => 'cell_phone', 'dt' => 8),
+    array( 'db' => 'rf', 'dt' => 9),
+    array( 'db' => 'email', 'dt' => 10),
+    array( 'db' => 'unit_name', 'dt' => 11),
+    array( 'db' => 'it_professional', 'dt' => 12),
+    array( 'db' => 'fixed_phone', 'dt' => 13),
+    array( 'db' => 'observations', 'dt' => 14),
+    array( 'db' => 'id', 'dt' => 15,
         'formatter' => function($d) {
             return '<a href="../beta/patrimonios/termo/'.$d.'" role="button" aria-disabled="true" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
                         data-bs-title="Clique para editar" target="_blank" class="btn btn-sm btn-outline-primary rounded-circle fw-bold me-2"><i class="bi bi-file-earmark-word"></i></a>';
                     }
     ),
-    array( 'db' => 'file_terms', 'dt' => 15,
+    array( 'db' => 'file_terms', 'dt' => 16,
         'formatter' => function($d) {
             if($d && file_exists('../../../storage/'.$d)){
                 return '<a href="../storage/'.$d.'" role="button" class="btn btn-sm btn-outline-danger rounded-circle" target="_blank"><i class="bi bi-file-earmark-pdf"></a>';
@@ -80,7 +81,7 @@ $columns = array(
             }
         }
     ),
-    array( 'db' => 'id', 'dt' => 16)
+    array( 'db' => 'id', 'dt' => 17)
 );
 
 // SQL server connection information

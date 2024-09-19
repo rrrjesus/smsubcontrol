@@ -30,6 +30,7 @@
                                 <th class="text-center">MODELO</th>
                                 <th class="text-center">NOME</th>
                                 <th class="text-center">LOGIN</th>
+                                <th class="text-center">CEL</th>
                                 <th class="text-center">RF</th>
                                 <th class="text-center">EMAIL</th>
                                 <th class="text-center">UNIDADE</th>
