@@ -36,6 +36,7 @@
                     <th class="text-center"><i class="bi bi-person-circle me-1"></i><br>FOTO</th>
                     <th class="text-center"><i class="bi bi-person me-1"></i><br>RF</th>
                     <th class="text-center"><i class="bi bi-person me-1"></i><br>NOME</th>
+                    <th class="text-center"><i class="bi bi-person me-1"></i><br>CEL</th>
                     <th class="text-center"><i class="bi bi-building me-1"></i><br>CARGO</th>
                     <th class="text-center"><i class="bi bi-building me-1"></i><br>UNIDADE</th>
                     <th class="text-center"><i class="bi bi-envelope-at me-1"></i><br>EMAIL</th>
@@ -57,6 +58,7 @@
                         <td class="text-center"><?=$lista->photoList();?></td>
                         <td class="text-center"><?=$lista->rf;?></td>
                         <td class="text-center text-uppercase"><?=$lista->user_name;?></td>
+                        <td class="text-center text-uppercase"><?=(!empty($lista->cell_phone) ? '('.substr($lista->cell_phone,0,2).')'.substr($lista->cell_phone,2,9) : "") ;?></td>
                         <td class="text-center"><?=$lista->userPosition()->position_name;?></td>
                         <td class="text-center"><?=$lista->userUnit()->unit_name;?></td>
                         <td class="text-center"><?=$lista->email;?></td>
