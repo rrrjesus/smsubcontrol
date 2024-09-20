@@ -293,11 +293,8 @@
                     
                     <div class="row justify-content-center mt-4 mb-3">
                         <div class="col-auto">
-                            <button data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
-                                data-bs-title="Clique para atualizar o colaborador" class="btn btn-sm btn-outline-success fw-bold me-3"><i class="bi bi-disc-fill me-2"></i>GRAVAR</button>
-                            <a href="<?=url("/painel/usuarios")?>" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
-                                data-bs-title="Clique para listar os usuarios" class="btn btn-sm btn-outline-dark fw-bold">
-                                <i class="bi bi-list-columns me-2"></i>LISTAR</a>
+                            <?=button("top", "Clique para gravar", "success", "disc-fill", "Gravar", "7", "g")?>
+                            <?=buttonLink("/painel/usuarios", "top", "Clique para listar os usuarios", "secondary", "list", "Listar", "8", "l")?>    
                         </div>
                     </div>
 

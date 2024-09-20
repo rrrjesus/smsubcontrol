@@ -299,7 +299,7 @@ class Users extends Admin
             }
 
             $this->message->success("Usuário {$userUpdate->login} - {$userUpdate->user_name} atualizado com sucesso !!!")->icon("person")->flash();
-            echo json_encode(["reload" => true]);
+            echo json_encode(["redirect" => url("/painel/usuarios")]);
             return;
         }
 

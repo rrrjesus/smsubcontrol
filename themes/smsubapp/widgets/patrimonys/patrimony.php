@@ -171,9 +171,9 @@
 
                             <div class="row justify-content-center mt-4 mb-3">
                                 <div class="col-auto">
-                                <?=button("top", "Clique para gravar", "success", "disc-fill", "Gravar", "7")?>
-                                <?=buttonLink("/beta/patrimonios", "top", "Clique para listar os patrimônios", "secondary", "list", "Listar", "8")?>    
-                                <?=buttonLink("/beta/patrimonios/termo/{$patrimonys->id}", "top", "Clique para listar os patrimônios", "primary", "file-earmark-word", "Termo", "9")?>                                   
+                                <?=button("top", "Clique para gravar", "success", "disc-fill", "Gravar", "7", "g")?>
+                                <?=buttonLink("/beta/patrimonios", "top", "Clique para listar os patrimônios", "secondary", "list", "Listar", "8", "l")?>    
+                                <?=buttonLink("/beta/patrimonios/termo/{$patrimonys->id}", "top", "Clique para listar os patrimônios", "primary", "file-earmark-word", "Termo", "9", "t")?>                                   
                                 </div>
                             </div>
 

@@ -20,7 +20,7 @@
                     <?php if(!empty($historico)){ ?>
                     <?php foreach ($historico as $lista): ?>
                         <tr>
-                            <td class="text-center"><?=$lista->id?></td>
+                            <td class="text-center"><button type="button" disabled class="btn btn-warning rounded-circle btn-sm fw-semibold text-"><?=$lista->id?></button></td>
                             <td class="text-center fw-semibold"><?=date_fmt_null($lista->created_history)?></td>
                             <td class="text-center fw-semibold"><?=(!empty($lista->userPatrimony()->login) ? $lista->userPatrimony()->login : "")?></td>
                             <td class="text-center fw-semibold"><?=(!empty($lista->userPatrimony()->rf) ? $lista->userPatrimony()->rf : "")?></td>

@@ -292,16 +292,16 @@ function image(?string $image, int $width, int $height = null): ?string
  * ################
  */
 
- function buttonLink(string $href = "/", string $placement = "top", string $title = "Olá", string $btncolor = "success", string $icon = "person", string $name = "Button", string $tabindex = "1"): ?string
+ function buttonLink(string $href = "/", string $placement = "top", string $title = "Olá", string $btncolor = "success", string $icon = "person", string $name = "Button", string $tabindex = "l", string $accesskey = "l"): ?string
  {
     return '<a role="button" href="'.url($href).'" data-bs-togglee="tooltip" data-bs-placement="'.$placement.'" data-bs-custom-class="custom-tooltip"
-    data-bs-title="'.$title.'" class="btn btn-outline-'.$btncolor.' btn-sm position-relative fw-semibold me-3" tabindex="'.$tabindex.'"><i class="bi bi-'.$icon.' me-2 mt-1"></i> '.$name.'</a>';
+    data-bs-title="'.$title.'" class="btn btn-outline-'.$btncolor.' btn-sm position-relative fw-semibold me-3" tabindex="'.$tabindex.'" accesskey="'.$accesskey.'"><i class="bi bi-'.$icon.' me-2 mt-1"></i>  <u>'.substr($name,0,1).'</u>'.substr($name,1,12).'</a>';
  }
 
- function button(?string $placement = "top", string $title = "Olá", string $btncolor = "success", string $icon = "person", string $name = "Button", string $tabindex = "1"): string
+ function button(?string $placement = "top", string $title = "Olá", string $btncolor = "success", string $icon = "person", string $name = "Button", string $tabindex = "1", string $accesskey = "g"): string
  {
     return '<button data-bs-togglee="tooltip" data-bs-placement="'.$placement.'" data-bs-custom-class="custom-tooltip" data-bs-title="'.$title.'" 
-        class="btn btn-sm btn-outline-'.$btncolor.' fw-semibold me-3" tabindex="'.$tabindex.'"><i class="bi bi-'.$icon.' me-2"></i> '.$name.'</button>';
+        class="btn btn-sm btn-outline-'.$btncolor.' fw-semibold me-3" tabindex="'.$tabindex.'" accesskey="'.$accesskey.'"><i class="bi bi-'.$icon.' me-2"></i> <u>'.substr($name,0,1).'</u>'.substr($name,1,12).'</button>';
  }
 
 
