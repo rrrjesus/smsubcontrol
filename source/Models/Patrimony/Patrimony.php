@@ -31,9 +31,9 @@ class Patrimony extends Model
      * @param string $columns
      * @return null|Patrimony
      */
-    public function findByPartNumber(string $part_number, string $columns = "*"): ?Patrimony
+    public function findByPartNumber(string $type_part_number,string $part_number, string $columns = "*"): ?Patrimony
     {
-        $find = $this->find("part_number = :part_number", "part_number={$part_number}", $columns);
+        $find = $this->find("type_part_number = :type_part_number AND part_number = :part_number", "type_part_number={$type_part_number}&part_number={$part_number}", $columns);
         return $find->fetch();
     }
 
@@ -389,7 +389,7 @@ class Patrimony extends Model
 
         /** Patrimony Create */
         if (empty($this->id)) {
-            if (!empty($this->part_number) && $this->findByPartNumber($this->part_number, "id")) {
+            if (!empty($this->part_number) && $this->findByPartNumber($this->type_part_number, $this->part_number, "id")) {
                 $this->message->warning("O patrimonio {$this->type_part_number} {$this->part_number} informado já está cadastrado");
                 return false;
             }

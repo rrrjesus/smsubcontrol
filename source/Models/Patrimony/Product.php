@@ -18,7 +18,7 @@ class Product extends Model
      */
     public function __construct()
     {
-        parent::__construct("products", ["id"], ["brand_id", "model_name", "description", "status"]);
+        parent::__construct("products", ["id"], ["brand_id", "product_name", "description", "status"]);
     }
 
     
@@ -27,7 +27,7 @@ class Product extends Model
      * @param string $columns
      * @return null|Model
      */
-    public function findByModelo(string $product_name, string $columns = "*"): ?Model
+    public function findByProduct(string $product_name, string $columns = "*"): ?Model
     {
         $find = $this->find("product_name = :product_name", "product_name={$product_name}", $columns);
         return $find->fetch();
@@ -105,7 +105,7 @@ class Product extends Model
     
             /** Model Create */
             if (empty($this->id)) {
-                if ($this->findByModelo($this->product_name, "id")) {
+                if ($this->findByProduct($this->product_name, "id")) {
                     $this->message->warning("O produto informado já está cadastrado");
                     return false;
                 }

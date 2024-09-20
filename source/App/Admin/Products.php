@@ -131,7 +131,6 @@ class Products extends Admin
             $productUpdate->product_name = $data["product_name"];
             $productUpdate->description = $data["description"];
             $productUpdate->login_updated = $user->login;
-            $productUpdate->updated_at = date_fmt('', "Y-m-d h:m:s");
 
             if(in_array("", $data)){
                 $json['message'] = $this->message->info("Informe a marca, descrição e status para criar o registro !")->icon()->render();
