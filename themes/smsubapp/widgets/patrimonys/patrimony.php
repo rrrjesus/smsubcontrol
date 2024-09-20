@@ -29,7 +29,7 @@
                             <div class="col-md-6 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputProduto"><i class="bi bi-person-add me-1"></i><strong>Produto</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                    data-bs-title="Digite o nome do produto" class="form-control form-control-sm product_id"
+                                    data-bs-title="Digite o nome do produto" autofocus tabindex="1" class="form-control form-control-sm product_id"
                                     name="product_id" placeholder="PRODUTO">
                             </div>
 
@@ -37,13 +37,13 @@
                                 <label class="col-form-label col-form-label-sm" for="inputImei"><i class="bi bi-person-add me-1"></i><strong>Tipo de Registro da Peça</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Digite o tipo de número da peça" class="form-control form-control-sm type_part_number"
-                                    name="type_part_number" placeholder="TIPO DE REGISTRO DA PEÇA">
+                                    name="type_part_number" placeholder="TIPO DE REGISTRO DA PEÇA" tabindex="2">
                             </div>
 
                             <div class="col-md-3 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputNs"><i class="bi bi-person-add me-1"></i><strong>Número de Registro</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                    data-bs-title="Digite o numero de registro da peça" class="form-control form-control-sm"
+                                    data-bs-title="Digite o numero de registro da peça" tabindex="3" class="form-control form-control-sm"
                                     name="part_number" placeholder="NÚMERO DA PEÇA">
                             </div>
                         </div>
@@ -53,13 +53,13 @@
                             <div class="col-md-5 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputSobreNome"><i class="bi bi-person-add me-1"></i><strong>Usuario</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                    data-bs-title="Digite a unidade" class="form-control form-control-sm user_id"
+                                    data-bs-title="Digite a unidade" tabindex="4" class="form-control form-control-sm user_id"
                                     name="user_id" id="user_id" placeholder="USUÁRIO">
                             </div>
 
                             <div class="col-md-7 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputSobreNome"><i class="bi bi-person-add me-1"></i><strong>Unidade</strong></label>
-                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                <input type="text" data-bs-togglee="tooltip" tabindex="6" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Digite a unidade" class="form-control form-control-sm unit_id"
                                     name="unit_id" id="unit_id" placeholder="UNIDADE">
                             </div>
@@ -70,7 +70,7 @@
                             
                             <div class="mb-3 mb-1">
                                 <label for="textareaObservacoes" class="col-form-label col-form-label-sm"><i class="bi bi-exclamation-diamond me-1"></i><strong>Observações</strong></label>
-                                <textarea class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                <textarea class="form-control form-control-sm" tabindex="5" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                 data-bs-title=Observações" rows="2" name="observations"></textarea>
                             </div>
 
@@ -78,8 +78,8 @@
 
                         <div class="row justify-content-center mt-4 mb-3">
                             <div class="col-auto">
-                            <?=button("top", "Clique para gravar", "success", "disc-fill", "Gravar")?>
-                            <?=buttonLink("/beta/patrimonios", "top", "Clique para listar os patrimônios", "dark", "list", "Listar")?>                                  
+                            <?=button("top", "Clique para gravar", "success", "disc-fill", "Gravar", "7")?>
+                            <?=buttonLink("/beta/patrimonios", "top", "Clique para listar os patrimônios", "dark", "list", "Listar", "8")?>                                  
                             </div>
                         </div>
                     </form>
@@ -121,21 +121,21 @@
 
                             <div class="col-md-6 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputProduto"><i class="bi bi-person-add me-1"></i><strong>Produto</strong></label>
-                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                <input type="text" data-bs-togglee="tooltip" tabindex="1" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Digite o nome do produto" class="form-control form-control-sm product_id"
                                     name="product_id" placeholder="PRODUTO" value="<?php if($patrimonys->product_id){echo $patrimonys->product()->id.' - '.$patrimonys->product()->product_name;}else{echo '';}?>">
                             </div>
 
                             <div class="col-md-3 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputImei"><i class="bi bi-person-add me-1"></i><strong>Registro (NS/IMEI/SERVICE_TAG)</strong></label>
-                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                <input type="text" data-bs-togglee="tooltip" tabindex="2" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Digite o tipo de número da peça" class="form-control form-control-sm type_part_number"
                                     name="type_part_number" placeholder="TIPO DE REGISTRO DA PEÇA" value="<?=$patrimonys->type_part_number?>">
                             </div>
 
                             <div class="col-md-3 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputNs"><i class="bi bi-person-add me-1"></i><strong>Número de Registro</strong></label>
-                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                <input type="text" data-bs-togglee="tooltip" tabindex="3" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Digite o numero de registro da peça" class="form-control form-control-sm"
                                     name="part_number" placeholder="NÚMERO DA PEÇA" value="<?=$patrimonys->part_number?>">
                             </div>
@@ -143,18 +143,18 @@
 
                             <div class="row mb-1">
 
-                                <div class="col-md-7 mb-1">
-                                    <label class="col-form-label col-form-label-sm" for="inputSobreNome"><i class="bi bi-person-add me-1"></i><strong>Unidade</strong></label>
-                                    <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                        data-bs-title="Digite o nome da unidade" class="form-control form-control-sm unit_id"
-                                        name="unit_id" placeholder="UNIDADE" value="<?php if($patrimonys->unit_id){echo $patrimonys->unit()->id.' - '.$patrimonys->unit()->unit_name;}else{echo '';}?>">
-                                </div>
-
                                 <div class="col-md-5 mb-1">
                                     <label class="col-form-label col-form-label-sm" for="inputSobreNome"><i class="bi bi-person-add me-1"></i><strong>Usuario</strong></label>
-                                    <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                    <input type="text" data-bs-togglee="tooltip" tabindex="4" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                         data-bs-title="Digite o nome do usuário" class="form-control form-control-sm user_id"
-                                        name="user_id" placeholder="USUÁRIO" value="<?php if($patrimonys->user_id){echo $patrimonys->userPatrimony()->id.' - '.$patrimonys->userPatrimony()->user_name;}else{echo '';}?>">
+                                        name="user_id_edit" id="user_id_edit" placeholder="USUÁRIO" value="<?php if($patrimonys->user_id){echo $patrimonys->userPatrimony()->id.' - '.$patrimonys->userPatrimony()->user_name;}else{echo '';}?>">
+                                </div>
+
+                                <div class="col-md-7 mb-1">
+                                    <label class="col-form-label col-form-label-sm" for="inputSobreNome"><i class="bi bi-person-add me-1"></i><strong>Unidade</strong></label>
+                                    <input type="text" data-bs-togglee="tooltip" tabindex="6" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                        data-bs-title="Digite o nome da unidade" class="form-control form-control-sm unit_id"
+                                        name="unit_id_edit" id="unit_id_edit" placeholder="UNIDADE" value="<?php if($patrimonys->unit_id){echo $patrimonys->unit()->id.' - '.$patrimonys->unit()->unit_name;}else{echo '';}?>">
                                 </div>
 
                             </div>
@@ -163,7 +163,7 @@
 
                                 <div class="mb-3 mb-1">
                                     <label for="textareaObservacoes" class="col-form-label col-form-label-sm"><i class="bi bi-exclamation-diamond me-1"></i><strong>Observações</strong></label>
-                                    <textarea class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                    <textarea class="form-control form-control-sm" tabindex="5" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title=Observações" rows="2" name="observations"><?=$patrimonys->observations?></textarea>
                                 </div>
 
@@ -171,9 +171,9 @@
 
                             <div class="row justify-content-center mt-4 mb-3">
                                 <div class="col-auto">
-                                <?=button("top", "Clique para gravar", "success", "disc-fill", "Gravar")?>
-                                <?=buttonLink("/beta/patrimonios", "top", "Clique para listar os patrimônios", "secondary", "list", "Listar")?>    
-                                <?=buttonLink("/beta/patrimonios/termo/{$patrimonys->id}", "top", "Clique para listar os patrimônios", "primary", "file-earmark-word", "Termo")?>                                   
+                                <?=button("top", "Clique para gravar", "success", "disc-fill", "Gravar", "7")?>
+                                <?=buttonLink("/beta/patrimonios", "top", "Clique para listar os patrimônios", "secondary", "list", "Listar", "8")?>    
+                                <?=buttonLink("/beta/patrimonios/termo/{$patrimonys->id}", "top", "Clique para listar os patrimônios", "primary", "file-earmark-word", "Termo", "9")?>                                   
                                 </div>
                             </div>
 

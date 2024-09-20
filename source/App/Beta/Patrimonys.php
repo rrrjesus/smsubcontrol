@@ -231,9 +231,9 @@ class Patrimonys extends Admin
             $product_id = preg_replace("/[^0-9\s]/", "", $data["product_id"]);
             $type_part_number = $data["type_part_number"];
             $part_number = $data["part_number"];
-            $unit_id_number = preg_replace("/[^0-9\s]/", "", $data["unit_id"]);
+            $unit_id_number = preg_replace("/[^0-9\s]/", "", $data["unit_id_edit"]);
             $unit_id = substr($unit_id_number, 0, 2);  // 12
-            $user_id = $data["user_id"];
+            $user_id = $data["user_id_edit"];
             $observations = $data["observations"];
 
             $patrimonysUpdate = (new Patrimony())->findById($patrimonys_id);
@@ -286,7 +286,13 @@ class Patrimonys extends Admin
                 return;
             }
 
-            if($data["unit_id"] == ""){
+            if($data["user_id_edit"] == ""){
+                $json['message'] = $this->message->warning("Informe um usuário para gravar o patrimônio !!!")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            if($data["unit_id_edit"] == ""){
                 $json['message'] = $this->message->warning("Informe uma unidade para gravar o patrimônio !!!")->icon()->render();
                 echo json_encode($json);
                 return;

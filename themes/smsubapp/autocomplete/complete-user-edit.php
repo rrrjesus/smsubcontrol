@@ -19,19 +19,19 @@ function retorna($nome) {
     $arr = Array();
     if ($stmt->rowCount()) {
         while ($dados = $stmt->fetch()) {
-            $arr['user_id'] = $dados->user_name;
-            $arr['unit_id'] = $dados->id.' - '.$dados->unit_name;
+            $arr['user_id_edit'] = $dados->user_name;
+            $arr['unit_id_edit'] = $dados->id.' - '.$dados->unit_name;
         }
     }
     else {
-        $arr['user_id'] = '';
-        $arr['unit_id'] = '';
+        $arr['user_id_edit'] = '';
+        $arr['unit_id_edit'] = '';
     }
     return json_encode($arr);
 
 }
 
 /* só se for enviado o parâmetro, que devolve os dados */
-if (isset($_GET['user_id'])) {
-    echo retorna($_GET['user_id']);
+if (isset($_GET['user_id_edit'])) {
+    echo retorna($_GET['user_id_edit']);
 }

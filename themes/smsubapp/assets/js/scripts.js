@@ -185,21 +185,42 @@ $(function () {
      * @return {VoidFunction}
      */
 
-   
-    $("input[name='user_id']").on('focusout',function() {
-        var unit_id = $("input[name='unit_id']");
+    $("input[name='user_id']").blur(function(){
+        var $unit_id = $("input[name='unit_id']");
 
-        unit_id.val('');
+        $unit_id.val('Carregando...');
 
         $.getJSON(
             '../../themes/smsubapp/autocomplete/complete-user.php',
-            { user_id: $( this ).val() },
+
+            {user_id: $(this).val()},
+
             function( json )
             {
-                var jsonunit = json.unit_id;
-                if(jsonunit!==''){
-                    unit_id.val(jsonunit);
-                }
+                $unit_id.val( json.unit_id );
+            }
+        );
+    });
+
+     /**
+     * Função para tratativas e preenchimentos automáticos de campos
+     *
+     * @return {VoidFunction}
+     */
+
+     $("input[name='user_id_edit']").blur(function(){
+        var $unit_id_edit = $("input[name='unit_id_edit']");
+
+        $unit_id_edit.val('Carregando...');
+
+        $.getJSON(
+            '../../../themes/smsubapp/autocomplete/complete-user-edit.php',
+
+            {user_id_edit: $(this).val()},
+
+            function( json )
+            {
+                $unit_id_edit.val( json.unit_id_edit );
             }
         );
     });
