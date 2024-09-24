@@ -24,6 +24,28 @@ public function __construct()
 }
 
 /**
+     * PATRIMONY LIST
+     */
+    public function patrimonysHistory(): void
+    {
+        $head = $this->seo->render(
+            "Patrimonios - " . CONF_SITE_NAME,
+            CONF_SITE_DESC,
+            url(),
+            theme("/assets/images/favicon.ico"),
+            false
+        );
+
+        echo $this->view->render("widgets/patrimonysHistory/list", [
+            "head" => $head,
+            "urls" => "patrimonios/historico",
+            "namepage" => "Histórico de Patrimonios",
+            "name" => "Lista"
+        ]);
+    }
+
+
+/**
  * @param array|null $data
  * @throws \Exception
  */

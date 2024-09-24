@@ -101,6 +101,7 @@ $route->get("/patrimonios/desativar/{patrimonys_id}/{action}", "Patrimonys:patri
 $route->get("/patrimonios/termo/{patrimonys_id}", "Patrimonys:term");
 
 //Historico Patrimonios
+$route->get("/patrimonios/historico", "PatrimonysHistory:patrimonysHistory");
 $route->get("/patrimonios/historico/excluir/{patrimonys_id}/{action}", "PatrimonysHistory:patrimonyHistory");
 $route->get("/patrimonio/historico/lista", "PatrimonyHistory:bensLista");
 $route->get("/patrimonio/historico/editar/{bens_id}", "PatrimonyHistory:bens");
