@@ -12,7 +12,7 @@
                         <div class="col-auto">
                         <?=buttonLink("/beta/patrimonios/cadastrar", "top", "Clique para cadastrar patrimônio", "success", "building-add", "Cadastrar")?> 
                         <?php if(!empty($registers->disabled)){ ?>
-                            <?=buttonLink("/beta/patrimonios/desativados", "top", "Clique para listar os patrimônios desativados", "secondary", "building-add", "Desativados<span class='position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger'>".$registers->disabled."</span>")?> 
+                            <?=buttonLink("/beta/patrimonios/desativados", "top", "Clique para listar os patrimônios desativados", "secondary", "building-add", "Desativados", "{$registers->disabled}")?> 
                         <?php } ?>
                         </div>
                     </div>
