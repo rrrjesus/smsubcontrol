@@ -46,7 +46,7 @@ class Users extends Admin
                 "app" => "usuarios",
                 "head" => $head,
                 "users" => $users,
-                "urls" => "usuarios/listar",
+                "urls" => "usuarios",
                 "namepage" => "Usuarios",
                 "name" => "Listar",
                 "registers" => (object)[
@@ -79,7 +79,7 @@ class Users extends Admin
                 "app" => "usuarios",
                 "head" => $head,
                 "users" => $users,
-                "urls" => "usuarios/desativados",
+                "urls" => "usuarios",
                 "namepage" => "Usuarios",
                 "name" => "Desativados",
             ]);
@@ -418,7 +418,7 @@ class Users extends Admin
             "userhistory" => $userHistory,
             "userposition" => $userposition,
             "unit" => $unit,
-            "urls" => ($userEdit ? "usuarios/editar/{$userEdit->id}" : "cadastrar"),
+            "urls" => ($userEdit ? "usuarios" : "usuarios"),
             "namepage" => "Usuários",
             "name" => ($userEdit ? "Editar" : "Cadastrar")
         ]);

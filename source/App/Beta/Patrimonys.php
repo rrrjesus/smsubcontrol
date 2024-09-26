@@ -119,7 +119,7 @@ class Patrimonys extends Admin
         echo $this->view->render("widgets/patrimonys/term", [
             "head" => $head,
             "term" => $termPrint,
-            "urls" => "patrimonios/termo/{$termPrint->id}",
+            "urls" => "patrimonios",
             "namepage" => "Usuários",
             "name" => "Termo"
         ]);
@@ -452,7 +452,7 @@ class Patrimonys extends Admin
             "patrimonys" => $PatrimonysEdit,
             "patrimonyscreates" => $patrimonysCreates,
             "historico" => $historico,
-            "urls" => ($PatrimonysEdit ? "patrimonios/editar/{$PatrimonysEdit->id}" : "patrimonios"),
+            "urls" => "patrimonios",
             "namepage" => "Patrimonios",
             "name" => ($PatrimonysEdit ? "Editar" : "Cadastrar")
         ]);
