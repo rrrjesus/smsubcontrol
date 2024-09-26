@@ -82,25 +82,37 @@ $(function () {
 
     $("#patrimony").validate({
         rules: {
+            movement_id: {
+                required: true
+            },
             product_id: {
                 required: true
             },
             unit_id: {
                 required: true
             },
-            imei: {
-                minlength: 15
+            type_part_number: {
+                required: true
+            },
+            part_number: {
+                required: true
             }
         },
         messages: {
+            movement_id: {
+                required: "Digite o estado do patrimônio !!!"
+            },
             product_id: {
                 required: "Digite o produto !!!"
             },
             unit_id: {
                 required: "Digite a unidade !!!"
             },
-            imei: {
-                minlength: "Digite os 15 números !!!"
+            type_part_number: {
+                required: "Digite o tipo de registro !!!"
+            },
+            part_number: {
+                required: "Digite o número de registro !!!"
             }
         }
     });

@@ -139,7 +139,8 @@ class Patrimonys extends Admin
         if (!empty($data["action"]) && $data["action"] == "create") {
             $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-            $product_id = $data["product_id"];
+            $movement_id = preg_replace("/[^0-9\s]/", "", $data["movement_id"]);
+            $product_id = preg_replace("/[^0-9\s]/", "", $data["product_id"]);
             $type_part_number = $data["type_part_number"];
             $part_number = $data["part_number"];
             $unit_id = $data["unit_id"];
@@ -147,6 +148,7 @@ class Patrimonys extends Admin
             $observations = $data["observations"];
 
             $patrimonyCreate = new Patrimony();
+            $patrimonyCreate->movement_id = $movement_id;
             $patrimonyCreate->product_id = $product_id;
             $patrimonyCreate->type_part_number = $type_part_number;
             $patrimonyCreate->part_number = $part_number;
@@ -169,6 +171,12 @@ class Patrimonys extends Admin
                 }
 
                 $patrimonyCreate->file_terms = $file_terms;
+            }
+
+            if($data["movement_id"] == ""){
+                $json['message'] = $this->message->warning("Informe um estado para criar o patrimônio !")->icon()->render();
+                echo json_encode($json);
+                return;
             }
 
             if($data["product_id"] == ""){
@@ -203,6 +211,7 @@ class Patrimonys extends Admin
 
             $patrimonyCreateHistory = new PatrimonyHistory();
             $patrimonyCreateHistory->patrimony_id = $patrimonyCreate->id;
+            $patrimonyCreateHistory->movement_id = $movement_id;
             $patrimonyCreateHistory->product_id = $product_id;
             $patrimonyCreateHistory->unit_id = $unit_id;
             $patrimonyCreateHistory->user_id = $user_id;
@@ -228,6 +237,7 @@ class Patrimonys extends Admin
             $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             $patrimonys_id = $data["patrimonys_id"];
+            $movement_id = preg_replace("/[^0-9\s]/", "", $data["movement_id"]);
             $product_id = preg_replace("/[^0-9\s]/", "", $data["product_id"]);
             $type_part_number = $data["type_part_number"];
             $part_number = $data["part_number"];
@@ -244,6 +254,7 @@ class Patrimonys extends Admin
                 return;
             }
 
+            $patrimonysUpdate->movement_id = $movement_id;
             $patrimonysUpdate->product_id = $product_id;
             $patrimonysUpdate->unit_id = $unit_id;
             $patrimonysUpdate->user_id = $user_id;
@@ -266,6 +277,12 @@ class Patrimonys extends Admin
                 }
 
                 $patrimonysUpdate->file_terms = $file_terms;
+            }
+
+            if($data["movement_id"] == ""){
+                $json['message'] = $this->message->warning("Informe um estado para gravar o patrimônio !")->icon()->render();
+                echo json_encode($json);
+                return;
             }
 
             if($data["product_id"] == ""){
@@ -306,6 +323,7 @@ class Patrimonys extends Admin
 
             $patrimonysHistory = new PatrimonyHistory();
             $patrimonysHistory->patrimony_id = $patrimonys_id;
+            $patrimonysHistory->movement_id = $movement_id;
             $patrimonysHistory->product_id = $product_id;
             $patrimonysHistory->unit_id = $unit_id;
             if (!empty($_FILES["file_terms"])) {

@@ -216,6 +216,23 @@ class Patrimony extends Model
     }
 
     /**
+     * @return null|Movement
+     */
+
+     static function completeMovement(): ?Movement
+     {
+         $stm = (new Movement())->find("","");
+         $array = array();
+ 
+         if(!empty($stm)):
+             foreach ($stm->fetch(true) as $row):
+                 $array[] = $row->id.' - '.$row->movement_name;
+             endforeach;
+             echo json_encode($array); //Return the JSON Array
+         endif;
+         return null;
+     }
+    /**
      * @return null|Product
      */
 
@@ -227,6 +244,20 @@ class Patrimony extends Model
         if(!empty($stm)):
             foreach ($stm->fetch(true) as $row):
                 $array[] = $row->id.' - '.$row->product_name;
+            endforeach;
+            echo json_encode($array); //Return the JSON Array
+        endif;
+        return null;
+    }
+
+    static function completeTypePartNumber(): ?Patrimony
+    {
+        $stm = (new Patrimony())->find("","");
+        $array = array();
+
+        if(!empty($stm)):
+            foreach ($stm->fetch(true) as $row):
+                $array[] = $row->type_part_number;
             endforeach;
             echo json_encode($array); //Return the JSON Array
         endif;
