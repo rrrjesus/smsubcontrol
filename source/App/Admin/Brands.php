@@ -233,7 +233,7 @@ class Brands extends Admin
         echo $this->view->render("widgets/patrimonys/brands/brand", [
             "head" => $head,
             "marcas" => $brandEdit,
-            "urls" => ($brandEdit ? "marcas/editar/{$brandEdit->id}" : "cadastrar"),
+            "urls" => "patrimonio/marcas",
             "namepage" => "Marcas",
             "name" => ($brandEdit ? "Editar" : "Cadastrar")
         ]);

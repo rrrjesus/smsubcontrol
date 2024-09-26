@@ -238,7 +238,7 @@ class Contacts extends Admin
             "head" => $head,
             "contacts" => $contactEdit,
             "unit" => $unit,
-            "urls" => ($contactEdit ? "contatos/editar/{$contactEdit->id}" : "cadastrar"),
+            "urls" => "contatos",
             "namepage" => "Contatos",
             "name" => ($contactEdit ? "Editar" : "Cadastrar")
         ]);

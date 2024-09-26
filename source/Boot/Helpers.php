@@ -437,7 +437,7 @@ function passwd_rehash(string $hash): bool
 function breadcrumbAdmin(string $urls = null,string $namepage = null,string $name = null): string
 {
     if($urls){
-        return '<li class="breadcrumb-item"><a class="link-body-emphasis fw-semibold text-decoration-none text-capitalize text-'.CONF_ADMIN_COLOR.'" href="'.url("/beta/{$urls}").'">' .$namepage.'</a></li>
+        return '<li class="breadcrumb-item"><a class="link-body-emphasis fw-semibold text-decoration-none text-capitalize text-'.CONF_ADMIN_COLOR.'" href="'.url("/painel/{$urls}").'">' .$namepage.'</a></li>
         <li class="breadcrumb-item active" aria-current="page">'.$name.'</li>';
     }
     return null;

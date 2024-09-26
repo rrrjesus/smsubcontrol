@@ -247,7 +247,7 @@ class Units extends Admin
         echo $this->view->render("widgets/units/unit", [
             "head" => $head,
             "unit" => $unitEdit,
-            "urls" => ($unitEdit ? "unidades/editar/{$unitEdit->id}" : "cadastrar"),
+            "urls" => "unidades",
             "namepage" => "Unidades",
             "name" => ($unitEdit ? "Editar" : "Cadastrar")
         ]);

@@ -238,7 +238,7 @@ class Products extends Admin
             "head" => $head,
             "produtos" => $productEdit,
             "brands" => $brands,
-            "urls" => ($productEdit ? "produtos/editar/{$productEdit->id}" : "cadastrar"),
+            "urls" => "patrimonio/produtos",
             "namepage" => "Produtos",
             "name" => ($productEdit ? "Editar" : "Cadastrar")
         ]);

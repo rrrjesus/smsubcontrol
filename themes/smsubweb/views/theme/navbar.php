@@ -115,7 +115,7 @@
                                 </li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li>
-                                    <a class="dropdown-item d-flex align-items-center" aria-current="true" href="<?=url("/dashboard/sair")?>"><i class="bi bi-power me-2 mb-2"></i>Sair</a>
+                                    <a class="dropdown-item d-flex align-items-center" aria-current="true" href="<?=url("/beta/logoff")?>"><i class="bi bi-power me-2 mb-2"></i>Sair</a>
                                 </li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><h6 class="dropdown-header">Lançamentos anteriores</h6></li>
