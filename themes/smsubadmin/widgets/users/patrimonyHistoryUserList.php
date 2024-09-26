@@ -4,6 +4,7 @@
                         <tr>
                             <th class="text-center">ID</th>
                             <th class="text-center">CRIADO</th>
+                            <th class="text-center">ESTADO</th>
                             <th class="text-center">PATRIMONIO</th>
                             <th class="text-center">TIPO</th>
                             <th class="text-center">SERIAL</th>
@@ -21,6 +22,7 @@
                         <tr>
                             <td class="text-center fw-semibold"><?=$lista->id?></td>
                             <td class="text-center fw-semibold"><?=date_fmt_null($lista->created_history)?></td>
+                            <td class="text-center fw-semibold"><?=(!empty($lista->movement()->movement_name) ? $lista->movement()->movement_name : "")?></td>
                             <td class="text-center fw-semibold"><?=$lista->product()->product_name?></td>
                             <td class="text-center fw-semibold"><?=$lista->type_part_number?></td>
                             <td class="text-center fw-semibold"><?=$lista->part_number?></td>
