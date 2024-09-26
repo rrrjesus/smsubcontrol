@@ -5,6 +5,7 @@ namespace Source\Models\Patrimony;
 use Source\Core\Model;
 use Source\Models\Patrimony\Brand;
 use Source\Models\Patrimony\Product;
+use Source\Models\Patrimony\Movement;
 use Source\Models\Unit;
 use Source\Models\User;
 use Source\Models\UserPosition;
@@ -23,7 +24,7 @@ class Patrimony extends Model
      */
     public function __construct()
     {
-        parent::__construct("patrimonys", ["id"], ["user_id","patrimonys_name", "brand_id", "product_id", "description", "unit_id", "file_terms", "type_part_number", "part_number", "status", "photo", "observations"]);
+        parent::__construct("patrimonys", ["id"], ["user_id","patrimonys_name", "brand_id", "product_id", "unit_id", "movement_id", "description", "file_terms", "type_part_number", "part_number", "status", "photo", "observations"]);
     }
 
     /**
@@ -67,13 +68,24 @@ class Patrimony extends Model
         return null;
     }
 
-        /**
+    /**
      * @return null|Unit
      */
     public function unit(): ?Unit
     {
         if($this->unit_id) {
             return(new Unit())->findById($this->unit_id);
+        }
+        return null;
+    }
+
+    /**
+     * @return null|Movement
+     */
+    public function movement(): ?Movement
+    {
+        if($this->movement_id) {
+            return(new Movement())->findById($this->movement_id);
         }
         return null;
     }
@@ -100,7 +112,7 @@ class Patrimony extends Model
         return null;
     }
 
-        /**
+    /**
      * @return null|Unit
      */
     public function userUnit(string $unit): ?Unit
@@ -208,7 +220,7 @@ class Patrimony extends Model
         return null;
     }
 
-        /**
+    /**
      * @return null|Unit
      */
 

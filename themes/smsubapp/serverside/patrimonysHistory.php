@@ -23,7 +23,7 @@ include_once '../../../source/Boot/Config.php';
 // DB table to use
 $table = <<<EOT
  ( 
-SELECT patrimonys_historys.id, patrimonys_historys.patrimony_id, patrimonys_historys.created_history, patrimonys_historys.type_part_number, patrimonys_historys.part_number, brands.brand_name, 
+SELECT patrimonys_historys.id, patrimonys_historys.patrimony_id, patrimonys_historys.created_history, movements.movement_name, patrimonys_historys.type_part_number, patrimonys_historys.part_number, brands.brand_name, 
 products.product_name, users.user_name, users.login, users.cell_phone, users.rf, users.email, units.unit_name, units.it_professional, 
 units.fixed_phone, patrimonys_historys.observations, patrimonys_historys.file_terms
 FROM patrimonys_historys
@@ -31,6 +31,7 @@ LEFT JOIN products ON patrimonys_historys.product_id = products.id
 LEFT JOIN brands ON products.brand_id = brands.id
 LEFT JOIN units ON patrimonys_historys.unit_id = units.id
 LEFT JOIN users ON patrimonys_historys.user_id = users.id
+LEFT JOIN movements ON patrimonys_historys.movement_id = movements.id
 WHERE (((patrimonys_historys.status) Like "actived")))temp
 EOT;
  
@@ -53,32 +54,33 @@ $columns = array(
             return date( 'd/m/Y', strtotime($d));
         }
     ),
-    array( 'db' => 'type_part_number', 'dt' => 3),
-    array( 'db' => 'part_number', 'dt' => 4),
-    array( 'db' => 'brand_name', 'dt' => 5),
-    array( 'db' => 'product_name', 'dt' => 6),
-    array( 'db' => 'user_name', 'dt' => 7),
-    array( 'db' => 'login', 'dt' => 8),
-    array( 'db' => 'cell_phone', 'dt' => 9,
+    array( 'db' => 'movement_name', 'dt' => 3),
+    array( 'db' => 'type_part_number', 'dt' => 4),
+    array( 'db' => 'part_number', 'dt' => 5),
+    array( 'db' => 'brand_name', 'dt' => 6),
+    array( 'db' => 'product_name', 'dt' => 7),
+    array( 'db' => 'user_name', 'dt' => 8),
+    array( 'db' => 'login', 'dt' => 9),
+    array( 'db' => 'cell_phone', 'dt' => 10,
         'formatter' => function($d) {
             if($d){
                 return '('.substr($d, 0, 2).')'.substr($d, 2, 9);
             }
         }
     ),
-    array( 'db' => 'rf', 'dt' => 10),
-    array( 'db' => 'email', 'dt' => 11),
-    array( 'db' => 'unit_name', 'dt' => 12),
-    array( 'db' => 'it_professional', 'dt' => 13),
-    array( 'db' => 'fixed_phone', 'dt' => 14),
-    array( 'db' => 'observations', 'dt' => 15),
-    array( 'db' => 'id', 'dt' => 16,
+    array( 'db' => 'rf', 'dt' => 11),
+    array( 'db' => 'email', 'dt' => 12),
+    array( 'db' => 'unit_name', 'dt' => 13),
+    array( 'db' => 'it_professional', 'dt' => 14),
+    array( 'db' => 'fixed_phone', 'dt' => 15),
+    array( 'db' => 'observations', 'dt' => 16),
+    array( 'db' => 'id', 'dt' => 17,
         'formatter' => function($d) {
             return '<a href="../patrimonios/historico/termo/'.$d.'" role="button" aria-disabled="true" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
                         data-bs-title="Clique para visualizar" target="_blank" class="btn btn-sm btn-outline-primary rounded-circle fw-bold me-2"><i class="bi bi-file-earmark-word"></i></a>';
                     }
     ),
-    array( 'db' => 'file_terms', 'dt' => 17,
+    array( 'db' => 'file_terms', 'dt' => 18,
         'formatter' => function($d) {
             if($d && file_exists('../../../storage/'.$d)){
                 return '<a href="../../storage/'.$d.'" role="button" class="btn btn-sm btn-outline-danger rounded-circle" target="_blank"><i class="bi bi-file-earmark-pdf"></a>';

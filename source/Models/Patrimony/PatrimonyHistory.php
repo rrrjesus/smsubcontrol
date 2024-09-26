@@ -8,6 +8,7 @@ use Source\Models\User;
 use Source\Models\UserPosition;
 use Source\Models\Patrimony\Brand;
 use Source\Models\Patrimony\Product;
+use Source\Models\Patrimony\Movement;
 
 
 /**
@@ -66,6 +67,17 @@ class  PatrimonyHistory extends Model
     {
         if($unit) {
             return(new Unit())->findById($unit);
+        }
+        return null;
+    }
+
+    /**
+     * @return null|Movement
+     */
+    public function movement(): ?Movement
+    {
+        if($this->movement_id) {
+            return(new Movement())->findById($this->movement_id);
         }
         return null;
     }

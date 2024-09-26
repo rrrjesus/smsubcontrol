@@ -43,15 +43,11 @@ $(function () {
             visible: false
             },
             {
-                target: 4,
+                target: 5,
                 visible: false
             },
             {
-                target: 9,
-                visible: false
-            },
-            {
-                target: 12,
+                target: 10,
                 visible: false
             },
             {
@@ -59,22 +55,26 @@ $(function () {
                 visible: false
             },
             {
-                "aTargets": [17], // o numero da coluna
+                target: 14,
+                visible: false
+            },
+            {
+                "aTargets": [18], // o numero da coluna
                 "mRender": function (data, type, full) { //aqui é uma funçãozinha para pegar os ids
                     return '<button type="button" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"\n' +
-                        'data-bs-title="Clique para desativar '+ full[1] +'" class="btn btn-outline-warning btn-sm rounded-circle" data-bs-toggle="modal" data-bs-target="#activedModal'+ full[17]+'">' +
+                        'data-bs-title="Clique para desativar '+ full[1] +'" class="btn btn-outline-warning btn-sm rounded-circle" data-bs-toggle="modal" data-bs-target="#activedModal'+ full[18]+'">' +
                         '<i class="bi bi-person-dash text-secondary"></i></button>' +
-                        '<div class="modal fade" id="activedModal' + full[17] + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">\n' +
+                        '<div class="modal fade" id="activedModal' + full[18] + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">\n' +
                             '<div class="modal-dialog modal-sm">\n' +
                                 '<div class="modal-content">\n' +
                                     '<div class="modal-header bg-warning text-light">\n' +
-                                    '<h6 class="modal-title text-center" id="exampleModalLabel"><i class="bi bi-gift me-2"></i> Desativar ID: ' + full[17] + '</h6>\n' +
+                                    '<h6 class="modal-title text-center" id="exampleModalLabel"><i class="bi bi-gift me-2"></i> Desativar ID: ' + full[18] + '</h6>\n' +
                                     '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>\n' +
                                     '</div>\n' +
-                                    '<div class="modal-body fw-semibold">Deseja desativar o patrimonio id : ' + full[17] + ' ?</div>\n' +
+                                    '<div class="modal-body fw-semibold">Deseja desativar o patrimonio id : ' + full[18] + ' ?</div>\n' +
                                     '<div class="modal-footer">\n' +
                                     '<button type="button" class="btn btn-outline-danger btn-sm fw-semibold" data-bs-dismiss="modal"><i class="bi bi-trash"></i> Não</button>\n' +
-                                    '<a href="patrimonios/desativar/' + full[17] + '/disabled" class="btn btn-outline-success btn-sm fw-semibold"><i class="bi bi-plus-circle" role="button" ></i> Sim</a>\n' +
+                                    '<a href="patrimonios/desativar/' + full[18] + '/disabled" class="btn btn-outline-success btn-sm fw-semibold"><i class="bi bi-plus-circle" role="button" ></i> Sim</a>\n' +
                                     '</div>\n' +
                                 '</div>\n' +
                             '</div>\n' +
@@ -128,11 +128,7 @@ $(function () {
                 visible: false
             },   
            {
-               target: 3,
-               visible: false
-           },
-           {
-               target: 7,
+               target: 4,
                visible: false
            },
            {
@@ -140,30 +136,34 @@ $(function () {
                visible: false
            },
            {
-               target: 10,
+               target: 9,
                visible: false
            },
            {
                target: 11,
                visible: false
            },
+           {
+               target: 12,
+               visible: false
+           },
             {
-                "aTargets": [13], // o numero da coluna
+                "aTargets": [14], // o numero da coluna
                 "mRender": function (data, type, full) { //aqui é uma funçãozinha para pegar os ids
                     return '<button type="button" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"\n' +
-                        'data-bs-title="Clique para desativar id : '+ full[13] +'" class="btn btn-outline-warning btn-sm rounded-circle" data-bs-toggle="modal" data-bs-target="#activedModal'+ full[13]+'">' +
+                        'data-bs-title="Clique para desativar id : '+ full[14] +'" class="btn btn-outline-warning btn-sm rounded-circle" data-bs-toggle="modal" data-bs-target="#activedModal'+ full[14]+'">' +
                         '<i class="bi bi-person-dash text-secondary"></i></button>' +
-                        '<div class="modal fade" id="activedModal' + full[13] + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">\n' +
+                        '<div class="modal fade" id="activedModal' + full[14] + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">\n' +
                             '<div class="modal-dialog modal-sm">\n' +
                                 '<div class="modal-content">\n' +
                                     '<div class="modal-header bg-warning text-dark">\n' +
-                                    '<h6 class="modal-title text-center" id="exampleModalLabel"><i class="bi bi-gift me-2"></i> Ativar ID: ' + full[13] + '</h6>\n' +
+                                    '<h6 class="modal-title text-center" id="exampleModalLabel"><i class="bi bi-gift me-2"></i> Ativar ID: ' + full[14] + '</h6>\n' +
                                     '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>\n' +
                                     '</div>\n' +
-                                    '<div class="modal-body fw-semibold">Deseja ativar o patrimonio id : ' + full[13] + ' ?</div>\n' +
+                                    '<div class="modal-body fw-semibold">Deseja ativar o patrimonio id : ' + full[14] + ' ?</div>\n' +
                                     '<div class="modal-footer">\n' +
                                     '<button type="button" class="btn btn-outline-danger btn-sm fw-semibold" data-bs-dismiss="modal"><i class="bi bi-trash"></i> Não</button>\n' +
-                                    '<a href="ativar/' + full[13] + '/actived" class="btn btn-outline-success btn-sm fw-semibold"><i class="bi bi-plus-circle" role="button" ></i> Sim</a>\n' +
+                                    '<a href="ativar/' + full[14] + '/actived" class="btn btn-outline-success btn-sm fw-semibold"><i class="bi bi-plus-circle" role="button" ></i> Sim</a>\n' +
                                     '</div>\n' +
                                 '</div>\n' +
                             '</div>\n' +

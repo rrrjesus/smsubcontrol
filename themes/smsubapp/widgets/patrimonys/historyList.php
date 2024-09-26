@@ -4,6 +4,7 @@
                         <tr>
                             <th class="text-center">ID</th>
                             <th class="text-center">CRIADO</th>
+                            <th class="text-center">ESTADO</th>
                             <th class="text-center">LOGIN</th>
                             <th class="text-center">RF</th>
                             <th class="text-center">NOME</th>
@@ -22,6 +23,7 @@
                         <tr>
                             <td class="text-center"><button type="button" disabled class="btn btn-warning rounded-circle btn-sm fw-semibold text-"><?=$lista->id?></button></td>
                             <td class="text-center fw-semibold"><?=date_fmt_null($lista->created_history)?></td>
+                            <td class="text-center fw-semibold"><?=(!empty($lista->movement()->movement_name) ? $lista->movement()->movement_name : "")?></td>
                             <td class="text-center fw-semibold"><?=(!empty($lista->userPatrimony()->login) ? $lista->userPatrimony()->login : "")?></td>
                             <td class="text-center fw-semibold"><?=(!empty($lista->userPatrimony()->rf) ? $lista->userPatrimony()->rf : "")?></td>
                             <td class="text-center fw-semibold"><?=(!empty($lista->userPatrimony()->user_name) ? $lista->userPatrimony()->user_name : "")?></td>

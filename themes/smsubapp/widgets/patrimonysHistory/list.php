@@ -16,6 +16,7 @@
                                 <th class="text-center">ID</th>
                                 <th class="text-center">ID PAT</th>
                                 <th class="text-center">ENTRADA</th>
+                                <th class="text-center">ESTADO</th>
                                 <th class="text-center">TIPO PN</th>
                                 <th class="text-center">PARTNUMBER</th>
                                 <th class="text-center">MARCA</th>
