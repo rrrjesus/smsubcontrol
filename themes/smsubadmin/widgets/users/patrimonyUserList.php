@@ -27,7 +27,7 @@
                             <td class="text-center fw-semibold"><?=(!empty($lista->userPatrimony()->rf) ? $lista->userPatrimony()->rf : "")?></td>
                             <td class="text-center fw-semibold"><?=(!empty($lista->userPatrimony()->user_name) ? $lista->userPatrimony()->user_name : "")?></td>
                             <td class="text-center fw-semibold"><?=$lista->termlistUser();?></td>
-                            <td class="text-center"><?=$lista->fileList()?></td>
+                            <td class="text-center"><?=$lista->fileListUser()?></td>
                             <td class="text-center fw-semibold"><?=(!empty($lista->unit()->unit_name) ? $lista->unit()->unit_name : "")?></td>
                             <td class="text-center fw-semibold"><?=$lista->observations?></td>
                         </tr>

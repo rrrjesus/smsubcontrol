@@ -150,6 +150,19 @@ class Patrimony extends Model
     /**
      * @return null|string
      */
+    public function fileListUser(): ?string
+    {
+        if($this->file_terms && file_exists(CONF_UPLOAD_DIR.'/'.$this->file_terms)){
+            return '<a href="../../../'.CONF_UPLOAD_DIR.'/'.$this->file_terms.'" role="button" class="btn btn-sm btn-outline-danger rounded-circle" target="_blank"><i class="bi bi-file-earmark-pdf"></a>';
+        }else{
+            return '<p class="fw-semibold" >Sem Termo</p>';
+        }
+        return null;
+    } 
+
+    /**
+     * @return null|string
+     */
     public function termList(): ?string
     {
         if($this->user_id){
