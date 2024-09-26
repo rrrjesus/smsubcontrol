@@ -62,14 +62,14 @@
                                 <label class="col-form-label col-form-label-sm" for="inputSobreNome"><i class="bi bi-person-add me-1"></i><strong>Usuario</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Digite o usuário - Ex : 1 - João Bento Badaró" tabindex="4" class="form-control form-control-sm user_id"
-                                    name="user_id" id="user_id" placeholder="USUÁRIO">
+                                    name="user_id" id="user_id" placeholder="USUÁRIO" value="1 - Joao Bento Badaro">
                             </div>
 
                             <div class="col-md-7 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputSobreNome"><i class="bi bi-person-add me-1"></i><strong>Unidade</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" tabindex="6" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                 data-bs-title="Digite a unidade - Ex : 22 - SMSUB/COTI" class="form-control form-control-sm unit_id"
-                                    name="unit_id" id="unit_id" placeholder="UNIDADE">
+                                    name="unit_id" id="unit_id" placeholder="UNIDADE" value="22 - SMSUB/COTI (23º AND)">
                             </div>
 
                         </div>
