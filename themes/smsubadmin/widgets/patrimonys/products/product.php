@@ -68,11 +68,8 @@
 
                         <div class="row justify-content-center mt-4 mb-3">
                             <div class="col-auto">
-                                <button data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
-                                    data-bs-title="Clique para criar o registro" class="btn btn-sm btn-outline-success fw-bold me-2"><i class="bi bi-disc-fill me-2"></i>GRAVAR</button>
-                                <a href="<?=url("/painel/patrimonio/produtos")?>" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
-                                data-bs-title="Clique para listar os usuarios" class="btn btn-sm btn-outline-dark fw-bold">
-                                <i class="bi bi-list-columns me-2"></i>LISTAR</a>
+                                <?=button("top", "Clique para gravar", "success", "disc-fill", "Gravar", "6", "g")?>
+                                <?=buttonLink("/painel/patrimonio/produtos", "top", "Clique para listar os produtos", "secondary", "list", "Listar", "7", "l")?>                                  
                             </div>
                         </div>
                     </form>
@@ -118,6 +115,18 @@
 
                         </div>
 
+                        <div class="row justify-content-center">
+
+                            <div class="col-md-6 mb-1">
+                                <label class="col-form-label col-form-label-sm" for="inputNome"><strong><i class="bi bi-person me-1"></i> Tipo de Partnumber</strong></label>
+                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                    data-bs-title="Digite o tipo de partnumber - Ex : IMEI, NS, CHIP ..." class="form-control form-control-sm type_part_number"
+                                    name="type_part_number" placeholder="Tipo de PartNumber" value="<?=$produtos->type_part_number?>">
+
+                            </div>
+
+                        </div>
+
                         <div class="row justify-content-center">  
 
                             <div class="col-md-6 mb-1">
@@ -131,11 +140,8 @@
 
                         <div class="row justify-content-center mt-4 mb-3">
                             <div class="col-auto">
-                                <button data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
-                                    data-bs-title="Clique para atualizar o produto" class="btn btn-sm btn-outline-success fw-bold me-2"><i class="bi bi-disc-fill me-2"></i>GRAVAR</button>
-                                <a href="<?=url("/painel/patrimonio/produtos")?>" role="button" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
-                                data-bs-title="Clique para listar as produtos" class="btn btn-sm btn-outline-smsub fw-bold me-2"><i class="bi bi-list me-2"></i>LISTAR</a>
-                                <a href="<?= url("/painel/patrimonio/produtos/excluir/{$produtos->id}/delete"); ?>" class="btn btn-sm btn-outline-danger fw-bold me-2"><i class="bi bi-trash me-2"></i>EXCLUIR</a>
+                                <?=button("top", "Clique para gravar", "success", "disc-fill", "Gravar", "6", "g")?>
+                                <?=buttonLink("/painel/patrimonio/produtos", "top", "Clique para listar os produtos", "secondary", "list", "Listar", "7", "l")?>                                  
                             </div>
                         </div>
                     </form>

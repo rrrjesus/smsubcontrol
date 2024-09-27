@@ -127,6 +127,8 @@
                                     name="movement_id" placeholder="ESTADO" value="<?php if($patrimonys->movement_id){echo $patrimonys->movement()->id.' - '.$patrimonys->movement()->movement_name;}else{echo '';}?>">
                             </div>
 
+                            <input name="type_part_number" type="hidden" value="<?=(!empty($patrimonys->product_id) ? $patrimonys->product()->type_part_number : "")?>">
+
                             <div class="col-md-6 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputProduto"><i class="bi bi-person-add me-1"></i><strong>Produto</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" tabindex="1" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 

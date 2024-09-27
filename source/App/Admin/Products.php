@@ -92,12 +92,13 @@ class Products extends Admin
             $productCreate = new Product();
             $productCreate->brand_id = preg_replace("/[^0-9\s]/", "", $data["brand_id"]);
             $productCreate->product_name = $data["product_name"];
+            $productCreate->type_part_number = $data["type_part_number"];
             $productCreate->description = $data["description"];
             $productCreate->login_created = $user->login;
             $productCreate->created_at = date_fmt('', "Y-m-d h:m:s");
 
             if(in_array("", $data)){
-                $json['message'] = $this->message->info("Informe a marca, o produto e descrição para criar o registro !")->icon()->render();
+                $json['message'] = $this->message->info("Informe a marca, o produto, o tipo de partnumber e a descrição para cadastrar o produto !!!")->icon()->render();
                 echo json_encode($json);
                 return;
             }
@@ -121,7 +122,7 @@ class Products extends Admin
             $productUpdate = (new Product())->findById($data["product_id"]);
 
             if (!$productUpdate) {
-                $this->message->error("Você tentou gerenciar uma marca que não existe")->icon("gift")->flash();
+                $this->message->error("Você tentou gerenciar um produto que não existe")->icon("gift")->flash();
                 echo json_encode(["redirect" => url("/painel/patrimonio/produtos")]);
                 return;
             }
@@ -129,11 +130,12 @@ class Products extends Admin
             $productUpdate = (new Product())->findById($data["product_id"]);
             $productUpdate->brand_id = preg_replace("/[^0-9\s]/", "", $data["brand_id"]);
             $productUpdate->product_name = $data["product_name"];
+            $productUpdate->type_part_number = $data["type_part_number"];
             $productUpdate->description = $data["description"];
             $productUpdate->login_updated = $user->login;
 
             if(in_array("", $data)){
-                $json['message'] = $this->message->info("Informe a marca, descrição e status para criar o registro !")->icon()->render();
+                $json['message'] = $this->message->info("Informe a marca, o produto, o tipo de partnumber e descrição para atualizar o registro !")->icon()->render();
                 echo json_encode($json);
                 return;
             }
@@ -144,7 +146,7 @@ class Products extends Admin
                 return;
             }
 
-            $json["message"] = $this->message->success("Producto {$productUpdate->product_name} atualizada com sucesso !!!")->icon("emoji-grin me-1")->render();
+            $json["message"] = $this->message->success("Producto {$productUpdate->product_name} atualizado com sucesso !!!")->icon("emoji-grin me-1")->render();
             echo json_encode($json);
             return;
         }
@@ -155,7 +157,7 @@ class Products extends Admin
             $productActived = (new Product())->findById($data["product_id"]);
 
             if (!$productActived) {
-                $this->message->error("Você tentou gerenciar uma marca que não existe")->icon("gift")->flash();
+                $this->message->error("Você tentou gerenciar um produto que não existe")->icon("gift")->flash();
                 echo json_encode(["redirect" => url("/painel/patrimonio/produtos")]);
                 return;
             }
@@ -169,7 +171,7 @@ class Products extends Admin
                 return;
             }
 
-            $this->message->success("Producto {$productActived->product_name} reativada com sucesso !!!")->icon("gift")->flash();
+            $this->message->success("Producto {$productActived->product_name} reativado com sucesso !!!")->icon("gift")->flash();
             redirect("/painel/patrimonio/produtos/desativados");
             return;
         }
@@ -181,7 +183,7 @@ class Products extends Admin
             $productDisabled = (new Product())->findById($data["product_id"]);
 
             if (!$productDisabled) {
-                $this->message->error("Você tentou gerenciar uma marca que não existe")->icon("gift")->flash();
+                $this->message->error("Você tentou gerenciar um produto que não existe")->icon("gift")->flash();
                 echo json_encode(["redirect" => url("/painel/patrimonio/produtos")]);
                 return;
             }
@@ -195,7 +197,7 @@ class Products extends Admin
                 return;
             }
 
-            $this->message->success("Producto {$productDisabled->product_name} desativada com sucesso !!!")->icon("gift")->flash();
+            $this->message->success("Producto {$productDisabled->product_name} desativado com sucesso !!!")->icon("gift")->flash();
             redirect("/painel/patrimonio/produtos");
             return;
         }
@@ -206,7 +208,7 @@ class Products extends Admin
             $productDelete = (new Product())->findById($data["product_id"]);
 
             if (!$productDelete) {
-                $this->message->error("Você tentou deletar uma marca que não existe")->icon("gift")->flash();
+                $this->message->error("Você tentou deletar um produto que não existe")->icon("gift")->flash();
                 echo json_encode(["redirect" => url("/painel/patrimonio/produtos")]);
                 return;
             }

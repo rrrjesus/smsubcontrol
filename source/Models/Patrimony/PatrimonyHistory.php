@@ -197,11 +197,7 @@ class  PatrimonyHistory extends Model
 
             $patrimonyId = $this->patrimony_id;
 
-            if($this->find("unit_id = :d AND part_number = :p AND user_id = :u AND movement_id = :m", "d={$this->unit_id}&p={$this->part_number}&u={$this->user_id}&m={$this->movement_id}", "patrimony_id")->fetch()) {
-                $this->update($this->safe(), "patrimony_id = :patrimony_id AND user_id = :user_id AND unit_id = :unit_id AND movement_id = :movement_id", "patrimony_id={$patrimonyId}&user_id={$this->user_id}&unit_id={$this->unit_id}&movement_id={$this->movement_id}");
-            } else {
-                $patrimonyId = $this->create($this->safe());
-            }
+            $patrimonyId = $this->create($this->safe());
 
             if ($this->fail()) {
                 $this->message->error("Erro ao atualizar, verifique os dados");

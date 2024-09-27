@@ -230,6 +230,7 @@ class Patrimonys extends Admin
             $patrimonys_id = $data["patrimonys_id"];
             $movement_id = preg_replace("/[^0-9\s]/", "", $data["movement_id"]);
             $product_id = preg_replace("/[^0-9\s]/", "", $data["product_id"]);
+            $type_part_number = $data["type_part_number"];
             $part_number = $data["part_number"];
             $unit_id_number = preg_replace("/[^0-9\s]/", "", $data["unit_id_edit"]);
             $unit_id = substr($unit_id_number, 0, 2);  // 12
@@ -257,7 +258,7 @@ class Patrimonys extends Admin
                 $files = $_FILES["file_terms"];
                 $upload = new Upload();
                 
-                $file_terms = $upload->file($files, $patrimonysUpdate->user_id.'_'.$patrimonysUpdate->product()->type_part_number.'_'.$patrimonysUpdate->part_number);
+                $file_terms = $upload->file($files, $patrimonysUpdate->user_id.'_'.$type_part_number.'_'.$patrimonysUpdate->part_number);
 
                 if (!$file_terms) {
                     $json["message"] = $upload->message()->render();

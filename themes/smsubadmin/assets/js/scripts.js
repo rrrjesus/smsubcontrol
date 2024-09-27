@@ -129,6 +129,9 @@ $(function () {
             product_name: {
                 required: true
             },
+            type_part_number: {
+                required: true
+            },
             description: {
                 required: true
             }
@@ -139,6 +142,9 @@ $(function () {
             },
             product_name: {
                 required: "Digite o produto !!!"
+            },
+            type_part_number: {
+                required: "Digite o tipo de partnumber !!!"
             },
             description: {
                 required: "Digite a descrição !!!"

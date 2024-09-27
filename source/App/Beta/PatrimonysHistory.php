@@ -225,7 +225,7 @@ public function patrimonyHistory(?array $data): void
         }
 
         if($patrimonyHistoryDelete->movement_id == $patrimonyDelete->movement_id && $patrimonyHistoryDelete->user_id == $patrimonyDelete->user_id && $patrimonyHistoryDelete->unit_id == $patrimonyDelete->unit_id){
-            $this->message->warning("O registro atual não pode ser excluído ...")->flash();
+            $this->message->warning("Histórico com os campos Estado, Usuário e Unidade iguais ao do registro nâo pode ser apagado ...")->icon()->flash();
             redirect("/beta/patrimonios/editar/{$patrimonyHistoryDelete->patrimony_id}");
             return;
         }
