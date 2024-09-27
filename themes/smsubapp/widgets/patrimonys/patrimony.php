@@ -113,7 +113,7 @@
                             </div>
 
                             <div class="col-md-4 mb-1">
-                                <label for="formFileSm" class="col-form-label col-form-label-sm"> <strong><i class="bi bi-upload me-1"></i>  Anexar PDF </strong></label>
+                                <label for="formFileSm" class="col-form-label col-form-label-sm"> <strong><i class="bi bi-upload me-1"></i>  Anexar Termo PDF </strong></label>
                                 <input class="form-control form-control-sm" type="file" class="radius" name="file_terms"/>
                             </div>
                         </div>
