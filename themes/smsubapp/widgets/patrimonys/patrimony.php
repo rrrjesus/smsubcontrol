@@ -27,25 +27,18 @@
 
                         <div class="row mb-1">
 
-                            <div class="col-md-2 mb-1">
+                            <div class="col-md-3 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputMovimentacao"><i class="bi bi-person-add me-1"></i><strong>Estado</strong></label>
-                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                    data-bs-title="Digite o estado do patrimonio - Ex : 1- ESTOQUE, 2 - RETIRADO ... " autofocus tabindex="1" class="form-control form-control-sm movement_id"
-                                    name="movement_id" placeholder="ESTADO" value="1 - ESTOQUE">
+                                <input type="text" tabindex="1" autofocus data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                    data-bs-title="Digite o estado do patrimonio - Ex : 1- Estoque, 2 - Retirado, 3 - Reservado ... " autofocus tabindex="1" class="form-control form-control-sm movement_id"
+                                    name="movement_id" placeholder="Estado">
                             </div>
 
-                            <div class="col-md-4 mb-1">
+                            <div class="col-md-6 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputProduto"><i class="bi bi-person-add me-1"></i><strong>Produto</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                    data-bs-title="Digite o nome do produto - Ex : 1 - Tablet" autofocus tabindex="1" class="form-control form-control-sm product_id"
+                                    data-bs-title="Digite o nome do produto - Ex : 1 - Tablet" tabindex="2" class="form-control form-control-sm product_id"
                                     name="product_id" placeholder="PRODUTO">
-                            </div>
-
-                            <div class="col-md-3 mb-1">
-                                <label class="col-form-label col-form-label-sm" for="inputImei"><i class="bi bi-person-add me-1"></i><strong>Tipo de Registro da Peça</strong></label>
-                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                    data-bs-title="Digite o tipo de número da peça - Ex : NS, IMEI" class="form-control form-control-sm type_part_number"
-                                    name="type_part_number" placeholder="TIPO DE REGISTRO DA PEÇA" tabindex="2">
                             </div>
 
                             <div class="col-md-3 mb-1">
@@ -62,14 +55,14 @@
                                 <label class="col-form-label col-form-label-sm" for="inputSobreNome"><i class="bi bi-person-add me-1"></i><strong>Usuario</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Digite o usuário - Ex : 1 - João Bento Badaró" tabindex="4" class="form-control form-control-sm user_id"
-                                    name="user_id" id="user_id" placeholder="USUÁRIO" value="1 - Joao Bento Badaro">
+                                    name="user_id" id="user_id" placeholder="USUÁRIO">
                             </div>
 
                             <div class="col-md-7 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputSobreNome"><i class="bi bi-person-add me-1"></i><strong>Unidade</strong></label>
-                                <input type="text" data-bs-togglee="tooltip" tabindex="6" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                 data-bs-title="Digite a unidade - Ex : 22 - SMSUB/COTI" class="form-control form-control-sm unit_id"
-                                    name="unit_id" id="unit_id" placeholder="UNIDADE" value="22 - SMSUB/COTI (23º AND)">
+                                    name="unit_id" id="unit_id" placeholder="UNIDADE">
                             </div>
 
                         </div>
@@ -86,8 +79,8 @@
 
                         <div class="row justify-content-center mt-4 mb-3">
                             <div class="col-auto">
-                            <?=button("top", "Clique para gravar", "success", "disc-fill", "Gravar", "7")?>
-                            <?=buttonLink("/beta/patrimonios", "top", "Clique para listar os patrimônios", "dark", "list", "Listar", "8")?>                                  
+                            <?=button("top", "Clique para gravar", "success", "disc-fill", "Gravar", "6", "g")?>
+                            <?=buttonLink("/beta/patrimonios", "top", "Clique para listar os patrimônios", "dark", "list", "Listar", "7", "l")?>                                  
                             </div>
                         </div>
                     </form>
@@ -120,32 +113,25 @@
                             </div>
 
                             <div class="col-md-4 mb-1">
-                                <label for="formFileSm" class="col-form-label col-form-label-sm"> <strong><i class="bi bi-upload me-1"></i>  Extensões aceitas : .pdf </strong></label>
+                                <label for="formFileSm" class="col-form-label col-form-label-sm"> <strong><i class="bi bi-upload me-1"></i>  Anexar PDF </strong></label>
                                 <input class="form-control form-control-sm" type="file" class="radius" name="file_terms"/>
                             </div>
                         </div>
                                 
                         <div class="row mb-1">
 
-                            <div class="col-md-2 mb-1">
+                            <div class="col-md-3 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputMovimentacao"><i class="bi bi-person-add me-1"></i><strong>Estado</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Digite o estado do patrimonio - Ex : 1- ESTOQUE, 2 - RETIRADO ... " autofocus tabindex="1" class="form-control form-control-sm movement_id"
                                     name="movement_id" placeholder="ESTADO" value="<?php if($patrimonys->movement_id){echo $patrimonys->movement()->id.' - '.$patrimonys->movement()->movement_name;}else{echo '';}?>">
                             </div>
 
-                            <div class="col-md-4 mb-1">
+                            <div class="col-md-6 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputProduto"><i class="bi bi-person-add me-1"></i><strong>Produto</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" tabindex="1" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                 data-bs-title="Digite o nome do produto - Ex : 1 - Tablet" class="form-control form-control-sm product_id"
                                     name="product_id" placeholder="PRODUTO" value="<?php if($patrimonys->product_id){echo $patrimonys->product()->id.' - '.$patrimonys->product()->product_name;}else{echo '';}?>">
-                            </div>
-
-                            <div class="col-md-3 mb-1">
-                                <label class="col-form-label col-form-label-sm" for="inputImei"><i class="bi bi-person-add me-1"></i><strong>Registro (NS/IMEI/SERVICE_TAG)</strong></label>
-                                <input type="text" data-bs-togglee="tooltip" tabindex="2" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                    data-bs-title="Digite o tipo de número da peça - Ex : NS, IMEI" class="form-control form-control-sm type_part_number"
-                                    name="type_part_number" placeholder="TIPO DE REGISTRO DA PEÇA" value="<?=$patrimonys->type_part_number?>">
                             </div>
 
                             <div class="col-md-3 mb-1">
@@ -221,13 +207,6 @@
                 });
                 product_id.initialize();
                 $('.product_id').typeahead({hint: true, highlight: true, minLength: 1}, {source: product_id});
-                
-                let type_part_number = new Bloodhound({
-                    datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
-                    local: <?=$patrimonyscreates->completeTypePartNumber()?>
-                });
-                type_part_number.initialize();
-                $('.type_part_number').typeahead({hint: true, highlight: true, minLength: 1}, {source: type_part_number});
                 
                 let user_id = new Bloodhound({
                     datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,

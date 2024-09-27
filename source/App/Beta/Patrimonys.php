@@ -109,7 +109,7 @@ class Patrimonys extends Admin
 
         $head = $this->seo->render(
             CONF_SITE_NAME . " - Termo de - ".(!empty($termPrint->userPatrimony()->rf) ? $termPrint->userPatrimony()->rf : "Responsabilidade")." - "
-            .(!empty($termPrint->userPatrimony()->user_name) ? $termPrint->userPatrimony()->user_name : "")." - ".$termPrint->type_part_number.":".$termPrint->part_number ,
+            .(!empty($termPrint->userPatrimony()->user_name) ? $termPrint->userPatrimony()->user_name : "")." - ".$termPrint->product()->type_part_number.":".$termPrint->part_number ,
             CONF_SITE_DESC,
             url(),
             theme("/assets/images/favicon.ico"),
@@ -141,7 +141,6 @@ class Patrimonys extends Admin
 
             $movement_id = preg_replace("/[^0-9\s]/", "", $data["movement_id"]);
             $product_id = preg_replace("/[^0-9\s]/", "", $data["product_id"]);
-            $type_part_number = $data["type_part_number"];
             $part_number = $data["part_number"];
             $unit_id = $data["unit_id"];
             $user_id = $data["user_id"];
@@ -150,7 +149,6 @@ class Patrimonys extends Admin
             $patrimonyCreate = new Patrimony();
             $patrimonyCreate->movement_id = $movement_id;
             $patrimonyCreate->product_id = $product_id;
-            $patrimonyCreate->type_part_number = $type_part_number;
             $patrimonyCreate->part_number = $part_number;
             $patrimonyCreate->unit_id = $unit_id;
             $patrimonyCreate->user_id = $user_id;
@@ -162,7 +160,7 @@ class Patrimonys extends Admin
              if (!empty($_FILES["file_terms"])) {
                 $files = $_FILES["file_terms"];
                 $upload = new Upload();
-                $file_terms = $upload->file($files, $patrimonyCreate->user_id.'_'.$patrimonyCreate->type_part_number.'_'.$patrimonyCreate->part_number);
+                $file_terms = $upload->file($files, $patrimonyCreate->user_id.'_'.$patrimonyCreate->product()->type_part_number.'_'.$patrimonyCreate->part_number);
 
                 if (!$file_terms) {
                     $json["message"] = $upload->message()->render();
@@ -181,12 +179,6 @@ class Patrimonys extends Admin
 
             if($data["product_id"] == ""){
                 $json['message'] = $this->message->warning("Informe um produto para criar o patrimônio !")->icon()->render();
-                echo json_encode($json);
-                return;
-            }
-
-            if($data["type_part_number"] == ""){
-                $json['message'] = $this->message->warning("Informe o tipo de número da peça para criar o patrimônio !")->icon()->render();
                 echo json_encode($json);
                 return;
             }
@@ -215,7 +207,6 @@ class Patrimonys extends Admin
             $patrimonyCreateHistory->product_id = $product_id;
             $patrimonyCreateHistory->unit_id = $unit_id;
             $patrimonyCreateHistory->user_id = $user_id;
-            $patrimonyCreateHistory->type_part_number = $type_part_number;
             $patrimonyCreateHistory->part_number = $part_number;
             if (!empty($_FILES["file_terms"])) {
                 $patrimonyCreateHistory->file_terms = $file_terms;
@@ -225,7 +216,7 @@ class Patrimonys extends Admin
             $patrimonyCreateHistory->created_history = date_fmt('', "Y-m-d h:m:s");
             $patrimonyCreateHistory->save();
 
-            $this->message->success("Patrimônio {$patrimonyCreate->type_part_number} {$patrimonyCreate->part_number} cadastrado com sucesso...")->icon("emoji-grin me-1")->flash();
+            $this->message->success("Patrimônio {$patrimonyCreate->product()->type_part_number} {$patrimonyCreate->part_number} cadastrado com sucesso...")->icon("emoji-grin me-1")->flash();
             $json["redirect"] = url("/beta/patrimonios/cadastrar");
 
             echo json_encode($json);
@@ -239,7 +230,6 @@ class Patrimonys extends Admin
             $patrimonys_id = $data["patrimonys_id"];
             $movement_id = preg_replace("/[^0-9\s]/", "", $data["movement_id"]);
             $product_id = preg_replace("/[^0-9\s]/", "", $data["product_id"]);
-            $type_part_number = $data["type_part_number"];
             $part_number = $data["part_number"];
             $unit_id_number = preg_replace("/[^0-9\s]/", "", $data["unit_id_edit"]);
             $unit_id = substr($unit_id_number, 0, 2);  // 12
@@ -258,7 +248,6 @@ class Patrimonys extends Admin
             $patrimonysUpdate->product_id = $product_id;
             $patrimonysUpdate->unit_id = $unit_id;
             $patrimonysUpdate->user_id = $user_id;
-            $patrimonysUpdate->type_part_number = $type_part_number;
             $patrimonysUpdate->part_number = $part_number;
             $patrimonysUpdate->observations = $observations;
             $patrimonysUpdate->login_updated = $user->login;
@@ -268,7 +257,7 @@ class Patrimonys extends Admin
                 $files = $_FILES["file_terms"];
                 $upload = new Upload();
                 
-                $file_terms = $upload->file($files, $patrimonysUpdate->user_id.'_'.$patrimonysUpdate->type_part_number.'_'.$patrimonysUpdate->part_number);
+                $file_terms = $upload->file($files, $patrimonysUpdate->user_id.'_'.$patrimonysUpdate->product()->type_part_number.'_'.$patrimonysUpdate->part_number);
 
                 if (!$file_terms) {
                     $json["message"] = $upload->message()->render();
@@ -287,12 +276,6 @@ class Patrimonys extends Admin
 
             if($data["product_id"] == ""){
                 $json['message'] = $this->message->warning("Informe um produto para gravar o patrimônio !!!")->icon()->render();
-                echo json_encode($json);
-                return;
-            }
-
-            if($data["type_part_number"] == ""){
-                $json['message'] = $this->message->warning("Informe o tipo de número da peça para criar o patrimônio !")->icon()->render();
                 echo json_encode($json);
                 return;
             }
@@ -330,13 +313,12 @@ class Patrimonys extends Admin
                 $patrimonysHistory->file_terms = $file_terms;
             };
             $patrimonysHistory->user_id = $user_id;
-            $patrimonysHistory->type_part_number = $type_part_number;
             $patrimonysHistory->part_number = $part_number;
             $patrimonysHistory->observations = $observations;
             $patrimonysHistory->login_updated = $user->login;
             $patrimonysHistory->save();
 
-            $this->message->success("Patrimonio {$type_part_number} {$part_number} atualizado com sucesso !!!")->icon("emoji-grin me-1")->flash();
+            $this->message->success("Patrimonio {$part_number} atualizado com sucesso !!!")->icon("emoji-grin me-1")->flash();
             echo json_encode(["redirect" => url("/beta/patrimonios/editar/{$patrimonysUpdate->id}")]);
             return;
         }
@@ -361,7 +343,7 @@ class Patrimonys extends Admin
                 return;
             }
 
-            $this->message->success("Patrimônio {$patrimonyActived->type_part_number} {$patrimonyActived->part_number} reativado com sucesso !!!")->icon("emoji-grin me-1")->flash();
+            $this->message->success("Patrimônio {$patrimonyActived->product()->type_part_number} {$patrimonyActived->part_number} reativado com sucesso !!!")->icon("emoji-grin me-1")->flash();
             redirect("/beta/patrimonios/desativados");
             return;
         }
@@ -387,7 +369,7 @@ class Patrimonys extends Admin
                 return;
             }
 
-            $this->message->success("Patrimônio {$patrimonyDisabled->type_part_number} - {$patrimonyDisabled->part_number} desativado com sucesso !!!")->icon("emoji-grin me-1")->flash();
+            $this->message->success("Patrimônio {$patrimonyDisabled->product()->type_part_number} - {$patrimonyDisabled->part_number} desativado com sucesso !!!")->icon("emoji-grin me-1")->flash();
             redirect("/beta/patrimonios");
             return;
         }
@@ -412,7 +394,7 @@ class Patrimonys extends Admin
                 return;
             }
 
-            $this->message->success("Patrimônio {$patrimonyWriteoff->type_part_number} - {$patrimonyWriteoff->type_number} dado como baixa com sucesso !!!")->icon("emoji-grin me-1")->flash();
+            $this->message->success("Patrimônio {$patrimonyWriteoff->product()->type_part_number} - {$patrimonyWriteoff->type_number} dado como baixa com sucesso !!!")->icon("emoji-grin me-1")->flash();
             redirect("/beta/patrimonios");
             return;
         }
@@ -440,7 +422,7 @@ class Patrimonys extends Admin
 
             $updateDelete->destroy();
 
-            $this->message->success("O patrimônio {$updateDelete->type_part_number} {$updateDelete->part_number} foi excluído com sucesso...")->flash();
+            $this->message->success("O patrimônio {$updateDelete->product()->type_part_number} {$updateDelete->part_number} foi excluído com sucesso...")->flash();
             echo json_encode(["redirect" => url("/beta/patrimonios")]);
 
             return;

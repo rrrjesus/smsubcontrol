@@ -23,7 +23,7 @@ include_once '../../../source/Boot/Config.php';
 // DB table to use
 $table = <<<EOT
  ( 
-SELECT patrimonys.id, patrimonys.created_at, patrimonys.type_part_number, patrimonys.part_number, brands.brand_name, 
+SELECT patrimonys.id, patrimonys.created_at, products.type_part_number, patrimonys.part_number, brands.brand_name, 
 products.product_name, users.user_name, users.login, users.rf, users.email, units.unit_name, units.it_professional, 
 units.fixed_phone, patrimonys.observations, patrimonys.file_terms
 FROM patrimonys

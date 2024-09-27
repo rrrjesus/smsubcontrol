@@ -24,17 +24,18 @@ class Patrimony extends Model
      */
     public function __construct()
     {
-        parent::__construct("patrimonys", ["id"], ["user_id","patrimonys_name", "brand_id", "product_id", "unit_id", "movement_id", "description", "file_terms", "type_part_number", "part_number", "status", "photo", "observations"]);
+        parent::__construct("patrimonys", ["id"], ["user_id","patrimonys_name", "brand_id", "product_id", "unit_id", "movement_id", "description", "file_terms", "part_number", "status", "photo", "observations"]);
     }
 
     /**
+     * @param string $product_id
      * @param string $part_number
      * @param string $columns
      * @return null|Patrimony
      */
-    public function findByPartNumber(string $type_part_number,string $part_number, string $columns = "*"): ?Patrimony
+    public function findByPartNumber(string $product_id,string $part_number, string $columns = "*"): ?Patrimony
     {
-        $find = $this->find("type_part_number = :type_part_number AND part_number = :part_number", "type_part_number={$type_part_number}&part_number={$part_number}", $columns);
+        $find = $this->find("product_id = :product_id AND part_number = :part_number", "product_id={$product_id}&part_number={$part_number}", $columns);
         return $find->fetch();
     }
 
@@ -243,21 +244,7 @@ class Patrimony extends Model
 
         if(!empty($stm)):
             foreach ($stm->fetch(true) as $row):
-                $array[] = $row->id.' - '.$row->product_name;
-            endforeach;
-            echo json_encode($array); //Return the JSON Array
-        endif;
-        return null;
-    }
-
-    static function completeTypePartNumber(): ?Patrimony
-    {
-        $stm = (new Patrimony())->find("","");
-        $array = array();
-
-        if(!empty($stm)):
-            foreach ($stm->fetch(true) as $row):
-                $array[] = $row->type_part_number;
+                $array[] = $row->id.' - '.$row->product_name.' - (Nº de Registro '.$row->type_part_number.')';
             endforeach;
             echo json_encode($array); //Return the JSON Array
         endif;
@@ -430,8 +417,8 @@ class Patrimony extends Model
         if (!empty($this->id)) {
             $patrimonyId = $this->id;
 
-            if (!empty($this->part_number) && $this->find("type_part_number = :t AND part_number = :c AND id != :i", "t={$this->type_part_number}&c={$this->part_number}&i={$patrimonyId}", "id")->fetch()) {
-                $this->message->warning("O patrimônio {$this->type_part_number} {$this->part_number} já está cadastrado");
+            if (!empty($this->part_number) && $this->find("product_id = :p AND part_number = :n AND id != :i", "p={$this->product_id}&n={$this->part_number}&i={$patrimonyId}", "id")->fetch()) {
+                $this->message->warning("O patrimônio {$this->part_number} já está cadastrado");
                 return false;
             }
             
@@ -445,8 +432,8 @@ class Patrimony extends Model
 
         /** Patrimony Create */
         if (empty($this->id)) {
-            if (!empty($this->part_number) && $this->findByPartNumber($this->type_part_number, $this->part_number, "id")) {
-                $this->message->warning("O patrimonio {$this->type_part_number} {$this->part_number} informado já está cadastrado");
+            if (!empty($this->part_number) && $this->findByPartNumber($this->product_id, $this->part_number, "id")) {
+                $this->message->warning("O patrimonio {$this->part_number} informado já está cadastrado");
                 return false;
             }
 

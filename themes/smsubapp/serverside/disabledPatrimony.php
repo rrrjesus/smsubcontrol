@@ -23,9 +23,8 @@ include_once '../../../source/Boot/Config.php';
 // DB table to use
 $table = <<<EOT
  ( 
-SELECT patrimonys.id, patrimonys.created_at, movements.movement_name, patrimonys.type_part_number, patrimonys.part_number, brands.brand_name, 
-products.product_name, users.user_name, users.login, users.rf, users.email, units.unit_name, units.it_professional, 
-units.fixed_phone, patrimonys.observations, patrimonys.file_terms
+SELECT patrimonys.id, patrimonys.created_at, movements.movement_name, product.type_part_number, patrimonys.part_number, brands.brand_name, 
+products.product_name, users.user_name, users.login, users.rf, users.email, units.unit_name, patrimonys.observations, patrimonys.file_terms
 FROM patrimonys
 LEFT JOIN products ON patrimonys.product_id = products.id
 LEFT JOIN brands ON products.brand_id = brands.id
@@ -58,10 +57,8 @@ $columns = array(
     array( 'db' => 'rf', 'dt' => 8),
     array( 'db' => 'email', 'dt' => 9),
     array( 'db' => 'unit_name', 'dt' => 10),
-    array( 'db' => 'it_professional', 'dt' => 11),
-    array( 'db' => 'fixed_phone', 'dt' => 12),
-    array( 'db' => 'observations', 'dt' => 13),
-    array( 'db' => 'id', 'dt' => 14)
+    array( 'db' => 'observations', 'dt' => 11),
+    array( 'db' => 'id', 'dt' => 12)
 );
 
 // SQL server connection information

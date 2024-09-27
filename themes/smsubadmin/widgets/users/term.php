@@ -112,7 +112,7 @@ repondo o equipamento com a mesma especificação técnica á marca / modelo, ou
         <p class=MsoNormal style='margin-left:1.25cm;margin-right:1.25cm;text-indent:-.1pt'><b>
           <span style='font-size:9.0pt;font-family:"Verdana",sans-serif'>Equipamento:</span></b>
           <span style='font-size:9.0pt;font-family:"Verdana",sans-serif'> 01 <?=$term->productBrand($term->product()->brand_id)->brand_name?> 
-          <?=$term->product()->product_name?> - <?=$term->type_part_number?> : <?=$term->part_number?></span>
+          <?=$term->product()->product_name?> - <?=$term->product()->type_part_number?> : <?=$term->part_number?></span>
         </p>
         <p class=MsoNormal style='margin-left:1.25cm;margin-right:1.25cm;text-indent:-.1pt'>
           <span style='font-size:9.0pt;font-family:"Verdana",sans-serif'><strong>Descrição</strong> : <?=$term->product()->description?></span>

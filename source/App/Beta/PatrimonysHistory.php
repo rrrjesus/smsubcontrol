@@ -6,6 +6,7 @@ use Source\Models\User;
 use Source\Support\Upload;
 use Source\Support\Thumb;
 use Source\Models\Patrimony\Bem;
+use Source\Models\Patrimony\Patrimony;
 use Source\Models\Patrimony\PatrimonyHistory;
 
 /**
@@ -59,8 +60,8 @@ public function patrimonyHistory(?array $data): void
         $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
         $patrimonys_id = $data["patrimonys_id"];
+        $movement_id = preg_replace("/[^0-9\s]/", "", $data["movement_id"]);
         $product_id = preg_replace("/[^0-9\s]/", "", $data["product_id"]);
-        $type_part_number = $data["type_part_number"];
         $part_number = $data["part_number"];
         $unit_id_number = preg_replace("/[^0-9\s]/", "", $data["unit_id"]);
         $unit_id = substr($unit_id_number, 0, 2);  // 12
@@ -76,10 +77,10 @@ public function patrimonyHistory(?array $data): void
         }
 
         $patrimonysHistoryUpdate->patrimonys_id = $patrimonys_id;
+        $patrimonysHistoryUpdate->movement_id = $movement_id;
         $patrimonysHistoryUpdate->product_id = $product_id;
         $patrimonysHistoryUpdate->unit_id = $unit_id;
         $patrimonysHistoryUpdate->user_id = $user_id;
-        $patrimonysHistoryUpdate->type_part_number = $type_part_number;
         $patrimonysHistoryUpdate->part_number = $part_number;
         $patrimonysHistoryUpdate->observations = $observations;
         $patrimonysHistoryUpdate->login_updated = $user->login;
@@ -89,7 +90,7 @@ public function patrimonyHistory(?array $data): void
         $files = $_FILES["file_terms"];
         $upload = new Upload();
         
-        $file_terms = $upload->file($files, $patrimonysHistoryUpdate->user_id.'_'.$patrimonysHistoryUpdate->type_part_number.'_'.$patrimonysHistoryUpdate->part_number);
+        $file_terms = $upload->file($files, $patrimonysHistoryUpdate->user_id.'_'.$patrimonysHistoryUpdate->product()->type_part_number.'_'.$patrimonysHistoryUpdate->part_number);
 
         if (!$file_terms) {
             $json["message"] = $upload->message()->render();
@@ -100,14 +101,14 @@ public function patrimonyHistory(?array $data): void
             $patrimonysHistoryUpdate->file_terms = $file_terms;
         }
 
-        if($data["product_id"] == ""){
-            $json['message'] = $this->message->warning("Informe um produto para gravar o patrimônio !!!")->icon()->render();
+        if($data["movement_id"] == ""){
+            $json['message'] = $this->message->warning("Informe um estado para gravar o patrimônio !!!")->icon()->render();
             echo json_encode($json);
             return;
         }
 
-        if($data["type_part_number"] == ""){
-            $json['message'] = $this->message->warning("Informe o tipo de número da peça para criar o patrimônio !")->icon()->render();
+        if($data["product_id"] == ""){
+            $json['message'] = $this->message->warning("Informe um produto para gravar o patrimônio !!!")->icon()->render();
             echo json_encode($json);
             return;
         }
@@ -130,7 +131,7 @@ public function patrimonyHistory(?array $data): void
             return;
         }
 
-        $this->message->success("Patrimonio {$type_part_number} {$part_number} atualizado com sucesso !!!")->icon("emoji-grin me-1")->flash();
+        $this->message->success("Patrimonio {$part_number} atualizado com sucesso !!!")->icon("emoji-grin me-1")->flash();
         echo json_encode(["redirect" => url("/beta/patrimonios/editar/{$patrimonysHistoryUpdate->id}")]);
         return;
     }
@@ -155,7 +156,7 @@ public function patrimonyHistory(?array $data): void
             return;
         }
 
-        $this->message->success("Patrimônio {$patrimonyActived->type_part_number} {$patrimonyActived->part_number} reativado com sucesso !!!")->icon("emoji-grin me-1")->flash();
+        $this->message->success("Patrimônio {$patrimonyActived->product()->type_part_number} {$patrimonyActived->part_number} reativado com sucesso !!!")->icon("emoji-grin me-1")->flash();
         redirect("/beta/patrimonios/desativados");
         return;
     }
@@ -181,7 +182,7 @@ public function patrimonyHistory(?array $data): void
             return;
         }
 
-        $this->message->success("Patrimônio {$patrimonyDisabled->type_part_number} - {$patrimonyDisabled->part_number} desativado com sucesso !!!")->icon("emoji-grin me-1")->flash();
+        $this->message->success("Patrimônio {$patrimonyDisabled->product()->type_part_number} - {$patrimonyDisabled->part_number} desativado com sucesso !!!")->icon("emoji-grin me-1")->flash();
         redirect("/beta/patrimonios");
         return;
     }
@@ -206,7 +207,7 @@ public function patrimonyHistory(?array $data): void
             return;
         }
 
-        $this->message->success("Patrimônio {$patrimonyWriteoff->type_part_number} - {$patrimonyWriteoff->type_number} dado como baixa com sucesso !!!")->icon("emoji-grin me-1")->flash();
+        $this->message->success("Patrimônio {$patrimonyWriteoff->product()->type_part_number} - {$patrimonyWriteoff->type_number} dado como baixa com sucesso !!!")->icon("emoji-grin me-1")->flash();
         redirect("/beta/patrimonios");
         return;
     }
@@ -215,10 +216,17 @@ public function patrimonyHistory(?array $data): void
     if (!empty($data["action"]) && $data["action"] == "delete") {
         $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $patrimonyHistoryDelete = (new PatrimonyHistory())->findById($data["patrimonys_id"]);
+        $patrimonyDelete = (new Patrimony())->findById($patrimonyHistoryDelete->patrimony_id);
 
         if (!$patrimonyHistoryDelete) {
             $this->message->error("Você tentou deletar um patrimônio que não existe")->flash();
             echo json_encode(["redirect" => url("/beta/patrimonios/editar/{$patrimonyHistoryDelete->id}")]);
+            return;
+        }
+
+        if($patrimonyHistoryDelete->movement_id == $patrimonyDelete->movement_id && $patrimonyHistoryDelete->user_id == $patrimonyDelete->user_id && $patrimonyHistoryDelete->unit_id == $patrimonyDelete->unit_id){
+            $this->message->warning("O registro atual não pode ser excluído ...")->flash();
+            redirect("/beta/patrimonios/editar/{$patrimonyHistoryDelete->patrimony_id}");
             return;
         }
 
@@ -230,7 +238,7 @@ public function patrimonyHistory(?array $data): void
 
         $patrimonyHistoryDelete->destroy();
 
-        $this->message->success("O patrimônio {$patrimonyHistoryDelete->type_part_number} {$patrimonyHistoryDelete->part_number} foi excluído com sucesso...")->flash();
+        $this->message->success("O histórico de patrimônio id: {$patrimonyHistoryDelete->id} - {$patrimonyHistoryDelete->product()->type_part_number} {$patrimonyHistoryDelete->part_number} foi excluído com sucesso...")->flash();
         redirect("/beta/patrimonios/editar/{$patrimonyHistoryDelete->patrimony_id}");
         return;
     }
@@ -277,7 +285,7 @@ public function term(?array $data): void
 
     $head = $this->seo->render(
         CONF_SITE_NAME . " - Termo de - ".(!empty($termPrint->userPatrimony()->rf) ? $termPrint->userPatrimony()->rf : "Responsabilidade")." - "
-        .(!empty($termPrint->userPatrimony()->user_name) ? $termPrint->userPatrimony()->user_name : "")." - ".$termPrint->type_part_number.":".$termPrint->part_number ,
+        .(!empty($termPrint->userPatrimony()->user_name) ? $termPrint->userPatrimony()->user_name : "")." - ".$termPrint->product()->type_part_number.":".$termPrint->part_number ,
         CONF_SITE_DESC,
         url(),
         theme("/assets/images/favicon.ico"),

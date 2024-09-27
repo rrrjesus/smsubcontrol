@@ -219,6 +219,7 @@ class Products extends Admin
         }
 
        $brands = new Brand();
+       $products = new Product();
 
         $productEdit = null;
         if (!empty($data["product_id"])) {
@@ -237,6 +238,7 @@ class Products extends Admin
         echo $this->view->render("widgets/patrimonys/products/product", [
             "head" => $head,
             "produtos" => $productEdit,
+            "products" => $products,
             "brands" => $brands,
             "urls" => "patrimonio/produtos",
             "namepage" => "Produtos",

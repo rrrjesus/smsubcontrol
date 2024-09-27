@@ -43,6 +43,18 @@
 
                         </div>
 
+                        <div class="row justify-content-center">
+
+                            <div class="col-md-6 mb-1">
+                                <label class="col-form-label col-form-label-sm" for="inputNome"><strong><i class="bi bi-person me-1"></i> Tipo de Partnumber</strong></label>
+                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                    data-bs-title="Digite o tipo de partnumber - Ex : IMEI, NS, CHIP ..." class="form-control form-control-sm type_part_number"
+                                    name="type_part_number" placeholder="Tipo de PartNumber">
+
+                            </div>
+
+                        </div>
+
                         <div class="row justify-content-center">  
 
                             <div class="col-md-6 mb-1">
@@ -137,6 +149,13 @@
         <?php $this->start("scripts"); ?>
             <script>
 
+                let type_part_number = new Bloodhound({
+                    datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
+                    local: <?=$products->completeTypePartNumber()?>
+                });
+                type_part_number.initialize();
+                $('.type_part_number').typeahead({hint: true, highlight: true, minLength: 1}, {source: type_part_number});
+                
                 let brand_id = new Bloodhound({
                     datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
                     local: <?=$brands->completeBrand()?>

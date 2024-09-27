@@ -22,11 +22,13 @@
 
     <div class="d-flex justify-content-center">
         <div class="col-12">
-            <table id="brandsDisabled" class="table table-bordered table-sm border-secondary table-hover" style="width:100%">
+            <table id="productsDisabled" class="table table-bordered table-sm border-secondary table-hover" style="width:100%">
                 <thead class="table-secondary">
                     <tr>
                         <th class="text-center">EDITAR</th>
                         <th class="text-center">MARCA</th>
+                        <th class="text-center">PRODUTO</th>
+                        <th class="text-center">TIPO NS</th>
                         <th class="text-center">DESCRICAO</th>
                         <th class="text-center">STATUS</th>
                         <th class="text-center">ATIVAR</th>
@@ -38,7 +40,9 @@
                 <tr>
                     <td class="text-center fw-semibold"><a href="<?= url("/painel/patrimonio/produtos/editar/{$lista->id}"); ?>" role="button" aria-disabled="true" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
                     data-bs-title="Clique para editar" class="btn btn-sm btn-outline-warning rounded-circle fw-bold me-2"><i class="bi bi-pencil text-secondary"></i></a></td>
-                    <td class="text-center fw-semibold"><?=(!empty($lista->brand_name) ? $lista->brand_name : "")?></td>
+                    <td class="text-center fw-semibold"><?=(!empty($lista->brand_id) ? $lista->Brand()->brand_name : "")?></td>
+                    <td class="text-center fw-semibold"><?=(!empty($lista->product_name) ? $lista->product_name : "")?></td>
+                    <td class="text-center fw-semibold"><?=(!empty($lista->type_part_number) ? $lista->type_part_number : "")?></td>
                     <td class="text-center fw-semibold"><?=(!empty($lista->description) ? $lista->description : "")?></td>
                     <td class="text-center fw-semibold"><?=$lista->statusBadge()?></td>
                     <td class="text-center fw-semibold"><?=$lista->id?></td>

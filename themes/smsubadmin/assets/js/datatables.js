@@ -205,22 +205,22 @@ $(document).ready(function() {
         "aaSorting": [0, 'asc'], /* 'desc' Carregar table decrescente e asc crescente*/
         "aoColumnDefs": [
             {
-                "aTargets": [5], // o numero da coluna
+                "aTargets": [6], // o numero da coluna
                 "mRender": function (data, type, full) { //aqui é uma funçãozinha para pegar os ids
                     return '<button type="button" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"\n' +
-                        'data-bs-title="Clique para desativar '+ full[1] +'" class="btn btn-outline-warning btn-sm rounded-circle" data-bs-toggle="modal" data-bs-target="#activedModal'+ full[5]+'">' +
+                        'data-bs-title="Clique para desativar '+ full[1] +'" class="btn btn-outline-warning btn-sm rounded-circle" data-bs-toggle="modal" data-bs-target="#activedModal'+ full[6]+'">' +
                         '<i class="bi bi-person-dash text-secondary"></i></button>' +
-                        '<div class="modal fade" id="activedModal' + full[5] + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">\n' +
+                        '<div class="modal fade" id="activedModal' + full[6] + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">\n' +
                             '<div class="modal-dialog modal-sm">\n' +
                                 '<div class="modal-content">\n' +
                                     '<div class="modal-header bg-warning text-light">\n' +
-                                    '<h6 class="modal-title text-center" id="exampleModalLabel"><i class="bi bi-gift me-2"></i> Desativar ID: ' + full[5] + '</h6>\n' +
+                                    '<h6 class="modal-title text-center" id="exampleModalLabel"><i class="bi bi-gift me-2"></i> Desativar ID: ' + full[6] + '</h6>\n' +
                                     '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>\n' +
                                     '</div>\n' +
                                     '<div class="modal-body fw-semibold">Deseja desativar o produto : ' + full[1] + ' - ' + full[2] + ' ?</div>\n' +
                                     '<div class="modal-footer">\n' +
                                     '<button type="button" class="btn btn-outline-danger btn-sm fw-semibold" data-bs-dismiss="modal"><i class="bi bi-trash"></i> Não</button>\n' +
-                                    '<a href="produtos/desativar/' + full[5] + '/disabled" class="btn btn-outline-success btn-sm fw-semibold"><i class="bi bi-plus-circle" role="button" ></i> Sim</a>\n' +
+                                    '<a href="produtos/desativar/' + full[6] + '/disabled" class="btn btn-outline-success btn-sm fw-semibold"><i class="bi bi-plus-circle" role="button" ></i> Sim</a>\n' +
                                     '</div>\n' +
                                 '</div>\n' +
                             '</div>\n' +
@@ -228,22 +228,22 @@ $(document).ready(function() {
                 }
             },
             {
-                "aTargets": [6], // o numero da coluna
+                "aTargets": [7], // o numero da coluna
                 "mRender": function (data, type, full) { //aqui é uma funçãozinha para pegar os ids
                     return '<button type="button" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"\n' +
-                        'data-bs-title="Clique para excluir definitivamente '+ full[6] +'" class="btn btn-outline-danger btn-sm rounded-circle" data-bs-toggle="modal" data-bs-target="#trashModalFim'+ full[6]+'">' +
+                        'data-bs-title="Clique para excluir definitivamente '+ full[7] +'" class="btn btn-outline-danger btn-sm rounded-circle" data-bs-toggle="modal" data-bs-target="#trashModalFim'+ full[7]+'">' +
                         '<i class="bi bi-trash"></i></button>' +
-                        '<div class="modal fade" id="trashModalFim' + full[6] + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">\n' +
+                        '<div class="modal fade" id="trashModalFim' + full[7] + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">\n' +
                             '<div class="modal-dialog modal-sm">\n' +
                                 '<div class="modal-content">\n' +
                                     '<div class="modal-header bg-danger text-light">\n' +
-                                    '<h6 class="modal-title text-center" id="exampleModalLabel"><i class="bi bi-trash me-2"></i> Excluir ID: ' + full[6] + '</h6>\n' +
+                                    '<h6 class="modal-title text-center" id="exampleModalLabel"><i class="bi bi-trash me-2"></i> Excluir ID: ' + full[7] + '</h6>\n' +
                                     '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>\n' +
                                     '</div>\n' +
                                     '<div class="modal-body fw-semibold">Deseja excluir o marca : ' + full[1] + ' ?</div>\n' +
                                     '<div class="modal-footer">\n' +
                                     '<button type="button" class="btn btn-outline-danger btn-sm fw-semibold" data-bs-dismiss="modal"><i class="bi bi-trash"></i> Não</button>\n' +
-                                    '<a href="produtos/excluir/' + full[6] + '/delete" data-action="delete" class="btn btn-outline-success btn-sm fw-semibold"><i class="bi bi-plus-circle" role="button" ></i> Sim</a>\n' +
+                                    '<a href="produtos/excluir/' + full[7] + '/delete" data-action="delete" class="btn btn-outline-success btn-sm fw-semibold"><i class="bi bi-plus-circle" role="button" ></i> Sim</a>\n' +
                                     '</div>\n' +
                                 '</div>\n' +
                             '</div>\n' +
@@ -291,22 +291,22 @@ $(document).ready(function() {
         "aaSorting": [0, 'asc'], /* 'desc' Carregar table decrescente e asc crescente*/
         "aoColumnDefs": [
             {
-                "aTargets": [5], // o numero da coluna
+                "aTargets": [6], // o numero da coluna
                 "mRender": function (data, type, full) { //aqui é uma funçãozinha para pegar os ids
                     return '<button type="button" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"\n' +
-                        'data-bs-title="Clique para ativar '+ full[1] +'" class="btn btn-outline-warning btn-sm rounded-circle" data-bs-toggle="modal" data-bs-target="#modalAtivar'+ full[5]+'">' +
+                        'data-bs-title="Clique para ativar '+ full[1] +'" class="btn btn-outline-warning btn-sm rounded-circle" data-bs-toggle="modal" data-bs-target="#modalAtivar'+ full[6]+'">' +
                         '<i class="bi bi-person-check"></i></button>' +
-                        '<div class="modal fade" id="modalAtivar' + full[5] + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">\n' +
+                        '<div class="modal fade" id="modalAtivar' + full[6] + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">\n' +
                             '<div class="modal-dialog modal-sm">\n' +
                                 '<div class="modal-content">\n' +
                                     '<div class="modal-header bg-warning text-light">\n' +
-                                    '<h6 class="modal-title text-center" id="exampleModalLabel"><i class="bi bi-trash me-2"></i> Ativar ID: ' + full[5] + '</h6>\n' +
+                                    '<h6 class="modal-title text-center" id="exampleModalLabel"><i class="bi bi-trash me-2"></i> Ativar ID: ' + full[6] + '</h6>\n' +
                                     '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>\n' +
                                     '</div>\n' +
                                     '<div class="modal-body fw-semibold">Deseja ativar o produto : ' + full[1] + ' - ' + full[2] + ' ?</div>\n' +
                                     '<div class="modal-footer">\n' +
                                     '<button type="button" class="btn btn-outline-danger btn-sm fw-semibold" data-bs-dismiss="modal"><i class="bi bi-trash"></i> Não</button>\n' +
-                                    '<a href="ativar/' + full[5] + '/actived" class="btn btn-outline-success btn-sm fw-semibold"><i class="bi bi-plus-circle" role="button" ></i> Sim</a>\n' +
+                                    '<a href="ativar/' + full[6] + '/actived" class="btn btn-outline-success btn-sm fw-semibold"><i class="bi bi-plus-circle" role="button" ></i> Sim</a>\n' +
                                     '</div>\n' +
                                 '</div>\n' +
                             '</div>\n' +

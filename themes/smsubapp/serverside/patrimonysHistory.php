@@ -23,9 +23,8 @@ include_once '../../../source/Boot/Config.php';
 // DB table to use
 $table = <<<EOT
  ( 
-SELECT patrimonys_historys.id, patrimonys_historys.patrimony_id, patrimonys_historys.created_history, movements.movement_name, patrimonys_historys.type_part_number, patrimonys_historys.part_number, brands.brand_name, 
-products.product_name, users.user_name, users.login, users.cell_phone, users.rf, users.email, units.unit_name, units.it_professional, 
-units.fixed_phone, patrimonys_historys.observations, patrimonys_historys.file_terms
+SELECT patrimonys_historys.id, patrimonys_historys.patrimony_id, patrimonys_historys.created_history, movements.movement_name, products.type_part_number, patrimonys_historys.part_number, brands.brand_name, 
+products.product_name, users.user_name, users.login, users.cell_phone, users.rf, users.email, units.unit_name, patrimonys_historys.observations, patrimonys_historys.file_terms
 FROM patrimonys_historys
 LEFT JOIN products ON patrimonys_historys.product_id = products.id
 LEFT JOIN brands ON products.brand_id = brands.id
@@ -71,16 +70,14 @@ $columns = array(
     array( 'db' => 'rf', 'dt' => 11),
     array( 'db' => 'email', 'dt' => 12),
     array( 'db' => 'unit_name', 'dt' => 13),
-    array( 'db' => 'it_professional', 'dt' => 14),
-    array( 'db' => 'fixed_phone', 'dt' => 15),
-    array( 'db' => 'observations', 'dt' => 16),
-    array( 'db' => 'id', 'dt' => 17,
+    array( 'db' => 'observations', 'dt' => 14),
+    array( 'db' => 'id', 'dt' => 15,
         'formatter' => function($d) {
             return '<a href="../patrimonios/historico/termo/'.$d.'" role="button" aria-disabled="true" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
                         data-bs-title="Clique para visualizar" target="_blank" class="btn btn-sm btn-outline-primary rounded-circle fw-bold me-2"><i class="bi bi-file-earmark-word"></i></a>';
                     }
     ),
-    array( 'db' => 'file_terms', 'dt' => 18,
+    array( 'db' => 'file_terms', 'dt' => 16,
         'formatter' => function($d) {
             if($d && file_exists('../../../storage/'.$d)){
                 return '<a href="../../storage/'.$d.'" role="button" class="btn btn-sm btn-outline-danger rounded-circle" target="_blank"><i class="bi bi-file-earmark-pdf"></a>';

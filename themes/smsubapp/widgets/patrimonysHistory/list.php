@@ -27,8 +27,6 @@
                                 <th class="text-center">RF</th>
                                 <th class="text-center">EMAIL</th>
                                 <th class="text-center">UNIDADE</th>
-                                <th class="text-center">RESPONSAVEL UN.</th>
-                                <th class="text-center">TELEFONE UN.</th>
                                 <th class="text-center">OBSERVACOES</th>
                                 <th class="text-center">TERMO</th>
                                 <th class="text-center">ANEXO</th>

@@ -51,30 +51,22 @@ $(function () {
                 visible: false
             },
             {
-                target: 13,
-                visible: false
-            },
-            {
-                target: 14,
-                visible: false
-            },
-            {
-                "aTargets": [18], // o numero da coluna
+                "aTargets": [16], // o numero da coluna
                 "mRender": function (data, type, full) { //aqui é uma funçãozinha para pegar os ids
                     return '<button type="button" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"\n' +
-                        'data-bs-title="Clique para desativar '+ full[1] +'" class="btn btn-outline-warning btn-sm rounded-circle" data-bs-toggle="modal" data-bs-target="#activedModal'+ full[18]+'">' +
+                        'data-bs-title="Clique para desativar '+ full[1] +'" class="btn btn-outline-warning btn-sm rounded-circle" data-bs-toggle="modal" data-bs-target="#activedModal'+ full[16]+'">' +
                         '<i class="bi bi-person-dash text-secondary"></i></button>' +
-                        '<div class="modal fade" id="activedModal' + full[18] + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">\n' +
+                        '<div class="modal fade" id="activedModal' + full[16] + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">\n' +
                             '<div class="modal-dialog modal-sm">\n' +
                                 '<div class="modal-content">\n' +
                                     '<div class="modal-header bg-warning text-light">\n' +
                                     '<h6 class="modal-title text-center" id="exampleModalLabel"><i class="bi bi-gift me-2"></i> Desativar ID: ' + full[18] + '</h6>\n' +
                                     '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>\n' +
                                     '</div>\n' +
-                                    '<div class="modal-body fw-semibold">Deseja desativar o patrimonio id : ' + full[18] + ' ?</div>\n' +
+                                    '<div class="modal-body fw-semibold">Deseja desativar o patrimonio id : ' + full[16] + ' ?</div>\n' +
                                     '<div class="modal-footer">\n' +
                                     '<button type="button" class="btn btn-outline-danger btn-sm fw-semibold" data-bs-dismiss="modal"><i class="bi bi-trash"></i> Não</button>\n' +
-                                    '<a href="patrimonios/desativar/' + full[18] + '/disabled" class="btn btn-outline-success btn-sm fw-semibold"><i class="bi bi-plus-circle" role="button" ></i> Sim</a>\n' +
+                                    '<a href="patrimonios/desativar/' + full[16] + '/disabled" class="btn btn-outline-success btn-sm fw-semibold"><i class="bi bi-plus-circle" role="button" ></i> Sim</a>\n' +
                                     '</div>\n' +
                                 '</div>\n' +
                             '</div>\n' +
@@ -139,31 +131,23 @@ $(function () {
                target: 9,
                visible: false
            },
-           {
-               target: 11,
-               visible: false
-           },
-           {
-               target: 12,
-               visible: false
-           },
             {
-                "aTargets": [14], // o numero da coluna
+                "aTargets": [12], // o numero da coluna
                 "mRender": function (data, type, full) { //aqui é uma funçãozinha para pegar os ids
                     return '<button type="button" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"\n' +
-                        'data-bs-title="Clique para desativar id : '+ full[14] +'" class="btn btn-outline-warning btn-sm rounded-circle" data-bs-toggle="modal" data-bs-target="#activedModal'+ full[14]+'">' +
+                        'data-bs-title="Clique para desativar id : '+ full[12] +'" class="btn btn-outline-warning btn-sm rounded-circle" data-bs-toggle="modal" data-bs-target="#activedModal'+ full[12]+'">' +
                         '<i class="bi bi-person-dash text-secondary"></i></button>' +
-                        '<div class="modal fade" id="activedModal' + full[14] + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">\n' +
+                        '<div class="modal fade" id="activedModal' + full[12] + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">\n' +
                             '<div class="modal-dialog modal-sm">\n' +
                                 '<div class="modal-content">\n' +
                                     '<div class="modal-header bg-warning text-dark">\n' +
-                                    '<h6 class="modal-title text-center" id="exampleModalLabel"><i class="bi bi-gift me-2"></i> Ativar ID: ' + full[14] + '</h6>\n' +
+                                    '<h6 class="modal-title text-center" id="exampleModalLabel"><i class="bi bi-gift me-2"></i> Ativar ID: ' + full[12] + '</h6>\n' +
                                     '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>\n' +
                                     '</div>\n' +
-                                    '<div class="modal-body fw-semibold">Deseja ativar o patrimonio id : ' + full[14] + ' ?</div>\n' +
+                                    '<div class="modal-body fw-semibold">Deseja ativar o patrimonio id : ' + full[12] + ' ?</div>\n' +
                                     '<div class="modal-footer">\n' +
                                     '<button type="button" class="btn btn-outline-danger btn-sm fw-semibold" data-bs-dismiss="modal"><i class="bi bi-trash"></i> Não</button>\n' +
-                                    '<a href="ativar/' + full[14] + '/actived" class="btn btn-outline-success btn-sm fw-semibold"><i class="bi bi-plus-circle" role="button" ></i> Sim</a>\n' +
+                                    '<a href="ativar/' + full[12] + '/actived" class="btn btn-outline-success btn-sm fw-semibold"><i class="bi bi-plus-circle" role="button" ></i> Sim</a>\n' +
                                     '</div>\n' +
                                 '</div>\n' +
                             '</div>\n' +
@@ -245,17 +229,9 @@ $(function () {
                 visible: false
             },   
             {
-                target: 8,
+                target: 5,
                 visible: false
-            }, 
-            {
-                target: 13,
-                visible: false
-            },  
-            {
-                target: 14,
-                visible: false
-            }  
+            }
         ]
     });
 

@@ -18,7 +18,7 @@ class Product extends Model
      */
     public function __construct()
     {
-        parent::__construct("products", ["id"], ["brand_id", "product_name", "description", "status"]);
+        parent::__construct("products", ["id"], ["brand_id", "product_name", "type_part_number", "description", "status"]);
     }
 
     
@@ -58,6 +58,24 @@ class Product extends Model
         }
         return null;
     }
+
+   /**
+     * @return null|Product
+     */
+
+     static function completeTypePartNumber(): ?Product
+     {
+         $stm = (new Product())->find("status = :s","s=actived");
+         $array = array();
+ 
+         if(!empty($stm)):
+             foreach ($stm->fetch(true) as $row):
+                 $array[] = $row->type_part_number;
+             endforeach;
+             echo json_encode($array); //Return the JSON Array
+         endif;
+         return null;
+     }
     
         public function statusSelect(): ?string
         {

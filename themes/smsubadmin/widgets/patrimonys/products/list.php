@@ -33,6 +33,7 @@
                         <th class="text-center">EDITAR</th>
                         <th class="text-center">MARCA</th>
                         <th class="text-center">PRODUTO</th>
+                        <th class="text-center">TIPO NS</th>
                         <th class="text-center">DESCRICAO</th>
                         <th class="text-center">STATUS</th>
                         <th class="text-center">DESATIVAR</th>
@@ -47,6 +48,7 @@
                     data-bs-title="Clique para editar" class="btn btn-sm btn-outline-warning rounded-circle fw-bold me-2"><i class="bi bi-pencil text-secondary"></i></a></td>
                     <td class="text-center fw-semibold"><?=(!empty($lista->Brand()->brand_name) ? $lista->Brand()->brand_name : "")?></td>
                     <td class="text-center fw-semibold"><?=(!empty($lista->product_name) ? $lista->product_name : "")?></td>
+                    <td class="text-center fw-semibold"><?=(!empty($lista->type_part_number) ? $lista->type_part_number : "")?></td>
                     <td class="text-center fw-semibold"><?=(!empty($lista->description) ? $lista->description : "")?></td>
                     <td class="text-center fw-semibold"><?=$lista->statusBadge()?></td>
                     <td class="text-center fw-semibold"><?=$lista->id?></td>

@@ -24,7 +24,7 @@ class  PatrimonyHistory extends Model
      */
     public function __construct()
     {
-        parent::__construct("patrimonys_historys", ["id"], ["patrimony_id", "user_id","patrimonys_name", "product_id", "description", "unit_id", "file_terms", "type_part_number", "part_number", "status", "photo", "observations", "created_history", "login_created"]);
+        parent::__construct("patrimonys_historys", ["id"], ["patrimony_id", "user_id","patrimonys_name", "product_id", "description", "unit_id", "file_terms", "part_number", "status", "photo", "observations", "created_history", "login_created"]);
     }
 
     /**
@@ -197,8 +197,8 @@ class  PatrimonyHistory extends Model
 
             $patrimonyId = $this->patrimony_id;
 
-            if($this->find("unit_id = :d AND part_number = :p AND user_id = :u", "d={$this->unit_id}&p={$this->part_number}&u={$this->user_id}", "patrimony_id")->fetch()) {
-                $this->update($this->safe(), "patrimony_id = :patrimony_id AND user_id = :user_id AND unit_id = :unit_id", "patrimony_id={$patrimonyId}&user_id={$this->user_id}&unit_id={$this->unit_id}");
+            if($this->find("unit_id = :d AND part_number = :p AND user_id = :u AND movement_id = :m", "d={$this->unit_id}&p={$this->part_number}&u={$this->user_id}&m={$this->movement_id}", "patrimony_id")->fetch()) {
+                $this->update($this->safe(), "patrimony_id = :patrimony_id AND user_id = :user_id AND unit_id = :unit_id AND movement_id = :movement_id", "patrimony_id={$patrimonyId}&user_id={$this->user_id}&unit_id={$this->unit_id}&movement_id={$this->movement_id}");
             } else {
                 $patrimonyId = $this->create($this->safe());
             }

@@ -437,7 +437,7 @@ class Users extends Admin
 
         $head = $this->seo->render(
             CONF_SITE_NAME . " - Termo de - ".(!empty($termPrint->userPatrimony()->rf) ? $termPrint->userPatrimony()->rf : "Responsabilidade")." - "
-            .(!empty($termPrint->userPatrimony()->user_name) ? $termPrint->userPatrimony()->user_name : "")." - ".$termPrint->type_part_number.":".$termPrint->part_number ,
+            .(!empty($termPrint->userPatrimony()->user_name) ? $termPrint->userPatrimony()->user_name : "")." - ".$termPrint->product()->type_part_number.":".$termPrint->part_number ,
             CONF_SITE_DESC,
             url(),
             theme("/assets/images/favicon.ico"),
@@ -465,7 +465,7 @@ class Users extends Admin
 
         $head = $this->seo->render(
             CONF_SITE_NAME . " - Termo de - ".(!empty($termPrint->userPatrimony()->rf) ? $termPrint->userPatrimony()->rf : "Responsabilidade")." - "
-            .(!empty($termPrint->userPatrimony()->user_name) ? $termPrint->userPatrimony()->user_name : "")." - ".$termPrint->type_part_number.":".$termPrint->part_number ,
+            .(!empty($termPrint->userPatrimony()->user_name) ? $termPrint->userPatrimony()->user_name : "")." - ".$termPrint->product()->type_part_number.":".$termPrint->part_number ,
             CONF_SITE_DESC,
             url(),
             theme("/assets/images/favicon.ico"),
