@@ -197,7 +197,13 @@ class  PatrimonyHistory extends Model
 
             $patrimonyId = $this->patrimony_id;
 
+<<<<<<< Updated upstream
             $patrimonyId = $this->create($this->safe());
+=======
+
+            $patrimonyId = $this->create($this->safe());
+            
+>>>>>>> Stashed changes
 
             if ($this->fail()) {
                 $this->message->error("Erro ao atualizar, verifique os dados");
