@@ -104,11 +104,9 @@
                         <div class="row mb-1">
 
                             <div class="col-md-1 mb-1">
-                                <a href="<?php if (file_exists(CONF_UPLOAD_DIR .'/'.$patrimonys->file_terms)) {echo '../../../'.CONF_UPLOAD_DIR .'/'.$patrimonys->file_terms;} 
-                                    else {echo url('themes/'.CONF_VIEW_APP.'/assets/images/adobe_cinza.jpg');}?>" target="_blank">
+                                <a href="<?=url('themes/'.CONF_VIEW_APP.'/assets/images/adobe_cinza.jpg');?>" target="_blank">
                                 <img data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                    data-bs-title="Clique para abrir termo" height="70" width="70" src="<?php if ($patrimonys->file_terms && file_exists(CONF_UPLOAD_DIR .'/'.$patrimonys->file_terms)) 
-                                    {echo url('themes/'.CONF_VIEW_APP.'/assets/images/adobe.jpg');}else {echo url('themes/'.CONF_VIEW_APP.'/assets/images/adobe_cinza.jpg');}?>" class="img-thumbnail rounded-circle float-left" id="foto-cliente">
+                                    data-bs-title="Clique para abrir termo" height="70" width="70" src="<?=url('themes/'.CONF_VIEW_APP.'/assets/images/adobe_cinza.jpg');?>" class="img-thumbnail rounded-circle float-left" id="foto-cliente">
                                 </a>
                             </div>
 
