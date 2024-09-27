@@ -1,4 +1,4 @@
-<div class="container my-3">
+<div class="container-fluid my-3">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb breadcrumb-chevron p-3 bg-body-tertiary rounded-3">
         <li class="breadcrumb-item">

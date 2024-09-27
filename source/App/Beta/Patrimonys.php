@@ -273,6 +273,8 @@ class Patrimonys extends Admin
                 }
 
                 $patrimonysUpdate->file_terms = $file_terms;
+            } else {
+                $patrimonysUpdate->file_terms = '';
             }
 
             if($data["movement_id"] == ""){
