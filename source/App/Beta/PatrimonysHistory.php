@@ -224,17 +224,16 @@ public function patrimonyHistory(?array $data): void
             return;
         }
 
-        if($patrimonyHistoryDelete->movement_id == $patrimonyDelete->movement_id && $patrimonyHistoryDelete->user_id == $patrimonyDelete->user_id && $patrimonyHistoryDelete->unit_id == $patrimonyDelete->unit_id){
-            $this->message->warning("Histórico com os campos Estado, Usuário e Unidade iguais ao do registro nâo pode ser apagado ...")->icon()->flash();
-            redirect("/beta/patrimonios/editar/{$patrimonyHistoryDelete->patrimony_id}");
-            return;
-        }
+        // if($patrimonyHistoryDelete->movement_id == $patrimonyDelete->movement_id && $patrimonyHistoryDelete->user_id == $patrimonyDelete->user_id && $patrimonyHistoryDelete->unit_id == $patrimonyDelete->unit_id){
+        //     $this->message->warning("Histórico com os campos Estado, Usuário e Unidade iguais ao do registro nâo pode ser apagado ...")->icon()->flash();
+        //     redirect("/beta/patrimonios/editar/{$patrimonyHistoryDelete->patrimony_id}");
+        //     return;
+        // }
 
         if ($patrimonyHistoryDelete->file_terms && file_exists(__DIR__ . "/../../../" . CONF_UPLOAD_DIR . "/{$patrimonyHistoryDelete->file_terms}")) {
             unlink(__DIR__ . "/../../../" . CONF_UPLOAD_DIR . "/{$patrimonyHistoryDelete->file_terms}");
             (new Upload())->remove($patrimonyHistoryDelete->file_terms);
         }
-
 
         $patrimonyHistoryDelete->destroy();
 
