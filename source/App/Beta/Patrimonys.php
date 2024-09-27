@@ -245,6 +245,12 @@ class Patrimonys extends Admin
                 return;
             }
 
+            if($patrimonysUpdate->part_number != $part_number) {
+                $json['message'] = $this->message->warning("Não é possivel alterar o partnumber do patrimônio")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
+
             $patrimonysUpdate->movement_id = $movement_id;
             $patrimonysUpdate->product_id = $product_id;
             $patrimonysUpdate->unit_id = $unit_id;
