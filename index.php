@@ -103,9 +103,8 @@ $route->get("/patrimonios/termo/{patrimonys_id}", "Patrimonys:term");
 //Historico Patrimonios
 $route->get("/patrimonios/historico", "PatrimonysHistory:patrimonysHistory");
 $route->get("/patrimonios/historico/excluir/{patrimonys_id}/{action}", "PatrimonysHistory:patrimonyHistory");
-$route->get("/patrimonio/historico/lista", "PatrimonyHistory:bensLista");
-$route->get("/patrimonio/historico/editar/{bens_id}", "PatrimonyHistory:bens");
-$route->post("/patrimonio/historico/editar/{bens_id}", "PatrimonyHistory:bens");
+$route->get("/patrimonios/historico/editar/{patrimonys_id}", "PatrimonysHistory:patrimonyHistory");
+$route->post("/patrimonios/historico/editar/{patrimonys_id}", "PatrimonysHistory:patrimonyHistory");
 $route->get("/patrimonios/historico/termo/{patrimonys_id}", "PatrimonysHistory:term");
 
 $route->get("/logoff", "Dash:logoff");

@@ -4,7 +4,6 @@ namespace Source\App\Beta;
 
 use Source\Models\User;
 use Source\Support\Upload;
-use Source\Support\Thumb;
 use Source\Models\Patrimony\Bem;
 use Source\Models\Patrimony\Patrimony;
 use Source\Models\Patrimony\PatrimonyHistory;
@@ -60,12 +59,14 @@ public function patrimonyHistory(?array $data): void
         $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
         $patrimonys_id = $data["patrimonys_id"];
+        $patrimony_id = $data["patrimony_id"];
         $movement_id = preg_replace("/[^0-9\s]/", "", $data["movement_id"]);
         $product_id = preg_replace("/[^0-9\s]/", "", $data["product_id"]);
+        $type_part_number = $data["type_part_number"];
         $part_number = $data["part_number"];
-        $unit_id_number = preg_replace("/[^0-9\s]/", "", $data["unit_id"]);
+        $unit_id_number = preg_replace("/[^0-9\s]/", "", $data["unit_id_history_edit"]);
         $unit_id = substr($unit_id_number, 0, 2);  // 12
-        $user_id = $data["user_id"];
+        $user_id = $data["user_id_history_edit"];
         $observations = $data["observations"];
 
         $patrimonysHistoryUpdate = (new PatrimonyHistory())->findById($patrimonys_id);
@@ -76,7 +77,19 @@ public function patrimonyHistory(?array $data): void
             return;
         }
 
-        $patrimonysHistoryUpdate->patrimonys_id = $patrimonys_id;
+        if($patrimonysHistoryUpdate->part_number != $part_number) {
+            $json['message'] = $this->message->warning("Não é possivel alterar o partnumber do patrimônio")->icon()->render();
+            echo json_encode($json);
+            return;
+        }
+
+        if($patrimonysHistoryUpdate->product_id != $product_id) {
+            $json['message'] = $this->message->warning("Não é possivel alterar o nome do produto do patrimônio")->icon()->render();
+            echo json_encode($json);
+            return;
+        }
+
+        $patrimonysHistoryUpdate->patrimony_id = $patrimony_id;
         $patrimonysHistoryUpdate->movement_id = $movement_id;
         $patrimonysHistoryUpdate->product_id = $product_id;
         $patrimonysHistoryUpdate->unit_id = $unit_id;
@@ -87,22 +100,22 @@ public function patrimonyHistory(?array $data): void
 
         //upload pdf
         if (!empty($_FILES["file_terms"])) {
-        $files = $_FILES["file_terms"];
-        $upload = new Upload();
-        
-        $file_terms = $upload->file($files, $patrimonysHistoryUpdate->user_id.'_'.$patrimonysHistoryUpdate->product()->type_part_number.'_'.$patrimonysHistoryUpdate->part_number);
+            $files = $_FILES["file_terms"];
+            $upload = new Upload();
+            
+            $file_terms = $upload->file($files, $patrimonysHistoryUpdate->user_id.'_'.$type_part_number.'_'.$patrimonysHistoryUpdate->part_number);
 
-        if (!$file_terms) {
-            $json["message"] = $upload->message()->render();
-            echo json_encode($json);
-            return;
-        }
+            if (!$file_terms) {
+                $json["message"] = $upload->message()->render();
+                echo json_encode($json);
+                return;
+            }
 
             $patrimonysHistoryUpdate->file_terms = $file_terms;
         }
 
         if($data["movement_id"] == ""){
-            $json['message'] = $this->message->warning("Informe um estado para gravar o patrimônio !!!")->icon()->render();
+            $json['message'] = $this->message->warning("Informe um estado para gravar o patrimônio !")->icon()->render();
             echo json_encode($json);
             return;
         }
@@ -119,7 +132,13 @@ public function patrimonyHistory(?array $data): void
             return;
         }
 
-        if($data["unit_id"] == ""){
+        if($data["user_id_history_edit"] == ""){
+            $json['message'] = $this->message->warning("Informe um usuário para gravar o patrimônio !!!")->icon()->render();
+            echo json_encode($json);
+            return;
+        }
+
+        if($data["unit_id_history_edit"] == ""){
             $json['message'] = $this->message->warning("Informe uma unidade para gravar o patrimônio !!!")->icon()->render();
             echo json_encode($json);
             return;
@@ -131,9 +150,10 @@ public function patrimonyHistory(?array $data): void
             return;
         }
 
-        $this->message->success("Patrimonio {$part_number} atualizado com sucesso !!!")->icon("emoji-grin me-1")->flash();
-        echo json_encode(["redirect" => url("/beta/patrimonios/editar/{$patrimonysHistoryUpdate->id}")]);
+        $this->message->success("Histórico de Patrimonio {$part_number} atualizado com sucesso !!!")->icon("emoji-grin me-1")->flash();
+        echo json_encode(["redirect" => url("/beta/patrimonios/editar/{$patrimonysHistoryUpdate->patrimony_id}")]);
         return;
+
     }
 
         //actived
@@ -161,7 +181,6 @@ public function patrimonyHistory(?array $data): void
         return;
     }
 
-    
         //disabled
         if (!empty($data["action"]) && $data["action"] == "disabled") {
         $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
@@ -183,31 +202,6 @@ public function patrimonyHistory(?array $data): void
         }
 
         $this->message->success("Patrimônio {$patrimonyDisabled->product()->type_part_number} - {$patrimonyDisabled->part_number} desativado com sucesso !!!")->icon("emoji-grin me-1")->flash();
-        redirect("/beta/patrimonios");
-        return;
-    }
-
-        //writeoff
-        if (!empty($data["action"]) && $data["action"] == "writeoff") {
-        $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
-        $patrimonyWriteoff = (new PatrimonyHistory())->findById($data["patrimonys_id"]);
-
-        if (!$patrimonyWriteoff) {
-            $this->message->error("Você tentou gerenciar um patrimônio que não existe")->icon()->flash();
-            echo json_encode(["redirect" => url("/beta/patrimonios")]);
-            return;
-        }
-
-        $patrimonyWriteoff->status = "writeoff";
-        $patrimonyWriteoff->login_updated = $user->login;
-
-        if (!$patrimonyWriteoff->save()) {
-            $json["message"] = $patrimonyWriteoff->message()->render();
-            echo json_encode($json);
-            return;
-        }
-
-        $this->message->success("Patrimônio {$patrimonyWriteoff->product()->type_part_number} - {$patrimonyWriteoff->type_number} dado como baixa com sucesso !!!")->icon("emoji-grin me-1")->flash();
         redirect("/beta/patrimonios");
         return;
     }
@@ -243,16 +237,14 @@ public function patrimonyHistory(?array $data): void
     }
 
     $PatrimonysEdit = null;
-    $historico = null;
     
     if (!empty($data["patrimonys_id"])) {
         $patrimonyId = filter_var($data["patrimonys_id"], FILTER_VALIDATE_INT);
         $PatrimonysEdit = (new PatrimonyHistory())->findById($patrimonyId);
-        $historico = (new PatrimonyHistory())->find("patrimony_id = :p", "p={$patrimonyId}")->fetch(true);
     }
 
     $patrimonysCreates = new PatrimonyHistory();
-    
+   
     $head = $this->seo->render(
         "Patrimonios - " . CONF_SITE_NAME,
         CONF_SITE_DESC,
@@ -261,14 +253,13 @@ public function patrimonyHistory(?array $data): void
         false
     );
 
-    echo $this->view->render("widgets/patrimonys/patrimony", [
+    echo $this->view->render("widgets/patrimonysHistory/patrimonyHistory", [
         "head" => $head,
         "patrimonys" => $PatrimonysEdit,
         "patrimonyscreates" => $patrimonysCreates,
-        "historico" => $historico,
-        "urls" => ($PatrimonysEdit ? "patrimonios/editar/{$PatrimonysEdit->id}" : "patrimonios"),
-        "namepage" => "Patrimonios",
-        "name" => ($PatrimonysEdit ? "Editar" : "Cadastrar")
+        "urls" => "patrimonios",
+        "namepage" => "Histórico de Patrimonios",
+        "name" => "Editar"
     ]);
 }
 

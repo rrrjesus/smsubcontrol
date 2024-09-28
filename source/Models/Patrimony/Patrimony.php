@@ -201,7 +201,6 @@ class Patrimony extends Model
     /**
      * @return null|User
      */
-
     static function completeUser(): ?User
     {
         $stm = (new User())->find("status != :s","s=disabled");
@@ -219,7 +218,6 @@ class Patrimony extends Model
     /**
      * @return null|Movement
      */
-
      static function completeMovement(): ?Movement
      {
          $stm = (new Movement())->find("","");
@@ -233,10 +231,10 @@ class Patrimony extends Model
          endif;
          return null;
      }
+
     /**
      * @return null|Product
      */
-
     static function completeProduct(): ?Product
     {
         $stm = (new Product())->find("status = :s","s=actived");
@@ -254,7 +252,6 @@ class Patrimony extends Model
     /**
      * @return null|Unit
      */
-
      static function completeUnit(): ?Unit
      {
          $stm = (new Unit())->find("status = :s","s=actived");

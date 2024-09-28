@@ -21,7 +21,7 @@
                     <?php if(!empty($historico)){ ?>
                     <?php foreach ($historico as $lista): ?>
                         <tr>
-                            <td class="text-center"><button type="button" disabled class="btn btn-warning rounded-circle btn-sm fw-semibold text-"><?=$lista->id?></button></td>
+                            <td class="text-center"><a role="button" href="<?=url("beta/patrimonios/historico/editar/{$lista->id}")?>" class="btn btn-warning rounded-circle btn-sm fw-semibold text-"><i class="bi bi-pencil text-secondary"></i></a></td>
                             <td class="text-center fw-semibold"><?=date_fmt_null($lista->created_history)?></td>
                             <td class="text-center fw-semibold"><?=(!empty($lista->movement()->movement_name) ? $lista->movement()->movement_name : "")?></td>
                             <td class="text-center fw-semibold"><?=(!empty($lista->userPatrimony()->login) ? $lista->userPatrimony()->login : "")?></td>

@@ -113,6 +113,40 @@ class  PatrimonyHistory extends Model
     }
 
     /**
+     * @return null|User
+     */
+    static function completeUser(): ?User
+    {
+        $stm = (new User())->find("status != :s","s=disabled");
+        $array[] = array();
+
+        if(!empty($stm)):
+            foreach ($stm->fetch(true) as $row):
+                    $array[] = $row->id.' - '.$row->user_name;
+            endforeach;
+            echo json_encode($array); //Return the JSON Array
+        endif;
+        return null;
+    }
+
+    /**
+     * @return null|Unit
+     */
+    static function completeUnit(): ?Unit
+    {
+        $stm = (new Unit())->find("status = :s","s=actived");
+        $array = array();
+
+        if(!empty($stm)):
+            foreach ($stm->fetch(true) as $row):
+                $array[] = $row->id.' - '.$row->unit_name;
+            endforeach;
+            echo json_encode($array); //Return the JSON Array
+        endif;
+        return null;
+    }
+
+    /**
      * @return null|PatrimonyMarcas
      */
     public function productBrand(string $brand): ?Brand
@@ -120,6 +154,40 @@ class  PatrimonyHistory extends Model
         if($brand) {
             return(new Brand())->findById($brand);
         }
+        return null;
+    }
+
+    /**
+     * @return null|Product
+     */
+    static function completeProduct(): ?Product
+    {
+        $stm = (new Product())->find("status = :s","s=actived");
+        $array = array();
+
+        if(!empty($stm)):
+            foreach ($stm->fetch(true) as $row):
+                $array[] = $row->id.' - '.$row->product_name.' - (Nº de Registro '.$row->type_part_number.')';
+            endforeach;
+            echo json_encode($array); //Return the JSON Array
+        endif;
+        return null;
+    }
+
+    /**
+     * @return null|Movement
+     */
+    static function completeMovement(): ?Movement
+    {
+        $stm = (new Movement())->find("","");
+        $array = array();
+
+        if(!empty($stm)):
+            foreach ($stm->fetch(true) as $row):
+                $array[] = $row->id.' - '.$row->movement_name;
+            endforeach;
+            echo json_encode($array); //Return the JSON Array
+        endif;
         return null;
     }
 
@@ -192,12 +260,11 @@ class  PatrimonyHistory extends Model
     public function save(): bool
     {
 
-        /** PatrimonyHistory Update */
-        if (!empty($this->patrimony_id)) {
-
-            $patrimonyId = $this->patrimony_id;
-
-            $patrimonyId = $this->create($this->safe());
+        /** Patrimony Update */
+        if (!empty($this->id)) {
+            $patrimonyId = $this->id;
+            
+            $this->update($this->safe(), "id = :id", "id={$patrimonyId}");
             
             if ($this->fail()) {
                 $this->message->error("Erro ao atualizar, verifique os dados");
@@ -210,9 +277,6 @@ class  PatrimonyHistory extends Model
             if ($this->find("unit_id = :d AND part_number = :p AND user_id = :u", "d={$this->unit_id}&p={$this->part_number}&u={$this->user_id}", "patrimony_id")->fetch()) {
                 return false;
             }
-
-            $this->login_created = (new User())->findById($this->user->id)->login;
-            $this->created_history = date("Y-m-d H:i:s");
 
             $patrimonyId = $this->create($this->safe());
 

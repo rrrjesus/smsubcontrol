@@ -237,6 +237,29 @@ $(function () {
         );
     });
 
+     /**
+     * Função para tratativas e preenchimentos automáticos de campos
+     *
+     * @return {VoidFunction}
+     */
+
+     $("input[name='user_id_history_edit']").blur(function(){
+        var $unit_id_history_edit = $("input[name='unit_id_history_edit']");
+
+        $unit_id_history_edit.val('Carregando...');
+
+        $.getJSON(
+            '../../../../themes/smsubapp/autocomplete/complete-user-history-edit.php',
+
+            {user_id_history_edit: $(this).val()},
+
+            function( json )
+            {
+                $unit_id_history_edit.val( json.unit_id_history_edit );
+            }
+        );
+    });
+
     /*
         * AJAX FORM
         */
