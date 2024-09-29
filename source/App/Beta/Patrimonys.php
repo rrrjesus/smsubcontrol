@@ -229,7 +229,8 @@ class Patrimonys extends Admin
 
             $patrimonys_id = $data["patrimonys_id"];
             $movement_id = preg_replace("/[^0-9\s]/", "", $data["movement_id"]);
-            $product_id = preg_replace("/[^0-9\s]/", "", $data["product_id"]);
+            $product_id_number = preg_replace("/[^0-9\s]/", "", $data["product_id"]);
+            $product_id = substr($product_id_number, 0, 1);
             $type_part_number = $data["type_part_number"];
             $part_number = $data["part_number"];
             $unit_id_number = preg_replace("/[^0-9\s]/", "", $data["unit_id_edit"]);
@@ -247,6 +248,12 @@ class Patrimonys extends Admin
 
             if($patrimonysUpdate->part_number != $part_number) {
                 $json['message'] = $this->message->warning("Não é possivel alterar o partnumber do patrimônio")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            if($patrimonysUpdate->product_id != $product_id) {
+                $json['message'] = $this->message->warning("Não é possivel alterar o nome do produto do patrimônio")->icon()->render();
                 echo json_encode($json);
                 return;
             }

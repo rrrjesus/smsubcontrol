@@ -1,6 +1,6 @@
 $(function () {
 
-    $('#patrimonys').DataTable({
+    var patrimonis = $('#patrimonys').DataTable({
         drawCallback: function() {
             $('body').tooltip({
                 selector: '[data-bs-togglee="tooltip"]'
@@ -75,6 +75,8 @@ $(function () {
             }
         ]
     });
+
+    $('div.dt-search input', patrimonis.table().container()).focus();
     
     $('#disabledPatrimony').DataTable({
         drawCallback: function() {

@@ -45,7 +45,7 @@ $columns = array(
     array(
         'db'        => 'id', 'dt'        => 0,
         'formatter' => function($d) {
-            return '<a href="../beta/patrimonios/editar/'.$d.'" role="button" class="btn btn-sm btn-outline-warning rounded-circle"><i class="bi bi-pencil text-secondary"></i></a>';
+            return '<a href="../beta/patrimonios/editar/'.$d.'" accesskey="a" role="button" class="btn btn-sm btn-outline-warning rounded-circle"><i class="bi bi-pencil text-secondary"></i></a>';
         }
     ),
     array('db'        => 'created_at', 'dt'        => 1,

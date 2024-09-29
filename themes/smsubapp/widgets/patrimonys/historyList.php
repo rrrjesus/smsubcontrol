@@ -21,7 +21,7 @@
                     <?php if(!empty($historico)){ ?>
                     <?php foreach ($historico as $lista): ?>
                         <tr>
-                            <td class="text-center"><a role="button" href="<?=url("beta/patrimonios/historico/editar/{$lista->id}")?>" class="btn btn-warning rounded-circle btn-sm fw-semibold text-"><i class="bi bi-pencil text-secondary"></i></a></td>
+                            <td class="text-center"><a role="button" href="<?=url("beta/patrimonios/historico/editar/{$lista->id}")?>" accesskey="a" class="btn btn-warning rounded-circle btn-sm fw-semibold text-"><i class="bi bi-pencil text-secondary"></i></a></td>
                             <td class="text-center fw-semibold"><?=date_fmt_null($lista->created_history)?></td>
                             <td class="text-center fw-semibold"><?=(!empty($lista->movement()->movement_name) ? $lista->movement()->movement_name : "")?></td>
                             <td class="text-center fw-semibold"><?=(!empty($lista->userPatrimony()->login) ? $lista->userPatrimony()->login : "")?></td>
@@ -33,23 +33,23 @@
                             <td class="text-center"><?=$lista->fileList()?></td>
                             <td class="text-center fw-semibold"><?=(!empty($lista->unit()->unit_name) ? $lista->unit()->unit_name : "")?></td>
                             <td class="text-center fw-semibold"><?=$lista->observations?></td>
-                            <td class="text-center"><button type="button" data-bs-togglee="modal" data-bs-toggle="modal" data-bs-target="#trash-<?=$lista->id;?>" 
+                            <td class="text-center"><button type="button" data-bs-togglee="modal" accesskey="b" data-bs-toggle="modal" data-bs-target="#trash-<?=$lista->id;?>" 
                                 class="btn btn-outline-danger rounded-circle btn-sm text-center"><i class="bi bi-trash"></i></b></td>
                                     <!-- Modal -->
                                 <div class="modal fade" id="trash-<?=$lista->id;?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-sm modal-dialog-centered">
                                         <div class="modal-content">
-                                        <div class="modal-header bg-danger text-light">
-                                            <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="bi bi-trash me-2"></i> EXCLUIR <?=$lista->id;?></h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body fs-5 text-center">
-                                            Deseja excluir o histórico id: <?=$lista->id?> ?
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-outline-danger fw-semibold" data-bs-dismiss="modal">Não</button>
-                                            <a href="../historico/excluir/<?=$lista->id?>/delete" role="button" class="btn btn-outline-success fw-semibold">Sim</a>
-                                        </div>
+                                            <div class="modal-header bg-danger text-light">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="bi bi-trash me-2"></i> EXCLUIR <?=$lista->id;?></h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body fs-5 text-center">
+                                                Deseja excluir o histórico id: <?=$lista->id?> ?
+                                            </div>
+                                            <div class="modal-footer justify-content-center">
+                                                <button type="button" class="btn btn-outline-danger fw-semibold me-3" data-bs-dismiss="modal">NÃO</button>
+                                                <a href="../historico/excluir/<?=$lista->id?>/delete" role="button" accesskey="s" class="btn btn-outline-success fw-semibold"><u>S</u>IM</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

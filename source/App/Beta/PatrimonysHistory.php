@@ -61,7 +61,8 @@ public function patrimonyHistory(?array $data): void
         $patrimonys_id = $data["patrimonys_id"];
         $patrimony_id = $data["patrimony_id"];
         $movement_id = preg_replace("/[^0-9\s]/", "", $data["movement_id"]);
-        $product_id = preg_replace("/[^0-9\s]/", "", $data["product_id"]);
+        $product_id_number = preg_replace("/[^0-9\s]/", "", $data["product_id"]);
+        $product_id = substr($product_id_number, 0, 1);
         $type_part_number = $data["type_part_number"];
         $part_number = $data["part_number"];
         $unit_id_number = preg_replace("/[^0-9\s]/", "", $data["unit_id_history_edit"]);
