@@ -212,6 +212,7 @@ public function patrimonyHistory(?array $data): void
         $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $patrimonyHistoryDelete = (new PatrimonyHistory())->findById($data["patrimonys_id"]);
         $patrimonyDelete = (new Patrimony())->findById($patrimonyHistoryDelete->patrimony_id);
+        $countHystory = (new PatrimonyHistory())->find("patrimony_id = :p", "p={$patrimonyHistoryDelete->patrimony_id}");
 
         if (!$patrimonyHistoryDelete) {
             $this->message->error("Você tentou deletar um patrimônio que não existe")->flash();
@@ -219,11 +220,11 @@ public function patrimonyHistory(?array $data): void
             return;
         }
 
-        // if($patrimonyHistoryDelete->movement_id == $patrimonyDelete->movement_id && $patrimonyHistoryDelete->user_id == $patrimonyDelete->user_id && $patrimonyHistoryDelete->unit_id == $patrimonyDelete->unit_id){
-        //     $this->message->warning("Histórico com os campos Estado, Usuário e Unidade iguais ao do registro nâo pode ser apagado ...")->icon()->flash();
-        //     redirect("/beta/patrimonios/editar/{$patrimonyHistoryDelete->patrimony_id}");
-        //     return;
-        // }
+        if($countHystory->count() < 2 ){
+            $this->message->warning("Erro ")->icon()->flash();
+           redirect("/beta/patrimonios/editar/{$patrimonyHistoryDelete->patrimony_id}");
+           return;
+       }
 
         if ($patrimonyHistoryDelete->file_terms && file_exists(__DIR__ . "/../../../" . CONF_UPLOAD_DIR . "/{$patrimonyHistoryDelete->file_terms}")) {
             unlink(__DIR__ . "/../../../" . CONF_UPLOAD_DIR . "/{$patrimonyHistoryDelete->file_terms}");
@@ -232,7 +233,7 @@ public function patrimonyHistory(?array $data): void
 
         $patrimonyHistoryDelete->destroy();
 
-        $this->message->success("O histórico de patrimônio id: {$patrimonyHistoryDelete->id} - {$patrimonyHistoryDelete->product()->type_part_number} {$patrimonyHistoryDelete->part_number} foi excluído com sucesso...")->flash();
+        $this->message->success("O {$countHystory->count()} histórico de patrimônio id: {$patrimonyHistoryDelete->id} - {$patrimonyHistoryDelete->product()->type_part_number} {$patrimonyHistoryDelete->part_number} foi excluído com sucesso...")->flash();
         redirect("/beta/patrimonios/editar/{$patrimonyHistoryDelete->patrimony_id}");
         return;
     }

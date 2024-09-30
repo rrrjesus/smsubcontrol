@@ -6,7 +6,7 @@
 
         <h1 class="h3 mb-3 fw-normal mt-5">Criar nova senha</h1>
         <p class="fw-normal">Informe e repita uma nova senha para recuperar seu acesso.</p>
-        <p class="fw-normal"><span class="text-danger fw-semibold">Aviso </span>: A senha deve ter no mínimo 8 caracteres e conter pelo menos um número e um caractere</p>
+        <p class="fw-normal text-danger">Aviso : A senha deve ter no mínimo 8 caracteres e conter pelo menos um número e um caracter.</p>
 
         <div class="ajax_response"><?= flash(); ?></div>
 
