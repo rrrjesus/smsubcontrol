@@ -116,7 +116,7 @@
                 <img class="title_image" title="Perguntas frequentes" alt="Perguntas frequentes"
                      src="<?= theme("/assets/images/faq-title.jpg"); ?>"/>
                 <h3>Perguntas frequentes:</h3>
-                <p>Confira as principais dúvidas e repostas sobre o CaféControl.</p>
+                <p>Confira as principais dúvidas e repostas sobre o SmsubControl.</p>
             </header>
             <div class="faq_asks">
                 <?php foreach ($faq as $question): ?>

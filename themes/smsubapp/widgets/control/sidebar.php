@@ -1,6 +1,6 @@
 <div class="dash_content_sidebar">
     <h3 class="icon-asterisk">dashboard/control</h3>
-    <p class="dash_content_sidebar_desc">Planos, assinaturas e gestão do CaféControl? Está tudo aqui...</p>
+    <p class="dash_content_sidebar_desc">Planos, assinaturas e gestão do SmsubControl? Está tudo aqui...</p>
 
     <nav>
         <?php

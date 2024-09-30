@@ -49,9 +49,9 @@
 <?php else: ?>
     <div class="row justify-content-center text-center mt-5 mb-5">
         <div class="col-md-4">
-            <i class="bi bi-book-half display-1 text-<?=CONF_WEB_COLOR;?>"></i>
-            <p class="fw-bolder fs-3">Comece a utilizar a agenda inteligente agora mesmo</p>
-            <p class="fs-5">É rápida, simples e funcional!</p>
+        <i class="bi bi-ui-checks display-1 text-<?=CONF_WEB_COLOR;?>"></i>
+            <p class="fw-bolder fs-3">Comece a utilizar o SmsubControl agora mesmo</p>
+            <p class="fs-5">É rápido, simples e funcional!</p>
         </div>
     </div>
 <?php endif; ?>

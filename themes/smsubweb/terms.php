@@ -2,7 +2,7 @@
 
 <article class="terms_page">
     <header class="terms_page_header">
-        <h1>Termos de uso CaféControl</h1>
+        <h1>Termos de uso SmsubControl</h1>
         <p>Ao utilizar esse site você concorda com os termos aqui descritos.</p>
     </header>
 

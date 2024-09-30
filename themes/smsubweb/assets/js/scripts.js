@@ -45,7 +45,7 @@ $(function () {
     $.validator.addMethod('strongPassword', function(value, element) {
         return this.optional(element)
             || value.length >= 8
-    }, 'Sua senha deve ter pelo menos 6 caracteres e conter pelo menos um número e um caractere.');
+    }, 'Sua senha deve ter pelo menos 8 caracteres e conter pelo menos um número e um caractere.');
 
 
     $("#login").validate({
@@ -67,6 +67,48 @@ $(function () {
             password: {
                 required: "Digite sua senha !!!",
                 strongPassword: "Sua senha deve ter pelo menos 8 caracteres"
+            }
+        }
+    });
+
+    $("#forget").validate({
+        rules: {
+            email: {
+                required: true
+                // remote: "remote/valida-email.php"
+            }
+        },
+        messages: {
+            email: {
+                required: "Digite seu email !!!"
+                // remote: "Email não encontrado !!!"
+            }
+        }
+    });
+
+    $("#reset").validate({
+        rules: {
+            password: {
+                required: true,
+                strongPassword: true
+            },
+            password_re: {
+                required: true,
+                strongPassword: true,
+                equalTo: "#password"
+            }
+        },
+        messages: {
+            password: {
+                required: "Digite sua senha !!!",
+                required: true,
+                strongPassword: "Sua nova senha deve ter no mínimo 8 caracteres e conter pelo menos um número e um caractere"
+            },
+            password_re: {
+                required: "Redigite a sua senha !!!",
+                required: true,
+                strongPassword: "Sua nova senha deve ter no mínimo 8 caracteres e conter pelo menos um número e um caractere",
+                equalTo: "As senhas não conferem !!!"
             }
         }
     });

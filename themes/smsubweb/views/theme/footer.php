@@ -4,15 +4,15 @@
             <div class="col-lg-3 mb-3">
                 <a data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip"
                    data-bs-title="Agenda de Ramais" class="d-inline-flex align-items-center mb-2 text-body-emphasis text-decoration-none" href="<?=url("/contatos")?>" aria-label=Contatos">
-                    <i class="bi bi-book fs-1 mb-3 me-2 text-<?=CONF_WEB_COLOR;?> fw-bold"></i>
-                    <span class="text-<?=CONF_WEB_COLOR;?> fw-bold fs-6">SMSUB AGENDA</span>
+                    <i class="bi bi-ui-checks fs-1 mb-3 me-2 text-<?=CONF_WEB_COLOR;?> fw-bold"></i>
+                    <span class="text-<?=CONF_WEB_COLOR;?> fw-bold fs-6 text-uppercase"><?=CONF_SITE_NAME?></span>
                 </a>
                 <ul class="list-unstyled small">
                     <li class="mb-2">Desenvolvido com todo amor pela equipe de <strong>SMSUB - COTI - Coordenação de Tecnologia da smsubrmação</strong>.</li>
                     <li class="mb-2">Código licenciado <a data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip"
-                                                          data-bs-title="Liçenca de Software" class="text-decoration-none text-<?=CONF_WEB_COLOR;?> fw-bold" href="https://github.com/rrrjesus/agenda/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a></li>
+                                                          data-bs-title="Liçenca de Software" class="text-decoration-none text-<?=CONF_WEB_COLOR;?> fw-bold" href="https://github.com/rrrjesus/smsubcontrol/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a></li>
                     <li class="mb-2">Versão Atual v2.0.2.</li>
-                    <li class="mb-2">Código Fonte <a data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip" data-bs-title="GitHub do Desenvolvedor" class="text-decoration-none text-<?=CONF_WEB_COLOR;?> fw-bold" href="https://github.com/rrrjesus/agenda" target="_blank" rel="noopener"><i class="bi bi-github"></i> @rrrjesus/agenda</a>.</li>
+                    <li class="mb-2">Código Fonte <a data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip" data-bs-title="GitHub do Desenvolvedor" class="text-decoration-none text-<?=CONF_WEB_COLOR;?> fw-bold" href="https://github.com/rrrjesus/smsubcontrol" target="_blank" rel="noopener"><i class="bi bi-github"></i> @rrrjesus/smsubcontrol</a>.</li>
                 </ul>
             </div>
 
