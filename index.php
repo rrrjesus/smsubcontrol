@@ -165,6 +165,17 @@ $route->get("/unidades/ativar/{unit_id}/{action}", "Units:unit");
 $route->get("/unidades/desativar/{unit_id}/{action}", "Units:unit");
 $route->get("/unidades/excluir/{unit_id}/{action}", "Units:unit");
 
+//contratos
+$route->get("/patrimonio/contratos", "Contracts:contracts");
+$route->get("/patrimonio/contratos/desativados", "Contracts:disabledContracts");
+$route->get("/patrimonio/contratos/cadastrar", "Contracts:contract");
+$route->post("/patrimonio/contratos/cadastrar", "Contracts:contract");
+$route->get("/patrimonio/contratos/editar/{contract_id}", "Contracts:contract");
+$route->post("/patrimonio/contratos/editar/{contract_id}", "Contracts:contract");
+$route->get("/patrimonio/contratos/ativar/{contract_id}/{action}", "Contracts:contract");
+$route->get("/patrimonio/contratos/desativar/{contract_id}/{action}", "Contracts:contract");
+$route->get("/patrimonio/contratos/excluir/{contract_id}/{action}", "Contracts:contract");
+
 //marcas
 $route->get("/patrimonio/marcas", "Brands:brands");
 $route->get("/patrimonio/marcas/desativadas", "Brands:disabledBrands");

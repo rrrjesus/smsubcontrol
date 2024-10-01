@@ -39,7 +39,7 @@ class Contracts extends Admin
             "head" => $head,
             "contracts" => $contracts,
             "urls" => "patrimonio/contratos",
-            "namepage" => "contratos",
+            "namepage" => "Contratos",
             "name" => "Lista",
             "registers" => (object)[
                 "disabled" => $contract->find("status = :s", "s=disabled")->count()
@@ -70,7 +70,7 @@ class Contracts extends Admin
                 "head" => $head,
                 "contracts" => $contracts,
                 "urls" => "patrimonio/contratos",
-                "namepage" => "contratos",
+                "namepage" => "Contratos",
                 "name" => "Lista"
             ]);
 
@@ -234,7 +234,7 @@ class Contracts extends Admin
             "head" => $head,
             "contratos" => $contractEdit,
             "urls" => "patrimonio/contratos",
-            "namepage" => "contratos",
+            "namepage" => "Contratos",
             "name" => ($contractEdit ? "Editar" : "Cadastrar")
         ]);
     }

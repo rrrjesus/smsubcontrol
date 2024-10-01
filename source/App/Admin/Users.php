@@ -444,13 +444,23 @@ class Users extends Admin
             false
         );
 
-        echo $this->view->render("widgets/users/term", [
-            "head" => $head,
-            "term" => $termPrint,
-            "urls" => "patrimonios/termo/{$termPrint->id}",
-            "namepage" => "Termo",
-            "name" => "Imprimir"
-        ]);
+        if($termPrint->movement_id < 4){
+            echo $this->view->render("widgets/users/withdrawalTerm", [
+                "head" => $head,
+                "term" => $termPrint,
+                "urls" => "patrimonios/termo/{$termPrint->id}",
+                "namepage" => "Termo",
+                "name" => "Imprimir"
+            ]);
+        } else {
+            echo $this->view->render("widgets/users/returnTerm", [
+                "head" => $head,
+                "term" => $termPrint,
+                "urls" => "patrimonios/termo/{$termPrint->id}",
+                "namepage" => "Termo",
+                "name" => "Imprimir"
+            ]);
+        }
     }
 
         /**
