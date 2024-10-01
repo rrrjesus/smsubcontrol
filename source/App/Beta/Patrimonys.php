@@ -116,13 +116,23 @@ class Patrimonys extends Admin
             false
         );
 
-        echo $this->view->render("widgets/patrimonys/term", [
-            "head" => $head,
-            "term" => $termPrint,
-            "urls" => "patrimonios",
-            "namepage" => "Usuários",
-            "name" => "Termo"
-        ]);
+        if($termPrint->moviment_id < 4){
+            echo $this->view->render("widgets/patrimonys/withdrawalTerm", [
+                "head" => $head,
+                "term" => $termPrint,
+                "urls" => "patrimonios",
+                "namepage" => "Usuários",
+                "name" => "Termo"
+            ]);
+        } else {
+            echo $this->view->render("widgets/patrimonys/returnTerm", [
+                "head" => $head,
+                "term" => $termPrint,
+                "urls" => "patrimonios",
+                "namepage" => "Usuários",
+                "name" => "Termo"
+            ]);
+        }
     }
 
 

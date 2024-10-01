@@ -1,8 +1,5 @@
-<html>
+<?= $this->layout("_beta"); ?>
 
-<head>
-<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
-<meta name=Generator content="Microsoft Word 15 (filtered)">
 <style>
 <!--
  /* Font Definitions */
@@ -22,7 +19,7 @@
 	font-size:11.0pt;
 	font-family:"Calibri",sans-serif;}
 h1
-	{mso-style-link:"Título 1 Char";
+	{mso-style-link:"TÃ­tulo 1 Char";
 	margin:0cm;
 	text-align:center;
 	page-break-after:avoid;
@@ -35,12 +32,13 @@ p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
 	font-size:12.0pt;
 	font-family:"Times New Roman",serif;
 	font-weight:bold;}
-a:link, span.MsoHyperlink
-	{color:#0563C1;
-	text-decoration:underline;}
+p.MsoNoSpacing, li.MsoNoSpacing, div.MsoNoSpacing
+	{margin:0cm;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
 span.Ttulo1Char
-	{mso-style-name:"Título 1 Char";
-	mso-style-link:"Título 1";
+	{mso-style-name:"TÃ­tulo 1 Char";
+	mso-style-link:"TÃ­tulo 1";
 	font-family:"Arial",sans-serif;
 	font-weight:bold;
 	font-style:italic;}
@@ -59,16 +57,22 @@ span.CorpodetextoChar
 	margin:3.0cm 2.0cm 2.0cm 2.0cm;}
 div.WordSection1
 	{page:WordSection1;}
--->
-</style>
 
-</head>
+/* Print Definitions */
+@media print {
+  nav {visibility: hidden;} 
+  footer {visibility: hidden;} 
+  div.WordSection1{visibility: visible;}div.WordSection1 {position: fixed;left: 0;top: 0;}}
+
+</style>
 
 <body lang=PT-BR link="#0563C1" vlink="#954F72" style='word-wrap:break-word'>
 
 <div class=WordSection1>
 
-<h1><u><span style='font-size:14.0pt;font-style:normal'>TERMO DE EMPRÉSTIMO</span></u></h1>
+<img class="rounded mx-auto d-block" src="<?=url('themes/'.CONF_VIEW_APP.'/assets/images/logo_termo.png');?>">
+
+<h1><u><span style='font-size:14.0pt;font-style:normal'>TERMO DE EMPRÃ‰STIMO</span></u></h1>
 
 <p class=MsoNormal><span style='font-size:10.0pt;line-height:106%;font-family:
 "Arial",sans-serif'>&nbsp;</span></p>
@@ -79,8 +83,8 @@ style='font-size:10.0pt;line-height:150%;font-family:"Arial",sans-serif;
 font-weight:normal'>Eu
 ____________________________________________________________&nbsp;&nbsp; ,
 portador do Registro Funcional (RF) _____________, lotado na Subprefeitura ________________,
-&nbsp;declaro assumir responsabilidade pela guarda, conservação deste aparelho
-(e acessórios) e uso adequado do(s) equipamento(s) abaixo listado(s) , conforme
+&nbsp;declaro assumir responsabilidade pela guarda, conservaÃ§Ã£o deste aparelho
+(e acessÃ³rios) e uso adequado do(s) equipamento(s) abaixo listado(s) , conforme
 segue:</span></p>
 
 <table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
@@ -103,8 +107,8 @@ line-height:150%'><span style='font-size:10.0pt;line-height:150%;font-family:
 style='letter-spacing:-.3pt'> </span></span><span style='font-size:10.0pt;
 line-height:150%;font-family:"Arial",sans-serif'>RECEBI</span><span
 style='font-size:10.0pt;line-height:150%;font-family:"Arial",sans-serif;
-font-weight:normal'> o equipamento acima discriminado em perfeita condição de
-uso, e que li e entendi os termos deste Termo de Empréstimo, estando </span><span
+font-weight:normal'> o equipamento acima discriminado em perfeita condiÃ§Ã£o de
+uso, e que li e entendi os termos deste Termo de EmprÃ©stimo, estando </span><span
 style='font-size:10.0pt;line-height:150%;font-family:"Arial",sans-serif'>CIENTE</span><span
 style='font-size:10.0pt;line-height:150%;font-family:"Arial",sans-serif;
 font-weight:normal'> e </span><span style='font-size:10.0pt;line-height:150%;
@@ -115,18 +119,18 @@ line-height:150%;font-family:"Arial",sans-serif;font-weight:normal'> que:</span>
 150%'><span style='font-size:10.0pt;line-height:150%;font-family:"Arial",sans-serif'>1</span><span
 style='font-size:10.0pt;line-height:150%;font-family:"Arial",sans-serif;
 font-weight:normal'>.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; O
-equipamento é para meu uso exclusivo, e por isso, é terminantemente vedado o
-empréstimo, cessão e/ou transferência do aparelho recebido à terceiros;</span></p>
+equipamento Ã© para meu uso exclusivo, e por isso, Ã© terminantemente vedado o
+emprÃ©stimo, cessÃ£o e/ou transferÃªncia do aparelho recebido Ã  terceiros;</span></p>
 
 <p class=MsoBodyText style='margin-right:15.6pt;text-align:justify;line-height:
 150%'><span style='font-size:10.0pt;line-height:150%;font-family:"Arial",sans-serif'>2</span><span
 style='font-size:10.0pt;line-height:150%;font-family:"Arial",sans-serif;
 font-weight:normal'>.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Na
-eventualidade de problemas de ordem técnica ou operacional, o aparelho deverá
-ser enviado à </span><span style='font-size:10.0pt;line-height:150%;font-family:
+eventualidade de problemas de ordem tÃ©cnica ou operacional, o aparelho deverÃ¡
+ser enviado Ã  </span><span style='font-size:10.0pt;line-height:150%;font-family:
 "Arial",sans-serif'>COTI</span><span style='font-size:10.0pt;line-height:150%;
-font-family:"Arial",sans-serif;font-weight:normal'> de imediato, por intermédio
-de memorando, onde deverá ser registrado o problema apresentado, constando o </span><span
+font-family:"Arial",sans-serif;font-weight:normal'> de imediato, por intermÃ©dio
+de memorando, onde deverÃ¡ ser registrado o problema apresentado, constando o </span><span
 style='font-size:10.0pt;line-height:150%;font-family:"Arial",sans-serif'>IMEI</span><span
 style='font-size:10.0pt;line-height:150%;font-family:"Arial",sans-serif;
 font-weight:normal'> do aparelho;</span></p>
@@ -138,22 +142,22 @@ font-weight:normal'>.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; No caso
 de roubo / furto / perda do equipamento, deverei comunicar </span><span
 style='font-size:10.0pt;line-height:150%;font-family:"Arial",sans-serif'>de
 imediato</span><span style='font-size:10.0pt;line-height:150%;font-family:"Arial",sans-serif;
-font-weight:normal'> à </span><span style='font-size:10.0pt;line-height:150%;
+font-weight:normal'> Ã  </span><span style='font-size:10.0pt;line-height:150%;
 font-family:"Arial",sans-serif'>COTI</span><span style='font-size:10.0pt;
 line-height:150%;font-family:"Arial",sans-serif;font-weight:normal'> por
-intermédio de Memorando, anexando o B.O. - Boletim de Ocorrência Policial;</span></p>
+intermÃ©dio de Memorando, anexando o B.O. - Boletim de Ocorrï¿½ncia Policial;</span></p>
 
 <p class=MsoBodyText style='margin-right:15.6pt;text-align:justify;line-height:
 150%'><a name="_Hlk178610317"><span style='font-size:10.0pt;line-height:150%;
 font-family:"Arial",sans-serif'>4</span></a><span style='font-size:10.0pt;
 line-height:150%;font-family:"Arial",sans-serif;font-weight:normal'>.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 Conforme a </span><span style='font-size:10.0pt;line-height:150%;font-family:
-"Arial",sans-serif'>Portaria 137/05 SMG. Art. 1º Inciso IV</span><span
+"Arial",sans-serif'>Portaria 137/05 SMG. Art. 1Âº Inciso IV</span><span
 style='font-size:10.0pt;line-height:150%;font-family:"Arial",sans-serif;
-font-weight:normal'> deverei ressarcir os prejuízos decorrentes de perda,
-furto, ou danos ao equipamento, devido à má utilização ou conservação, repondo
-o equipamento com a mesma especificação técnica – marca/modelo, ou similar, </span><span
-style='font-size:10.0pt;line-height:150%;font-family:"Arial",sans-serif'>às minhas
+font-weight:normal'> deverei ressarcir os prejuÃ­zos decorrentes de perda,
+furto, ou danos ao equipamento, devido Ã  mÃ¡ utilizaÃ§Ã£o ou conservaÃ§Ã£o, repondo
+o equipamento com a mesma especificaÃ§Ã£o tÃ©cnica Ã  marca/modelo, ou similar, </span><span
+style='font-size:10.0pt;line-height:150%;font-family:"Arial",sans-serif'>Ã s minhas
 expensas</span><span style='font-size:10.0pt;line-height:150%;font-family:"Arial",sans-serif;
 font-weight:normal'>;</span></p>
 
@@ -161,25 +165,35 @@ font-weight:normal'>;</span></p>
 150%'><span style='font-size:10.0pt;line-height:150%;font-family:"Arial",sans-serif'>5</span><span
 style='font-size:10.0pt;line-height:150%;font-family:"Arial",sans-serif;
 font-weight:normal'>.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Em caso
-de aposentadoria, exoneração ou licença, de mudança de setor, subprefeitura ou
-secretaria, ou seja, alocado em outra função que não faz o uso do equipamento,
-o servidor deverá comunicar à </span><span style='font-size:10.0pt;line-height:
+de aposentadoria, exoneraÃ§Ã£o ou licenÃ§a, de mudanÃ§a de setor, subprefeitura ou
+secretaria, ou seja, alocado em outra funÃ§Ã£o que nÃ£o faz o uso do equipamento,
+o servidor deverÃ¡ comunicar Ã  </span><span style='font-size:10.0pt;line-height:
 150%;font-family:"Arial",sans-serif'>COTI</span><span style='font-size:10.0pt;
 line-height:150%;font-family:"Arial",sans-serif;font-weight:normal'> de
 imediato.</span></p>
 
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='height:47.5pt'>
+  <td width=623 valign=top style='width:467.55pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:47.5pt'>
+  <p class=MsoBodyText style='margin-right:15.3pt;text-align:justify;
+  line-height:150%'><span style='font-size:10.0pt;line-height:150%;font-family:
+  "Arial",sans-serif'>OBSERVAÃ‡Ã•ES : </span></p>
+  </td>
+ </tr>
+</table>
+
 <p class=MsoBodyText style='margin-right:15.6pt;text-align:justify;line-height:
-150%'><img width=620 height=69 src="term_emp_arquivos/image002.png" align=left
-hspace=12 vspace=5 alt="OBSERVAÇÕES:&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;"><span
-style='font-size:10.0pt;line-height:150%;font-family:"Arial",sans-serif'>6</span><span
+150%'><span style='font-size:10.0pt;line-height:150%;font-family:"Arial",sans-serif'>6</span><span
 style='font-size:10.0pt;line-height:150%;font-family:"Arial",sans-serif;
 font-weight:normal'>.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Declaro
 ainda, que no momento da retirada, o equipamento se encontra em perfeita
-condição de uso. Assumo também o compromisso de devolver para </span><span
+condiÃ§Ã£o de uso. Assumo tambÃ©m o compromisso de devolver para </span><span
 style='font-size:10.0pt;line-height:150%;font-family:"Arial",sans-serif'>COTI</span><span
 style='font-size:10.0pt;line-height:150%;font-family:"Arial",sans-serif;
 font-weight:normal'> o/s equipamento/s supracitado/s caso mude de setor ou de
-secretaria, ou seja, alocado em outra função que não faz uso do equipamento.</span></p>
+secretaria, ou seja, alocado em outra funÃ§Ã£o que nÃ£o faz uso do equipamento.</span></p>
 
 <p class=MsoBodyText style='margin-top:4.6pt'><span style='font-size:10.0pt;
 font-family:"Arial",sans-serif'>Nestes<span style='letter-spacing:.5pt'> </span>termos,</span></p>
@@ -188,26 +202,35 @@ font-family:"Arial",sans-serif'>Nestes<span style='letter-spacing:.5pt'> </span>
 font-family:"Arial",sans-serif'>&nbsp;</span></p>
 
 <p class=MsoNormal style='line-height:normal'><b><span style='font-size:10.0pt;
-font-family:"Arial",sans-serif'>Assinatura do responsável pela retirada</span></b><span
+font-family:"Arial",sans-serif'>Assinatura do responsÃ¡vel pela retirada</span></b><span
 style='font-size:10.0pt;font-family:"Arial",sans-serif'>:_________________________________________________</span></p>
 
 <p class=MsoNormal style='line-height:normal'><b><span style='font-size:10.0pt;
 font-family:"Arial",sans-serif'>Data da retirada</span></b><span
 style='font-size:10.0pt;font-family:"Arial",sans-serif'>: _____/______/_________</span></p>
 
-<p class=MsoNormal style='line-height:normal'><span style='position:absolute;
-z-index:251660288;margin-left:198px;margin-top:41px;width:230px;height:106px'><img
-width=230 height=106 src="term_emp_1_arquivos/image001.gif"
-alt="Rodolfo Romaioli Ribeiro de Jesus&#13;&#10;Assistente Administrativo de Gestão&#13;&#10;RF: 7887965&#13;&#10;Retirado em 30/09/2024&#13;&#10;"></span><b><span
-style='font-size:10.0pt;font-family:"Arial",sans-serif'>E-mail: </span></b><u><span
-style='font-size:10.0pt;font-family:"Arial",sans-serif'><a
-href="mailto:%20%20%20rrrjesus@smsub.prefeitura.sp.gov.br">   rrrjesus@smsub.prefeitura.sp.gov.br</a> 
-                                            </span></u><b><span
+<p class=MsoNormal style='line-height:normal'><b><span style='font-size:10.0pt;
+font-family:"Arial",sans-serif'>E-mail: </span></b><u><span style='font-size:
+10.0pt;font-family:"Arial",sans-serif'>rrrjesus@smsub.prefeitura.sp.gov.br</span></u><b><span
 style='font-size:10.0pt;font-family:"Arial",sans-serif'>Telefone: _</span></b><u><span
-style='font-size:10.0pt;font-family:"Arial",sans-serif'>(11)99109-1365__          </span></u></p>
+style='font-size:10.0pt;font-family:"Arial",sans-serif'>(11)99109-1365__ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½</span></u></p>
+
+<p class=MsoNormal style='line-height:normal'><u><span style='font-size:10.0pt;
+font-family:"Arial",sans-serif'><span style='text-decoration:none'>&nbsp;</span></span></u></p>
+
+<p class=MsoNoSpacing align=center style='text-align:center'><span
+style='font-size:10.0pt'>Rodolfo Romaioli Ribeiro de Jesus</span></p>
+
+<p class=MsoNoSpacing align=center style='text-align:center'><span
+style='font-size:10.0pt'>Assistente Administrativo de GestÃ£o</span></p>
+
+<p class=MsoNoSpacing align=center style='text-align:center'><span
+style='font-size:10.0pt'>RF: 7887965</span></p>
+
+<p class=MsoNoSpacing align=center style='text-align:center'><span
+style='font-size:10.0pt'>Retirado em 30/09/2024</span></p>
 
 </div>
 
 </body>
 
-</html>

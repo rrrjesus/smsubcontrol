@@ -37,7 +37,7 @@ ul {margin-bottom:0cm;}
   nav {visibility: hidden;} 
   footer {visibility: hidden;} 
   div.WordSection1{visibility: visible;}div.WordSection1 {position: fixed;left: 0;top: 0;}}
--->
+
 </style>
 
 <body lang=PT-BR link=blue vlink=purple style='word-wrap:break-word'>
