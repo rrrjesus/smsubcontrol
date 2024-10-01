@@ -1,5 +1,9 @@
 <?= $this->layout("_beta"); ?>
 
+<script>
+ 	window.print();
+</script>
+
 <style>
 <!--
  /* Font Definitions */
