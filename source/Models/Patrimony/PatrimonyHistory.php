@@ -274,9 +274,9 @@ class  PatrimonyHistory extends Model
 
          /** Patrimony Create */
          if (empty($this->id)) {
-            if ($this->find("unit_id = :d AND part_number = :p AND user_id = :u", "d={$this->unit_id}&p={$this->part_number}&u={$this->user_id}", "patrimony_id")->fetch()) {
-                return false;
-            }
+            // if ($this->find("movement_id = :m AND unit_id = :d AND part_number = :p AND user_id = :u", "m={$this->movement_id}&d={$this->unit_id}&p={$this->part_number}&u={$this->user_id}", "patrimony_id")->fetch()) {
+            //     return false;
+            // }
 
             $patrimonyId = $this->create($this->safe());
 

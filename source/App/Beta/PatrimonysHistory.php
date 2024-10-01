@@ -284,13 +284,23 @@ public function term(?array $data): void
         false
     );
 
-    echo $this->view->render("widgets/patrimonys/term", [
-        "head" => $head,
-        "term" => $termPrint,
-        "urls" => "patrimonios/historico/termo/{$termPrint->id}",
-        "namepage" => "Termo",
-        "name" => "Imprimir"
-    ]);
+    if($termPrint->movement_id < 4){
+        echo $this->view->render("widgets/patrimonys/withdrawalTerm", [
+            "head" => $head,
+            "term" => $termPrint,
+            "urls" => "patrimonios/historico/termo/{$termPrint->id}",
+            "namepage" => "Termo",
+            "name" => "Imprimir"
+        ]);
+    } else {
+        echo $this->view->render("widgets/patrimonys/returnTerm", [
+            "head" => $head,
+            "term" => $termPrint,
+            "urls" => "patrimonios/historico/termo/{$termPrint->id}",
+            "namepage" => "Termo",
+            "name" => "Imprimir"
+        ]);
+    }
 }
 
 /**

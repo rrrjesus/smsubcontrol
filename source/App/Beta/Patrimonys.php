@@ -116,7 +116,7 @@ class Patrimonys extends Admin
             false
         );
 
-        if($termPrint->moviment_id < 4){
+        if($termPrint->movement_id < 4){
             echo $this->view->render("widgets/patrimonys/withdrawalTerm", [
                 "head" => $head,
                 "term" => $termPrint,
