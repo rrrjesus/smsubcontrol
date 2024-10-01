@@ -23,6 +23,17 @@
                         <div class="row justify-content-center">
 
                             <div class="col-md-6 mb-1">
+                                <label class="col-form-label col-form-label-sm" for="inputContract"><strong><i class="bi bi-person me-1"></i> Contrato</strong></label>
+                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                    data-bs-title="Digite o número de processo SEI" class="form-control form-control-sm contract_id"
+                                    name="contract_id" placeholder="Número de Processo SEI : Ex : 6012.2023/0008425-1">
+                            </div>
+
+                        </div>
+
+                        <div class="row justify-content-center">
+
+                            <div class="col-md-6 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputNome"><strong><i class="bi bi-person me-1"></i> Marca</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Digite o nome da marca" class="form-control form-control-sm brand_id"
@@ -90,6 +101,17 @@
                         <div class="ajax_response"><?=flash();?></div>
 
                         <?=csrf_input();?>
+
+                        <div class="row justify-content-center">
+
+                            <div class="col-md-6 mb-1">
+                                <label class="col-form-label col-form-label-sm" for="inputContract"><strong><i class="bi bi-person me-1"></i> Contrato</strong></label>
+                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                    data-bs-title="Digite o número de processo SEI" class="form-control form-control-sm contract_id"
+                                    name="contract_id" placeholder="Número de Processo SEI : Ex : 6012.2023/0008425-1" value="<?=$produtos->contract()->id.' - '.$produtos->contract()->contract_name?>">
+                            </div>
+
+                        </div>
 
                         <div class="row justify-content-center">
 
@@ -162,6 +184,13 @@
                 type_part_number.initialize();
                 $('.type_part_number').typeahead({hint: true, highlight: true, minLength: 1}, {source: type_part_number});
                 
+                let contract_id = new Bloodhound({
+                    datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
+                    local: <?=$contracts->completeContract()?>
+                });
+                contract_id.initialize();
+                $('.contract_id').typeahead({hint: true, highlight: true, minLength: 1}, {source: contract_id});
+
                 let brand_id = new Bloodhound({
                     datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
                     local: <?=$brands->completeBrand()?>

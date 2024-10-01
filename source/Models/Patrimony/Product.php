@@ -49,6 +49,17 @@ class Product extends Model
     } 
     
     /**
+     * @return null|Contract
+     */
+    public function Contract(): ?Contract
+    {
+        if($this->contract_id) {
+            return(new Contract())->findById($this->contract_id);
+        }
+        return null;
+    }
+
+    /**
      * @return null|Brand
      */
     public function Brand(): ?Brand

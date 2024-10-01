@@ -2,6 +2,7 @@
 
 namespace Source\App\Admin;
 
+use Source\Models\Patrimony\Contract;
 use Source\Models\Patrimony\Brand;
 use Source\Models\Patrimony\Product;
 use Source\Models\User;
@@ -91,6 +92,7 @@ class Products extends Admin
 
             $productCreate = new Product();
             $productCreate->brand_id = preg_replace("/[^0-9\s]/", "", $data["brand_id"]);
+            $productCreate->contract_id = preg_replace("/[^0-9\s]/", "", $data["contract_id"]);
             $productCreate->product_name = $data["product_name"];
             $productCreate->type_part_number = $data["type_part_number"];
             $productCreate->description = $data["description"];
@@ -129,6 +131,7 @@ class Products extends Admin
 
             $productUpdate = (new Product())->findById($data["product_id"]);
             $productUpdate->brand_id = preg_replace("/[^0-9\s]/", "", $data["brand_id"]);
+            $productUpdate->contract_id = preg_replace("/[^0-9\s]/", "", $data["contract_id"]);
             $productUpdate->product_name = $data["product_name"];
             $productUpdate->type_part_number = $data["type_part_number"];
             $productUpdate->description = $data["description"];
@@ -220,6 +223,7 @@ class Products extends Admin
             return;
         }
 
+       $contracts = new Contract();
        $brands = new Brand();
        $products = new Product();
 
@@ -241,6 +245,7 @@ class Products extends Admin
             "head" => $head,
             "produtos" => $productEdit,
             "products" => $products,
+            "contracts" => $contracts,
             "brands" => $brands,
             "urls" => "patrimonio/produtos",
             "namepage" => "Produtos",
