@@ -84,11 +84,11 @@ public function patrimonyHistory(?array $data): void
             return;
         }
 
-        if($patrimonysHistoryUpdate->product_id != $product_id) {
-            $json['message'] = $this->message->warning("Não é possivel alterar o nome do produto do patrimônio")->icon()->render();
-            echo json_encode($json);
-            return;
-        }
+//        if($patrimonysHistoryUpdate->product_id != $product_id) {
+//            $json['message'] = $this->message->warning("Não é possivel alterar o nome do produto do patrimônio")->icon()->render();
+//            echo json_encode($json);
+//            return;
+//        }
 
         $patrimonysHistoryUpdate->patrimony_id = $patrimony_id;
         $patrimonysHistoryUpdate->movement_id = $movement_id;
