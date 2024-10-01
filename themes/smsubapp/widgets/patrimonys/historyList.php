@@ -5,6 +5,9 @@
                             <th class="text-center">ID</th>
                             <th class="text-center">CRIADO</th>
                             <th class="text-center">ESTADO</th>
+                            <th class="text-center">PRODUTO</th>
+                            <th class="text-center">TPN</th>
+                            <th class="text-center">PARTNUMBER</th>
                             <th class="text-center">LOGIN</th>
                             <th class="text-center">RF</th>
                             <th class="text-center">NOME</th>
@@ -24,6 +27,9 @@
                             <td class="text-center"><a role="button" href="<?=url("beta/patrimonios/historico/editar/{$lista->id}")?>" accesskey="a" class="btn btn-warning rounded-circle btn-sm fw-semibold text-"><i class="bi bi-pencil text-secondary"></i></a></td>
                             <td class="text-center fw-semibold"><?=date_fmt_null($lista->created_history)?></td>
                             <td class="text-center fw-semibold"><?=(!empty($lista->movement()->movement_name) ? $lista->movement()->movement_name : "")?></td>
+                            <td class="text-center fw-semibold"><?=(!empty($lista->product()->product_name) ? $lista->product()->id.' - '.$lista->product()->product_name : "")?></td>
+                            <td class="text-center fw-semibold"><?=(!empty($lista->product()->type_part_number) ? $lista->product()->type_part_number : "")?></td>
+                            <td class="text-center fw-semibold"><?=(!empty($lista->part_number) ? $lista->part_number : "")?></td>
                             <td class="text-center fw-semibold"><?=(!empty($lista->userPatrimony()->login) ? $lista->userPatrimony()->login : "")?></td>
                             <td class="text-center fw-semibold"><?=(!empty($lista->userPatrimony()->rf) ? $lista->userPatrimony()->rf : "")?></td>
                             <td class="text-center fw-semibold"><?=(!empty($lista->userPatrimony()->user_name) ? $lista->userPatrimony()->user_name : "")?></td>

@@ -262,11 +262,11 @@ class Patrimonys extends Admin
                 return;
             }
 
-            if($patrimonysUpdate->product_id != $product_id) {
-                $json['message'] = $this->message->warning("Não é possivel alterar o nome do produto do patrimônio")->icon()->render();
-                echo json_encode($json);
-                return;
-            }
+//            if($patrimonysUpdate->product_id != $product_id) {
+//                $json['message'] = $this->message->warning("Não é possivel alterar o nome do produto do patrimônio")->icon()->render();
+//                echo json_encode($json);
+//                return;
+//            }
 
             $patrimonysUpdate->movement_id = $movement_id;
             $patrimonysUpdate->product_id = $product_id;
