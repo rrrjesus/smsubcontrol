@@ -37,7 +37,7 @@
                     <input type="password" name="password" class="form-control mt-2" id="password" data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip" 
                         data-bs-title="Digite sua senha : ">
                     <label for="floatingInput">Digite sua senha : </label>
-                    <span class="bi bi-eye-slash" id="bi-eye-slash"></span>
+                    <!-- <span class="bi bi-eye-slash" id="bi-eye-slash"></span> -->
 
                 </div>
 
