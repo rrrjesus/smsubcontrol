@@ -21,7 +21,7 @@
                             <div class="col-md-4 mb-1">
                                 <label for="formFileSm" class="col-form-label col-form-label-sm"> <strong><i class="bi bi-upload me-1"></i> Anexar PDF </strong></label>
                                 <input class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                data-bs-title="Anexar arquivo apenas no formato .pdf"  type="file" class="radius" name="file_terms"/>
+                                data-bs-title="Anexar arquivo apenas no formato .pdf" type="file" class="radius" name="file_terms"/>
                             </div>
                         </div>
 
@@ -43,7 +43,7 @@
 
                             <div class="col-md-3 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputMovimentacao"><i class="bi bi-person-add me-1"></i><strong>Estado</strong></label>
-                                <input type="text" tabindex="1" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Digite o estado do patrimonio - Ex : 1- Estoque, 2 - Retirado, 3 - Reservado ... " tabindex="3" class="form-control form-control-sm movement_id"
                                     name="movement_id" placeholder="Estado">
                             </div>
