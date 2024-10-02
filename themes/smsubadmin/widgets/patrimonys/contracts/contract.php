@@ -12,7 +12,7 @@
         <div class="container-fluid">
             <div class="d-flex justify-content-center">
                 <div class="col-12">
-                    <form class="row gy-2 gx-3 align-items-center needs-validation" id="brand" novalidate action="<?= url("/painel/patrimonio/contratos/cadastrar"); ?>" method="post" enctype="multipart/form-data">
+                    <form class="row gy-2 gx-3 align-items-center needs-validation" id="contract" novalidate action="<?= url("/painel/patrimonio/contratos/cadastrar"); ?>" method="post" enctype="multipart/form-data">
                         
                         <input type="hidden" name="action" value="create"/>
 
@@ -20,33 +20,42 @@
 
                         <?=csrf_input();?>
 
-                        <div class="row justify-content-center">
+                        <div class="row">
 
-                            <div class="col-md-6 mb-1">
-                            <label class="col-form-label col-form-label-sm" for="inputSei"><strong><i class="bi bi-person me-1"></i> Processo SEI</strong></label>
-                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip" 
-                                    data-bs-title="Digite o Número de Processo SEI - Ex : 6012.2019/0005605-6" class="form-control form-control-sm"
-                                    name="sei_process" placeholder="6012.2019/0005605-6">
+                            <div class="col-md-3 mb-1">
+
+                                <label class="col-form-label col-form-label-sm" for="inputSei"><strong><i class="bi bi-person me-1"></i> Processo SEI</strong></label>
+                                    <input type="text" data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip" 
+                                        data-bs-title="Digite o Número de Processo SEI - Ex : 6012.2019/0005605-6" class="form-control form-control-sm"
+                                        name="sei_process" placeholder="6012.2019/0005605-6">
 
                             </div>
-
-                        </div>
-
-                        <div class="row justify-content-center">
 
                             <div class="col-md-6 mb-1">
                             <label class="col-form-label col-form-label-sm" for="inputProcess"><strong><i class="bi bi-person me-1"></i> Nome do Contrato</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Digite o nome do Contrato - Ex : Simpress Tabets/Impressoras 2021" class="form-control form-control-sm"
-                                    name="process_name" placeholder="Simpress Tabets/Impressoras 2021">
+                                    name="contract_name" placeholder="Simpress Tabets/Impressoras 2021">
+
+                            </div>
+
+                            
+                            <div class="col-md-3 mb-1">
+
+                                <label class="col-form-label col-form-label-sm" for="inputStatus"><strong><i class="bi bi-check2-square ms-3 me-3"></i> Status</strong></label>
+                                <select class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                data-bs-title="Selecione o status" name="status" id="status">
+                                    <option value="actived" selected>Ativo</option>
+                                    <option value="disabled">Inativo</option>
+                                </select>
 
                             </div>
 
                         </div>
 
-                        <div class="row justify-content-center">
+                        <div class="row">
 
-                            <div class="col-md-6 mb-1">
+                            <div class="col-md-4 mb-1">
                             <label class="col-form-label col-form-label-sm" for="inputManager"><strong><i class="bi bi-person me-1"></i> Nome do Responsável</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Digite o nome do Responsável pelo Contrato" class="form-control form-control-sm user_manager"
@@ -54,35 +63,28 @@
 
                             </div>
 
-                        </div>
+                            <div class="col-md-4 mb-1">
 
-                        <div class="row justify-content-center">
+                                <label class="col-form-label col-form-label-sm" for="inputInspector"><strong><i class="bi bi-person me-1"></i> Nome do Fiscal</strong></label>
+                                    <input type="text" data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip" 
+                                        data-bs-title="Digite o nome do Fiscal do Contrato" class="form-control form-control-sm user_inspector"
+                                        name="inspector_id" placeholder="Fiscal do Contrato">
 
-                            <div class="col-md-6 mb-1">
-                            <label class="col-form-label col-form-label-sm" for="inputInspector"><strong><i class="bi bi-person me-1"></i> Nome do Fiscal</strong></label>
-                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip" 
-                                    data-bs-title="Digite o nome do Fiscal do Contrato" class="form-control form-control-sm user_inspector"
-                                    name="inspector_id" placeholder="Fiscal do Contrato">
+                                </div>
 
-                            </div>
+                            <div class="col-md-4 mb-1">
+                                <label class="col-form-label col-form-label-sm" for="inputDeputyInspector"><strong><i class="bi bi-person me-1"></i> Nome do Suplente</strong></label>
+                                    <input type="text" data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip" 
+                                        data-bs-title="Digite o nome do Suplente do Contrato" class="form-control form-control-sm user_deputy_inspector"
+                                        name="deputy_inspector_id" placeholder="Suplente do Contrato">
 
-                        </div>
-
-                        <div class="row justify-content-center">
-
-                            <div class="col-md-6 mb-1">
-                            <label class="col-form-label col-form-label-sm" for="inputDeputyInspector"><strong><i class="bi bi-person me-1"></i> Nome do Suplente</strong></label>
-                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip" 
-                                    data-bs-title="Digite o nome do Suplente do Contrato" class="form-control form-control-sm user_deputy_inspector"
-                                    name="deputy_inspector_id" placeholder="Suplente do Contrato">
-
-                            </div>
+                                </div>
 
                         </div>
 
-                        <div class="row justify-content-center">  
+                        <div class="row">  
 
-                            <div class="col-md-6 mb-1">
+                            <div class="col-md-12 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputSobreNome"><strong><i class="bi bi-person-add me-1"></i> Descrição</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Descrição" class="form-control form-control-sm"
@@ -91,13 +93,20 @@
 
                         </div>
 
+                        <div class="row">  
+
+                            <div class="md-12 mb-1">
+                                <label for="textareaObservacoes" class="col-form-label col-form-label-sm"><i class="bi bi-exclamation-diamond me-1"></i><strong>Observações</strong></label>
+                                <textarea class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                data-bs-title=Observações" name="observations" rows="2"></textarea>
+                            </div>
+
+                        </div>
+
                         <div class="row justify-content-center mt-4 mb-3">
                             <div class="col-auto">
-                                <button data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
-                                    data-bs-title="Clique para criar o registro" class="btn btn-sm btn-outline-success fw-bold me-2"><i class="bi bi-disc-fill me-2"></i>GRAVAR</button>
-                                <a href="<?=url("/painel/patrimonio/contratos")?>" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
-                                data-bs-title="Clique para listar os usuarios" class="btn btn-sm btn-outline-dark fw-bold">
-                                <i class="bi bi-list-columns me-2"></i>LISTAR</a>
+                            <?=button("top", "Clique para gravar", "success", "disc-fill", "Gravar", "6", "g")?>
+                            <?=buttonLink("/painel/patrimonio/contratos", "top", "Clique para listar os contratos", "secondary", "list", "Listar", "7", "l")?>                                  
                             </div>
                         </div>
                     </form>
