@@ -216,6 +216,8 @@ class Contracts extends Admin
             return;
         }
 
+        $users = new User();
+
         $contractEdit = null;
         if (!empty($data["contract_id"])) {
             $contractId = filter_var($data["contract_id"], FILTER_VALIDATE_INT);
@@ -233,6 +235,7 @@ class Contracts extends Admin
         echo $this->view->render("widgets/patrimonys/contracts/contract", [
             "head" => $head,
             "contratos" => $contractEdit,
+            "users" => $users,
             "urls" => "patrimonio/contratos",
             "namepage" => "Contratos",
             "name" => ($contractEdit ? "Editar" : "Cadastrar")

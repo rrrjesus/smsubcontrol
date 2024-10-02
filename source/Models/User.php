@@ -209,14 +209,17 @@ class User extends Model
         endif;  
     }
 
-    static function completeUser($columns): ?User
+   /**
+     * @return null|User
+     */
+    static function completeUser(): ?User
     {
-        $stm = (new User())->find("status= :s","s=confirmed", $columns);
-        $array = array();
+        $stm = (new User())->find("status != :s","s=disabled");
+        $array[] = array();
 
         if(!empty($stm)):
             foreach ($stm->fetch(true) as $row):
-                $array[] = $row->user_name;
+                    $array[] = $row->id.' - '.$row->user_name;
             endforeach;
             echo json_encode($array); //Return the JSON Array
         endif;

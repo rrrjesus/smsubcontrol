@@ -3,6 +3,7 @@
 namespace Source\Models\Patrimony;
 
 use Source\Core\Model;
+use Source\Models\User;
 
 /**
  * Rodolfo | Class Contract
@@ -31,20 +32,42 @@ class Contract extends Model
         return $find->fetch();
     }
 
-    static function completeContract(): ?Contract
+    /**
+     * @return null|User
+     */
+    public function userManager(): ?User
     {
-        $stm = (new Contract())->find("status= :s","s=actived");
-        $array[] = array();
-
-        if(!empty($stm)):
-            foreach ($stm->fetch(true) as $row):
-                    $array[] = $row->id.' - '.$row->contract_name;
-            endforeach;
-            echo json_encode($array); //Return the JSON Array
-        endif;
+        if($this->manager_id) {
+            return(new User())->findById($this->manager_id);
+        }
         return null;
     }
 
+    /**
+     * @return null|User
+     */
+    public function userInspector(): ?User
+    {
+        if($this->inspector_id) {
+            return(new User())->findById($this->inspector_id);
+        }
+        return null;
+    }
+
+    /**
+     * @return null|User
+     */
+    public function userDeputyInspector(): ?User
+    {
+        if($this->deputy_inspector_id) {
+            return(new User())->findById($this->deputy_inspector_id);
+        }
+        return null;
+    }
+
+    /**
+     * @return null|string
+     */
     public function statusSelect(): ?string
     {
         if ($this->status == "actived") {
