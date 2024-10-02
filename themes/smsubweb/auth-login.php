@@ -1,5 +1,20 @@
 <?= $this->layout("_theme", ["head" => $head]); ?>
 
+<style>
+    .bi-eye {
+    position: absolute;
+    top: 15px;
+    right: 30px;
+    cursor: pointer;
+    }
+    .bi-eye-slash {
+        position: absolute;
+        top: 15px;
+        right: 30px;
+        cursor: pointer;
+    }
+</style>
+
         <div class="form-signin w-100 m-auto content">
             <form class="needs-validation" novalidate id="login" action="<?=url("/entrar")?>" method="post" enctype="multipart/form-data">
                 <div class="ajax_response"><?=flash();?></div>
@@ -19,9 +34,11 @@
                 </label>
                 <div class="form-floating">
                     
-                    <input type="password" name="password" class="form-control mt-2" data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip" 
+                    <input type="password" name="password" class="form-control mt-2" id="password" data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip" 
                         data-bs-title="Digite sua senha : ">
                     <label for="floatingInput">Digite sua senha : </label>
+                    <span class="bi bi-eye-slash" id="bi-eye-slash"></span>
+
                 </div>
 
                 <div class="form-check text-start my-3">

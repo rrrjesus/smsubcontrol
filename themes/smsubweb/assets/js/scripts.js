@@ -155,6 +155,22 @@ $(function () {
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl)
     })
+
+    // Mostrar senha no login
+    let btn = document.querySelector('.bi-eye-slash');
+    
+    btn.addEventListener('click', function() {
+        let input = document.querySelector('#password');
+        let span = document.querySelector('#bi-eye-slash');
+
+        if(input.getAttribute('type') == 'password') {
+            input.setAttribute('type', 'text');
+            span.setAttribute('class', 'bi bi-eye');
+        } else {
+            input.setAttribute('type', 'password');
+            span.setAttribute('class', 'bi bi-eye-slash');
+        }
+    });
     
     // scroll animate
     $("[data-go]").click(function (e) {
