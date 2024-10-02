@@ -11,6 +11,7 @@ use Source\Models\User;
  * @author Rodolfo Romaioli Ribeiro de Jesus <rodolfo.romaioli@gmail.com>
  * @package Source\Models
  */
+
 class Contract extends Model
 {
     /**
@@ -18,7 +19,7 @@ class Contract extends Model
      */
     public function __construct()
     {
-        parent::__construct("contracts", ["id"], ["contract_name", "description", "status"]);
+        parent::__construct("contracts", ["id"], ["sei_process", "manager_id", "inspector_id", "deputy_inspector_id", "status"]);
     }
 
     /**
@@ -26,7 +27,7 @@ class Contract extends Model
      * @param string $columns
      * @return null|Contract
      */
-    public function findByContract(string $sei_process, string $columns = "*"): ?Contract
+    public function findBySei(string $sei_process, string $columns = "*"): ?Contract
     {
         $find = $this->find("sei_process = :sei_process", "sei_process={$sei_process}", $columns);
         return $find->fetch();
@@ -114,7 +115,7 @@ class Contract extends Model
 
         /** Contract Create */
         if (empty($this->id)) {
-            if ($this->findByContract($this->sei_process, "id")) {
+            if ($this->findBySei($this->sei_process, "id")) {
                 $this->message->warning("O contrato informado já está cadastrado");
                 return false;
             }

@@ -101,6 +101,48 @@ $(function () {
         }
     });
 
+    $("#contract").validate({
+        rules: {
+            sei_process: {
+                required: true
+            },
+            contract_name: {
+                required: true
+            },
+            manager_id: {
+                required: true
+            },
+            inspector_id: {
+                required: true
+            },
+            deputy_inspector_id: {
+                required: true
+            },
+            description: {
+                required: true
+            }
+        }, messages: {
+            sei_process: {
+                required: "Digite o número do Processo SEI !!!"
+            },
+            contract_name: {
+                required: "Digite o nome do Contrato !!!"
+            },
+            manager_id: {
+                required: "Digite o nome do Responsável !!!"
+            },
+            inspector_id: {
+                required: "Digite o nome do Fiscal !!!"
+            },
+            deputy_inspector_id: {
+                required: "Digite o nome do Suplente !!!"
+            },
+            description: {
+                required: "Descreva o contrato !!!"
+            }
+        }
+    });
+
 
     $("#brand").validate({
         rules: {
