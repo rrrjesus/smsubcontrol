@@ -77,30 +77,31 @@ $(document).ready(function() {
                             '</div>\n' +
                         '</div>';
                 }
-            },
-            {
-                "aTargets": [5], // o numero da coluna
-                "mRender": function (data, type, full) { //aqui é uma funçãozinha para pegar os ids
-                    return '<button type="button" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"\n' +
-                        'data-bs-title="Clique para excluir definitivamente '+ full[4] +'" class="btn btn-outline-danger btn-sm rounded-circle" data-bs-toggle="modal" data-bs-target="#trashModalFim'+ full[4]+'">' +
-                        '<i class="bi bi-trash"></i></button>' +
-                        '<div class="modal fade" id="trashModalFim' + full[4] + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">\n' +
-                            '<div class="modal-dialog modal-sm">\n' +
-                                '<div class="modal-content">\n' +
-                                    '<div class="modal-header bg-danger text-light">\n' +
-                                    '<h6 class="modal-title text-center" id="exampleModalLabel"><i class="bi bi-trash me-2"></i> Excluir ID: ' + full[4] + '</h6>\n' +
-                                    '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>\n' +
-                                    '</div>\n' +
-                                    '<div class="modal-body fw-semibold">Deseja excluir o marca : ' + full[1] + ' ?</div>\n' +
-                                    '<div class="modal-footer">\n' +
-                                    '<button type="button" class="btn btn-outline-danger btn-sm fw-semibold" data-bs-dismiss="modal"><i class="bi bi-trash"></i> Não</button>\n' +
-                                    '<a href="marcas/excluir/' + full[4] + '/delete" data-action="delete" class="btn btn-outline-success btn-sm fw-semibold"><i class="bi bi-plus-circle" role="button" ></i> Sim</a>\n' +
-                                    '</div>\n' +
-                                '</div>\n' +
-                            '</div>\n' +
-                        '</div>';
-                }
             }
+            // ,
+            // {
+            //     "aTargets": [5], // o numero da coluna
+            //     "mRender": function (data, type, full) { //aqui é uma funçãozinha para pegar os ids
+            //         return '<button type="button" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"\n' +
+            //             'data-bs-title="Clique para excluir definitivamente '+ full[4] +'" class="btn btn-outline-danger btn-sm rounded-circle" data-bs-toggle="modal" data-bs-target="#trashModalFim'+ full[4]+'">' +
+            //             '<i class="bi bi-trash"></i></button>' +
+            //             '<div class="modal fade" id="trashModalFim' + full[4] + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">\n' +
+            //                 '<div class="modal-dialog modal-sm">\n' +
+            //                     '<div class="modal-content">\n' +
+            //                         '<div class="modal-header bg-danger text-light">\n' +
+            //                         '<h6 class="modal-title text-center" id="exampleModalLabel"><i class="bi bi-trash me-2"></i> Excluir ID: ' + full[4] + '</h6>\n' +
+            //                         '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>\n' +
+            //                         '</div>\n' +
+            //                         '<div class="modal-body fw-semibold">Deseja excluir o marca : ' + full[1] + ' ?</div>\n' +
+            //                         '<div class="modal-footer">\n' +
+            //                         '<button type="button" class="btn btn-outline-danger btn-sm fw-semibold" data-bs-dismiss="modal"><i class="bi bi-trash"></i> Não</button>\n' +
+            //                         '<a href="marcas/excluir/' + full[4] + '/delete" data-action="delete" class="btn btn-outline-success btn-sm fw-semibold"><i class="bi bi-plus-circle" role="button" ></i> Sim</a>\n' +
+            //                         '</div>\n' +
+            //                     '</div>\n' +
+            //                 '</div>\n' +
+            //             '</div>';
+            //     }
+            // }
         ]
     });
 
@@ -352,30 +353,31 @@ $(document).ready(function() {
                             '</div>\n' +
                         '</div>';
                 }
-            },
-            {
-                "aTargets": [7], // o numero da coluna
-                "mRender": function (data, type, full) { //aqui é uma funçãozinha para pegar os ids
-                    return '<button type="button" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"\n' +
-                        'data-bs-title="Clique para excluir definitivamente '+ full[7] +'" class="btn btn-outline-danger btn-sm rounded-circle" data-bs-toggle="modal" data-bs-target="#trashModalFim'+ full[7]+'">' +
-                        '<i class="bi bi-trash"></i></button>' +
-                        '<div class="modal fade" id="trashModalFim' + full[7] + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">\n' +
-                            '<div class="modal-dialog modal-sm">\n' +
-                                '<div class="modal-content">\n' +
-                                    '<div class="modal-header bg-danger text-light">\n' +
-                                    '<h6 class="modal-title text-center" id="exampleModalLabel"><i class="bi bi-trash me-2"></i> Excluir ID: ' + full[7] + '</h6>\n' +
-                                    '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>\n' +
-                                    '</div>\n' +
-                                    '<div class="modal-body fw-semibold">Deseja excluir o marca : ' + full[1] + ' ?</div>\n' +
-                                    '<div class="modal-footer">\n' +
-                                    '<button type="button" class="btn btn-outline-danger btn-sm fw-semibold" data-bs-dismiss="modal"><i class="bi bi-trash"></i> Não</button>\n' +
-                                    '<a href="produtos/excluir/' + full[7] + '/delete" data-action="delete" class="btn btn-outline-success btn-sm fw-semibold"><i class="bi bi-plus-circle" role="button" ></i> Sim</a>\n' +
-                                    '</div>\n' +
-                                '</div>\n' +
-                            '</div>\n' +
-                        '</div>';
-                }
             }
+            // ,
+            // {
+            //     "aTargets": [7], // o numero da coluna
+            //     "mRender": function (data, type, full) { //aqui é uma funçãozinha para pegar os ids
+            //         return '<button type="button" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"\n' +
+            //             'data-bs-title="Clique para excluir definitivamente '+ full[7] +'" class="btn btn-outline-danger btn-sm rounded-circle" data-bs-toggle="modal" data-bs-target="#trashModalFim'+ full[7]+'">' +
+            //             '<i class="bi bi-trash"></i></button>' +
+            //             '<div class="modal fade" id="trashModalFim' + full[7] + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">\n' +
+            //                 '<div class="modal-dialog modal-sm">\n' +
+            //                     '<div class="modal-content">\n' +
+            //                         '<div class="modal-header bg-danger text-light">\n' +
+            //                         '<h6 class="modal-title text-center" id="exampleModalLabel"><i class="bi bi-trash me-2"></i> Excluir ID: ' + full[7] + '</h6>\n' +
+            //                         '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>\n' +
+            //                         '</div>\n' +
+            //                         '<div class="modal-body fw-semibold">Deseja excluir o marca : ' + full[1] + ' ?</div>\n' +
+            //                         '<div class="modal-footer">\n' +
+            //                         '<button type="button" class="btn btn-outline-danger btn-sm fw-semibold" data-bs-dismiss="modal"><i class="bi bi-trash"></i> Não</button>\n' +
+            //                         '<a href="produtos/excluir/' + full[7] + '/delete" data-action="delete" class="btn btn-outline-success btn-sm fw-semibold"><i class="bi bi-plus-circle" role="button" ></i> Sim</a>\n' +
+            //                         '</div>\n' +
+            //                     '</div>\n' +
+            //                 '</div>\n' +
+            //             '</div>';
+            //     }
+            // }
         ]
     });
 

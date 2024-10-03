@@ -37,7 +37,7 @@
                         <th class="text-center">DESCRICAO</th>
                         <th class="text-center">STATUS</th>
                         <th class="text-center">DESATIVAR</th>
-                        <th class="text-center">EXCLUIR</th>
+                        <!-- <th class="text-center">EXCLUIR</th> -->
                     </tr>
                 </thead>
                 <tbody>
@@ -52,7 +52,7 @@
                     <td class="text-center fw-semibold"><?=(!empty($lista->description) ? $lista->description : "")?></td>
                     <td class="text-center fw-semibold"><?=$lista->statusBadge()?></td>
                     <td class="text-center fw-semibold"><?=$lista->id?></td>
-                    <td class="text-center fw-semibold"><?=$lista->id?></td>
+                    <!-- <td class="text-center fw-semibold"><?=$lista->id?></td> -->
                 </tr>
                 <?php endforeach; ?>
                 <?php } ?>
