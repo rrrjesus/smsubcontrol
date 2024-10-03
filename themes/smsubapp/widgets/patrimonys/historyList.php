@@ -56,8 +56,8 @@
                                                 Deseja excluir o histórico id: <?=$lista->id?> ?
                                             </div>
                                             <div class="modal-footer justify-content-center">
-                                                <button type="button" class="btn btn-outline-danger fw-semibold me-3" data-bs-dismiss="modal">NÃO</button>
-                                                <a href="../historico/excluir/<?=$lista->id?>/delete" role="button" accesskey="s" class="btn btn-outline-success fw-semibold"><u>S</u>IM</a>
+                                                <button type="button" class="btn btn-sm btn-outline-danger fw-semibold me-3" data-bs-dismiss="modal">NÃO</button>
+                                                <a href="../historico/excluir/<?=$lista->id?>/delete" role="button" accesskey="s" class="btn btn-sm btn-outline-success fw-semibold"><u>S</u>IM</a>
                                             </div>
                                         </div>
                                     </div>

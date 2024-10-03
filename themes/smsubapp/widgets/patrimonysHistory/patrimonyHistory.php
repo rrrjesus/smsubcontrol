@@ -34,14 +34,11 @@
                         <div class="row mb-1">
 
                             <div class="col-md-3 mb-1">
-                                <label class="col-form-label col-form-label-sm" for="inputMovimentacao"><i class="bi bi-person-add me-1"></i><strong>Estado</strong></label>
+                                <label class="col-form-label col-form-label-sm" for="inputNs"><i class="bi bi-person-add me-1"></i><strong>Número de Registro</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                    data-bs-title="Digite o estado do patrimonio - Ex : 1- ESTOQUE, 2 - RETIRADO ... " autofocus tabindex="1" class="form-control form-control-sm movement_id"
-                                    name="movement_id" placeholder="ESTADO" value="<?=(!empty($patrimonys->movement_id) ? $patrimonys->movement()->id.' - '.$patrimonys->movement()->movement_name : "")?>">
+                                    data-bs-title="Digite o numero de registro da peça" class="form-control form-control-sm"
+                                    name="part_number" placeholder="NÚMERO DA PEÇA" value="<?=$patrimonys->part_number?>">
                             </div>
-
-                            <input name="type_part_number" type="hidden" value="<?=(!empty($patrimonys->product_id) ? $patrimonys->product()->type_part_number : "")?>">
-                            <input name="patrimony_id" type="hidden" value="<?=(!empty($patrimonys->patrimony_id) ? $patrimonys->patrimony_id : "")?>">
 
                             <div class="col-md-6 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputProduto"><i class="bi bi-person-add me-1"></i><strong>Produto</strong></label>
@@ -51,11 +48,16 @@
                             </div>
 
                             <div class="col-md-3 mb-1">
-                                <label class="col-form-label col-form-label-sm" for="inputNs"><i class="bi bi-person-add me-1"></i><strong>Número de Registro</strong></label>
+                                <label class="col-form-label col-form-label-sm" for="inputMovimentacao"><i class="bi bi-person-add me-1"></i><strong>Estado</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                    data-bs-title="Digite o numero de registro da peça" class="form-control form-control-sm"
-                                    name="part_number" placeholder="NÚMERO DA PEÇA" value="<?=$patrimonys->part_number?>">
+                                    data-bs-title="Digite o estado do patrimonio - Ex : 1- ESTOQUE, 2 - RETIRADO ... " autofocus tabindex="1" class="form-control form-control-sm movement_id"
+                                    name="movement_id" placeholder="ESTADO" value="<?=(!empty($patrimonys->movement_id) ? $patrimonys->movement()->id.' - '.$patrimonys->movement()->movement_name : "")?>">
                             </div>
+
+                            <input name="type_part_number" type="hidden" value="<?=(!empty($patrimonys->product_id) ? $patrimonys->product()->type_part_number : "")?>">
+                            <input name="patrimony_id" type="hidden" value="<?=(!empty($patrimonys->patrimony_id) ? $patrimonys->patrimony_id : "")?>">
+
+
                         </div>
 
                             <div class="row mb-1">
