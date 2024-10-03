@@ -17,7 +17,9 @@
                             <th class="text-center">TERMO ASS</th>
                             <th class="text-center">UNIDADE</th>
                             <th class="text-center">OBSERVACOES</th>
-                            <th class="text-center">EXCLUIR</th>
+                            <?php if ($user->level_id > 3){?>
+                                <th class="text-center">EXCLUIR</th>
+                            <?php }?>
                         </tr>
                     </thead>
                     <tbody>
@@ -39,6 +41,7 @@
                             <td class="text-center"><?=$lista->fileList()?></td>
                             <td class="text-center fw-semibold"><?=(!empty($lista->unit()->unit_name) ? $lista->unit()->unit_name : "")?></td>
                             <td class="text-center fw-semibold"><?=$lista->observations?></td>
+                            <?php if ($user->level_id > 3){?>
                             <td class="text-center"><button type="button" data-bs-togglee="modal" accesskey="b" data-bs-toggle="modal" data-bs-target="#trash-<?=$lista->id;?>" 
                                 class="btn btn-outline-danger rounded-circle btn-sm text-center"><i class="bi bi-trash"></i></b></td>
                                     <!-- Modal -->
@@ -59,6 +62,7 @@
                                         </div>
                                     </div>
                                 </div>
+                            <?php }?>
                         </tr>
                         <?php endforeach; ?>
                         <?php } ?>

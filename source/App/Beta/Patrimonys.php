@@ -477,6 +477,7 @@ class Patrimonys extends Admin
             "head" => $head,
             "patrimonys" => $PatrimonysEdit,
             "patrimonyscreates" => $patrimonysCreates,
+            "user" => $this->user,
             "historico" => $historico,
             "urls" => "patrimonios",
             "namepage" => "Patrimonios",
