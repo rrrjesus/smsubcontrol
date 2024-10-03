@@ -78,7 +78,7 @@ div.WordSection1
 
 		<img class="rounded mx-auto d-block" src="<?=url('themes/'.CONF_VIEW_APP.'/assets/images/logo_termo.png');?>">
 
-		<h1><u><span style='font-size:14.0pt;font-style:normal'><b>TERMO DE DEVOLUÇÃO</b></span></u></h1>
+		<h1 class="mt-5"><u><span style='font-size:14.0pt;font-style:normal'><b>TERMO DE DEVOLUÇÃO</b></span></u></h1>
 
 		<p class=MsoNormal><span style='font-size:10.0pt;line-height:106%;font-family:
 		"Arial",sans-serif'>&nbsp;</span></p>
@@ -137,7 +137,7 @@ div.WordSection1
 
 		<p class=MsoNormal style='text-indent:-.1pt;margin-left:1.25cm;margin-right:1.25cm;line-height:normal'><span style='font-size:10.0pt;
 		font-family:"Arial",sans-serif'><b>Celular: </b></span><span style='font-size:
-		10.0pt;font-family:"Arial",sans-serif'><?=(!empty($term->cell_phone) ? $term->cell_phone : "_____________________________");?></span></p>
+		10.0pt;font-family:"Arial",sans-serif'><?=(!empty($term->user()->cell_phone) ? '('.substr($term->user()->cell_phone, 0,2).')'.substr($term->user()->cell_phone, 2,9) : "_____________________________");?></span></p>
 
 
 			<div class="d-flex flex-column text-center">
