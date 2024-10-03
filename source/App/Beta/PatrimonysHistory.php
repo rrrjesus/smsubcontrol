@@ -70,6 +70,7 @@ public function patrimonyHistory(?array $data): void
         $user_id = $data["user_id_history_edit"];
         $observations = $data["observations"];
 
+        $patrimonysUpdate = (new Patrimony())->findById($patrimony_id);
         $patrimonysHistoryUpdate = (new PatrimonyHistory())->findById($patrimonys_id);
 
         if (!$patrimonysHistoryUpdate) {
@@ -90,12 +91,46 @@ public function patrimonyHistory(?array $data): void
 //            return;
 //        }
 
+        if($patrimonysUpdate->updated_at == $patrimonysHistoryUpdate->updated_at){
+            $patrimonysUpdate->part_number = $part_number;
+            $patrimonysUpdate->product_id = $product_id;
+            $patrimonysUpdate->movement_id = $movement_id;
+            $patrimonysUpdate->user_id = $user_id;
+            $patrimonysUpdate->unit_id = $unit_id;
+            $patrimonysUpdate->observations = $observations;
+            $patrimonysUpdate->login_updated = $user->login;
+
+            //upload pdf
+            if (!empty($_FILES["file_terms"])) {
+                $files = $_FILES["file_terms"];
+                $upload = new Upload();
+                
+                $file_terms = $upload->file($files, $patrimonysUpdate->user_id.'_'.$type_part_number.'_'.$patrimonysUpdate->part_number);
+
+                if (!$file_terms) {
+                    $json["message"] = $upload->message()->render();
+                    echo json_encode($json);
+                    return;
+                }
+
+                $patrimonysUpdate->file_terms = $file_terms;
+            } else {
+                $patrimonysUpdate->file_terms = '';
+            }
+
+            if (!$patrimonysUpdate->save()) {
+                $json["message"] = $patrimonysUpdate->message()->render();
+                echo json_encode($json);
+                return;
+            }
+        }
+
         $patrimonysHistoryUpdate->patrimony_id = $patrimony_id;
-        $patrimonysHistoryUpdate->movement_id = $movement_id;
-        $patrimonysHistoryUpdate->product_id = $product_id;
-        $patrimonysHistoryUpdate->unit_id = $unit_id;
-        $patrimonysHistoryUpdate->user_id = $user_id;
         $patrimonysHistoryUpdate->part_number = $part_number;
+        $patrimonysHistoryUpdate->product_id = $product_id;
+        $patrimonysHistoryUpdate->movement_id = $movement_id;
+        $patrimonysHistoryUpdate->user_id = $user_id;
+        $patrimonysHistoryUpdate->unit_id = $unit_id;
         $patrimonysHistoryUpdate->observations = $observations;
         $patrimonysHistoryUpdate->login_updated = $user->login;
 
@@ -212,7 +247,7 @@ public function patrimonyHistory(?array $data): void
         $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $patrimonyHistoryDelete = (new PatrimonyHistory())->findById($data["patrimonys_id"]);
         $patrimonyDelete = (new Patrimony())->findById($patrimonyHistoryDelete->patrimony_id);
-        $countHystory = (new PatrimonyHistory())->find("patrimony_id = :p", "p={$patrimonyHistoryDelete->patrimony_id}");
+        $countHystory = (new PatrimonyHistory())->find("patrimony_id = :p", "p={$patrimonyHistoryDelete->patrimony_id}")->order("id DESC");
 
         if (!$patrimonyHistoryDelete) {
             $this->message->error("Você tentou deletar um patrimônio que não existe")->flash();
@@ -220,11 +255,17 @@ public function patrimonyHistory(?array $data): void
             return;
         }
 
+        if($patrimonyDelete->updated_at == $patrimonyHistoryDelete->updated_at){
+            $this->message->warning("Não é possível excluir o registro atual, crie um novo histórico antes ...")->icon()->flash();
+            redirect("/beta/patrimonios/editar/{$patrimonyHistoryDelete->patrimony_id}");
+            return;
+        }
+
         if($countHystory->count() < 2 ){
             $this->message->warning("Erro ")->icon()->flash();
            redirect("/beta/patrimonios/editar/{$patrimonyHistoryDelete->patrimony_id}");
            return;
-       }
+        }
 
         if ($patrimonyHistoryDelete->file_terms && file_exists(__DIR__ . "/../../../" . CONF_UPLOAD_DIR . "/{$patrimonyHistoryDelete->file_terms}")) {
             unlink(__DIR__ . "/../../../" . CONF_UPLOAD_DIR . "/{$patrimonyHistoryDelete->file_terms}");

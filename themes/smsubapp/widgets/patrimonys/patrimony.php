@@ -142,9 +142,6 @@
 
                             <input name="type_part_number" type="hidden" value="<?=(!empty($patrimonys->product_id) ? $patrimonys->product()->type_part_number : "")?>">
 
-
-
-
                         </div>
 
                             <div class="row mb-1">
@@ -170,7 +167,7 @@
                                 <div class="mb-3 mb-1">
                                     <label for="textareaObservacoes" class="col-form-label col-form-label-sm"><i class="bi bi-exclamation-diamond me-1"></i><strong>Observações</strong></label>
                                     <textarea class="form-control form-control-sm" tabindex="5" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                    data-bs-title=Observações" rows="2" name="observations"></textarea>
+                                    data-bs-title=Observações" rows="2" name="observations"><?=$patrimonys->observations?></textarea>
                                 </div>
 
                             </div>         
