@@ -56,7 +56,7 @@
                             Cargos
                             <div class="sb-sidenav-collapse-arrow"><i class="bi bi-chevron-double-down"></i></div>
                         </a>
-                        <div class="collapse" id="collapsePositions" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionUserPosition">
+                        <div class="collapse" id="collapseUsersPositions" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionUserPosition">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link text-light fw-semibold fs-6" href="<?=url("/painel/unidades")?>"><i class="bi bi-list bi-2xx me-2"></i> Listar</a>
                                 <a class="nav-link text-light fw-semibold fs-6" href="<?=url("/painel/unidades/cadastrar")?>"><i class="bi bi-building-add bi-2xx me-2"></i> Cadastrar</a>
