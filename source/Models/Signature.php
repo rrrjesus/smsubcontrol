@@ -28,6 +28,9 @@ class Signature extends Model
         return null;
     }
 
+    /**
+     * @return null|Signature
+     */
     static function complete($columns): ?Signature
     {
         $stm = (new Signature())->find("","",$columns);

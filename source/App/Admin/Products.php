@@ -91,8 +91,8 @@ class Products extends Admin
             $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             $productCreate = new Product();
-            $productCreate->brand_id = preg_replace("/[^0-9\s]/", "", $data["brand_id"]);
             $productCreate->contract_id = preg_replace("/[^0-9\s]/", "", $data["contract_id"]);
+            $productCreate->brand_id = preg_replace("/[^0-9\s]/", "", $data["brand_id"]);
             $productCreate->product_name = $data["product_name"];
             $productCreate->type_part_number = $data["type_part_number"];
             $productCreate->description = $data["description"];
@@ -100,7 +100,7 @@ class Products extends Admin
             $productCreate->created_at = date_fmt('', "Y-m-d h:m:s");
 
             if(in_array("", $data)){
-                $json['message'] = $this->message->info("Informe a marca, o produto, o tipo de partnumber e a descrição para cadastrar o produto !!!")->icon()->render();
+                $json['message'] = $this->message->info("Informe o contrato, a marca, o produto, o tipo de partnumber e a descrição para cadastrar o produto !!!")->icon()->render();
                 echo json_encode($json);
                 return;
             }
@@ -130,15 +130,15 @@ class Products extends Admin
             }
 
             $productUpdate = (new Product())->findById($data["product_id"]);
-            $productUpdate->brand_id = preg_replace("/[^0-9\s]/", "", $data["brand_id"]);
             $productUpdate->contract_id = preg_replace("/[^0-9\s]/", "", $data["contract_id"]);
+            $productUpdate->brand_id = preg_replace("/[^0-9\s]/", "", $data["brand_id"]);
             $productUpdate->product_name = $data["product_name"];
             $productUpdate->type_part_number = $data["type_part_number"];
             $productUpdate->description = $data["description"];
             $productUpdate->login_updated = $user->login;
 
             if(in_array("", $data)){
-                $json['message'] = $this->message->info("Informe a marca, o produto, o tipo de partnumber e descrição para atualizar o registro !")->icon()->render();
+                $json['message'] = $this->message->info("Informe o contrato, a marca, o produto, o tipo de partnumber e descrição para atualizar o registro !")->icon()->render();
                 echo json_encode($json);
                 return;
             }

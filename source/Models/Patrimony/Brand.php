@@ -17,7 +17,7 @@ class Brand extends Model
      */
     public function __construct()
     {
-        parent::__construct("brands", ["id"], ["brand_name", "description", "status"]);
+        parent::__construct("brands", ["id"], ["brand_name", "status"]);
     }
 
     /**
@@ -31,6 +31,9 @@ class Brand extends Model
         return $find->fetch();
     }
 
+    /**
+     * @return null|Brand
+     */
     static function completeBrand(): ?Brand
     {
         $stm = (new Brand())->find("status= :s","s=actived");
@@ -45,6 +48,9 @@ class Brand extends Model
         return null;
     }
 
+    /**
+     * @return string
+     */
     public function statusSelect(): ?string
     {
         if ($this->status == "actived") {

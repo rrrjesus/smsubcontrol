@@ -277,6 +277,7 @@ $(function () {
         $('.mask-cep').mask('00000-000');
         $('.mask-login').mask('S000000');
         $('.mask-rf').mask('0000000');
+        $(".mask-sei").mask('0000.0000/0000000-0', {reverse: true});
 
     //  data-bs-toggle="tooltip" Bootstrap Title
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-togglee="tooltip"]'))

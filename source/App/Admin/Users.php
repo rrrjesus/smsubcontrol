@@ -161,7 +161,7 @@ class Users extends Admin
         }
 
         $head = $this->seo->render(
-            CONF_SITE_NAME . " | " . "Perfil de {$profileEdit->fullName()}",
+            CONF_SITE_NAME . " | " . "Perfil de {$profileEdit->user_name}",
             CONF_SITE_DESC,
             url("/painel/perfil"),
             url("/painel/assets/images/image.jpg"),
@@ -176,7 +176,7 @@ class Users extends Admin
             "unit" => $unit,
             "urls" => "perfil",
             "namepage" => "Perfil",
-            "name" => "{$profileEdit->fullName()}",
+            "name" => "{$profileEdit->user_name}",
             "photo" => ($this->user->photo() ? image($this->user->photo, 360, 360) :
             theme("/assets/images/avatar.jpg", CONF_VIEW_ADMIN))
         ]);
@@ -214,7 +214,7 @@ class Users extends Admin
             if (!empty($_FILES["photo"])) {
                 $files = $_FILES["photo"];
                 $upload = new Upload();
-                $image = $upload->image($files, $userCreate->fullName(), 600);
+                $image = $upload->image($files, $userCreate->user_name, 600);
 
                 if (!$image) {
                     $json["message"] = $upload->message()->render();
@@ -403,7 +403,7 @@ class Users extends Admin
         }
 
         $head = $this->seo->render(
-            CONF_SITE_NAME . " | " . ($userEdit ? "Perfil de {$userEdit->fullName()}" : "Novo Usuário"),
+            CONF_SITE_NAME . " | " . ($userEdit ? "Perfil de {$userEdit->user_name}" : "Novo Usuário"),
             CONF_SITE_DESC,
             url("/painel"),
             url("/painel/assets/images/image.jpg"),
@@ -436,8 +436,8 @@ class Users extends Admin
         $termPrint = (new Patrimony())->findById($data["patrimonys_id"]);
 
         $head = $this->seo->render(
-            CONF_SITE_NAME . " - Termo de - ".(!empty($termPrint->userPatrimony()->rf) ? $termPrint->userPatrimony()->rf : "Responsabilidade")." - "
-            .(!empty($termPrint->userPatrimony()->user_name) ? $termPrint->userPatrimony()->user_name : "")." - ".$termPrint->product()->type_part_number.":".$termPrint->part_number ,
+            CONF_SITE_NAME . " - Termo de - ".(!empty($termPrint->user()->rf) ? $termPrint->user()->rf : "Responsabilidade")." - "
+            .(!empty($termPrint->user()->user_name) ? $termPrint->user()->user_name : "")." - ".$termPrint->product()->type_part_number.":".$termPrint->part_number ,
             CONF_SITE_DESC,
             url(),
             theme("/assets/images/favicon.ico"),
@@ -474,8 +474,8 @@ class Users extends Admin
         $termPrint = (new PatrimonyHistory())->findById($data["patrimonys_id"]);
 
         $head = $this->seo->render(
-            CONF_SITE_NAME . " - Termo de - ".(!empty($termPrint->userPatrimony()->rf) ? $termPrint->userPatrimony()->rf : "Responsabilidade")." - "
-            .(!empty($termPrint->userPatrimony()->user_name) ? $termPrint->userPatrimony()->user_name : "")." - ".$termPrint->product()->type_part_number.":".$termPrint->part_number ,
+            CONF_SITE_NAME . " - Termo de - ".(!empty($termPrint->user()->rf) ? $termPrint->user()->rf : "Responsabilidade")." - "
+            .(!empty($termPrint->user()->user_name) ? $termPrint->user()->user_name : "")." - ".$termPrint->product()->type_part_number.":".$termPrint->part_number ,
             CONF_SITE_DESC,
             url(),
             theme("/assets/images/favicon.ico"),

@@ -20,6 +20,20 @@ class UserPosition extends Model
         parent::__construct("user_positions", ["id"], ["position_name"]);
     }
 
+    /**
+     * @param string $position_name
+     * @param string $columns
+     * @return null|UserPosition
+     */
+    public function findByPosition(string $position_name, string $columns = "*"): ?UserPosition
+    {
+        $find = $this->find("position_name = :position_name", "position_name={$position_name}", $columns);
+        return $find->fetch();
+    }
+
+    /**
+     * @return null|UserPosition
+     */
     static function completePosition(): ?UserPosition
     {
         $stm = (new UserPosition())->find("status= :s","s=actived");
@@ -34,6 +48,9 @@ class UserPosition extends Model
         return null;
     }
 
+    /**
+     * @return null|null
+     */
     public function status(): ?string
     {
         if ($this->status == "actived") {
@@ -49,11 +66,11 @@ class UserPosition extends Model
      */
     public function statusBadge(): string
     {
-        if($this->status == 'actived'):
+        if($this->status == 'actived'){
             return '<span class="badge text-bg-success ms-2">Ativo</span>';
-        else:
+        } else {
             return '<span class="badge text-bg-danger ms-2">Inativo</span>';
-        endif;  
+        }
     }
 
     /**
@@ -84,7 +101,7 @@ class UserPosition extends Model
 
         /** UserPosition Create */
         if (empty($this->id)) {
-            if ($this->findByEmail($this->position_name, "id")) {
+            if ($this->findByPosition($this->position_name, "id")) {
                 $this->message->warning("O cargo informado já está cadastrado");
                 return false;
             }

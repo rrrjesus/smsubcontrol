@@ -56,6 +56,9 @@ class Contact extends Model
         return null;
     }
 
+    /**
+     * @return null|UserPosition
+     */
     static function completePosition($columns): ?UserPosition
     {
         $stm = (new UserPosition())->find("status= :s","s=confirmed", $columns);

@@ -276,8 +276,8 @@ public function term(?array $data): void
     $termPrint = (new PatrimonyHistory())->findById($data["patrimonys_id"]);
 
     $head = $this->seo->render(
-        CONF_SITE_NAME . " - Termo de - ".(!empty($termPrint->userPatrimony()->rf) ? $termPrint->userPatrimony()->rf : "Responsabilidade")." - "
-        .(!empty($termPrint->userPatrimony()->user_name) ? $termPrint->userPatrimony()->user_name : "")." - ".$termPrint->product()->type_part_number.":".$termPrint->part_number ,
+        CONF_SITE_NAME . " - Termo de - ".(!empty($termPrint->user()->rf) ? $termPrint->user()->rf : "Responsabilidade")." - "
+        .(!empty($termPrint->user()->user_name) ? $termPrint->user()->user_name : "")." - ".$termPrint->product()->type_part_number.":".$termPrint->part_number ,
         CONF_SITE_DESC,
         url(),
         theme("/assets/images/favicon.ico"),

@@ -31,9 +31,12 @@ class Movement extends Model
         return $find->fetch();
     }
 
+    /**
+     * @return null|Movement
+     */
     static function completeMovement(): ?Movement
     {
-        $stm = (new Movement())->find("","");
+        $stm = (new Movement())->find("status= :s","s=actived");
         $array[] = array();
 
         if(!empty($stm)):

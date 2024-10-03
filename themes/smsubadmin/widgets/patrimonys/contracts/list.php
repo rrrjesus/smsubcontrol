@@ -38,9 +38,9 @@
                         <th class="text-center">FISCAL</th>
                         <th class="text-center">SUPLENTE</th>
                         <th class="text-center">DESCRICAO</th>
+                        <th class="text-center">OBSERVAÇÃO</th>
                         <th class="text-center">STATUS</th>
                         <th class="text-center">DESATIVAR</th>
-                        <th class="text-center">EXCLUIR</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -56,12 +56,12 @@
                     <td class="text-center fw-semibold"><?=(!empty($lista->inspector_id) ? $lista->userInspector()->user_name : "")?></td>
                     <td class="text-center fw-semibold"><?=(!empty($lista->deputy_inspector_id) ? $lista->userDeputyInspector()->user_name : "")?></td>
                     <td class="text-center fw-semibold"><?=(!empty($lista->description) ? $lista->description : "")?></td>
+                    <td class="text-center fw-semibold"><?=(!empty($lista->observations) ? $lista->observations : "")?></td>
                     <td class="text-center fw-semibold"><?=$lista->statusBadge()?></td>
-                    <td class="text-center fw-semibold"><?=$lista->id?></td>
                     <td class="text-center fw-semibold"><?=$lista->id?></td>
                 </tr>
                 <?php endforeach; ?>
-                <?php } ?>
+                <?php }else{redirect("/painel/patrimonio/contratos");} ?>
             </tbody>
         </table>
     </div>     

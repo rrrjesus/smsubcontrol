@@ -30,11 +30,11 @@
                             <td class="text-center fw-semibold"><?=(!empty($lista->product()->product_name) ? $lista->product()->id.' - '.$lista->product()->product_name : "")?></td>
                             <td class="text-center fw-semibold"><?=(!empty($lista->product()->type_part_number) ? $lista->product()->type_part_number : "")?></td>
                             <td class="text-center fw-semibold"><?=(!empty($lista->part_number) ? $lista->part_number : "")?></td>
-                            <td class="text-center fw-semibold"><?=(!empty($lista->userPatrimony()->login) ? $lista->userPatrimony()->login : "")?></td>
-                            <td class="text-center fw-semibold"><?=(!empty($lista->userPatrimony()->rf) ? $lista->userPatrimony()->rf : "")?></td>
-                            <td class="text-center fw-semibold"><?=(!empty($lista->userPatrimony()->user_name) ? $lista->userPatrimony()->user_name : "")?></td>
-                            <td class="text-center fw-semibold"><?=(!empty($lista->userPatrimony()->cell_phone) ? '('.substr($lista->userPatrimony()->cell_phone, 0, 2).')'.substr($lista->userPatrimony()->cell_phone, 2, 9) : "")?></td>
-                            <td class="text-center fw-semibold"><?=(!empty($lista->userPatrimony()->email) ? $lista->userPatrimony()->email : "")?></td>
+                            <td class="text-center fw-semibold"><?=(!empty($lista->user()->login) ? $lista->user()->login : "")?></td>
+                            <td class="text-center fw-semibold"><?=(!empty($lista->user()->rf) ? $lista->user()->rf : "")?></td>
+                            <td class="text-center fw-semibold"><?=(!empty($lista->user()->user_name) ? $lista->user()->user_name : "")?></td>
+                            <td class="text-center fw-semibold"><?=(!empty($lista->user()->cell_phone) ? '('.substr($lista->user()->cell_phone, 0, 2).')'.substr($lista->user()->cell_phone, 2, 9) : "")?></td>
+                            <td class="text-center fw-semibold"><?=(!empty($lista->user()->email) ? $lista->user()->email : "")?></td>
                             <td class="text-center fw-semibold"><?=$lista->termList();?></td>
                             <td class="text-center"><?=$lista->fileList()?></td>
                             <td class="text-center fw-semibold"><?=(!empty($lista->unit()->unit_name) ? $lista->unit()->unit_name : "")?></td>

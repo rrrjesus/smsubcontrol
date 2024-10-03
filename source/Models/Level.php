@@ -35,6 +35,9 @@ class Level extends Model
         return $find->fetch();
     }
 
+    /**
+     * @return null|Level
+     */
     static function completeLevel($columns): ?Level
     {
         $stm = (new Level())->find("status=:s","s=actived",$columns);
@@ -49,6 +52,9 @@ class Level extends Model
         return null;
     }
 
+    /**
+     * @return null|Level
+     */
     static function selectLevelName(): ?Level
     {
         $stm = (new Level())->find("status=:s","s=actived")->fetch(true);
@@ -61,6 +67,9 @@ class Level extends Model
         return null;
     }  
 
+    /**
+     * @return null|Level
+     */
     static function selectLevelId(): ?Level
     {
         $stm = (new Level())->find()->fetch(true);

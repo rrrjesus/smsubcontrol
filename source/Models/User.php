@@ -53,6 +53,9 @@ class User extends Model
         return $find->fetch();
     }
 
+    /**
+     * @return null|string
+     */
     public function statusSelected(): ?string
     {
         if ($this->status == "registered") {
@@ -65,6 +68,9 @@ class User extends Model
         return null; 
     }
 
+    /**
+     * @return null|string
+     */
     public function statusInput(): ?string
     {
         if ($this->status == "registered") {
@@ -77,6 +83,9 @@ class User extends Model
         return null; 
     }
 
+    /**
+     * @return null|string
+     */
     public function statusSpan(): ?string
     {
 
@@ -93,6 +102,9 @@ class User extends Model
     return null; 
     }
 
+    /**
+     * @return null|string
+     */
     public function photoList(): ?string
     {
         if($this->photo && file_exists(CONF_UPLOAD_DIR.'/'.$this->photo)){
@@ -106,6 +118,9 @@ class User extends Model
         return null;
     } 
     
+    /**
+     * @return null|string
+     */
     public function photoListDisabled(): ?string
     {
         if($this->photo && file_exists(CONF_UPLOAD_DIR.'/'.$this->photo)){
@@ -119,6 +134,9 @@ class User extends Model
         return null;
     } 
 
+    /**
+     * @return null|string
+     */
     public function statusInputDecode($status): ?string
     {
         if ($status == "1 - REGISTRADO") {
@@ -164,19 +182,14 @@ class User extends Model
         return null;
     }
 
+    /**
+     * @return null|Level
+     */
     public function level(): ?Level    {
         if($this->level_id) {
             return(new Level())->findById($this->level_id);
         }
         return null;
-    }
-
-    /**
-     * @return string
-     */
-    public function fullName(): string
-    {
-        return "{$this->user_name}";
     }
 
     /**
@@ -226,6 +239,9 @@ class User extends Model
         return null;
     }
 
+    /**
+     * @return null|UserPosition
+     */
     static function completePosition($columns): ?UserPosition
     {
         $stm = (new UserPosition())->find("status= :s","s=confirmed", $columns);
@@ -240,6 +256,9 @@ class User extends Model
         return null;
     }
 
+    /**
+     * @return null|Unit
+     */
     public function unitSelect(): ?Unit
     {
         $stm = (new Unit())->find("status=:s","s=actived")->fetch(true);

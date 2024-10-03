@@ -90,7 +90,7 @@
                                     <tbody>
                                         <tr>
                                             <td class="text-center"><?= date_fmt($onlineNow->created_at, "H\hm"); ?> - <?= date_fmt($onlineNow->updated_at, "H\hm"); ?> 
-                                                <?= ($onlineNow->user ? $onlineNow->user()->fullName() : "Usuário Convidado"); ?></td>
+                                                <?= ($onlineNow->user ? $onlineNow->user()->user_name : "Usuário Convidado"); ?></td>
                                             <td class="text-center"><?= $onlineNow->pages; ?> páginas vistas</td>
                                             <td class="text-center"><a target="_blank" href="<?= url("/{$onlineNow->url}"); ?>"><b>
                                                 <?= strtolower(CONF_SITE_NAME); ?></b><?= $onlineNow->url; ?></a></td>

@@ -55,8 +55,8 @@ class Contracts extends Admin
     public function disabledContracts(): void
     {
         $head = $this->seo->render(
-            "Contratos Desabilitadas - " . CONF_SITE_NAME ,
-            "Lista de contratos Desativadas",
+            "Contratos Desabilitados - " . CONF_SITE_NAME ,
+            "Lista de contratos Desativados",
             url("/painel/patrimonio/contratos/desativados"),
             theme("/assets/images/favicon.ico")
         );
@@ -89,13 +89,55 @@ class Contracts extends Admin
             $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             $contractCreate = new Contract();
+            $contractCreate->sei_process = $data["sei_process"];
             $contractCreate->contract_name = $data["contract_name"];
+            $contractCreate->manager_id = $data["manager_id"];
+            $contractCreate->inspector_id = $data["inspector_id"];
+            $contractCreate->deputy_inspector_id = $data["deputy_inspector_id"];
+            $contractCreate->status = $data["status"];
             $contractCreate->description = $data["description"];
+            $contractCreate->observations = $data["observations"];
             $contractCreate->login_created = $user->login;
             $contractCreate->created_at = date_fmt('', "Y-m-d h:m:s");
 
-            if(in_array("", $data)){
-                $json['message'] = $this->message->info("Informe o contrato e descrição para criar o registro !")->icon()->render();
+            if($data["sei_process"] == ''){
+                $json['message'] = $this->message->info("Informe o número de Processo SEI para criar o registro !")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            if($data["contract_name"] == ''){
+                $json['message'] = $this->message->info("Informe o nome do contrato para criar o registro !")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            if($data["manager_id"] == ''){
+                $json['message'] = $this->message->info("Informe o nome do responsável para criar o registro !")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            if($data["inspector_id"] == ''){
+                $json['message'] = $this->message->info("Informe o nome do fiscal para criar o registro !")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            if($data["deputy_inspector_id"] == ''){
+                $json['message'] = $this->message->info("Informe o nome do suplente para criar o registro !")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            if($data["status"] == ''){
+                $json['message'] = $this->message->info("Informe o status para criar o registro !")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            if($data["description"] == ''){
+                $json['message'] = $this->message->info("Informe o contrato, descrição e status para criar o registro !")->icon()->render();
                 echo json_encode($json);
                 return;
             }
@@ -106,9 +148,8 @@ class Contracts extends Admin
                 return;
             }
 
-            $this->message->success("Contrato {$contractCreate->contract_name} cadastrado com sucesso...")->icon("emoji-grin me-1")->flash();
+            $this->message->success("Contrato {$contractCreate->sei_process} cadastrado com sucesso...")->icon("emoji-grin me-1")->flash();
             $json["redirect"] = url("/painel/patrimonio/contratos/cadastrar");
-
             echo json_encode($json);
             return;
         }
@@ -125,12 +166,54 @@ class Contracts extends Admin
             }
 
             $contractUpdate = (new Contract())->findById($data["contract_id"]);
+            $contractUpdate->sei_process = $data["sei_process"];
             $contractUpdate->contract_name = $data["contract_name"];
+            $contractUpdate->manager_id = $data["manager_id"];
+            $contractUpdate->inspector_id = $data["inspector_id"];
+            $contractUpdate->deputy_inspector_id = $data["deputy_inspector_id"];
+            $contractUpdate->status = $data["status"];
             $contractUpdate->description = $data["description"];
+            $contractUpdate->observations = $data["observations"];
             $contractUpdate->login_updated = $user->login;
             $contractUpdate->updated_at = date_fmt('', "Y-m-d h:m:s");
 
-            if(in_array("", $data)){
+            if($data["sei_process"] == ''){
+                $json['message'] = $this->message->info("Informe o número de Processo SEI para criar o registro !")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            if($data["contract_name"] == ''){
+                $json['message'] = $this->message->info("Informe o nome do contrato para criar o registro !")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            if($data["manager_id"] == ''){
+                $json['message'] = $this->message->info("Informe o nome do responsável para criar o registro !")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            if($data["inspector_id"] == ''){
+                $json['message'] = $this->message->info("Informe o nome do fiscal para criar o registro !")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            if($data["deputy_inspector_id"] == ''){
+                $json['message'] = $this->message->info("Informe o nome do suplente para criar o registro !")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            if($data["status"] == ''){
+                $json['message'] = $this->message->info("Informe o status para criar o registro !")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            if($data["description"] == ''){
                 $json['message'] = $this->message->info("Informe o contrato, descrição e status para criar o registro !")->icon()->render();
                 echo json_encode($json);
                 return;
@@ -142,7 +225,7 @@ class Contracts extends Admin
                 return;
             }
 
-            $json["message"] = $this->message->success("Contrato {$contractUpdate->contract_name} atualizada com sucesso !!!")->icon("emoji-grin me-1")->render();
+            $json["message"] = $this->message->success("Contrato {$contractUpdate->sei_process} atualizado com sucesso !!!")->icon("emoji-grin me-1")->render();
             echo json_encode($json);
             return;
         }
@@ -151,6 +234,7 @@ class Contracts extends Admin
          if (!empty($data["action"]) && $data["action"] == "actived") {
             $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
             $contractActived = (new Contract())->findById($data["contract_id"]);
+            $contract = (new Contract())->find("status = :s","s=disabled")->count();
 
             if (!$contractActived) {
                 $this->message->error("Você tentou gerenciar um contrato que não existe")->icon("gift")->flash();
@@ -167,9 +251,15 @@ class Contracts extends Admin
                 return;
             }
 
-            $this->message->success("Contrato {$contractActived->contract_name} reativado com sucesso !!!")->icon("gift")->flash();
-            redirect("/painel/patrimonio/contratos/desativadas");
-            return;
+
+            if($contract >= 1){
+                $this->message->success("Contrato {$contractActived->sei_process} reativado com sucesso !!!")->icon("gift")->flash();
+                redirect("/painel/patrimonio/contratos/desativados");
+                return;
+            }else{
+                redirect("/painel/patrimonio/contratos");
+                return;
+            }
         }
 
         
@@ -193,7 +283,7 @@ class Contracts extends Admin
                 return;
             }
 
-            $this->message->success("Contrato {$contractDisabled->contract_name} desativada com sucesso !!!")->icon("gift")->flash();
+            $this->message->success("Contrato {$contractDisabled->sei_process} desativado com sucesso !!!")->icon("gift")->flash();
             redirect("/painel/patrimonio/contratos");
             return;
         }
@@ -211,7 +301,7 @@ class Contracts extends Admin
 
             $contractDelete->destroy();
 
-            $this->message->success("o contrato {$contractDelete->contract_name} foi excluída com sucesso...")->icon("gift")->flash();
+            $this->message->success("o contrato {$contractDelete->sei_process} foi excluído com sucesso...")->icon("gift")->flash();
             redirect("/painel/patrimonio/contratos");
             return;
         }
@@ -234,7 +324,7 @@ class Contracts extends Admin
 
         echo $this->view->render("widgets/patrimonys/contracts/contract", [
             "head" => $head,
-            "contratos" => $contractEdit,
+            "contracts" => $contractEdit,
             "users" => $users,
             "urls" => "patrimonio/contratos",
             "namepage" => "Contratos",

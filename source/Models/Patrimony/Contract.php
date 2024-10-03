@@ -84,11 +84,28 @@ class Contract extends Model
      */
     public function statusBadge(): string
     {
-        if($this->status == 'actived'):
+        if($this->status == 'actived'){
             return '<span class="badge text-bg-success ms-2">Ativo</span>';
-        else:
+        } else {
             return '<span class="badge text-bg-danger ms-2">Inativo</span>';
-        endif;  
+        }  
+    }
+
+    /**
+     * @return null|Contract
+     */
+    static function completeContract(): ?Contract
+    {
+        $stm = (new Contract())->find("status = :s","s=actived");
+        $array = array();
+
+        if(!empty($stm)):
+            foreach ($stm->fetch(true) as $row):
+                $array[] = $row->id.' - '.$row->sei_process.' - '.$row->contract_name;
+            endforeach;
+            echo json_encode($array); //Return the JSON Array
+        endif;
+        return null;
     }
 
     /**

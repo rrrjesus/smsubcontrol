@@ -5,8 +5,6 @@ namespace Source\Models\Patrimony;
 use Source\Core\Model;
 use Source\Models\Unit;
 use Source\Models\User;
-use Source\Models\UserPosition;
-use Source\Models\Patrimony\Brand;
 use Source\Models\Patrimony\Product;
 use Source\Models\Patrimony\Movement;
 
@@ -41,53 +39,12 @@ class  PatrimonyHistory extends Model
     /**
      * @return null|User
      */
-    public function userPatrimony(): ?User
+    public function user(): ?User
     {
         if($this->user_id) {
             return(new User())->findById($this->user_id);
         }
         return null;
-    }
-
-    /**
-     * @return null|UserPosition
-     */
-    public function userPosition(string $position): ?UserPosition
-    {
-        if($position) {
-            return(new UserPosition())->findById($position);
-        }
-        return null;
-    }
-
-    /**
-     * @return null|Unit
-     */
-    public function userUnit(string $unit): ?Unit
-    {
-        if($unit) {
-            return(new Unit())->findById($unit);
-        }
-        return null;
-    }
-
-    /**
-     * @return null|Movement
-     */
-    public function movement(): ?Movement
-    {
-        if($this->movement_id) {
-            return(new Movement())->findById($this->movement_id);
-        }
-        return null;
-    }
-
-   /**
-     * @return Brand
-     */
-    public function brand(): Brand
-    {
-        return (new Brand())->findById($this->brand_id);
     }
 
     /**
@@ -101,13 +58,24 @@ class  PatrimonyHistory extends Model
         return null;
     }
 
-        /**
+    /**
      * @return null|Unit
      */
     public function unit(): ?Unit
     {
         if($this->unit_id) {
             return(new Unit())->findById($this->unit_id);
+        }
+        return null;
+    }
+
+    /**
+     * @return null|Movement
+     */
+    public function movement(): ?Movement
+    {
+        if($this->movement_id) {
+            return(new Movement())->findById($this->movement_id);
         }
         return null;
     }
@@ -147,17 +115,6 @@ class  PatrimonyHistory extends Model
     }
 
     /**
-     * @return null|PatrimonyMarcas
-     */
-    public function productBrand(string $brand): ?Brand
-    {
-        if($brand) {
-            return(new Brand())->findById($brand);
-        }
-        return null;
-    }
-
-    /**
      * @return null|Product
      */
     static function completeProduct(): ?Product
@@ -167,7 +124,7 @@ class  PatrimonyHistory extends Model
 
         if(!empty($stm)):
             foreach ($stm->fetch(true) as $row):
-                $array[] = $row->id.' - '.$row->product_name.' - (Nº de Registro '.$row->type_part_number.')';
+                $array[] = $row->id.' - '.$row->product_name.' - '.$row->contract()->contract_name.' - (Nº de Registro '.$row->type_part_number.')';
             endforeach;
             echo json_encode($array); //Return the JSON Array
         endif;

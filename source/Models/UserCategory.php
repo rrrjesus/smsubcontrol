@@ -20,6 +20,9 @@ class UserCategory extends Model
         parent::__construct("user_categories", ["id"], ["category_name"]);
     }
 
+    /**
+     * @return null|string
+     */
     public function status(): ?string
     {
         if ($this->status == "actived") {
@@ -35,11 +38,11 @@ class UserCategory extends Model
      */
     public function statusBadge(): string
     {
-        if($this->status == 'actived'):
+        if($this->status == 'actived'){
             return '<span class="badge text-bg-success ms-2">Ativo</span>';
-        else:
+        } else {
             return '<span class="badge text-bg-danger ms-2">Inativo</span>';
-        endif;  
+        }  
     }
 
     /**

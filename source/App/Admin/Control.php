@@ -142,7 +142,7 @@ class Control extends Admin
         }
 
         $head = $this->seo->render(
-            CONF_SITE_NAME . " | Assinatura de " . $subscription->user()->fullName(),
+            CONF_SITE_NAME . " | Assinatura de " . $subscription->user()->user_name,
             CONF_SITE_DESC,
             url("/admin"),
             theme("/assets/images/image.jpg", CONF_VIEW_ADMIN),

@@ -8,7 +8,6 @@ use Source\Models\Patrimony\Product;
 use Source\Models\Patrimony\Movement;
 use Source\Models\Unit;
 use Source\Models\User;
-use Source\Models\UserPosition;
 
 
 /**
@@ -51,11 +50,14 @@ class Patrimony extends Model
     }
 
     /**
-     * @return Brand
+     * @return null|User
      */
-    public function brand(): Brand
+    public function user(): ?User
     {
-        return (new Brand())->findById($this->brand_id);
+        if($this->user_id) {
+            return(new User())->findById($this->user_id);
+        }
+        return null;
     }
 
     /**
@@ -92,63 +94,6 @@ class Patrimony extends Model
     }
 
     /**
-     * @return null|User
-     */
-    public function userPatrimony(): ?User
-    {
-        if($this->user_id) {
-            return(new User())->findById($this->user_id);
-        }
-        return null;
-    }
-
-    /**
-     * @return null|UserPosition
-     */
-    public function userPosition(string $position): ?UserPosition
-    {
-        if($position) {
-            return(new UserPosition())->findById($position);
-        }
-        return null;
-    }
-
-    /**
-     * @return null|Unit
-     */
-    public function userUnit(string $unit): ?Unit
-    {
-        if($unit) {
-            return(new Unit())->findById($unit);
-        }
-        return null;
-    }
-
-    /**
-     * @return null|Brand
-     */
-    public function productBrand(string $brand): ?Brand
-    {
-        if($brand) {
-            return(new Brand())->findById($brand);
-        }
-        return null;
-    }
-
-    /**
-     * @return null|string
-     */
-    public function fileList(): ?string
-    {
-        if($this->file_terms && file_exists(CONF_UPLOAD_DIR.'/'.$this->file_terms)){
-            return '<a href="../'.CONF_UPLOAD_DIR.'/'.$this->file_terms.'" role="button" class="btn btn-sm btn-outline-danger rounded-circle" target="_blank"><i class="bi bi-file-earmark-pdf"></a>';
-        }else{
-            return '<p class="fw-semibold" >Sem Termo</p>';
-        }
-        return null;
-    } 
-
-    /**
      * @return null|string
      */
     public function fileListUser(): ?string
@@ -160,19 +105,6 @@ class Patrimony extends Model
         }
         return null;
     } 
-
-    /**
-     * @return null|string
-     */
-    public function termList(): ?string
-    {
-        if($this->user_id){
-            return '<a href="'.url("/beta/patrimonios/termo/{$this->id}").'" role="button" aria-disabled="true" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
-                            data-bs-title="Clique para editar" target="_blank" class="btn btn-sm btn-outline-primary rounded-circle fw-bold me-2"><i class="bi bi-file-earmark-word"></i></a>';
-        }
-        return null;
-    }
-
     
     /**
      * @return null|string
@@ -242,7 +174,7 @@ class Patrimony extends Model
 
         if(!empty($stm)):
             foreach ($stm->fetch(true) as $row):
-                $array[] = $row->id.' - '.$row->product_name.' - (Nº de Registro '.$row->type_part_number.')';
+                $array[] = $row->id.' - '.$row->product_name.' - '.$row->Contract()->contract_name.' - (Nº de Registro '.$row->type_part_number.')';
             endforeach;
             echo json_encode($array); //Return the JSON Array
         endif;
@@ -293,6 +225,9 @@ class Patrimony extends Model
         } 
     }
 
+    /**
+     * @return string
+     */
     public function statusSelect(): ?string
     {
         if ($this->status == "actived") {
@@ -302,77 +237,6 @@ class Patrimony extends Model
         } else {
             return '<option value="writeoff" selected>Baixa</option><option value="actived">Ativo</option><option value="disabled">Inativo</option>';
         }
-        return null; 
-    }
-
-    public function brandSelect(): ?Brand
-    {
-        $stm = (new Brand())->find("status=:s","s=actived")->fetch(true);
-
-        if(!empty($stm)):
-            foreach ($stm as $row):
-                echo '<option value="'.$row->id.'">'.$row->brand_name.'</option>'; //Return the JSON Array
-            endforeach;
-        endif;
-        return null;
-    } 
-
-    public function productSelect(): ?Product
-    {
-        $stm = (new Product())->find("status=:s","s=actived")->fetch(true);
-
-        if(!empty($stm)):
-            foreach ($stm as $row):
-                echo '<option value="'.$row->id.'">'.$row->product_name.'</option>'; //Return the JSON Array
-            endforeach;
-        endif;
-        return null;
-    } 
-
-    public function brandproductSelect(): ?Product
-    {
-        $stm = (new Product())->find("status=:s","s=actived")->fetch(true);
-
-        if(!empty($stm)):
-            foreach ($stm as $row):
-                echo '<option value="'.$row->id.'">'.$row->id.' - '.$this->brand($row->brand_id)->brand_name.' - '.$row->product_name.'</option>'; //Return the JSON Array
-            endforeach;
-        endif;
-        return null;
-    } 
-
-    public function unitSelect(): ?Unit
-    {
-        $stm = (new Unit())->find("status=:s","s=actived")->fetch(true);
-
-        if(!empty($stm)):
-            foreach ($stm as $row):
-                echo '<option value="'.$row->id.'">'.$row->unit_name.'</option>'; //Return the JSON Array
-            endforeach;
-        endif;
-        return null;
-    } 
-
-    public function userSelect(): ?User
-    {
-        $stm = (new User())->find("status != :s","s=trash")->fetch(true);
-
-        if(!empty($stm)):
-            foreach ($stm as $row):
-                echo '<option value="'.$row->id.'">'.$row->login.' - '.$row->fullName().'</option>'; //Return the JSON Array
-            endforeach;
-        endif;
-        return null;
-    } 
-
-    public function statusInput(): ?string
-    {
-        if ($this->status == "actived") {
-            return 'Ativo';
-        } else {
-            return 'Inativo';
-        }
-        return null; 
     }
 
     /**
@@ -385,24 +249,6 @@ class Patrimony extends Model
         }
 
         return null;
-    }
-
-    /**
-     * @return string
-     */
-    public function levelBadge(): string
-    {
-        if($this->level_id == 1):
-            return '<span class="badge text-bg-primary ms-2">Patrimony</span>';
-        elseif($this->level_id == 2):
-            return '<span class="badge text-bg-light ms-2">Edit*</span>';
-        elseif($this->level_id == 3):
-            return '<span class="badge text-bg-info ms-2">Edit</span>';
-        elseif($this->level_id == 4):
-            return '<span class="badge text-bg-success ms-2">Adm*</span>';
-        else:
-            return '<span class="badge text-bg-warning ms-2">Adm</span>';
-        endif;  
     }
 
     /**

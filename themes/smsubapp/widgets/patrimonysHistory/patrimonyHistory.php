@@ -47,7 +47,7 @@
                                 <label class="col-form-label col-form-label-sm" for="inputProduto"><i class="bi bi-person-add me-1"></i><strong>Produto</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                 data-bs-title="Digite o nome do produto - Ex : 1 - Tablet" class="form-control form-control-sm product_id"
-                                    name="product_id" placeholder="PRODUTO" value="<?php if($patrimonys->product_id){echo $patrimonys->product()->id.' - '.$patrimonys->product()->product_name.' - (Nº de Registro '.$patrimonys->product()->type_part_number.')';}else{echo '';}?>">
+                                    name="product_id" placeholder="PRODUTO" value="<?php if($patrimonys->product_id){echo $patrimonys->product()->id.' - '.$patrimonys->product()->product_name.' - '.$patrimonys->product()->contract()->contract_name.' - (Nº de Registro '.$patrimonys->product()->type_part_number.')';}else{echo '';}?>">
                             </div>
 
                             <div class="col-md-3 mb-1">
@@ -64,7 +64,7 @@
                                     <label class="col-form-label col-form-label-sm" for="inputSobreNome"><i class="bi bi-person-add me-1"></i><strong>Usuario</strong></label>
                                     <input type="text" data-bs-togglee="tooltip" tabindex="2" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                         data-bs-title="Digite o usuário - Ex : 1 - João Bento Badaró" class="form-control form-control-sm user_id"
-                                        name="user_id_history_edit" id="user_id_history_edit" placeholder="USUÁRIO" value="<?=(!empty($patrimonys->user_id) ? $patrimonys->userPatrimony()->id.' - '.$patrimonys->userPatrimony()->user_name : "")?>">
+                                        name="user_id_history_edit" id="user_id_history_edit" placeholder="USUÁRIO" value="<?=(!empty($patrimonys->user_id) ? $patrimonys->user()->id.' - '.$patrimonys->user()->user_name : "")?>">
                                 </div>
 
                                 <div class="col-md-7 mb-1">

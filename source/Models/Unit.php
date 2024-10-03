@@ -59,6 +59,9 @@ class Unit extends Model
         return null;
     } 
     
+    /**
+     * @return null|string
+     */
     public function photoListDisabled(): ?string
     {
         if($this->photo && file_exists('themes/'.CONF_VIEW_ADMIN.'/assets/images/assinatura/'.$this->photo)){
@@ -72,6 +75,9 @@ class Unit extends Model
         return null;
     } 
 
+    /**
+     * @return null|Unit
+     */
     static function completeName($columns): ?Unit
     {
         $stm = (new Unit())->find("","",$columns);
@@ -86,6 +92,9 @@ class Unit extends Model
         return null;
     }
 
+    /**
+     * @return null|Unit
+     */
     static function completeUnit(): ?Unit
     {
         $stm = (new Unit())->find("status= :s","s=actived");
