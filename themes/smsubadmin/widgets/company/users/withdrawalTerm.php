@@ -89,13 +89,21 @@ div.WordSection1
 		&nbsp;declaro assumir responsabilidade pela guarda, conservação deste aparelho
 		(e acessórios) e uso adequado do(s) equipamento(s) abaixo listado(s) , conforme
 		segue:</span></p>
-
+		
 		<table class=a border=1 cellspacing=0 cellpadding=0 width=624 style='border-collapse: collapse;border:none'>
 			<tr style='height:44.0pt'>
 				<td width=624 valign=top style='width:467.7pt;border:solid black 1.0pt; padding:0.2cm 5.4pt 0cm 5.4pt;height:44.0pt'>
 				<p class=MsoNormal style='text-align:justify;text-indent:-.1pt'>
 					<span style='font-size:10.0pt;font-family:"Arial",sans-serif'> <b>01</b> <?=$term->product()->brand()->brand_name?> 
-					<?=$term->product()->product_name?> - <span><b><?=$term->product()->type_part_number?> : <?=$term->part_number?></b></span>, <?=$term->product()->description?></span>
+					<?=$term->product()->product_name?> - <span><b><?=$term->product()->type_part_number?> : 
+					<?php 
+						if($term->product()->type_part_number == 'CHIP'){
+						echo '(11)'.$term->part_number;
+					} else {
+						echo $term->part_number;
+					}
+					?>
+				</b></span>, <?=$term->product()->description?></span>
 				</p>
 				</td>
 			</tr>

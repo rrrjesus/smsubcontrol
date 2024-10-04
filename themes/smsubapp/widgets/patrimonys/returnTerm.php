@@ -88,7 +88,15 @@ div.WordSection1
 				<td width=624 valign=top style='width:467.7pt;border:solid black 1.0pt; padding:0.2cm 5.4pt 0cm 5.4pt;height:44.0pt'>
 				<p class=MsoNormal style='text-align:justify;text-indent:-.1pt'>
 					<span style='font-size:10.0pt;font-family:"Arial",sans-serif'> <b>01</b> <?=$term->product()->brand()->brand_name?> 
-					<?=$term->product()->product_name?> - <span><b><?=$term->product()->type_part_number?> : <?=$term->part_number?></b></span>, <?=$term->product()->description?></span>
+					<?=$term->product()->product_name?> - <span><b><?=$term->product()->type_part_number?> : 
+					<?php 
+						if($term->product()->type_part_number == 'CHIP'){
+						echo '(11)'.$term->part_number;
+					} else {
+						echo $term->part_number;
+					}
+					?>
+					</b></span>, <?=$term->product()->description?></span>
 				</p>
 				</td>
 			</tr>
@@ -99,7 +107,7 @@ div.WordSection1
 
         <p class=MsoNormal style='margin-left:1.25cm;margin-right:1.25cm;text-align:justify;text-indent:-.1pt'><span style='font-size:10.0pt;line-height:150%;font-family:
 		"Arial",sans-serif;font-weight:normal'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Eu <span class="text-uppercase"><b><?=$term->user()->user_name?></b></span>,
-		portador do Registro Funcional (RF) <span><b><?=$term->user()->rf?></span></b>, lotado/a na <span><b><?=$term->user()->unit()->unit_name?></b></span>,
+		portador do Registro Funcional (RF) <span><b><?=$term->user()->rf?></span></b>, lotado/a na <span><b><?=$term->user()->userUnit()->unit_name?></b></span>,
 		&nbsp;declaro que devolvi o(s) equipamento(s) acima discriminado(s) à <b>COORDENAÇÃO DE TECNOLOGIA DE INFORMAÇÃO - COTI</b>.</span></p>
 
         <p class=MsoNormal><span style='font-size:10.0pt;line-height:106%;font-family:

@@ -21,6 +21,17 @@ class UserCategory extends Model
     }
 
     /**
+     * @param string $category_name
+     * @param string $columns
+     * @return null|UserCategory
+     */
+    public function findByCategory(string $category_name, string $columns = "*"): ?UserCategory
+    {
+        $find = $this->find("category_name = :category_name", "category_name={$category_name}", $columns);
+        return $find->fetch();
+    }
+
+    /**
      * @return null|string
      */
     public function status(): ?string
@@ -51,7 +62,7 @@ class UserCategory extends Model
     public function save(): bool
     {
         if (!$this->required()) {
-            $this->message->warning("O campo : Cargo é obrigatório !!!")->icon();
+            $this->message->warning("O campo : Regime de Trabalho é obrigatório !!!")->icon();
             return false;
         }
 
@@ -60,7 +71,7 @@ class UserCategory extends Model
             $categoryId = $this->id;
 
             if ($this->find("category_name = :c AND id != :i", "c={$this->category_name}&i={$categoryId}", "id")->fetch()) {
-                $this->message->warning("O categoria informado já está cadastrado");
+                $this->message->warning("O regime de trabalho informado já está cadastrado");
                 return false;
             }
 
@@ -73,8 +84,8 @@ class UserCategory extends Model
 
         /** UserCategory Create */
         if (empty($this->id)) {
-            if ($this->findByEmail($this->category_name, "id")) {
-                $this->message->warning("O categoria informado já está cadastrado");
+            if ($this->findByCategory($this->category_name, "id")) {
+                $this->message->warning("O regime de trabalho informado já está cadastrado");
                 return false;
             }
 
