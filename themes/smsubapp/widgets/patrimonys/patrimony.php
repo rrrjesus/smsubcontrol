@@ -121,7 +121,7 @@
 
                             <div class="col-md-3 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputNs"><i class="bi bi-person-add me-1"></i><strong>Número de Registro</strong></label>
-                                <input type="text" data-bs-togglee="tooltip" autofocus tabindex="1" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                <input type="text" data-bs-togglee="tooltip" tabindex="1" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Digite o numero de registro da peça" class="form-control form-control-sm"
                                     name="part_number" placeholder="NÚMERO DA PEÇA" value="<?=$patrimonys->part_number?>">
                             </div>
@@ -135,7 +135,7 @@
 
                             <div class="col-md-3 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputMovimentacao"><i class="bi bi-person-add me-1"></i><strong>Estado</strong></label>
-                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                <input type="text" data-bs-togglee="tooltip" autofocus data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Digite o estado do patrimonio - Ex : 1- ESTOQUE, 2 - RETIRADO ... " tabindex="3" class="form-control form-control-sm movement_id"
                                     name="movement_id" placeholder="ESTADO">
                             </div>
@@ -167,7 +167,7 @@
                                 <div class="mb-3 mb-1">
                                     <label for="textareaObservacoes" class="col-form-label col-form-label-sm"><i class="bi bi-exclamation-diamond me-1"></i><strong>Observações</strong></label>
                                     <textarea class="form-control form-control-sm" tabindex="5" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                    data-bs-title=Observações" rows="2" name="observations"><?=$patrimonys->observations?></textarea>
+                                    data-bs-title=Observações" rows="2" name="observations"></textarea>
                                 </div>
 
                             </div>         
