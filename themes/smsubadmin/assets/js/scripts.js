@@ -163,6 +163,19 @@ $(function () {
         }
     });
 
+    $("#userposition").validate({
+        rules: {
+            position_name: {
+                required: true
+            }
+        },
+        messages: {
+            position_name: {
+                required: "Digite o cargo do servidor !!!"
+            }
+        }
+    });
+
     $("#product").validate({
         rules: {
             brand_id: {

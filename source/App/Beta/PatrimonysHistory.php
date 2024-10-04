@@ -2,9 +2,8 @@
 
 namespace Source\App\Beta;
 
-use Source\Models\User;
+use Source\Models\Company\User;
 use Source\Support\Upload;
-use Source\Models\Patrimony\Bem;
 use Source\Models\Patrimony\Patrimony;
 use Source\Models\Patrimony\PatrimonyHistory;
 
@@ -102,6 +101,12 @@ public function patrimonyHistory(?array $data): void
 
             //upload pdf
             if (!empty($_FILES["file_terms"])) {
+
+                if ($patrimonysUpdate->file_terms && file_exists(__DIR__ . "/../../../" . CONF_UPLOAD_DIR . "/{$patrimonysUpdate->file_terms}")) {
+                    unlink(__DIR__ . "/../../../" . CONF_UPLOAD_DIR . "/{$patrimonysUpdate->file_terms}");
+                    (new Upload())->remove($patrimonysUpdate->file_terms);
+                }
+
                 $files = $_FILES["file_terms"];
                 $upload = new Upload();
                 
@@ -114,8 +119,6 @@ public function patrimonyHistory(?array $data): void
                 }
 
                 $patrimonysUpdate->file_terms = $file_terms;
-            } else {
-                $patrimonysUpdate->file_terms = '';
             }
 
             if (!$patrimonysUpdate->save()) {
@@ -136,16 +139,6 @@ public function patrimonyHistory(?array $data): void
 
         //upload pdf
         if (!empty($_FILES["file_terms"])) {
-            $files = $_FILES["file_terms"];
-            $upload = new Upload();
-            
-            $file_terms = $upload->file($files, $patrimonysHistoryUpdate->user_id.'_'.$type_part_number.'_'.$patrimonysHistoryUpdate->part_number);
-
-            if (!$file_terms) {
-                $json["message"] = $upload->message()->render();
-                echo json_encode($json);
-                return;
-            }
 
             $patrimonysHistoryUpdate->file_terms = $file_terms;
         }

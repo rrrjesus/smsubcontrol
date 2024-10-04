@@ -3,8 +3,8 @@
 namespace Source\Models\Patrimony;
 
 use Source\Core\Model;
-use Source\Models\Unit;
-use Source\Models\User;
+use Source\Models\Company\Unit;
+use Source\Models\Company\User;
 use Source\Models\Patrimony\Product;
 use Source\Models\Patrimony\Movement;
 

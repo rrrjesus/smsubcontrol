@@ -2,7 +2,7 @@
 
 <!-- Breacrumb-->
 <?= $this->insert("views/theme/breadcrumb"); ?>
-<div class="row justify-content-center">
+<div class="row justify-content-center mt-5">
     <div class="col-xl-12">
         <div class="container-fluid">
             <div class="d-flex justify-content-center">

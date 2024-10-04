@@ -3,7 +3,7 @@
 namespace Source\App\Beta;
 
 use Source\Models\Auth;
-use Source\Models\User;
+use Source\Models\Company\User;
 use Source\Models\Contact;
 use Source\Models\Patrimony\Brand;
 use Source\Models\Patrimony\Model;

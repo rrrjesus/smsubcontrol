@@ -115,29 +115,47 @@ $route->get("/logoff", "Dash:logoff");
 $route->namespace("Source\App\Admin");
 $route->group("/painel");
 
-//login
+//Login
 $route->get("/", "Login:root");
 $route->get("/login", "Login:login");
 $route->post("/login", "Login:login");
 
-//dash
+//Dash
 $route->get("/controle", "Dash:dash");
 $route->get("/controle/inicial", "Dash:home");
 $route->post("/controle/inicial", "Dash:home");
 $route->get("/logoff", "Dash:logoff");
 
-// Grupos
-$route->get("/grupos", "Groups:Groups");
-$route->get("/grupos/desativados", "Groups:disabledGroups");
-$route->get("/grupos/adicionar", "Groups:group");
-$route->post("/grupos/adicionar", "Groups:group");
-$route->get("/grupos/editar/{group_id}", "Groups:group");
-$route->post("/grupos/editar/{group_id}", "Groups:group");
-$route->get("/grupos/ativar/{group_id}", "Groups:activedGroup");
-$route->get("/grupos/desativar/{group_id}", "Groups:disabledGroup");
-$route->get("/grupos/excluir/{group_id}/{action}", "Groups:group");
+//perfil
+$route->get("/perfil", "Users:profile");
+$route->post("/perfil", "Users:profile");
 
-//users
+/**
+ * Company
+ */
+
+//Unidades
+$route->get("/unidades", "Units:units");
+$route->get("/unidades/desativadas", "Units:disabledUnits");
+$route->get("/unidades/cadastrar", "Units:unit");
+$route->post("/unidades/cadastrar", "Units:unit");
+$route->get("/unidades/editar/{unit_id}", "Units:unit");
+$route->post("/unidades/editar/{unit_id}", "Units:unit");
+$route->get("/unidades/ativar/{unit_id}/{action}", "Units:unit");
+$route->get("/unidades/desativar/{unit_id}/{action}", "Units:unit");
+$route->get("/unidades/excluir/{unit_id}/{action}", "Units:unit");
+
+$route->get("/cargos", "UsersPositions:userspositions");
+$route->get("/cargos/desativados", "UsersPositions:disabledUsersPositions");
+$route->get("/cargos/cadastrar", "UsersPositions:userposition");
+$route->post("/cargos/cadastrar", "UsersPositions:userposition");
+$route->get("/cargos/editar/{userposition_id}", "UsersPositions:userposition");
+$route->post("/cargos/editar/{userposition_id}", "UsersPositions:userposition");
+$route->get("/cargos/ativar/{userposition_id}/{action}", "UsersPositions:userposition");
+$route->get("/cargos/desativar/{userposition_id}/{action}", "UsersPositions:userposition");
+$route->get("/cargos/excluir/{userposition_id}/{action}", "UsersPositions:userposition");
+
+//Users
 $route->get("/usuarios", "Users:users");
 $route->get("/usuarios/desativados", "Users:disabledUsers");
 $route->get("/usuarios/cadastrar", "Users:user");
@@ -149,21 +167,6 @@ $route->get("/usuarios/desativar/{user_id}/{action}", "Users:user");
 $route->get("/usuarios/excluir/{user_id}/{action}", "Users:user");
 $route->get("/usuarios/termo/{patrimonys_id}", "Users:term");
 $route->get("/usuarios/historico/termo/{patrimonys_id}", "Users:termHistory");
-
-//perfil
-$route->get("/perfil", "Users:profile");
-$route->post("/perfil", "Users:profile");
-
-//unidade
-$route->get("/unidades", "Units:units");
-$route->get("/unidades/desativadas", "Units:disabledUnits");
-$route->get("/unidades/cadastrar", "Units:unit");
-$route->post("/unidades/cadastrar", "Units:unit");
-$route->get("/unidades/editar/{unit_id}", "Units:unit");
-$route->post("/unidades/editar/{unit_id}", "Units:unit");
-$route->get("/unidades/ativar/{unit_id}/{action}", "Units:unit");
-$route->get("/unidades/desativar/{unit_id}/{action}", "Units:unit");
-$route->get("/unidades/excluir/{unit_id}/{action}", "Units:unit");
 
 //contratos
 $route->get("/patrimonio/contratos", "Contracts:contracts");

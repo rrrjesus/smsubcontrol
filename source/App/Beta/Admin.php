@@ -13,7 +13,7 @@ use Source\Core\Session;
 class Admin extends Controller
 {
     /**
-     * @var \Source\Models\User|null
+     * @var \Source\Models\Company\User|null
      */
     protected $user;
 

@@ -2,7 +2,7 @@
 
 namespace Source\App\Beta;
 
-use Source\Models\User;
+use Source\Models\Company\User;
 use Source\Support\Upload;
 use Source\Support\Thumb;
 use Source\Models\Patrimony\Patrimony;

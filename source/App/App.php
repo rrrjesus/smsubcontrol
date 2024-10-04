@@ -16,7 +16,7 @@ use Source\Models\Contact;
 use Source\Models\Event;
 use Source\Models\Report\Access;
 use Source\Models\Report\Online;
-use Source\Models\User;
+use Source\Models\Company\User;
 use Source\Support\Email;
 use Source\Support\Thumb;
 use Source\Support\Upload;

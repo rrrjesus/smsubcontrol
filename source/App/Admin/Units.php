@@ -2,8 +2,8 @@
 
 namespace Source\App\Admin;
 
-use Source\Models\Unit;
-use Source\Models\User;
+use Source\Models\Company\Unit;
+use Source\Models\Company\User;
 
 /**
  * Class Units
@@ -35,7 +35,7 @@ class Units extends Admin
         $units = (new Unit())->find("status = :s", "s=actived")->fetch(true);
         $unit = new Unit();
 
-        echo $this->view->render("widgets/units/list", [
+        echo $this->view->render("widgets/company/units/list", [
             "head" => $head,
             "units" => $units,
             "urls" => "unidades",
@@ -64,7 +64,7 @@ class Units extends Admin
         $unit = (new Unit());
         $units = $unit->find("status = :s", "s=disabled")->fetch(true);
 
-        echo $this->view->render("widgets/units/disabledList",
+        echo $this->view->render("widgets/company/units/disabledList",
             [
                 "admin" => "unidades",
                 "head" => $head,
@@ -244,7 +244,7 @@ class Units extends Admin
             false
         );
 
-        echo $this->view->render("widgets/units/unit", [
+        echo $this->view->render("widgets/company/units/unit", [
             "head" => $head,
             "unit" => $unitEdit,
             "urls" => "unidades",

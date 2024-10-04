@@ -2,9 +2,9 @@
 
 namespace Source\App\Admin;
 
-use Source\Models\User;
-use Source\Models\UserPosition;
-use Source\Models\Unit;
+use Source\Models\Company\User;
+use Source\Models\Company\UserPosition;
+use Source\Models\Company\Unit;
 use Source\Support\Thumb;
 use Source\Support\Upload;
 use Source\Models\Patrimony\Patrimony;
@@ -41,7 +41,7 @@ class Users extends Admin
         $user = (new User());
         $users = $user->find("status != :s", "s=disabled")->fetch(true);
 
-        echo $this->view->render("widgets/users/list",
+        echo $this->view->render("widgets/company/users/list",
             [
                 "app" => "usuarios",
                 "head" => $head,
@@ -74,7 +74,7 @@ class Users extends Admin
         $user = (new User());
         $users = $user->find("status = :s", "s=disabled")->fetch(true);
 
-        echo $this->view->render("widgets/users/disabledList",
+        echo $this->view->render("widgets/company/users/disabledList",
             [
                 "app" => "usuarios",
                 "head" => $head,
@@ -168,7 +168,7 @@ class Users extends Admin
             false
         );
 
-        echo $this->view->render("widgets/users/profile", [
+        echo $this->view->render("widgets/company/users/profile", [
             "app" => "perfil",
             "head" => $head,
             "profile" => $profileEdit,
@@ -410,7 +410,7 @@ class Users extends Admin
             false
         );
 
-        echo $this->view->render("widgets/users/user", [
+        echo $this->view->render("widgets/company/users/user", [
             "app" => "usuarios",
             "head" => $head,
             "user" => $userEdit,
@@ -445,7 +445,7 @@ class Users extends Admin
         );
 
         if($termPrint->movement_id < 4){
-            echo $this->view->render("widgets/users/withdrawalTerm", [
+            echo $this->view->render("widgets/company/users/withdrawalTerm", [
                 "head" => $head,
                 "term" => $termPrint,
                 "urls" => "patrimonios/termo/{$termPrint->id}",
@@ -453,7 +453,7 @@ class Users extends Admin
                 "name" => "Imprimir"
             ]);
         } else {
-            echo $this->view->render("widgets/users/returnTerm", [
+            echo $this->view->render("widgets/company/users/returnTerm", [
                 "head" => $head,
                 "term" => $termPrint,
                 "urls" => "patrimonios/termo/{$termPrint->id}",
@@ -482,7 +482,7 @@ class Users extends Admin
             false
         );
 
-        echo $this->view->render("widgets/users/term", [
+        echo $this->view->render("widgets/company/users/term", [
             "head" => $head,
             "term" => $termPrint,
             "urls" => "patrimonios/historico/termo/{$termPrint->id}",

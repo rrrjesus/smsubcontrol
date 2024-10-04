@@ -172,7 +172,7 @@
 
                             </div>         
 
-                            <div class="row justify-content-center mt-4 mb-3">
+                            <div class="row justify-content-center mt-3 mb-3">
                                 <div class="col-auto">
                                 <?=button("top", "Clique para gravar", "success", "disc-fill", "Gravar", "6", "g")?>
                                 <?=buttonLink("/beta/patrimonios", "top", "Clique para listar os patrimônios", "secondary", "list", "Listar", "7", "l")?>    
@@ -180,9 +180,16 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-1">
+                            <div class="row mb-2 mt-2">
                                 <div class="col-md-12 mb-1">
-                                    <?php $this->insert("widgets/patrimonys/historyList"); ?>
+                                    <div class="card border-<?=CONF_APP_COLOR?> mb-3">
+                                        <div class="card-header bg-transparent border-<?=CONF_APP_COLOR?>">
+                                            <h5 class="card-title text-<?=CONF_APP_COLOR?> text-center"> HISTÓRICO DO PATRIMÔNIO </h5>
+                                        </div>
+                                        <div class="card-body text-<?=CONF_APP_COLOR?>">
+                                        <?php $this->insert("widgets/patrimonys/historyList"); ?>  
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 

@@ -1,19 +1,19 @@
 $(function () {
 
-    var patrimonis = $('#patrimonys').DataTable({
+    var patrimonys = $('#patrimonys').DataTable({
         drawCallback: function() {
             $('body').tooltip({
                 selector: '[data-bs-togglee="tooltip"]'
             });
         },
         buttons: [
-            {extend:'csv',title:'Patrimonio',header: 'Patrimonio',filename:'Patrimonio',className: 'btn btn-outline-success mb-2 mt-2',text:'<i class="bi bi-file-earmark-excel"></i>' },
+            {extend:'excel',title:'Patrimonio',header: 'Patrimonio',filename:'Patrimonio',className: 'btn btn-outline-success mb-2 mt-2',text:'<i class="bi bi-file-earmark-excel"></i>' },
             //{extend: 'pdf',exportOptions: {columns: ':visible'},title:'Patrimonio SMSUB',header: 'Patrimonio SMSUB',filename:'Patrimonio SMSUB',orientation: 'portrait',pageSize: 'LEGAL',className: 'btn btn-outline-danger mb-2 mt-2',text:'<i class="bi bi-file-earmark-pdf"></i>'},
             {extend:'print', exportOptions: {columns: ':visible'},title:'Patrimonio SMSUB',header: 'Patrimonio',filename:'Patrimonio',orientation: 'portrait',className: 'btn btn-outline-secondary mb-2 mt-2',text:'<i class="bi bi-printer"></i>'},
             {extend:'colvis',titleAttr: 'Select Colunas',className: 'btn btn-outline-smsub mb-2 mt-2',text:'<i class="bi bi-list"></i>'},],
-        "dom": "<'row justify-content-center'<'col-lg-5 col-sm-5 col-md-5 numporpag'l><'col-lg-2 col-sm-2 col-md-2 text-center'B><'col-lg-5 col-sm-5 col-md-5 searchbar mb-3 'f>>" +
-            "<'row justify-content-center'<'col-12'tr>>" +
-            "<'row justify-content-center'<'col-lg-8 col-md-8 col-sm-6 pb-2 pt-2'i><'col-lg-4 col-md-4 col-sm-6 pb-2 pt-2'p>>",
+            "dom": "<'row mt-2 justify-content-between'<'col-lg-5 col-sm-5 col-md-5 numporpag'l><'col-lg-2 col-sm-2 col-md-2 text-center'B><'col-lg-5 col-sm-5 col-md-5 searchbar'f>>" +
+            "<'row mt-2 justify-content-between dt-layout-table'<'col-sm-12'tr>>" +
+            "<'row mt-2 justify-content-between'<'d-md-flex justify-content-between align-items-center dt-layout-start col-md-auto me-auto'i><'d-md-flex justify-content-between align-items-center dt-layout-end col-md-auto ms-auto'p>>",
         responsive:
             {details:
                     {display: DataTable.Responsive.display.modal({
@@ -76,7 +76,7 @@ $(function () {
         ]
     });
 
-    $('div.dt-search input', patrimonis.table().container()).focus();
+    $('div.dt-search input', patrimonys.table().container()).focus();
     
     $('#disabledPatrimony').DataTable({
         drawCallback: function() {
@@ -85,13 +85,13 @@ $(function () {
             });
         },
         buttons: [
-            {extend:'csv',title:'Patrimonio',header: 'Patrimonio',filename:'Patrimonio',className: 'btn btn-outline-success mb-2 mt-2',text:'<i class="bi bi-file-earmark-excel"></i>' },
+            {extend:'excel',title:'Patrimonio',header: 'Patrimonio',filename:'Patrimonio',className: 'btn btn-outline-success mb-2 mt-2',text:'<i class="bi bi-file-earmark-excel"></i>' },
             //{extend: 'pdf',exportOptions: {columns: ':visible'},title:'Patrimonio SMSUB',header: 'Patrimonio SMSUB',filename:'Patrimonio SMSUB',orientation: 'portrait',pageSize: 'LEGAL',className: 'btn btn-outline-danger mb-2 mt-2',text:'<i class="bi bi-file-earmark-pdf"></i>'},
             {extend:'print', exportOptions: {columns: ':visible'},title:'Patrimonio SMSUB',header: 'Patrimonio',filename:'Patrimonio',orientation: 'portrait',className: 'btn btn-outline-secondary mb-2 mt-2',text:'<i class="bi bi-printer"></i>'},
             {extend:'colvis',titleAttr: 'Select Colunas',className: 'btn btn-outline-smsub mb-2 mt-2',text:'<i class="bi bi-list"></i>'},],
-            "dom": "<'row justify-content-center'<'col-lg-5 col-sm-5 col-md-5 numporpag'l><'col-lg-2 col-sm-2 col-md-2 text-center'B><'col-lg-5 col-sm-5 col-md-5 searchbar mb-3 'f>>" +
-            "<'row justify-content-center'<'col-12'tr>>" +
-            "<'row justify-content-center'<'col-lg-8 col-md-8 col-sm-8 pb-2 pt-2'i><'col-lg-4 col-md-4 col-sm-4 pb-2 pt-2'p>>",
+            "dom": "<'row mt-2 justify-content-between'<'col-lg-5 col-sm-5 col-md-5 numporpag'l><'col-lg-2 col-sm-2 col-md-2 text-center'B><'col-lg-5 col-sm-5 col-md-5 searchbar'f>>" +
+            "<'row mt-2 justify-content-between dt-layout-table'<'col-sm-12'tr>>" +
+            "<'row mt-2 justify-content-between'<'d-md-flex justify-content-between align-items-center dt-layout-start col-md-auto me-auto'i><'d-md-flex justify-content-between align-items-center dt-layout-end col-md-auto ms-auto'p>>",
         responsive:
             {details:
                     {display: DataTable.Responsive.display.modal({
@@ -165,6 +165,14 @@ $(function () {
                 selector: '[data-bs-togglee="tooltip"]'
             });
         },
+        buttons: [
+            {extend:'excel',title:'Patrimonio',header: 'Patrimonio',filename:'Patrimonio',className: 'btn btn-outline-success mb-2 mt-2',text:'<i class="bi bi-file-earmark-excel"></i>' },
+            //{extend: 'pdf',exportOptions: {columns: ':visible'},title:'Patrimonio SMSUB',header: 'Patrimonio SMSUB',filename:'Patrimonio SMSUB',orientation: 'portrait',pageSize: 'LEGAL',className: 'btn btn-outline-danger mb-2 mt-2',text:'<i class="bi bi-file-earmark-pdf"></i>'},
+            {extend:'print', exportOptions: {columns: ':visible'},title:'Patrimonio SMSUB',header: 'Patrimonio',filename:'Patrimonio',orientation: 'portrait',className: 'btn btn-outline-secondary mb-2 mt-2',text:'<i class="bi bi-printer"></i>'},
+            {extend:'colvis',titleAttr: 'Select Colunas',className: 'btn btn-outline-smsub mb-2 mt-2',text:'<i class="bi bi-list"></i>'},],
+            "dom": "<'row mt-2 justify-content-between'<'col-lg-5 col-sm-5 col-md-5 numporpag'l><'col-lg-2 col-sm-2 col-md-2 text-center'B><'col-lg-5 col-sm-5 col-md-5 searchbar'f>>" +
+            "<'row mt-2 justify-content-between dt-layout-table'<'col-sm-12'tr>>" +
+            "<'row mt-2 justify-content-between'<'d-md-flex justify-content-between align-items-center dt-layout-start col-md-auto me-auto'i><'d-md-flex justify-content-between align-items-center dt-layout-end col-md-auto ms-auto'p>>",
         responsive:
             {details:
                     {display: DataTable.Responsive.display.modal({
@@ -195,13 +203,13 @@ $(function () {
             });
         },
         buttons: [
-            {extend:'csv',title:'Patrimonio',header: 'Patrimonio',filename:'Patrimonio',className: 'btn btn-outline-success mb-2 mt-2',text:'<i class="bi bi-file-earmark-excel"></i>' },
+            {extend:'excel',title:'Patrimonio',header: 'Patrimonio',filename:'Patrimonio',className: 'btn btn-outline-success mb-2 mt-2',text:'<i class="bi bi-file-earmark-excel"></i>' },
             //{extend: 'pdf',exportOptions: {columns: ':visible'},title:'Patrimonio SMSUB',header: 'Patrimonio SMSUB',filename:'Patrimonio SMSUB',orientation: 'portrait',pageSize: 'LEGAL',className: 'btn btn-outline-danger mb-2 mt-2',text:'<i class="bi bi-file-earmark-pdf"></i>'},
             {extend:'print', exportOptions: {columns: ':visible'},title:'Patrimonio SMSUB',header: 'Patrimonio',filename:'Patrimonio',orientation: 'portrait',className: 'btn btn-outline-secondary mb-2 mt-2',text:'<i class="bi bi-printer"></i>'},
             {extend:'colvis',titleAttr: 'Select Colunas',className: 'btn btn-outline-smsub mb-2 mt-2',text:'<i class="bi bi-list"></i>'},],
-        "dom": "<'row justify-content-center'<'col-lg-5 col-sm-5 col-md-5 numporpag'l><'col-lg-2 col-sm-2 col-md-2 text-center'B><'col-lg-5 col-sm-5 col-md-5 searchbar mb-3 'f>>" +
-            "<'row justify-content-center'<'col-12'tr>>" +
-            "<'row justify-content-center'<'col-lg-8 col-md-8 col-sm-6 pb-2 pt-2'i><'col-lg-4 col-md-4 col-sm-6 pb-2 pt-2'p>>",
+            "dom": "<'row mt-2 justify-content-between'<'col-lg-6 col-sm-5 col-md-5 numporpag'l><'col-lg-2 col-sm-2 col-md-2 text-center'B><'col-lg-5 col-sm-5 col-md-5 searchbar'f>>" +
+            "<'row mt-2 justify-content-between dt-layout-table'<'col-sm-12'tr>>" +
+            "<'row mt-2 justify-content-between'<'d-md-flex justify-content-between align-items-center dt-layout-start col-md-auto me-auto'i><'d-md-flex justify-content-between align-items-center dt-layout-end col-md-auto ms-auto'p>>",
         responsive:
             {details:
                     {display: DataTable.Responsive.display.modal({
@@ -248,9 +256,9 @@ $(function () {
             // {extend: 'pdfHtml5',exportOptions: {columns: ':visible'},title:'Contatos SMSUB',header: 'Contatos SMSUB',filename:'Contatos SMSUB',orientation: 'portrait',pageSize: 'LEGAL',className: 'btn btn-outline-danger mb-2 mt-2',text:'<i class="bi bi-file-earmark-pdf"></i>'},
             {extend:'print', exportOptions: {columns: ':visible'},title:'Contatos SMSUB',header: 'Contatos',filename:'Contatos',orientation: 'portrait',className: 'btn btn-outline-secondary mb-2 mt-2',text:'<i class="bi bi-printer"></i>'},
             {extend:'colvis',titleAttr: 'Select Colunas',className: 'btn btn-outline-smsub mb-2 mt-2',text:'<i class="bi bi-list"></i>'}],
-        "dom": "<'row justify-content-center'<'col-lg-4 col-sm-4 col-md-4 numporpag'l><'col-lg-2 col-sm-2 col-md-2 text-center'B><'col-lg-4 col-sm-4 col-md-4 searchbar mb-3 'f>>" +
-            "<'row justify-content-center'<'col-12'tr>>" +
-            "<'row justify-content-center'<'col-lg-5 col-md-5 col-sm-5'i><'col-lg-5 col-md-5 col-sm-5'p>>",
+            "dom": "<'row mt-2 justify-content-between'<'col-lg-5 col-sm-5 col-md-5 numporpag'l><'col-lg-2 col-sm-2 col-md-2 text-center'B><'col-lg-5 col-sm-5 col-md-5 searchbar'f>>" +
+            "<'row mt-2 justify-content-between dt-layout-table'<'col-sm-12'tr>>" +
+            "<'row mt-2 justify-content-between'<'d-md-flex justify-content-between align-items-center dt-layout-start col-md-auto me-auto'i><'d-md-flex justify-content-between align-items-center dt-layout-end col-md-auto ms-auto'p>>",
         responsive:
             {details:
                     {display: DataTable.Responsive.display.modal({

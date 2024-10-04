@@ -3,7 +3,7 @@
 namespace Source\Models;
 
 use Source\Core\Model;
-use Source\Models\Unit;
+use Source\Models\Company\Unit;
 
 /**
  * SMSUB | Class Contact

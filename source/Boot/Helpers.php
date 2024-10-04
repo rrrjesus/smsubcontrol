@@ -234,9 +234,9 @@ function navbar_active($url): ?string
  */
 
 /**
- * @return \Source\Models\User|null
+ * @return \Source\Models\Company\User|null
  */
-function user(): ?\Source\Models\User
+function user(): ?\Source\Models\Company\User
 {
     return \Source\Models\Auth::user();
 }

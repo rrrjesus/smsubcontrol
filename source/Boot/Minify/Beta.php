@@ -42,6 +42,7 @@ if ($_SERVER['HTTP_HOST'] == '127.0.0.1') {
     $minJS->add(__DIR__ . "/../../../shared/scripts/datatables/dataTables.bootstrap5.js");
     $minJS->add(__DIR__ . "/../../../shared/scripts/datatables/dataTables.buttons.js");
     $minJS->add(__DIR__ . "/../../../shared/scripts/datatables/buttons.bootstrap5.js");
+    $minJS->add(__DIR__ . "/../../../shared/scripts/datatables/jszip.min.js");
     $minJS->add(__DIR__ . "/../../../shared/scripts/datatables/vfs_fonts.js");
     $minJS->add(__DIR__ . "/../../../shared/scripts/datatables/buttons.html5.min.js");
     $minJS->add(__DIR__ . "/../../../shared/scripts/datatables/buttons.print.min.js");

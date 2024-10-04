@@ -3,7 +3,7 @@
 namespace Source\App\Admin;
 
 use Source\Models\Patrimony\Contract;
-use Source\Models\User;
+use Source\Models\Company\User;
 
 /**
  * Class Contracts
@@ -172,7 +172,7 @@ class Contracts extends Admin
             $contractUpdate->inspector_id = $data["inspector_id"];
             $contractUpdate->deputy_inspector_id = $data["deputy_inspector_id"];
             $contractUpdate->status = $data["status"];
-            $contractUpdate->description = $data["description"];
+            $contractUpdate->description = utf8_decode($data["description"]);
             $contractUpdate->observations = $data["observations"];
             $contractUpdate->login_updated = $user->login;
             $contractUpdate->updated_at = date_fmt('', "Y-m-d h:m:s");

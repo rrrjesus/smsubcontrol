@@ -6,6 +6,7 @@ use Source\Core\Model;
 use Source\Core\Session;
 use Source\Core\View;
 use Source\Support\Email;
+use Source\Models\Company\User;
 
 /**
  * Class Auth

@@ -6,8 +6,8 @@ use Source\Core\Model;
 use Source\Models\Patrimony\Brand;
 use Source\Models\Patrimony\Product;
 use Source\Models\Patrimony\Movement;
-use Source\Models\Unit;
-use Source\Models\User;
+use Source\Models\Company\Unit;
+use Source\Models\Company\User;
 
 
 /**

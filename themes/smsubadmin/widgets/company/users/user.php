@@ -313,10 +313,10 @@
                                     </nav>
                                     <div class="tab-content" id="nav-tabContent">
                                         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
-                                            <?php $this->insert("widgets/users/patrimonyUserList"); ?>    
+                                            <?php $this->insert("widgets/company/users/patrimonyUserList"); ?>    
                                         </div>
                                         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
-                                            <?php $this->insert("widgets/users/patrimonyHistoryUserList"); ?>
+                                            <?php $this->insert("widgets/company/users/patrimonyHistoryUserList"); ?>
                                         </div>
                                     </div>
                                 </div>

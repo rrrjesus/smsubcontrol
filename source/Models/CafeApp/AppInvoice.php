@@ -4,7 +4,7 @@ namespace Source\Models\CafeApp;
 
 use Source\Core\Model;
 use Source\Core\Session;
-use Source\Models\User;
+use Source\Models\Company\User;
 
 /**
  * Class AppInvoice

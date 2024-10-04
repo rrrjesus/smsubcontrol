@@ -3,7 +3,7 @@
 namespace Source\App\Admin;
 
 use Source\Models\Patrimony\Brand;
-use Source\Models\User;
+use Source\Models\Company\User;
 
 /**
  * Class Brands

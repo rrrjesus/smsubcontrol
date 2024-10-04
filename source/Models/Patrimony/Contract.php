@@ -3,7 +3,7 @@
 namespace Source\Models\Patrimony;
 
 use Source\Core\Model;
-use Source\Models\User;
+use Source\Models\Company\User;
 
 /**
  * Rodolfo | Class Contract
