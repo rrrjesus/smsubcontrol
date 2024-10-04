@@ -17,12 +17,12 @@
                     Monitoramento
                 </a>
 
-                <a class="nav-link text-light fw-semibold fs-6" target="_blank" rel="noopener" href="<?=url("/")?>">
+                <a class="nav-link text-light fw-semibold fs-6" href="<?=url("/")?>">
                     <div class="sb-nav-link-icon"><i class="bi bi-link-45deg bi-2xx"></i></div>
                     Ver Site
                 </a>
                     
-                <a class="nav-link text-light fw-semibold fs-6" target="_blank" rel="noopener" href="<?=url("/beta")?>">
+                <a class="nav-link text-light fw-semibold fs-6" href="<?=url("/beta")?>">
                     <div class="sb-nav-link-icon"><i class="bi bi-link-45deg bi-2xx"></i></div>
                     Ver Aplicativo
                 </a>
@@ -58,8 +58,8 @@
                         </a>
                         <div class="collapse" id="collapseUsersPositions" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionUserPosition">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link text-light fw-semibold fs-6" href="<?=url("/painel/unidades")?>"><i class="bi bi-list bi-2xx me-2"></i> Listar</a>
-                                <a class="nav-link text-light fw-semibold fs-6" href="<?=url("/painel/unidades/cadastrar")?>"><i class="bi bi-building-add bi-2xx me-2"></i> Cadastrar</a>
+                                <a class="nav-link text-light fw-semibold fs-6" href="<?=url("/painel/cargos")?>"><i class="bi bi-list bi-2xx me-2"></i> Listar</a>
+                                <a class="nav-link text-light fw-semibold fs-6" href="<?=url("/painel/cargos/cadastrar")?>"><i class="bi bi-building-add bi-2xx me-2"></i> Cadastrar</a>
                             </nav>
                         </div>
                         <!-- Sidebar de regimes -->
