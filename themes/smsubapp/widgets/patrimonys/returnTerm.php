@@ -87,8 +87,8 @@ div.WordSection1
 			<tr style='height:44.0pt'>
 				<td width=624 valign=top style='width:467.7pt;border:solid black 1.0pt; padding:0.2cm 5.4pt 0cm 5.4pt;height:44.0pt'>
 				<p class=MsoNormal style='text-align:justify;text-indent:-.1pt'>
-					<span style='font-size:10.0pt;font-family:"Arial",sans-serif'> <b>01</b> <?=$term->product()->brand()->brand_name?> 
-					<?=$term->product()->product_name?> - <span><b><?=$term->product()->type_part_number?> : 
+					<span style='font-size:10.0pt;font-family:"Arial",sans-serif'> <b>01</b>  
+					<?=$term->product()->product_name?> <?=$term->product()->brand()->brand_name?> - <span><b><?=$term->product()->type_part_number?> : 
 					<?php 
 						if($term->product()->type_part_number == 'CHIP'){
 						echo '(11)'.$term->part_number;
