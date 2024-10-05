@@ -94,6 +94,7 @@ $route->get("/patrimonios", "Patrimonys:patrimonys");
 $route->get("/patrimonios/desativados", "Patrimonys:disabledPatrimonys");
 $route->get("/patrimonios/cadastrar", "Patrimonys:patrimony");
 $route->post("/patrimonios/cadastrar", "Patrimonys:patrimony");
+$route->get("/patrimonios/detalhar/{patrimonys_id}", "Patrimonys:viewPatrimony");
 $route->get("/patrimonios/editar/{patrimonys_id}", "Patrimonys:patrimony");
 $route->post("/patrimonios/editar/{patrimonys_id}", "Patrimonys:patrimony");
 $route->get("/patrimonios/ativar/{patrimonys_id}/{action}", "Patrimonys:patrimony");

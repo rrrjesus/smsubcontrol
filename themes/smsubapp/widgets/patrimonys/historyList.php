@@ -2,6 +2,7 @@
                 <table id="historyPatrimony" class="table table-hover table-bordered table-sm border-<?=CONF_APP_COLOR?> p-2" style="width:100%">
                     <thead class="table-<?=CONF_APP_COLOR?>">
                         <tr>
+                            <th class="text-center"><i class="bi bi-pencil"></i></th>
                             <th class="text-center">ID</th>
                             <th class="text-center">CRIADO</th>
                             <th class="text-center">ESTADO</th>
@@ -27,6 +28,7 @@
                     <?php foreach ($historico as $lista): ?>
                         <tr>
                             <td class="text-center"><a role="button" href="<?=url("beta/patrimonios/historico/editar/{$lista->id}")?>" accesskey="a" class="btn btn-warning rounded-circle btn-sm fw-semibold text-"><i class="bi bi-pencil text-secondary"></i></a></td>
+                            <td class="text-center fw-semibold"><?=$lista->id?></td>
                             <td class="text-center fw-semibold"><?=date_fmt_null($lista->created_history)?></td>
                             <td class="text-center fw-semibold"><?=(!empty($lista->movement()->movement_name) ? $lista->movement()->movement_name : "")?></td>
                             <td class="text-center fw-semibold"><?=(!empty($lista->product()->product_name) ? $lista->product()->id.' - '.$lista->product()->product_name : "")?></td>

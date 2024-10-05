@@ -54,6 +54,10 @@ class Patrimonys extends Admin
     /**
      * PATRIMONY LIST
      */
+
+    /**
+     * @return void
+     */
     public function patrimonyserver(): void
     {
         $head = $this->seo->render(
@@ -73,7 +77,7 @@ class Patrimonys extends Admin
     }
 
     /**
-     * PATRIMONY LIST DISABLED
+     * @return void
      */
     public function disabledPatrimonys(): void
     {
@@ -133,6 +137,46 @@ class Patrimonys extends Admin
                 "name" => "Termo"
             ]);
         }
+    }
+
+    /**
+     * @param array|null $data
+     * @throws \Exception
+     */
+    public function viewPatrimony(?array $data): void
+    {
+        $PatrimonysEdit = null;
+        $historico = null;
+        
+        if (!empty($data["patrimonys_id"])) {
+            $patrimonyId = filter_var($data["patrimonys_id"], FILTER_VALIDATE_INT);
+            $PatrimonysEdit = (new Patrimony())->findById($patrimonyId);
+            $historico = (new PatrimonyHistory())->find("patrimony_id = :p", "p={$patrimonyId}")->fetch(true);
+
+            if(!$PatrimonysEdit){
+                $this->message->error("Você tentou visualizar um patrimônio que não existe")->icon()->flash();
+                redirect("/beta/patrimonios");
+                return;
+            }
+        }
+       
+        $head = $this->seo->render(
+            "Patrimonios - " . CONF_SITE_NAME,
+            CONF_SITE_DESC,
+            url(),
+            theme("/assets/images/favicon.ico"),
+            false
+        );
+
+        echo $this->view->render("widgets/patrimonys/viewPatrimony", [
+            "head" => $head,
+            "patrimonys" => $PatrimonysEdit,
+            "user" => $this->user,
+            "historico" => $historico,
+            "urls" => "patrimonios",
+            "namepage" => "Patrimonios",
+            "name" => "Visualizar"
+        ]);
     }
 
 

@@ -178,7 +178,7 @@ $(function () {
                     {display: DataTable.Responsive.display.modal({
                             header: function (row) {
                                 var data = row.data();
-                                return data[0] + ' - ' + data[1] + ' - ' + data[2];
+                                return data[0] + ' - ' + data[5] + ' - ' + data[8];
                             },
                             update: true
                         }),
@@ -193,7 +193,17 @@ $(function () {
         },
         // dom: "lBftipr",
         "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
-        "aaSorting": [0, 'asc']
+        "aaSorting": [0, 'desc'],
+        "aoColumnDefs": [
+            {
+                target: 7,
+                visible: false
+            },   
+           {
+               target: 11,
+               visible: false
+           }
+        ]
     });
 
     $('#patrimonysHistory').DataTable({
@@ -215,7 +225,7 @@ $(function () {
                     {display: DataTable.Responsive.display.modal({
                             header: function (row) {
                                 var data = row.data();
-                                return data[0] + ' - ' + data[1] + ' - ' + data[2];
+                                return data[0] + ' - ' + data[5] + ' - ' + data[8];
                             },
                             update: true
                         }),

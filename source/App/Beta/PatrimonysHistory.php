@@ -84,65 +84,6 @@ public function patrimonyHistory(?array $data): void
             return;
         }
 
-//        if($patrimonysHistoryUpdate->product_id != $product_id) {
-//            $json['message'] = $this->message->warning("Não é possivel alterar o nome do produto do patrimônio")->icon()->render();
-//            echo json_encode($json);
-//            return;
-//        }
-
-        if($patrimonysUpdate->updated_at == $patrimonysHistoryUpdate->updated_at){
-            $patrimonysUpdate->part_number = $part_number;
-            $patrimonysUpdate->product_id = $product_id;
-            $patrimonysUpdate->movement_id = $movement_id;
-            $patrimonysUpdate->user_id = $user_id;
-            $patrimonysUpdate->unit_id = $unit_id;
-            $patrimonysUpdate->observations = $observations;
-            $patrimonysUpdate->login_updated = $user->login;
-
-            //upload pdf
-            if (!empty($_FILES["file_terms"])) {
-
-                if ($patrimonysUpdate->file_terms && file_exists(__DIR__ . "/../../../" . CONF_UPLOAD_DIR . "/{$patrimonysUpdate->file_terms}")) {
-                    unlink(__DIR__ . "/../../../" . CONF_UPLOAD_DIR . "/{$patrimonysUpdate->file_terms}");
-                    (new Upload())->remove($patrimonysUpdate->file_terms);
-                }
-
-                $files = $_FILES["file_terms"];
-                $upload = new Upload();
-                
-                $file_terms = $upload->file($files, $patrimonysUpdate->user_id.'_'.$type_part_number.'_'.$patrimonysUpdate->part_number);
-
-                if (!$file_terms) {
-                    $json["message"] = $upload->message()->render();
-                    echo json_encode($json);
-                    return;
-                }
-
-                $patrimonysUpdate->file_terms = $file_terms;
-            }
-
-            if (!$patrimonysUpdate->save()) {
-                $json["message"] = $patrimonysUpdate->message()->render();
-                echo json_encode($json);
-                return;
-            }
-        }
-
-        $patrimonysHistoryUpdate->patrimony_id = $patrimony_id;
-        $patrimonysHistoryUpdate->part_number = $part_number;
-        $patrimonysHistoryUpdate->product_id = $product_id;
-        $patrimonysHistoryUpdate->movement_id = $movement_id;
-        $patrimonysHistoryUpdate->user_id = $user_id;
-        $patrimonysHistoryUpdate->unit_id = $unit_id;
-        $patrimonysHistoryUpdate->observations = $observations;
-        $patrimonysHistoryUpdate->login_updated = $user->login;
-
-        //upload pdf
-        if (!empty($_FILES["file_terms"])) {
-
-            $patrimonysHistoryUpdate->file_terms = $file_terms;
-        }
-
         if($data["movement_id"] == ""){
             $json['message'] = $this->message->warning("Informe um estado para gravar o patrimônio !")->icon()->render();
             echo json_encode($json);
@@ -173,20 +114,111 @@ public function patrimonyHistory(?array $data): void
             return;
         }
 
-        if (!$patrimonysHistoryUpdate->save()) {
-            $json["message"] = $patrimonysHistoryUpdate->message()->render();
-            echo json_encode($json);
+        if($patrimonysUpdate->updated_at == $patrimonysHistoryUpdate->updated_at){
+
+            // Update do Objeto Patrimony
+            $patrimonysUpdate->product_id = $product_id;
+            $patrimonysUpdate->movement_id = $movement_id;
+            $patrimonysUpdate->user_id = $user_id;
+            $patrimonysUpdate->unit_id = $unit_id;
+            $patrimonysUpdate->observations = $observations;
+            $patrimonysUpdate->login_updated = $user->login;
+
+            // Update do objeto History Patrimony
+            $patrimonysHistoryUpdate->patrimony_id = $patrimony_id;
+            $patrimonysHistoryUpdate->product_id = $product_id;
+            $patrimonysHistoryUpdate->movement_id = $movement_id;
+            $patrimonysHistoryUpdate->user_id = $user_id;
+            $patrimonysHistoryUpdate->unit_id = $unit_id;
+            $patrimonysHistoryUpdate->observations = $observations;
+            $patrimonysHistoryUpdate->login_updated = $user->login;
+
+            //upload pdf
+            if (!empty($_FILES["file_terms"])) {
+
+                if ($patrimonysUpdate->file_terms && file_exists(__DIR__ . "/../../../" . CONF_UPLOAD_DIR . "/{$patrimonysUpdate->file_terms}")) {
+                    unlink(__DIR__ . "/../../../" . CONF_UPLOAD_DIR . "/{$patrimonysUpdate->file_terms}");
+                    (new Upload())->remove($patrimonysUpdate->file_terms);
+                }
+
+                $files = $_FILES["file_terms"];
+                $upload = new Upload();
+                
+                $file_terms = $upload->file($files, $patrimonysUpdate->user_id.'_'.$type_part_number.'_'.$patrimonysUpdate->part_number);
+
+                if (!$file_terms) {
+                    $json["message"] = $upload->message()->render();
+                    echo json_encode($json);
+                    return;
+                }
+
+                $patrimonysUpdate->file_terms = $file_terms;
+                $patrimonysHistoryUpdate->file_terms = $file_terms;
+            }
+
+            if (!$patrimonysUpdate->save()) {
+                $json["message"] = $patrimonysUpdate->message()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            if (!$patrimonysHistoryUpdate->save()) {
+                $json["message"] = $patrimonysHistoryUpdate->message()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            $this->message->success("Patrimônio {$part_number} atualizado com sucesso !!!")->icon("emoji-grin me-1")->flash();
+            echo json_encode(["redirect" => url("/beta/patrimonios/editar/{$patrimonysHistoryUpdate->patrimony_id}")]);
+            return;
+
+        } else {
+
+            // Upload do Objeto Patrimony
+            $patrimonysHistoryUpdate->patrimony_id = $patrimony_id;
+            $patrimonysHistoryUpdate->product_id = $product_id;
+            $patrimonysHistoryUpdate->movement_id = $movement_id;
+            $patrimonysHistoryUpdate->user_id = $user_id;
+            $patrimonysHistoryUpdate->unit_id = $unit_id;
+            $patrimonysHistoryUpdate->observations = $observations;
+            $patrimonysHistoryUpdate->login_updated = $user->login;
+
+            //Upload file pdf
+            if (!empty($_FILES["file_terms"])) {
+
+                if ($patrimonysHistoryUpdate->file_terms && file_exists(__DIR__ . "/../../../" . CONF_UPLOAD_DIR . "/{$patrimonysHistoryUpdate->file_terms}")) {
+                    unlink(__DIR__ . "/../../../" . CONF_UPLOAD_DIR . "/{$patrimonysHistoryUpdate->file_terms}");
+                    (new Upload())->remove($patrimonysHistoryUpdate->file_terms);
+                }
+
+                $files = $_FILES["file_terms"];
+                $upload = new Upload();
+                
+                $file_terms = $upload->file($files, $patrimonysHistoryUpdate->user_id.'_'.$type_part_number.'_'.$patrimonysHistoryUpdate->part_number);
+
+                if (!$file_terms) {
+                    $json["message"] = $upload->message()->render();
+                    echo json_encode($json);
+                    return;
+                }
+
+                $patrimonysHistoryUpdate->file_terms = $file_terms;
+            }
+
+            if (!$patrimonysHistoryUpdate->save()) {
+                $json["message"] = $patrimonysHistoryUpdate->message()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            $this->message->success("Histórico do Patrimonio {$patrimonysHistoryUpdate->product()->type_part_number} : {$part_number} com {$patrimonysHistoryUpdate->user()->user_name} atualizado com sucesso !!!")->icon("emoji-grin me-1")->flash();
+            echo json_encode(["redirect" => url("/beta/patrimonios/editar/{$patrimonysHistoryUpdate->patrimony_id}")]);
             return;
         }
-
-        $this->message->success("Histórico de Patrimonio {$part_number} atualizado com sucesso !!!")->icon("emoji-grin me-1")->flash();
-        echo json_encode(["redirect" => url("/beta/patrimonios/editar/{$patrimonysHistoryUpdate->patrimony_id}")]);
-        return;
-
     }
 
-        //actived
-        if (!empty($data["action"]) && $data["action"] == "actived") {
+    //actived
+    if (!empty($data["action"]) && $data["action"] == "actived") {
         $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
         $patrimonyActived = (new PatrimonyHistory())->findById($data["patrimonys_id"]);
 
@@ -210,8 +242,8 @@ public function patrimonyHistory(?array $data): void
         return;
     }
 
-        //disabled
-        if (!empty($data["action"]) && $data["action"] == "disabled") {
+    //disabled
+    if (!empty($data["action"]) && $data["action"] == "disabled") {
         $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
         $patrimonyDisabled = (new PatrimonyHistory())->findById($data["patrimonys_id"]);
 
@@ -256,8 +288,8 @@ public function patrimonyHistory(?array $data): void
 
         if($countHystory->count() < 2 ){
             $this->message->warning("Erro ")->icon()->flash();
-           redirect("/beta/patrimonios/editar/{$patrimonyHistoryDelete->patrimony_id}");
-           return;
+        redirect("/beta/patrimonios/editar/{$patrimonyHistoryDelete->patrimony_id}");
+        return;
         }
 
         if ($patrimonyHistoryDelete->file_terms && file_exists(__DIR__ . "/../../../" . CONF_UPLOAD_DIR . "/{$patrimonyHistoryDelete->file_terms}")) {
@@ -280,7 +312,7 @@ public function patrimonyHistory(?array $data): void
     }
 
     $patrimonysCreates = new PatrimonyHistory();
-   
+
     $head = $this->seo->render(
         "Patrimonios - " . CONF_SITE_NAME,
         CONF_SITE_DESC,

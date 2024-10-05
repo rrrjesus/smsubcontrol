@@ -119,11 +119,11 @@
                                 
                         <div class="row mb-1">
 
+                            <input type="hidden" name="part_number" value="<?=$patrimonys->part_number?>">
+
                             <div class="col-md-3 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputNs"><i class="bi bi-person-add me-1"></i><strong>Número de Registro</strong></label>
-                                <input type="text" data-bs-togglee="tooltip" tabindex="1" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                    data-bs-title="Digite o numero de registro da peça" class="form-control form-control-sm"
-                                    name="part_number" placeholder="NÚMERO DA PEÇA" value="<?=$patrimonys->part_number?>">
+                                <input type="text" class="form-control form-control-sm" disabled name="part_number_eye" value="<?=$patrimonys->part_number?>">
                             </div>
 
                             <div class="col-md-6 mb-1">
