@@ -283,12 +283,8 @@ class Patrimonys extends Admin
 
             $patrimonys_id = $data["patrimonys_id"];
             $movement_id = preg_replace("/[^0-9\s]/", "", $data["movement_id"]);
-            $product_id_number = preg_replace("/[^0-9\s]/", "", $data["product_id"]);
-            $product_id = substr($product_id_number, 0, 1);
-            $type_part_number = $data["type_part_number"];
-            $part_number = $data["part_number"];
             $unit_id_number = preg_replace("/[^0-9\s]/", "", $data["unit_id_edit"]);
-            $unit_id = substr($unit_id_number, 0, 2);  // 12
+            $unit_id = substr($unit_id_number, 0, 2);
             $user_id = $data["user_id_edit"];
             $observations = $data["observations"];
 
@@ -300,23 +296,9 @@ class Patrimonys extends Admin
                 return;
             }
 
-            if($patrimonysUpdate->part_number != $part_number) {
-                $json['message'] = $this->message->warning("Não é possivel alterar o partnumber do patrimônio")->icon()->render();
-                echo json_encode($json);
-                return;
-            }
-
-//            if($patrimonysUpdate->product_id != $product_id) {
-//                $json['message'] = $this->message->warning("Não é possivel alterar o nome do produto do patrimônio")->icon()->render();
-//                echo json_encode($json);
-//                return;
-//            }
-
             $patrimonysUpdate->movement_id = $movement_id;
-            $patrimonysUpdate->product_id = $product_id;
             $patrimonysUpdate->unit_id = $unit_id;
             $patrimonysUpdate->user_id = $user_id;
-            $patrimonysUpdate->part_number = $part_number;
             $patrimonysUpdate->observations = $observations;
             $patrimonysUpdate->login_updated = $user->login;
 
@@ -325,7 +307,7 @@ class Patrimonys extends Admin
                 $files = $_FILES["file_terms"];
                 $upload = new Upload();
                 
-                $file_terms = $upload->file($files, $patrimonysUpdate->user_id.'_'.$type_part_number.'_'.$patrimonysUpdate->part_number);
+                $file_terms = $upload->file($files, $patrimonysUpdate->user_id.'_'.$patrimonysUpdate->product()->type_part_number.'_'.$patrimonysUpdate->part_number);
 
                 if (!$file_terms) {
                     $json["message"] = $upload->message()->render();
@@ -340,18 +322,6 @@ class Patrimonys extends Admin
 
             if($data["movement_id"] == ""){
                 $json['message'] = $this->message->warning("Informe um estado para gravar o patrimônio !")->icon()->render();
-                echo json_encode($json);
-                return;
-            }
-
-            if($data["product_id"] == ""){
-                $json['message'] = $this->message->warning("Informe um produto para gravar o patrimônio !!!")->icon()->render();
-                echo json_encode($json);
-                return;
-            }
-
-            if($data["part_number"] == ""){
-                $json['message'] = $this->message->warning("Informe o numero da peça para criar o patrimônio !")->icon()->render();
                 echo json_encode($json);
                 return;
             }
@@ -377,18 +347,18 @@ class Patrimonys extends Admin
             $patrimonysHistory = new PatrimonyHistory();
             $patrimonysHistory->patrimony_id = $patrimonys_id;
             $patrimonysHistory->movement_id = $movement_id;
-            $patrimonysHistory->product_id = $product_id;
+            $patrimonysHistory->product_id = $patrimonysUpdate->product_id;
             $patrimonysHistory->unit_id = $unit_id;
             if (!empty($_FILES["file_terms"])) {
                 $patrimonysHistory->file_terms = $file_terms;
             };
             $patrimonysHistory->user_id = $user_id;
-            $patrimonysHistory->part_number = $part_number;
+            $patrimonysHistory->part_number = $patrimonysUpdate->part_number;
             $patrimonysHistory->observations = $observations;
             $patrimonysHistory->login_updated = $user->login;
             $patrimonysHistory->save();
 
-            $this->message->success("Patrimonio {$part_number} atualizado com sucesso !!!")->icon("emoji-grin me-1")->flash();
+            $this->message->success("Patrimonio {$patrimonysUpdate->part_number} atualizado com sucesso !!!")->icon("emoji-grin me-1")->flash();
             echo json_encode(["redirect" => url("/beta/patrimonios/editar/{$patrimonysUpdate->id}")]);
             return;
         }
