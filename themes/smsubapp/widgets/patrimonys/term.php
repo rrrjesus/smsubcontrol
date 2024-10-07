@@ -2,7 +2,12 @@
 <?= $this->layout("_beta"); ?>
 
 <script>
- window.print();
+
+	function ClosePrint() {
+      setTimeout(function () { window.print(); }, 500);
+      window.onfocus = function () { setTimeout(function () { window.close(); }, 500); }
+	}
+
 </script>
 
 <style>
@@ -40,7 +45,7 @@ ul {margin-bottom:0cm;}
 
 </style>
 
-<body lang=PT-BR link=blue vlink=purple style='word-wrap:break-word'>
+<body lang=PT-BR link=blue onload="ClosePrint()" vlink=purple style='word-wrap:break-word'>
 
 <div class="container-fluid">
   <div class="row justify-content-end mt-1 mb-1">

@@ -1,7 +1,12 @@
 <?= $this->layout("_admin"); ?>
 
 <script>
- 	window.print();
+
+	function ClosePrint() {
+		setTimeout(function () { window.print(); }, 500);
+		window.onfocus = function () { setTimeout(function () { window.close(); }, 500); }
+	}
+
 </script>
 
 <style>
@@ -70,7 +75,7 @@ div.WordSection1
 
 </style>
 
-<body lang=PT-BR link="#0563C1" vlink="#954F72" style='word-wrap:break-word'>
+<body lang=PT-BR link="#0563C1" onload="ClosePrint()" vlink="#954F72" style='word-wrap:break-word'>
 
 <div class=WordSection1>
 

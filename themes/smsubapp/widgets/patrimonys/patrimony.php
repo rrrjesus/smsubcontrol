@@ -107,7 +107,7 @@
                     <div class="card-body">
                         <h5 class="card-title text-center text-success"><?=$patrimonys->product()->brand()->brand_name.' '.$patrimonys->product()->product_name.' - '.$patrimonys->product()->type_part_number.' : '.$patrimonys->part_number?></h5>
                         <p class="card-text text-center text-success"><?=$patrimonys->product()->description?></p>
-                        <p class="card-text text-center text-success"><b><?=$patrimonys->movement()->movement_name?></b> em <?=date_fmt($patrimonys->updated_at)?> - <b>Usuario : </b><?=$patrimonys->user()->user_name?> - <b>Unidade : </b><?=$patrimonys->unit()->unit_name?></p>
+                        <p class="card-text text-center text-success"><b><?=$patrimonys->movement()->movement_name?></b> em <?=date_fmt($patrimonys->updated_at)?> - <b>Usuario : </b><?=(!empty($patrimonys->user()->user_name) ? $patrimonys->user()->user_name : 'Não Cadastrado')?> - <b>Unidade : </b><?=$patrimonys->unit()->unit_name?></p>
                     </div>
                 </div>
 
@@ -171,7 +171,7 @@
                         <div class="col-auto">
                         <?=button("top", "Clique para gravar", "success", "disc-fill", "Gravar", "5", "g")?>
                         <?=buttonLink("/beta/patrimonios", "top", "Clique para listar os patrimônios", "secondary", "list", "Listar", "7", "l")?>    
-                        <?=buttonLink("/beta/patrimonios/termo/{$patrimonys->id}", "top", "Clique para listar os patrimônios", "primary", "file-earmark-word", "Termo", "9", "t")?>                                   
+                        <?=buttonLink("/beta/patrimonios/termo/{$patrimonys->id}", "top", "Clique para listar os patrimônios", "primary", "file-earmark-word", "Termo", "9", "t", "_blank")?>                                   
                         </div>
                     </div>
 
