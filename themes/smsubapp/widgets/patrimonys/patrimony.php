@@ -101,14 +101,20 @@
                     }
             </style>
 
-            <div class="card box border-1 mb-3">
-                <div class="card-body">
-                    <h5 class="card-title text-center text-success"><?=$patrimonys->product()->brand()->brand_name.' '.$patrimonys->product()->product_name.' - '.$patrimonys->product()->type_part_number.' : '.$patrimonys->part_number?></h5>
-                    <p class="card-text text-center text-success"><?=$patrimonys->product()->description?></p>
+            <div class="row mb-3 ms-1">
+
+                <div class="card box">
+                    <div class="card-body">
+                        <h5 class="card-title text-center text-success"><?=$patrimonys->product()->brand()->brand_name.' '.$patrimonys->product()->product_name.' - '.$patrimonys->product()->type_part_number.' : '.$patrimonys->part_number?></h5>
+                        <p class="card-text text-center text-success"><?=$patrimonys->product()->description?></p>
+                        <p class="card-text text-center text-success"><b><?=$patrimonys->movement()->movement_name?></b> em <?=date_fmt($patrimonys->updated_at)?> - <b>Usuario : </b><?=$patrimonys->user()->user_name?> - <b>Unidade : </b><?=$patrimonys->unit()->unit_name?></p>
+                    </div>
                 </div>
+
             </div>
 
-            <div class="card box border-1 mb-3">
+            <div class="row mb-3 ms-1">
+            <div class="card box">
                 <div class="card-body">
                 <h5 class="card-title text-center text-success">Lançar Nova Movimentação</h5>
                     
@@ -123,7 +129,7 @@
 
                         <div class="col-md-4 mb-1">
                             <label for="formFileSm" class="col-form-label col-form-label-sm"> <strong><i class="bi bi-upload me-1"></i>  Anexar Termo PDF </strong></label>
-                            <input class="form-control form-control-sm" type="file" class="radius" name="file_terms"/>
+                            <input autofocus tabindex="1" class="form-control form-control-sm" type="file" class="radius" name="file_terms"/>
                         </div>
 
                     </div>
@@ -132,48 +138,47 @@
 
                         <div class="col-md-2 mb-1">
                             <label class="col-form-label col-form-label-sm" for="inputMovimentacao"><i class="bi bi-person-add me-1"></i><strong>Estado</strong></label>
-                            <input type="text" data-bs-togglee="tooltip" autofocus data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                data-bs-title="Digite o estado do patrimonio - Ex : 1- ESTOQUE, 2 - RETIRADO ... " tabindex="3" class="form-control form-control-sm movement_id"
+                            <input tabindex="2" type="text" data-bs-togglee="tooltip" autofocus data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                data-bs-title="Digite o estado do patrimonio - Ex : 1- ESTOQUE, 2 - RETIRADO ... " class="form-control form-control-sm movement_id"
                                 name="movement_id" placeholder="ESTADO">
                         </div>
 
                         <div class="col-md-5 mb-1">
                             <label class="col-form-label col-form-label-sm" for="inputSobreNome"><i class="bi bi-person-add me-1"></i><strong>Usuario</strong></label>
-                            <input type="text" data-bs-togglee="tooltip" tabindex="4" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                            <input  tabindex="3" type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                 data-bs-title="Digite o usuário - Ex : 1 - João Bento Badaró" class="form-control form-control-sm user_id"
                                 name="user_id_edit" id="user_id_edit" placeholder="USUÁRIO">
                         </div>
 
                         <div class="col-md-5 mb-1">
                             <label class="col-form-label col-form-label-sm" for="inputSobreNome"><i class="bi bi-person-add me-1"></i><strong>Unidade</strong></label>
-                            <input type="text" data-bs-togglee="tooltip" tabindex="8" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                            <input tabindex="6" type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                 data-bs-title="Digite a unidade - Ex : 22 - SMSUB/COTI" class="form-control form-control-sm unit_id"
                                 name="unit_id_edit" id="unit_id_edit" placeholder="UNIDADE">
                         </div>
 
                     </div>
 
-                    <div class="row">   
+                    <div class="row mb-3 mb-1">   
 
-                        <div class="mb-3 mb-1">
-                            <label for="textareaObservacoes" class="col-form-label col-form-label-sm"><i class="bi bi-exclamation-diamond me-1"></i><strong>Observações</strong></label>
-                            <textarea class="form-control form-control-sm" tabindex="5" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                            data-bs-title=Observações" rows="2" name="observations"></textarea>
-                        </div>
+                        <label for="textareaObservacoes" class="col-form-label col-form-label-sm"><i class="bi bi-exclamation-diamond me-1"></i><strong>Observações</strong></label>
+                        <textarea tabindex="4" class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                        data-bs-title=Observações" rows="2" name="observations"></textarea>
 
                     </div>         
 
                     <div class="row justify-content-center mt-3 mb-3">
                         <div class="col-auto">
-                        <?=button("top", "Clique para gravar", "success", "disc-fill", "Gravar", "6", "g")?>
+                        <?=button("top", "Clique para gravar", "success", "disc-fill", "Gravar", "5", "g")?>
                         <?=buttonLink("/beta/patrimonios", "top", "Clique para listar os patrimônios", "secondary", "list", "Listar", "7", "l")?>    
                         <?=buttonLink("/beta/patrimonios/termo/{$patrimonys->id}", "top", "Clique para listar os patrimônios", "primary", "file-earmark-word", "Termo", "9", "t")?>                                   
                         </div>
                     </div>
+
                 </div>
             </div>
 
-            <div class="card box border-1 mb-3">
+            <div class="card box mt-3 mb-3">
                 <div class="card-body">
                     <h5 class="card-title text-center text-success">Histórico do Patrimônio</h5>
                         <?php $this->insert("widgets/patrimonys/historyList"); ?>  

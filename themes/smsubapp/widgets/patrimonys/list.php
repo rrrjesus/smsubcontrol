@@ -23,7 +23,7 @@
                     <table id="patrimonys" class="table table-hover table-bordered table-sm border-<?=CONF_APP_COLOR?> p-2" style="width:100%">
                         <thead class="table-<?=CONF_APP_COLOR?>">
                             <tr>
-                                <th class="text-center"><i class="bi bi-eye"></i></th>
+                                <th class="text-center">DETALHES</i></th>
                                 <th class="text-center">ENTRADA</th>
                                 <th class="text-center">ESTADO</th>
                                 <th class="text-center">TIPO PN</th>

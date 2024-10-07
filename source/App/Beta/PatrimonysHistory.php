@@ -58,19 +58,14 @@ public function patrimonyHistory(?array $data): void
         $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
         $patrimonys_id = $data["patrimonys_id"];
-        $patrimony_id = $data["patrimony_id"];
         $movement_id = preg_replace("/[^0-9\s]/", "", $data["movement_id"]);
-        $product_id_number = preg_replace("/[^0-9\s]/", "", $data["product_id"]);
-        $product_id = substr($product_id_number, 0, 1);
-        $type_part_number = $data["type_part_number"];
-        $part_number = $data["part_number"];
         $unit_id_number = preg_replace("/[^0-9\s]/", "", $data["unit_id_history_edit"]);
         $unit_id = substr($unit_id_number, 0, 2);  // 12
         $user_id = $data["user_id_history_edit"];
         $observations = $data["observations"];
 
-        $patrimonysUpdate = (new Patrimony())->findById($patrimony_id);
         $patrimonysHistoryUpdate = (new PatrimonyHistory())->findById($patrimonys_id);
+        $patrimonysUpdate = (new Patrimony())->findById($patrimonysHistoryUpdate->patrimony_id);
 
         if (!$patrimonysHistoryUpdate) {
             $this->message->error("Você tentou gerenciar um patrimônio que não existe")->flash();
@@ -78,26 +73,8 @@ public function patrimonyHistory(?array $data): void
             return;
         }
 
-        if($patrimonysHistoryUpdate->part_number != $part_number) {
-            $json['message'] = $this->message->warning("Não é possivel alterar o partnumber do patrimônio")->icon()->render();
-            echo json_encode($json);
-            return;
-        }
-
         if($data["movement_id"] == ""){
             $json['message'] = $this->message->warning("Informe um estado para gravar o patrimônio !")->icon()->render();
-            echo json_encode($json);
-            return;
-        }
-
-        if($data["product_id"] == ""){
-            $json['message'] = $this->message->warning("Informe um produto para gravar o patrimônio !!!")->icon()->render();
-            echo json_encode($json);
-            return;
-        }
-
-        if($data["part_number"] == ""){
-            $json['message'] = $this->message->warning("Informe o numero da peça para criar o patrimônio !")->icon()->render();
             echo json_encode($json);
             return;
         }
@@ -117,7 +94,6 @@ public function patrimonyHistory(?array $data): void
         if($patrimonysUpdate->updated_at == $patrimonysHistoryUpdate->updated_at){
 
             // Update do Objeto Patrimony
-            $patrimonysUpdate->product_id = $product_id;
             $patrimonysUpdate->movement_id = $movement_id;
             $patrimonysUpdate->user_id = $user_id;
             $patrimonysUpdate->unit_id = $unit_id;
@@ -125,8 +101,7 @@ public function patrimonyHistory(?array $data): void
             $patrimonysUpdate->login_updated = $user->login;
 
             // Update do objeto History Patrimony
-            $patrimonysHistoryUpdate->patrimony_id = $patrimony_id;
-            $patrimonysHistoryUpdate->product_id = $product_id;
+            $patrimonysHistoryUpdate->patrimony_id = $patrimonysHistoryUpdate->patrimony_id;
             $patrimonysHistoryUpdate->movement_id = $movement_id;
             $patrimonysHistoryUpdate->user_id = $user_id;
             $patrimonysHistoryUpdate->unit_id = $unit_id;
@@ -144,7 +119,7 @@ public function patrimonyHistory(?array $data): void
                 $files = $_FILES["file_terms"];
                 $upload = new Upload();
                 
-                $file_terms = $upload->file($files, $patrimonysUpdate->user_id.'_'.$type_part_number.'_'.$patrimonysUpdate->part_number);
+                $file_terms = $upload->file($files, $patrimonysUpdate->user_id.'_'.$patrimonysUpdate->type_part_number.'_'.$patrimonysUpdate->part_number);
 
                 if (!$file_terms) {
                     $json["message"] = $upload->message()->render();
@@ -168,15 +143,14 @@ public function patrimonyHistory(?array $data): void
                 return;
             }
 
-            $this->message->success("Patrimônio {$part_number} atualizado com sucesso !!!")->icon("emoji-grin me-1")->flash();
+            $this->message->success("Patrimônio {$patrimonysHistoryUpdate->part_number} atualizado com sucesso !!!")->icon("emoji-grin me-1")->flash();
             echo json_encode(["redirect" => url("/beta/patrimonios/editar/{$patrimonysHistoryUpdate->patrimony_id}")]);
             return;
 
         } else {
 
             // Upload do Objeto Patrimony
-            $patrimonysHistoryUpdate->patrimony_id = $patrimony_id;
-            $patrimonysHistoryUpdate->product_id = $product_id;
+            $patrimonysHistoryUpdate->patrimony_id = $patrimonysUpdate->id;
             $patrimonysHistoryUpdate->movement_id = $movement_id;
             $patrimonysHistoryUpdate->user_id = $user_id;
             $patrimonysHistoryUpdate->unit_id = $unit_id;
@@ -194,7 +168,7 @@ public function patrimonyHistory(?array $data): void
                 $files = $_FILES["file_terms"];
                 $upload = new Upload();
                 
-                $file_terms = $upload->file($files, $patrimonysHistoryUpdate->user_id.'_'.$type_part_number.'_'.$patrimonysHistoryUpdate->part_number);
+                $file_terms = $upload->file($files, $patrimonysHistoryUpdate->user_id.'_'.$patrimonysHistoryUpdate->type_part_number.'_'.$patrimonysHistoryUpdate->part_number);
 
                 if (!$file_terms) {
                     $json["message"] = $upload->message()->render();
@@ -211,7 +185,7 @@ public function patrimonyHistory(?array $data): void
                 return;
             }
 
-            $this->message->success("Histórico do Patrimonio {$patrimonysHistoryUpdate->product()->type_part_number} : {$part_number} com {$patrimonysHistoryUpdate->user()->user_name} atualizado com sucesso !!!")->icon("emoji-grin me-1")->flash();
+            $this->message->success("Histórico do Patrimonio {$patrimonysHistoryUpdate->product()->type_part_number} : {$patrimonysHistoryUpdate->part_number} com {$patrimonysHistoryUpdate->user()->user_name} atualizado com sucesso !!!")->icon("emoji-grin me-1")->flash();
             echo json_encode(["redirect" => url("/beta/patrimonios/editar/{$patrimonysHistoryUpdate->patrimony_id}")]);
             return;
         }
@@ -368,28 +342,5 @@ public function term(?array $data): void
         ]);
     }
 }
-
-/**
-     * APP HOME
-     */
-    public function bensLista(): void
-    {
-        $head = $this->seo->render(
-            "Bens Historico - " . CONF_SITE_NAME,
-            CONF_SITE_DESC,
-            url(),
-            theme("/assets/images/favicon.ico"),
-            false
-        );
-
-        $patrimonio = (new Bem())->find("status = :s", "s=actived")->fetch(true);
-
-        echo $this->view->render("widgets/benshistorico/lista", [
-            "head" => $head,
-            "patrimonio" => $patrimonio,
-            "urls" => "",
-            "icon" => "" 
-        ]);
-    }
 
 }

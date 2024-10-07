@@ -1,105 +1,99 @@
+
 <?= $this->layout("_beta"); ?>
 
-  <!-- Breacrumb-->
-  <?= $this->insert("views/theme/breadcrumb"); ?>
+        <!-- Breacrumb-->
+        <?= $this->insert("views/theme/breadcrumb"); ?>
 
-<div class="row justify-content-center">
-    <div class="col-xl-12">
-        <div class="container-fluid">
-            <div class="d-flex justify-content-center">
-                <div class="col-12">
-                <form class="row gy-2 gx-3 align-items-center needs-validation" id="patrimony" novalidate action="<?= url("/beta/patrimonios/historico/editar/{$patrimonys->id}"); ?>" method="post" enctype="multipart/form-data">
+    <div class="container-fluid">
+
+        <form class="row gy-2 gx-3 align-items-center needs-validation" id="patrimony" novalidate action="<?= url("/beta/patrimonios/historico/editar/{$patrimonys->id}"); ?>" method="post" enctype="multipart/form-data">
                         
-                    <input type="hidden" name="action" value="update"/>
+            <input type="hidden" name="action" value="update"/>
 
-                        <div class="ajax_response"><?=flash();?></div>
+            <div class="ajax_response"><?=flash();?></div>
 
-                        <?=csrf_input();?>
+            <?=csrf_input();?>
 
-                        <div class="row mb-1">
+            <style>
+                .box {
+                    background:linear-gradient(rgb(25 135 84),rgb(25 135 84)) left/10px 100% no-repeat;
+                    }
+            </style>
 
-                            <div class="col-md-1 mb-1">
-                                <a href="<?=url('themes/'.CONF_VIEW_APP.'/assets/images/adobe_cinza.jpg');?>" target="_blank">
-                                <img data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                    data-bs-title="Clique para abrir termo" height="70" width="70" src="<?=url('themes/'.CONF_VIEW_APP.'/assets/images/adobe_cinza.jpg');?>" class="img-thumbnail rounded-circle float-left" id="foto-cliente">
-                                </a>
-                            </div>
+            <div class="row mb-3 pe-0">
 
-                            <div class="col-md-4 mb-1">
-                                <label for="formFileSm" class="col-form-label col-form-label-sm"> <strong><i class="bi bi-upload me-1"></i>  Anexar Termo PDF </strong></label>
-                                <input class="form-control form-control-sm" type="file" class="radius" name="file_terms"/>
-                            </div>
-                        </div>
-                                
-                        <div class="row mb-1">
+                <div class="card box">
+                    <div class="card-body">
+                        <h5 class="card-title text-center text-success"><?=$patrimonys->product()->brand()->brand_name.' '.$patrimonys->product()->product_name.' - '.$patrimonys->product()->type_part_number.' : '.$patrimonys->part_number?></h5>
+                        <p class="card-text text-center text-success"><?=$patrimonys->product()->description?></p>
+                        <p class="card-text text-center text-success"><b><?=$patrimonys->movement()->movement_name?></b> em <?=date_fmt($patrimonys->updated_at)?> - <b>Usuario : </b><?=$patrimonys->user()->user_name?> - <b>Unidade : </b><?=$patrimonys->unit()->unit_name?></p>
+                    </div>
+                </div>
 
-                            <div class="col-md-3 mb-1">
-                                <label class="col-form-label col-form-label-sm" for="inputNs"><i class="bi bi-person-add me-1"></i><strong>Número de Registro</strong></label>
-                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                    data-bs-title="Digite o numero de registro da peça" class="form-control form-control-sm"
-                                    name="part_number" placeholder="NÚMERO DA PEÇA" value="<?=$patrimonys->part_number?>">
-                            </div>
+            </div>
 
-                            <div class="col-md-6 mb-1">
-                                <label class="col-form-label col-form-label-sm" for="inputProduto"><i class="bi bi-person-add me-1"></i><strong>Produto</strong></label>
-                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                data-bs-title="Digite o nome do produto - Ex : 1 - Tablet" class="form-control form-control-sm product_id"
-                                    name="product_id" placeholder="PRODUTO" value="<?php if($patrimonys->product_id){echo $patrimonys->product()->id.' - '.$patrimonys->product()->product_name.' - '.$patrimonys->product()->contract()->contract_name.' - (Nº de Registro '.$patrimonys->product()->type_part_number.')';}else{echo '';}?>">
-                            </div>
+            <div class="row mb-1">
 
-                            <div class="col-md-3 mb-1">
-                                <label class="col-form-label col-form-label-sm" for="inputMovimentacao"><i class="bi bi-person-add me-1"></i><strong>Estado</strong></label>
-                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                    data-bs-title="Digite o estado do patrimonio - Ex : 1- ESTOQUE, 2 - RETIRADO ... " autofocus tabindex="1" class="form-control form-control-sm movement_id"
-                                    name="movement_id" placeholder="ESTADO" value="<?=(!empty($patrimonys->movement_id) ? $patrimonys->movement()->id.' - '.$patrimonys->movement()->movement_name : "")?>">
-                            </div>
+                <div class="col-md-1 mb-1">
+                    <a href="<?=url('themes/'.CONF_VIEW_APP.'/assets/images/adobe_cinza.jpg');?>" target="_blank">
+                    <img data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                        data-bs-title="Clique para abrir termo" height="70" width="70" src="<?=url('themes/'.CONF_VIEW_APP.'/assets/images/adobe_cinza.jpg');?>" class="img-thumbnail rounded-circle float-left" id="foto-cliente">
+                    </a>
+                </div>
 
-                            <input name="type_part_number" type="hidden" value="<?=(!empty($patrimonys->product_id) ? $patrimonys->product()->type_part_number : "")?>">
-                            <input name="patrimony_id" type="hidden" value="<?=(!empty($patrimonys->patrimony_id) ? $patrimonys->patrimony_id : "")?>">
-
-
-                        </div>
-
-                            <div class="row mb-1">
-
-                                <div class="col-md-5 mb-1">
-                                    <label class="col-form-label col-form-label-sm" for="inputSobreNome"><i class="bi bi-person-add me-1"></i><strong>Usuario</strong></label>
-                                    <input type="text" data-bs-togglee="tooltip" tabindex="2" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                        data-bs-title="Digite o usuário - Ex : 1 - João Bento Badaró" class="form-control form-control-sm user_id"
-                                        name="user_id_history_edit" id="user_id_history_edit" placeholder="USUÁRIO" value="<?=(!empty($patrimonys->user_id) ? $patrimonys->user()->id.' - '.$patrimonys->user()->user_name : "")?>">
-                                </div>
-
-                                <div class="col-md-7 mb-1">
-                                    <label class="col-form-label col-form-label-sm" for="inputSobreNome"><i class="bi bi-person-add me-1"></i><strong>Unidade</strong></label>
-                                    <input type="text" data-bs-togglee="tooltip" tabindex="6" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                        data-bs-title="Digite a unidade - Ex : 22 - SMSUB/COTI" class="form-control form-control-sm unit_id"
-                                        name="unit_id_history_edit" id="unit_id_history_edit" placeholder="UNIDADE" value="<?=(!empty($patrimonys->unit_id) ? $patrimonys->unit()->id.' - '.$patrimonys->unit()->unit_name : "")?>">
-                                </div>
-
-                            </div>
-
-                            <div class="row">   
-
-                                <div class="mb-3 mb-1">
-                                    <label for="textareaObservacoes" class="col-form-label col-form-label-sm"><i class="bi bi-exclamation-diamond me-1"></i><strong>Observações</strong></label>
-                                    <textarea class="form-control form-control-sm" tabindex="3" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                    data-bs-title=Observações" rows="2" name="observations"><?=$patrimonys->observations?></textarea>
-                                </div>
-
-                            </div>         
-
-                            <div class="row justify-content-center mt-4 mb-3">
-                                <div class="col-auto">
-                                <?=button("top", "Clique para gravar", "success", "disc-fill", "Gravar", "4", "g")?>
-                                <?=buttonLink("/beta/patrimonios", "top", "Clique para listar os patrimônios", "secondary", "list", "Listar", "5", "l")?>    
-                                <?=buttonLink("/beta/patrimonios/termo/{$patrimonys->id}", "top", "Clique para listar os patrimônios", "primary", "file-earmark-word", "Termo", "9", "t")?>                                   
-                                </div>
-                            </div>
-
-                        </form>
-
+                <div class="col-md-4 mb-1">
+                    <label for="formFileSm" class="col-form-label col-form-label-sm"> <strong><i class="bi bi-upload me-1"></i>  Anexar Termo PDF </strong></label>
+                    <input autofocus tabindex="1" class="form-control form-control-sm" type="file" class="radius" name="file_terms"/>
                 </div>
             </div>
+                    
+                <input name="patrimony_id" type="hidden" value="<?=(!empty($patrimonys->patrimony_id) ? $patrimonys->patrimony_id : "")?>">
+
+                <div class="row mb-1">
+
+                <div class="col-md-2 mb-1">
+                    <label class="col-form-label col-form-label-sm" for="inputMovimentacao"><i class="bi bi-person-add me-1"></i><strong>Estado</strong></label>
+                    <input type="text" tabindex="2" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                        data-bs-title="Digite o estado do patrimonio - Ex : 1- ESTOQUE, 2 - RETIRADO ... " class="form-control form-control-sm movement_id"
+                        name="movement_id" placeholder="ESTADO" value="<?=(!empty($patrimonys->movement_id) ? $patrimonys->movement()->id.' - '.$patrimonys->movement()->movement_name : "")?>">
+                </div>
+
+                    <div class="col-md-5 mb-1">
+                        <label class="col-form-label col-form-label-sm" for="inputSobreNome"><i class="bi bi-person-add me-1"></i><strong>Usuario</strong></label>
+                        <input tabindex="3" type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                            data-bs-title="Digite o usuário - Ex : 1 - João Bento Badaró" class="form-control form-control-sm user_id"
+                            name="user_id_history_edit" id="user_id_history_edit" placeholder="USUÁRIO" value="<?=(!empty($patrimonys->user_id) ? $patrimonys->user()->id.' - '.$patrimonys->user()->user_name : "")?>">
+                    </div>
+
+                    <div class="col-md-5 mb-1">
+                        <label class="col-form-label col-form-label-sm" for="inputSobreNome"><i class="bi bi-person-add me-1"></i><strong>Unidade</strong></label>
+                        <input tabindex="6" type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                            data-bs-title="Digite a unidade - Ex : 22 - SMSUB/COTI" class="form-control form-control-sm unit_id"
+                            name="unit_id_history_edit" id="unit_id_history_edit" placeholder="UNIDADE" value="<?=(!empty($patrimonys->unit_id) ? $patrimonys->unit()->id.' - '.$patrimonys->unit()->unit_name : "")?>">
+                    </div>
+
+                </div>
+
+                <div class="row">   
+
+                    <div class="mb-3 mb-1">
+                        <label for="textareaObservacoes" class="col-form-label col-form-label-sm"><i class="bi bi-exclamation-diamond me-1"></i><strong>Observações</strong></label>
+                        <textarea tabindex="4" class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                        data-bs-title=Observações" rows="2" name="observations"><?=$patrimonys->observations?></textarea>
+                    </div>
+
+                </div>         
+
+                <div class="row justify-content-center mt-4 mb-3">
+                    <div class="col-auto">
+                    <?=button("top", "Clique para gravar", "success", "disc-fill", "Gravar", "5", "g")?>
+                    <?=buttonLink("/beta/patrimonios", "top", "Clique para listar os patrimônios", "secondary", "list", "Listar", "7", "l")?>    
+            <?=buttonLink("/beta/patrimonios/termo/{$patrimonys->id}", "top", "Clique para listar os patrimônios", "primary", "file-earmark-word", "Termo", "8", "t")?>                                   
+                    </div>
+                </div>
+
+            </form>
+
         </div>
 
         <?php $this->start("scripts"); ?>
@@ -135,6 +129,3 @@
 
             </script>
         <?php $this->end(); ?>
-
-    </div>
-</div>

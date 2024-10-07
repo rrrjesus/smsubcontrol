@@ -495,7 +495,7 @@ class Patrimonys extends Admin
             "historico" => $historico,
             "urls" => "patrimonios",
             "namepage" => "Patrimonios",
-            "name" => ($PatrimonysEdit ? "Editar" : "Cadastrar")
+            "name" => ($PatrimonysEdit ? "Detalhar" : "Cadastrar")
         ]);
     }
 
