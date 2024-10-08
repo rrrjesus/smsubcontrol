@@ -92,21 +92,21 @@ $route->get("/contatos/excluir/{contact_id}/{action}", "Contacts:contact");
 //Patrimonios
 $route->get("/patrimonios", "Patrimonys:patrimonys");
 $route->get("/patrimonios/desativados", "Patrimonys:disabledPatrimonys");
-$route->get("/patrimonios/cadastrar", "Patrimonys:patrimony");
-$route->post("/patrimonios/cadastrar", "Patrimonys:patrimony");
+$route->get("/patrimonio/cadastrar", "Patrimonys:patrimony");
+$route->post("/patrimonio/cadastrar", "Patrimonys:patrimony");
 $route->get("/patrimonios/detalhar/{patrimonys_id}", "Patrimonys:viewPatrimony");
-$route->get("/patrimonios/editar/{patrimonys_id}", "Patrimonys:patrimony");
-$route->post("/patrimonios/editar/{patrimonys_id}", "Patrimonys:patrimony");
+$route->get("/patrimonio/detalhe/{patrimonys_id}", "Patrimonys:patrimony");
+$route->post("/patrimonio/detalhe/{patrimonys_id}", "Patrimonys:patrimony");
 $route->get("/patrimonios/ativar/{patrimonys_id}/{action}", "Patrimonys:patrimony");
 $route->get("/patrimonios/desativar/{patrimonys_id}/{action}", "Patrimonys:patrimony");
-$route->get("/patrimonios/termo/{patrimonys_id}", "Patrimonys:term");
+$route->get("/patrimonio/termo/{patrimonys_id}", "Patrimonys:term");
 
 //Historico Patrimonios
 $route->get("/patrimonios/historico", "PatrimonysHistory:patrimonysHistory");
-$route->get("/patrimonios/historico/excluir/{patrimonys_id}/{action}", "PatrimonysHistory:patrimonyHistory");
-$route->get("/patrimonios/historico/editar/{patrimonys_id}", "PatrimonysHistory:patrimonyHistory");
-$route->post("/patrimonios/historico/editar/{patrimonys_id}", "PatrimonysHistory:patrimonyHistory");
-$route->get("/patrimonios/historico/termo/{patrimonys_id}", "PatrimonysHistory:term");
+$route->get("/patrimonio/historico/excluir/{patrimonys_id}/{action}", "PatrimonysHistory:patrimonyHistory");
+$route->get("/patrimonio/historico/editar/{patrimonys_id}", "PatrimonysHistory:patrimonyHistory");
+$route->post("/patrimonio/historico/editar/{patrimonys_id}", "PatrimonysHistory:patrimonyHistory");
+$route->get("/patrimonio/historico/termo/{patrimonys_id}", "PatrimonysHistory:term");
 
 $route->get("/logoff", "Dash:logoff");
 

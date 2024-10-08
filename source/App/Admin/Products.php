@@ -6,6 +6,8 @@ use Source\Models\Patrimony\Contract;
 use Source\Models\Patrimony\Brand;
 use Source\Models\Patrimony\Product;
 use Source\Models\Company\User;
+use Source\Support\Thumb;
+use Source\Support\Upload;
 
 /**
  * Class Products
@@ -99,6 +101,21 @@ class Products extends Admin
             $productCreate->login_created = $user->login;
             $productCreate->created_at = date_fmt('', "Y-m-d h:m:s");
 
+             //upload photo
+             if (!empty($_FILES["photo"])) {
+                $files = $_FILES["photo"];
+                $upload = new Upload();
+                $image = $upload->image($files, $productCreate->product_name, 600);
+
+                if (!$image) {
+                    $json["message"] = $upload->message()->render();
+                    echo json_encode($json);
+                    return;
+                }
+
+                $productCreate->photo = $image;
+            }
+
             if(in_array("", $data)){
                 $json['message'] = $this->message->info("Informe o contrato, a marca, o produto, o tipo de partnumber e a descrição para cadastrar o produto !!!")->icon()->render();
                 echo json_encode($json);
@@ -137,6 +154,22 @@ class Products extends Admin
             $productUpdate->description = $data["description"];
             $productUpdate->login_updated = $user->login;
 
+            if (!empty($_FILES["photo"])) {
+                $file = $_FILES["photo"];
+                $upload = new Upload();
+
+                if ($productUpdate->photo()) {
+                    (new Thumb())->flush("storage/{$productUpdate->photo}");
+                    $upload->remove("storage/{$productUpdate->photo}");
+                }
+
+                if (!$productUpdate->photo = $upload->image($file, "{$productUpdate->product_name} " . time(), 360)) {
+                    $json["message"] = $upload->message()->before("Ooops {$productUpdate->product_name}! ")->after(".")->render();
+                    echo json_encode($json);
+                    return;
+                }
+            }
+
             if(in_array("", $data)){
                 $json['message'] = $this->message->info("Informe o contrato, a marca, o produto, o tipo de partnumber e descrição para atualizar o registro !")->icon()->render();
                 echo json_encode($json);
@@ -149,8 +182,8 @@ class Products extends Admin
                 return;
             }
 
-            $json["message"] = $this->message->success("Producto {$productUpdate->product_name} atualizado com sucesso !!!")->icon("emoji-grin me-1")->render();
-            echo json_encode($json);
+            $this->message->success("Producto {$productUpdate->product_name} atualizado com sucesso !!!")->icon("emoji-grin me-1")->flash();
+            echo json_encode(["reload" => true]);
             return;
         }
 

@@ -22,6 +22,19 @@
 
                         <div class="row justify-content-center">
 
+                            <div class="col-md-2 app_formbox_photo mb-1">
+                                <div class="rounded-circle j_profile_image thumb" style="background-image: url('<?=url('themes/'.CONF_VIEW_ADMIN.'/assets/images/avatar.jpg');?>')"></div>
+                            </div>
+
+                            <div class="col-md-4 mb-1">
+                                <label for="formFileSm" class="col-form-label col-form-label-sm"> <strong><i class="bi bi-upload me-1"></i>  Extensões aceitas : .bmp ,.png, .svg, .jpeg e .jpg </strong></label>
+                                <input class="form-control form-control-sm" data-image=".j_profile_image" type="file" class="radius" name="photo"/>
+                            </div>
+
+                        </div>
+
+                        <div class="row justify-content-center">
+
                             <div class="col-md-6 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputContract"><strong><i class="bi bi-person me-1"></i> Contrato</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
@@ -101,6 +114,25 @@
                         <div class="ajax_response"><?=flash();?></div>
 
                         <?=csrf_input();?>
+
+
+                        <div class="row justify-content-center">
+
+                            <div class="col-md-2 app_formbox_photo mb-1">
+                                <a href="<?php if (file_exists(CONF_UPLOAD_DIR .'/'.$produtos->photo)) {echo '../../../../'.CONF_UPLOAD_DIR .'/'.$produtos->photo;} 
+                                else {echo url('themes/'.CONF_VIEW_ADMIN.'/assets/images/avatar.jpg');}?>" target="_blank">
+                                <img data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                    data-bs-title="Foto" height="90" width="90" src="<?php if ($produtos->photo && file_exists(CONF_UPLOAD_DIR .'/'.$produtos->photo)) 
+                                    {echo image($produtos->photo, 200, 200);}else {echo url('themes/'.CONF_VIEW_ADMIN.'/assets/images/avatar.jpg');}?>" class="img-thumbnail rounded-circle float-left" id="foto-cliente">
+                                </a>
+                            </div>
+
+                            <div class="col-md-4 mb-1">
+                                <label for="formFileSm" class="col-form-label col-form-label-sm"> <strong><i class="bi bi-upload me-1"></i>  Extensões aceitas : .bmp ,.png, .svg, .jpeg e .jpg </strong></label>
+                                <input class="form-control form-control-sm" data-image=".j_profile_image" type="file" class="radius" name="photo"/>
+                            </div>
+
+                        </div>
 
                         <div class="row justify-content-center">
 

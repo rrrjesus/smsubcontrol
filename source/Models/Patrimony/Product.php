@@ -32,6 +32,50 @@ class Product extends Model
         $find = $this->find("product_name = :product_name", "product_name={$product_name}", $columns);
         return $find->fetch();
     }
+
+    /**
+     * @return string|null
+     */
+    public function photo(): ?string
+    {
+        if ($this->photo && file_exists(__DIR__ . "/../../../../" . CONF_UPLOAD_DIR . "/{$this->photo}")) {
+            return $this->photo;
+        }
+
+        return null;
+    }
+
+        /**
+     * @return null|string
+     */
+    public function photoList(): ?string
+    {
+        if($this->photo && file_exists(CONF_UPLOAD_DIR.'/'.$this->photo)){
+            return '<a href="../../'.CONF_UPLOAD_DIR.'/'.$this->photo.'" target="_blank">
+                    <img src="'.image($this->photo, 30,30).'" class="rounded-circle float-left"></a>';
+        }else{
+            return '<a href="../../storage/images/avatar_product.png" target="_blank">
+                    <img src="../../storage/images/avatar_product.png" class="rounded-circle float-left"
+                    height="30" width="30"></a>';
+        }
+        return null;
+    } 
+    
+    /**
+     * @return null|string
+     */
+    public function photoListDisabled(): ?string
+    {
+        if($this->photo && file_exists(CONF_UPLOAD_DIR.'/'.$this->photo)){
+            return '<a href="../../'.CONF_UPLOAD_DIR.'/'.$this->photo.'" target="_blank">
+                    <img src="'.image($this->photo, 30,30).'" class="img-thumbnail rounded-circle float-left"></a>';
+        }else{
+            return '<a href="../../storage/images/avatar_product.png" target="_blank">
+                    <img src="../../storage/images/avatar_product.png" class="img-thumbnail rounded-circle float-left"
+                    height="40" width="40"></a>';
+        }
+        return null;
+    } 
     
     /**
      * @return null|Contract

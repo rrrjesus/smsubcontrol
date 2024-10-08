@@ -6,7 +6,7 @@
 
     <div class="container-fluid">
 
-        <form class="row gy-2 gx-3 align-items-center needs-validation" id="patrimony" novalidate action="<?= url("/beta/patrimonios/historico/editar/{$patrimonys->id}"); ?>" method="post" enctype="multipart/form-data">
+        <form class="row gy-2 gx-3 align-items-center needs-validation" id="patrimony" novalidate action="<?= url("/beta/patrimonio/historico/editar/{$patrimonys->id}"); ?>" method="post" enctype="multipart/form-data">
                         
             <input type="hidden" name="action" value="update"/>
 
@@ -24,7 +24,7 @@
 
                 <div class="card box">
                     <div class="card-body">
-                        <h5 class="card-title text-center text-success"><?=$patrimonys->product()->brand()->brand_name.' '.$patrimonys->product()->product_name.' - '.$patrimonys->product()->type_part_number.' : '.$patrimonys->part_number?></h5>
+                        <h5 class="card-title text-center text-success"><?=buttonLink("/beta/patrimonio/termo/{$patrimonys->id}", "top", "Clique para imprimir o termo", "primary", "file-earmark-word", "Termo", "9", "t", "_blank")?><?=$patrimonys->product()->brand()->brand_name.' '.$patrimonys->product()->product_name.' - '.$patrimonys->product()->type_part_number.' : '.$patrimonys->part_number?></h5>
                         <p class="card-text text-center text-success"><?=$patrimonys->product()->description?></p>
                         <p class="card-text text-center text-success"><b><?=$patrimonys->movement()->movement_name?></b> em <?=date_fmt($patrimonys->updated_at)?> - <b>Usuario : </b><?=$patrimonys->user()->user_name?> - <b>Unidade : </b><?=$patrimonys->unit()->unit_name?></p>
                     </div>
@@ -87,8 +87,7 @@
                 <div class="row justify-content-center mt-4 mb-3">
                     <div class="col-auto">
                     <?=button("top", "Clique para gravar", "success", "disc-fill", "Gravar", "5", "g")?>
-                    <?=buttonLink("/beta/patrimonios", "top", "Clique para listar os patrimônios", "secondary", "list", "Listar", "7", "l")?>    
-            <?=buttonLink("/beta/patrimonios/termo/{$patrimonys->id}", "top", "Clique para listar os patrimônios", "primary", "file-earmark-word", "Termo", "8", "t")?>                                   
+                    <?=buttonLink("/beta/patrimonios", "top", "Clique para listar os patrimônios", "secondary", "list", "Listar", "7", "l")?>                                       
                     </div>
                 </div>
 
@@ -105,13 +104,6 @@
                 });
                 movement_id.initialize();
                 $('.movement_id').typeahead({hint: true, highlight: true, minLength: 1}, {source: movement_id});
-                
-                let product_id = new Bloodhound({
-                    datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
-                    local: <?=$patrimonyscreates->completeProduct()?>
-                });
-                product_id.initialize();
-                $('.product_id').typeahead({hint: true, highlight: true, minLength: 1}, {source: product_id});
                 
                 let user_id = new Bloodhound({
                     datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,

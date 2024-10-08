@@ -8,7 +8,7 @@
 
     <?php if (!$patrimonys): ?>
 
-        <form class="row align-items-center needs-validation" id="patrimony" novalidate action="<?= url("/beta/patrimonios/cadastrar"); ?>" method="post" enctype="multipart/form-data">
+        <form class="row align-items-center needs-validation" id="patrimony" novalidate action="<?= url("/beta/patrimonio/cadastrar"); ?>" method="post" enctype="multipart/form-data">
         
             <input type="hidden" name="action" value="create"/>
 
@@ -87,7 +87,7 @@
 
     <?php else: ?>
 
-        <form class="row align-items-center needs-validation" id="patrimony" novalidate action="<?= url("/beta/patrimonios/editar/{$patrimonys->id}"); ?>" method="post" enctype="multipart/form-data">
+        <form class="row align-items-center needs-validation" id="patrimony" novalidate action="<?= url("/beta/patrimonio/detalhe/{$patrimonys->id}"); ?>" method="post" enctype="multipart/form-data">
                 
             <input type="hidden" name="action" value="update"/>
 
@@ -102,12 +102,19 @@
             </style>
 
             <div class="row mb-3 ms-1">
-
                 <div class="card box">
                     <div class="card-body">
-                        <h5 class="card-title text-center text-success"><?=$patrimonys->product()->brand()->brand_name.' '.$patrimonys->product()->product_name.' - '.$patrimonys->product()->type_part_number.' : '.$patrimonys->part_number?></h5>
-                        <p class="card-text text-center text-success"><?=$patrimonys->product()->description?></p>
-                        <p class="card-text text-center text-success"><b><?=$patrimonys->movement()->movement_name?></b> em <?=date_fmt($patrimonys->updated_at)?> - <b>Usuario : </b><?=(!empty($patrimonys->user()->user_name) ? $patrimonys->user()->user_name : 'Não Cadastrado')?> - <b>Unidade : </b><?=$patrimonys->unit()->unit_name?></p>
+                        <div class="row ms-1">
+                            <div class="col-2">
+                                <img src="<?=image($patrimonys->product()->photo, 130, 130)?>" class="img-thumbnail rounded float-start" alt="<?=$patrimonys->product()->photo?>">
+                            </div>
+                            <div class="col-10">
+                                <h5 class="card-title"><?=$patrimonys->product()->brand()->brand_name.' '.$patrimonys->product()->product_name.' - '.$patrimonys->product()->type_part_number.' : '.$patrimonys->part_number?></h5>
+                                <p class="card-text"><?=$patrimonys->product()->description?></p>
+                                <p class="card-text"><b><?=$patrimonys->movement()->movement_name?></b> em <?=date_fmt($patrimonys->updated_at)?> - <b>Usuario : </b><?=(!empty($patrimonys->user()->user_name) ? $patrimonys->user()->user_name : 'Não Cadastrado')?> - <b>Unidade : </b><?=$patrimonys->unit()->unit_name.buttonLink("/beta/patrimonio/termo/{$patrimonys->id}", "top", "Clique para imprimir o termo", "primary ms-3", "file-earmark-word", "Termo", "9", "t", "_blank")?></p>
+                        
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -170,8 +177,7 @@
                     <div class="row justify-content-center mt-3 mb-3">
                         <div class="col-auto">
                         <?=button("top", "Clique para gravar", "success", "disc-fill", "Gravar", "5", "g")?>
-                        <?=buttonLink("/beta/patrimonios", "top", "Clique para listar os patrimônios", "secondary", "list", "Listar", "7", "l")?>    
-                        <?=buttonLink("/beta/patrimonios/termo/{$patrimonys->id}", "top", "Clique para listar os patrimônios", "primary", "file-earmark-word", "Termo", "9", "t", "_blank")?>                                   
+                        <?=buttonLink("/beta/patrimonios", "top", "Clique para listar os patrimônios", "secondary", "list", "Listar", "7", "l")?>                                  
                         </div>
                     </div>
 

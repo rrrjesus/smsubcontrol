@@ -271,7 +271,7 @@ class Patrimonys extends Admin
             $patrimonyCreateHistory->save();
 
             $this->message->success("Patrimônio {$patrimonyCreate->product()->type_part_number} {$patrimonyCreate->part_number} cadastrado com sucesso...")->icon("emoji-grin me-1")->flash();
-            $json["redirect"] = url("/beta/patrimonios/cadastrar");
+            $json["redirect"] = url("/beta/patrimonio/cadastrar");
 
             echo json_encode($json);
             return;
@@ -293,6 +293,30 @@ class Patrimonys extends Admin
             if (!$patrimonysUpdate) {
                 $this->message->error("Você tentou gerenciar um patrimônio que não existe")->flash();
                 echo json_encode(["redirect" => url("/beta/patrimonios")]);
+                return;
+            }
+
+            if($data["movement_id"] == ""){
+                $json['message'] = $this->message->warning("Informe um estado para lançar nova movimentação do patrimônio !")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            if($data["user_id_edit"] == ""){
+                $json['message'] = $this->message->warning("Informe um usuário para lançar nova movimentação do patrimônio !!!")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            if($data["unit_id_edit"] == ""){
+                $json['message'] = $this->message->warning("Informe uma unidade para lançar nova movimentação do patrimônio !!!")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            if($patrimonysUpdate->movement_id == $movement_id) {
+                $json['message'] = $this->message->warning("O patrimônio já está no estado : {$patrimonysUpdate->movement()->movement_name} !!!")->icon()->render();
+                echo json_encode($json);
                 return;
             }
 
@@ -320,30 +344,12 @@ class Patrimonys extends Admin
                 $patrimonysUpdate->file_terms = '';
             }
 
-            if($data["movement_id"] == ""){
-                $json['message'] = $this->message->warning("Informe um estado para gravar o patrimônio !")->icon()->render();
-                echo json_encode($json);
-                return;
-            }
-
-            if($data["user_id_edit"] == ""){
-                $json['message'] = $this->message->warning("Informe um usuário para gravar o patrimônio !!!")->icon()->render();
-                echo json_encode($json);
-                return;
-            }
-
-            if($data["unit_id_edit"] == ""){
-                $json['message'] = $this->message->warning("Informe uma unidade para gravar o patrimônio !!!")->icon()->render();
-                echo json_encode($json);
-                return;
-            }
-
             if (!$patrimonysUpdate->save()) {
                 $json["message"] = $patrimonysUpdate->message()->render();
                 echo json_encode($json);
                 return;
             }
-
+            
             $patrimonysHistory = new PatrimonyHistory();
             $patrimonysHistory->patrimony_id = $patrimonys_id;
             $patrimonysHistory->movement_id = $movement_id;
@@ -359,7 +365,7 @@ class Patrimonys extends Admin
             $patrimonysHistory->save();
 
             $this->message->success("Patrimonio {$patrimonysUpdate->part_number} atualizado com sucesso !!!")->icon("emoji-grin me-1")->flash();
-            echo json_encode(["redirect" => url("/beta/patrimonios/editar/{$patrimonysUpdate->id}")]);
+            echo json_encode(["redirect" => url("/beta/patrimonio/detalhe/{$patrimonysUpdate->id}")]);
             return;
         }
 

@@ -11,7 +11,7 @@
 
                     <div class="row justify-content-center mt-4 mb-3">
                         <div class="col-auto">
-                        <?=buttonLink("/beta/patrimonios/cadastrar", "top", "Clique para cadastrar patrimônio", "success", "building-add", "Cadastrar", "1", "c")?> 
+                        <?=buttonLink("/beta/patrimonio/cadastrar", "top", "Clique para cadastrar patrimônio", "success", "building-add", "Cadastrar", "1", "c")?> 
                         <?php if(!empty($registers->disabled)){ ?>
                             <?=buttonLinkDisabled("/beta/patrimonios/desativados", "top", "Clique para listar os patrimônios desativados", "secondary", "building-add", "Desativados", "2", "D", $registers->disabled)?> 
                         <?php } ?>

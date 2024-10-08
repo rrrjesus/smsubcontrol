@@ -448,7 +448,7 @@ class Users extends Admin
             echo $this->view->render("widgets/company/users/withdrawalTerm", [
                 "head" => $head,
                 "term" => $termPrint,
-                "urls" => "patrimonios/termo/{$termPrint->id}",
+                "urls" => "patrimonio/termo/{$termPrint->id}",
                 "namepage" => "Termo",
                 "name" => "Imprimir"
             ]);
@@ -456,7 +456,7 @@ class Users extends Admin
             echo $this->view->render("widgets/company/users/returnTerm", [
                 "head" => $head,
                 "term" => $termPrint,
-                "urls" => "patrimonios/termo/{$termPrint->id}",
+                "urls" => "patrimonio/termo/{$termPrint->id}",
                 "namepage" => "Termo",
                 "name" => "Imprimir"
             ]);
@@ -485,7 +485,7 @@ class Users extends Admin
         echo $this->view->render("widgets/company/users/term", [
             "head" => $head,
             "term" => $termPrint,
-            "urls" => "patrimonios/historico/termo/{$termPrint->id}",
+            "urls" => "patrimonio/historico/termo/{$termPrint->id}",
             "namepage" => "Termo",
             "name" => "Imprimir"
         ]);

@@ -31,6 +31,7 @@
                 <thead class="table-secondary">
                     <tr>
                         <th class="text-center">EDITAR</th>
+                        <th class="text-center">FOTO</th>
                         <th class="text-center">MARCA</th>
                         <th class="text-center">PRODUTO</th>
                         <th class="text-center">TIPO NS</th>
@@ -46,6 +47,7 @@
                 <tr>
                     <td class="text-center fw-semibold"><a href="<?= url("/painel/patrimonio/produtos/editar/{$lista->id}"); ?>" role="button" aria-disabled="true" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
                     data-bs-title="Clique para editar" class="btn btn-sm btn-outline-warning rounded-circle fw-bold me-2"><i class="bi bi-pencil text-secondary"></i></a></td>
+                    <td class="text-center"><?=$lista->photoList();?></td>
                     <td class="text-center fw-semibold"><?=(!empty($lista->Brand()->brand_name) ? $lista->Brand()->brand_name : "")?></td>
                     <td class="text-center fw-semibold"><?=(!empty($lista->product_name) ? $lista->product_name : "")?></td>
                     <td class="text-center fw-semibold"><?=(!empty($lista->type_part_number) ? $lista->type_part_number : "")?></td>

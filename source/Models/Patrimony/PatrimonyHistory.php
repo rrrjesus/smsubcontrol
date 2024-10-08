@@ -168,7 +168,7 @@ class  PatrimonyHistory extends Model
     public function termList(): ?string
     {
         if($this->user_id){
-            return '<a href="'.url("/beta/patrimonios/historico/termo/{$this->id}").'" role="button" aria-disabled="true" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
+            return '<a href="'.url("/beta/patrimonio/historico/termo/{$this->id}").'" role="button" aria-disabled="true" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
                             data-bs-title="Clique para visualizar termo para assinar" target="_blank" class="btn btn-sm btn-outline-primary rounded-circle"><i class="bi bi-file-earmark-word"></i></a>';
         }
         return null;

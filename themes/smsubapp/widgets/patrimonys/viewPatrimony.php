@@ -77,7 +77,7 @@
                                 <div class="col-auto">
                                 <?=button("top", "Clique para gravar", "success", "disc-fill", "Gravar", "6", "g")?>
                                 <?=buttonLink("/beta/patrimonios", "top", "Clique para listar os patrimônios", "secondary", "list", "Listar", "7", "l")?>    
-                                <?=buttonLink("/beta/patrimonios/termo/{$patrimonys->id}", "top", "Clique para listar os patrimônios", "primary", "file-earmark-word", "Termo", "9", "t")?>                                   
+                                <?=buttonLink("/beta/patrimonio/termo/{$patrimonys->id}", "top", "Clique para listar os patrimônios", "primary", "file-earmark-word", "Termo", "9", "t")?>                                   
                                 </div>
                             </div>
 
