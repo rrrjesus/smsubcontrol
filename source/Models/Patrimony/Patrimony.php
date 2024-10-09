@@ -96,6 +96,20 @@ class Patrimony extends Model
     /**
      * @return null|string
      */
+    public function fileTerm(): ?string
+    {
+        if(!empty($this->file_terms) && file_exists(CONF_UPLOAD_DIR.'/'.$this->file_terms)){
+            return '<a href="../../../'.CONF_UPLOAD_DIR.'/'.$this->file_terms.'" role="button" aria-disabled="true" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
+                            data-bs-title="Clique para visualizar termo assinado" class="btn btn-outline-danger btn-sm position-relative rounded-pill fw-semibold me-3" target="_blank"><i class="bi bi-file-earmark-pdf"></i> Termo Ass.</a>';
+        }else{
+            return '';
+        }
+        return null;
+    } 
+
+    /**
+     * @return null|string
+     */
     public function fileListUser(): ?string
     {
         if($this->file_terms && file_exists(CONF_UPLOAD_DIR.'/'.$this->file_terms)){
