@@ -32,6 +32,23 @@ class UserCategory extends Model
     }
 
     /**
+     * @return null|UserCategory
+     */
+    static function completeCategory(): ?UserCategory
+    {
+        $stm = (new UserCategory())->find("status= :s","s=actived");
+        $array[] = array();
+
+        if(!empty($stm)):
+            foreach ($stm->fetch(true) as $row):
+                    $array[] = $row->id.' - '.$row->category_name;
+            endforeach;
+            echo json_encode($array); //Return the JSON Array
+        endif;
+        return null;
+    }
+
+    /**
      * @return null|string
      */
     public function status(): ?string

@@ -240,23 +240,6 @@ class User extends Model
     }
 
     /**
-     * @return null|UserPosition
-     */
-    static function completePosition($columns): ?UserPosition
-    {
-        $stm = (new UserPosition())->find("status= :s","s=confirmed", $columns);
-        $array = array();
-
-        if(!empty($stm)):
-            foreach ($stm->fetch(true) as $row):
-                $array[] = $row->position_name;
-            endforeach;
-            echo json_encode($array); //Return the JSON Array
-        endif;
-        return null;
-    }
-
-    /**
      * @return null|Unit
      */
     public function unitSelect(): ?Unit
