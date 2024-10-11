@@ -3,20 +3,24 @@
   <!-- Breacrumb-->
   <?= $this->insert("views/theme/breadcrumb"); ?>
 
-<div class="row justify-content-center">
-    <div class="col-xl-12">
-        <?php if (!$user): ?>
-        <div class="container-fluid">
-            <div class="d-flex justify-content-center">
-                <div class="col-12">
-                    <form class="row gy-2 gx-3 align-items-center needs-validation" id="user" novalidate action="<?= url("/painel/usuarios/cadastrar"); ?>" method="post" enctype="multipart/form-data">
+  <div class="container-fluid">
+
+    <?php if (!$user): ?>
+
+        <form class="row gy-2 gx-3 align-items-center needs-validation" id="user" novalidate action="<?= url("/painel/usuarios/cadastrar"); ?>" method="post" enctype="multipart/form-data">
                     
-                        <input type="hidden" name="action" value="create"/>
+            <input type="hidden" name="action" value="create"/>
 
-                        <?=csrf_input();?>
+            <?=csrf_input();?>
 
-                        <div class="ajax_response"><?=flash();?></div>
-                            
+            <div class="ajax_response"><?=flash();?></div>
+                
+            <div class="row mb-3 ms-1">
+                <div class="card box">
+                    <div class="card-body">
+
+                        <h5 class="card-title text-center"><i class="bi bi-person-plus me-1"></i> Cadastrar Usuário</h5>
+
                         <div class="row mb-1">
 
                             <div class="col-md-1 app_formbox_photo mb-1">
@@ -146,189 +150,193 @@
                                     <i class="bi bi-list-columns me-2"></i>LISTAR</a>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
-        </div>
 
+        </form>
+        
         <?php else: ?>
 
-        <div class="container-fluid">
-            <div class="d-flex justify-content-center">
-                <div class="col-12">
-                <form class="row gy-2 gx-3 align-items-center needs-validation" id="user" novalidate action="<?= url("/painel/usuarios/editar/{$user->id}"); ?>" method="post" enctype="multipart/form-data">
+        <form class="row gy-2 gx-3 align-items-center needs-validation" id="user" novalidate action="<?= url("/painel/usuarios/editar/{$user->id}"); ?>" method="post" enctype="multipart/form-data">
                         
-                    <input type="hidden" name="action" value="update"/>
+            <input type="hidden" name="action" value="update"/>
 
-                    <div class="ajax_response"><?=flash();?></div>
+            <div class="ajax_response"><?=flash();?></div>
 
-                            <?=csrf_input();?>
+            <?=csrf_input();?>
                                 
-                    <div class="row mb-1">
+            <div class="row mb-3 ms-1">
+                <div class="card box">
+                    <div class="card-body">
 
-                    <div class="col-md-1 mb-1">
-                        <a href="<?php if (file_exists(CONF_UPLOAD_DIR .'/'.$user->photo)) {echo '../../../'.CONF_UPLOAD_DIR .'/'.$user->photo;} 
-                            else {echo url('themes/'.CONF_VIEW_ADMIN.'/assets/images/avatar.jpg');}?>" target="_blank">
-                        <img data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                            data-bs-title="Foto" height="90" width="90" src="<?php if ($user->photo && file_exists(CONF_UPLOAD_DIR .'/'.$user->photo)) 
-                            {echo image($user->photo, 200, 200);}else {echo url('themes/'.CONF_VIEW_ADMIN.'/assets/images/avatar.jpg');}?>" class="img-thumbnail rounded-circle float-left" id="foto-cliente">
-                        </a>
-                    </div>
-                    <div class="col-md-5 mb-1">
-                        <label for="formFileSm" class="col-form-label col-form-label-sm"> <strong> Extensões aceitas : .bmp ,.png, .svg, .jpeg e .jpg </strong></label>
-                        <input data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                            data-bs-title="Clique para carregar o arquivo" class="form-control form-control-sm" name="photo" id="photo" value="<?=$user->photo?>" type="file">
-                    </div>
-                    </div>
+                        <h5 class="card-title text-center"><i class="bi bi-person me-1"></i> Editar Usuário</h5>
 
-                    <div class="row">
+                        <div class="row mb-1">
 
-                        <div class="col-md-2 mb-1">
-                            <label class="col-form-label col-form-label-sm" for="inputLogin"><strong><i class="bi bi-person me-1"></i> Login</strong></label>
-                            <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                data-bs-title="Digite o login - letra + 6 dígitos" class="form-control form-control-sm mask-login"
-                                name="login" placeholder="d123456" value="<?=$user->login?>">
+                            <div class="col-md-1 mb-1">
+                                <a href="<?php if (file_exists(CONF_UPLOAD_DIR .'/'.$user->photo)) {echo '../../../'.CONF_UPLOAD_DIR .'/'.$user->photo;} 
+                                    else {echo url('themes/'.CONF_VIEW_ADMIN.'/assets/images/avatar.jpg');}?>" target="_blank">
+                                <img data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                    data-bs-title="Foto" height="90" width="90" src="<?php if ($user->photo && file_exists(CONF_UPLOAD_DIR .'/'.$user->photo)) 
+                                    {echo image($user->photo, 200, 200);}else {echo url('themes/'.CONF_VIEW_ADMIN.'/assets/images/avatar.jpg');}?>" class="img-thumbnail rounded-circle float-left" id="foto-cliente">
+                                </a>
+                            </div>
+                            <div class="col-md-5 mb-1">
+                                <label for="formFileSm" class="col-form-label col-form-label-sm"> <strong> Extensões aceitas : .bmp ,.png, .svg, .jpeg e .jpg </strong></label>
+                                <input data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                    data-bs-title="Clique para carregar o arquivo" class="form-control form-control-sm" name="photo" id="photo" value="<?=$user->photo?>" type="file">
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-2 mb-1">
+                                <label class="col-form-label col-form-label-sm" for="inputLogin"><strong><i class="bi bi-person me-1"></i> Login</strong></label>
+                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                    data-bs-title="Digite o login - letra + 6 dígitos" class="form-control form-control-sm mask-login"
+                                    name="login" placeholder="d123456" value="<?=$user->login?>">
+
+                            </div>
+
+                            <div class="col-md-2 mb-1">
+                                <label class="col-form-label col-form-label-sm" for="inputNome"><strong><i class="bi bi-person me-1"></i> RF</strong></label>
+                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                    data-bs-title="Digite o RF - 7 dígitos" class="form-control form-control-sm mask-rf"
+                                    name="rf" placeholder="1234567" value="<?=$user->rf?>">
+
+                            </div>
+
+                            <div class="col-md-6 mb-1">
+                                <label class="col-form-label col-form-label-sm" for="inputNome"><strong><i class="bi bi-person me-1"></i> Nome</strong></label>
+                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                    data-bs-title="Digite o nome" class="form-control form-control-sm"
+                                    name="user_name" placeholder="NOME" value="<?=$user->user_name?>">
+                            </div>
+
+                            <div class="col-md-2 mb-1">
+                                <label class="col-form-label col-form-label-sm" for="inputCelular"><strong><i class="bi bi-phone me-1"></i> Tel Fixo</strong></label>
+                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                data-bs-title="Digite o numero do fixo - DDD + 8 dígitos" class="form-control form-control-sm mask-fixed-phone" name="fixed_phone" 
+                                placeholder="(99)9999-9999" value="<?=$user->fixed_phone?>">
+                            </div>
 
                         </div>
 
-                        <div class="col-md-2 mb-1">
-                            <label class="col-form-label col-form-label-sm" for="inputNome"><strong><i class="bi bi-person me-1"></i> RF</strong></label>
-                            <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                data-bs-title="Digite o RF - 7 dígitos" class="form-control form-control-sm mask-rf"
-                                name="rf" placeholder="1234567" value="<?=$user->rf?>">
+                        <div class="row">
+
+                            <div class="col-md-3 mb-1">
+                                <label class="col-form-label col-form-label-sm" for="inputEmail"><strong><i class="bi bi-envelope-at me-1"></i> E-mail</strong></label>
+                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                data-bs-title="Digite o email" class="form-control form-control-sm" name="email" value="<?=$user->email?>">
+                            </div>
+
+                            <div class="col-md-2 mb-1">
+                                <label class="col-form-label col-form-label-sm" for="inputCelular"><strong><i class="bi bi-phone me-1"></i> Celular</strong></label>
+                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                data-bs-title="Digite o numero do celular - DDD + 9 dígitos" class="form-control form-control-sm mask-cell-phone" 
+                                name="cell_phone" placeholder="(99)99999-9999" value="<?=$user->cell_phone?>">
+                            </div>
+
+                            <div class="col-md-2 mb-1">
+                                <label class="col-form-label col-form-label-sm" for="inputCategoria"><strong><i class="bi bi-person-add me-1"></i> Situação</strong></label>
+                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                data-bs-title="Situação" class="form-control form-control-sm status"
+                                name="status" placeholder="Status" value="<?=$user->statusInput()?>">
+                            </div>
+
+                            <div class="col-md-5 mb-1">
+                                <label class="col-form-label col-form-label-sm" for="inputSobreNome"><strong><i class="bi bi-person-add me-1"></i> Cargo</strong></label>
+                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                    data-bs-title="Cargo" class="form-control form-control-sm position_id"
+                                    name="position_id" placeholder="Cargo" value="<?=$user->userPosition()->id.' - '.$user->userPosition()->position_name?>">
+                            </div>
+
+                            <div class="col-md-2 mb-1">
+                                <label class="col-form-label col-form-label-sm" for="inputCategoria"><strong><i class="bi bi-person-add me-1"></i> Regime</strong></label>
+                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                data-bs-title="Regime" class="form-control form-control-sm category_id" name="category_id" placeholder="Regime"
+                                value="<?=$user->userCategory()->id.' - '.$user->userCategory()->category_name?>">
+                            </div>
+
+                            <div class="col-md-4 mb-1">
+                                <label class="col-form-label col-form-label-sm" for="inputSobreNome"><i class="bi bi-person-add me-1"></i><strong>Unidade</strong></label>
+                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                data-bs-title="Unit" class="form-control form-control-sm unit_id" name="unit_id" placeholder="Unidade"
+                                value="<?=$user->userUnit()->id.' - '.$user->userUnit()->unit_name?>">
+                            </div>
+
+                            <div class="col-md-3 mb-1">
+                                <label class="col-form-label col-form-label-sm" for="inputSetor"><strong><i class="bi bi-building ms-3 me-3"></i> Nivel</strong></label>
+                                <select class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                    data-bs-title="Selecione o nível de usuario" name="level_id">
+                                    <option value="<?=$user->level_id?>" selected><?=$user->level()->level_nome?></option>
+                                    <option value="1">Usuario</option>
+                                    <option value="2">Usuario Editor</option>
+                                    <option value="3">Editor</option>
+                                    <option value="4">Editor Administrador</option>
+                                    <option value="5">Administrador do Sistema</option>
+                                </select>
+                            </div>   
+
+                            <div class="col-md-3 mb-1">
+                                <label class="col-form-label col-form-label-sm" for="inputSenha"><strong><i class="bi bi-lock me-1"></i>Senha</strong></label>
+                                    <input type="password" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                        data-bs-title="Digite a senha, Padrão : smsub12345" class="form-control form-control-sm"
+                                        name="password" placeholder="********">
+                            </div>
 
                         </div>
 
-                        <div class="col-md-6 mb-1">
-                            <label class="col-form-label col-form-label-sm" for="inputNome"><strong><i class="bi bi-person me-1"></i> Nome</strong></label>
-                            <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                data-bs-title="Digite o nome" class="form-control form-control-sm"
-                                name="user_name" placeholder="NOME" value="<?=$user->user_name?>">
+                        <div class="row">   
+                            
+                            <div class="mb-3 mb-1">
+                                <label for="textareaObservacoes" class="col-form-label col-form-label-sm"><i class="bi bi-exclamation-diamond me-1"></i><strong>Observações</strong></label>
+                                <textarea class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                data-bs-title=Observações" name="observations" rows="2"><?=$user->observations?></textarea>
+                            </div>
+                            
                         </div>
-
-                        <div class="col-md-2 mb-1">
-                            <label class="col-form-label col-form-label-sm" for="inputCelular"><strong><i class="bi bi-phone me-1"></i> Tel Fixo</strong></label>
-                            <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                            data-bs-title="Digite o numero do fixo - DDD + 8 dígitos" class="form-control form-control-sm mask-fixed-phone" name="fixed_phone" 
-                            placeholder="(99)9999-9999" value="<?=$user->fixed_phone?>">
-                        </div>
-
-                    </div>
-
-                    <div class="row">
-
-                        <div class="col-md-3 mb-1">
-                            <label class="col-form-label col-form-label-sm" for="inputEmail"><strong><i class="bi bi-envelope-at me-1"></i> E-mail</strong></label>
-                            <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                            data-bs-title="Digite o email" class="form-control form-control-sm" name="email" value="<?=$user->email?>">
-                        </div>
-
-                        <div class="col-md-2 mb-1">
-                            <label class="col-form-label col-form-label-sm" for="inputCelular"><strong><i class="bi bi-phone me-1"></i> Celular</strong></label>
-                            <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                            data-bs-title="Digite o numero do celular - DDD + 9 dígitos" class="form-control form-control-sm mask-cell-phone" 
-                            name="cell_phone" placeholder="(99)99999-9999" value="<?=$user->cell_phone?>">
-                        </div>
-
-                        <div class="col-md-2 mb-1">
-                            <label class="col-form-label col-form-label-sm" for="inputCategoria"><strong><i class="bi bi-person-add me-1"></i> Situação</strong></label>
-                            <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                            data-bs-title="Situação" class="form-control form-control-sm status"
-                            name="status" placeholder="Status" value="<?=$user->statusInput()?>">
-                        </div>
-
-                        <div class="col-md-5 mb-1">
-                            <label class="col-form-label col-form-label-sm" for="inputSobreNome"><strong><i class="bi bi-person-add me-1"></i> Cargo</strong></label>
-                            <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                data-bs-title="Cargo" class="form-control form-control-sm position_id"
-                                name="position_id" placeholder="Cargo" value="<?=$user->userPosition()->id.' - '.$user->userPosition()->position_name?>">
-                        </div>
-
-                        <div class="col-md-2 mb-1">
-                            <label class="col-form-label col-form-label-sm" for="inputCategoria"><strong><i class="bi bi-person-add me-1"></i> Regime</strong></label>
-                            <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                            data-bs-title="Regime" class="form-control form-control-sm category_id" name="category_id" placeholder="Regime"
-                            value="<?=$user->userCategory()->id.' - '.$user->userCategory()->category_name?>">
-                        </div>
-
-                        <div class="col-md-4 mb-1">
-                            <label class="col-form-label col-form-label-sm" for="inputSobreNome"><i class="bi bi-person-add me-1"></i><strong>Unidade</strong></label>
-                            <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                            data-bs-title="Unit" class="form-control form-control-sm unit_id" name="unit_id" placeholder="Unidade"
-                            value="<?=$user->userUnit()->id.' - '.$user->userUnit()->unit_name?>">
-                        </div>
-
-                        <div class="col-md-3 mb-1">
-                            <label class="col-form-label col-form-label-sm" for="inputSetor"><strong><i class="bi bi-building ms-3 me-3"></i> Nivel</strong></label>
-                            <select class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                data-bs-title="Selecione o nível de usuario" name="level_id">
-                                <option value="<?=$user->level_id?>" selected><?=$user->level()->level_nome?></option>
-                                <option value="1">Usuario</option>
-                                <option value="2">Usuario Editor</option>
-                                <option value="3">Editor</option>
-                                <option value="4">Editor Administrador</option>
-                                <option value="5">Administrador do Sistema</option>
-                            </select>
-                        </div>   
-
-                        <div class="col-md-3 mb-1">
-                            <label class="col-form-label col-form-label-sm" for="inputSenha"><strong><i class="bi bi-lock me-1"></i>Senha</strong></label>
-                                <input type="password" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                    data-bs-title="Digite a senha, Padrão : smsub12345" class="form-control form-control-sm"
-                                    name="password" placeholder="********">
-                        </div>
-
-                    </div>
-
-                    <div class="row">   
-                        
-                        <div class="mb-3 mb-1">
-                            <label for="textareaObservacoes" class="col-form-label col-form-label-sm"><i class="bi bi-exclamation-diamond me-1"></i><strong>Observações</strong></label>
-                            <textarea class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                            data-bs-title=Observações" name="observations" rows="2"><?=$user->observations?></textarea>
-                        </div>
-                        
-                    </div>
 
                     
-                    <div class="row justify-content-center mt-4 mb-3">
-                        <div class="col-auto">
-                            <?=button("top", "Clique para gravar", "success", "disc-fill", "Gravar", "7", "g")?>
-                            <?=buttonLink("/painel/usuarios", "top", "Clique para listar os usuarios", "secondary", "list", "Listar", "8", "l")?>    
+                        <div class="row justify-content-center mt-4 mb-3">
+                            <div class="col-auto">
+                                <?=button("top", "Clique para gravar", "success", "disc-fill", "Gravar", "7", "g")?>
+                                <?=buttonLink("/painel/usuarios", "top", "Clique para listar os usuarios", "secondary", "list", "Listar", "8", "l")?>    
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="row mb-2 mt-3">
-                        <div class="col-md-12 mb-1">
-                            <div class="card border-<?=CONF_ADMIN_COLOR?> mb-3">
-                                <div class="card-header bg-transparent border-<?=CONF_ADMIN_COLOR?>">
-                                    <h5 class="card-title text-<?=CONF_ADMIN_COLOR?> text-center"> EQUIPAMENTOS ATRIBUÍDOS AO SERVIDOR </h5>
-                                </div>
-                                <div class="card-body text-<?=CONF_ADMIN_COLOR?>">
-                                    <nav>
-                                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                            <button class="nav-link fw-semibold active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Atual</button>
-                                            <button class="nav-link fw-semibold" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Histórico</button>
-                                        </div>
-                                    </nav>
-                                    <div class="tab-content" id="nav-tabContent">
-                                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
-                                            <?php $this->insert("widgets/company/users/patrimonyUserList"); ?>    
-                                        </div>
-                                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
-                                            <?php $this->insert("widgets/company/users/patrimonyHistoryUserList"); ?>
-                                        </div>
-                                    </div>
-                                </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3 ms-1">
+                <div class="card box">
+                    <div class="card-body">
+
+                        <h5 class="card-title text-center"><i class="bi bi-binoculars me-1"></i> Patrimônio Vinculado ao Usuário</h5>
+
+                        <nav>
+                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                <button class="nav-link fw-semibold active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Atual</button>
+                                <button class="nav-link fw-semibold" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Histórico</button>
+                            </div>
+                        </nav>
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+                                <?php $this->insert("widgets/company/users/patrimonyUserList"); ?>    
+                            </div>
+                            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+                                <?php $this->insert("widgets/company/users/patrimonyHistoryUserList"); ?>
                             </div>
                         </div>
                     </div>
-
-                        </form>
-                    <?= $this->insert("views/modalUser"); ?>
                 </div>
             </div>
-        </div>
+
+        </form>
+        
+        <?= $this->insert("views/modalUser"); ?>
 
         <?php  endif; ?>
         <?php $this->start("scripts"); ?>
@@ -364,6 +372,3 @@
 
             </script>
         <?php $this->end(); ?>
-
-    </div>
-</div>

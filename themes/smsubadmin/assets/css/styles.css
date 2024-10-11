@@ -1,5 +1,10 @@
 /* Styles do Painel de Administração */
 
+/* Border Card Form*/
+.box {
+  background:linear-gradient(rgb(27, 27, 27),rgb(23, 24, 23)) left/10px 100% no-repeat;
+  }
+
 /*DEFAULT LOAD*/
 .ajax_load {
   display: none;
