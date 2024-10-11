@@ -109,6 +109,7 @@
             <div class="row mb-3 ms-1">
                 <div class="card box">
                     <div class="card-body">
+                            <h5 class="card-title text-center text-success pb-2"><i class="bi bi-binoculars me-1"></i>  Detalhes do Patrimônio</h5>
                         <div class="row ms-1">
                             <div class="col-2">
                                 <img src="<?=image($patrimonys->product()->photo, 130, 130)?>" class="img-thumbnail rounded float-start" alt="<?=$patrimonys->product()->photo?>">
@@ -133,7 +134,7 @@
                 <div class="card box">
                     <div class="card-body">
 
-                        <h5 class="card-title text-center text-success">Lançar Nova Movimentação</h5>
+                        <h5 class="card-title text-center text-success"><i class="bi bi-clipboard-plus me-1"></i> Lançar Nova Movimentação</h5>
                     
                         <div class="row mb-1">
 
@@ -199,7 +200,7 @@
                 <div class="card box">
                     <div class="card-body">
 
-                        <h5 class="card-title text-center text-success">Histórico do Patrimônio</h5>
+                        <h5 class="card-title text-center text-success"><i class="bi bi-journal-text me-1"></i> Histórico do Patrimônio</h5>
                             <?php $this->insert("widgets/patrimonys/historyList"); ?>  
                     </div>
                 </div>
