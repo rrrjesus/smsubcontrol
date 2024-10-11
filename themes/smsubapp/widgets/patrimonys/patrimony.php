@@ -16,73 +16,84 @@
 
             <div class="ajax_response"><?=flash();?></div>
 
-            <div class="row mb-1">
-                <div class="col-md-4 mb-1">
-                    <label for="formFileSm" class="col-form-label col-form-label-sm"> <strong><i class="bi bi-upload me-1"></i> Anexar PDF </strong></label>
-                    <input class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                    data-bs-title="Anexar arquivo apenas no formato .pdf" type="file" class="radius" name="file_terms"/>
+    
+            <div class="row mb-3 ms-1">
+                <div class="card box">
+                    <div class="card-body">
+
+                        <h5 class="card-title text-center text-success"><i class="bi bi-clipboard-plus me-1"></i> Cadastrar Patrimônio</h5>
+
+                        <div class="row mb-1">
+                            <div class="col-md-4 mb-1">
+                                <label for="formFileSm" class="col-form-label col-form-label-sm"> <strong><i class="bi bi-upload me-1"></i> Anexar PDF </strong></label>
+                                <input class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                data-bs-title="Anexar arquivo apenas no formato .pdf" type="file" class="radius" name="file_terms"/>
+                            </div>
+                        </div>
+
+                        <div class="row mb-1">
+
+                            <div class="col-md-3 mb-1">
+                                <label class="col-form-label col-form-label-sm" for="inputNs"><i class="bi bi-person-add me-1"></i><strong>Número de Registro</strong></label>
+                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                    data-bs-title="Digite o numero de registro da peça" tabindex="1" class="form-control form-control-sm"
+                                    name="part_number" autofocus placeholder="NÚMERO DA PEÇA">
+                            </div>
+
+                            <div class="col-md-6 mb-1">
+                                <label class="col-form-label col-form-label-sm" for="inputProduto"><i class="bi bi-person-add me-1"></i><strong>Produto</strong></label>
+                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                    data-bs-title="Digite o nome do produto - Ex : 1 - Tablet" tabindex="2" class="form-control form-control-sm product_id"
+                                    name="product_id" placeholder="PRODUTO">
+                            </div>
+
+                            <div class="col-md-3 mb-1">
+                                <label class="col-form-label col-form-label-sm" for="inputMovimentacao"><i class="bi bi-person-add me-1"></i><strong>Estado</strong></label>
+                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                    data-bs-title="Digite o estado do patrimonio - Ex : 1- Estoque, 2 - Retirado, 3 - Reservado ... " tabindex="3" class="form-control form-control-sm movement_id"
+                                    name="movement_id" placeholder="Estado">
+                            </div>
+
+                        </div>
+
+                        <div class="row mb-1">
+
+                            <div class="col-md-5 mb-1">
+                                <label class="col-form-label col-form-label-sm" for="inputSobreNome"><i class="bi bi-person-add me-1"></i><strong>Usuario</strong></label>
+                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                    data-bs-title="Digite o usuário - Ex : 1 - João Bento Badaró" tabindex="4" class="form-control form-control-sm user_id"
+                                    name="user_id" id="user_id" placeholder="USUÁRIO">
+                            </div>
+
+                            <div class="col-md-7 mb-1">
+                                <label class="col-form-label col-form-label-sm" for="inputSobreNome"><i class="bi bi-person-add me-1"></i><strong>Unidade</strong></label>
+                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                data-bs-title="Digite a unidade - Ex : 22 - SMSUB/COTI" tabindex="8" class="form-control form-control-sm unit_id"
+                                    name="unit_id" id="unit_id" placeholder="UNIDADE">
+                            </div>
+
+                        </div>
+
+                        <div class="row">   
+                            
+                            <div class="mb-3 mb-1">
+                                <label for="textareaObservacoes" class="col-form-label col-form-label-sm"><i class="bi bi-exclamation-diamond me-1"></i><strong>Observações</strong></label>
+                                <textarea class="form-control form-control-sm" tabindex="5" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                data-bs-title=Observações" rows="2" name="observations"></textarea>
+                            </div>
+
+                        </div>
+
+                        <div class="row justify-content-center mt-4 mb-3">
+                            <div class="col-auto">
+                            <?=button("top", "Clique para gravar", "success", "disc-fill", "Gravar", "6", "g")?>
+                            <?=buttonLink("/beta/patrimonios", "top", "Clique para listar os patrimônios", "secondary", "list", "Listar", "7", "l")?>                                  
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <div class="row mb-1">
-
-                <div class="col-md-3 mb-1">
-                    <label class="col-form-label col-form-label-sm" for="inputNs"><i class="bi bi-person-add me-1"></i><strong>Número de Registro</strong></label>
-                    <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                        data-bs-title="Digite o numero de registro da peça" tabindex="1" class="form-control form-control-sm"
-                        name="part_number" autofocus placeholder="NÚMERO DA PEÇA">
-                </div>
-
-                <div class="col-md-6 mb-1">
-                    <label class="col-form-label col-form-label-sm" for="inputProduto"><i class="bi bi-person-add me-1"></i><strong>Produto</strong></label>
-                    <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                        data-bs-title="Digite o nome do produto - Ex : 1 - Tablet" tabindex="2" class="form-control form-control-sm product_id"
-                        name="product_id" placeholder="PRODUTO">
-                </div>
-
-                <div class="col-md-3 mb-1">
-                    <label class="col-form-label col-form-label-sm" for="inputMovimentacao"><i class="bi bi-person-add me-1"></i><strong>Estado</strong></label>
-                    <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                        data-bs-title="Digite o estado do patrimonio - Ex : 1- Estoque, 2 - Retirado, 3 - Reservado ... " tabindex="3" class="form-control form-control-sm movement_id"
-                        name="movement_id" placeholder="Estado">
-                </div>
-
-            </div>
-
-            <div class="row mb-1">
-
-                <div class="col-md-5 mb-1">
-                    <label class="col-form-label col-form-label-sm" for="inputSobreNome"><i class="bi bi-person-add me-1"></i><strong>Usuario</strong></label>
-                    <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                        data-bs-title="Digite o usuário - Ex : 1 - João Bento Badaró" tabindex="4" class="form-control form-control-sm user_id"
-                        name="user_id" id="user_id" placeholder="USUÁRIO">
-                </div>
-
-                <div class="col-md-7 mb-1">
-                    <label class="col-form-label col-form-label-sm" for="inputSobreNome"><i class="bi bi-person-add me-1"></i><strong>Unidade</strong></label>
-                    <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                    data-bs-title="Digite a unidade - Ex : 22 - SMSUB/COTI" tabindex="8" class="form-control form-control-sm unit_id"
-                        name="unit_id" id="unit_id" placeholder="UNIDADE">
-                </div>
-
-            </div>
-
-            <div class="row">   
-                
-                <div class="mb-3 mb-1">
-                    <label for="textareaObservacoes" class="col-form-label col-form-label-sm"><i class="bi bi-exclamation-diamond me-1"></i><strong>Observações</strong></label>
-                    <textarea class="form-control form-control-sm" tabindex="5" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                    data-bs-title=Observações" rows="2" name="observations"></textarea>
-                </div>
-
-            </div>
-
-            <div class="row justify-content-center mt-4 mb-3">
-                <div class="col-auto">
-                <?=button("top", "Clique para gravar", "success", "disc-fill", "Gravar", "6", "g")?>
-                <?=buttonLink("/beta/patrimonios", "top", "Clique para listar os patrimônios", "dark", "list", "Listar", "7", "l")?>                                  
-                </div>
-            </div>
+                    
         </form>
 
     <?php else: ?>
@@ -94,12 +105,6 @@
             <div class="ajax_response"><?=flash();?></div>
 
             <?=csrf_input();?>
-
-            <style>
-                .box {
-                    background:linear-gradient(rgb(25 135 84),rgb(25 135 84)) left/10px 100% no-repeat;
-                    }
-            </style>
 
             <div class="row mb-3 ms-1">
                 <div class="card box">

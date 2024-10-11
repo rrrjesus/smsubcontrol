@@ -1,11 +1,17 @@
 /* Styles do Painel de Administração */
 
+/* Button Left */
 .btn-label {
   position: relative;
-  left: -10px;
-  padding: 6.5px 12.5px;
+  left: -7px;
+  padding: 6px 9px 8px 9px;
   background: rgba(0, 0, 0, 0.15);
   border-radius: 50rem 0 0 50rem;
+}
+
+/* Border Card Form*/
+.box {
+  background:linear-gradient(rgb(25 135 84),rgb(25 135 84)) left/10px 100% no-repeat;
   }
   
 /*DEFAULT LOAD*/

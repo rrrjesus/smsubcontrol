@@ -197,8 +197,38 @@ class Patrimonys extends Admin
             $product_id = preg_replace("/[^0-9\s]/", "", $data["product_id"]);
             $part_number = $data["part_number"];
             $unit_id = $data["unit_id"];
-            $user_id = $data["user_id"];
+            $user_id = preg_replace("/[^0-9\s]/", "", $data["user_id"]);
             $observations = $data["observations"];
+
+            if($data["part_number"] == ""){
+                $json['message'] = $this->message->warning("Informe o numero da peça para criar o patrimônio !")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            if($data["product_id"] == ""){
+                $json['message'] = $this->message->warning("Informe um produto para criar o patrimônio !")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
+            
+            if($data["movement_id"] == ""){
+                $json['message'] = $this->message->warning("Informe um estado para criar o patrimônio !")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            if($data["user_id"] == ""){
+                $json['message'] = $this->message->warning("Informe um estado para criar o patrimônio !")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            if($data["unit_id"] == ""){
+                $json['message'] = $this->message->warning("Informe uma unidade para criar o patrimônio !")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
 
             $patrimonyCreate = new Patrimony();
             $patrimonyCreate->movement_id = $movement_id;
@@ -223,30 +253,6 @@ class Patrimonys extends Admin
                 }
 
                 $patrimonyCreate->file_terms = $file_terms;
-            }
-
-            if($data["movement_id"] == ""){
-                $json['message'] = $this->message->warning("Informe um estado para criar o patrimônio !")->icon()->render();
-                echo json_encode($json);
-                return;
-            }
-
-            if($data["product_id"] == ""){
-                $json['message'] = $this->message->warning("Informe um produto para criar o patrimônio !")->icon()->render();
-                echo json_encode($json);
-                return;
-            }
-
-            if($data["part_number"] == ""){
-                $json['message'] = $this->message->warning("Informe o numero da peça para criar o patrimônio !")->icon()->render();
-                echo json_encode($json);
-                return;
-            }
-
-            if($data["unit_id"] == ""){
-                $json['message'] = $this->message->warning("Informe uma unidade para criar o patrimônio !")->icon()->render();
-                echo json_encode($json);
-                return;
             }
 
             if (!$patrimonyCreate->save()) {
