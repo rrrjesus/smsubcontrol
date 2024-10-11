@@ -307,7 +307,7 @@ function image(?string $image, int $width, int $height = null): ?string
  function button(?string $placement = "top", string $title = "Olá", string $btncolor = "success", string $icon = "person", string $name = "Button", string $tabindex = "1", string $accesskey = "g"): string
  {
     return '<button data-bs-togglee="tooltip" data-bs-placement="'.$placement.'" data-bs-custom-class="custom-tooltip" data-bs-title="'.$title.'" 
-        class="btn btn-sm btn-outline-'.$btncolor.' rounded-pill fw-semibold me-3" tabindex="'.$tabindex.'" accesskey="'.$accesskey.'"><i class="bi bi-'.$icon.' me-2"></i> <u>'.substr($name,0,1).'</u>'.substr($name,1,12).'</button>';
+        class="btn btn-sm btn-outline-'.$btncolor.' rounded-pill fw-semibold me-3" tabindex="'.$tabindex.'" accesskey="'.$accesskey.'"><span class="btn-label"><i class="bi bi-'.$icon.'"></i></span> <u>'.substr($name,0,1).'</u>'.substr($name,1,12).'</button>';
  }
  
 

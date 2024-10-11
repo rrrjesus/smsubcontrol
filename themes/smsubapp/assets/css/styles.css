@@ -1,5 +1,13 @@
 /* Styles do Painel de Administração */
 
+.btn-label {
+  position: relative;
+  left: -10px;
+  padding: 6.5px 12.5px;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 50rem 0 0 50rem;
+  }
+  
 /*DEFAULT LOAD*/
 .ajax_load {
   display: none;
