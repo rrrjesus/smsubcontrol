@@ -3,7 +3,7 @@
 /**
  * DATABASE
  */
- define("CONF_DB_HOST", "10.23.237.235");
+ define("CONF_DB_HOST", "10.23.237.242");
  define("CONF_DB_USER", "smsubcoti");
  define("CONF_DB_PASS", "U4cKZ_NI0*2UeSHs");
  define("CONF_DB_NAME", "smsubcontrol");
@@ -11,18 +11,18 @@
  /**
   * PROJECT URLs
   */
- define("CONF_URL_BASE", "http://10.23.237.235/smsubcontrol");
+ define("CONF_URL_BASE", "http://10.23.237.242/smsubcontrol");
  define("CONF_URL_TESTE", "http://127.0.0.1/smsubcontrol");
  define("CONF_URL_ADMIN", "/dashboard");
 
 /**
  * SITE
  */
-define("CONF_SITE_NAME", "SMSUB");
-define("CONF_SITE_TITLE", "smsub");
-define("CONF_SITE_DESC", "smsub SMSUB");
+define("CONF_SITE_NAME", "SmsubControl");
+define("CONF_SITE_TITLE", "Gerencie seus ativos com o melhor controle");
+define("CONF_SITE_DESC", "O SmsubControl é um gerenciador de ativos simples, poderoso e gratuito. O prazer de ter o controle total de seus ativos.");
 define("CONF_SITE_LANG", "pt_BR");
-define("CONF_SITE_DOMAIN", "smsub");
+define("CONF_SITE_DOMAIN", "smsubcontrol");
 define("CONF_SITE_EMAIL", "cotisuporte@smsub.prefeitura.sp.gov.br");
 define("CONF_SITE_ADDR_STREET", "Rua São Bento, 405 / Rua Líbero Badaró");
 define("CONF_SITE_ADDR_NUMBER", "504");
@@ -93,11 +93,11 @@ define("CONF_IMAGE_QUALITY", ["jpg" => 75, "png" => 5]);
 /**
  * MAIL
  */
-define("CONF_MAIL_HOST", "smtp.sendgrid.net");
+define("CONF_MAIL_HOST", "smtp.hostinger.com.br");
 define("CONF_MAIL_PORT", "587");
-define("CONF_MAIL_USER", "apikey");
-define("CONF_MAIL_PASS", "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");
-define("CONF_MAIL_SENDER", ["name" => "SMSUB - COTI", "address" => "cidinha.romaioli@gmail.com"]);
+define("CONF_MAIL_USER", "smsubcontrol@informaticast11.com.br"); //apikey ou conta de e-mail
+define("CONF_MAIL_PASS", "U4cKZ_NI0*2UeSHs"); //senha apikey ou senha conta de e-mail
+define("CONF_MAIL_SENDER", ["name" => "SMSUB - COTI", "address" => "smsubcontrol@informaticast11.com.br"]);
 define("CONF_MAIL_SUPPORT", "cotisuporte@smsub.prefeitura.sp.gov.br");
 define("CONF_MAIL_OPTION_LANG", "br");
 define("CONF_MAIL_OPTION_HTML", true);
