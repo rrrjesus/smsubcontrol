@@ -91,12 +91,6 @@ public function patrimonyHistory(?array $data): void
             return;
         }
 
-        if($patrimonysUpdate->movement_id == $movement_id) {
-            $json['message'] = $this->message->warning("O patrimônio já está no estado : {$patrimonysUpdate->movement()->movement_name} !!!")->icon()->render();
-            echo json_encode($json);
-            return;
-        }
-
         if($patrimonysUpdate->updated_at == $patrimonysHistoryUpdate->updated_at){
 
             // Update do Objeto Patrimony
