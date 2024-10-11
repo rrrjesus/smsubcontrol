@@ -4,6 +4,7 @@ namespace Source\App\Admin;
 
 use Source\Models\Company\User;
 use Source\Models\Company\UserPosition;
+use Source\Models\Company\UserCategory;
 use Source\Models\Company\Unit;
 use Source\Support\Thumb;
 use Source\Support\Upload;
@@ -389,6 +390,7 @@ class Users extends Admin
         }
 
         $userposition = new UserPosition();
+        $usercategory = new UserCategory();
         $unit = new Unit();
 
         $userEdit = null;
@@ -417,6 +419,7 @@ class Users extends Admin
             "userpatrimony" => $userPatrimony,
             "userhistory" => $userHistory,
             "userposition" => $userposition,
+            "usercategory" => $usercategory,
             "unit" => $unit,
             "urls" => ($userEdit ? "usuarios" : "usuarios"),
             "namepage" => "Usuários",

@@ -21,7 +21,7 @@
                     <?php foreach ($userhistory as $lista): ?>
                         <tr>
                             <td class="text-center fw-semibold"><?=$lista->id?></td>
-                            <td class="text-center fw-semibold"><?=date_fmt_null($lista->created_history)?></td>
+                            <td class="text-center fw-semibold"><?=date_fmt_null($lista->updated_at)?></td>
                             <td class="text-center fw-semibold"><?=(!empty($lista->movement()->movement_name) ? $lista->movement()->movement_name : "")?></td>
                             <td class="text-center fw-semibold"><?=$lista->product()->product_name?></td>
                             <td class="text-center fw-semibold"><?=$lista->product()->type_part_number?></td>

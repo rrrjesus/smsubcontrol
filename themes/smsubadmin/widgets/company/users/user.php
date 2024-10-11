@@ -350,7 +350,7 @@
 
                 let category_id = new Bloodhound({
                 datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
-                local: ['1 - ADMITIDO', '2 - COMISSIONADO', '3 - CONSULTORIA', '4 - CONTRATADO', '5 - EFETIVO' ,'6 - ESTAGIO', '7 - PRODAM', '8 - RESIDENCIA']
+                local: <?=$usercategory->completeCategory()?>
                 });
                 category_id.initialize();
                 $('.category_id').typeahead({hint: true, highlight: true, minLength: 1}, {source: category_id});
