@@ -170,6 +170,30 @@ class Products extends Admin
                 }
             }
 
+            if($data["contract_id"] == ""){
+                $json['message'] = $this->message->warning("Informe um contrato para atualizar o produto !")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            if($data["brand_id"] == ""){
+                $json['message'] = $this->message->warning("Informe uma marco para atualizar o produto !")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            if($data["product_name"] == ""){
+                $json['message'] = $this->message->warning("Informe um produto para atualizar o produto !")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            if($data["type_part_number"] == ""){
+                $json['message'] = $this->message->warning("Informe um produto para atualizar o produto !")->icon()->render();
+                echo json_encode($json);
+                return;
+            }            
+
             if(in_array("", $data)){
                 $json['message'] = $this->message->info("Informe o contrato, a marca, o produto, o tipo de partnumber e descrição para atualizar o registro !")->icon()->render();
                 echo json_encode($json);

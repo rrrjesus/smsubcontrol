@@ -32,6 +32,34 @@ function is_passwd(string $password): bool
 }
 
 /**
+ * @param int $imei
+ * @return int
+ */
+function is_imei(string $imei): string
+{
+    // Verifica se o número é um inteiro e se tem exatamente 15 dígitos
+    if (is_numeric($imei) && strlen($imei) === 15 && intval($imei) == $imei) {
+        return true;
+    }
+
+    return false;
+}
+
+/**
+ * @param int $imei
+ * @return int
+ */
+function is_chip(string $chip): string
+{
+    // Verifica se o número é um inteiro e se tem exatamente 15 dígitos
+    if (is_numeric($chip) && strlen($chip) === 9 && intval($chip) == $chip) {
+        return true;
+    }
+
+    return false;
+}
+
+/**
  * ##################
  * ###   STRING   ###
  * ##################

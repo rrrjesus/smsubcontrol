@@ -7,6 +7,7 @@ use Source\Support\Upload;
 use Source\Support\Thumb;
 use Source\Models\Patrimony\Patrimony;
 use Source\Models\Patrimony\PatrimonyHistory;
+use Source\Models\Patrimony\Product;
 
 /**
  * Class Patrimonys
@@ -194,20 +195,33 @@ class Patrimonys extends Admin
             $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             $movement_id = preg_replace("/[^0-9\s]/", "", $data["movement_id"]);
-            $product_id = preg_replace("/[^0-9\s]/", "", $data["product_id"]);
+            $product_id_number = preg_replace("/[^0-9\s]/", "", $data["product_id"]);
+            $product_id = substr($product_id_number, 0, 3);
             $part_number = $data["part_number"];
             $unit_id = $data["unit_id"];
             $user_id = preg_replace("/[^0-9\s]/", "", $data["user_id"]);
             $observations = $data["observations"];
 
-            if($data["part_number"] == ""){
-                $json['message'] = $this->message->warning("Informe o numero da peça para criar o patrimônio !")->icon()->render();
-                echo json_encode($json);
-                return;
+            $product = (new Product())->findById($product_id);
+
+            if($product->type_part_number == 'IMEI'){
+                if(!is_imei($part_number)){
+                    $json['message'] = $this->message->warning("O IMEI : {$part_number} não é valido !, digite o IMEI com 15 números")->icon()->render();
+                    echo json_encode($json);
+                    return;
+                }
             }
 
-            if($data["part_number"] == "BGSA50554000"){
-                $json['message'] = $this->message->warning("Esse é o modelo !")->icon()->render();
+            if($product->type_part_number == 'CHIP'){
+                if(!is_chip($part_number)){
+                    $json['message'] = $this->message->warning("O CHIP : {$part_number} não é valido !, digite o CHIP com 9 números")->icon()->render();
+                    echo json_encode($json);
+                    return;
+                }
+            }
+
+            if($data["part_number"] == ""){
+                $json['message'] = $this->message->warning("Informe o numero da peça para criar o patrimônio !")->icon()->render();
                 echo json_encode($json);
                 return;
             }
