@@ -206,6 +206,12 @@ class Patrimonys extends Admin
                 return;
             }
 
+            if($data["part_number"] == "BGSA50554000"){
+                $json['message'] = $this->message->warning("Esse é o modelo !")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
+
             if($data["product_id"] == ""){
                 $json['message'] = $this->message->warning("Informe um produto para criar o patrimônio !")->icon()->render();
                 echo json_encode($json);
