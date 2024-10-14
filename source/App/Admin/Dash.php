@@ -7,7 +7,12 @@ use Source\Models\Patrimony\Brand;
 use Source\Models\Patrimony\Patrimony;
 use Source\Models\Patrimony\Product;
 use Source\Models\Report\Online;
+use Source\Models\Company\Unit;
 use Source\Models\Company\User;
+use Source\Models\Company\UserCategory;
+use Source\Models\Company\UserPosition;
+use Source\Models\Patrimony\Company;
+use Source\Models\Patrimony\Contract;
 
 /**
  * Class Dash
@@ -70,25 +75,45 @@ class Dash extends Admin
         echo $this->view->render("widgets/dash/home", [
             "app" => "dash",
             "head" => $head,
+            "units" => (object) [
+                "units" => (new Unit())->find("status = :s", "s=actived")->count(),
+                "disableds" => (new Unit())->find("status = :s", "s=disabled")->count(),
+                "totals" => (new Unit())->find()->count()
+            ],
+            "userscategories" => (object)[
+                "userscategories" => (new UserCategory())->find("status = :s", "s=actived")->count(),
+                "disableds" => (new UserCategory())->find("status = :s", "s=disabled")->count(),
+                "totals" => (new UserCategory())->find()->count()
+            ],
+            "userspositions" => (object)[
+                "userspositions" => (new UserPosition())->find("status = :s", "s=actived")->count(),
+                "disableds" => (new UserPosition())->find("status = :s", "s=disabled")->count(),
+                "totals" => (new UserPosition())->find()->count()
+            ],
             "users" => (object)[
                 "users" => (new User())->find("level_id < 4")->count(),
                 "admins" => (new User())->find("level_id >= 4")->count(),
                 "totals" => (new User())->find()->count()
             ],
-            "patrimonys" => (object)[
-                "patrimonys" => (new Patrimony())->find("status != :s", "s=disabled")->count(),
-                "disableds" => (new Patrimony())->find("status = :s", "s=disabled")->count(),
-                "totals" => (new Patrimony())->find()->count()
+            "companies" => (object)[
+                "companies" => (new Company())->find("status = :s", "s=actived")->count(),
+                "disableds" => (new Company())->find("status = :s", "s=disabled")->count(),
+                "totals" => (new Company())->find()->count()
             ],
             "brands" => (object)[
-                "brands" => (new Brand())->find("status != :s", "s=disabled")->count(),
+                "brands" => (new Brand())->find("status = :s", "s=actived")->count(),
                 "disableds" => (new Brand())->find("status = :s", "s=disabled")->count(),
                 "totals" => (new Brand())->find()->count()
             ],
             "products" => (object)[
-                "products" => (new Product())->find("status != :s", "s=disabled")->count(),
+                "products" => (new Product())->find("status = :s", "s=actived")->count(),
                 "disableds" => (new Product())->find("status = :s", "s=disabled")->count(),
                 "totals" => (new Product())->find()->count()
+            ],
+            "contracts" => (object)[
+                "contracts" => (new Contract())->find("status = :s", "s=actived")->count(),
+                "disableds" => (new Contract())->find("status = :s", "s=disabled")->count(),
+                "totals" => (new Contract())->find()->count()
             ],
             "online" => (new Online())->findByActive(),
             "onlineCount" => (new Online())->findByActive(true)

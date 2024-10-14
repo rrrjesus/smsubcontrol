@@ -208,7 +208,7 @@ class Patrimonys extends Admin
 
                 if($product->type_part_number == 'IMEI'){
                     if(!is_imei($part_number)){
-                        $json['message'] = $this->message->warning("O IMEI : {$part_number} não é valido !, digite o IMEI com 15 números")->icon()->render();
+                        $json['message'] = $this->message->error("O IMEI : {$part_number} não é valido !, digite o IMEI com 15 números")->icon()->render();
                         echo json_encode($json);
                         return;
                     }
@@ -216,7 +216,7 @@ class Patrimonys extends Admin
     
                 if($product->type_part_number == 'CHIP'){
                     if(!is_chip($part_number)){
-                        $json['message'] = $this->message->warning("O CHIP : {$part_number} não é valido !, digite o CHIP com 9 números")->icon()->render();
+                        $json['message'] = $this->message->error("O CHIP : {$part_number} não é valido !, digite o CHIP com 9 números")->icon()->render();
                         echo json_encode($json);
                         return;
                     }
