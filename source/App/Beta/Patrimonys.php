@@ -202,23 +202,27 @@ class Patrimonys extends Admin
             $user_id = preg_replace("/[^0-9\s]/", "", $data["user_id"]);
             $observations = $data["observations"];
 
-            $product = (new Product())->findById($product_id);
+            if($data["product_id"] != ''){
 
-            if($product->type_part_number == 'IMEI'){
-                if(!is_imei($part_number)){
-                    $json['message'] = $this->message->warning("O IMEI : {$part_number} não é valido !, digite o IMEI com 15 números")->icon()->render();
-                    echo json_encode($json);
-                    return;
+                $product = (new Product())->findById($product_id);
+
+                if($product->type_part_number == 'IMEI'){
+                    if(!is_imei($part_number)){
+                        $json['message'] = $this->message->warning("O IMEI : {$part_number} não é valido !, digite o IMEI com 15 números")->icon()->render();
+                        echo json_encode($json);
+                        return;
+                    }
+                }
+    
+                if($product->type_part_number == 'CHIP'){
+                    if(!is_chip($part_number)){
+                        $json['message'] = $this->message->warning("O CHIP : {$part_number} não é valido !, digite o CHIP com 9 números")->icon()->render();
+                        echo json_encode($json);
+                        return;
+                    }
                 }
             }
-
-            if($product->type_part_number == 'CHIP'){
-                if(!is_chip($part_number)){
-                    $json['message'] = $this->message->warning("O CHIP : {$part_number} não é valido !, digite o CHIP com 9 números")->icon()->render();
-                    echo json_encode($json);
-                    return;
-                }
-            }
+            
 
             if($data["part_number"] == ""){
                 $json['message'] = $this->message->warning("Informe o numero da peça para criar o patrimônio !")->icon()->render();
@@ -239,7 +243,7 @@ class Patrimonys extends Admin
             }
 
             if($data["user_id"] == ""){
-                $json['message'] = $this->message->warning("Informe um estado para criar o patrimônio !")->icon()->render();
+                $json['message'] = $this->message->warning("Informe um usuário para criar o patrimônio !")->icon()->render();
                 echo json_encode($json);
                 return;
             }
