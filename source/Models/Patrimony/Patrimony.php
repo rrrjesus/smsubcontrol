@@ -3,7 +3,6 @@
 namespace Source\Models\Patrimony;
 
 use Source\Core\Model;
-use Source\Models\Patrimony\Brand;
 use Source\Models\Patrimony\Product;
 use Source\Models\Patrimony\Movement;
 use Source\Models\Company\Unit;
@@ -99,8 +98,7 @@ class Patrimony extends Model
     public function fileTerm(): ?string
     {
         if(!empty($this->file_terms) && file_exists(CONF_UPLOAD_DIR.'/'.$this->file_terms)){
-            return '<a href="../../../'.CONF_UPLOAD_DIR.'/'.$this->file_terms.'" role="button" aria-disabled="true" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
-                            data-bs-title="Clique para visualizar termo assinado" class="btn btn-outline-danger btn-sm position-relative rounded-pill fw-semibold me-3" target="_blank"><i class="bi bi-file-earmark-pdf"></i> Termo Ass.</a>';
+            return buttonLink("storage/{$this->file_terms}", "top", "Clique para visualizar termo assinado", "danger", "file-earmark-pdf", "Term Ass", "7", "t");
         }else{
             return '';
         }
@@ -113,7 +111,7 @@ class Patrimony extends Model
     public function fileListUser(): ?string
     {
         if($this->file_terms && file_exists(CONF_UPLOAD_DIR.'/'.$this->file_terms)){
-            return '<a href="../../../'.CONF_UPLOAD_DIR.'/'.$this->file_terms.'" role="button" class="btn btn-sm btn-outline-danger rounded-circle" target="_blank"><i class="bi bi-file-earmark-pdf"></a>';
+            return buttonLink("storage/{$this->file_terms}", "top", "Clique para visualizar termo assinado", "danger rounded-circle", "file-earmark-pdf", "", "", "t", "_blank"); 
         }else{
             return '<p class="fw-semibold" >Sem Termo</p>';
         }
@@ -126,8 +124,7 @@ class Patrimony extends Model
     public function termlistUser(): ?string
     {
         if($this->user_id){
-            return '<a href="'.url("/painel/usuarios/termo/{$this->id}").'" role="button" aria-disabled="true" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
-                            data-bs-title="Clique para visualizar termo para assinar" target="_blank" class="btn btn-sm btn-outline-primary rounded-circle"><i class="bi bi-file-earmark-word"></i></a>';
+            return buttonLink("/painel/usuarios/termo/{$this->id}", "top", "Clique para visualizar termo para assinar", "primary rounded-circle", "file-earmark-word", "", "", "t", "_blank"); 
         }
         return null;
     }

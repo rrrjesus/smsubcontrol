@@ -17,7 +17,7 @@
             <div class="ajax_response"><?=flash();?></div>
 
     
-            <div class="row mb-3 ms-1">
+            <div class="row ms-1 mb-3">
                 <div class="card box">
                     <div class="card-body">
 

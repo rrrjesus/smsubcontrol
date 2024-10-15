@@ -43,10 +43,11 @@ $primaryKey = 'id';
 // indexes
 $columns = array(
     array( 'db' => 'id', 'dt' => 0),
-    array( 'db' => 'patrimony_id', 'dt' => 1,
+    array(
+        'db'        => 'id', 'dt'        => 1,
         'formatter' => function($d) {
-            return '<button type="button" disabled class="btn btn-warning rounded-circle btn-sm fw-semibold">'.$d.'</button>';
-                    }
+            return '<a href="../patrimonio/historico/editar/'.$d.'" accesskey="a" role="button" class="btn btn-sm btn-outline-primary rounded-circle"><i class="bi bi-eye"></i></a>';
+        }
     ),
     array('db' => 'created_history', 'dt' => 2,
         'formatter' => function( $d) {

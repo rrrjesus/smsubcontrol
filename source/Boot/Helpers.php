@@ -320,19 +320,25 @@ function image(?string $image, int $width, int $height = null): ?string
  * ################
  */
 
- function buttonLink(string $href = "/", string $placement = "top", string $title = "Olá", string $btncolor = "success", string $icon = "person", string $name = "Button", string $tabindex = "l", string $accesskey = "l", string $target =""): ?string
+ function buttonLink(string $href = "/", string $placement = "top", string $title = "SmsubControl", string $btncolor = "success", string $icon = "person", string $name = "Button", string $tabindex = "l", string $accesskey = "l", string $target =""): ?string
  {
     return '<a role="button" href="'.url($href).'" data-bs-togglee="tooltip" data-bs-placement="'.$placement.'" data-bs-custom-class="custom-tooltip"
     data-bs-title="'.$title.'" class="btn btn-outline-'.$btncolor.' btn-sm position-relative rounded-pill fw-semibold me-3" tabindex="'.$tabindex.'" accesskey="'.$accesskey.'" target="'.$target.'" rel="noopener"><span class="btn-label"><i class="bi bi-'.$icon.'"></i></span>  <u>'.substr($name,0,1).'</u>'.substr($name,1,12).'</a>';
  }
 
- function buttonLinkDisabled(string $href = "/", string $placement = "top", string $title = "Olá", string $btncolor = "secondary", string $icon = "person", string $name = "Button", string $tabindex = "l", string $accesskey = "d", string $count = ""): ?string
+ function buttonLinkCircle(string $href = "/", string $placement = "top", string $title = "SmsubControl", string $btncolor = "success", string $icon = "person", string $name = "Button", string $tabindex = "l", string $accesskey = "l", string $target =""): ?string
+ {
+    return '<a role="button" href="'.url($href).'" data-bs-togglee="tooltip" data-bs-placement="'.$placement.'" data-bs-custom-class="custom-tooltip"
+    data-bs-title="'.$title.'" class="btn btn-outline-'.$btncolor.' btn-sm position-relative rounded-pill fw-semibold me-3" tabindex="'.$tabindex.'" accesskey="'.$accesskey.'" target="'.$target.'" rel="noopener"><i class="bi bi-'.$icon.'"></i>  <u>'.substr($name,0,1).'</u>'.substr($name,1,12).'</a>';
+ }
+
+ function buttonLinkDisabled(string $href = "/", string $placement = "top", string $title = "SmsubControl", string $btncolor = "secondary", string $icon = "person", string $name = "Button", string $tabindex = "l", string $accesskey = "d", string $count = ""): ?string
  {
     return '<a role="button" href="'.url($href).'" data-bs-togglee="tooltip" data-bs-placement="'.$placement.'" data-bs-custom-class="custom-tooltip"
     data-bs-title="'.$title.'" class="btn btn-outline-'.$btncolor.' btn-sm position-relative rounded-pill fw-semibold me-3" tabindex="'.$tabindex.'" accesskey="'.$accesskey.'"><span class="btn-label"><i class="bi bi-'.$icon.' text-danger"></i></span>  <u>'.substr($name,0,1).'</u>'.substr($name,1,12).'<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">'.$count.'</span></a>';
  }
 
- function button(?string $placement = "top", string $title = "Olá", string $btncolor = "success", string $icon = "person", string $name = "Button", string $tabindex = "1", string $accesskey = "g"): string
+ function button(?string $placement = "top", string $title = "SmsubControl", string $btncolor = "success", string $icon = "person", string $name = "Button", string $tabindex = "1", string $accesskey = "g"): string
  {
     return '<button data-bs-togglee="tooltip" data-bs-placement="'.$placement.'" data-bs-custom-class="custom-tooltip" data-bs-title="'.$title.'" 
         class="btn btn-sm btn-outline-'.$btncolor.' rounded-pill fw-semibold me-3" tabindex="'.$tabindex.'" accesskey="'.$accesskey.'"><span class="btn-label"><i class="bi bi-'.$icon.'"></i></span> <u>'.substr($name,0,1).'</u>'.substr($name,1,12).'</button>';
