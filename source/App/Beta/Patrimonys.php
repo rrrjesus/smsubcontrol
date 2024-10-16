@@ -199,7 +199,7 @@ class Patrimonys extends Admin
             $product_id = substr($product_id_number, 0, 3);
             $part_number = $data["part_number"];
             $unit_id = $data["unit_id"];
-            $user_id = preg_replace("/[^0-9\s]/", "", $data["user_id"]);
+            $user_id = filter_var($data["user_id"],FILTER_SANITIZE_NUMBER_INT);
             $observations = $data["observations"];
 
             if($data["product_id"] != ''){
@@ -315,10 +315,11 @@ class Patrimonys extends Admin
             $movement_id = preg_replace("/[^0-9\s]/", "", $data["movement_id"]);
             $unit_id_number = preg_replace("/[^0-9\s]/", "", $data["unit_id_edit"]);
             $unit_id = substr($unit_id_number, 0, 2);
-            $user_id = $data["user_id_edit"];
+            $user_id = filter_var($data["user_id_edit"],FILTER_SANITIZE_NUMBER_INT);
             $observations = $data["observations"];
 
             $patrimonysUpdate = (new Patrimony())->findById($patrimonys_id);
+            $patrimony = (new Patrimony());
 
             if (!$patrimonysUpdate) {
                 $this->message->error("Você tentou gerenciar um patrimônio que não existe")->flash();
@@ -346,6 +347,18 @@ class Patrimonys extends Admin
 
             if($patrimonysUpdate->movement_id == $movement_id) {
                 $json['message'] = $this->message->warning("O patrimônio já está no estado : {$patrimonysUpdate->movement()->movement_name} !!!")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            if($patrimony->find("user_id = :u AND product_id = :p AND movement_id = :m AND id != :i","u={$user_id}&p={$patrimonysUpdate->product_id}&m=2&i={$patrimonysUpdate->id}")->fetch()) {
+                $json['message'] = $this->message->warning("Esse usuário já tem um {$patrimonysUpdate->product()->product_name} em seu nome")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            if($patrimonysUpdate->movement_id == '2' && $movement_id == '3') {
+                $json['message'] = $this->message->warning("O patrimônio foi retirado e não se encontra disponível para reserva !!!")->icon()->render();
                 echo json_encode($json);
                 return;
             }
