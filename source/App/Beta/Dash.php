@@ -39,6 +39,38 @@ class Dash extends Admin
     public function home(?array $data): void
     {
 
+        //CHART PRINTERS
+
+        $printers = (new Patrimony())
+        ->find("movement_id = :movement AND status = :status AND product_id = :product", "movement=2&status=actived&product=4")
+        ->count();
+
+        $printerstotais = (new Patrimony())
+        ->find("status = :status AND product_id = :product", "status=actived&product=4")
+        ->count();
+
+        $chartprinters = $printers / $printerstotais * 100;
+        $chartprinterstotais = 100 - $chartprinters;
+        $estoqueprinters = $printerstotais - $printers;
+
+        //END CHART PRINTERS
+
+        //CHART TABLETS
+
+        $tablets = (new Patrimony())
+        ->find("movement_id = :movement AND status = :status AND product_id = :product", "movement=2&status=actived&product=5")
+        ->count();
+
+        $tabletstotais = (new Patrimony())
+        ->find("status = :status AND product_id = :product", "status=actived&product=5")
+        ->count();
+
+        $charttablets = $tablets / $tabletstotais * 100;
+        $charttabletstotais = 100 - $charttablets;
+        $estoquetablets = $tabletstotais - $tablets;
+
+        //END CHART TABLETS
+
         $head = $this->seo->render(
             CONF_SITE_NAME . " | Aplicativo",
             CONF_SITE_DESC,
@@ -51,6 +83,14 @@ class Dash extends Admin
         echo $this->view->render("widgets/dash/home", [
             "app" => "dash",
             "head" => $head,
+            "chartprinters" => $chartprinters,
+            "chartprinterstotais" => $chartprinterstotais,
+            "estoqueprinters" => $estoqueprinters,
+            "printers" => $printers,
+            "charttablets" => $charttablets,
+            "charttabletstotais" => $charttabletstotais,
+            "estoquetablets" => $estoquetablets,
+            "tablets" => $tablets,
             "contacts" => (object)[
                 "contacts" => (new Contact())->find("status != :s", "s=disabled")->count(),
                 "disableds" => (new Contact())->find("status = :s", "s=disabled")->count(),

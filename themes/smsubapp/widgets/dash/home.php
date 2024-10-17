@@ -3,6 +3,10 @@
   <!-- Breacrumb-->
   <?= $this->insert("views/theme/breadcrumb"); ?>
 
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
 <div class="row justify-content-center">
     <div class="col-xl-12">
         <div class="container-fluid">
@@ -83,3 +87,224 @@
         </div>
     </div>
 </div>
+
+<!-- https://www.highcharts.com/demo/highcharts/donut-chart -->
+<div class="row">
+    <div class="col-6 mb-2 mt-2">
+        <figure class="highcharts-figure">
+            <div id="containerPrinters"></div>
+            <p class="highcharts-description">
+                Gráfico em tempo real com percentuais e totais de estoque e entrega de impressoras.
+            </p>
+        </figure>
+    </div>
+    
+    <div class="col-6 mb-2 mt-2">
+        <figure class="highcharts-figure">
+            <div id="containerTablets"></div>
+            <p class="highcharts-description">
+                Gráfico em tempo real com percentuais e totais de estoque e entrega de tablets.
+            </p>
+        </figure>
+    </div>
+</div>
+
+<?php $this->start("scripts"); ?>
+    <script type="text/javascript">
+        $(function () {
+            Highcharts.setOptions({
+                colors: [
+                    '#266b2f', '#28a745'
+                ]
+            });
+            Highcharts.chart('containerPrinters', {
+                chart: {
+                    type: 'pie',
+                    custom: {},
+                    events: {
+                        render() {
+                            const chart = this,
+                                series = chart.series[0];
+                            let customLabel = chart.options.chart.custom.label;
+
+                            if (!customLabel) {
+                                customLabel = chart.options.chart.custom.label =
+                                    chart.renderer.label(
+                                        '<h5>Estoque : <strong><?=$estoqueprinters?></strong></h5><br/>' +
+                                        '<h5>Entregues : <strong><?=$printers?></strong></h5>'
+                                    )
+                                        .css({
+                                            color: '#000',
+                                            textAnchor: 'middle'
+                                        })
+                                        .add();
+                            }
+
+                            const x = series.center[0] + chart.plotLeft,
+                                y = series.center[1] + chart.plotTop -
+                                (customLabel.attr('height') / 2);
+
+                            customLabel.attr({
+                                x,
+                                y
+                            });
+                            // Set font size based on chart diameter
+                            customLabel.css({
+                                fontSize: `${series.center[2] / 14}px`
+                            });
+                        }
+                    }
+                },
+                accessibility: {
+                    point: {
+                        valueSuffix: '%'
+                    }
+                },
+                title: {
+                    text: 'Entrega de Impressoras Honeywell RP4'
+                },
+                subtitle: {
+                    text:
+                    'Entrega das Impressoras Térmicas Portáteis aos Fiscais de Posturas'
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.0f}%</b>'
+                },
+                legend: {
+                    enabled: false
+                },
+                plotOptions: {
+                    series: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        borderRadius: 8,
+                        dataLabels: [{
+                            enabled: true,
+                            distance: 50,
+                            format: '{point.name}'
+                        }, {
+                            enabled: true,
+                            distance: -15,
+                            format: '{point.percentage:.0f}%',
+                            style: {
+                                fontSize: '0.9em'
+                            }
+                        }],
+                        showInLegend: true
+                    }
+                },
+                series: [{
+                    name: 'Honeywell RP4',
+                    colorByPoint: true,
+                    innerSize: '65%',
+                    data: [
+                            {
+                                name: 'Em Estoque',
+                                y: <?=$chartprinterstotais;?>
+                            },
+                            {
+                                name: 'Entregues',
+                                sliced: true,
+                                selected: true,
+                                y: <?=$chartprinters;?>
+                            }
+                        ]
+                }]
+            });
+
+                Highcharts.chart('containerTablets', {
+                chart: {
+                    type: 'pie',
+                    custom: {},
+                    events: {
+                        render() {
+                            const chart = this,
+                                series = chart.series[0];
+                            let customLabel = chart.options.chart.custom.label;
+
+                            if (!customLabel) {
+                                customLabel = chart.options.chart.custom.label =
+                                    chart.renderer.label(
+                                        '<h5>Estoque : <strong><?=$estoquetablets?></strong></h5><br/>' +
+                                        '<h5>Entregues : <strong><?=$tablets?></strong></h5>'
+                                    )
+                                        .css({
+                                            color: '#000',
+                                            textAnchor: 'middle'
+                                        })
+                                        .add();
+                            }
+
+                            const x = series.center[0] + chart.plotLeft,
+                                y = series.center[1] + chart.plotTop -
+                                (customLabel.attr('height') / 2);
+
+                            customLabel.attr({
+                                x,
+                                y
+                            });
+                            // Set font size based on chart diameter
+                            customLabel.css({
+                                fontSize: `${series.center[2] / 14}px`
+                            });
+                        }
+                    }
+                },
+                accessibility: {
+                    point: {
+                        valueSuffix: '%'
+                    }
+                },
+                title: {
+                    text: 'Entrega de Tablets Samsung A9 + 5G'
+                },
+                subtitle: {
+                    text:
+                    'Entrega dos Tablets aos Fiscais de Posturas - Contrato Simpress'
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.0f}%</b>'
+                },
+                legend: {
+                    enabled: false
+                },
+                plotOptions: {
+                    series: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        borderRadius: 8,
+                        dataLabels: [{
+                            enabled: true,
+                            distance: 20,
+                            format: '{point.name}'
+                        }, {
+                            enabled: true,
+                            distance: -15,
+                            format: '{point.percentage:.0f}%',
+                            style: {
+                                fontSize: '0.9em'
+                            }
+                        }],
+                        showInLegend: true
+                    }
+                },
+                series: [{
+                    name: 'Honeywell RP4',
+                    colorByPoint: true,
+                    data: [
+                            {
+                                name: 'Em Estoque',
+                                y: <?=$charttabletstotais;?>
+                            },
+                            {
+                                name: 'Entregues',
+                                sliced: true,
+                                selected: true,
+                                y: <?=$charttablets;?>
+                            }
+                        ]
+                }]
+            });
+        });
+    </script>
+<?php $this->end(); ?>
