@@ -23,7 +23,7 @@ include_once '../../../source/Boot/Config.php';
 // DB table to use
 $table = <<<EOT
  ( 
-SELECT patrimonys.id, patrimonys.created_at, movements.movement_name, products.type_part_number, patrimonys.part_number, brands.brand_name, 
+SELECT patrimonys.id, patrimonys.updated_at, movements.movement_name, products.type_part_number, patrimonys.part_number, brands.brand_name, 
 products.product_name, users.user_name, users.login, users.rf, users.email, units.unit_name, patrimonys.observations, patrimonys.file_terms
 FROM patrimonys
 LEFT JOIN products ON patrimonys.product_id = products.id
