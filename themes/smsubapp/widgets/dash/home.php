@@ -291,6 +291,7 @@
                 series: [{
                     name: 'Honeywell RP4',
                     colorByPoint: true,
+                    innerSize: '65%',
                     data: [
                             {
                                 name: 'Em Estoque',
