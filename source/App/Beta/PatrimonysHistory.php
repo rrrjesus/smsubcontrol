@@ -94,6 +94,9 @@ public function patrimonyHistory(?array $data): void
         if($patrimonysUpdate->updated_at == $patrimonysHistoryUpdate->updated_at){
 
             // Update do Objeto Patrimony
+            if($movement_id == '7'){
+                $patrimonysUpdate->status = 'disabled';
+            }
             $patrimonysUpdate->movement_id = $movement_id;
             $patrimonysUpdate->user_id = $user_id;
             $patrimonysUpdate->unit_id = $unit_id;
@@ -148,7 +151,9 @@ public function patrimonyHistory(?array $data): void
             return;
 
         } else {
-
+            if($movement_id == '7'){
+                $patrimonysUpdate->status = 'disabled';
+            }
             // Upload do Objeto Patrimony
             $patrimonysHistoryUpdate->patrimony_id = $patrimonysUpdate->id;
             $patrimonysHistoryUpdate->movement_id = $movement_id;
@@ -179,6 +184,12 @@ public function patrimonyHistory(?array $data): void
                 $patrimonysHistoryUpdate->file_terms = $file_terms;
             }
 
+            if (!$patrimonysUpdate->save()) {
+                $json["message"] = $patrimonysUpdate->message()->render();
+                echo json_encode($json);
+                return;
+            }
+            
             if (!$patrimonysHistoryUpdate->save()) {
                 $json["message"] = $patrimonysHistoryUpdate->message()->render();
                 echo json_encode($json);

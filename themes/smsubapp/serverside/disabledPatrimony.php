@@ -42,7 +42,7 @@ $primaryKey = 'id';
 // parameter represents the DataTables column identifier. In this case simple
 // indexes
 $columns = array(
-    array('db'        => 'created_at', 'dt'        => 0,
+    array('db'        => 'updated_at', 'dt'        => 0,
         'formatter' => function( $d) {
             return date( 'd/m/Y', strtotime($d));
         }

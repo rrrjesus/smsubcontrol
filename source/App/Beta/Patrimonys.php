@@ -53,31 +53,6 @@ class Patrimonys extends Admin
     }
 
     /**
-     * PATRIMONY LIST
-     */
-
-    /**
-     * @return void
-     */
-    public function patrimonyserver(): void
-    {
-        $head = $this->seo->render(
-            "Patrimonios - " . CONF_SITE_NAME,
-            CONF_SITE_DESC,
-            url(),
-            theme("/assets/images/favicon.ico"),
-            false
-        );
-
-        echo $this->view->render("widgets/patrimonys/listserver", [
-            "head" => $head,
-            "urls" => "patrimonios",
-            "namepage" => "Patrimonios",
-            "name" => "Lista"
-        ]);
-    }
-
-    /**
      * @return void
      */
     public function disabledPatrimonys(): void
@@ -363,6 +338,9 @@ class Patrimonys extends Admin
                 return;
             }
 
+            if($movement_id == '7'){
+                $patrimonysUpdate->status = 'disabled';
+            }
             $patrimonysUpdate->movement_id = $movement_id;
             $patrimonysUpdate->unit_id = $unit_id;
             $patrimonysUpdate->user_id = $user_id;
