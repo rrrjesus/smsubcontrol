@@ -84,28 +84,30 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
 
-<!-- https://www.highcharts.com/demo/highcharts/donut-chart -->
-<div class="row">
-    <div class="col-6 mb-2 mt-2">
-        <figure class="highcharts-figure">
-            <div id="containerPrinters"></div>
-            <p class="highcharts-description">
-                Gráfico em tempo real com percentuais e totais de estoque e entrega de impressoras.
-            </p>
-        </figure>
-    </div>
-    
-    <div class="col-6 mb-2 mt-2">
-        <figure class="highcharts-figure">
-            <div id="containerTablets"></div>
-            <p class="highcharts-description">
-                Gráfico em tempo real com percentuais e totais de estoque e entrega de tablets.
-            </p>
-        </figure>
+
+            <!-- https://www.highcharts.com/demo/highcharts/donut-chart -->
+
+            <div class="row">
+                <div class="col-6 mb-2 mt-2">
+                    <figure class="highcharts-figure">
+                        <div id="containerPrinters"></div>
+                        <p class="highcharts-description text-center">
+                            Gráfico em tempo real com percentuais e totais de estoque e entrega de impressoras.
+                        </p>
+                    </figure>
+                </div>
+                
+                <div class="col-6 mb-2 mt-2">
+                    <figure class="highcharts-figure">
+                        <div id="containerTablets"></div>
+                        <p class="highcharts-description text-center">
+                            Gráfico em tempo real com percentuais e totais de estoque e entrega de tablets.
+                        </p>
+                    </figure>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
