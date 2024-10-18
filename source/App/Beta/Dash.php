@@ -3,10 +3,8 @@
 namespace Source\App\Beta;
 
 use Source\Models\Auth;
-use Source\Models\Company\User;
 use Source\Models\Contact;
 use Source\Models\Patrimony\Brand;
-use Source\Models\Patrimony\Model;
 use Source\Models\Patrimony\Patrimony;
 use Source\Models\Patrimony\Product;
 
@@ -55,22 +53,6 @@ class Dash extends Admin
 
         //END CHART PRINTERS
 
-        //CHART TABLETS
-
-        $tablets = (new Patrimony())
-        ->find("movement_id = :movement AND status = :status AND product_id = :product", "movement=2&status=actived&product=5")
-        ->count();
-
-        $tabletstotais = (new Patrimony())
-        ->find("status = :status AND product_id = :product", "status=actived&product=5")
-        ->count();
-
-        $charttablets = $tablets / $tabletstotais * 100;
-        $charttabletstotais = 100 - $charttablets;
-        $estoquetablets = $tabletstotais - $tablets;
-
-        //END CHART TABLETS
-
         $head = $this->seo->render(
             CONF_SITE_NAME . " | Aplicativo",
             CONF_SITE_DESC,
@@ -83,14 +65,50 @@ class Dash extends Admin
         echo $this->view->render("widgets/dash/home", [
             "app" => "dash",
             "head" => $head,
+            "chartTablets" => (object) [
+                "estoque" => (new Patrimony())->find("movement_id = :m AND product_id = :p AND status = :s", "m=1&p=5&s=actived")->count(),
+                "retirado" => (new Patrimony())->find("movement_id = :m AND product_id = :p AND status = :s", "m=2&p=5&s=actived")->count(),
+                "reservado" => (new Patrimony())->find("movement_id = :m AND product_id = :p AND status = :s", "m=3&p=5&s=actived")->count(),
+                "devolvido" => (new Patrimony())->find("movement_id = :m AND product_id = :p AND status = :s", "m=4&p=5&s=actived")->count(),
+                "assistencia" => (new Patrimony())->find("movement_id = :m AND product_id = :p AND status = :s", "m=5&p=5&s=actived")->count(),
+                "boletim" => (new Patrimony())->find("movement_id = :m AND product_id = :p AND status = :s", "m=6&p=5&s=actived")->count(),
+                "baixa" => (new Patrimony())->find("movement_id = :m AND product_id = :p AND status = :s", "m=7&p=5&s=actived")->count(),
+                "totals" => (new Patrimony())->find("product_id = :p AND status = :s", "p=5&s=actived")->count(),
+            ],
+            "chartPrinters" => (object) [
+                "estoque" => (new Patrimony())->find("movement_id = :m AND product_id = :p AND status = :s", "m=1&p=4&s=actived")->count(),
+                "retirado" => (new Patrimony())->find("movement_id = :m AND product_id = :p AND status = :s", "m=2&p=4&s=actived")->count(),
+                "reservado" => (new Patrimony())->find("movement_id = :m AND product_id = :p AND status = :s", "m=3&p=4&s=actived")->count(),
+                "devolvido" => (new Patrimony())->find("movement_id = :m AND product_id = :p AND status = :s", "m=4&p=4&s=actived")->count(),
+                "assistencia" => (new Patrimony())->find("movement_id = :m AND product_id = :p AND status = :s", "m=5&p=4&s=actived")->count(),
+                "boletim" => (new Patrimony())->find("movement_id = :m AND product_id = :p AND status = :s", "m=6&p=4&s=actived")->count(),
+                "baixa" => (new Patrimony())->find("movement_id = :m AND product_id = :p AND status = :s", "m=7&p=4&s=actived")->count(),
+                "totals" => (new Patrimony())->find("product_id = :p AND status = :s", "p=4&s=actived")->count(),
+            ],
+            "chartChips" => (object) [
+                "estoque" => (new Patrimony())->find("movement_id = :m AND product_id = :p AND status = :s", "m=1&p=3&s=actived")->count(),
+                "retirado" => (new Patrimony())->find("movement_id = :m AND product_id = :p AND status = :s", "m=2&p=3&s=actived")->count(),
+                "reservado" => (new Patrimony())->find("movement_id = :m AND product_id = :p AND status = :s", "m=3&p=3&s=actived")->count(),
+                "devolvido" => (new Patrimony())->find("movement_id = :m AND product_id = :p AND status = :s", "m=4&p=3&s=actived")->count(),
+                "assistencia" => (new Patrimony())->find("movement_id = :m AND product_id = :p AND status = :s", "m=5&p=3&s=actived")->count(),
+                "boletim" => (new Patrimony())->find("movement_id = :m AND product_id = :p AND status = :s", "m=6&p=3&s=actived")->count(),
+                "baixa" => (new Patrimony())->find("movement_id = :m AND product_id = :p AND status = :s", "m=7&p=3&s=actived")->count(),
+                "totals" => (new Patrimony())->find("product_id = :p AND status = :s", "p=3&s=actived")->count(),
+            ],
+            "chartTablets2021" => (object) [
+                "estoque" => (new Patrimony())->find("movement_id = :m AND product_id = :p1 OR movement_id = :m AND product_id = :p2 OR movement_id = :m AND product_id = :p3", "m=1&p1=1&p2=2&p3=6")->count(),
+                "retirado" => (new Patrimony())->find("movement_id = :m AND product_id = :p1 OR movement_id = :m AND product_id = :p2 OR movement_id = :m AND product_id = :p3", "m=2&p1=1&p2=2&p3=6")->count(),
+                "reservado" => (new Patrimony())->find("movement_id = :m AND product_id = :p1 OR movement_id = :m AND product_id = :p2 OR movement_id = :m AND product_id = :p3", "m=3&p1=1&p2=2&p3=6")->count(),
+                "devolvido" => (new Patrimony())->find("movement_id = :m AND product_id = :p1 OR movement_id = :m AND product_id = :p2 OR movement_id = :m AND product_id = :p3", "m=4&p1=1&p2=2&p3=6")->count(),
+                "assistencia" => (new Patrimony())->find("movement_id = :m AND product_id = :p1 OR movement_id = :m AND product_id = :p2 OR movement_id = :m AND product_id = :p3", "m=5&p1=1&p2=2&p3=6")->count(),
+                "boletim" => (new Patrimony())->find("movement_id = :m AND product_id = :p1 OR movement_id = :m AND product_id = :p2 OR movement_id = :m AND product_id = :p3", "m=6&p1=1&p2=2&p3=6")->count(),
+                "baixa" => (new Patrimony())->find("movement_id = :m AND product_id = :p1 OR movement_id = :m AND product_id = :p2 OR movement_id = :m AND product_id = :p3", "m=7&p1=1&p2=2&p3=6")->count(),
+                "totals" => (new Patrimony())->find("product_id = :p1 OR product_id = :p2 OR product_id = :p3", "p1=1&p2=2&p3=6")->count(),
+            ],
             "chartprinters" => $chartprinters,
             "chartprinterstotais" => $chartprinterstotais,
             "estoqueprinters" => $estoqueprinters,
             "printers" => $printers,
-            "charttablets" => $charttablets,
-            "charttabletstotais" => $charttabletstotais,
-            "estoquetablets" => $estoquetablets,
-            "tablets" => $tablets,
             "contacts" => (object)[
                 "contacts" => (new Contact())->find("status != :s", "s=disabled")->count(),
                 "disableds" => (new Contact())->find("status = :s", "s=disabled")->count(),
