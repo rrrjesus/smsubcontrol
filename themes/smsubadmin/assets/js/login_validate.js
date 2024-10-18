@@ -84,21 +84,6 @@ $(function () {
         }
     });
 
-    // Exibir a senha no campo
-    const togglePassword = document.querySelector('#togglePassword');
-    const password = document.querySelector('#password');
-    const password_re = document.querySelector('#password_re');
-
-    togglePassword.addEventListener('click', () => {
-        // Toggle the type attribute using
-        // getAttribure() method
-        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-        password.setAttribute('type', type);
-        const type_re = password_re.getAttribute('type') === 'password' ? 'text' : 'password';
-        password_re.setAttribute('type', type_re);
-    });
-
-
     //  data-bs-toggle="tooltip" Bootstrap Title
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-togglee="tooltip"]'))
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {

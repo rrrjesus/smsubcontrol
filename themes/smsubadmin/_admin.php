@@ -14,7 +14,6 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     <link href="<?=theme("/assets/style.css", CONF_VIEW_ADMIN)?>" rel="stylesheet" />
-    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 
 </head>
 
@@ -62,9 +61,6 @@
 </div>
 
 <script src="<?= theme("/assets/scripts.js", CONF_VIEW_ADMIN); ?>"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-<script src="<?=theme("/assets/demo/chart-area-demo.js", CONF_VIEW_ADMIN)?>"></script>
-<script src="<?=theme("/assets/demo/chart-bar-demo.js", CONF_VIEW_ADMIN)?>"></script>
 <?= $this->section("scripts"); ?>
 
 </body>

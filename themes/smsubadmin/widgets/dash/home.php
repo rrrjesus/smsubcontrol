@@ -15,7 +15,7 @@
             <div class="card mb-4 border-<?=CONF_ADMIN_COLOR?>">
                 <div class="card-body">
                     <div class="container-fluid">
-                    <div class="fw-semibold text-uppercase mb-3 fs-5 text-center"><i class="bi bi-bar-chart-line-fill"></i> SECRETARIA</div>
+                    <div class="fw-semibold text-uppercase mb-3 fs-5 text-center"><i class="bi bi-bar-chart-line-fill"></i> SECRETARIAa</div>
                         <div class="row">
 
                             <!-- Unidades -->
@@ -239,7 +239,7 @@
 
         <?php $this->start("scripts"); ?>
             <script>
-                $(function () {
+                (function () {
                     setInterval(function () {
                         $.post('<?= url("/painel/controle/inicial");?>', {refresh: true}, function (response) {
                             // count

@@ -35,7 +35,6 @@ if ($_SERVER['HTTP_HOST'] == '127.0.0.1') {
     $minAdminJS->add(__DIR__ . "/../../../shared/scripts/jquery/jquery.form.js");
     $minAdminJS->add(__DIR__ . "/../../../shared/scripts/jquery/jquery-ui.js");
     $minAdminJS->add(__DIR__ . "/../../../shared/scripts/jquery/jquery.mask.js");
-    $minAdminJS->add(__DIR__ . "/../../../shared/scripts/highcharts.js");
     $minAdminJS->add(__DIR__ . "/../../../shared/scripts/jquery/jquery.validate.min.js");
     $minAdminJS->add(__DIR__ . "/../../../shared/scripts/typeahead.bundle.js");
     $minAdminJS->add(__DIR__ . "/../../../shared/scripts/datatables/dataTables.js");

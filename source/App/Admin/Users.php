@@ -281,7 +281,7 @@ class Users extends Admin
                 }
 
                 if (!$userUpdate->photo = $upload->image($file, "{$userUpdate->user_name} " . time(), 360)) {
-                    $json["message"] = $upload->message()->before("Ooops {$userUpdate->user->user_name}! ")->after(".")->render();
+                    $json["message"] = $upload->message()->before("Ooops {$userUpdate->user_name}! ")->after(".")->render();
                     echo json_encode($json);
                     return;
                 }
