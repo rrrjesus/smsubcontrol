@@ -10,88 +10,69 @@
 <div class="row justify-content-center">
     <div class="col-xl-12">
         <div class="container-fluid">
-            <div class="row">
-                <!-- Usuários da Agenda --> 
-                <div class="col-6 mb-4">
-                    <div class="card border-left-<?=CONF_ADMIN_COLOR?> shadow h-100 py-2">
-                        <div class="card-body text-<?=CONF_APP_COLOR?>"">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="fw-semibold text-uppercase mb-1 fs-5">Agenda</div>
-                                    <div class="h6 mb-1 font-weight-bold text-gray-800">Contatos :  <?=$contacts->contacts?></div>
-                                    <div class="h6 mb-1 font-weight-bold text-gray-800">Desativados : <?=$contacts->disableds?></div>
-                                    <div class="h6 mb-0 font-weight-bold text-gray-800">Total Geral: <?=$contacts->totals?></div>
-                                </div>
-                                <div class="col-auto text-gray-300">
-                                    <i class="bi bi-person-arms-up bi-2x"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Patrimonio --> 
-                <div class="col-6 mb-4">
-                    <div class="card border-left-<?=CONF_ADMIN_COLOR?> shadow h-100 py-2">
-                        <div class="card-body text-<?=CONF_APP_COLOR?>">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="fw-semibold text-uppercase mb-1 fs-5">Patrimônio</div>
-                                    <div class="h6 mb-1 font-weight-bold text-gray-800">Patrimônio :  <?=$patrimonys->patrimonys?></div>
-                                    <div class="h6 mb-1 font-weight-bold text-gray-800">Desativados :  <?=$patrimonys->disableds?></div>
-                                    <div class="h6 mb-0 font-weight-bold text-gray-800">Total Geral:  <?=$patrimonys->totals?></div>
-                                </div>
-                                <div class="col-auto text-gray-300">
-                                    <i class="bi bi-building bi-2x"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
 
             <!-- https://www.highcharts.com/demo/highcharts/donut-chart -->
 
             <div class="row">
+
                 <div class="col-6 mb-2 mt-2">
-                    <figure class="highcharts-figure">
-                        <div id="containerPrinters"></div>
-                        <p class="highcharts-description text-center">
-                            Gráfico em tempo real com percentuais de estoque, retirado, reservado, devolvido, assistência, boletim e baixa de impressoras.
-                        </p>
-                    </figure>
+                    <div class="card">
+                        <div class="card-body">
+                            <figure class="highcharts-figure">
+                                <div id="containerPrinters"></div>
+                                <p class="highcharts-description text-center">
+                                    Gráfico em tempo real com percentuais de estoque, retirado, reservado, devolvido, assistência, boletim e baixa de impressoras.
+                                </p>
+                            </figure>
+                        </div>
+                    </div>
                 </div>
-                
+
                 <div class="col-6 mb-2 mt-2">
-                    <figure class="highcharts-figure">
-                        <div id="containerTablets"></div>
-                        <p class="highcharts-description text-center">
-                            Gráfico em tempo real com percentuais de estoque, retirado, reservado, devolvido, assistência, boletim e baixa de tablets.
-                        </p>
-                    </figure>
+                    <div class="card">
+                        <div class="card-body">
+                            <figure class="highcharts-figure">
+                                <div id="containerTablets"></div>
+                                <p class="highcharts-description text-center">
+                                    Gráfico em tempo real com percentuais de estoque, retirado, reservado, devolvido, assistência, boletim e baixa de tablets.
+                                </p>
+                            </figure>
+                        </div>
+                    </div>
                 </div>
+
             </div>
 
             <div class="row">
+
                 <div class="col-6 mb-2 mt-2">
-                    <figure class="highcharts-figure">
-                        <div id="containerChips"></div>
-                        <p class="highcharts-description text-center">
-                            Gráfico em tempo real com percentuais de estoque, retirado, reservado, devolvido, assistência, boletim e baixa de chips.
-                        </p>
-                    </figure>
+                    <div class="card">
+                        <div class="card-body">
+                            <figure class="highcharts-figure">
+                                <div id="containerChips"></div>
+                                <p class="highcharts-description text-center">
+                                    Gráfico em tempo real com percentuais de estoque, retirado, reservado, devolvido, assistência, boletim e baixa de chips da Vivo para uso nos tablets.
+                                </p>
+                            </figure>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="col-6 mb-2 mt-2">
-                    <figure class="highcharts-figure">
-                        <div id="containerTablets2021"></div>
-                        <p class="highcharts-description text-center">
-                            Gráfico em tempo real com percentuais de estoque, retirado, reservado, devolvido, assistência, boletim e baixa de tablets do contrato de 2021.
-                        </p>
-                    </figure>
+                    <div class="card">
+                        <div class="card-body">
+                            <figure class="highcharts-figure">
+                                <div id="containerTablets2021"></div>
+                                <p class="highcharts-description text-center">
+                                    Gráfico em tempo real com percentuais de estoque, retirado, reservado, devolvido, assistência, boletim e baixa de tablets do contrato de 2021.
+                                </p>
+                            </figure>
+                        </div>
+                    </div>
                 </div>
+
             </div>
+
         </div>
     </div>
 </div>
@@ -116,8 +97,9 @@
                             if (!customLabel) {
                                 customLabel = chart.options.chart.custom.label =
                                     chart.renderer.label(
-                                        '<h5>Estoque : <strong><?=$estoqueprinters?></strong></h5><br/>' +
-                                        '<h5>Entregues : <strong><?=$printers?></strong></h5>'
+                                        '<h5>Estoque : <strong><?=$chartPrinters->totals - ($chartPrinters->retirado + $chartPrinters->reservado)?></strong></h5><br/>' +
+                                        '<h5>Reservados : <strong><?=$chartPrinters->reservado?></strong></h5><br/>' +
+                                        '<h5>Retirados : <strong><?=$chartPrinters->retirado?></strong></h5>'
                                     )
                                         .css({
                                             color: '#000',
@@ -233,7 +215,7 @@
                                     chart.renderer.label(
                                         '<h5>Estoque : <strong><?=$chartTablets->totals - ($chartTablets->retirado + $chartTablets->reservado)?></strong></h5><br/>' +
                                         '<h5>Reservados : <strong><?=$chartTablets->reservado?></strong></h5><br/>' +
-                                        '<h5>Entregues : <strong><?=$chartTablets->retirado?></strong></h5>'
+                                        '<h5>Retirados : <strong><?=$chartTablets->retirado?></strong></h5>'
                                     )
                                         .css({
                                             color: '#000',
@@ -350,7 +332,7 @@
                                     chart.renderer.label(
                                         '<h5>Estoque : <strong><?=$chartChips->totals - ($chartChips->retirado + $chartChips->reservado)?></strong></h5><br/>' +
                                         '<h5>Reservados : <strong><?=$chartChips->reservado?></strong></h5><br/>' +
-                                        '<h5>Entregues : <strong><?=$chartChips->retirado?></strong></h5>'
+                                        '<h5>Retirados : <strong><?=$chartChips->retirado?></strong></h5>'
                                     )
                                         .css({
                                             color: '#000',

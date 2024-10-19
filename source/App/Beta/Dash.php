@@ -108,27 +108,7 @@ class Dash extends Admin
             "chartprinters" => $chartprinters,
             "chartprinterstotais" => $chartprinterstotais,
             "estoqueprinters" => $estoqueprinters,
-            "printers" => $printers,
-            "contacts" => (object)[
-                "contacts" => (new Contact())->find("status != :s", "s=disabled")->count(),
-                "disableds" => (new Contact())->find("status = :s", "s=disabled")->count(),
-                "totals" => (new Contact())->find()->count()
-            ],
-            "patrimonys" => (object)[
-                "patrimonys" => (new Patrimony())->find("status != :s", "s=disabled")->count(),
-                "disableds" => (new Patrimony())->find("status = :s", "s=disabled")->count(),
-                "totals" => (new Patrimony())->find()->count()
-            ],
-            "brands" => (object)[
-                "brands" => (new Brand())->find("status != :s", "s=disabled")->count(),
-                "disableds" => (new Brand())->find("status = :s", "s=disabled")->count(),
-                "totals" => (new Brand())->find()->count()
-            ],
-            "products" => (object)[
-                "products" => (new Product())->find("status != :s", "s=disabled")->count(),
-                "disableds" => (new Product())->find("status = :s", "s=disabled")->count(),
-                "totals" => (new Product())->find()->count()
-            ]
+            "printers" => $printers
         ]);
     }
 
