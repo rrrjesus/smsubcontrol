@@ -34,6 +34,17 @@ class Product extends Model
     }
 
     /**
+     * @param string $contract_id
+     * @param string $columns
+     * @return null|Model
+     */
+    public function findByContract(string $contract_id, string $columns = "*"): ?Model
+    {
+        $find = $this->find("contract_id = :contract_id", "contract_id={$contract_id}", $columns);
+        return $find->fetch();
+    }
+
+    /**
      * @return string|null
      */
     public function photo(): ?string
@@ -152,8 +163,8 @@ class Product extends Model
         if (!empty($this->id)) {
             $productId = $this->id;
 
-            if ($this->find("product_name = :c AND id != :i", "c={$this->product_name}&i={$productId}", "id")->fetch()) {
-                $this->message->warning("O produto informado já está cadastrado");
+            if ($this->find("contract_id = :c AND product_name = :p AND id != :i", "c={$this->contract_id}&p={$this->product_name}&i={$productId}", "id")->fetch()) {
+                $this->message->warning("Já existe um produto cadastrado no contrato informado !!!");
                 return false;
             }
 
@@ -166,8 +177,8 @@ class Product extends Model
 
         /** Model Create */
         if (empty($this->id)) {
-            if ($this->findByProduct($this->product_name, "id")) {
-                $this->message->warning("O produto informado já está cadastrado");
+            if ($this->findByProduct($this->product_name, "id") && $this->findByContract($this->contract_id, "id")) {
+                $this->message->warning("Já existe um produto cadastrado no contrato informado !!!");
                 return false;
             }
 

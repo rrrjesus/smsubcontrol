@@ -117,7 +117,7 @@ class Products extends Admin
             }
 
             if(in_array("", $data)){
-                $json['message'] = $this->message->info("Informe o contrato, a marca, o produto, o tipo de partnumber e a descrição para cadastrar o produto !!!")->icon()->render();
+                $json['message'] = $this->message->info("Insira a imagem, o contrato, a marca, o produto, o tipo de partnumber e a descrição para cadastrar o produto !!!")->icon()->render();
                 echo json_encode($json);
                 return;
             }
@@ -193,12 +193,6 @@ class Products extends Admin
                 echo json_encode($json);
                 return;
             }            
-
-            if(in_array("", $data)){
-                $json['message'] = $this->message->info("Informe o contrato, a marca, o produto, o tipo de partnumber e descrição para atualizar o registro !")->icon()->render();
-                echo json_encode($json);
-                return;
-            }
 
             if (!$productUpdate->save()) {
                 $json["message"] = $productUpdate->message()->render();
