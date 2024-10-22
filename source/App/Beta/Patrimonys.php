@@ -326,8 +326,16 @@ class Patrimonys extends Admin
                 return;
             }
 
-            if($patrimony->find("user_id = :u AND product_id = :p AND movement_id = :m AND id != :i","u={$user_id}&p={$patrimonysUpdate->product_id}&m=2&i={$patrimonysUpdate->id}")->fetch()) {
-                $json['message'] = $this->message->warning("Esse usuário já tem um {$patrimonysUpdate->product()->product_name} em seu nome")->icon()->render();
+            if($movement_id == "2") {
+                if($patrimony->find("user_id = :u AND product_id = :p AND movement_id = :m AND id != :i","u={$user_id}&p={$patrimonysUpdate->product_id}&m=2&i={$patrimonysUpdate->id}")->fetch()) {
+                    $json['message'] = $this->message->warning("Esse usuário já retirou {$patrimonysUpdate->product()->product_name} !!!")->icon()->render();
+                    echo json_encode($json);
+                    return;
+                }
+            }
+
+            if($movement_id == "2" && $user_id == "1" || $movement_id == "2" && $user_id == "525"){
+                $json['message'] = $this->message->warning("Esse usuário não retira patrimonio !!!")->icon()->render();
                 echo json_encode($json);
                 return;
             }

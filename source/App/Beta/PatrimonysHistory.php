@@ -61,11 +61,12 @@ public function patrimonyHistory(?array $data): void
         $movement_id = preg_replace("/[^0-9\s]/", "", $data["movement_id"]);
         $unit_id_number = preg_replace("/[^0-9\s]/", "", $data["unit_id_history_edit"]);
         $unit_id = substr($unit_id_number, 0, 2);  // 12
-        $user_id = $data["user_id_history_edit"];
+        $user_id = preg_replace("/[^0-9\s]/", "", $data["user_id_history_edit"]);
         $observations = $data["observations"];
 
         $patrimonysHistoryUpdate = (new PatrimonyHistory())->findById($patrimonys_id);
         $patrimonysUpdate = (new Patrimony())->findById($patrimonysHistoryUpdate->patrimony_id);
+        $patrimony = (new Patrimony());
 
         if (!$patrimonysHistoryUpdate) {
             $this->message->error("Você tentou gerenciar um patrimônio que não existe")->flash();
@@ -87,6 +88,20 @@ public function patrimonyHistory(?array $data): void
 
         if($data["unit_id_history_edit"] == ""){
             $json['message'] = $this->message->warning("Informe uma unidade para lançar nova movimentação do patrimônio !!!")->icon()->render();
+            echo json_encode($json);
+            return;
+        }
+
+        if($movement_id == "2") {
+            if($patrimony->find("user_id = :u AND product_id = :p AND movement_id = :m AND id != :i","u={$user_id}&p={$patrimonysUpdate->product_id}&m=2&i={$patrimonysUpdate->id}")->fetch()) {
+                $json['message'] = $this->message->warning("Esse usuário já retirou {$patrimonysUpdate->product()->product_name} !!!")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
+        }
+
+        if($movement_id == "2" && $user_id == "1" || $movement_id == "2" && $user_id == "525"){
+            $json['message'] = $this->message->warning("Esse usuário não retira patrimonio !!!")->icon()->render();
             echo json_encode($json);
             return;
         }
