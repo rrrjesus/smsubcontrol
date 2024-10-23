@@ -94,10 +94,10 @@ class User extends Model
                     data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Falta acesso ao e-mail de confirmação">
                     Registrado</span>';
     } elseif ($this->status == "confirmed") {
-        return '<span class="badge fw-semibold text-bg-success pt-2 pb-2 mt-2" data-bs-togglee="tooltip" 
-                    data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Usuário confirmou">Confirmado</span>';
+        return '<span class="badge fw-semibold text-bg-success text-light pt-2 pb-2 mt-2" data-bs-togglee="tooltip" 
+                    data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Usuário confirmou">CONFIRMADO</span>';
     } else {
-        return '<span class="badge fw-semibold text-bg-danger pt-2 pb-2 mt-2">Inativo</span>';
+        return '<span class="badge fw-semibold text-bg-danger pt-2 pb-2 mt-2">INATIVO</span>';
     }
     return null; 
     }

@@ -89,12 +89,12 @@ class UsersCategories extends Admin
             $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             $usercategoryCreate = new UserCategory();
-            $usercategoryCreate->position_name = $data["position_name"];
+            $usercategoryCreate->category_name = $data["category_name"];
             $usercategoryCreate->login_created = $user->login;
             $usercategoryCreate->login_updated = $user->login;
             $usercategoryCreate->created_at = date_fmt('', "Y-m-d h:m:s");
 
-            if($data["position_name"] == ""){
+            if($data["category_name"] == ""){
                 $json['message'] = $this->message->info("Informe o regime para criar o registro !")->icon()->render();
                 echo json_encode($json);
                 return;
@@ -106,7 +106,7 @@ class UsersCategories extends Admin
                 return;
             }
 
-            $this->message->success("Cargo {$usercategoryCreate->position_name} cadastrado com sucesso...")->icon("emoji-grin me-1")->flash();
+            $this->message->success("Regime {$usercategoryCreate->category_name} cadastrado com sucesso...")->icon("emoji-grin me-1")->flash();
             $json["redirect"] = url("/painel/regimes/cadastrar");
 
             echo json_encode($json);
@@ -125,11 +125,11 @@ class UsersCategories extends Admin
             }
 
             $usercategoryUpdate = (new UserCategory())->findById($data["usercategory_id"]);
-            $usercategoryUpdate->position_name = $data["position_name"];
+            $usercategoryUpdate->category_name = $data["category_name"];
             $usercategoryUpdate->login_updated = $user->login;
             $usercategoryUpdate->updated_at = date_fmt('', "Y-m-d h:m:s");
 
-            if($data["position_name"] == ""){
+            if($data["category_name"] == ""){
                 $json['message'] = $this->message->info("Informe o regime para editar o registro !")->icon()->render();
                 echo json_encode($json);
                 return;
@@ -141,7 +141,7 @@ class UsersCategories extends Admin
                 return;
             }
 
-            $json["message"] = $this->message->success("Cargo {$usercategoryUpdate->position_name} atualizado com sucesso !!!")->icon("emoji-grin me-1")->render();
+            $json["message"] = $this->message->success("Regime {$usercategoryUpdate->category_name} atualizado com sucesso !!!")->icon("emoji-grin me-1")->render();
             echo json_encode($json);
             return;
         }
@@ -169,7 +169,7 @@ class UsersCategories extends Admin
 
 
             if($usercategory > 1){
-                $this->message->success("Cargo {$usercategoryActived->position_name} reativado com sucesso !!!")->icon("gift")->flash();
+                $this->message->success("Regime {$usercategoryActived->category_name} reativado com sucesso !!!")->icon("gift")->flash();
                 redirect("/painel/regimes/desativados");
                 return;
             }else{
@@ -200,7 +200,7 @@ class UsersCategories extends Admin
                 return;
             }
 
-            $this->message->success("Cargo {$usercategoryDisabled->position_name} desativado com sucesso !!!")->icon("gift")->flash();
+            $this->message->success("Regime {$usercategoryDisabled->category_name} desativado com sucesso !!!")->icon("gift")->flash();
             redirect("/painel/regimes");
             return;
         }
@@ -218,7 +218,7 @@ class UsersCategories extends Admin
 
             $usercategoryDelete->destroy();
 
-            $this->message->success("A unidade {$usercategoryDelete->position_name} foi excluída com sucesso...")->icon("gift")->flash();
+            $this->message->success("A unidade {$usercategoryDelete->category_name} foi excluída com sucesso...")->icon("gift")->flash();
             redirect("/painel/regimes");
             return;
         }

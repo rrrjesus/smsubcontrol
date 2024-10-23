@@ -22,8 +22,8 @@
 
     <div class="d-flex justify-content-center">
         <div class="col-12">
-            <table id="unitsDisabled" class="table table-bordered table-sm border-warning table-hover" style="width:100%">
-                <thead class="table-warning">
+            <table id="unitsDisabled" class="table table-bordered table-sm border-danger table-hover" style="width:100%">
+                <thead class="table-danger">
                     <tr>
                         <th class="text-center">FOTO</th>
                         <th class="text-center">NOME</th>

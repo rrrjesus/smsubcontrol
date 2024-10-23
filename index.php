@@ -156,6 +156,16 @@ $route->get("/cargos/ativar/{userposition_id}/{action}", "UsersPositions:userpos
 $route->get("/cargos/desativar/{userposition_id}/{action}", "UsersPositions:userposition");
 $route->get("/cargos/excluir/{userposition_id}/{action}", "UsersPositions:userposition");
 
+$route->get("/regimes", "UsersCategories:UsersCategories");
+$route->get("/regimes/desativados", "UsersCategories:disabledUsersCategories");
+$route->get("/regimes/cadastrar", "UsersCategories:usercategory");
+$route->post("/regimes/cadastrar", "UsersCategories:usercategory");
+$route->get("/regimes/editar/{usercategory_id}", "UsersCategories:usercategory");
+$route->post("/regimes/editar/{usercategory_id}", "UsersCategories:usercategory");
+$route->get("/regimes/ativar/{usercategory_id}/{action}", "UsersCategories:usercategory");
+$route->get("/regimes/desativar/{usercategory_id}/{action}", "UsersCategories:usercategory");
+$route->get("/regimes/excluir/{usercategory_id}/{action}", "UsersCategories:usercategory");
+
 //Users
 $route->get("/usuarios", "Users:users");
 $route->get("/usuarios/desativados", "Users:disabledUsers");
