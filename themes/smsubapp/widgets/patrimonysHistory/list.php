@@ -2,16 +2,32 @@
 
 <!-- Breacrumb-->
 <?= $this->insert("views/theme/breadcrumb"); ?>
-<div class="row justify-content-center mt-5">
+
+    <?php $this->start("scripts"); ?>
+        <style>
+            /* Datatables Pagination */
+            .page-link {color: var(--bs-info)}
+            .pagination {--bs-link-hover-color: #a11010;}
+            .active>.page-link, .page-link.active {background-color: var(--bs-info);border-color: var(--bs-info);}
+        </style>
+    <?php $this->end(); ?>
+
+<div class="row justify-content-center">
     <div class="col-xl-12">
         <div class="container-fluid">
-            <div class="d-flex justify-content-center">
+            <div class="d-flex justify-content-center mb-3">
                 <div class="col-12">
+
+                    <div class="row justify-content-center mb-4">
+                        <div class="col-md-12 ml-auto text-center">
+                        <?=buttonLink("/beta/patrimonios", "top", "Clique para sair", "danger", "arrow-right-circle", "Sair")?> 
+                        </div>
+                    </div>
                 
                     <?=flash();?>
                     
-                    <table id="patrimonysHistory" class="table table-hover table-bordered table-sm border-<?=CONF_APP_COLOR?> p-2" style="width:100%">
-                        <thead class="table-<?=CONF_APP_COLOR?>">
+                    <table id="patrimonysHistory" class="table table-hover table-bordered table-sm border-info p-2" style="width:100%">
+                        <thead class="table-info">
                             <tr>
                                 <th class="text-center">ID</th>
                                 <th class="text-center">ID PAT</th>
@@ -34,6 +50,7 @@
                         </thead>
                         <tbody class="text-center">
 
+
                         </tbody>
                     </table>
                 </div>
@@ -41,5 +58,6 @@
         </div>
     </div>
 </div>     
+  
 
 

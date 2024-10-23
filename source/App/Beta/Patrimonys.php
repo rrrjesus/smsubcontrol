@@ -72,7 +72,7 @@ class Patrimonys extends Admin
             "head" => $head,
             "patrimonys" => $patrimonys,
             "urls" => "patrimonios",
-            "namepage" => "Patrimonios",
+            "namepage" => "Patrimonios Desabilitados",
             "name" => "Lista"
         ]);
     }

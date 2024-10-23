@@ -3,6 +3,21 @@
 <!-- Breacrumb-->
 <?= $this->insert("views/theme/breadcrumb"); ?>
 
+                <?php $this->start("scripts"); ?>
+                    <style>
+                        /* Datatables Pagination */
+                        .page-link {color: var(--bs-danger)}
+                        .pagination {--bs-link-hover-color: #a11010;}
+                        .active>.page-link, .page-link.active {background-color: var(--bs-danger);border-color: var(--bs-danger);}
+                    </style>
+                <?php $this->end(); ?>
+
+<div class="row justify-content-center">
+    <div class="col-xl-12">
+        <div class="container-fluid">
+            <div class="d-flex justify-content-center mb-3">
+                <div class="col-12">
+
                 <div class="row justify-content-center mb-4">
                     <div class="col-md-12 ml-auto text-center">
                     <?=buttonLink("/beta/patrimonios", "top", "Clique para sair", "danger", "arrow-right-circle", "Sair")?> 
@@ -10,8 +25,9 @@
                 </div>
             
                 <?=flash();?>
-                <table id="disabledPatrimony" class="table table-hover table-bordered table-sm border-warning p-2" style="width:100%">
-                    <thead class="table-warning">
+
+                <table id="disabledPatrimony" class="table table-hover table-bordered table-sm border-danger p-2" style="width:100%">
+                    <thead class="table-danger">
                         <tr>
                             <th class="text-center">ENTRADA</th>
                             <th class="text-center">ESTADO</th>
@@ -30,9 +46,13 @@
                     </thead>
                     <tbody class="text-center">
 
-                    </tbody>
-                </table>
 
+                    </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>     
 
 
