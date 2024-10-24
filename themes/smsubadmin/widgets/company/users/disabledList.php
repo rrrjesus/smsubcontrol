@@ -12,7 +12,7 @@
     </div>
 
     <div class="row justify-content-center mb-4">
-        <div class="col-md-12 ml-auto text-center">
+        <div class="col-12 ml-auto text-center">
             <a data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip"
                 data-bs-title="Clique para cadastrar novo colaborador" class="btn btn-outline-danger btn-sm me-3 fw-semibold" href="<?=url("/painel/usuarios")?>"
                 role="button"><i class="bi bi-arrow-right-circle me-2 mt-1"></i>Sair</a>

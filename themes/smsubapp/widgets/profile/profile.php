@@ -16,11 +16,11 @@
                     
                 <div class="row mb-1">
 
-                    <div class="col-md-1 app_formbox_photo mb-1">
+                    <div class="col-1 app_formbox_photo mb-1">
                         <div class="rounded-circle j_profile_image thumb" style="background-image: url('<?= $photo; ?>')"></div>
                     </div>
 
-                    <div class="col-md-4 mb-1">
+                    <div class="col-4 mb-1">
                         <label for="formFileSm" class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>"> <strong><i class="bi bi-upload me-1"></i>  Extensões aceitas : .bmp ,.png, .svg, .jpeg e .jpg </strong></label>
                         <input class="form-control form-control-sm" data-image=".j_profile_image" type="file" class="radius" name="photo"/>
                     </div>
@@ -29,7 +29,7 @@
 
                 <div class="row">
 
-                    <div class="col-md-2 mb-1">
+                    <div class="col-2 mb-1">
                         <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputNome"><strong><i class="bi bi-person me-1"></i> Login</strong></label>
                         <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                             data-bs-title="Nome" class="form-control form-control-sm"
@@ -37,7 +37,7 @@
 
                     </div>
 
-                    <div class="col-md-6 mb-1">
+                    <div class="col-6 mb-1">
                         <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputNome"><strong><i class="bi bi-person me-1"></i> Nome</strong></label>
                         <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                             data-bs-title="Nome" class="form-control form-control-sm"
@@ -45,13 +45,13 @@
 
                     </div>
 
-                    <div class="col-md-2 mb-1">
+                    <div class="col-2 mb-1">
                         <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputCelular"><strong><i class="bi bi-phone me-1"></i>Telefone Fixo</strong></label>
                         <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                         data-bs-title="Digite o nome do celular" class="form-control form-control-sm mask-fixed-phone" name="fixed_phone" value="<?=$user->fixed_phone?>" placeholder="(11)49343000">
                     </div>
 
-                    <div class="col-md-2 mb-1">
+                    <div class="col-2 mb-1">
                         <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputCelular"><strong><i class="bi bi-phone me-1"></i>Telefone Celular</strong></label>
                         <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                         data-bs-title="Digite o nome do celular" class="form-control form-control-sm mask-cell-phone" name="cell_phone" value="<?=$user->cell_phone?>" placeholder="(11)991065284">
@@ -61,28 +61,28 @@
 
                 <div class="row">
 
-                    <div class="col-md-4 mb-1">
+                    <div class="col-4 mb-1">
                         <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSobreNome"><strong><i class="bi bi-person-add me-1"></i> Cargo</strong></label>
                         <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                             data-bs-title="Cargo" class="form-control form-control-sm"
                             name="position" placeholder="Unit" value="<?=$user->userPosition()->position_name?>" disabled readonly>
                     </div>
 
-                    <div class="col-md-2 mb-1">
+                    <div class="col-2 mb-1">
                         <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputCategoria"><strong><i class="bi bi-person-add me-1"></i> Regime</strong></label>
                         <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                         data-bs-title="Categoria" class="form-control form-control-sm"
                         name="category" placeholder="Categoria" value="<?=$user->userCategory()->category_name?>" disabled readonly>
                     </div>
 
-                    <div class="col-md-3 mb-1">
+                    <div class="col-3 mb-1">
                         <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSobreNome"><i class="bi bi-person-add me-1"></i><strong>Unit</strong></label>
                         <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                             data-bs-title="Unit" class="form-control form-control-sm"
                             name="unit" placeholder="Unit" value="<?='00'.$user->userUnit()->id.' - '.$user->userUnit()->unit_name?>" disabled readonly>
                     </div>
 
-                    <div class="col-md-3 mb-1">
+                    <div class="col-3 mb-1">
                         <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputEmail"><strong><i class="bi bi-envelope-at me-1"></i> E-mail</strong></label>
                         <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                             data-bs-title="Email" class="form-control form-control-sm" name="email" value="<?=$user->email?>" disabled readonly>
@@ -92,33 +92,33 @@
 
                 <div class="row">
 
-                <div class="col-md-2 mb-1">
+                <div class="col-2 mb-1">
                     <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputCategoria"><strong><i class="bi bi-person-add me-1"></i> Situação</strong></label>
                     <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                     data-bs-title="Categoria" class="form-control form-control-sm"
                     name="category" placeholder="Categoria" value="<?=$user->statusInput()?>" disabled readonly>
                 </div>
 
-                <div class="col-md-2 mb-1">
+                <div class="col-2 mb-1">
                     <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSenha"><strong><i class="bi bi-calendar4-week me-1"></i>Cadastro</strong></label>
                         <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                             data-bs-title="Cadastro" class="form-control form-control-sm" value="<?=date_fmt($user->created_at, 'd/m/Y')?>" disabled readonly>
                 </div>  
 
-                <div class="col-md-2 mb-1">
+                <div class="col-2 mb-1">
                     <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>" for="inputSenha"><strong><i class="bi bi-calendar2-x me-1"></i>Bloqueio</strong></label>
                         <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                             data-bs-title="Bloqueio" class="form-control form-control-sm" value="<?=date_fmt_null($user->blocked_at, 'd/m/Y')?>" disabled readonly>
                 </div>
 
-                <div class="col-md-3 mb-1">
+                <div class="col-3 mb-1">
                     <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>"><strong><i class="bi bi-lock me-1"></i>Senha</strong></label>
                         <input type="password" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                             data-bs-title="Digite a senha" class="form-control form-control-sm"
                             name="password" id="password" placeholder="********">
                     </div>  
 
-                    <div class="col-md-3 mb-1">
+                    <div class="col-3 mb-1">
                         <label class="col-form-label col-form-label-sm text-<?=CONF_APP_COLOR?>"><i class="bi bi-lock me-1"><strong></i>Repetir Senha</strong></label>
                             <input type="password" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                 data-bs-title="Digite a senha" class="form-control form-control-sm"

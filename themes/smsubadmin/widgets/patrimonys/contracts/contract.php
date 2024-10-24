@@ -22,7 +22,7 @@
 
                         <div class="row">
 
-                            <div class="col-md-3 mb-1">
+                            <div class="col-3 mb-1">
 
                                 <label class="col-form-label col-form-label-sm" for="inputSei"><strong><i class="bi bi-person me-1"></i> Processo SEI</strong></label>
                                     <input type="text" data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip" 
@@ -31,7 +31,7 @@
 
                             </div>
 
-                            <div class="col-md-6 mb-1">
+                            <div class="col-6 mb-1">
                             <label class="col-form-label col-form-label-sm" for="inputProcess"><strong><i class="bi bi-person me-1"></i> Nome do Contrato</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Digite o nome do Contrato - Ex : Simpress Tabets/Impressoras 2021" class="form-control form-control-sm"
@@ -40,7 +40,7 @@
                             </div>
 
                             
-                            <div class="col-md-3 mb-1">
+                            <div class="col-3 mb-1">
 
                                 <label class="col-form-label col-form-label-sm" for="inputStatus"><strong><i class="bi bi-check2-square ms-3 me-3"></i> Status</strong></label>
                                 <select class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
@@ -55,7 +55,7 @@
 
                         <div class="row">
 
-                            <div class="col-md-4 mb-1">
+                            <div class="col-4 mb-1">
                             <label class="col-form-label col-form-label-sm" for="inputManager"><strong><i class="bi bi-person me-1"></i> Nome do Responsável</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Digite o nome do Responsável pelo Contrato" class="form-control form-control-sm user_manager"
@@ -63,7 +63,7 @@
 
                             </div>
 
-                            <div class="col-md-4 mb-1">
+                            <div class="col-4 mb-1">
 
                                 <label class="col-form-label col-form-label-sm" for="inputInspector"><strong><i class="bi bi-person me-1"></i> Nome do Fiscal</strong></label>
                                     <input type="text" data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip" 
@@ -72,7 +72,7 @@
 
                                 </div>
 
-                            <div class="col-md-4 mb-1">
+                            <div class="col-4 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputDeputyInspector"><strong><i class="bi bi-person me-1"></i> Nome do Suplente</strong></label>
                                     <input type="text" data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip" 
                                         data-bs-title="Digite o nome do Suplente do Contrato" class="form-control form-control-sm user_deputy_inspector"
@@ -84,7 +84,7 @@
 
                         <div class="row">  
 
-                            <div class="col-md-12 mb-1">
+                            <div class="col-12 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputSobreNome"><strong><i class="bi bi-person-add me-1"></i> Descrição</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Descrição" class="form-control form-control-sm"
@@ -130,7 +130,7 @@
 
                         <div class="row">
 
-                            <div class="col-md-3 mb-1">
+                            <div class="col-3 mb-1">
 
                                 <label class="col-form-label col-form-label-sm" for="inputSei"><strong><i class="bi bi-person me-1"></i> Processo SEI</strong></label>
                                     <input type="text" data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip" 
@@ -139,7 +139,7 @@
 
                             </div>
 
-                            <div class="col-md-6 mb-1">
+                            <div class="col-6 mb-1">
                             <label class="col-form-label col-form-label-sm" for="inputProcess"><strong><i class="bi bi-person me-1"></i> Nome do Contrato</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Digite o nome do Contrato - Ex : Simpress Tabets/Impressoras 2021" class="form-control form-control-sm"
@@ -148,7 +148,7 @@
                             </div>
 
                             
-                            <div class="col-md-3 mb-1">
+                            <div class="col-3 mb-1">
 
                                 <label class="col-form-label col-form-label-sm" for="inputStatus"><strong><i class="bi bi-check2-square ms-3 me-3"></i> Status</strong></label>
                                 <select class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
@@ -162,7 +162,7 @@
 
                         <div class="row">
 
-                            <div class="col-md-4 mb-1">
+                            <div class="col-4 mb-1">
                             <label class="col-form-label col-form-label-sm" for="inputManager"><strong><i class="bi bi-person me-1"></i> Nome do Responsável</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Digite o nome do Responsável pelo Contrato" class="form-control form-control-sm user_manager"
@@ -170,7 +170,7 @@
 
                             </div>
 
-                            <div class="col-md-4 mb-1">
+                            <div class="col-4 mb-1">
 
                                 <label class="col-form-label col-form-label-sm" for="inputInspector"><strong><i class="bi bi-person me-1"></i> Nome do Fiscal</strong></label>
                                     <input type="text" data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip" 
@@ -179,7 +179,7 @@
 
                                 </div>
 
-                            <div class="col-md-4 mb-1">
+                            <div class="col-4 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputDeputyInspector"><strong><i class="bi bi-person me-1"></i> Nome do Suplente</strong></label>
                                     <input type="text" data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip" 
                                         data-bs-title="Digite o nome do Suplente do Contrato" class="form-control form-control-sm user_deputy_inspector"
@@ -191,7 +191,7 @@
 
                         <div class="row">  
 
-                            <div class="col-md-12 mb-1">
+                            <div class="col-12 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputSobreNome"><strong><i class="bi bi-person-add me-1"></i> Descrição</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Descrição" class="form-control form-control-sm"

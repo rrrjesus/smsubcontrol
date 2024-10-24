@@ -1,6 +1,6 @@
 <?= $this->layout("_panel"); ?>
 
-<div class="col-md-12 ml-auto mt-3"> <!-- https://getbootstrap.com/docs/4.0/layout/grid/#mix-and-match -->
+<div class="col-12 ml-auto mt-3"> <!-- https://getbootstrap.com/docs/4.0/layout/grid/#mix-and-match -->
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb breadcrumb-chevron p-2 bg-body-tertiary rounded-3">
             <li class="breadcrumb-item"><a class="link-body-emphasis fw-semibold text-decoration-none text-secondary" href="<?=url("")?>"><i class="bi bi-house-door"></i> Painel</a></li>
@@ -23,7 +23,7 @@
                     </div>
 
                     <div class="row justify-content-center mb-4">
-                        <div class="col-md-12 ml-auto text-center">
+                        <div class="col-12 ml-auto text-center">
                             <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
                                data-bs-title="Clique para listar ramais" class="btn btn-outline-danger btn-sm fw-semibold" href="<?=url("/painel/agenda/ramais/ativados")?>"
                                role="button"><i class="bi bi-arrow-right-circle me-2"></i>Sair</a>

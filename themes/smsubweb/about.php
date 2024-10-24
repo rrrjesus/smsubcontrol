@@ -1,7 +1,7 @@
 <?= $this->layout("_theme", ["head" => $head]); ?>
 
 <div class="row g-5 p-4">
-    <div class="col-md-8">
+    <div class="col-8">
         <h2 class="pb-4 mb-4 border-bottom">
             Versões da Agenda de Contatos SMSUB
         </h2>
@@ -72,7 +72,7 @@
         </article>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-4">
       <div class="position-sticky" style="top: 2rem;">
       <div class="p-4 mb-3 text-bg-<?=CONF_WEB_COLOR;?> text-light rounded">
             <h4 class="fst-italic">Sobre</h4>

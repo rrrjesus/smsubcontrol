@@ -22,11 +22,11 @@
 
                         <div class="row justify-content-center">
 
-                            <div class="col-md-2 app_formbox_photo mb-1">
-                                <div class="rounded-circle j_profile_image thumb" style="background-image: url('<?=url('themes/'.CONF_VIEW_ADMIN.'/assets/images/avatar.jpg');?>')"></div>
+                            <div class="col-2 app_formbox_photo mb-1">
+                                <div class="rounded-circle j_profile_image thumb" style="background-image: url('<?=url('themes/'.CONF_VIEW_ADMIN.'/assets/images/avatar_product.png');?>')"></div>
                             </div>
 
-                            <div class="col-md-4 mb-1">
+                            <div class="col-4 mb-1">
                                 <label for="formFileSm" class="col-form-label col-form-label-sm"> <strong><i class="bi bi-upload me-1"></i>  Extensões aceitas : .bmp ,.png, .svg, .jpeg e .jpg </strong></label>
                                 <input class="form-control form-control-sm" data-image=".j_profile_image" type="file" class="radius" name="photo"/>
                             </div>
@@ -35,7 +35,7 @@
 
                         <div class="row justify-content-center">
 
-                            <div class="col-md-6 mb-1">
+                            <div class="col-8 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputContract"><strong><i class="bi bi-person me-1"></i> Contrato</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Digite o número de processo SEI" class="form-control form-control-sm contract_id"
@@ -46,7 +46,7 @@
 
                         <div class="row justify-content-center">
 
-                            <div class="col-md-6 mb-1">
+                            <div class="col-8 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputNome"><strong><i class="bi bi-person me-1"></i> Marca</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Digite o nome da marca" class="form-control form-control-sm brand_id"
@@ -57,7 +57,7 @@
 
                         <div class="row justify-content-center">
 
-                            <div class="col-md-6 mb-1">
+                            <div class="col-8 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputNome"><strong><i class="bi bi-person me-1"></i> Produto</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Nome" class="form-control form-control-sm"
@@ -69,7 +69,7 @@
 
                         <div class="row justify-content-center">
 
-                            <div class="col-md-6 mb-1">
+                            <div class="col-8 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputNome"><strong><i class="bi bi-person me-1"></i> Tipo de Partnumber</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Digite o tipo de partnumber - Ex : IMEI, NS, CHIP ..." class="form-control form-control-sm type_part_number"
@@ -81,11 +81,11 @@
 
                         <div class="row justify-content-center">  
 
-                            <div class="col-md-6 mb-1">
-                                <label class="col-form-label col-form-label-sm" for="inputSobreNome"><strong><i class="bi bi-person-add me-1"></i> Descrição</strong></label>
+                            <div class="col-8 mb-1">
+                                <label class="col-form-label col-form-label-sm" for="inputSobreNome"><strong><i class="bi bi-person-add me-1"></i> Acessórios</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Descrição" class="form-control form-control-sm"
-                                    name="description" placeholder="DESCRIÇÃO" id="description">
+                                    name="acessories" placeholder="DESCRIÇÃO" id="acessories">
                             </div>
 
                         </div>
@@ -118,16 +118,16 @@
 
                         <div class="row justify-content-center">
 
-                            <div class="col-md-2 app_formbox_photo mb-1">
+                            <div class="col-2 app_formbox_photo mb-1">
                                 <a href="<?php if (file_exists(CONF_UPLOAD_DIR .'/'.$produtos->photo)) {echo '../../../../'.CONF_UPLOAD_DIR .'/'.$produtos->photo;} 
-                                else {echo url('themes/'.CONF_VIEW_ADMIN.'/assets/images/avatar.jpg');}?>" target="_blank">
+                                else {echo url(CONF_UPLOAD_DIR.'/images/avatar_product.png');}?>" target="_blank">
                                 <img data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                    data-bs-title="Foto" height="90" width="90" src="<?php if ($produtos->photo && file_exists(CONF_UPLOAD_DIR .'/'.$produtos->photo)) 
-                                    {echo image($produtos->photo, 200, 200);}else {echo url('themes/'.CONF_VIEW_ADMIN.'/assets/images/avatar.jpg');}?>" class="img-thumbnail rounded-circle float-left" id="foto-cliente">
+                                    data-bs-title="Foto" height="60" width="60" src="<?php if ($produtos->photo && file_exists(CONF_UPLOAD_DIR .'/'.$produtos->photo)) 
+                                    {echo image($produtos->photo, 90, 90);}else {echo url(CONF_UPLOAD_DIR.'/images/avatar_product.png');}?>" class="img-thumbnail rounded-circle float-left" id="foto-cliente">
                                 </a>
                             </div>
 
-                            <div class="col-md-4 mb-1">
+                            <div class="col-6 mb-1">
                                 <label for="formFileSm" class="col-form-label col-form-label-sm"> <strong><i class="bi bi-upload me-1"></i>  Extensões aceitas : .bmp ,.png, .svg, .jpeg e .jpg </strong></label>
                                 <input class="form-control form-control-sm" data-image=".j_profile_image" type="file" class="radius" name="photo"/>
                             </div>
@@ -136,7 +136,7 @@
 
                         <div class="row justify-content-center">
 
-                            <div class="col-md-6 mb-1">
+                            <div class="col-8 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputContract"><strong><i class="bi bi-person me-1"></i> Contrato</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Digite o número de processo SEI" class="form-control form-control-sm contract_id"
@@ -147,7 +147,7 @@
 
                         <div class="row justify-content-center">
 
-                            <div class="col-md-6 mb-1">
+                            <div class="col-8 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputNome"><strong><i class="bi bi-person me-1"></i> Marca</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Digite o nome da marca" class="form-control form-control-sm brand_id"
@@ -158,7 +158,7 @@
 
                         <div class="row justify-content-center">  
 
-                            <div class="col-md-6 mb-1">
+                            <div class="col-8 mb-1">
 
                                 <label class="col-form-label col-form-label-sm" for="inputNome"><strong><i class="bi bi-person me-1"></i> Nome</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
@@ -171,7 +171,7 @@
 
                         <div class="row justify-content-center">
 
-                            <div class="col-md-6 mb-1">
+                            <div class="col-8 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputNome"><strong><i class="bi bi-person me-1"></i> Tipo de Partnumber</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Digite o tipo de partnumber - Ex : IMEI, NS, CHIP ..." class="form-control form-control-sm type_part_number"
@@ -180,15 +180,14 @@
                             </div>
 
                         </div>
+                        
+                        <div class="row justify-content-center">
 
-                        <div class="row justify-content-center">  
-
-                            <div class="col-md-6 mb-1">
-                                <label class="col-form-label col-form-label-sm" for="inputSobreNome"><strong><i class="bi bi-person-add me-1"></i> Descrição</strong></label>
-                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
-                                    data-bs-title="Descrição" class="form-control form-control-sm"
-                                    name="description" placeholder="DESCRIÇÃO" id="description" value="<?=$produtos->description?>" >
-                            </div> 
+                            <div class="col-8 mb-1">
+                                <label for="textareaObservacoes" class="col-form-label col-form-label-sm"><i class="bi bi-exclamation-diamond me-1"></i><strong> Acessórios</strong></label>
+                                <textarea class="form-control form-control-sm" tabindex="5" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                data-bs-title="Acessórios" id="acessories" rows="2" name="acessories"><?=$produtos->acessories?></textarea>
+                            </div>
 
                         </div>
 

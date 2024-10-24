@@ -45,7 +45,7 @@
   </div>
 
   <div class="row mb-2">
-    <div class="col-md-6">
+    <div class="col-6">
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <div class="col p-4 d-flex flex-column position-static">
           <strong class="d-inline-block mb-2 text-primary-emphasis">World</strong>
@@ -62,7 +62,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-6">
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <div class="col p-4 d-flex flex-column position-static">
           <strong class="d-inline-block mb-2 text-success-emphasis">Design</strong>
@@ -82,7 +82,7 @@
   </div>
 
   <div class="row g-5">
-    <div class="col-md-8">
+    <div class="col-8">
       <?php if (empty($blog) && !empty($search)): ?>
           <div class="content content">
               <div class="empty_content">
@@ -115,7 +115,7 @@
       <?php endif; ?>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-4">
       <div class="position-sticky" style="top: 2rem;">
         <div class="p-4 mb-3 bg-body-tertiary rounded">
           <h4 class="fst-italic">Sobre o Blog</h4>

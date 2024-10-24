@@ -19,7 +19,7 @@
 
                         <div class="row justify-content-center">
 
-                            <div class="col-md-6 mb-1">
+                            <div class="col-6 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputSobreNome"><i class="bi bi-person-add me-1"></i><strong>Unidade</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Unit" class="form-control form-control-sm unit_id"
@@ -30,7 +30,7 @@
 
                         <div class="row justify-content-center">
                         
-                            <div class="col-md-6 mb-1">
+                            <div class="col-6 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputNome"><strong><i class="bi bi-person me-1"></i> Nome</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Digite o nome" class="form-control form-control-sm"
@@ -42,7 +42,7 @@
 
                         <div class="row justify-content-center">
 
-                            <div class="col-md-6 mb-1">
+                            <div class="col-6 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputCelular"><strong><i class="bi bi-phone me-1"></i> Ramal</strong></label>
 
                                 <div class="input-group input-group-sm mb-3">
@@ -80,7 +80,7 @@
                                 
                         <div class="row justify-content-center">
 
-                            <div class="col-md-6 mb-1">
+                            <div class="col-6 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputSobreNome"><i class="bi bi-person-add me-1"></i><strong>Unidade</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Unit" class="form-control form-control-sm unit_id"
@@ -91,7 +91,7 @@
 
                         <div class="row justify-content-center">
 
-                            <div class="col-md-6 mb-1">
+                            <div class="col-6 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputNome"><strong><i class="bi bi-person me-1"></i> Nome</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Digite o nome" class="form-control form-control-sm"
@@ -102,7 +102,7 @@
 
                         <div class="row justify-content-center">
 
-                            <div class="col-md-6 mb-1">
+                            <div class="col-6 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputCelular"><strong><i class="bi bi-phone me-1"></i> Ramal</strong></label>
 
                                 <div class="input-group input-group-sm mb-3">

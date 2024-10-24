@@ -2,7 +2,7 @@
 
 <div class="container-fluid">
 
-    <div class="col-md-12 ml-auto mt-3"> <!-- https://getbootstrap.com/docs/4.0/layout/grid/#mix-and-match -->
+    <div class="col-12 ml-auto mt-3"> <!-- https://getbootstrap.com/docs/4.0/layout/grid/#mix-and-match -->
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb breadcrumb-chevron p-2 bg-body-tertiary rounded-3">
                 <li class="breadcrumb-item fw-semibold active" aria-current="page"><i class="bi bi-house-door"></i> Monitoramento</li>
@@ -19,7 +19,7 @@
                         <div class="row">
 
                             <!-- Unidades -->
-                            <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="col-xl-3 col-6 mb-4">
                                 <div class="card border-left-<?=CONF_ADMIN_COLOR?> shadow h-100 py-2">
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
@@ -37,7 +37,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="col-xl-3 col-6 mb-4">
                                 <div class="card border-left-<?=CONF_ADMIN_COLOR?> shadow h-100 py-2">
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
@@ -55,7 +55,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="col-xl-3 col-6 mb-4">
                                 <div class="card border-left-<?=CONF_ADMIN_COLOR?> shadow h-100 py-2">
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
@@ -74,7 +74,7 @@
                             </div>
 
                             <!-- Usuários --> 
-                            <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="col-xl-3 col-6 mb-4">
                                 <div class="card border-left-<?=CONF_ADMIN_COLOR?> shadow h-100 py-2">
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
@@ -106,7 +106,7 @@
                         <div class="fw-semibold text-uppercase mb-3 fs-5 text-center"><i class="bi bi-bar-chart-line-fill"></i> PATRIMÔNIO</div>
                             <div class="row">
                                 <!-- Empresas --> 
-                                <div class="col-xl-3 col-md-6 mb-4">
+                                <div class="col-xl-3 col-6 mb-4">
                                     <div class="card border-left-<?=CONF_ADMIN_COLOR?> shadow h-100 py-2">
                                         <div class="card-body">
                                             <div class="row no-gutters align-items-center">
@@ -125,7 +125,7 @@
                                 </div>
 
                                 
-                                <div class="col-xl-3 col-md-6 mb-4">
+                                <div class="col-xl-3 col-6 mb-4">
                                     <div class="card border-left-<?=CONF_ADMIN_COLOR?> shadow h-100 py-2">
                                         <div class="card-body">
                                             <div class="row no-gutters align-items-center">
@@ -144,7 +144,7 @@
                                 </div>
 
                                 
-                                <div class="col-xl-3 col-md-6 mb-4">
+                                <div class="col-xl-3 col-6 mb-4">
                                     <div class="card border-left-<?=CONF_ADMIN_COLOR?> shadow h-100 py-2">
                                         <div class="card-body">
                                             <div class="row no-gutters align-items-center">
@@ -162,7 +162,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-xl-3 col-md-6 mb-4">
+                                <div class="col-xl-3 col-6 mb-4">
                                     <div class="card border-left-<?=CONF_ADMIN_COLOR?> shadow h-100 py-2">
                                         <div class="card-body">
                                             <div class="row no-gutters align-items-center">
@@ -197,7 +197,7 @@
                         </div>
                         <div class="row">
                             <!-- Usuários Totais da Agenda --> 
-                            <div class="col-xl-12 col-md-12 mb-12">
+                            <div class="col-xl-12 col-12 mb-12">
                                 <div class="app_dash_home_trafic_list">
                                     <?php if (!$online): ?>
                                         <div class="alert alert-warning alert-dismissible fade show" role="alert"><i class="bi bi-info-circle-fill p-2"></i>

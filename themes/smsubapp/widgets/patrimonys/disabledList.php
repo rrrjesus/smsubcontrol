@@ -19,7 +19,7 @@
                 <div class="col-12">
 
                 <div class="row justify-content-center mb-4">
-                    <div class="col-md-12 ml-auto text-center">
+                    <div class="col-12 ml-auto text-center">
                     <?=buttonLink("/beta/patrimonios", "top", "Clique para sair", "danger", "arrow-right-circle", "Sair")?> 
                     </div>
                 </div>

@@ -22,7 +22,7 @@
 
                         <div class="row justify-content-center">
 
-                            <div class="col-md-6 mb-1">
+                            <div class="col-6 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputNome"><strong><i class="bi bi-person me-1"></i> Nome</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Nome" class="form-control form-control-sm"
@@ -34,7 +34,7 @@
 
                         <div class="row justify-content-center">  
 
-                            <div class="col-md-6 mb-1">
+                            <div class="col-6 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputSobreNome"><strong><i class="bi bi-person-add me-1"></i> Descrição</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Descrição" class="form-control form-control-sm"
@@ -73,7 +73,7 @@
 
                         <div class="row justify-content-center">  
 
-                            <div class="col-md-6 mb-1">
+                            <div class="col-6 mb-1">
 
                                 <label class="col-form-label col-form-label-sm" for="inputNome"><strong><i class="bi bi-person me-1"></i> Nome</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
@@ -86,7 +86,7 @@
 
                         <div class="row justify-content-center">  
 
-                            <div class="col-md-6 mb-1">
+                            <div class="col-6 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputSobreNome"><strong><i class="bi bi-person-add me-1"></i> Descrição</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Descrição" class="form-control form-control-sm"

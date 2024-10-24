@@ -97,7 +97,7 @@ class Products extends Admin
             $productCreate->brand_id = preg_replace("/[^0-9\s]/", "", $data["brand_id"]);
             $productCreate->product_name = $data["product_name"];
             $productCreate->type_part_number = $data["type_part_number"];
-            $productCreate->description = $data["description"];
+            $productCreate->acessories = $data["acessories"];
             $productCreate->login_created = $user->login;
             $productCreate->created_at = date_fmt('', "Y-m-d h:m:s");
 
@@ -151,7 +151,7 @@ class Products extends Admin
             $productUpdate->brand_id = preg_replace("/[^0-9\s]/", "", $data["brand_id"]);
             $productUpdate->product_name = $data["product_name"];
             $productUpdate->type_part_number = $data["type_part_number"];
-            $productUpdate->description = $data["description"];
+            $productUpdate->acessories = $data["acessories"];
             $productUpdate->login_updated = $user->login;
 
             if (!empty($_FILES["photo"])) {

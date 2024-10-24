@@ -38,7 +38,7 @@
 <!--CONTENT-->
 <main class="container-sm">
 
-<div class="col-md-12 ml-auto"> <!-- https://getbootstrap.com/docs/4.0/layout/grid/#mix-and-match -->
+<div class="col-12 ml-auto"> <!-- https://getbootstrap.com/docs/4.0/layout/grid/#mix-and-match -->
     <?= $this->section("content"); ?>
 </div>
 
@@ -48,7 +48,7 @@
     <?= $this->section("optout"); ?>
 <?php else: ?>
     <div class="row justify-content-center text-center mt-5 mb-5">
-        <div class="col-md-4">
+        <div class="col-4">
         <i class="bi bi-ui-checks display-1 text-<?=CONF_WEB_COLOR;?>"></i>
             <p class="fw-bolder fs-3">Comece a utilizar o SmsubControl agora mesmo</p>
             <p class="fs-5">É rápido, simples e funcional!</p>

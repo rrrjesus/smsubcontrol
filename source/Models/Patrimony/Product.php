@@ -18,7 +18,7 @@ class Product extends Model
      */
     public function __construct()
     {
-        parent::__construct("products", ["id"], ["brand_id", "product_name", "type_part_number", "description", "status"]);
+        parent::__construct("products", ["id"], ["brand_id", "product_name", "type_part_number", "acessories", "status"]);
     }
 
     

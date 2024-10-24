@@ -14,7 +14,7 @@
                         <?=csrf_input();?>
 
                         <div class="row mb-1">
-                            <div class="col-md-3 mb-1">
+                            <div class="col-3 mb-1">
                                 <img src="<?=image($patrimonys->photo, 200, 200)?>" class="img-thumbnail">
                         
                             </div>
@@ -22,19 +22,19 @@
                             
                         <div class="row mb-1">
 
-                            <div class="col-md-3 mb-1">
+                            <div class="col-3 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputNs"><i class="bi bi-person-add me-1"></i><strong>Número de Registro</strong></label>
                                 <input type="text" class="form-control form-control-sm" disabled name="part_number_eye" value="<?=$patrimonys->part_number?>">
                             </div>
 
-                            <div class="col-md-6 mb-1">
+                            <div class="col-6 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputProduto"><i class="bi bi-person-add me-1"></i><strong>Produto</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" tabindex="2" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                 data-bs-title="Digite o nome do produto - Ex : 1 - Tablet" class="form-control form-control-sm product_id"
                                     name="product_id" placeholder="PRODUTO" value="<?php if($patrimonys->product_id){echo $patrimonys->product()->id.' - '.$patrimonys->product()->product_name.' - '.$patrimonys->product()->contract()->contract_name.' - (Nº de Registro '.$patrimonys->product()->type_part_number.')';}else{echo '';}?>">
                             </div>
 
-                            <div class="col-md-3 mb-1">
+                            <div class="col-3 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputMovimentacao"><i class="bi bi-person-add me-1"></i><strong>Estado</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" autofocus data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Digite o estado do patrimonio - Ex : 1- ESTOQUE, 2 - RETIRADO ... " tabindex="3" class="form-control form-control-sm movement_id"
@@ -47,14 +47,14 @@
 
                             <div class="row mb-1">
 
-                                <div class="col-md-5 mb-1">
+                                <div class="col-5 mb-1">
                                     <label class="col-form-label col-form-label-sm" for="inputSobreNome"><i class="bi bi-person-add me-1"></i><strong>Usuario</strong></label>
                                     <input type="text" data-bs-togglee="tooltip" tabindex="4" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                         data-bs-title="Digite o usuário - Ex : 1 - João Bento Badaró" class="form-control form-control-sm user_id"
                                         name="user_id_edit" id="user_id_edit" placeholder="USUÁRIO">
                                 </div>
 
-                                <div class="col-md-7 mb-1">
+                                <div class="col-7 mb-1">
                                     <label class="col-form-label col-form-label-sm" for="inputSobreNome"><i class="bi bi-person-add me-1"></i><strong>Unidade</strong></label>
                                     <input type="text" data-bs-togglee="tooltip" tabindex="8" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                         data-bs-title="Digite a unidade - Ex : 22 - SMSUB/COTI" class="form-control form-control-sm unit_id"
@@ -82,7 +82,7 @@
                             </div>
 
                             <div class="row mb-2 mt-2">
-                                <div class="col-md-12 mb-1">
+                                <div class="col-12 mb-1">
                                     <div class="card border-<?=CONF_APP_COLOR?> mb-3">
                                         <div class="card-header bg-transparent border-<?=CONF_APP_COLOR?>">
                                             <h5 class="card-title text-<?=CONF_APP_COLOR?> text-center"> HISTÓRICO DO PATRIMÔNIO </h5>

@@ -12,7 +12,7 @@
     </div>
 
     <div class="row justify-content-center mb-4">
-        <div class="col-md-12 ml-auto text-center">
+        <div class="col-12 ml-auto text-center">
             <a data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip"
                 data-bs-title="Clique para sair" class="btn btn-outline-danger btn-sm me-3 fw-semibold" href="<?=url("/painel/patrimonio/produtos")?>"
                 role="button"><i class="bi bi-arrow-right-circle me-2 mt-1"></i>Sair</a>
@@ -29,7 +29,7 @@
                         <th class="text-center">MARCA</th>
                         <th class="text-center">PRODUTO</th>
                         <th class="text-center">TIPO NS</th>
-                        <th class="text-center">DESCRICAO</th>
+                        <th class="text-center">ACESSORIOS</th>
                         <th class="text-center">STATUS</th>
                         <th class="text-center">ATIVAR</th>
                     </tr>
@@ -43,7 +43,7 @@
                     <td class="text-center fw-semibold"><?=(!empty($lista->brand_id) ? $lista->Brand()->brand_name : "")?></td>
                     <td class="text-center fw-semibold"><?=(!empty($lista->product_name) ? $lista->product_name : "")?></td>
                     <td class="text-center fw-semibold"><?=(!empty($lista->type_part_number) ? $lista->type_part_number : "")?></td>
-                    <td class="text-center fw-semibold"><?=(!empty($lista->description) ? $lista->description : "")?></td>
+                    <td class="text-center fw-semibold"><?=(!empty($lista->acessories) ? $lista->acessories : "")?></td>
                     <td class="text-center fw-semibold"><?=$lista->statusBadge()?></td>
                     <td class="text-center fw-semibold"><?=$lista->id?></td>
                 </tr>

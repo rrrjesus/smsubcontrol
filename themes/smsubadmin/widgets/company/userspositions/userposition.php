@@ -23,7 +23,7 @@
 
                         <div class="row justify-content-center">
 
-                            <div class="col-md-6 mb-1">
+                            <div class="col-6 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputCargo"><strong><i class="bi bi-person me-1"></i> Cargo</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
                                     data-bs-title="Digite o Cargo do Servidor" class="form-control form-control-sm"
@@ -60,7 +60,7 @@
 
                         <div class="row justify-content-center">  
 
-                            <div class="col-md-6 mb-1">
+                            <div class="col-6 mb-1">
 
                                 <label class="col-form-label col-form-label-sm" for="inputCargo"><strong><i class="bi bi-person me-1"></i> Cargo</strong></label>
                                 <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 

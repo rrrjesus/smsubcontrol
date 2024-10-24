@@ -1,5 +1,5 @@
 <?php
-// if ($_SERVER['HTTP_HOST'] == '127.0.0.1') {
+if ($_SERVER['HTTP_HOST'] == '127.0.0.1') {
     /**
      * CSS
      */
@@ -60,4 +60,4 @@
 
     //Minify JS
     $minJS->minify(__DIR__ . "/../../../themes/" . CONF_VIEW_APP . "/assets/scripts.js");
-// }
+}

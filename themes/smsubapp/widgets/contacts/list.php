@@ -14,7 +14,7 @@
     </div>
 
     <div class="row justify-content-center mb-4">
-        <div class="col-md-12 ml-auto text-center">
+        <div class="col-12 ml-auto text-center">
             <?=buttonLink("/beta/contatos/cadastrar", "top", "Cadastrar contato", "success", "person", "Cadastrar")?>
             <?php if(!empty($registers->disabled) && user()->level_id > 3){ ?>
                 <a role="button" href="<?=url("/beta/contatos/desativados")?>" data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip"

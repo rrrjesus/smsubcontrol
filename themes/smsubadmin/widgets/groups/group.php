@@ -1,6 +1,6 @@
 <?= $this->layout("_admin"); ?>
 
-<div class="col-md-12 ml-auto mt-3"> <!-- https://getbootstrap.com/docs/4.0/layout/grid/#mix-and-match -->
+<div class="col-12 ml-auto mt-3"> <!-- https://getbootstrap.com/docs/4.0/layout/grid/#mix-and-match -->
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb breadcrumb-chevron p-2 bg-body-tertiary rounded-3">
             <li class="breadcrumb-item"><a class="link-body-emphasis fw-semibold text-decoration-none" href="<?=url("/painel")?>"><i class="bi bi-house-heart"></i> Painel</a></li>
@@ -27,7 +27,7 @@
                                     <input type="hidden" name="action" value="create"/>
 
                                     <div class="row justify-content-center mb-3 mt-3">
-                                        <div class="ajax_response col-xl-12 col-md-12">
+                                        <div class="ajax_response col-xl-12 col-12">
                                             <?=flash();?>
                                         </div>
                                     </div>
@@ -35,19 +35,19 @@
                                     <?=csrf_input();?>
 
                                     <div class="row justify-content-center">
-                                        <div class="col-md-3 mb-1">
+                                        <div class="col-3 mb-1">
                                             <label class="col-form-label col-form-label-sm" for="inputSetor"><strong><i class="bi bi-people ms-3 me-3"></i> Grupo</strong></label>
                                             <input type="text" data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip" 
                                                 data-bs-title="Digite o nome do grupo" class="form-control form-control-sm" name="group_name" placeholder="Grupo">
                                         </div>
 
-                                        <div class="col-md-6 mb-1">
+                                        <div class="col-6 mb-1">
                                             <label class="col-form-label col-form-label-sm" for="inputSetor"><strong><i class="bi bi-people ms-3 me-3"></i> Descrição do Grupo</strong></label>
                                             <input type="text" data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip" 
                                                 data-bs-title="Digite a descrição do grupo" class="form-control form-control-sm" name="description" placeholder="Descrição">
                                         </div>
 
-                                        <div class="col-md-3 mb-1">
+                                        <div class="col-3 mb-1">
                                             <label class="col-form-label col-form-label-sm" for="inputStatus"><strong><i class="bi bi-check2-square ms-3 me-3"></i> Status</strong></label>
                                             <select class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip" 
                                             data-bs-title="Digite o status" name="status" id="status">
@@ -84,7 +84,7 @@
                                 <input type="hidden" name="action" value="update"/>
 
                                 <div class="row justify-content-center mb-3 mt-3">
-                                    <div class="ajax_response col-xl-12 col-md-12">
+                                    <div class="ajax_response col-xl-12 col-12">
                                         <?=flash();?>
                                     </div>
                                 </div>
@@ -93,19 +93,19 @@
 
                                     <div class="row justify-content-center">
 
-                                        <div class="col-md-3 mb-1">
+                                        <div class="col-3 mb-1">
                                             <label class="col-form-label col-form-label-sm" for="inputSetor"><strong><i class="bi bi-people ms-3 me-3"></i> Grupo</strong></label>
                                             <input type="text" value="<?=$group->group_name?>" data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip" 
                                                 data-bs-title="Digite o nome do grupo" class="form-control form-control-sm" name="group_name" placeholder="grupo">
                                         </div>
 
-                                        <div class="col-md-6 mb-1">
+                                        <div class="col-6 mb-1">
                                             <label class="col-form-label col-form-label-sm" for="inputSetor"><strong><i class="bi bi-people ms-3 me-3"></i> Descrição do Grupo</strong></label>
                                             <input type="text" value="<?=$group->description?>" data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip" 
                                                 data-bs-title="Digite a descrição do grupo" class="form-control form-control-sm" name="description" placeholder="descrição">
                                         </div>
 
-                                        <div class="col-md-3 mb-1">
+                                        <div class="col-3 mb-1">
                                             <label class="col-form-label col-form-label-sm" for="inputStatus"><strong><i class="bi bi-check2-square ms-3 me-3"></i> Status</strong></label>
                                             <select class="form-control form-control-sm" data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip" 
                                             data-bs-title="Digite o status" name="status" id="status">

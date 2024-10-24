@@ -16,7 +16,7 @@
                     </div>
 
                     <div class="row justify-content-center mb-4">
-                        <div class="col-md-12 ml-auto text-center">
+                        <div class="col-12 ml-auto text-center">
                             <?=buttonLink("/painel/cargos", "top", "Clique para sair", "danger", "arrow-right-circle me-2 mt-1", "Sair", "1", "c")?> 
                         </div>
                     </div>
