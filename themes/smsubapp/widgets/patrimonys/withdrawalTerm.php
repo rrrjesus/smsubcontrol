@@ -108,7 +108,7 @@ div.WordSection1
 						echo $term->part_number;
 					}
 					?>
-				</b></span>, <?=$term->product()->description?></span>
+				</b></span>, <?=$term->product()->acessories?></span>
 				</p>
 				</td>
 			</tr>

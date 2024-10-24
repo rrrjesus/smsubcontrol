@@ -127,7 +127,7 @@ ul {margin-bottom:0cm;}
               <?=$term->product()->product_name?> - <?=$term->product()->type_part_number?> : <?=$term->part_number?></span>
             </p>
             <p class=MsoNormal style='margin-left:1.25cm;margin-right:1.25cm;text-indent:-.1pt'>
-              <span style='font-size:9.0pt;font-family:"Verdana",sans-serif'><strong>Descrição</strong> : <?=$term->product()->description?></span>
+              <span style='font-size:9.0pt;font-family:"Verdana",sans-serif'><strong>Descrição</strong> : <?=$term->product()->acessories?></span>
             </p>
           </td>
         </tr>

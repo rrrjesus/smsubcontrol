@@ -116,7 +116,7 @@
                             </div>
                             <div class="col-10">
                                 <h5 class="card-title"><?=$patrimonys->product()->brand()->brand_name.' '.$patrimonys->product()->product_name.' - '.$patrimonys->product()->type_part_number.' : '.$patrimonys->part_number?></h5>
-                                <p class="card-text"><?=$patrimonys->product()->description?></p>
+                                <p class="card-text"><?=$patrimonys->product()->acessories?></p>
                                 <p class="card-text"><b><?=$patrimonys->movement()->movement_name?></b> em <?=date_fmt($patrimonys->updated_at)?> - <b>Usuario : </b>
                                     <?=(!empty($patrimonys->user()->user_name) ? $patrimonys->user()->user_name : 'Não Cadastrado')?> - <b>Unidade : </b>
                                     <?=$patrimonys->unit()->unit_name.buttonLink("/beta/patrimonio/termo/{$patrimonys->id}", "top", "Clique para imprimir o termo", "primary ms-3", "file-earmark-word", "Termo", "9", "t", "_blank")?>
