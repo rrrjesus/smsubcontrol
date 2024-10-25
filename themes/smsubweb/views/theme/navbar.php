@@ -49,7 +49,7 @@
                     </li>
 
                     <li class="nav-item col-6 col-lg-auto">
-                        <a class="nav-link py-2 px-0 px-lg-2 <?=navbar_active("/blog")?>" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Blog" href="<?=url("/blog")?>">Blog</a>
+                        <a class="nav-link py-2 px-0 px-lg-2 <?=navbar_active("/")?>" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Blog" href="<?=url("/")?>">Blog</a>
                     </li>
                 </ul>
 
