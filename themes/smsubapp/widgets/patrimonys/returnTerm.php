@@ -137,8 +137,8 @@ div.WordSection1
 	</div>
 
 		<p class=MsoNormal style='text-indent:-.1pt;margin-left:1.25cm;margin-right:1.25cm;line-height:normal'><b><span style='font-size:10.0pt;
-		font-family:"Arial",sans-serif'>Assinatura do responsável pela entrega</span></b><span
-		style='font-size:10.0pt;font-family:"Arial",sans-serif'>:_________________________________________________</span></p>
+		font-family:"Arial",sans-serif'>Assinatura do responsável pela devolução</span></b><span
+		style='font-size:10.0pt;font-family:"Arial",sans-serif'>:_______________________________________________</span></p>
 
 		<p class=MsoNormal style='text-indent:-.1pt;margin-left:1.25cm;margin-right:1.25cm;line-height:normal'><b><span style='font-size:10.0pt;
 		font-family:"Arial",sans-serif'>Data da devolução</span></b><span
