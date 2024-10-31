@@ -151,6 +151,19 @@ class  PatrimonyHistory extends Model
     /**
      * @return null|string
      */
+    public function fileTerm(): ?string
+    {
+        if(!empty($this->file_terms) && file_exists(CONF_UPLOAD_DIR.'/'.$this->file_terms)){
+            return buttonLink("storage/{$this->file_terms}", "top", "Clique para visualizar termo assinado", "danger", "file-earmark-pdf", "Term Ass", "7", "t", "_blank");
+        }else{
+            return '';
+        }
+        return null;
+    } 
+
+    /**
+     * @return null|string
+     */
     public function fileList(): ?string
     {
         if(!empty($this->file_terms) && file_exists(CONF_UPLOAD_DIR.'/'.$this->file_terms)){
