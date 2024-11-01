@@ -82,9 +82,6 @@ $(function () {
 
     $("#patrimony").validate({
         rules: {
-            movement_id: {
-                required: true
-            },
             product_id: {
                 required: true
             },
@@ -99,9 +96,6 @@ $(function () {
             }
         },
         messages: {
-            movement_id: {
-                required: "Digite o estado do patrimônio !!!"
-            },
             product_id: {
                 required: "Digite o produto !!!"
             },
