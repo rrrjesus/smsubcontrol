@@ -303,7 +303,7 @@ class Patrimonys extends Admin
             }
 
             if($data["movement_id"] == ""){
-                $json['modal'] = $this->modal->warning("Informe um estado para lançar nova movimentação do patrimônio !")->icon()->render();
+                $json['message'] = $this->message->warning("Informe um estado para lançar nova movimentação do patrimônio !")->icon()->render();
                 echo json_encode($json);
                 return;
             }

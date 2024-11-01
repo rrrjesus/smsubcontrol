@@ -9,6 +9,7 @@ use Source\Core\Session;
      *
      * @author Rodolfo Romaioli Ribeiro de Jesus <rodolfo.romaioli@gmail.com>
      * @package Source\Core
+     * classe php para abrir modal com alerta
      */
 
     class Modal
