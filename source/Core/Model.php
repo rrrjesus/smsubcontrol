@@ -3,6 +3,7 @@
 namespace Source\Core;
 
 use Source\Support\Message;
+use Source\Support\Modal;
 
 /**
  * FSPHP | Class Model Layer Supertype Pattern
@@ -20,6 +21,9 @@ abstract class Model
 
     /** @var Message|null */
     protected $message;
+
+    /** @var Modal|null */
+    protected $modal;
 
     /** @var string */
     protected $query;
@@ -57,6 +61,7 @@ abstract class Model
         $this->protected = array_merge($protected, ['created_at', "updated_at"]);
         $this->required = $required;
         $this->message = new Message();
+        $this->modal = new Modal();
     }
 
     /**
@@ -112,6 +117,14 @@ abstract class Model
     public function message(): ?Message
     {
         return $this->message;
+    }
+
+    /**
+     * @return Modal|null
+     */
+    public function modal(): ?Modal
+    {
+        return $this->modal;
     }
 
     /**

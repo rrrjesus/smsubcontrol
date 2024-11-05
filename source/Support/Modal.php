@@ -111,15 +111,15 @@ use Source\Core\Session;
         /** @return string */
         public function render(): string
         {
-            return "<div class='modal fade' id='modal' tabindex='-1' aria-labelledby='modalLabel' aria-hidden='true'>
+            return "<div class='modal fade' id='meuModal' tabindex='-1' aria-labelledby='modalLabel' aria-hidden='true'>
                         <div class='modal-dialog modal-sm'>
                             <div class='modal-content'>
-                            <div class='modal-header bg-secondary text-light'>
+                            <div class='modal-header bg-{$this->getType()} text-light'>
                                 <h1 class='modal-title fs-5' id='modalLabelSair'>Teste</h1>
                                 <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
                             </div>
                             <div class='modal-body fw-semibold'>
-                                Deseja sair do sistema ?
+                                {$this->getText()} ?
                             </div>
                             <div class='modal-footer'>
                                 <button type='button' class='btn btn-outline-danger btn-sm fw-semibold' data-bs-dismiss='modal'><i class='bi bi-trash'></i> Não</button>
@@ -130,23 +130,10 @@ use Source\Core\Session;
                     </div>
                     <script>
                         document.addEventListener('DOMContentLoaded', function() {
-                            var modal = document.getElementById('modal');
-                            var closeButton = document.querySelector('.close-button');
-
-                            modal.style.display = 'block';
-
-                            closeButton.addEventListener('click', function() {
-                                modal.style.display = 'none';
-                            });
-
-                            window.addEventListener('click', function(event) {
-                                if (event.target == modal) {
-                                    modal.style.display = 'none';
-                                }
-                            });
+                            var meuModal = new bootstrap.Modal(document.getElementById('meuModal'));
+                            meuModal.show();
                         });
-                    </script>
-                </div>";
+                    </script>";
     }
     
         /** @return string */
