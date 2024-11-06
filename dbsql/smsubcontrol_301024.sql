@@ -7,15 +7,13 @@
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
 -- Banco de dados: `smsubcontrol`
@@ -37,7 +35,7 @@ CREATE TABLE `brands` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `login_created` varchar(7) NOT NULL,
   `login_updated` varchar(7) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Despejando dados para a tabela `brands`
@@ -65,7 +63,7 @@ CREATE TABLE `categories` (
   `type` varchar(50) NOT NULL DEFAULT 'post' COMMENT 'post, page, etc',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Despejando dados para a tabela `categories`
@@ -92,7 +90,7 @@ CREATE TABLE `companies` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `login_created` varchar(7) NOT NULL,
   `login_updated` varchar(7) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Despejando dados para a tabela `companies`
@@ -120,7 +118,7 @@ CREATE TABLE `contacts` (
   `login_deleted` varchar(7) DEFAULT NULL,
   `deleted_at` varchar(19) DEFAULT NULL,
   `sector_name_at` varchar(23) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Despejando dados para a tabela `contacts`
@@ -536,7 +534,7 @@ CREATE TABLE `contracts` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `login_updated` varchar(7) DEFAULT NULL,
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Despejando dados para a tabela `contracts`
@@ -557,7 +555,7 @@ CREATE TABLE `levels` (
   `id` int(11) NOT NULL,
   `level_nome` text NOT NULL,
   `descricao` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Despejando dados para a tabela `levels`
@@ -587,7 +585,7 @@ CREATE TABLE `mail_queue` (
   `sent_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Despejando dados para a tabela `mail_queue`
@@ -609,7 +607,7 @@ CREATE TABLE `movements` (
   `movement_name` varchar(50) NOT NULL,
   `login_created` varchar(7) NOT NULL DEFAULT 'sistema',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Despejando dados para a tabela `movements`
@@ -638,7 +636,7 @@ CREATE TABLE `notifications` (
   `view` int(11) NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Despejando dados para a tabela `notifications`
@@ -681,7 +679,7 @@ CREATE TABLE `patrimonys` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `login_updated` varchar(7) DEFAULT NULL,
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Despejando dados para a tabela `patrimonys`
@@ -3081,7 +3079,7 @@ CREATE TABLE `patrimonys_historys` (
   `created_history` timestamp NOT NULL DEFAULT current_timestamp(),
   `login_updated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Despejando dados para a tabela `patrimonys_historys`
@@ -7379,7 +7377,7 @@ CREATE TABLE `posts` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Despejando dados para a tabela `posts`
@@ -7438,7 +7436,7 @@ CREATE TABLE `products` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `login_created` varchar(7) NOT NULL,
   `login_updated` varchar(7) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Despejando dados para a tabela `products`
@@ -7467,7 +7465,7 @@ CREATE TABLE `report_access` (
   `pages` int(11) NOT NULL DEFAULT 1,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Despejando dados para a tabela `report_access`
@@ -7551,7 +7549,7 @@ CREATE TABLE `report_online` (
   `pages` int(11) NOT NULL DEFAULT 1,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Despejando dados para a tabela `report_online`
@@ -7571,7 +7569,7 @@ CREATE TABLE `signatures` (
   `first_name` varchar(34) DEFAULT NULL,
   `last_name` varchar(60) DEFAULT NULL,
   `email` varchar(58) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Despejando dados para a tabela `signatures`
@@ -12896,7 +12894,7 @@ CREATE TABLE `units` (
   `login_updated` varchar(7) NOT NULL DEFAULT 'sistema',
   `updated_at` varchar(16) DEFAULT NULL,
   `observations` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Despejando dados para a tabela `units`
@@ -13019,7 +13017,7 @@ CREATE TABLE `users` (
   `blocked_at` timestamp NULL DEFAULT NULL,
   `observations` text DEFAULT NULL,
   `photo` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Despejando dados para a tabela `users`
@@ -13579,7 +13577,7 @@ CREATE TABLE `user_categories` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `login_created` varchar(7) NOT NULL DEFAULT 'sistema',
   `login_updated` varchar(7) NOT NULL DEFAULT 'sistema'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Despejando dados para a tabela `user_categories`
@@ -13612,7 +13610,7 @@ CREATE TABLE `user_positions` (
   `login_updated` varchar(7) NOT NULL,
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `status` varchar(10) NOT NULL DEFAULT 'actived'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Despejando dados para a tabela `user_positions`
@@ -13998,6 +13996,9 @@ ALTER TABLE `users`
   ADD CONSTRAINT `user_positions` FOREIGN KEY (`position_id`) REFERENCES `user_positions` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 COMMIT;
 
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
