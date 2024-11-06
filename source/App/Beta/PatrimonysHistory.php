@@ -55,7 +55,7 @@ public function patrimonyHistory(?array $data): void
 
     //update
     if (!empty($data["action"]) && $data["action"] == "update") {
-        $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
 
         $patrimonys_id = $data["patrimonys_id"];
         $movement_id = preg_replace("/[^0-9\s]/", "", $data["movement_id"]);
@@ -269,7 +269,7 @@ public function patrimonyHistory(?array $data): void
 
     //delete
     if (!empty($data["action"]) && $data["action"] == "delete") {
-        $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
         $patrimonyHistoryDelete = (new PatrimonyHistory())->findById($data["patrimonys_id"]);
         $patrimonyDelete = (new Patrimony())->findById($patrimonyHistoryDelete->patrimony_id);
         $countHystory = (new PatrimonyHistory())->find("patrimony_id = :p", "p={$patrimonyHistoryDelete->patrimony_id}")->order("id DESC");

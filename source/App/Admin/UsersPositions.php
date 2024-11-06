@@ -86,7 +86,7 @@ class UsersPositions extends Admin
 
         //create
         if (!empty($data["action"]) && $data["action"] == "create") {
-            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
 
             $userpositionCreate = new UserPosition();
             $userpositionCreate->position_name = $data["position_name"];
@@ -115,7 +115,7 @@ class UsersPositions extends Admin
 
         //update
         if (!empty($data["action"]) && $data["action"] == "update") {
-            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
             $userpositionUpdate = (new UserPosition())->findById($data["userposition_id"]);
 
             if (!$userpositionUpdate) {
@@ -207,7 +207,7 @@ class UsersPositions extends Admin
 
         //delete
         if (!empty($data["action"]) && $data["action"] == "delete") {
-            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
             $userpositionDelete = (new UserPosition())->findById($data["userposition_id"]);
 
             if (!$userpositionDelete) {

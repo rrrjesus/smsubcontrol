@@ -86,7 +86,7 @@ class Units extends Admin
 
         //create
         if (!empty($data["action"]) && $data["action"] == "create") {
-            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
 
             $unitCreate = new Unit();
             $unitCreate->unit_name = $data["unit_name"];
@@ -122,7 +122,7 @@ class Units extends Admin
 
         //update
         if (!empty($data["action"]) && $data["action"] == "update") {
-            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
             $unitUpdate = (new Unit())->findById($data["unit_id"]);
 
             if (!$unitUpdate) {
@@ -214,7 +214,7 @@ class Units extends Admin
 
         //delete
         if (!empty($data["action"]) && $data["action"] == "delete") {
-            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
             $unitDelete = (new Unit())->findById($data["unit_id"]);
 
             if (!$unitDelete) {

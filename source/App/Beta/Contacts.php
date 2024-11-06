@@ -86,7 +86,7 @@ class Contacts extends Admin
 
         //create
         if (!empty($data["action"]) && $data["action"] == "create") {
-            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
 
             $contactCreate = new Contact();
             $contactCreate->unit_id = preg_replace("/[^0-9\s]/", "", $data["unit_id"]);
@@ -116,7 +116,7 @@ class Contacts extends Admin
 
         //update
         if (!empty($data["action"]) && $data["action"] == "update") {
-            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
             $contactUpdate = (new Contact())->findById($data["contact_id"]);
 
             if (!$contactUpdate) {
@@ -202,7 +202,7 @@ class Contacts extends Admin
 
         //delete
         if (!empty($data["action"]) && $data["action"] == "delete") {
-            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
             $contactDelete = (new Contact())->findById($data["contact_id"]);
 
             if (!$contactDelete) {

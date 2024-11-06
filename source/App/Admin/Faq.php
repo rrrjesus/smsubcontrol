@@ -53,7 +53,7 @@ class Faq extends Admin
     {
         //create
         if (!empty($data["action"]) && $data["action"] == "create") {
-            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
 
             $channelCreate = new Channel();
             $channelCreate->channel = $data["channel"];
@@ -73,7 +73,7 @@ class Faq extends Admin
 
         //update
         if (!empty($data["action"]) && $data["action"] == "update") {
-            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
             $channelEdit = (new Channel())->findById($data["channel_id"]);
 
             if (!$channelEdit) {
@@ -99,7 +99,7 @@ class Faq extends Admin
 
         //delete
         if (!empty($data["action"]) && $data["action"] == "delete") {
-            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
             $channelDelete = (new Channel())->findById($data["channel_id"]);
 
             if (!$channelDelete) {
@@ -143,7 +143,7 @@ class Faq extends Admin
     {
         //create
         if (!empty($data["action"]) && $data["action"] == "create") {
-            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
 
             $questionCreate = new Question();
             $questionCreate->channel_id = $data["channel_id"];
@@ -165,7 +165,7 @@ class Faq extends Admin
 
         //update
         if (!empty($data["action"]) && $data["action"] == "update") {
-            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
             $questionEdit = (new Question())->findById($data["question_id"]);
 
             if (!$questionEdit) {
@@ -192,7 +192,7 @@ class Faq extends Admin
 
         //delete
         if (!empty($data["action"]) && $data["action"] == "delete") {
-            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
             $questionDelete = (new Question())->findById($data["question_id"]);
 
             if (!$questionDelete) {

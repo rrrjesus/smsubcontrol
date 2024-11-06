@@ -86,7 +86,7 @@ class UsersCategories extends Admin
 
         //create
         if (!empty($data["action"]) && $data["action"] == "create") {
-            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
 
             $usercategoryCreate = new UserCategory();
             $usercategoryCreate->category_name = $data["category_name"];
@@ -115,7 +115,7 @@ class UsersCategories extends Admin
 
         //update
         if (!empty($data["action"]) && $data["action"] == "update") {
-            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
             $usercategoryUpdate = (new UserCategory())->findById($data["usercategory_id"]);
 
             if (!$usercategoryUpdate) {
@@ -207,7 +207,7 @@ class UsersCategories extends Admin
 
         //delete
         if (!empty($data["action"]) && $data["action"] == "delete") {
-            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
             $usercategoryDelete = (new UserCategory())->findById($data["usercategory_id"]);
 
             if (!$usercategoryDelete) {

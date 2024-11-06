@@ -86,7 +86,7 @@ class Contracts extends Admin
 
         //create
         if (!empty($data["action"]) && $data["action"] == "create") {
-            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
 
             $contractCreate = new Contract();
             $contractCreate->sei_process = $data["sei_process"];
@@ -156,7 +156,7 @@ class Contracts extends Admin
 
         //update
         if (!empty($data["action"]) && $data["action"] == "update") {
-            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
             $contractUpdate = (new Contract())->findById($data["contract_id"]);
 
             if (!$contractUpdate) {
@@ -290,7 +290,7 @@ class Contracts extends Admin
 
         //delete
         if (!empty($data["action"]) && $data["action"] == "delete") {
-            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
             $contractDelete = (new Contract())->findById($data["contract_id"]);
 
             if (!$contractDelete) {

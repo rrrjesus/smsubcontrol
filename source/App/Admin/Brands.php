@@ -86,7 +86,7 @@ class Brands extends Admin
 
         //create
         if (!empty($data["action"]) && $data["action"] == "create") {
-            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
 
             $brandCreate = new Brand();
             $brandCreate->brand_name = $data["brand_name"];
@@ -115,7 +115,7 @@ class Brands extends Admin
 
         //update
         if (!empty($data["action"]) && $data["action"] == "update") {
-            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
             $brandUpdate = (new Brand())->findById($data["brand_id"]);
 
             if (!$brandUpdate) {
@@ -200,7 +200,7 @@ class Brands extends Admin
 
         //delete
         if (!empty($data["action"]) && $data["action"] == "delete") {
-            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
             $brandDelete = (new Brand())->findById($data["brand_id"]);
 
             if (!$brandDelete) {

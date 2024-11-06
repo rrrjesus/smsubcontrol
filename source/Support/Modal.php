@@ -156,6 +156,6 @@ use Source\Core\Session;
          */
         private function filter(string $modal): string
         {
-            return filter_var($modal, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            return filter_var($modal, FILTER_SANITIZE_STRIPPED);
         }
     }

@@ -90,7 +90,7 @@ class Products extends Admin
 
         //create
         if (!empty($data["action"]) && $data["action"] == "create") {
-            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
 
             $productCreate = new Product();
             $productCreate->contract_id = preg_replace("/[^0-9\s]/", "", $data["contract_id"]);
@@ -137,7 +137,7 @@ class Products extends Admin
 
         //update
         if (!empty($data["action"]) && $data["action"] == "update") {
-            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
             $productUpdate = (new Product())->findById($data["product_id"]);
 
             if (!$productUpdate) {
@@ -258,7 +258,7 @@ class Products extends Admin
 
         //delete
         if (!empty($data["action"]) && $data["action"] == "delete") {
-            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
             $productDelete = (new Product())->findById($data["product_id"]);
 
             if (!$productDelete) {

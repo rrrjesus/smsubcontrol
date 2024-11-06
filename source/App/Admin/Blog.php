@@ -94,7 +94,7 @@ class Blog extends Admin
         //create
         if (!empty($data["action"]) && $data["action"] == "create") {
             $content = $data["content"];
-            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
 
             $postCreate = new Post();
             $postCreate->author = $data["author"];
@@ -138,7 +138,7 @@ class Blog extends Admin
         //update
         if (!empty($data["action"]) && $data["action"] == "update") {
             $content = $data["content"];
-            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
             $postEdit = (new Post())->findById($data["post_id"]);
 
             if (!$postEdit) {
@@ -190,7 +190,7 @@ class Blog extends Admin
 
         //delete
         if (!empty($data["action"]) && $data["action"] == "delete") {
-            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
             $postDelete = (new Post())->findById($data["post_id"]);
 
             if (!$postDelete) {
@@ -267,7 +267,7 @@ class Blog extends Admin
     {
         //create
         if (!empty($data["action"]) && $data["action"] == "create") {
-            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
 
             $categoryCreate = new Category();
             $categoryCreate->title = $data["title"];
@@ -304,7 +304,7 @@ class Blog extends Admin
 
         //update
         if (!empty($data["action"]) && $data["action"] == "update") {
-            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
             $categoryEdit = (new Category())->findById($data["category_id"]);
 
             if (!$categoryEdit) {
@@ -350,7 +350,7 @@ class Blog extends Admin
 
         //delete
         if (!empty($data["action"]) && $data["action"] == "delete") {
-            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
             $categoryDelete = (new Category())->findById($data["category_id"]);
 
             if (!$categoryDelete) {

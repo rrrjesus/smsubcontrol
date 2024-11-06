@@ -167,7 +167,7 @@ class Patrimonys extends Admin
 
         //create
         if (!empty($data["action"]) && $data["action"] == "create") {
-            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
 
             $movement_id = preg_replace("/[^0-9\s]/", "", $data["movement_id"]);
             $product_id_number = preg_replace("/[^0-9\s]/", "", $data["product_id"]);
@@ -284,7 +284,7 @@ class Patrimonys extends Admin
 
         //update
         if (!empty($data["action"]) && $data["action"] == "update") {
-            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
 
             $patrimonys_id = $data["patrimonys_id"];
             $movement_id = preg_replace("/[^0-9\s]/", "", $data["movement_id"]);
@@ -476,7 +476,7 @@ class Patrimonys extends Admin
 
         //delete
         if (!empty($data["action"]) && $data["action"] == "delete") {
-            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
             $updateDelete = (new Patrimony())->findById($data["patrimonys_id"]);
 
             if (!$updateDelete) {
