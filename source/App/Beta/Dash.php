@@ -37,22 +37,6 @@ class Dash extends Admin
     public function home(?array $data): void
     {
 
-        //CHART PRINTERS
-
-        $printers = (new Patrimony())
-        ->find("movement_id = :movement AND status = :status AND product_id = :product", "movement=2&status=actived&product=4")
-        ->count();
-
-        $printerstotais = (new Patrimony())
-        ->find("status = :status AND product_id = :product", "status=actived&product=4")
-        ->count();
-
-        $chartprinters = $printers / $printerstotais * 100;
-        $chartprinterstotais = 100 - $chartprinters;
-        $estoqueprinters = $printerstotais - $printers;
-
-        //END CHART PRINTERS
-
         $head = $this->seo->render(
             CONF_SITE_NAME . " | Aplicativo",
             CONF_SITE_DESC,
@@ -104,11 +88,7 @@ class Dash extends Admin
                 "boletim" => (new Patrimony())->find("movement_id = :m AND product_id = :p1 OR movement_id = :m AND product_id = :p2 OR movement_id = :m AND product_id = :p3 OR movement_id = :m AND product_id = :p4", "m=6&p1=1&p2=2&p3=6&p4=7")->count(),
                 "baixa" => (new Patrimony())->find("movement_id = :m AND product_id = :p1 OR movement_id = :m AND product_id = :p2 OR movement_id = :m AND product_id = :p3 OR movement_id = :m AND product_id = :p4", "m=7&p1=1&p2=2&p3=6&p4=7")->count(),
                 "totals" => (new Patrimony())->find("product_id = :p1 OR product_id = :p2 OR product_id = :p3 OR product_id = :p4", "p1=1&p2=2&p3=6&p4=7")->count(),
-            ],
-            "chartprinters" => $chartprinters,
-            "chartprinterstotais" => $chartprinterstotais,
-            "estoqueprinters" => $estoqueprinters,
-            "printers" => $printers
+            ]
         ]);
     }
 
