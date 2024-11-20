@@ -48,9 +48,9 @@
                         <a class="nav-link py-2 px-0 px-lg-2 <?=navbar_active("/sobre")?>" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Sobre" href="<?=url("/sobre")?>">Sobre</a>
                     </li>
 
-                    <li class="nav-item col-6 col-lg-auto">
+                    <!--<li class="nav-item col-6 col-lg-auto">
                         <a class="nav-link py-2 px-0 px-lg-2 <?=navbar_active("/")?>" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Blog" href="<?=url("/")?>">Blog</a>
-                    </li>
+                    </li>-->
                 </ul>
 
                 <hr class="d-lg-none">

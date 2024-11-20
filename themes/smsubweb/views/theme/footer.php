@@ -4,7 +4,7 @@
             <div class="col-lg-3 mb-3">
                 <a data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip"
                    data-bs-title="Agenda de Ramais" class="d-inline-flex align-items-center mb-2 text-body-emphasis text-decoration-none" href="<?=url("/contatos")?>" aria-label=Contatos">
-                    <i class="bi bi-ui-checks fs-1 mb-3 me-2 text-<?=CONF_WEB_COLOR;?> fw-bold"></i>
+                    <img class="img-thumbnail fs-1 mb-3 me-2 " width="120" height="30" src="<?=theme("/assets/images/smsub_logo_home.png")?>">
                     <span class="text-<?=CONF_WEB_COLOR;?> fw-bold fs-6 text-uppercase"><?=CONF_SITE_NAME?></span>
                 </a>
                 <ul class="list-unstyled small">
