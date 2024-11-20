@@ -57,7 +57,7 @@ class Auth extends Model
 
         $view = new View(__DIR__ . "/../../shared/views/email");
         $message = $view->render("confirm", [
-            "user_name" => $user->user_name,
+            "first_name" => $user->first_name,
             "confirm_link" => url("/obrigado/" . base64_encode($user->email))
         ]);
 
@@ -65,10 +65,53 @@ class Auth extends Model
             "Ative sua conta no " . CONF_SITE_NAME,
             $message,
             $user->email,
-            "{$user->user_name}"
+            "{$user->first_name} {$user->last_name}"
         )->send();
 
         return true;
+    }
+
+    /**
+     * @param string $email
+     * @param string $password
+     * @param int $level
+     * @return User|null
+     */
+    public function attempt(string $email, string $password, int $level = 1): ?User
+    {
+        if (!is_email($email)) {
+            $this->message->warning("O e-mail informado não é válido");
+            return null;
+        }
+
+        if (!is_passwd($password)) {
+            $this->message->warning("A senha informada não é válida");
+            return null;
+        }
+
+        $user = (new User())->findByEmail($email);
+
+        if (!$user) {
+            $this->message->error("O e-mail informado não está cadastrado");
+            return null;
+        }
+
+        if (!passwd_verify($password, $user->password)) {
+            $this->message->error("A senha informada não confere");
+            return null;
+        }
+
+        if ($user->level_id < $level) {
+            $this->message->error("Desculpe, mas você não tem permissão para logar-se aqui");
+            return null;
+        }
+
+        if (passwd_rehash($user->password)) {
+            $user->password = $password;
+            $user->save();
+        }
+
+        return $user;
     }
 
     /**
@@ -80,41 +123,15 @@ class Auth extends Model
      */
     public function login(string $email, string $password, bool $save = false, int $level = 1): bool
     {
-        if (!is_email($email)) {
-            $this->message->warning("O e-mail informado não é válido");
+        $user = $this->attempt($email, $password, $level);
+        if (!$user) {
             return false;
         }
 
         if ($save) {
             setcookie("authEmail", $email, time() + 604800, "/");
         } else {
-            setcookie("authEmail", "", time() - 3600, "/");
-        }
-
-        if (!is_passwd($password)) {
-            $this->message->warning("A senha informada não é válida");
-            return false;
-        }
-
-        $user = (new User())->findByEmail($email);
-        if (!$user) {
-            $this->message->error("O e-mail informado não está cadastrado");
-            return false;
-        }
-
-        if (!passwd_verify($password, $user->password)) {
-            $this->message->error("A senha informada não confere");
-            return false;
-        }
-
-        if ($user->level_id < $level) {
-            $this->message->error("Desculpe, mas você não tem permissão para logar-se aqui");
-            return false;
-        }
-
-        if (passwd_rehash($user->password)) {
-            $user->password = $password;
-            $user->save();
+            setcookie("authEmail", null, time() - 3600, "/");
         }
 
         //LOGIN
@@ -140,7 +157,7 @@ class Auth extends Model
 
         $view = new View(__DIR__ . "/../../shared/views/email");
         $message = $view->render("forget", [
-            "user_name" => $user->user_name,
+            "first_name" => $user->first_name,
             "forget_link" => url("/recuperar/{$user->email}|{$user->forget}")
         ]);
 
@@ -148,7 +165,7 @@ class Auth extends Model
             "Recupere sua senha no " . CONF_SITE_NAME,
             $message,
             $user->email,
-            "{$user->user_name}"
+            "{$user->first_name} {$user->last_name}"
         )->send();
 
         return true;
