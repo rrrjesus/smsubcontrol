@@ -1,18 +1,16 @@
 $(document).ready(function() {
-    $('#contact').DataTable({
+    var contact = $('#contact').DataTable({
         drawCallback: function() {
             $('body').tooltip({
                 selector: '[data-bs-togglee="tooltip"]'
             });
         },
         buttons: [
-            // {extend:'excel',title:'Agenda',header: 'Agenda',filename:'Agenda',className: 'btn btn-outline-success',text:'<i class="bi bi-file-earmark-excel"></i>' },
-            // {extend: 'pdfHtml5',exportOptions: {columns: ':visible'},title:'Agenda SMSUB',header: 'Agenda SMSUB',filename:'Agenda SMSUB',orientation: 'portrait',pageSize: 'LEGAL',className: 'btn btn-outline-danger mb-2 mt-2',text:'<i class="bi bi-file-earmark-pdf"></i>'},
-            {extend:'print', exportOptions: {columns: ':visible'},title:'Agenda SMSUB',header: 'Agenda',filename:'Agenda',orientation: 'portrait',className: 'btn btn-outline-secondary mb-2 mt-2',text:'<i class="bi bi-printer"></i>'},
-            {extend:'colvis',titleAttr: 'Select Colunas',className: 'btn btn-outline-smsub mb-2 mt-2',text:'<i class="bi bi-list"></i>'}],
-        "dom": "<'row justify-content-center'<'col-lg-4 col-sm-4 col-md-4 numporpag'l><'col-lg-2 col-sm-2 col-md-2 text-center'B><'col-lg-4 col-sm-4 col-md-4 searchbar mb-3 'f>>" +
-            "<'row justify-content-center'<'col-10'tr>>" +
-            "<'row justify-content-center'<'col-lg-5 col-md-5 col-sm-5'i><'col-lg-5 col-md-5 col-sm-5'p>>",
+            {extend:'print', exportOptions: {columns: ':visible'},title:'Agenda SMSUB',header: 'Agenda SMSUB',filename:'Agenda SMSUB',orientation: 'portrait',className: 'btn btn-outline-secondary mb-2 mt-2',text:'<i class="bi bi-printer"></i>'},
+            {extend:'colvis',titleAttr: 'Select Colunas',className: 'btn btn-outline-smsub mb-2 mt-2',text:'<i class="bi bi-list"></i>'},],
+            "dom": "<'row mt-2 justify-content-between'<'col-lg-5 col-sm-5 col-md-5 numporpag'l><'col-lg-2 col-sm-2 col-md-2 text-center'B><'col-lg-5 col-sm-5 col-md-5 searchbar'f>>" +
+            "<'row mt-2 justify-content-between dt-layout-table'<'col-sm-12'tr>>" +
+            "<'row mt-2 justify-content-between'<'d-md-flex justify-content-between align-items-center dt-layout-start col-md-auto me-auto'i><'d-md-flex justify-content-between align-items-center dt-layout-end col-md-auto ms-auto'p>>",
         responsive:
             {details:
                     {display: DataTable.Responsive.display.modal({
@@ -32,7 +30,9 @@ $(document).ready(function() {
             "oAria": {"sSortAscending": "Ordenar colunas de forma ascendente","sPrevious": "Ordenar colunas de forma descendente"}
         },
         // dom: "lBftipr",
-        "lengthMenu": [[25, 50, -1], [25, 50, "Todos"]],
+        "lengthMenu": [[7, 25, 50, -1], [7, 25, 50, "Todos"]],
         "aaSorting": [0, 'asc']
     });
+
+    $('div.dt-search input', contact.table().container()).focus();
 });

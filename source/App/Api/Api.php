@@ -39,7 +39,7 @@ class Api extends Controller
         }
 
         //(new AppWallet())->start($this->user);
-        //(new AppInvoice())->fixed($this->user, 3);
+        //  (new AppInvoice())->fixed($this->user, 3);
     }
 
     /**
