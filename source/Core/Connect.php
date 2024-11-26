@@ -51,10 +51,8 @@ class Connect
 
     /**
      * Connect clone.
-     * @return void
      */
-    protected function __clone()
+    private function __clone()
     {
-        // TODO: Implement __clone() method.
     }
 }
