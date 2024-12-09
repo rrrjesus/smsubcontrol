@@ -7,13 +7,9 @@
 
 
             <div class="pricing-header mx-auto text-center">
-                <p class="fs-2 fw-normal text-body-emphasis"><i class="bi bi-credit-card-2-front me-2"></i> Gerador de Assinatura de E-mail SMSUB</p>
                 <p class="fs-6 text-body-secondary pt-0">Gerador de assinatura de e-mail no padrão estabelecido no <strong>Manual de Identidade Visual da</strong>
                     <a class="text-decoration-none text-<?=CONF_WEB_COLOR;?> fw-semibold" href="https://www.prefeitura.sp.gov.br/cidade/secretarias/upload/comunicacao/arquivos/manual_identidade_visual/manual_identidade/manual_de_identidade.pdf"
                     target="_blank">SECOM</a></p>
-                <p class="fs-6 text-body-secondary pb-2">Em caso de dúvidas na utilização, acesse o
-                    <a class="text-decoration-none text-<?=CONF_WEB_COLOR;?> fw-semibold" href="<?=url("/themes/smsubiframe/assets/manuais/manual_gerador_de_assinatura_smsub.pdf")?>"
-                       target="_blank">Manual de Criação e Configuração de Assinatura</a></p>
             </div>
 
 

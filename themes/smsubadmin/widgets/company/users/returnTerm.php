@@ -122,7 +122,7 @@ div.WordSection1
 			<tr style='height:44.0pt'>
 				<td width=624 valign=top style='width:467.7pt;border:solid black 1.0pt; padding:0.2cm 5.4pt 0cm 5.4pt;height:44.0pt'>
 					<p class=MsoNormal style='text-align:justify;text-indent:-.1pt'>
-						<span style='font-size:10.0pt;font-family:"Arial",sans-serif'><b>OBSERVAÇÕES :</b> <?=$term->observations?> ID:<?=$term->id?></span></p>
+						<span style='font-size:10.0pt;font-family:"Arial",sans-serif'><b>OBSERVAÇÕES :</b> <?=$term->observations?><br> ID:<?=$term->id?></span></p>
 				</td>
 			</tr>
 		</table>
