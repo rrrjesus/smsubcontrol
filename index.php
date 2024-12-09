@@ -21,6 +21,9 @@ $route->group(null);
 $route->get("/", "Web:home");
 $route->get("/sobre", "Web:about");
 
+//assinatura de email
+$route->get("/email", "Web:creatorCard");
+
 //agenda
 $route->group("/contatos");
 $route->get("/", "Web:contact");
@@ -46,9 +49,6 @@ $route->post("/recuperar", "Web:forget");
 $route->get("/recuperar/{code}", "Web:reset");
 $route->post("/recuperar/resetar", "Web:reset");
 
-//assinatura de email
-$route->get("/email", "Web:creatorCard");
-
 //optin
 $route->group(null);
 $route->get("/confirma", "Web:confirm");
@@ -57,6 +57,19 @@ $route->get("/obrigado/{email}", "Web:success");
 //services
 $route->group(null);
 $route->get("/termos", "Web:terms");
+
+/**
+ * VIEWS ROUTES
+ */
+
+$route->namespace("Source\App");
+$route->group("/iframes");
+
+//agenda iframes
+$route->get("/contatos", "Iframe:contact");
+
+//assinatura de email iframes
+$route->get("/email", "Iframe:creatorCard");
 
 /**
  * APP ROUTES

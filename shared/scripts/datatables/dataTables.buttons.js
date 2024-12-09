@@ -1967,7 +1967,7 @@ Buttons.stripHtmlScript = function (input) {
  * @static
  */
 Buttons.defaults = {
-	buttons: ['copy', 'excel', 'csv', 'pdf', 'print'],
+	buttons: ['buttons-copy', 'buttons-excel', 'buttons-csv', 'buttons-pdf', 'buttons-print'],
 	name: 'main',
 	tabIndex: 0,
 	dom: {
