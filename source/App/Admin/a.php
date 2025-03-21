@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 
 
 <!DOCTYPE html>
@@ -562,3 +563,35 @@ var evolve_js_local_vars = {"theme_url":"http:\/\/10.23.237.79\/smsubcoti\/wp-co
 
 </body>
 </html>
+=======
+<div class="wp-block-button has-custom-width wp-block-button__width-25 has-custom-font-size is-style-outline has-small-font-size">
+    <a class="wp-block-button__link has-white-background-color has-background wp-element-button" href="http://href=&quot;https://sei.prefeitura.sp.gov.br/&quot;" 
+    style="border-radius: 3px; width: 209px; border-width: 2px; border-style: solid; border-color: rgba(0, 0, 0, 0.24); box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.4) 0px 10px 10px -5px;" target="_blank" rel="href=&quot;https://sei.prefeitura.sp.gov.br/&quot; noreferrer noopener">
+        <img class="wp-image-93" style="width: 150px;" src="http://10.23.237.79/smsubcoti/wp-content/uploads/2024/11/sei.png" alt="">
+    </a>
+</div>
+
+<div id="sp-page" class="spBgcover sp-content-1" style="background-color: #ffffff; font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 400;">
+<section id="sp-ks8a8s" class="sp-el-section " style="width: 100%; max-width: 100%; padding: 10px;" data-mobile-visibility="#sp-ks8a8s|false" data-tablet-visibility="#sp-ks8a8s|false" data-desktop-visibility="#sp-ks8a8s|false" data-mobile-css="" data-tablet-css="">
+<div id="sp-vw3kvy" class="sp-el-row sp-w-full  sp-m-auto sm:sp-flex sp-justify-between" style="padding: 0px;" data-mobile-visibility="#sp-vw3kvy|false" data-tablet-visibility="#sp-vw3kvy|false" data-desktop-visibility="#sp-vw3kvy|false" data-mobile-css="" data-tablet-css="">
+<div id="sp-pypsk7" class="sp-el-col  sp-w-full" style="width: calc(33.3333% + 0px);" data-mobile-visibility="#sp-pypsk7|false" data-tablet-visibility="#sp-pypsk7|false" data-desktop-visibility="#sp-pypsk7|false" data-mobile-css="" data-tablet-css="">
+<figure id="sp-nvtfvt" class="sp-image-wrapper sp-el-block" style="margin: 0px; text-align: center;" data-mobile-css="#sp-nvtfvt|text-align:center;" data-tablet-css="#sp-nvtfvt|text-align:center;">
+<figure><a class="sp-inline-block" href="https://sei.prefeitura.sp.gov.br/" target="_blank" rel="noopener"><img class="sp-image-block-nvtfvt" style="border-radius: 3px; width: 209px; border-width: 2px; border-style: solid; border-color: rgba(0, 0, 0, 0.24); box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.4) 0px 10px 10px -5px;" src="http://10.23.237.79/smsubcoti/wp-content/uploads/2024/11/sei.png" srcset=" http://10.23.237.79/smsubcoti/wp-content/uploads/2024/11/sei-150x150.png 150w, http://10.23.237.79/smsubcoti/wp-content/uploads/2024/11/sei-300x158.png 300w, http://10.23.237.79/smsubcoti/wp-content/uploads/2024/11/sei.png 310w" alt="" width="310" height="110" data-mobile-visibility=".sp-image-block-nvtfvt|false" data-tablet-visibility=".sp-image-block-nvtfvt|false" data-desktop-visibility=".sp-image-block-nvtfvt|false"></a></figure><div></div>
+<div id="sp-image-dynamic-tags-js-nvtfvt"><script>jQuery(function() { image_dynamic_tags('nvtfvt' );});</script></div>
+</figure>
+</div>
+<div id="sp-uf1y01" class="sp-el-col  sp-w-full" style="width: calc(33.3333% + 0px);" data-mobile-visibility="#sp-uf1y01|false" data-tablet-visibility="#sp-uf1y01|false" data-desktop-visibility="#sp-uf1y01|false" data-mobile-css="" data-tablet-css="">&nbsp;</div>
+<div id="sp-i8nkjm" class="sp-el-col  sp-w-full" style="width: calc(33.3333% + 0px);" data-mobile-visibility="#sp-i8nkjm|false" data-tablet-visibility="#sp-i8nkjm|false" data-desktop-visibility="#sp-i8nkjm|false" data-mobile-css="" data-tablet-css="">&nbsp;</div>
+</div>
+</section>
+</div>
+
+<div class="wp-block-button has-custom-width wp-block-button__width-25 has-custom-font-size is-style-outline has-small-font-size">
+    <a class="wp-block-button__link has-white-background-color has-background wp-element-button" href="http://href=&quot;https://sei.prefeitura.sp.gov.br/&quot;" style="border-radius:37px" target="_blank" rel="href=&quot;https://sei.prefeitura.sp.gov.br/&quot; noreferrer noopener">
+        <img class="wp-image-93" style="width: 150px;" src="http://10.23.237.79/smsubcoti/wp-content/uploads/2024/11/sei.png" alt="">
+    </a></div>
+
+    <div class="wp-block-button has-custom-width wp-block-button__width-25 has-custom-font-size is-style-fill has-small-font-size"><a class="wp-block-button__link has-white-background-color has-background wp-element-button" href="http://href=&quot;https://sei.prefeitura.sp.gov.br/&quot;" style="border-radius:37px" target="_blank" rel="href=&quot;https://sei.prefeitura.sp.gov.br/&quot; noreferrer noopener">
+        <img class="wp-image-93" style="width: 150px;" src="http://10.23.237.79/smsubcoti/wp-content/uploads/2024/11/sei.png" alt="">
+    </a></div>
+>>>>>>> Stashed changes

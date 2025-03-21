@@ -16,10 +16,9 @@
     <div class="row justify-content-center mb-4">
         <div class="col-12 ml-auto text-center">
             <?=buttonLink("/beta/contatos/cadastrar", "top", "Cadastrar contato", "success", "person", "Cadastrar")?>
-            <?php if(!empty($registers->disabled) && user()->level_id > 3){ ?>
-                <a role="button" href="<?=url("/beta/contatos/desativados")?>" data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip"
-                    data-bs-title="Clique para acessar usuarios desativados" class="btn btn-outline-secondary btn-sm position-relative fw-semibold"><i class="bi bi-telephone-x text-danger me-2 mt-1">
-                    </i> Desativados<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"><?=$registers->disabled?></span></a>
+            <?php 
+                if(!empty($registers->disabled) && user()->level_id > 3){ ?>
+                    <?=buttonLinkDisabled("/beta/contatos/desativados", "top", "Clique para acessar contatos desativados", "secondary", "telephone-x", "Desativados", "2", "D", $registers->disabled)?> 
             <?php } ?>
 
         </div>

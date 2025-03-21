@@ -34,7 +34,7 @@
                             <figure class="highcharts-figure">
                                 <div id="containerTablets"></div>
                                 <p class="highcharts-description text-center">
-                                    Gráfico em tempo real com percentuais de estoque, retirado, reservado, devolvido, assistência, boletim e baixa de tablets.
+                                    Gráfico em tempo real com percentuais de estoque, retirado, reservado, devolvido, assistência, boletim e baixa de tablets do contrato de 2024.
                                 </p>
                             </figure>
                         </div>
@@ -99,7 +99,8 @@
                                     chart.renderer.label(
                                         '<h5>Estoque : <strong><?=$chartPrinters->totals - ($chartPrinters->retirado + $chartPrinters->reservado)?></strong></h5><br/>' +
                                         '<h5>Reservados : <strong><?=$chartPrinters->reservado?></strong></h5><br/>' +
-                                        '<h5>Retirados : <strong><?=$chartPrinters->retirado?></strong></h5>'
+                                        '<h5>Retirados : <strong><?=$chartPrinters->retirado?></strong></h5><br/>' +
+                                        '<h5>Total : <strong><?=$chartPrinters->totals?></strong></h5>'
                                     )
                                         .css({
                                             color: '#000',
@@ -215,7 +216,8 @@
                                     chart.renderer.label(
                                         '<h5>Estoque : <strong><?=$chartTablets->totals - ($chartTablets->retirado + $chartTablets->reservado)?></strong></h5><br/>' +
                                         '<h5>Reservados : <strong><?=$chartTablets->reservado?></strong></h5><br/>' +
-                                        '<h5>Retirados : <strong><?=$chartTablets->retirado?></strong></h5>'
+                                        '<h5>Retirados : <strong><?=$chartTablets->retirado?></strong></h5><br/>' +
+                                        '<h5>Total : <strong><?=$chartTablets->totals?></strong></h5>'
                                     )
                                         .css({
                                             color: '#000',
@@ -332,7 +334,8 @@
                                     chart.renderer.label(
                                         '<h5>Estoque : <strong><?=$chartChips->totals - ($chartChips->retirado + $chartChips->reservado)?></strong></h5><br/>' +
                                         '<h5>Reservados : <strong><?=$chartChips->reservado?></strong></h5><br/>' +
-                                        '<h5>Retirados : <strong><?=$chartChips->retirado?></strong></h5>'
+                                        '<h5>Retirados : <strong><?=$chartChips->retirado?></strong></h5><br/>' +
+                                        '<h5>Total : <strong><?=$chartChips->totals?></strong></h5>'
                                     )
                                         .css({
                                             color: '#000',
@@ -446,9 +449,9 @@
                             if (!customLabel) {
                                 customLabel = chart.options.chart.custom.label =
                                     chart.renderer.label(
-                                        '<h5>Total : <strong><?=$chartTablets2021->totals?></strong></h5><br/>' +
                                         '<h5>A Baixar : <strong><?=$chartTablets2021->totals - $chartTablets2021->baixa?></strong></h5><br/>' +
-                                        '<h5>Com Baixa : <strong><?=$chartTablets2021->baixa?></strong></h5>'
+                                        '<h5>Com Baixa : <strong><?=$chartTablets2021->baixa?></strong></h5><br/>' +
+                                        '<h5>Total : <strong><?=$chartTablets2021->totals?></strong></h5>'
                                     )
                                         .css({
                                             color: '#000',

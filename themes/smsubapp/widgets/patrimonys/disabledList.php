@@ -18,8 +18,8 @@
             <div class="d-flex justify-content-center mb-3">
                 <div class="col-12">
 
-                <div class="row justify-content-center mb-4">
-                    <div class="col-12 ml-auto text-center">
+                    <div class="row justify-content-center mt-4 mb-3">
+                        <div class="col-auto">
                     <?=buttonLink("/beta/patrimonios", "top", "Clique para sair", "danger", "arrow-right-circle", "Sair")?> 
                     </div>
                 </div>
@@ -43,16 +43,15 @@
                             <th class="text-center">OBSERVAÇÕES</th>
                             <th class="text-center">ATIVAR</th>
                         </tr>
-                    </thead>
-                    <tbody class="text-center">
+                        </thead>
+                        <tbody class="text-center">
 
-
-                    </tbody>
+                        </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
-</div>     
+</div>   
 
 

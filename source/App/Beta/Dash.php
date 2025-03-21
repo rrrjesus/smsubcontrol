@@ -60,14 +60,14 @@ class Dash extends Admin
                 "totals" => (new Patrimony())->find("product_id = :p AND status = :s", "p=5&s=actived")->count(),
             ],
             "chartPrinters" => (object) [
-                "estoque" => (new Patrimony())->find("movement_id = :m AND product_id = :p AND status = :s", "m=1&p=4&s=actived")->count(),
-                "retirado" => (new Patrimony())->find("movement_id = :m AND product_id = :p AND status = :s", "m=2&p=4&s=actived")->count(),
+                "estoque" => (new Patrimony())->find("movement_id = :m AND product_id = :p4 AND status = :s OR movement_id = :m AND product_id = :p8 AND status = :s", "m=1&p4=4&p8=8&s=actived")->count(),
+                "retirado" => (new Patrimony())->find("movement_id = :m AND product_id = :p4 AND status = :s OR movement_id = :m AND product_id = :p8 AND status = :s", "m=2&p4=4&p8=8&s=actived")->count(),
                 "reservado" => (new Patrimony())->find("movement_id = :m AND product_id = :p AND status = :s", "m=3&p=4&s=actived")->count(),
                 "devolvido" => (new Patrimony())->find("movement_id = :m AND product_id = :p AND status = :s", "m=4&p=4&s=actived")->count(),
                 "assistencia" => (new Patrimony())->find("movement_id = :m AND product_id = :p AND status = :s", "m=5&p=4&s=actived")->count(),
                 "boletim" => (new Patrimony())->find("movement_id = :m AND product_id = :p AND status = :s", "m=6&p=4&s=actived")->count(),
-                "baixa" => (new Patrimony())->find("movement_id = :m AND product_id = :p AND status = :s", "m=7&p=4&s=actived")->count(),
-                "totals" => (new Patrimony())->find("product_id = :p AND status = :s", "p=4&s=actived")->count(),
+                "baixa" => (new Patrimony())->find("movement_id = :m AND product_id = :p4 AND status = :s OR movement_id = :m AND product_id = :p8 AND status = :s", "m=7&p4=4&p8=8&s=actived")->count(),
+                "totals" => (new Patrimony())->find("product_id = :p4 OR product_id = :p8", "p4=4&p8=8")->count(),
             ],
             "chartChips" => (object) [
                 "estoque" => (new Patrimony())->find("movement_id = :m AND product_id = :p AND status = :s", "m=1&p=3&s=actived")->count(),

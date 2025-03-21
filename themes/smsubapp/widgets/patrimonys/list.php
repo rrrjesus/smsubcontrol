@@ -11,11 +11,11 @@
 
                     <div class="row justify-content-center mt-4 mb-3">
                         <div class="col-auto">
-                        <?=buttonLink("/beta/patrimonio/cadastrar", "top", "Clique para cadastrar patrimônio", "success", "building-add", "Cadastrar", "1", "c")?> 
-                        <?=buttonLink("/beta/patrimonios/historico", "top", "Clique para listar historico de patrimônio", "info", "list-check", "Historico", "1", "h")?> 
-                        <?php if(!empty($registers->disabled)){ ?>
-                            <?=buttonLinkDisabled("/beta/patrimonios/desativados", "top", "Clique para listar os patrimônios desativados", "secondary", "building-add", "Desativados", "2", "D", $registers->disabled)?> 
-                        <?php } ?>
+                            <?=buttonLink("/beta/patrimonio/cadastrar", "top", "Clique para cadastrar patrimônio", "success", "building-add", "Cadastrar", "1", "c")?> 
+                            <?=buttonLink("/beta/patrimonios/historico", "top", "Clique para listar historico de patrimônio", "info", "list-check", "Historico", "1", "h")?> 
+                            <?php if(!empty($registers->disabled)){ ?>
+                                <?=buttonLinkDisabled("/beta/patrimonios/desativados", "top", "Clique para listar os patrimônios desativados", "secondary", "building-add", "Desativados", "2", "D", $registers->disabled)?> 
+                            <?php } ?>
                         </div>
                     </div>
                 

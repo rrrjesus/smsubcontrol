@@ -137,7 +137,7 @@ public function patrimonyHistory(?array $data): void
                 $files = $_FILES["file_terms"];
                 $upload = new Upload();
                 
-                $file_terms = $upload->file($files, $patrimonysUpdate->user_id.'_'.$patrimonysUpdate->type_part_number.'_'.$patrimonysUpdate->part_number);
+                $file_terms = $upload->file($files, $patrimonysUpdate->user_id.'_'.$patrimonysUpdate->user()->user_name.'_'.$patrimonysUpdate->product()->type_part_number.'_'.$patrimonysUpdate->part_number);
 
                 if (!$file_terms) {
                     $json["message"] = $upload->message()->render();
@@ -188,7 +188,7 @@ public function patrimonyHistory(?array $data): void
                 $files = $_FILES["file_terms"];
                 $upload = new Upload();
                 
-                $file_terms = $upload->file($files, $patrimonysHistoryUpdate->user_id.'_'.$patrimonysHistoryUpdate->type_part_number.'_'.$patrimonysHistoryUpdate->part_number);
+                $file_terms = $upload->file($files, $patrimonysHistoryUpdate->user_id.'_'.$patrimonysHistoryUpdate->user()->user_name.'_'.$patrimonysHistoryUpdate->product()->type_part_number.'_'.$patrimonysHistoryUpdate->part_number);
 
                 if (!$file_terms) {
                     $json["message"] = $upload->message()->render();

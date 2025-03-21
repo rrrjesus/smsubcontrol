@@ -174,7 +174,7 @@ class Patrimonys extends Admin
             $product_id = substr($product_id_number, 0, 3);
             $part_number = $data["part_number"];
             $unit_id = $data["unit_id"];
-            $user_id = filter_var($data["user_id"],FILTER_SANITIZE_NUMBER_INT);
+            $user_id = preg_replace("/[^0-9\s]/", "", $data["user_id"]);
             $observations = $data["observations"];
 
             if($data["product_id"] != ''){
@@ -243,7 +243,7 @@ class Patrimonys extends Admin
              if (!empty($_FILES["file_terms"])) {
                 $files = $_FILES["file_terms"];
                 $upload = new Upload();
-                $file_terms = $upload->file($files, $patrimonyCreate->user_id.'_'.$patrimonyCreate->product()->type_part_number.'_'.$patrimonyCreate->part_number);
+                $file_terms = $upload->file($files, $patrimonyCreate->user_id.'_'.$patrimonyCreate->user()->user_name.'_'.$patrimonyCreate->product()->type_part_number.'_'.$patrimonyCreate->part_number);
 
                 if (!$file_terms) {
                     $json["message"] = $upload->message()->render();
@@ -290,7 +290,8 @@ class Patrimonys extends Admin
             $movement_id = preg_replace("/[^0-9\s]/", "", $data["movement_id"]);
             $unit_id_number = preg_replace("/[^0-9\s]/", "", $data["unit_id_edit"]);
             $unit_id = substr($unit_id_number, 0, 2);
-            $user_id = filter_var($data["user_id_edit"],FILTER_SANITIZE_NUMBER_INT);
+            //$user_id = filter_var($data["user_id_edit"],FILTER_SANITIZE_NUMBER_INT);
+            $user_id = preg_replace("/[^0-9\s]/", "", $data["user_id_edit"]);
             $observations = $data["observations"];
 
             $patrimonysUpdate = (new Patrimony())->findById($patrimonys_id);
@@ -360,7 +361,7 @@ class Patrimonys extends Admin
                 $files = $_FILES["file_terms"];
                 $upload = new Upload();
                 
-                $file_terms = $upload->file($files, $patrimonysUpdate->user_id.'_'.$patrimonysUpdate->product()->type_part_number.'_'.$patrimonysUpdate->part_number);
+                $file_terms = $upload->file($files, $patrimonysUpdate->user_id.'_'.$patrimonysUpdate->user()->user_name.'_'.$patrimonysUpdate->product()->type_part_number.'_'.$patrimonysUpdate->part_number);
 
                 if (!$file_terms) {
                     $json["message"] = $upload->message()->render();
