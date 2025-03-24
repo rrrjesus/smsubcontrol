@@ -3,13 +3,12 @@
 namespace Source\Models\Company;
 
 use Source\Core\Model;
-use Source\Models\Company\User;
 
 class Unit extends Model
 {
     public function __construct()
     {
-        parent::__construct("units", ["id"], ["unit_name", "description", "photo", "street", "zip_code", "logo"]);
+        parent::__construct("units", ["id"], ["unit_name", "description", "photo", "email", "street", "zip_code", "logo"]);
     }
 
     /**
@@ -17,7 +16,7 @@ class Unit extends Model
      * @param string $columns
      * @return null|User
      */
-    public function findByEmail(string $email, string $columns = "*"): ?User
+    public function findByEmail(string $email, string $columns = "*"): ?Unit
     {
         $find = $this->find("email = :email", "email={$email}", $columns);
         return $find->fetch();
