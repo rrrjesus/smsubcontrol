@@ -54,7 +54,7 @@ $(function () {
                     emailinp.val(jsonemail);
                     var alias = '@smsub.prefeitura.sp.gov.br';
                     $('.asemail').html(jsonemail + alias);
-                    $("#emailinp").prop('readonly',true);
+                    $("#emailinp").prop('readonly',false);
                 }else{
                     $("#emailinp").prop('readonly',false);
                 }
