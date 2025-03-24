@@ -3,6 +3,7 @@
 namespace Source\Models\Company;
 
 use Source\Core\Model;
+use Source\Models\Company\User;
 
 class Unit extends Model
 {
@@ -115,7 +116,7 @@ class Unit extends Model
     public function save(): bool
     {
 
-        if (!empty($this->email) && (!is_email($this->email))) {
+        if (!is_email($this->email)) {
             $this->message->warning("O e-mail informado não tem um formato válido")->icon();
             return false;
         }
