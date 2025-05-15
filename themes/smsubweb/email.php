@@ -12,10 +12,10 @@
             <div class="pricing-header mx-auto text-center">
                 <p class="fs-2 fw-normal text-body-emphasis"><i class="bi bi-credit-card-2-front me-2"></i> Gerador de Assinatura de E-mail SMSUB</p>
                 <p class="fs-6 text-body-secondary pt-0">Gerador de assinatura de e-mail no padrão estabelecido no <strong>Manual de Identidade Visual da</strong>
-                    <a class="text-decoration-none text-<?=CONF_WEB_COLOR;?> fw-semibold" href="https://www.prefeitura.sp.gov.br/cidade/secretarias/upload/comunicacao/arquivos/manual_identidade_visual/manual_identidade/manual_de_identidade.pdf"
+                    <a class="text-decoration-none text-<?=color_month(date("m"));?> fw-semibold" href="https://www.prefeitura.sp.gov.br/cidade/secretarias/upload/comunicacao/arquivos/manual_identidade_visual/manual_identidade/manual_de_identidade.pdf"
                     target="_blank">SECOM</a></p>
                 <p class="fs-6 text-body-secondary pb-2">Em caso de dúvidas na utilização, acesse o
-                    <a class="text-decoration-none text-<?=CONF_WEB_COLOR;?> fw-semibold" href="<?=url("/themes/smsubweb/assets/manuais/manual_gerador_de_assinatura_smsub.pdf")?>"
+                    <a class="text-decoration-none text-<?=color_month(date("m"));?> fw-semibold" href="<?=url("/themes/smsubweb/assets/manuais/manual_gerador_de_assinatura_smsub.pdf")?>"
                        target="_blank">Manual de Criação e Configuração de Assinatura</a></p>
             </div>
 
@@ -33,20 +33,20 @@
                     <div class="col-4">
                         <strong><label for="inputNome" class="col-4 col-form-label col-form-label-sm">NOME</label></strong>
                         <input tabindex="1" autofocus data-bs-togglee="tooltip" data-bs-placement="top" maxlength="50" data-bs-custom-class="custom-tooltip"
-                                data-bs-title="Comece a digitar seu nome, caso não apareça na lista, digite manualmente" class="form-control form-control-sm border-<?=CONF_WEB_COLOR;?> nomeinp" name="nomeinp" id="nomeinp" type="text" placeholder="DIGITE O NOME COMPLETO"/>
+                                data-bs-title="Comece a digitar seu nome, caso não apareça na lista, digite manualmente" class="form-control form-control-sm border-<?=color_month(date("m"));?> nomeinp" name="nomeinp" id="nomeinp" type="text" placeholder="DIGITE O NOME COMPLETO"/>
                     </div>
 
                     <div class="col-4">
                         <strong><label for="inputCargo" class="col-4 col-form-label col-form-label-sm">CARGO</label></strong>
                         <input tabindex="2" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
-                                data-bs-title="Digite o cargo que você ocupa" class="form-control form-control-sm border-<?=CONF_WEB_COLOR;?> cargoinp" type="text" maxlength="62" name="cargoinp" id="cargoinp" placeholder="DIGITE O CARGO"/>
+                                data-bs-title="Digite o cargo que você ocupa" class="form-control form-control-sm border-<?=color_month(date("m"));?> cargoinp" type="text" maxlength="62" name="cargoinp" id="cargoinp" placeholder="DIGITE O CARGO"/>
                     </div>
 
                     <div class="col-4">
                         <strong><label for="inputSector" class="col-4 col-form-label col-form-label-sm">SETOR</label></strong>
                         <input tabindex="3" data-bs-togglee="tooltip" data-bs-placement="top"
                                 data-bs-custom-class="custom-tooltip"
-                                data-bs-title="Digite o setor em que você trabalha"  class="form-control form-control-sm border-<?=CONF_WEB_COLOR;?> sector" type="text" maxlength="54" id="sector" name="sector" placeholder="DIGITE O SETOR"/>
+                                data-bs-title="Digite o setor em que você trabalha"  class="form-control form-control-sm border-<?=color_month(date("m"));?> sector" type="text" maxlength="54" id="sector" name="sector" placeholder="DIGITE O SETOR"/>
                     </div>
                 </div>
 
@@ -55,7 +55,7 @@
                         <strong><label for="input" class="col-form-label col-form-label-sm">EMAIL</label></strong>
                         <div class="input-group input-group-sm mb-3">
                             <input tabindex="4" type="text" aria-describedby="inputGroupPrepend" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
-                                    data-bs-title="Preenchimento automático !!! Editável apenas se o e-mail não estiver preenchido !!!" class="form-control form-control-sm border-<?=CONF_WEB_COLOR;?> emailinp" id="emailinp"
+                                    data-bs-title="Preenchimento automático !!! Editável apenas se o e-mail não estiver preenchido !!!" class="form-control form-control-sm border-<?=color_month(date("m"));?> emailinp" id="emailinp"
                                     maxlength="47" name="emailinp" placeholder="DIGITE O INÍCIO">
                             <span class="input-group-text" id="inputGroupPrepend">@smsub.prefeitura.sp.gov.br</span>
                         </div>
@@ -65,7 +65,7 @@
                         <strong><label for="inputTelefone" class="col-2 col-form-label col-form-label-sm">RAMAL</label></strong>
                         <div class="input-group  input-group-sm mb-3">
                             <input tabindex="5" type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
-                                    data-bs-title="Apenas se tiver, digite os 4 dígitos do ramal de telefone" class="form-control form-control-sm border-<?=CONF_WEB_COLOR;?> ramalinp" id="ramalinp"
+                                    data-bs-title="Apenas se tiver, digite os 4 dígitos do ramal de telefone" class="form-control form-control-sm border-<?=color_month(date("m"));?> ramalinp" id="ramalinp"
                                     name="ramalinp" maxlength="4" placeholder="DIGITE OS 4 DÍGITOS">
                         </div>
                     </div>
@@ -74,7 +74,7 @@
                         <strong><label for="inputAndar" class="col-2 col-form-label col-form-label-sm">ANDAR</label></strong>
                         <div class="input-group input-group-sm mb-3">
                             <input tabindex="6" type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
-                                    data-bs-title="Apenas se tiver, digite apenas o número do andar" class="form-control form-control-sm border-<?=CONF_WEB_COLOR;?> andarinp" maxlength="2" placeholder="10, 23 ou 24" name="andarinp">
+                                    data-bs-title="Apenas se tiver, digite apenas o número do andar" class="form-control form-control-sm border-<?=color_month(date("m"));?> andarinp" maxlength="2" placeholder="10, 23 ou 24" name="andarinp">
                         <span class="input-group-text">º Andar</span>
                         </div>
                     </div>
@@ -83,7 +83,7 @@
                         <strong><label for="inputSala" class="col-2 col-form-label col-form-label-sm">SALA</label></strong>
                         <div class="input-group  input-group-sm mb-3">
                             <input tabindex="7" type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
-                                    data-bs-title="Apenas se tiver, digite apenas o número e letra da sala" class="form-control form-control-sm border-<?=CONF_WEB_COLOR;?> salainp" maxlength="4" placeholder="Nº e LETRA" name="salainp">
+                                    data-bs-title="Apenas se tiver, digite apenas o número e letra da sala" class="form-control form-control-sm border-<?=color_month(date("m"));?> salainp" maxlength="4" placeholder="Nº e LETRA" name="salainp">
                             <span class="input-group-text">Sala</span>
                         </div>
                     </div>
@@ -94,20 +94,20 @@
                     <div class="col-5">
                         <strong><label for="inputLogoTitle" class="col-4 col-form-label col-form-label-sm">SMSUB/SUBS</label></strong>
                         <input tabindex="8" data-bs-togglee="tooltip" data-bs-placement="top" maxlength="50" data-bs-custom-class="custom-tooltip"
-                                value="SMSUB" data-bs-title="Digite a Secretaria ou Subprefeitura" class="form-control form-control-sm border-<?=CONF_WEB_COLOR;?> secsubinp" name="secsubinp" id="secsubinp" type="text" placeholder="DIGITE A SECRETARIA/SUBPREFEIRURA"/>
+                                value="SMSUB" data-bs-title="Digite a Secretaria ou Subprefeitura" class="form-control form-control-sm border-<?=color_month(date("m"));?> secsubinp" name="secsubinp" id="secsubinp" type="text" placeholder="DIGITE A SECRETARIA/SUBPREFEIRURA"/>
                     </div>
 
                     <div class="col-5">
                         <strong><label for="inputLogoTitle" class="col-4 col-form-label col-form-label-sm">ENDEREÇO</label></strong>
                         <input tabindex="9" data-bs-togglee="tooltip" data-bs-placement="top" maxlength="64" data-bs-custom-class="custom-tooltip"
-                                data-bs-title="Preenchimento automático !!! Mas pode ser editado !!!" class="form-control form-control-sm border-<?=CONF_WEB_COLOR;?> enderecoinp" name="enderecoinp" id="enderecoinp" type="text"
+                                data-bs-title="Preenchimento automático !!! Mas pode ser editado !!!" class="form-control form-control-sm border-<?=color_month(date("m"));?> enderecoinp" name="enderecoinp" id="enderecoinp" type="text"
                                 value="Rua São Bento, 405 - Edifício Martinelli - Centro " placeholder="ENDEREÇO DA SECRETARIA/SUBPREFEIRURA"/>
                     </div>
 
                     <div class="col-2">
                         <strong><label for="inputCep" class="col-4 col-form-label col-form-label-sm">CEP</label></strong>
                         <input tabindex="10" data-bs-togglee="tooltip" data-bs-placement="top" maxlength="9" data-bs-custom-class="custom-tooltip"
-                                value="01011-100" data-bs-title="Preenchimento automático !!! Mas pode ser editado !!!" class="form-control form-control-sm border-<?=CONF_WEB_COLOR;?> cepinp" name="cepinp" id="cepinp" type="text" placeholder="00000-000"/>
+                                value="01011-100" data-bs-title="Preenchimento automático !!! Mas pode ser editado !!!" class="form-control form-control-sm border-<?=color_month(date("m"));?> cepinp" name="cepinp" id="cepinp" type="text" placeholder="00000-000"/>
                     </div>
                 </div>
 

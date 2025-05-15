@@ -30,7 +30,8 @@
     </div>
 </div>
 
-<header class="navbar navbar-expand-lg bd-navbar sticky-top">
+
+<header class="navbar navbar-expand-lg bd-navbar-<?=color_month(date("m"))?> sticky-top">
   <!-- Navbar-->
   <?= $this->insert("views/theme/navbar"); ?>
 </header>

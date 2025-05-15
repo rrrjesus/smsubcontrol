@@ -3,7 +3,7 @@
 /**
  * DATABASE
  */
- define("CONF_DB_HOST", "10.23.237.79");
+ define("CONF_DB_HOST", "10.23.237.242");
  define("CONF_DB_USER", "smsubcoti");
  define("CONF_DB_PASS", "U4cKZ_NI0*2UeSHs");
  define("CONF_DB_NAME", "smsubcontrol");
@@ -11,7 +11,7 @@
  /**
   * PROJECT URLs
   */
- define("CONF_URL_BASE", "http://10.23.237.79/smsubcontrol");
+ define("CONF_URL_BASE", "http://10.23.237.242/smsubcontrol");
  define("CONF_URL_TESTE", "http://127.0.0.1/smsubcontrol");
  define("CONF_URL_ADMIN", "/dashboard");
 
@@ -35,7 +35,7 @@ define("CONF_SITE_ADDR_ZIPCODE", "01011-100");
 /**
  * COLORS
  */
-define("CONF_WEB_COLOR","smsub");
+define("CONF_WEB_COLOR", "smsub");
 define("CONF_VIEW_COLOR","smsub");
 define("CONF_APP_COLOR","success");
 define("CONF_ADMIN_COLOR","dark");
