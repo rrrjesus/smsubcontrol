@@ -24,7 +24,7 @@
 
                     <div class="row justify-content-center mb-4">
                         <div class="col-12 ml-auto text-center">
-                            <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
+                            <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip-<?=color_month()?>"
                                data-bs-title="Clique para listar ramais" class="btn btn-outline-danger btn-sm fw-semibold" href="<?=url("/painel/agenda/ramais/ativados")?>"
                                role="button"><i class="bi bi-arrow-right-circle me-2"></i>Sair</a>
                         </div>

@@ -18,7 +18,7 @@
 
         <label for="esqueciForm" class="form-label"><a class="text-center fw-bold" style="color: #011fcf;" title="Esqueceu a senha?" href="<?= url("/entrar"); ?>">Voltar e entrar !!!</a></label>
 
-        <button class="btn btn-outline-<?=CONF_WEB_COLOR;?> w-100 py-2 fw-bold mt-3" type="submit">Recuperar</button>
+        <button class="btn btn-outline-<?=color_month();?> w-100 py-2 fw-bold mt-3" type="submit">Recuperar</button>
     </form>
     
 </div>

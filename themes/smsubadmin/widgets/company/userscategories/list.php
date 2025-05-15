@@ -41,7 +41,7 @@
                         <?php foreach ($userscategories as $lista): ?>
                         <tr>
                             <td class="text-center fw-semibold"><a href="<?= url("/painel/regimes/editar/{$lista->id}"); ?>" 
-                            role="button" aria-disabled="true" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
+                            role="button" aria-disabled="true" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip-<?=color_month()?>"
                             data-bs-title="Clique para editar" class="btn btn-sm btn-outline-warning rounded-circle fw-bold me-2"><i class="bi bi-pencil text-secondary"></i></a></td>
                             <td class="text-center fw-semibold"><?=$lista->id?></td>
                             <td class="text-center fw-semibold"><?=(!empty($lista->category_name) ? $lista->category_name : "")?></td>

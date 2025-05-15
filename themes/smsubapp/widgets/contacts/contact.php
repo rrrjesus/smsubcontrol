@@ -21,7 +21,7 @@
 
                             <div class="col-6 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputSobreNome"><i class="bi bi-person-add me-1"></i><strong>Unidade</strong></label>
-                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip-<?=color_month()?>" 
                                     data-bs-title="Unit" class="form-control form-control-sm unit_id"
                                     name="unit_id" placeholder="UNIDADE">
                             </div>
@@ -32,7 +32,7 @@
                         
                             <div class="col-6 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputNome"><strong><i class="bi bi-person me-1"></i> Nome</strong></label>
-                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip-<?=color_month()?>" 
                                     data-bs-title="Digite o nome" class="form-control form-control-sm"
                                     name="contact_name" placeholder="NOME">
 
@@ -47,7 +47,7 @@
 
                                 <div class="input-group input-group-sm mb-3">
                                     <span class="input-group-text">4934-</span>
-                                    <input type="text" class="form-control" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                    <input type="text" class="form-control" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip-<?=color_month()?>" 
                                     data-bs-title="Digite o numero do fixo - DDD + 8 dígitos" name="ramal" placeholder="49343000" aria-label="49343000">
                                 </div>
                             </div>
@@ -82,7 +82,7 @@
 
                             <div class="col-6 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputSobreNome"><i class="bi bi-person-add me-1"></i><strong>Unidade</strong></label>
-                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip-<?=color_month()?>" 
                                     data-bs-title="Unit" class="form-control form-control-sm unit_id"
                                     name="unit_id" placeholder="UNIDADE" value="<?=$contacts->unit()->id.' - '.$contacts->unit()->unit_name?>">
                             </div>
@@ -93,7 +93,7 @@
 
                             <div class="col-6 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputNome"><strong><i class="bi bi-person me-1"></i> Nome</strong></label>
-                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip-<?=color_month()?>" 
                                     data-bs-title="Digite o nome" class="form-control form-control-sm"
                                     name="contact_name" placeholder="NOME" value="<?=$contacts->contact_name?>">
 
@@ -107,7 +107,7 @@
 
                                 <div class="input-group input-group-sm mb-3">
                                     <span class="input-group-text">4934-</span>
-                                    <input type="text" class="form-control" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                    <input type="text" class="form-control" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip-<?=color_month()?>" 
                                     data-bs-title="Digite o numero do fixo - DDD + 8 dígitos" name="ramal" placeholder="49343000" aria-label="49343000" 
                                     value="<?=$contacts->ramal?>">
                                 </div>

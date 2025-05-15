@@ -91,11 +91,11 @@ class User extends Model
 
     if ($this->status == "registered") {
         return '<span class="badge fw-semibold text-bg-warning pt-2 pb-2 mt-2" data-bs-togglee="tooltip" 
-                    data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Falta acesso ao e-mail de confirmação">
+                    data-bs-placement="top" data-bs-custom-class="custom-tooltip-<?=color_month()?>" data-bs-title="Falta acesso ao e-mail de confirmação">
                     Registrado</span>';
     } elseif ($this->status == "confirmed") {
         return '<span class="badge fw-semibold text-bg-success text-light pt-2 pb-2 mt-2" data-bs-togglee="tooltip" 
-                    data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Usuário confirmou">CONFIRMADO</span>';
+                    data-bs-placement="top" data-bs-custom-class="custom-tooltip-<?=color_month()?>" data-bs-title="Usuário confirmou">CONFIRMADO</span>';
     } else {
         return '<span class="badge fw-semibold text-bg-danger pt-2 pb-2 mt-2">INATIVO</span>';
     }

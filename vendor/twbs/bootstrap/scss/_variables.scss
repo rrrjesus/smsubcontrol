@@ -309,6 +309,7 @@ $danger:        $red !default;
 $light:         $gray-100 !default;
 $dark:          $gray-900 !default;
 $smsub:         $smsub !default;
+$purple:        $purple !default;
 // scss-docs-end theme-color-variables
 
 // scss-docs-start theme-colors-map
@@ -321,7 +322,8 @@ $theme-colors: (
   "danger":     $danger,
   "light":      $light,
   "dark":       $dark,
-  "smsub":      $smsub
+  "smsub":      $smsub,
+  "purple":     $purple
 ) !default;
 // scss-docs-end theme-colors-map
 
@@ -335,6 +337,7 @@ $danger-text-emphasis:    shade-color($danger, 60%) !default;
 $light-text-emphasis:     $gray-700 !default;
 $dark-text-emphasis:      $gray-700 !default;
 $smsub-text-emphasis:   shade-color($smsub, 60%) !default;
+$purple-text-emphasis:   shade-color($purple, 60%) !default;
 // scss-docs-end theme-text-variables
 
 // scss-docs-start theme-bg-subtle-variables
@@ -347,6 +350,7 @@ $danger-bg-subtle:        tint-color($danger, 80%) !default;
 $light-bg-subtle:         mix($gray-100, $white) !default;
 $dark-bg-subtle:          $gray-400 !default;
 $smsub-bg-subtle:         tint-color($smsub, 80%) !default;
+$purple-bg-subtle:         tint-color($purple, 80%) !default;
 // scss-docs-end theme-bg-subtle-variables
 
 // scss-docs-start theme-border-subtle-variables
@@ -359,6 +363,7 @@ $danger-border-subtle:    tint-color($danger, 60%) !default;
 $light-border-subtle:     $gray-200 !default;
 $dark-border-subtle:      $gray-500 !default;
 $smsub-border-subtle:     tint-color($smsub, 60%) !default;
+$purple-border-subtle:     tint-color($purple, 60%) !default;
 // scss-docs-end theme-border-subtle-variables
 
 // Characters which are escaped by the escape-svg function
@@ -783,6 +788,7 @@ $table-variants: (
   "warning":    shift-color($warning, $table-bg-scale),
   "danger":     shift-color($danger, $table-bg-scale),
   "smsub":      shift-color($smsub, $table-bg-scale),
+  "purple":     shift-color($purple, $table-bg-scale),
   "light":      $light,
   "dark":       $dark,
 ) !default;

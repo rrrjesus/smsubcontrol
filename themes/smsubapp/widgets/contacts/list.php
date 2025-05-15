@@ -44,7 +44,7 @@
                 <?php foreach ($contacts as $lista): ?>
                     <tr>
                         <td class="text-center"><a href="contatos/editar/<?=$lista->id?>" data-bs-togglee="tooltip" 
-                            data-bs-placement="right" data-bs-custom-class="custom-tooltip" data-bs-title="Clique para editar <?=$lista->contact_name?>" role="button" 
+                            data-bs-placement="right" data-bs-custom-class="custom-tooltip-<?=color_month()?>" data-bs-title="Clique para editar <?=$lista->contact_name?>" role="button" 
                             class="btn btn-outline-warning rounded-circle btn-sm text-center <?php if(user()->level_id < 3){echo 'disabled';}?>"><i class="bi bi-pencil text-<?=CONF_APP_COLOR?>"></i></a></td>
                         <td class="text-center text-uppercase"><?=$lista->contact_name;?></td>
                         <td class="text-center">4934-<?=$lista->ramal;?></td>

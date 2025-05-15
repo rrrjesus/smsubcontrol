@@ -14,11 +14,13 @@ $bd-callout-variants: primary, secondary, success, danger, warning, info !defaul
   --bd-violet: #{$bd-violet};
   --bd-smsub: #{$bd-smsub};
   --bd-accent: #{$bd-accent};
+  --bd-purple-rgb: #{to-rgb($bd-purple)};
   --bd-violet-rgb: #{to-rgb($bd-violet)};
   --bd-smsub-rgb: #{to-rgb($bd-smsub)};
   --bd-accent-rgb: #{to-rgb($bd-accent)};
   --bd-pink-rgb: #{to-rgb($pink-500)};
   --bd-teal-rgb: #{to-rgb($teal-500)};
+  --bd-purple-bg: var(--bd-purple);
   --bd-violet-bg: var(--bd-violet);
   --bd-smsub-bg: var(--bd-smsub);
   --bd-toc-color: var(--bd-smsub);
@@ -29,6 +31,8 @@ $bd-callout-variants: primary, secondary, success, danger, warning, info !defaul
 }
 
 @include color-mode(dark, true) {
+  --bd-purple: #{mix($bd-purple, $white, 75%)};
+  --bd-purple-bg: #{$bd-purple};
   --bd-violet: #{mix($bd-violet, $white, 75%)};
   --bd-violet-bg: #{$bd-violet};
   --bd-smsub: #{mix($bd-smsub, $white, 75%)};

@@ -13,11 +13,11 @@
 
     <div class="row justify-content-center mb-4">
         <div class="col-12 ml-auto text-center">
-            <a data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip"
+            <a data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip-<?=color_month()?>"
                 data-bs-title="Clique para cadastrar novo colaborador" class="btn btn-outline-success btn-sm me-3 fw-semibold" href="<?=url("/painel/usuarios/cadastrar")?>"
                 role="button"><i class="bi bi-telephone-plus me-2 mt-1"></i>Cadastrar</a>
             <?php if(!empty($registers->disabled)){ ?>
-                <a role="button" href="<?=url("/painel/usuarios/desativados")?>" data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip"
+                <a role="button" href="<?=url("/painel/usuarios/desativados")?>" data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip-<?=color_month()?>"
                     data-bs-title="Clique para acessar usuarios desativados" class="btn btn-outline-secondary btn-sm position-relative fw-semibold"><i class="bi bi-telephone-x text-danger me-2 mt-1">
                     </i> Desativados<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"><?=$registers->disabled?></span></a>
             <?php } ?>
@@ -51,7 +51,7 @@
                     <tr>
                         <td class="text-center"><?=$lista->id?></td>
                         <td class="text-center"><a href="usuarios/editar/<?=$lista->id?>" data-bs-togglee="tooltip" 
-                            data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                            data-bs-placement="top" data-bs-custom-class="custom-tooltip-<?=color_month()?>" 
                             data-bs-title="Clique para editar <?=$lista->user_name?>" role="button" 
                             class="btn btn-outline-secondary rounded-circle btn-sm text-center">
                             <i class="bi bi-person-gear text-dark"></i></a></td>

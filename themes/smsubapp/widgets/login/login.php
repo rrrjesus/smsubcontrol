@@ -28,7 +28,7 @@
             </label>
         </div>
 
-        <button class="btn btn-outline-<?=CONF_WEB_COLOR;?> w-100 py-2 fw-bold" type="submit">Entrar</button>
+        <button class="btn btn-outline-<?=color_month();?> w-100 py-2 fw-bold" type="submit">Entrar</button>
     
     </form>
 

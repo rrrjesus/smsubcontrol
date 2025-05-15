@@ -13,11 +13,11 @@
 
     <div class="row justify-content-center mb-4">
         <div class="col-12 ml-auto text-center">
-            <a data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip"
+            <a data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip-<?=color_month()?>"
                 data-bs-title="Clique para cadastrar novo colaborador" class="btn btn-outline-success btn-sm me-3 fw-semibold" href="<?=url("/painel/unidades/cadastrar")?>"
                 role="button"><i class="bi bi-telephone-plus me-2 mt-1"></i>Cadastrar</a>
                 <?php if(!empty($registers->disabled)){ ?>
-                <a role="button" href="<?=url("/painel/unidades/desativadas")?>" data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip"
+                <a role="button" href="<?=url("/painel/unidades/desativadas")?>" data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip-<?=color_month()?>"
                     data-bs-title="Clique para acessar unidades desativadas" class="btn btn-outline-secondary btn-sm position-relative fw-semibold"><i class="bi bi-telephone-x text-danger me-2 mt-1">
                     </i> Desativadas<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"><?=$registers->disabled?></span></a>
             <?php } ?>
@@ -49,7 +49,7 @@
                 <?php foreach ($units as $lista): ?>
                     <tr>
                         <td class="text-center"><a href="unidades/editar/<?=$lista->id?>" data-bs-togglee="tooltip" 
-                            data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                            data-bs-placement="top" data-bs-custom-class="custom-tooltip-<?=color_month()?>" 
                             data-bs-title="Clique para editar <?=$lista->unit_name?>" role="button" 
                             class="btn btn-outline-warning rounded-circle btn-md text-center"><?=$lista->id;?>
                             <i class="bi bi-pencil text-secundary"></i></a></td>

@@ -25,7 +25,7 @@
 
                             <div class="col-6 mb-1">
                                 <label class="col-form-label col-form-label-sm" for="inputCargo"><strong><i class="bi bi-person me-1"></i> Regime</strong></label>
-                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip-<?=color_month()?>" 
                                     data-bs-title="Digite o Regime do Servidor" class="form-control form-control-sm"
                                     name="category_name" placeholder="Regime do Servidor">
 
@@ -63,7 +63,7 @@
                             <div class="col-6 mb-1">
 
                                 <label class="col-form-label col-form-label-sm" for="inputCargo"><strong><i class="bi bi-person me-1"></i> Regime</strong></label>
-                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 
+                                <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip-<?=color_month()?>" 
                                     data-bs-title="Digite o Regime do Servidor" class="form-control form-control-sm"
                                     name="category_name" placeholder="Regime do Servidor" value="<?=$usercategory->category_name?>">
 
