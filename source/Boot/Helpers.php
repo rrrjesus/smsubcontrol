@@ -328,16 +328,37 @@ function theme(string $path = null, string $theme = CONF_VIEW_THEME): string
             $date = "purple";
             break;
          case "02":
-             $date = "purple";
+             $date = "orange";
              break;
          case "03":
-             $date = "pink";
+             $date = "smsub";
              break;
          case "04":
              $date = "success";
              break;
          case "05":
-             $date = "purple";
+             $date = "warning";
+             break;
+        case "06":
+             $date = "danger";
+             break;
+        case "07":
+             $date = "success";
+             break;
+        case "08":
+             $date = "warning";
+             break;
+        case "09":
+             $date = "danger";
+             break;
+        case "10":
+             $date = "pink";
+             break;
+        case "11":
+             $date = "info";
+             break;
+        case "12":
+             $date = "danger";
              break;
          default:
              $date = "smsub";
@@ -356,7 +377,7 @@ function theme(string $path = null, string $theme = CONF_VIEW_THEME): string
             $slide = "/assets/images/maio.jpg";
             break;
          case "02":
-             $slide = "/assets/images/maio.jpg";
+             $slide = "/assets/images/slides_meses/maio.jpg";
              break;
          case "03":
              $slide = "/assets/images/maio.jpg";
@@ -365,7 +386,7 @@ function theme(string $path = null, string $theme = CONF_VIEW_THEME): string
              $slide = "/assets/images/maio.jpg";
              break;
          case "05":
-             $slide = "/assets/images/maio.jpg";
+             $slide = "/assets/images/slides_meses/maio.jpg";
              break;
          default:
              $slide = "/assets/images/help_desk_coti.jpg";

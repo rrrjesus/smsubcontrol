@@ -1,6 +1,13 @@
 // Local docs variables
-$bd-purple:        #6f42c1;
+$bd-danger:        #dc3545;
+$bd-success:       #28a745;
+$bd-warning:       #e0a800;
+$bd-orange:        #fd7e14;
 $bd-smsub:         #011fcf;
+$bd-rose:          #e992ac;
+$bd-pink:          #d63384;
+$bd-purple:        #6f42c1;
+$bd-info:          #0dcaf0;
 $bd-violet:        lighten(saturate($bd-purple, 5%), 15%); // stylelint-disable-line function-disallowed-list
 $bd-purple-light:  lighten(saturate($bd-purple, 5%), 45%); // stylelint-disable-line function-disallowed-list
 $bd-accent:        #ffe484;
@@ -10,19 +17,41 @@ $bd-callout-variants: primary, secondary, success, danger, warning, info !defaul
 
 :root,
 [data-bs-theme="light"] {
-  --bd-purple: #{$bd-purple};
-  --bd-violet: #{$bd-violet};
+  --bd-danger:  #{$bd-danger};
+  --bd-success:  #{$bd-success};
+  --bd-warning: #{$bd-warning};
+  --bd-orange: #{$bd-orange};
   --bd-smsub: #{$bd-smsub};
+  --bd-rose:  #{$bd-rose};
+  --bd-pink:  #{$bd-pink};
+  --bd-purple: #{$bd-purple};
+  --bd-info: #{$bd-info};
+  --bd-violet: #{$bd-violet};
   --bd-accent: #{$bd-accent};
-  --bd-purple-rgb: #{to-rgb($bd-purple)};
-  --bd-violet-rgb: #{to-rgb($bd-violet)};
+
+  --bd-danger-rgb: #{to-rgb($bd-danger)};
+  --bd-success-rgb: #{to-rgb($bd-success)};
+  --bd-warning-rgb: #{to-rgb($bd-warning)};
+  --bd-orange-rgb: #{to-rgb($bd-orange)};
   --bd-smsub-rgb: #{to-rgb($bd-smsub)};
+  --bd-rose-rgb: #{to-rgb($bd-rose)};
+  --bd-pink-rgb: #{to-rgb($bd-pink)};
+  --bd-purple-rgb: #{to-rgb($bd-purple)};
+  --bd-info-rgb: #{to-rgb($bd-info)};
+  --bd-violet-rgb: #{to-rgb($bd-violet)};
   --bd-accent-rgb: #{to-rgb($bd-accent)};
-  --bd-pink-rgb: #{to-rgb($pink-500)};
   --bd-teal-rgb: #{to-rgb($teal-500)};
-  --bd-purple-bg: var(--bd-purple);
-  --bd-violet-bg: var(--bd-violet);
+
+  --bd-danger-bg: var(--bd-danger);
+  --bd-success-bg: var(--bd-success);
+  --bd-warning-bg: var(--bd-warning);
+  --bd-orange-bg: var(--bd-orange);
   --bd-smsub-bg: var(--bd-smsub);
+  --bd-rose-bg: var(--bd-rose);
+  --bd-pink-bg: var(--bd-pink);
+  --bd-purple-bg: var(--bd-purple);
+  --bd-info-bg: var(--bd-info);
+  --bd-violet-bg: var(--bd-violet);
   --bd-toc-color: var(--bd-smsub);
   --bd-sidebar-link-bg: rgba(var(--bd-smsub-rgb), .1);
   --bd-callout-link: #{to-rgb($blue-600)};
@@ -31,12 +60,26 @@ $bd-callout-variants: primary, secondary, success, danger, warning, info !defaul
 }
 
 @include color-mode(dark, true) {
-  --bd-purple: #{mix($bd-purple, $white, 75%)};
-  --bd-purple-bg: #{$bd-purple};
-  --bd-violet: #{mix($bd-violet, $white, 75%)};
-  --bd-violet-bg: #{$bd-violet};
+  --bd-danger: #{mix($bd-danger, $white, 75%)};
+  --bd-danger-bg: #{$bd-danger};
+  --bd-success: #{mix($bd-success, $white, 75%)};
+  --bd-success-bg: #{$bd-success};
+  --bd-warning: #{mix($bd-warning, $white, 75%)};
+  --bd-warning-bg: #{$bd-warning};
+  --bd-orange: #{mix($bd-orange, $white, 75%)};
+  --bd-orange-bg: #{$bd-orange};
   --bd-smsub: #{mix($bd-smsub, $white, 75%)};
   --bd-smsub-bg: #{$bd-smsub};
+  --bd-rose: #{mix($bd-rose, $white, 75%)};
+  --bd-rose-bg: #{$bd-rose};
+  --bd-pink: #{mix($bd-pink, $white, 75%)};
+  --bd-pink-bg: #{$bd-pink};
+  --bd-purple: #{mix($bd-purple, $white, 75%)};
+  --bd-purple-bg: #{$bd-purple};
+  --bd-info: #{mix($bd-info, $white, 75%)};
+  --bd-info-bg: #{$bd-info};
+  --bd-violet: #{mix($bd-violet, $white, 75%)};
+  --bd-violet-bg: #{$bd-violet};
   --bd-toc-color: var(--#{$prefix}emphasis-color);
   --bd-sidebar-link-bg: rgba(#{to-rgb(mix($bd-smsub, $black, 75%))}, .5);
   --bd-callout-link: #{to-rgb($blue-300)};

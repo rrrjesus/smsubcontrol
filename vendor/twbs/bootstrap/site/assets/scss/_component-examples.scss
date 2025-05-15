@@ -219,10 +219,43 @@
 }
 
 // scss-docs-start custom-tooltip
+.custom-tooltip-danger {
+  --bs-tooltip-bg: var(--bd-danger-bg);
+  --bs-tooltip-color: var(--bs-white);
+}
+.custom-tooltip-success {
+  --bs-tooltip-bg: var(--bd-success-bg);
+  --bs-tooltip-color: var(--bs-white);
+}
+.custom-tooltip-warning {
+  --bs-tooltip-bg: var(--bd-warning-bg);
+  --bs-tooltip-color: var(--bs-white);
+}
+.custom-tooltip-orange {
+  --bs-tooltip-bg: var(--bd-orange-bg);
+  --bs-tooltip-color: var(--bs-white);
+}
+.custom-tooltip-smsub {
+  --bs-tooltip-bg: var(--bd-smsub-bg);
+  --bs-tooltip-color: var(--bs-white);
+}
+.custom-tooltip-rose {
+  --bs-tooltip-bg: var(--bd-rose-bg);
+  --bs-tooltip-color: var(--bs-white);
+}
+.custom-tooltip-pink {
+  --bs-tooltip-bg: var(--bd-pink-bg);
+  --bs-tooltip-color: var(--bs-white);
+}
 .custom-tooltip-purple {
   --bs-tooltip-bg: var(--bd-purple-bg);
   --bs-tooltip-color: var(--bs-white);
 }
+.custom-tooltip-info {
+  --bs-tooltip-bg: var(--bd-info-bg);
+  --bs-tooltip-color: var(--bs-white);
+}
+
 // scss-docs-end custom-tooltip
 
 // scss-docs-start custom-popovers
