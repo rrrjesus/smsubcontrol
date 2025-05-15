@@ -29,7 +29,7 @@
                 </div>
 
                 <label for="esqueciForm" class="form-label">
-                    <a class="text-<?=color_month(date("m"))?> text-center fw-bold" data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip" 
+                    <a class="text-<?=CONF_WEB_COLOR?> text-center fw-bold" data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip" 
                     data-bs-title="Clique para recuperar sua senha" href="<?= url("/recuperar"); ?>">Esqueceu a senha?</a>
                 </label>
                 <div class="form-floating">
@@ -47,6 +47,6 @@
                         Lembrar dados?
                     </label>
                 </div>
-                <button class="btn btn-outline-<?=color_month(date("m"));?> w-100 py-2 fw-bold" type="submit">Entrar</button>
+                <button class="btn btn-outline-<?=CONF_WEB_COLOR;?> w-100 py-2 fw-bold" type="submit">Entrar</button>
             </form>
         </div>

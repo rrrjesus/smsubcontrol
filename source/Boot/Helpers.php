@@ -329,67 +329,6 @@ function image(?string $image, int $width, int $height = null): ?string
 }
 
 /**
- * @return date
- */
-
-function color_month(): string
-{
-
-    $date = date("m");
-
-    switch($date) {
-        case "01":
-           $date = "purple";
-           break;
-        case "02":
-            $date = "purple";
-            break;
-        case "03":
-            $date = "pink";
-            break;
-        case "04":
-            $date = "success";
-            break;
-        case "05":
-            $date = "warning";
-            break;
-        default:
-            $date = "smsub";
-    }
-
-    return $date;
-
-}
-
-function slide_month(): string {
-
-    $date = date("m");
-
-    switch($date) {
-        case "01":
-           $slide = "/assets/images/maio.jpg";
-           break;
-        case "02":
-            $slide = "/assets/images/maio.jpg";
-            break;
-        case "03":
-            $slide = "/assets/images/maio.jpg";
-            break;
-        case "04":
-            $slide = "/assets/images/maio.jpg";
-            break;
-        case "05":
-            $slide = "/assets/images/maio.jpg";
-            break;
-        default:
-            $slide = "/assets/images/help_desk_coti.jpg";
-    }
-
-    return $slide;
-}
-
-
-/**
  * ################
  * ###  BUTTONS ###
  * ################

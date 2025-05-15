@@ -5,18 +5,12 @@
   <?= $this->insert("views/theme/breadcrumb"); ?>
 
 <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-    <p class="fs-2 fw-normal text-body-emphasis pb-0"><i class="bi bi-book-half text-<?=color_month(date("m"))?>"></i> Agenda Inteligente SMSUB</p>
+    <p class="fs-2 fw-normal text-body-emphasis pb-0"><i class="bi bi-book-half text-<?=CONF_WEB_COLOR?>"></i> Agenda Inteligente SMSUB</p>
     <p class="fs-6 text-body-secondary pt-0">Na barra <strong>Pesquisar</strong> cada espaço aplicado interliga as palavras digitadas para a pesquisa inteligente</p>
 </div>
 
-<style>
-    .page-link {color: var(--bs-<?=color_month(date("m"));?>);}
-    .pagination {--bs-link-hover-color: var(--bs-<?=color_month(date("m"));?>);}
-    .page-item.active .page-link {color: #ffffff;background-color: var(--bs-<?=color_month(date("m"));?>);border-color: var(--bs-<?=color_month(date("m"));?>);}
-</style>
-
-<table id="contact" class="table table-hover table-bordered table-sm border-<?=color_month(date("m"))?> p-2" style="width:100%">
-    <thead class="table-<?=color_month(date("m"))?>">
+<table id="contact" class="table table-hover table-bordered table-sm border-<?=CONF_WEB_COLOR?> p-2" style="width:100%">
+    <thead class="table-<?=CONF_WEB_COLOR?>">
     <tr>
         <th class="text-center">NOME</th>
         <th class="text-center">SETOR</th>

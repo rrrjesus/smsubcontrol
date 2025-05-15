@@ -9,24 +9,24 @@
 
     <div class="carousel-inner">
         <div class="carousel-item active" data-bs-interval="10000">
-            <img src="<?=theme(slide_month())?>" width="100%" height="100%">
-            <!-- <div class="container">
-                <div class="carousel-caption" style="text-shadow: 0.05em 0.05em 0.1em #eeb806">
-                    <h1 class="text-dark">Service Desk COTI.</h1>
-                    <p class="text-dark">As vantagens e agilidade que o serviço de suporte traz para seu dia dia na SMSUB.</p>
-                    <p><a class="btn btn-lg btn-<?=color_month(date("m"));?> text-light" href="<?=url("/contatos")?>" data-bs-togglee="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="Clique para acessar os Contatos">Agenda de Contatos</a></p>
+            <img src="<?=theme("/assets/images/help_desk_coti.jpg")?>" width="100%" height="100%">
+            <div class="container">
+                <div class="carousel-caption" style="text-shadow: 0.1em 0.1em 0.2em #063cee">
+                    <h1>Service Desk COTI.</h1>
+                    <p>As vantagens e agilidade que o serviço de suporte traz para seu dia dia na SMSUB.</p>
+                    <p><a class="btn btn-lg btn-<?=CONF_WEB_COLOR;?> text-light" href="<?=url("/contatos")?>" data-bs-togglee="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="Clique para acessar os Contatos">Agenda de Contatos</a></p>
                 </div>
-            </div> -->
+            </div>
         </div>
         <div class="carousel-item" data-bs-interval="20000">
-            <img src="<?=theme("/assets/images/ass_email_carrosseul1.jpg")?>" width="100%" height="100%">
+            <img src="<?=theme("/assets/images/ass_email_carrosseul.jpg")?>" width="100%" height="100%">
             <div class="container">
-                <div class="carousel-caption" style="text-shadow: 0.05em 0.05em 0.1em #eeb806">
+                <div class="carousel-caption" style="text-shadow: 0.05em 0.05em 0.1em #06b8ee">
                     <h1 class="text-dark">Gerador de Assinatura de E-mail.</h1>
                     <p class="text-dark">Mais uma ferramenta para facilitar seu dia a dia , basta preencher seus dados e gerar sua assinatura de e-mail na hora.</p>
                     <p>
-                        <a class="btn btn-lg btn-<?=color_month(date("m"));?> text-light me-5" href="<?=url("/contatos")?>" data-bs-togglee="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="Clique para acessar os Contatos"><i class="bi bi-book-half me-2"></i>Agenda de Contatos</a>
-                        <a class="btn btn-lg btn-<?=color_month(date("m"));?> text-light" href="<?=url("/email")?>" data-bs-togglee="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="Clique para acessar o Gerador de Assinatura de E-mail"><i class="bi bi-card-heading me-2"></i>Assinatura de E-mail</a></p>
+                        <a class="btn btn-lg btn-<?=CONF_WEB_COLOR;?> text-light me-5" href="<?=url("/contatos")?>" data-bs-togglee="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="Clique para acessar os Contatos"><i class="bi bi-book-half me-2"></i>Agenda de Contatos</a>
+                        <a class="btn btn-lg btn-<?=CONF_WEB_COLOR;?> text-light" href="<?=url("/email")?>" data-bs-togglee="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="Clique para acessar o Gerador de Assinatura de E-mail"><i class="bi bi-card-heading me-2"></i>Assinatura de E-mail</a></p>
                 </div>
             </div>
         </div>

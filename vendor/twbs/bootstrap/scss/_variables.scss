@@ -41,7 +41,6 @@ $smsub:   #011fcf !default;
 $indigo:  #6610f2 !default;
 $purple:  #6f42c1 !default;
 $pink:    #d63384 !default;
-$rose:    #ffcbdb !default;
 $red:     #dc3545 !default;
 $orange:  #fd7e14 !default;
 $yellow:  #e0a800 !default;
@@ -57,7 +56,6 @@ $colors: (
   "indigo":     $indigo,
   "purple":     $purple,
   "pink":       $pink,
-  "rose":       $rose,
   "red":        $red,
   "orange":     $orange,
   "yellow":     $yellow,
@@ -311,8 +309,6 @@ $danger:        $red !default;
 $light:         $gray-100 !default;
 $dark:          $gray-900 !default;
 $smsub:         $smsub !default;
-$pink:          $pink !default;
-$rose:          $rose !default;
 // scss-docs-end theme-color-variables
 
 // scss-docs-start theme-colors-map
@@ -325,9 +321,7 @@ $theme-colors: (
   "danger":     $danger,
   "light":      $light,
   "dark":       $dark,
-  "smsub":      $smsub,
-  "pink":       $pink,
-  "rose":       $rose
+  "smsub":      $smsub
 ) !default;
 // scss-docs-end theme-colors-map
 
@@ -341,8 +335,6 @@ $danger-text-emphasis:    shade-color($danger, 60%) !default;
 $light-text-emphasis:     $gray-700 !default;
 $dark-text-emphasis:      $gray-700 !default;
 $smsub-text-emphasis:   shade-color($smsub, 60%) !default;
-$pink-text-emphasis:   shade-color($pink, 60%) !default;
-$rose-text-emphasis:   shade-color($rose, 60%) !default;
 // scss-docs-end theme-text-variables
 
 // scss-docs-start theme-bg-subtle-variables
@@ -355,8 +347,6 @@ $danger-bg-subtle:        tint-color($danger, 80%) !default;
 $light-bg-subtle:         mix($gray-100, $white) !default;
 $dark-bg-subtle:          $gray-400 !default;
 $smsub-bg-subtle:         tint-color($smsub, 80%) !default;
-$pink-bg-subtle:         tint-color($pink, 80%) !default;
-$rose-bg-subtle:         tint-color($rose, 80%) !default;
 // scss-docs-end theme-bg-subtle-variables
 
 // scss-docs-start theme-border-subtle-variables
@@ -369,8 +359,6 @@ $danger-border-subtle:    tint-color($danger, 60%) !default;
 $light-border-subtle:     $gray-200 !default;
 $dark-border-subtle:      $gray-500 !default;
 $smsub-border-subtle:     tint-color($smsub, 60%) !default;
-$pink-border-subtle:     tint-color($pink, 60%) !default;
-$rose-border-subtle:     tint-color($rose, 60%) !default;
 // scss-docs-end theme-border-subtle-variables
 
 // Characters which are escaped by the escape-svg function
@@ -795,7 +783,6 @@ $table-variants: (
   "warning":    shift-color($warning, $table-bg-scale),
   "danger":     shift-color($danger, $table-bg-scale),
   "smsub":      shift-color($smsub, $table-bg-scale),
-  "pink":       shift-color($pink, $table-bg-scale),
   "light":      $light,
   "dark":       $dark,
 ) !default;
