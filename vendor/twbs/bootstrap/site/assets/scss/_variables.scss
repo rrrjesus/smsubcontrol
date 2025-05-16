@@ -8,6 +8,7 @@ $bd-rose:          #e992ac;
 $bd-pink:          #d63384;
 $bd-purple:        #6f42c1;
 $bd-info:          #0dcaf0;
+$bd-secondary:     #6c757d;
 $bd-violet:        lighten(saturate($bd-purple, 5%), 15%); // stylelint-disable-line function-disallowed-list
 $bd-purple-light:  lighten(saturate($bd-purple, 5%), 45%); // stylelint-disable-line function-disallowed-list
 $bd-accent:        #ffe484;
@@ -26,6 +27,7 @@ $bd-callout-variants: primary, secondary, success, danger, warning, info !defaul
   --bd-pink:  #{$bd-pink};
   --bd-purple: #{$bd-purple};
   --bd-info: #{$bd-info};
+  --bd-secondary: #{$bd-secondary};
   --bd-violet: #{$bd-violet};
   --bd-accent: #{$bd-accent};
 
@@ -38,6 +40,7 @@ $bd-callout-variants: primary, secondary, success, danger, warning, info !defaul
   --bd-pink-rgb: #{to-rgb($bd-pink)};
   --bd-purple-rgb: #{to-rgb($bd-purple)};
   --bd-info-rgb: #{to-rgb($bd-info)};
+  --bd-secondary-rgb: #{to-rgb($bd-secondary)};
   --bd-violet-rgb: #{to-rgb($bd-violet)};
   --bd-accent-rgb: #{to-rgb($bd-accent)};
   --bd-teal-rgb: #{to-rgb($teal-500)};
@@ -51,6 +54,7 @@ $bd-callout-variants: primary, secondary, success, danger, warning, info !defaul
   --bd-pink-bg: var(--bd-pink);
   --bd-purple-bg: var(--bd-purple);
   --bd-info-bg: var(--bd-info);
+  --bd-secondary-bg: var(--bd-secondary);
   --bd-violet-bg: var(--bd-violet);
   --bd-toc-color: var(--bd-smsub);
   --bd-sidebar-link-bg: rgba(var(--bd-smsub-rgb), .1);
@@ -78,6 +82,8 @@ $bd-callout-variants: primary, secondary, success, danger, warning, info !defaul
   --bd-purple-bg: #{$bd-purple};
   --bd-info: #{mix($bd-info, $white, 75%)};
   --bd-info-bg: #{$bd-info};
+  --bd-secondary: #{mix($bd-secondary, $white, 75%)};
+  --bd-secondary-bg: #{$bd-secondary};
   --bd-violet: #{mix($bd-violet, $white, 75%)};
   --bd-violet-bg: #{$bd-violet};
   --bd-toc-color: var(--#{$prefix}emphasis-color);

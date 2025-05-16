@@ -315,7 +315,7 @@ function theme(string $path = null, string $theme = CONF_VIEW_THEME): string
 
 
 /**
- * @return date
+ * @return string $date
  */
 
  function color_month(): string
@@ -324,72 +324,97 @@ function theme(string $path = null, string $theme = CONF_VIEW_THEME): string
      $date = date("m");
  
      switch($date) {
-         case "01":
-            $date = "purple";
+        case "01":
+            $date = "secondary";
             break;
-         case "02":
-             $date = "orange";
-             break;
-         case "03":
-             $date = "smsub";
-             break;
-         case "04":
-             $date = "success";
-             break;
-         case "05":
-             $date = "warning";
-             break;
+        case "02":
+            $date = "orange";
+            break;
+        case "03":
+            $date = "smsub";
+            break;
+        case "04":
+            $date = "success";
+            break;
+        case "05":
+            $date = "warning";
+            break;
         case "06":
-             $date = "danger";
-             break;
+            $date = "danger";
+            break;
         case "07":
-             $date = "success";
-             break;
+            $date = "success";
+            break;
         case "08":
-             $date = "warning";
-             break;
+            $date = "warning";
+            break;
         case "09":
-             $date = "danger";
-             break;
+            $date = "danger";
+            break;
         case "10":
-             $date = "pink";
-             break;
+            $date = "pink";
+            break;
         case "11":
-             $date = "info";
-             break;
+            $date = "info";
+            break;
         case "12":
-             $date = "danger";
-             break;
-         default:
-             $date = "smsub";
+            $date = "danger";
+            break;
+        default:
+            $date = "smsub";
      }
  
      return $date;
  
  }
  
+/**
+ * @return string $slide
+ */
+ 
  function slide_month(): string {
  
      $date = date("m");
  
      switch($date) {
-         case "01":
-            $slide = "/assets/images/maio.jpg";
+        case "01":
+            $slide = "/assets/images/janeiro.jpg";
             break;
-         case "02":
-             $slide = "/assets/images/slides_meses/maio.jpg";
-             break;
-         case "03":
-             $slide = "/assets/images/maio.jpg";
-             break;
-         case "04":
-             $slide = "/assets/images/maio.jpg";
-             break;
+        case "02":
+            $slide = "/assets/images/slides_meses/feveireiro.jpg";
+            break;
+        case "03":
+            $slide = "/assets/images/slides_meses/marco.jpg";
+            break;
+        case "04":
+            $slide = "/assets/images/slides_meses/abril.jpg";
+            break;
          case "05":
-             $slide = "/assets/images/slides_meses/maio.jpg";
-             break;
-         default:
-             $slide = "/assets/images/help_desk_coti.jpg";
+            $slide = "/assets/images/slides_meses/agosto.jpg";
+            break;
+        case "06":
+            $slide = "/assets/images/slides_meses/junho.jpg";
+            break;
+        case "07":
+            $slide = "/assets/images/slides_meses/julho.jpg";
+            break;
+        case "08":
+            $slide = "/assets/images/slides_meses/agosto.jpg";
+            break;
+        case "09":
+            $slide = "/assets/images/slides_meses/setembro.jpg";
+            break;
+        case "10":
+            $slide = "/assets/images/slides_meses/outubro.jpg";
+            break;
+        case "11":
+            $slide = "/assets/images/slides_meses/novembro.jpg";
+            break;
+        case "12":
+            $slide = "/assets/images/slides_meses/dezembro.jpg";
+            break;
+        default:
+            $slide = "/assets/images//slides_meses/help_desk_coti.jpg";
      }
  
      return $slide;

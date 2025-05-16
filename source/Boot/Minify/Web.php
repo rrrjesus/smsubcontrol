@@ -23,7 +23,7 @@ if (strpos(url(), "localhost")) {
     }
 
     //Minify CSS
-    $minCSS->minify(__DIR__ . "/../../../themes/" . CONF_VIEW_THEME . "/assets/stylev1.css");
+    $minCSS->minify(__DIR__ . "/../../../themes/" . CONF_VIEW_THEME . "/assets/style.css");
 
     /**
      * JS

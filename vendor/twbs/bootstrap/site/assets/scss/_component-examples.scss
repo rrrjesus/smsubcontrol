@@ -255,6 +255,10 @@
   --bs-tooltip-bg: var(--bd-info-bg);
   --bs-tooltip-color: var(--bs-white);
 }
+.custom-tooltip-secondary {
+  --bs-tooltip-bg: var(--bd-secondary-bg);
+  --bs-tooltip-color: var(--bs-white);
+}
 
 // scss-docs-end custom-tooltip
 

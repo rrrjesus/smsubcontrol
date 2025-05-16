@@ -7,19 +7,8 @@
 
     <?= $head; ?>
 
-    <!-- <script src="shared/scripts/color-modes.js"></script> -->
-
     <link rel="icon" type="image/png" href="<?= theme("/assets/images/favicon.png"); ?>"/>
-
-    <!-- <link rel="stylesheet" href="shared/styles/boot.css"/>
-    <link rel="stylesheet" href="shared/styles/bootstrap.min.css"/>
-    <link rel="stylesheet" href="shared/styles/docs.min.css"> -->
-    <link rel="stylesheet" href="<?=theme("/assets/stylev1.css"); ?>"/>
-    <!-- <link rel="stylesheet" href="shared/styles/datatables/dataTables.bootstrap5.css"/>
-    <link rel="stylesheet" href="shared/styles/datatables/buttons.bootstrap5.min.css"/>
-    <link rel="stylesheet" href="shared/styles/datatables/responsive.bootstrap5.min.css"/>
-    <link rel="stylesheet" href="shared/styles/bootstrap-icons.min.css"/>
-    <link rel="stylesheet" href="shared/styles/typeahead.css"/> -->
+    <link rel="stylesheet" href="<?=theme("/assets/style.css?v=").color_month(); ?>"/>
 </head>
 <body>
 
@@ -30,7 +19,16 @@
     </div>
 </div>
 
+
 <header class="navbar navbar-expand-lg bd-navbar-<?=color_month()?> sticky-top">
+
+<style>
+/* Typeahead Color*/
+span.twitter-typeahead .tt-suggestion:focus, .dropdown-item:hover, span.twitter-typeahead .tt-suggestion:hover {
+    background-color: var(--bs-<?=color_month()?>);
+}
+</style>
+
   <!-- Navbar-->
   <?= $this->insert("views/theme/navbar"); ?>
 </header>
@@ -58,35 +56,8 @@
 <!--FOOTER-->
 <?= $this->insert("views/theme/footer"); ?>
 
-<!-- <script src="shared/scripts/bootstrap/bootstrap.bundle.min.js"></script>
-<script src="shared/scripts/bootstrap/color-modes.js"></script> -->
-
-<!-- Bibliotecas Javascript Jquery do Sistema -->
-<!-- <script src="shared/scripts/jquery/jquery.min.js"></script>
-<script src="shared/scripts/jquery/jquery.form.js"></script>
-<script src="shared/scripts/jquery/jquery-ui.min.js"></script>
-<script src="shared/scripts/jquery/jquery.mask.js"></script>
-<script src="shared/scripts/highcharts.js"></script>
-<script src="shared/scripts/jquery/jquery.validate.min.js"></script>
-<script src="shared/scripts/typeahead.bundle.js"></script> -->
-
-<!-- Bibliotecas Javascript Datatables -->
-<!-- <script src="shared/scripts/datatables/dataTables.js"></script>
-<script src="shared/scripts/datatables/dataTables.bootstrap5.js"></script> -->
-
-<!-- Bibliotecas Javascript Datatables Extensões (Botões, PDF, Fonts, Html, Print, Responsivo e Excel)-->
-<!-- <script src="shared/scripts/datatables/dataTables.buttons.js"></script>
-<script src="shared/scripts/datatables/buttons.bootstrap5.js"></script>
-<script src="shared/scripts/datatables/pdfmake.min.js"></script>
-<script src="shared/scripts/datatables/vfs_fonts.js"></script>
-<script src="shared/scripts/datatables/buttons.html5.min.js"></script>
-<script src="shared/scripts/datatables/buttons.print.min.js"></script>
-<script src="shared/scripts/datatables/buttons.colVis.min.js"></script>
-<script src="shared/scripts/datatables/dataTables.responsive.js"></script>
-<script src="shared/scripts/datatables/responsive.bootstrap5.js"></script> -->
-
 <!-- Javascript do Tema -->
-<script src="<?= theme("assets/scripts.js")?>"></script>
+<script src="<?= theme("assets/scripts.js?v=").color_month();?>"></script>
 <?= $this->section("scripts"); ?>
 
 </body>
