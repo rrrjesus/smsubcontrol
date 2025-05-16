@@ -14,7 +14,7 @@
     <!-- <link rel="stylesheet" href="shared/styles/boot.css"/>
     <link rel="stylesheet" href="shared/styles/bootstrap.min.css"/>
     <link rel="stylesheet" href="shared/styles/docs.min.css"> -->
-    <link rel="stylesheet" href="<?=theme("/assets/style.css"); ?>"/>
+    <link rel="stylesheet" href="<?=theme("/assets/stylev1.css"); ?>"/>
     <!-- <link rel="stylesheet" href="shared/styles/datatables/dataTables.bootstrap5.css"/>
     <link rel="stylesheet" href="shared/styles/datatables/buttons.bootstrap5.min.css"/>
     <link rel="stylesheet" href="shared/styles/datatables/responsive.bootstrap5.min.css"/>

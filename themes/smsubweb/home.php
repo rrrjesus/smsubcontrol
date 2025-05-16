@@ -55,8 +55,8 @@
                     <a href="#" class="text-decoration-none fw-bold">Service Desk COTI</a>.
                     Basta clicar no icone do app que fica na área de trabalho dos computadores de <strong>SMSUB</strong> e abrir um chamado. É possivel acompanhar
                     as tratativas do chamado no app.</p>
-                <a href="<?=url("/blog/servicedesk")?>" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip-<?=color_month()?>" data-bs-placement="bottom" 
-                    data-bs-title="Saiba Mais">Saiba Mais</a>
+                <!-- <a href="<?=url("/blog/servicedesk")?>" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip-<?=color_month()?>" data-bs-placement="bottom" 
+                    data-bs-title="Saiba Mais">Saiba Mais</a> -->
             </div>
             <div class="feature col">
                 <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-warning bg-gradient fs-2 mb-3">
@@ -66,7 +66,7 @@
                 <p>Existe um e-mail de contato para <strong>COTI</strong> caso necessário : <a class="text-decoration-none fw-bold" href="mailto:<?=CONF_SITE_EMAIL?>"><?=CONF_SITE_EMAIL?></a>,
                     mas os chamados de suporte técnico ainda assim devem ser realizados através do nosso
                     <a href="#" class="text-decoration-none fw-bold">Service Desk COTI</a> para que sejam devidamente tratados e solucionados.</p>
-                    <a href="<?=url("/blog/e-mail-coti")?>" class="btn btn-primary">Saiba Mais</a>
+                    <!-- <a href="<?=url("/blog/e-mail-coti")?>" class="btn btn-primary">Saiba Mais</a> -->
             </div>
             <div class="feature col">
                 <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-danger bg-gradient fs-2 mb-3">

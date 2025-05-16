@@ -196,7 +196,31 @@ $(function () {
         "aaSorting": [0, 'desc'],
         "aoColumnDefs": [
             {
+                target: 1,
+                visible: false
+            },   
+            {
+                target: 2,
+                visible: false
+            }, 
+            {
+                target: 3,
+                visible: false
+            },     
+            {
+                target: 4,
+                visible: false
+            }, 
+            {
+                target: 5,
+                visible: false
+            },     
+            {
                 target: 7,
+                visible: false
+            },   
+            {
+                target: 10,
                 visible: false
             },   
            {

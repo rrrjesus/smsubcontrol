@@ -1,5 +1,5 @@
 <?php
-
+if (strpos(url(), "localhost")) {
     /**
      * CSS
      */
@@ -23,7 +23,7 @@
     }
 
     //Minify CSS
-    $minCSS->minify(__DIR__ . "/../../../themes/" . CONF_VIEW_THEME . "/assets/style.css");
+    $minCSS->minify(__DIR__ . "/../../../themes/" . CONF_VIEW_THEME . "/assets/stylev1.css");
 
     /**
      * JS
@@ -60,3 +60,4 @@
 
     //Minify JS
     $minJS->minify(__DIR__ . "/../../../themes/" . CONF_VIEW_THEME . "/assets/scripts.js");
+}
