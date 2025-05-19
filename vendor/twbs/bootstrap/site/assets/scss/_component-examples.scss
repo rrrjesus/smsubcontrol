@@ -229,6 +229,10 @@
 }
 .custom-tooltip-warning {
   --bs-tooltip-bg: var(--bd-warning-bg);
+  --bs-tooltip-color: var(--bs-black);
+}
+.custom-tooltip-golden {
+  --bs-tooltip-bg: var(--bd-golden-bg);
   --bs-tooltip-color: var(--bs-white);
 }
 .custom-tooltip-orange {

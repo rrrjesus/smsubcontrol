@@ -41,9 +41,11 @@ $smsub:   #011fcf !default;
 $indigo:  #6610f2 !default;
 $purple:  #6f42c1 !default;
 $pink:    #d63384 !default;
+$rose:    #e992ac !default;
 $red:     #dc3545 !default;
 $orange:  #fd7e14 !default;
 $yellow:  #e0a800 !default;
+$golden:  #d4af37 !default;
 $green:   #28a745 !default;
 $teal:    #20c997 !default;
 $cyan:    #0dcaf0 !default;
@@ -57,9 +59,11 @@ $colors: (
   "indigo":     $indigo,
   "purple":     $purple,
   "pink":       $pink,
+  "rose":       $rose,
   "red":        $red,
   "orange":     $orange,
   "yellow":     $yellow,
+  "golden":     $golden,
   "green":      $green,
   "teal":       $teal,
   "cyan":       $cyan,
@@ -305,7 +309,10 @@ $primary:       $blue !default;
 $secondary:     $gray-600 !default;
 $success:       $green !default;
 $info:          $cyan !default;
+$pink:          $pink !default;
+$rose:          $rose !default;
 $warning:       $yellow !default;
+$golden:        $golden !default;
 $orange:        $orange !default;
 $danger:        $red !default;
 $light:         $gray-100 !default;
@@ -322,6 +329,9 @@ $theme-colors: (
   "success":    $success,
   "info":       $info,
   "warning":    $warning,
+  "golden":     $golden,
+  "pink":       $pink,
+  "rose":       $rose,
   "orange":     $orange,
   "danger":     $danger,
   "light":      $light,
@@ -337,7 +347,10 @@ $secondary-text-emphasis: shade-color($secondary, 60%) !default;
 $success-text-emphasis:   shade-color($success, 60%) !default;
 $info-text-emphasis:      shade-color($info, 60%) !default;
 $warning-text-emphasis:   shade-color($warning, 60%) !default;
+$golden-text-emphasis:    shade-color($golden, 60%) !default;
 $orange-text-emphasis:    shade-color($orange, 60%) !default;
+$pink-text-emphasis:      shade-color($pink, 60%) !default;
+$rose-text-emphasis:      shade-color($rose, 60%) !default;
 $danger-text-emphasis:    shade-color($danger, 60%) !default;
 $light-text-emphasis:     $gray-700 !default;
 $dark-text-emphasis:      $gray-700 !default;
@@ -351,7 +364,10 @@ $secondary-bg-subtle:     tint-color($secondary, 80%) !default;
 $success-bg-subtle:       tint-color($success, 80%) !default;
 $info-bg-subtle:          tint-color($info, 80%) !default;
 $warning-bg-subtle:       tint-color($warning, 80%) !default;
+$golden-bg-subtle:        tint-color($golden, 80%) !default;
 $orange-bg-subtle:        tint-color($orange, 80%) !default;
+$pink-bg-subtle:          tint-color($pink, 80%) !default;
+$rose-bg-subtle:          tint-color($rose, 80%) !default;
 $danger-bg-subtle:        tint-color($danger, 80%) !default;
 $light-bg-subtle:         mix($gray-100, $white) !default;
 $dark-bg-subtle:          $gray-400 !default;
@@ -365,7 +381,10 @@ $secondary-border-subtle: tint-color($secondary, 60%) !default;
 $success-border-subtle:   tint-color($success, 60%) !default;
 $info-border-subtle:      tint-color($info, 60%) !default;
 $warning-border-subtle:   tint-color($warning, 60%) !default;
+$golden-border-subtle:    tint-color($golden, 60%) !default;
 $orange-border-subtle:    tint-color($orange, 60%) !default;
+$pink-border-subtle:      tint-color($pink, 60%) !default;
+$rose-border-subtle:      tint-color($rose, 60%) !default;
 $danger-border-subtle:    tint-color($danger, 60%) !default;
 $light-border-subtle:     $gray-200 !default;
 $dark-border-subtle:      $gray-500 !default;
@@ -793,7 +812,10 @@ $table-variants: (
   "success":    shift-color($success, $table-bg-scale),
   "info":       shift-color($info, $table-bg-scale),
   "warning":    shift-color($warning, $table-bg-scale),
+  "golden":     shift-color($golden, $table-bg-scale),
   "orange":     shift-color($orange, $table-bg-scale),
+  "pink":       shift-color($pink, $table-bg-scale),
+  "rose":       shift-color($rose, $table-bg-scale),
   "danger":     shift-color($danger, $table-bg-scale),
   "smsub":      shift-color($smsub, $table-bg-scale),
   "purple":     shift-color($purple, $table-bg-scale),

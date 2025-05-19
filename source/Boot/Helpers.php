@@ -346,10 +346,10 @@ function theme(string $path = null, string $theme = CONF_VIEW_THEME): string
             $date = "success";
             break;
         case "08":
-            $date = "warning";
+            $date = "golden";
             break;
         case "09":
-            $date = "danger";
+            $date = "warning";
             break;
         case "10":
             $date = "pink";
@@ -378,10 +378,10 @@ function theme(string $path = null, string $theme = CONF_VIEW_THEME): string
  
      switch($date) {
         case "01":
-            $slide = "/assets/images/janeiro.jpg";
+            $slide = "/assets/images/slides_meses/janeiro.jpg";
             break;
         case "02":
-            $slide = "/assets/images/slides_meses/feveireiro.jpg";
+            $slide = "/assets/images/slides_meses/fevereiro.jpg";
             break;
         case "03":
             $slide = "/assets/images/slides_meses/marco.jpg";
@@ -390,7 +390,7 @@ function theme(string $path = null, string $theme = CONF_VIEW_THEME): string
             $slide = "/assets/images/slides_meses/abril.jpg";
             break;
          case "05":
-            $slide = "/assets/images/slides_meses/agosto.jpg";
+            $slide = "/assets/images/slides_meses/maio.jpg";
             break;
         case "06":
             $slide = "/assets/images/slides_meses/junho.jpg";
@@ -414,7 +414,7 @@ function theme(string $path = null, string $theme = CONF_VIEW_THEME): string
             $slide = "/assets/images/slides_meses/dezembro.jpg";
             break;
         default:
-            $slide = "/assets/images//slides_meses/help_desk_coti.jpg";
+            $slide = "/assets/images/help_desk_coti.jpg";
      }
  
      return $slide;

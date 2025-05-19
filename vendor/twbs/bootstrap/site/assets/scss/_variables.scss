@@ -1,7 +1,8 @@
 // Local docs variables
 $bd-danger:        #dc3545;
 $bd-success:       #28a745;
-$bd-warning:       #e0a800;
+$bd-warning:       #ffc107;
+$bd-golden:        #d4af37;
 $bd-orange:        #fd7e14;
 $bd-smsub:         #011fcf;
 $bd-rose:          #e992ac;
@@ -21,6 +22,7 @@ $bd-callout-variants: primary, secondary, success, danger, warning, info !defaul
   --bd-danger:  #{$bd-danger};
   --bd-success:  #{$bd-success};
   --bd-warning: #{$bd-warning};
+  --bd-golden: #{$bd-golden};
   --bd-orange: #{$bd-orange};
   --bd-smsub: #{$bd-smsub};
   --bd-rose:  #{$bd-rose};
@@ -34,6 +36,7 @@ $bd-callout-variants: primary, secondary, success, danger, warning, info !defaul
   --bd-danger-rgb: #{to-rgb($bd-danger)};
   --bd-success-rgb: #{to-rgb($bd-success)};
   --bd-warning-rgb: #{to-rgb($bd-warning)};
+  --bd-golden-rgb: #{to-rgb($bd-golden)};
   --bd-orange-rgb: #{to-rgb($bd-orange)};
   --bd-smsub-rgb: #{to-rgb($bd-smsub)};
   --bd-rose-rgb: #{to-rgb($bd-rose)};
@@ -48,6 +51,7 @@ $bd-callout-variants: primary, secondary, success, danger, warning, info !defaul
   --bd-danger-bg: var(--bd-danger);
   --bd-success-bg: var(--bd-success);
   --bd-warning-bg: var(--bd-warning);
+  --bd-golden-bg: var(--bd-golden);
   --bd-orange-bg: var(--bd-orange);
   --bd-smsub-bg: var(--bd-smsub);
   --bd-rose-bg: var(--bd-rose);
@@ -70,6 +74,8 @@ $bd-callout-variants: primary, secondary, success, danger, warning, info !defaul
   --bd-success-bg: #{$bd-success};
   --bd-warning: #{mix($bd-warning, $white, 75%)};
   --bd-warning-bg: #{$bd-warning};
+  --bd-golden: #{mix($bd-golden, $white, 75%)};
+  --bd-golden-bg: #{$bd-golden};
   --bd-orange: #{mix($bd-orange, $white, 75%)};
   --bd-orange-bg: #{$bd-orange};
   --bd-smsub: #{mix($bd-smsub, $white, 75%)};

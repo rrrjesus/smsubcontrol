@@ -27,6 +27,9 @@
 span.twitter-typeahead .tt-suggestion:focus, .dropdown-item:hover, span.twitter-typeahead .tt-suggestion:hover {
     background-color: var(--bs-<?=color_month()?>);
 }
+.ajax_load_box_circle {
+    border-top: 16px solid var(--bs-<?=color_month()?>);
+}
 </style>
 
   <!-- Navbar-->
