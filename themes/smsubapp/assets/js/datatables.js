@@ -202,11 +202,7 @@ $(function () {
             {
                 target: 2,
                 visible: false
-            }, 
-            {
-                target: 3,
-                visible: false
-            },     
+            },    
             {
                 target: 4,
                 visible: false
