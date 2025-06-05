@@ -12,7 +12,7 @@
                     <li class="mb-2">Código licenciado <a data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip-<?=color_month()?>"
                                                           data-bs-title="Liçenca de Software" class="text-decoration-none text-<?=color_month();?> fw-bold" href="https://github.com/rrrjesus/smsubcontrol/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a></li>
                     <li class="mb-2">Versão Atual v2.0.2.</li>
-                    <li class="mb-2">Código Fonte <a data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip-<?=color_month()?>" data-bs-title="GitHub do Desenvolvedor" class="text-decoration-none text-<?=color_month();?> fw-bold" href="https://github.com/rrrjesus/smsubcontrol" target="_blank" rel="noopener"><i class="bi bi-github"></i> @rrrjesus/smsubcontrol</a>.</li>
+                    <li class="mb-2">Código Fonte <a data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip-<?=color_month()?>" data-bs-title="GitHub do Desenvolvedor" class="text-decoration-none text-<?=color_month();?> fw-bold" href="https://github.com/rrrjesus" target="_blank" rel="noopener"><i class="bi bi-github"></i> @rrrjesus/smsubcontrol</a>.</li>
                 </ul>
             </div>
 
