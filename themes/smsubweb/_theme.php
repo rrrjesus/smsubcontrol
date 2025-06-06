@@ -60,7 +60,7 @@ span.twitter-typeahead .tt-suggestion:focus, .dropdown-item:hover, span.twitter-
 <?= $this->insert("views/theme/footer"); ?>
 
 <!-- Javascript do Tema -->
-<script src="<?= theme("assets/scripts.js?v=").color_month()."v4";?>"></script>
+<script src="<?= theme("assets/scripts.js?v=").color_month()."v5";?>"></script>
 <?= $this->section("scripts"); ?>
 
 </body>
