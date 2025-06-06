@@ -155,7 +155,7 @@
 
                 let sector = new Bloodhound({
                     datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
-                    local: <?=(new \Source\Models\Contact())->completeUnit()?>
+                    local: <?=(new \Source\Models\Contact())->completeSector()?>
                 });
                 sector.initialize();
                 $('.sector').typeahead({hint: true, highlight: true, minLength: 1}, {source: sector});
