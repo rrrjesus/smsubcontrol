@@ -107,6 +107,23 @@ class Contact extends Model
         return null;
     }
 
+        /**
+     * @return null|Unit
+     */
+    static function completeSector(): ?Unit
+    {
+        $stm = (new Unit())->find("status= :s","s=actived");
+        $array[] = array();
+
+        if(!empty($stm)):
+            foreach ($stm->fetch(true) as $row):
+                    $array[] = substr($row->unit_name, 0 ,-11);
+            endforeach;
+            echo json_encode($array); //Return the JSON Array
+        endif;
+        return null;
+    }
+
     /**
      * @return bool
      */
