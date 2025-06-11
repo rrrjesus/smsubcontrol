@@ -8,6 +8,8 @@
 
 $(function () {
     $("#gerarpng").on("click", function () {
+
+        var modecolor = $('body').css("background-color");
         var asspng = $('.assinatura-download')[0]; //returns a HTML DOM Object
         var assnome = $('.asnome').text();
         var inpNome = $('#nomeinp').val();
@@ -17,7 +19,7 @@ $(function () {
         var tempDate = new Date();
         var dataAtual = [tempDate.getDate(), tempDate.getMonth() + 1, tempDate.getFullYear(), tempDate.getHours(), tempDate.getMinutes(), tempDate.getSeconds()].join('/');
 
-        if (inpNome !== '' && inpCargo !== '' && inpSector !== '' && inpEmail !== '') {
+        if (inpNome !== '' && inpCargo !== '' && inpSector !== '' && inpEmail !== '' && modecolor==='rgb(255, 255, 255)') {
             // Obtendo um blob de imagem PNG e baixando (usando FileSaver):
             domtoimage.toBlob(asspng)
                 .then(function (blob) {
@@ -25,6 +27,8 @@ $(function () {
                 }).catch(function (error) {
                 console.error('Não foi possivel gerar a imagem ...', error);
             });
+        } else {
+            window.alert("Atenção : Preencha todos os campos e desative o modo dark !!!");
         }
 
     });
