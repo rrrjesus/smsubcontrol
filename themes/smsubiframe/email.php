@@ -8,7 +8,7 @@
 
             <div class="pricing-header mx-auto text-center">
                 <p class="fs-6 text-body-secondary pt-0">Gerador de assinatura de e-mail no padrão estabelecido no <strong>Manual de Identidade Visual da</strong>
-                    <a class="text-decoration-none text-<?=color_month();?> fw-semibold" href="https://www.prefeitura.sp.gov.br/cidade/secretarias/upload/comunicacao/arquivos/manual_identidade_visual/manual_identidade/manual_de_identidade.pdf"
+                    <a class="text-decoration-none text-<?=color_month();?> fw-semibold" href="https://capital.sp.gov.br/documents/d/comunicacao/manual_de_identidade"
                     target="_blank">SECOM</a></p>
             </div>
 

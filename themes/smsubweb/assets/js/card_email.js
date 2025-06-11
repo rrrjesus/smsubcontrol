@@ -83,7 +83,7 @@ $(function () {
                 if(mode==='rgb(255, 255, 255)') {
                     photo = '<img id="logo-assinatura mb-0" src="themes/smsubweb/assets/images/assinatura/' + jsonphoto + '">';
                 } else {
-                    photo = '<img id="logo-assinatura mb-0" src="themes/smsubweb/assets/images/assinatura/dark_' + jsonphoto + '">';
+                    photo = '<img id="logo-assinatura mb-0" src="themes/smsubweb/assets/images/assinatura/' + jsonphoto + '">';
                 }
                 if(jsonendereco!=='') {
                     enderecoinp.val(jsonendereco);
@@ -107,9 +107,9 @@ $(function () {
     var modeinicial = $('body').css("background-color");
 
     if(modeinicial==='rgb(255, 255, 255)') {
-        photoinicial = '<img id="logo-assinatura mb-0" src="themes/smsubweb/assets/images/assinatura/logo_ass_smsub.png">';
+        photoinicial = '<img id="logo-assinatura mb-0" src="themes/smsubweb/assets/images/assinatura/logo_ass_smsub_novo.png">';
     } else {
-        photoinicial = '<img id="logo-assinatura mb-0" src="themes/smsubweb/assets/images/assinatura/dark_logo_ass_smsub.png">';
+        photoinicial = '<img id="logo-assinatura mb-0" src="themes/smsubweb/assets/images/assinatura/logo_ass_smsub_novo.png">';
     }
 
     $('.asnome').html("NOME COMPLETO");
