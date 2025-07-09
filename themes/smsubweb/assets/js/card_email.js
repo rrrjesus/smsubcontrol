@@ -111,9 +111,9 @@ $(function () {
     var modeinicial = $('body').css("background-color");
 
     if(modeinicial==='rgb(255, 255, 255)') {
-        photoinicial = '<img id="logo-assinatura mb-0" src="themes/smsubweb/assets/images/assinatura/logo_ass_smsub_novo.png">';
+        photoinicial = '<img id="logo-assinatura mb-0" src="themes/smsubweb/assets/images/assinatura/logo_ass_smsub.png">';
     } else {
-        photoinicial = '<img id="logo-assinatura mb-0" src="themes/smsubweb/assets/images/assinatura/logo_ass_smsub_novo.png">';
+        photoinicial = '<img id="logo-assinatura mb-0" src="themes/smsubweb/assets/images/assinatura/logo_ass_smsub.png">';
     }
 
     $('.asnome').html("NOME COMPLETO");

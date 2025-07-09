@@ -281,7 +281,7 @@ $(function () {
     if(modeinicial==='rgb(255, 255, 255)') {
         photoinicial = '<img decoding="async" id="logo-assinatura mb-0" src="themes/smsubweb/assets/images/assinatura/logo_ass_smsub.png">';
     } else {
-        photoinicial = '<img decoding="async" id="logo-assinatura mb-0" src="themes/smsubweb/assets/images/assinatura/dark_logo_ass_smsub.png">';
+        photoinicial = '<img decoding="async" id="logo-assinatura mb-0" src="themes/smsubweb/assets/images/assinatura/logo_ass_smsub.png">';
     }
 
     $('.asnome').html("NOME COMPLETO");
