@@ -8,7 +8,7 @@
     <?= $head; ?>
 
     <link rel="icon" type="image/png" href="<?= theme("/assets/images/favicon.png"); ?>"/>
-    <link rel="stylesheet" href="<?=theme("/assets/style.css?v=").color_month()."v1.8.0.3"; ?>"/>
+    <link rel="stylesheet" href="<?=theme("/assets/style.css?v=").color_month()."v1.8.0.6"; ?>"/>
 </head>
 <body>
 
@@ -60,7 +60,7 @@ span.twitter-typeahead .tt-suggestion:focus, .dropdown-item:hover, span.twitter-
 <?= $this->insert("views/theme/footer"); ?>
 
 <!-- Javascript do Tema -->
-<script src="<?= theme("assets/scripts.js?v=").color_month()."v1.8.0.3";?>"></script>
+<script src="<?= theme("assets/scripts.js?v=").color_month()."v1.8.0.6";?>"></script>
 <?= $this->section("scripts"); ?>
 
 </body>

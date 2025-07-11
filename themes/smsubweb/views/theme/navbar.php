@@ -15,7 +15,7 @@
 
 <nav class="container-md bd-gutter flex-wrap flex-lg-nowrap" aria-label="Main navigation">
         <a class="navbar-brand p-0 me-0 me-lg-2 fw-bold fs-4" href="/" aria-label="Agenda">
-            <img width="130" height="40" src="<?=theme("/assets/images/smsub_logo/SUBPREFEITURAS_HORIZONTAL_FUNDO_ESCURO.png")?>">
+            <img width="130" height="40" src="<?=theme("/assets/images/smsub_logo/SUBPREFEITURAS_HORIZONTAL_FUNDO_ESCURO_NOVO.png")?>">
         </a>
 
         <div class="d-flex">
@@ -28,7 +28,7 @@
 
         <div class="offcanvas-lg offcanvas-end flex-grow-1 navbar-collapse justify-content-md-center" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel" data-bs-scroll="true">
             <div class="offcanvas-header px-4 pb-0">
-                <div class="offcanvas-title text-light" id="bdNavbarOffcanvasLabel"><img width="130" height="40" src="<?=theme("/assets/images/smsub_logo/SUBPREFEITURAS_HORIZONTAL_FUNDO_ESCURO.png")?>"></div>
+                <div class="offcanvas-title text-light" id="bdNavbarOffcanvasLabel"><img width="130" height="40" src="<?=theme("/assets/images/smsub_logo/SUBPREFEITURAS_HORIZONTAL_FUNDO_ESCURO_NOVO.png")?>"></div>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
             </div>
 
